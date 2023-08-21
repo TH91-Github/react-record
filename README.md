@@ -7,9 +7,8 @@
 - 메모장, OneNote, 클라우드 등 정리했던 흔적 등
 - 이슈 관련 등
 github를 통해 기록하고 공유하기 위해 React로 시작을 했습니다
-
 </p>
-<br><br>
+<br>
 
 ### Stack 📕
 <span><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white" alt="HTML5" /></span>
@@ -40,14 +39,14 @@ github를 통해 기록하고 공유하기 위해 React로 시작을 했습니�
 - 슬라이드, 탭, 스크롤 기능 컴포넌트
 - 만들어 놓은 기능별 페이지 소개 제작
 
-#### github 통한 관리
+#### 사용 목적을 목표로 만들기
 - 가계부
 - 냉장고
 - 달력(calendar)
 
 
 ### 기록
-github, velog, naver blog<br>
+<p>github, velog, naver blog</p>
 [<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" alt="" />](https://github.com/TH91-Github)
 [<img src="https://img.shields.io/badge/Velog-20C997?style=for-the-badge&logo=Velog&logoColor=white" alt="" />](https://velog.io/@th_velog)
 [<img src="https://img.shields.io/badge/Naver-03C75A?style=for-the-badge&logo=Naver&logoColor=white" alt="" />](https://blog.naver.com/k__taehoon__)
