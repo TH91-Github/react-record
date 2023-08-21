@@ -4,7 +4,12 @@
 
 
 ### Stack
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=Velog&logoColor=white">
+<span><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=Velog&logoColor=white"></span>
+<span>1</span>
+<span>2</span>
+<span>3</span>
+<span>4</span>
+<span>5</span>
 <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=Velog&logoColor=white">
 <img src="https://img.shields.io/badge/JavaScript-f7DF1E?style=for-the-badge&logo=Velog&logoColor=white">
 <img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=Velog&logoColor=white">
