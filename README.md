@@ -15,7 +15,7 @@
 
 ### 디자인툴 📘
 <br>
-<span><img src="https://img.shields.io/badge/Photoshop-31A8FF?style=for-the-badge&logo=Photoshop&logoColor=white" alt="Photoshop" /></span>
+<span><img src="https://img.shields.io/badge/Adobe Photoshop-31A8FF?style=for-the-badge&logo=Adobe Photoshop&logoColor=white" alt="Photoshop" /></span>
 <span><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub" /></span>
 <span><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma" /></span>
 <span>제플린(Zeplin)</span>
