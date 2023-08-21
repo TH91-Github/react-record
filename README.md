@@ -25,6 +25,20 @@
 <span><img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=Velog&logoColor=white" alt="React" /></span>
 <span><img src="https://img.shields.io/badge/Vue-4FC08D?style=for-the-badge&logo=Velog&logoColor=white" alt="Vue" /></span>
 
+### 목표&계획 🚩
+- React & Vue 개인 기록, 블로그
+- 포트폴리오(portfolio)
+- guide 생성
+- todolist 처음부터 완성까지 설명 및 작성
+- 슬라이드, 탭, 스크롤 기능 컴포넌트
+- 만들어 놓은 기능별 페이지 소개 제작
+
+#### github 통한 관리
+- 가계부
+- 냉장고
+- 달력(calendar)
+
+
 ### 기록
 github, velog, naver blog<br>
 [<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=Velog&logoColor=white" alt="" />](https://github.com/TH91-Github)
