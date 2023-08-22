@@ -1,0 +1,23 @@
+@import "./var.scss";
+
+// pc
+@mixin pc {
+	@media screen and (min-width: #{$table + 1}) {
+		@content;
+	}
+}
+// only PC 
+// tab
+@mixin tab {
+	@media screen and (min-width: #{$mo	 + 1}){
+		@content;
+	}
+}
+// mo
+@mixin mo {
+	@media screen and (max-width: #{$mo}) {
+		@content;
+	}
+}
+
+
