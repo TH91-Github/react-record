@@ -1,6 +1,12 @@
 /* App CSS */
 .App {
   &-wrap{
-    display:flex;
+    &.column{
+      display:flex;
+      .main-wrap{
+        flex-grow:1;
+      }
+    }
   }
+  
 }
