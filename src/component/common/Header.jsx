@@ -14,7 +14,7 @@ function Header({direction, chnageNav}) {
       <div className="header-inner">
         <div className="header-logo">
           <NavLink to="/" className="header-title">
-            <span class="tit">TH-91</span>
+            <span className="tit">TH-91</span>
           </NavLink>
         </div>
         <div className="header-nav">
@@ -54,7 +54,7 @@ function Header({direction, chnageNav}) {
                 {/* 유저 로그인 후 메뉴 */}
                 {
                   false && 
-                  <div class="members-menu">
+                  <div className="members-menu">
                     <ul>
                       <li>
                         <button type="button">
