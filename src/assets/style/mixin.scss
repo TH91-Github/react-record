@@ -1,5 +1,3 @@
-@import "./var.scss";
-
 // pc
 @mixin pc {
 	@media screen and (min-width: #{$table + 1}) {

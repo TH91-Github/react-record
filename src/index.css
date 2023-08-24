@@ -29,3 +29,10 @@ code {
 .skip-nav {
   display: none;
 }
+.blind {
+  position:absolute;
+  top:-99999px;
+  left:-9999px;
+  opacity:0;
+  text-indent:-9999px;
+}

@@ -1,3 +1,5 @@
+@import "../style/common.scss";
+
 .header {
   position:relative;
   z-index:900;
@@ -81,11 +83,10 @@
         border-bottom-left-radius:4px;
         background:#fff;
         font-size:14px;
-        font-family:'NanumGothic';
+        font-family: 'NanumGothic';
         box-shadow:4px 2px 2px rgba(0, 0, 0, 0.25);
         box-sizing:border-box;
         transform: translateY(-50%);
-        line-height:1;
         color:#000;
       }
       

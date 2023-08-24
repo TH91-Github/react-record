@@ -1,1 +1,9 @@
+@import "./font.scss";
+@import "./var.scss";
 @import "./mixin.scss";
+:root {
+  --font-NanumGithic: 'NanumGothic';
+}
+.tit {
+  color:red;
+}

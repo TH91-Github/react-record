@@ -1,4 +1,3 @@
-
 // Break Point (Desktop First 기준 내림차순 설정)
 $widthMax	: 1920px;
 $table	: 1024px;
@@ -13,3 +12,13 @@ $subTextColor: #868686;
 
 // Line Color
 $lineColor: #dbdbdb;
+
+
+// Font Family
+$fontFamily: ('NanumGothic','NanumGothicBold','NanumGothicLight');
+@each $name in $fontFamily{
+  @include fontFace($name);
+}
+
+
+

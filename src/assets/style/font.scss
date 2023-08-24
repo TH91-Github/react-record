@@ -1,0 +1,9 @@
+@mixin fontFace($family){
+  $path : '../fonts/' + $family;
+  @font-face{
+    font-family: $family;
+    src: url($path + ".otf") format('opentype'),
+         url($path + ".woff") format('woff'),
+         url($path + '.ttf') format('truetype');  
+  }
+}
