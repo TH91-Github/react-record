@@ -6,7 +6,8 @@ import RecordTemplate from '../component/pages/record/RecordTemplate';
 import SiteTemplate from '../component/pages/site/SiteTemplate';
 import { IpartnersRouter } from '../component/pages/site/ipartners/routers/IpartnersRouter';
 
-const ipartnersLink = IpartnersRouter
+const ipartnersLink = IpartnersRouter;
+
 export const routerData = [
   {
     title:"Guide",

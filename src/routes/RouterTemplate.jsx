@@ -21,6 +21,7 @@ function RouterTemplate(){
       ]
     },
   ])
-  return <RouterProvider router={router} fallbackElement={<div>Loading...TEST</div>} />;
+  return <RouterProvider router={router} />;
+  // fallbackElement={<div>Loading...TEST</div>} 
 }
 export default RouterTemplate;

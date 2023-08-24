@@ -1,14 +1,14 @@
-import { styled } from "styled-components";
+// import { styled } from "styled-components";
 import Accordion from "../../styled/Accordion";
 import AccItem from "../../styled/AccItem";
 import AccBtn from "../../styled/AccBtn";
 import AccInfo from "../../styled/AccInfo";
 
-const Title = styled.p`
-  font-size:18px;
-  font-weight:bold;
-  color:#000;
-`
+// const Title = styled.p`
+//   font-size:18px;
+//   font-weight:bold;
+//   color:#000;
+// `
 
 function ProfileTemplate(){
   return (
@@ -60,15 +60,15 @@ function ProfileTemplate(){
         <div className="share-lists">
           <ul>
             <li className="share-item">
-              <a href="#" className="share-link">velog</a>
+              {/* <a href="#" className="share-link">velog</a> */}
               <p className="share-text">React, Vue, Git 등 처음부터 단계적으로 기록중 입니다</p>
             </li>
             <li>
-              <a href="#" className="share-link">Naver Blog</a>
+              {/* <a href="#" className="share-link">Naver Blog</a> */}
               <p className="share-text">네이버 블로그는 일상 기록 작성중이며, velog 1차 기록 후 복습으로 네이버 블로그 작성하고 있습니다</p>
             </li>
             <li>
-              <a href="#" className="share-link">GitHub</a>
+              {/* <a href="#" className="share-link">GitHub</a> */}
               <p className="share-text">GitHub 꾸준히 업데이트 하기를 목표로 하고 있습니다</p>
             </li>
           </ul>
