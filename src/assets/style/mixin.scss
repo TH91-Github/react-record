@@ -1,19 +1,20 @@
 // pc
 @mixin pc {
-	@media screen and (min-width: #{$table + 1}) {
+	@media screen and (min-width: #{$table}) {
 		@content;
 	}
 }
+
 // only PC 
 // tab
 @mixin tab {
-	@media screen and (min-width: #{$mo	 + 1}){
+	@media screen and (min-width: #{$mo}) and (max-width: #{$table - 1}){
 		@content;
 	}
 }
 // mo
 @mixin mo {
-	@media screen and (max-width: #{$mo}) {
+	@media screen and (max-width: #{$mo - 1}) {
 		@content;
 	}
 }

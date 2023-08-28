@@ -6,6 +6,9 @@
       .main-wrap{
         flex-grow:1;
       }
+      .header + div {
+        flex-grow:1;
+      }
     }
   }
   

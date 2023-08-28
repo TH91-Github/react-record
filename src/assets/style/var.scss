@@ -1,11 +1,17 @@
 // Break Point (Desktop First 기준 내림차순 설정)
 $widthMax	: 1920px;
 $table	: 1024px;
-$mo		: 750px;
+$mo		: 768px;
 
-// Base Color
+// Color 
 $whiteColor: #fff;
-$blackCOlor: #000;
+$blackColor: #000;
+
+// Point Color
+$color1:#3cb062;
+$color2:#f5b800;
+$color3:#685ef8;
+$color4:#e76647;
 
 // Text Color
 $subTextColor: #868686;
@@ -15,7 +21,10 @@ $lineColor: #dbdbdb;
 
 
 // Font Family
-$fontFamily: ('NanumGothic','NanumGothicBold','NanumGothicLight');
+$font: "NanumGothic";
+$fontB: "NanumGothicBold";
+$fontL: "NanumGothicLight";
+$fontFamily: ($font,$fontB,$fontL);
 @each $name in $fontFamily{
   @include fontFace($name);
 }
