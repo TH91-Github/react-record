@@ -7,8 +7,8 @@ import './App.scss';
 function App() {
   const [direction, setDirection] = useState(true);
 
-  function chnageNav(chkDirection){
-    setDirection(chkDirection)
+  function chnageNav(){
+    setDirection(!direction)
   }
   return (
     <div className="App">

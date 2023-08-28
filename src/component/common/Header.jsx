@@ -5,9 +5,9 @@ import { SvgLogin, SvgSetting, SvgLogOut } from "../../assets/icon/SvgPath";
 import "../../assets/style/common.scss";
 import "../../assets/components/Header.scss";
 
-function Header({direction, chnageNav}) {
+function Header({chnageNav}) {
   const navDirection = () => {
-    chnageNav(!direction);
+    chnageNav();
   }
   return (
     <div className="header">
