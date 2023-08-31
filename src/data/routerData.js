@@ -1,12 +1,13 @@
 import GuideTemplate from '../component/pages/guide/GuideTemplate';
 import ProfileTemplate from '../component/pages/profile/ProfileTemplate';
-import RecordTemplate from '../component/pages/record/RecordTemplate';
 
-// site
+// Record router
+import RecordTemplate from '../component/pages/record/RecordTemplate';
+import { RecordRouter } from '../component/pages/record/routers/RecordRouter';
+
+// Site router
 import SiteTemplate from '../component/pages/site/SiteTemplate';
 import { IpartnersRouter } from '../component/pages/site/ipartners/routers/IpartnersRouter';
-
-const ipartnersLink = IpartnersRouter;
 
 export const routerData = [
   {
@@ -23,13 +24,16 @@ export const routerData = [
     title:"Record",
     path:"/record",
     element: <RecordTemplate />,
+    children:[
+      ...RecordRouter
+    ]
   },
   {
     title:"Site",
     path:"site",
     element: <SiteTemplate />,
     children:[
-      ...ipartnersLink
+      ...IpartnersRouter
     ]
   },
 ]

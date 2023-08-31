@@ -6,7 +6,6 @@ import AccInfo from "../../styled/AccInfo";
 import "../../../assets/components/Profile.scss";
 import TitleBar from "../../styled/TitleBar";
 
-
 // Title Style
 const styleTitPadding= "30px 0";
 const styleTItSize = "24px";
