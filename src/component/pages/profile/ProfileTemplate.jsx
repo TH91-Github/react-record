@@ -31,8 +31,9 @@ function ProfileTemplate(){
       <section>
         <div className="about">
           <TitleBar
-            padding={styleTitPadding}
-            fontSize={styleTItSize}>
+            $padding={styleTitPadding}
+            fontSize={styleTItSize}
+            $align="center">
             ABOUT
           </TitleBar>
           <p>프론트엔드 개발자를 희망하고 있습니다</p>
@@ -43,8 +44,9 @@ function ProfileTemplate(){
       <section>
         <div className="skils">
           <TitleBar
-            padding={styleTitPadding}
-            fontSize={styleTItSize}>
+            $padding={styleTitPadding}
+            fontSize={styleTItSize}
+            $align="center">
             SKILS
           </TitleBar>
           <p>기술 목록 나열</p>
@@ -56,8 +58,9 @@ function ProfileTemplate(){
       <section>
         <div className="plan">
           <TitleBar
-            padding={styleTitPadding}
-            fontSize={styleTItSize}>
+            $padding={styleTitPadding}
+            fontSize={styleTItSize}
+            $align="center">
               PLAN
           </TitleBar>
         </div>
@@ -65,8 +68,9 @@ function ProfileTemplate(){
       <section>
         <div className="portfolio">
           <TitleBar
-            padding={styleTitPadding}
-            fontSize={styleTItSize}>
+            $padding={styleTitPadding}
+            fontSize={styleTItSize}
+            $align="center">
               PORTFOLIO
           </TitleBar>
           <Accordion>
@@ -84,8 +88,9 @@ function ProfileTemplate(){
       <section>
         <div className="share">
           <TitleBar
-            padding={styleTitPadding}
-            fontSize={styleTItSize}>
+            $padding={styleTitPadding}
+            fontSize={styleTItSize}
+            $align="center">
             SHARE
           </TitleBar>
           <div className="share-lists">

@@ -1,23 +1,13 @@
-// styled-components전용 공통 
+import styled from 'styled-components';
 
-export const sizes = {
-  maxPc: 1920,
-  pc : 1440,
-  table : 1024,
-  mo : 768
-}
+import { colors } from './Variable';
 
-export const colors = {
-  // Color 
-  white: "#ffffff",
-  black: "#000000",
-  // point
-  color1:"#3cb062",
-  color2:"#f5b800",
-  color3:"#685ef8",
-  color4:"#e76647",
-  // Text Color
-  sTextColor:"#868686",
-  // Line Color
-  lineColor:"#dbdbdb",
-}
+
+export const A = styled.a`
+  display:inline-block;
+`;
+
+// function TitleBar({children, ...props}){
+//   return <ATag {...props}>{children}</ATag>
+// }
+

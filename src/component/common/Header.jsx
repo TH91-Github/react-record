@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { routerData } from "../../data/routerData";
 
-import { SvgLogin, SvgSetting, SvgLogOut } from "../../assets/icon/SvgPath";
+import { SvgLogin, SvgSetting, SvgLogOut } from "../styled/common/SvgPath";
 import "../../assets/style/common.scss";
 import "../../assets/components/Header.scss";
 

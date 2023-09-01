@@ -1,0 +1,19 @@
+@import "../style/common.scss";
+
+.study {
+  width: 450px;
+  padding: 50px;
+  border: 1px solid #dbdbdb;
+  margin: 50px auto 0;
+}
+
+button {
+  border:1px solid #000;
+  border-radius:3px;
+  padding:2px;
+  cursor:pointer;
+  & + button {
+    margin-left:10px;
+  }
+}
+
