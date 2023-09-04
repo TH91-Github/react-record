@@ -1,7 +1,8 @@
 @import "../style/common.scss";
 
 .study {
-  width: 450px;
+  width: 100%;
+  max-width: 450px;
   padding: 50px;
   border: 1px solid #dbdbdb;
   margin: 50px auto 0;

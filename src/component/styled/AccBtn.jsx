@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Btn from './Btn';
+import Btn from 'component/styled/common/Btn';
 
 const AccordionBtn = styled(Btn)`
   position:relative;
@@ -31,11 +31,6 @@ const AccordionBtn = styled(Btn)`
     transition:all .3s ease-in-out;
   }
 `;
-
-/*
-.accordion_box.view .h2_tit a:before {transform:rotate(-45deg);-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg); content:"";}
-.accordion_box.view .h2_tit a:after {transform:rotate(45deg);-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg); content:"";}
-*/
 
 function AccBtn({children, ...props}){
   return <AccordionBtn {...props}>{children}</AccordionBtn>

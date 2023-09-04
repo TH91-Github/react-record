@@ -1,6 +1,6 @@
 // svg path
 
-import { Svg } from "../Icon";
+import { Svg } from "component/styled/common/Svg";
 
 // icon - setting styled props {color} 
 export const SvgSetting = ({...props}) => {

@@ -21,11 +21,11 @@ function State2 () {
   return (
     <div className="study">
       <div className="sns-s">
-        
-          <S.A href="https://velog.io/@th_velog/React-state-useState-2" target="_blank" rel="noopener noreferrer">
-            <span className="blind">Velog Url</span>
-            <Icon><SvgVelog color="#20C997"></SvgVelog></Icon>
-          </S.A>
+        <S.A 
+          href="https://velog.io/@th_velog/React-state-useState-2" target="_blank" rel="noopener noreferrer">
+          <span className="blind">Velog Url</span>
+          <Icon><SvgVelog color="#20C997"></SvgVelog></Icon>
+        </S.A>
       </div>
       <div className="box">
         <div className="box-head">

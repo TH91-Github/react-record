@@ -1,9 +1,9 @@
 import React from 'react';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
-import App from '../App';
-import MainTemplate from '../component/pages/MainTemplate';
+import App from 'App';
+import MainTemplate from 'component/pages/MainTemplate';
 
-import { routerData } from '../data/routerData';
+import { routerData } from 'data/routerData';
 
 function RouterTemplate(){
   const routerList = routerData;
