@@ -2,7 +2,7 @@
 function SkipNav(){
   return (
     <div className="skip-nav">
-      <a href="#">SkipNav</a>
+      <button type="button">SkipNav</button>
     </div>
   )
 }

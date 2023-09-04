@@ -1,8 +1,9 @@
 import {React, useState,} from "react";
+import CodeEditor from  "component/common/CodeEditor";
 
 import { SvgVelog } from "../../../../styled/common/SvgPath";
-// styled
 
+// styled
 import * as S from "../../../../styled/common/Common";
 import Icon from "../../../../styled/common/Icon";
 import TitleBar from "../../../../styled/TitleBar";
@@ -18,37 +19,71 @@ function State2 () {
     setArr(newArr)
   }
 
+  // 실패 유형 테스트
+  const [arr2, setArr2] = useState(baseData);
+  function arrChange2() {
+    setArr2(["야호","야호1","변경 완료"])
+  }
+
+  const code =""
   return (
     <div className="study">
-      <div className="sns-s">
+      <S.SnsList>
         <S.A 
           href="https://velog.io/@th_velog/React-state-useState-2" target="_blank" rel="noopener noreferrer">
-          <span className="blind">Velog Url</span>
+          <S.Blind>Velog Url</S.Blind>
           <Icon><SvgVelog color="#20C997"></SvgVelog></Icon>
         </S.A>
-      </div>
-      <div className="box">
-        <div className="box-head">
-          <TitleBar $padding="">성공버전</TitleBar>
-          <p>
-            ...Spread Operator(스프레드 연산자)<br />
-            사용하여 복사 후 값 변경 후 👉 set변경함수() 사용.
-          </p>
+      </S.SnsList>
+      <S.BoxLine $top className="box">
+        <TitleBar>성공버전</TitleBar>
+        <p className="desc">
+          ...Spread Operator(스프레드 연산자)<br />
+          사용하여 복사 후 값 변경 후 👉 set변경함수() 사용.
+        </p>
+        <div>
+        <CodeEditor
+          mode="javascript"
+          value={code}>
+          
+        </CodeEditor>
         </div>
         <div className="box-cont">
-          <p>{arr}</p>
-          <p>{arr[0]}</p>
-          <p>{arr[1]}</p>
-          <p>{arr[2]}</p>
+          <p>arr : {arr}</p>
+          <p>arr[0] : {arr[0]}</p>
+          <p>arr[1] : {arr[1]}</p>
+          <p>arr[2] : {arr[2]}</p>
         </div>
-        <hr />
-        <button type="button" onClick={arrChange1}>
-          변경 버튼
+        <S.BtnWrap $margin="20px 0 0">
+          <button type="button" onClick={arrChange1}>
+            변경 버튼
+          </button>
+          <button type="button" onClick={() => { setArr(baseData);}}>
+            초기화 버튼
         </button>
-        <button type="button" onClick={() => { setArr(baseData);}}>
-          초기화 버튼
+        </S.BtnWrap>
+      </S.BoxLine>
+
+      <S.BoxLine $top className="box">
+        <TitleBar>실패버전1</TitleBar>
+        <p className="desc">
+          변경은 가능하지만 수정하기 위해 불필요하게 입력을 해야한다.
+        </p>
+        <div className="box-cont">
+          <p>{arr2[0]}</p>
+          <p>{arr2[1]}</p>
+          <p>{arr2[2]}</p>
+        </div>
+        <S.BtnWrap $margin="20px 0 0">
+          <button type="button" onClick={arrChange2}>
+            변경 버튼
+          </button>
+          <button type="button" onClick={() => { setArr2(baseData);}}>
+            초기화 버튼
         </button>
-      </div>
+        </S.BtnWrap>
+      </S.BoxLine>
+
     </div>
   )
 }
