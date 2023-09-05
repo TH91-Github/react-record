@@ -1,4 +1,8 @@
 // styled-components전용 공통 
+export const font = {
+  size : "16px",
+  weight: "550",
+}
 
 export const sizes = {
   maxPc: 1920,

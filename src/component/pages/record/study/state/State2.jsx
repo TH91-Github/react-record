@@ -1,12 +1,11 @@
 import {React, useState,} from "react";
 import CodeEditor from  "component/common/CodeEditor";
 
-import { SvgVelog } from "../../../../styled/common/SvgPath";
+import { SvgVelog } from "component/styled/common/SvgPath";
 
 // styled
-import * as S from "../../../../styled/common/Common";
-import Icon from "../../../../styled/common/Icon";
-import TitleBar from "../../../../styled/TitleBar";
+import * as S from "component/styled/common/Common";
+import TitleBar from "component/styled/TitleBar";
 
 function State2 () {
 
@@ -32,7 +31,7 @@ function State2 () {
         <S.A 
           href="https://velog.io/@th_velog/React-state-useState-2" target="_blank" rel="noopener noreferrer">
           <S.Blind>Velog Url</S.Blind>
-          <Icon><SvgVelog color="#20C997"></SvgVelog></Icon>
+          <S.Icon><SvgVelog color="#20C997"></SvgVelog></S.Icon>
         </S.A>
       </S.SnsList>
       <S.BoxLine $top className="box">

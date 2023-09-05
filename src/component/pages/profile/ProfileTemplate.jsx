@@ -1,10 +1,15 @@
-// import { styled } from "styled-components";
-import Accordion from "../../styled/Accordion";
-import AccItem from "../../styled/AccItem";
-import AccBtn from "../../styled/AccBtn";
-import AccInfo from "../../styled/AccInfo";
-import "../../../assets/components/Profile.scss";
-import TitleBar from "../../styled/TitleBar";
+// styled
+import * as S from "component/styled/common/Common";
+import TitleBar from "component/styled/TitleBar";
+import Accordion from "component/styled/Accordion";
+import AccItem from "component/styled/AccItem";
+import AccBtn from "component/styled/AccBtn";
+import AccInfo from "component/styled/AccInfo";
+import { Email, Call, SvgVelog, Github, Naver, React, Vue, Photoshop } from "component/styled/common/SvgPath";
+
+// scss
+import "assets/components/Profile.scss";
+
 
 // Title Style
 const styleTitPadding= "30px 0";
@@ -16,12 +21,45 @@ function ProfileTemplate(){
       <div className="visual">
         <div className="visual-box">
           <div className="visual-info">
+          <p className="name">김태훈</p>
             <p className="job">
               <span>Publishing</span>
               <span>➕</span>
               <span>Front-End <small>(진행중)</small></span>
             </p>
-            <p className="name">김태훈</p>
+            <S.SnsList $align="center" $margin="20px 0 0 0" $gap="10px">
+              <S.A 
+                href="https://velog.io/@th_velog" target="_blank" rel="noopener noreferrer" title="Velog 기록 URL">
+                <S.Blind>Velog Url</S.Blind>
+                <S.Icon><SvgVelog color="#20C997"></SvgVelog></S.Icon>
+              </S.A>
+              <S.A 
+                href="https://github.com/TH91-Github/react-record" target="_blank" rel="noopener noreferrer" title="GitHub URL">
+                <S.Blind>Github Url</S.Blind>
+                <S.Icon><Github color="#181717"></Github></S.Icon>
+              </S.A>
+              <S.A 
+                href="https://blog.naver.com/k__taehoon__" target="_blank" rel="noopener noreferrer" title="Naver Blog URL">
+                <S.Blind>Naver Blog Url</S.Blind>
+                <S.Icon $bg="#03C75A"><Naver $padding="2px" color="#fff"></Naver></S.Icon>
+              </S.A>
+            </S.SnsList>
+            <div className="contact">
+              <ul>
+                <li className="phone">
+                  <p className="txt">
+                    <S.Icon><Call color="#fff"></Call></S.Icon>
+                    <span>010-6476-8035</span>
+                  </p>
+                </li>
+                <li className="email">
+                  <S.A href="mailto:je031@naver.com" className="txt">
+                    <S.Icon><Email color="#000"></Email></S.Icon>
+                    <span>je031@naver.com</span>
+                  </S.A>
+                </li>
+              </ul>
+            </div>
           </div>
           <div className="visual-img">
             <img src="" alt="" />
@@ -30,85 +68,76 @@ function ProfileTemplate(){
       </div>
       <section>
         <div className="about">
-          <TitleBar
-            $padding={styleTitPadding}
-            fontSize={styleTItSize}
-            $align="center">
-            ABOUT
-          </TitleBar>
-          <p>프론트엔드 개발자를 희망하고 있습니다</p>
-          <p>새롭ㄴㅇㄴㅁ ㅇㅁㄴㅇ ㅌㅋㅊ ㅋㅌㅊ ㅋ</p>
-          <p>zxc zxc asdkljas dlasㅇㅁㄴ ㅇㅁㄴㅇ</p>
+          <S.BoxInner>
+            <TitleBar
+              $padding={styleTitPadding}
+              fontSize={styleTItSize}
+              $align="center">
+              ABOUT
+            </TitleBar>
+            <p>프론트엔드 개발자를 희망하고 있습니다</p>
+            <p>새롭ㄴㅇㄴㅁ ㅇㅁㄴㅇ ㅌㅋㅊ ㅋㅌㅊ ㅋ</p>
+            <p>zxc zxc asdkljas dlasㅇㅁㄴ ㅇㅁㄴㅇ</p>
+          </S.BoxInner>
         </div>
       </section>
       <section>
         <div className="skils">
-          <TitleBar
-            $padding={styleTitPadding}
-            fontSize={styleTItSize}
-            $align="center">
-            SKILS
-          </TitleBar>
-          <p>기술 목록 나열</p>
-          <p>기술 목록 중 어떻게 할 수 있는지 설명</p>
-          <p>HTML 태그 구조에 대해 설명 또는 React JSX 문법을 데이터 관리</p>
-          <p>github 연동하여 작성</p>
+          <S.BoxInner>
+            <TitleBar
+              $padding={styleTitPadding}
+              fontSize={styleTItSize}
+              $align="center">
+              SKILS
+            </TitleBar>
+            <p>기술 목록 나열</p>
+            <p>기술 목록 중 어떻게 할 수 있는지 설명</p>
+            <p>HTML 태그 구조에 대해 설명 또는 React JSX 문법을 데이터 관리</p>
+            <p>github 연동하여 작성</p>
+          </S.BoxInner>
         </div>
       </section>
       <section>
         <div className="plan">
-          <TitleBar
-            $padding={styleTitPadding}
-            fontSize={styleTItSize}
-            $align="center">
-              PLAN
-          </TitleBar>
+          <S.BoxInner>
+            <TitleBar
+              $padding={styleTitPadding}
+              fontSize={styleTItSize}
+              $align="center">
+                PLAN
+            </TitleBar>
+          </S.BoxInner>
         </div>
       </section>
       <section>
         <div className="portfolio">
-          <TitleBar
-            $padding={styleTitPadding}
-            fontSize={styleTItSize}
-            $align="center">
-              PORTFOLIO
-          </TitleBar>
-          <Accordion>
-            <AccItem>
-              <AccBtn>
-                asdasdasd
-              </AccBtn>
-              <AccInfo>
-                dAccInfo
-              </AccInfo>
-            </AccItem>
-          </Accordion>
+          <S.BoxInner>
+            <TitleBar
+              $padding={styleTitPadding}
+              fontSize={styleTItSize}
+              $align="center">
+                PORTFOLIO
+            </TitleBar>
+            <Accordion>
+              <AccItem>
+                <AccBtn>
+                  asdasdasd
+                </AccBtn>
+                <AccInfo>
+                  dAccInfo
+                </AccInfo>
+              </AccItem>
+            </Accordion>
+          </S.BoxInner>
         </div>
       </section>
       <section>
-        <div className="share">
-          <TitleBar
-            $padding={styleTitPadding}
-            fontSize={styleTItSize}
-            $align="center">
-            SHARE
-          </TitleBar>
-          <div className="share-lists">
-            <ul>
-              <li className="share-item">
-                {/* <a href="#" className="share-link">velog</a> */}
-                <p className="share-text">React, Vue, Git 등 처음부터 단계적으로 기록중 입니다</p>
-              </li>
-              <li>
-                {/* <a href="#" className="share-link">Naver Blog</a> */}
-                <p className="share-text">네이버 블로그는 일상 기록 작성중이며, velog 1차 기록 후 복습으로 네이버 블로그 작성하고 있습니다</p>
-              </li>
-              <li>
-                {/* <a href="#" className="share-link">GitHub</a> */}
-                <p className="share-text">GitHub 꾸준히 업데이트 하기를 목표로 하고 있습니다</p>
-              </li>
-            </ul>
-          </div>
+        <div className="thank">
+          <S.BoxInner>
+            <S.TextP align="center">
+              감사합니다. 😁
+            </S.TextP>
+          </S.BoxInner>
         </div>
       </section>
     </div>
