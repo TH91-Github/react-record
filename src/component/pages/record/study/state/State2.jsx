@@ -1,10 +1,9 @@
 import {React, useState,} from "react";
 import CodeEditor from  "component/common/CodeEditor";
 
-import { SvgVelog } from "component/styled/common/SvgPath";
-
 // styled
 import * as S from "component/styled/common/Common";
+import { SvgVelog } from "component/styled/common/SvgPath";
 import TitleBar from "component/styled/TitleBar";
 
 function State2 () {

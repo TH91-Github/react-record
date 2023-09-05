@@ -8,7 +8,7 @@ import AccInfo from "component/styled/AccInfo";
 import { Email, Call, SvgVelog, Github, Naver, React, Vue, Photoshop } from "component/styled/common/SvgPath";
 
 // scss
-import "assets/components/Profile.scss";
+import "assets/scss/components/Profile.scss";
 
 
 // Title Style

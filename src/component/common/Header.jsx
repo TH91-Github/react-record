@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 import { routerData } from "data/routerData";
 
 import { SvgLogin, SvgSetting, SvgLogOut } from "component/styled/common/SvgPath";
-import "assets/style/common.scss";
-import "assets/components/Header.scss";
+import "assets/scss/common.scss";
+import "assets/scss/components/Header.scss";
 
 function Header({chnageNav}) {
   const navDirection = () => {

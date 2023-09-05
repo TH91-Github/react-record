@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from './common/Variable';
+import { colors } from 'component/styled/common/Variable';
 
 
 const baseSize = "18px";

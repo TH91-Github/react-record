@@ -15,6 +15,7 @@ export const colors = {
   // Color 
   white: "#ffffff",
   black: "#000000",
+  subBlack: "#222222",
   // point
   color1:"#3cb062",
   color2:"#f5b800",

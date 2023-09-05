@@ -82,6 +82,7 @@ export const TextP = styled.p`
   ${MarginPadding}
   font-size: ${props => props.fontSize || font.size};
   text-align: ${props => props.align || "left"};
+  color: ${props => props.color || colors.black};
   & + p { 
     margin-top: 10px;
   }

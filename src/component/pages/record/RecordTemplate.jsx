@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 
-import "../../../assets/components/Record.scss";
+// scss
+import "assets/scss/components/Record.scss";
 
 function RecordTemplate () {
   return (
