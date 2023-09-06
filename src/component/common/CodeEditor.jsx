@@ -1,12 +1,12 @@
 import React from "react";
-// import * as S from "component/styled/common/Common";
+import CodeMirror from "@uiw/react-codemirror";
 
 const CodeEditor = ({children, ...props}) => {
   return (
     <>
-      {/* <S.CodeBox {...props}>
+      <CodeMirror {...props}>
         {children}
-      </S.CodeBox> */}
+      </CodeMirror>
     </>
   )
 

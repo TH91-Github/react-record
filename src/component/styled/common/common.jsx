@@ -1,5 +1,4 @@
 import styled, {css} from 'styled-components';
-// import CodeMirror from "@uiw/react-codemirror";
 import { sizes, colors, font} from './Variable';
 
 // common 
@@ -87,7 +86,3 @@ export const TextP = styled.p`
   }
 `;
 
-// // ♣ Code 
-// export const CodeBox = styled(CodeMirror)`
-//   position:relative;
-// `;

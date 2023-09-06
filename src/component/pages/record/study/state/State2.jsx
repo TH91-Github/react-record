@@ -2,8 +2,8 @@ import {React, useState,} from "react";
 import CodeEditor from  "component/common/CodeEditor";
 
 // styled
-import * as S from "component/styled/common/Common";
-import { SvgVelog } from "component/styled/common/SvgPath";
+// import * as S from "component/styled/common/Common";
+// import { SvgVelog } from "component/styled/common/SvgPath";
 import TitleBar from "component/styled/TitleBar";
 
 function State2 () {
@@ -34,7 +34,7 @@ function State2 () {
   const cssGap = "20px 0 0 0";
   return (
     <div className="study">
-      <S.SnsList>
+      {/* <S.SnsList>
         <S.A 
           href="https://velog.io/@th_velog/React-state-useState-2" target="_blank" rel="noopener noreferrer">
           <S.Blind>Velog Url</S.Blind>
@@ -110,7 +110,7 @@ function State2 () {
             초기화 버튼
         </button>
         </S.BtnWrap>
-      </S.BoxLine>
+      </S.BoxLine> */}
 
     </div>
   )
