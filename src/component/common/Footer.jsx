@@ -1,6 +1,6 @@
 // Svg styled component
 import styled from 'styled-components';
-import {TextP} from "component/styled/common/Common";
+import {TextP} from "component/styled/common/AllStyled";
 import {colors} from 'component/styled/common/Variable';
 
 
