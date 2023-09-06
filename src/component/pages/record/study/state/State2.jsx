@@ -9,21 +9,29 @@ import TitleBar from "component/styled/TitleBar";
 function State2 () {
 
   const baseData = ["배열1","배열2","배열3"];
-  const [arr, setArr] = useState(baseData);
+  const [success, setSuccess] = useState(baseData);
 
-  function arrChange1() {
-    const newArr = [...arr];
+  function successChange() {
+    const newArr = [...success];
     newArr[0] = "해결";
-    setArr(newArr)
+    setSuccess(newArr)
   }
 
   // 실패 유형 테스트
+  // 1
   const [arr2, setArr2] = useState(baseData);
   function arrChange2() {
     setArr2(["야호","야호1","변경 완료"])
   }
 
+  // 2
+  const [arr3, setArr3] = useState(baseData);
+  function arrChange3() {
+    setArr3(arr3[0]="야호");
+  }
+
   const code =""
+  const cssGap = "20px 0 0 0";
   return (
     <div className="study">
       <S.SnsList>
@@ -33,7 +41,7 @@ function State2 () {
           <S.Icon><SvgVelog color="#20C997"></SvgVelog></S.Icon>
         </S.A>
       </S.SnsList>
-      <S.BoxLine $top className="box">
+      <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
         <TitleBar>성공버전</TitleBar>
         <p className="desc">
           ...Spread Operator(스프레드 연산자)<br />
@@ -47,33 +55,55 @@ function State2 () {
         </CodeEditor>
         </div>
         <div className="box-cont">
-          <p>arr : {arr}</p>
-          <p>arr[0] : {arr[0]}</p>
-          <p>arr[1] : {arr[1]}</p>
-          <p>arr[2] : {arr[2]}</p>
+          <p>arr : {success}</p>
+          <p>arr[0] : {success[0]}</p>
+          <p>arr[1] : {success[1]}</p>
+          <p>arr[2] : {success[2]}</p>
         </div>
         <S.BtnWrap $margin="20px 0 0">
-          <button type="button" onClick={arrChange1}>
+          <button type="button" onClick={successChange}>
             변경 버튼
           </button>
-          <button type="button" onClick={() => { setArr(baseData);}}>
+          <button type="button" onClick={() => { setSuccess(baseData);}}>
             초기화 버튼
         </button>
         </S.BtnWrap>
       </S.BoxLine>
 
-      <S.BoxLine $top className="box">
-        <TitleBar>실패버전1</TitleBar>
+      <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
+        <TitleBar>실패버전-1</TitleBar>
         <p className="desc">
           변경은 가능하지만 수정하기 위해 불필요하게 입력을 해야한다.
         </p>
         <div className="box-cont">
-          <p>{arr2[0]}</p>
-          <p>{arr2[1]}</p>
-          <p>{arr2[2]}</p>
+          {
+            arr2.map((item) =>
+              <p>{item}</p>
+            )
+          }
         </div>
         <S.BtnWrap $margin="20px 0 0">
           <button type="button" onClick={arrChange2}>
+            변경 버튼
+          </button>
+          <button type="button" onClick={() => { setArr2(baseData);}}>
+            초기화 버튼
+        </button>
+        </S.BtnWrap>
+      </S.BoxLine>
+
+      <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
+        <TitleBar>실패버전-2</TitleBar>
+        <p className="desc">
+          변경은 가능하지만 수정하기 위해 불필요하게 입력을 해야한다.
+        </p>
+        <div className="box-cont">
+          <p>{arr3[0]}</p>
+          <p>{arr3[1]}</p>
+          <p>{arr3[2]}</p>
+        </div>
+        <S.BtnWrap $margin="20px 0 0">
+          <button type="button" onClick={arrChange3}>
             변경 버튼
           </button>
           <button type="button" onClick={() => { setArr2(baseData);}}>

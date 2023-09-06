@@ -10,7 +10,6 @@ import { Email, Call, SvgVelog, Github, Naver, React, Vue, Photoshop } from "com
 // scss
 import "assets/scss/components/Profile.scss";
 
-
 // Title Style
 const styleTitPadding= "30px 0";
 const styleTItSize = "24px";

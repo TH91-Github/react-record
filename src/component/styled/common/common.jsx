@@ -61,7 +61,6 @@ export const BoxInner = styled.div`
 export const BoxLine = styled.div`
   margin:${props => props.$margin || "10px 0 0 0"};
   padding:${props => props.$padding || "10px 0 0 0"};
-  padding:10px;
   ${props => !(props.$top || props.$right || props.$bottom || props.$left) && `border:1px solid ${colors.lineColor};`}
   ${props => props.$top && `border-top:1px solid ${colors.lineColor};` }
   ${props => props.$right && `border-right:1px solid ${colors.lineColor};` }

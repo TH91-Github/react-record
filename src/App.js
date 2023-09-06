@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 import './App.scss';
 import Footer from "component/common/Footer";
 
+
 function App() {
   const [direction, setDirection] = useState(true);
 
@@ -18,7 +19,9 @@ function App() {
         <Header 
           direction={direction} 
           chnageNav={chnageNav}/>
-        <Outlet />
+        <div className="container">
+          <Outlet />
+        </div>
         <Footer />
       </div>
     </div>
