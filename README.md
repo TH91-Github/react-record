@@ -10,6 +10,10 @@ github를 통해 기록하고 공유하기 위해 React로 시작을 했습니�
 </p>
 <br>
 
+### Netlify 연결 🔗
+🚧 준비중...
+https://th-record-blog.netlify.app/
+
 ### Stack 📕
 <span><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white" alt="HTML5" /></span>
 <span><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white" alt="CSS3" /></span>
@@ -39,7 +43,7 @@ github를 통해 기록하고 공유하기 위해 React로 시작을 했습니�
 - 슬라이드, 탭, 스크롤 기능 컴포넌트
 - 만들어 놓은 기능별 페이지 소개 제작
 
-#### 사용 목적을 목표로 만들기
+#### 사용 목적으로도 만들기
 - 가계부
 - 냉장고
 - 달력(calendar)
