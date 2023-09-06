@@ -1,11 +1,13 @@
 import React from "react";
-import * as S from "component/styled/common/Common";
+// import * as S from "component/styled/common/Common";
 
 const CodeEditor = ({children, ...props}) => {
   return (
-    <S.CodeBox {...props}>
-      {children}
-    </S.CodeBox>
+    <>
+      {/* <S.CodeBox {...props}>
+        {children}
+      </S.CodeBox> */}
+    </>
   )
 
 }
