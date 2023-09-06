@@ -1,9 +1,19 @@
 // Svg styled component
 import styled from 'styled-components';
-import * as S from "component/styled/common/Common";
+// import * as S from "component/styled/common/Common";
 import {colors} from 'component/styled/common/Variable';
-function Footer () {
 
+
+
+const TextP = styled.p`
+  text-align: ${props => props.align || "left"};
+  color: ${props => props.color || colors.black};
+  & + p { 
+    margin-top: 10px;
+  }
+`;
+
+function Footer () {
   const Footer = styled.div`
     position:realtive;
     padding:30px;
@@ -12,7 +22,7 @@ function Footer () {
 
   return (
     <Footer>
-      <S.TextP fontSize="14px;"color="#fff">T.H.</S.TextP>
+      <TextP fontSize="14px;"color="#fff">T.H.</TextP>
     </Footer>
   )
 }
