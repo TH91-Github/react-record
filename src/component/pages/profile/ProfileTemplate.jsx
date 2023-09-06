@@ -1,25 +1,24 @@
 // styled
-// import * as S from "component/styled/common/Common";
-// import TitleBar from "component/styled/TitleBar";
-// import Accordion from "component/styled/Accordion";
-// import AccItem from "component/styled/AccItem";
-// import AccBtn from "component/styled/AccBtn";
-// import AccInfo from "component/styled/AccInfo";
-// import { Email, Call, SvgVelog, Github, Naver, React, Vue, Photoshop } from "component/styled/common/SvgPath";
+import * as S from "component/styled/common/Common";
+import TitleBar from "component/styled/TitleBar";
+import Accordion from "component/styled/Accordion";
+import AccItem from "component/styled/AccItem";
+import AccBtn from "component/styled/AccBtn";
+import AccInfo from "component/styled/AccInfo";
+import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/common/SvgPath";
 
 // scss
 import "assets/scss/components/Profile.scss";
 
-// // Title Style
-// const styleTitPadding= "30px 0";
-// const styleTItSize = "24px";
+// Title Style
+const styleTitPadding= "30px 0";
+const styleTItSize = "24px";
 
 function ProfileTemplate(){
   return (
     <div className="profile">
       <div className="visual">
-        d
-        {/* <div className="visual-box">
+        <div className="visual-box">
           <div className="visual-info">
           <p className="name">김태훈</p>
             <p className="job">
@@ -64,9 +63,9 @@ function ProfileTemplate(){
           <div className="visual-img">
             <img src="" alt="" />
           </div>
-        </div> */}
+        </div>
       </div>
-      {/* <section>
+      <section>
         <div className="about">
           <S.BoxInner>
             <TitleBar
@@ -139,7 +138,7 @@ function ProfileTemplate(){
             </S.TextP>
           </S.BoxInner>
         </div>
-      </section> */}
+      </section>
     </div>
   )
 }
