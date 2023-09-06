@@ -1,8 +1,9 @@
+import ProfileTemplate from "./profile/ProfileTemplate";
 
 function MainTemplate () {
   return (
     <div className="main-wrap">
-      dd
+      <ProfileTemplate/>
     </div>
   )
 }

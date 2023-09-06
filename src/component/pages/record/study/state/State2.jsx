@@ -1,5 +1,5 @@
 import {React, useState,} from "react";
-import CodeEditor from  "component/common/CodeEditor";
+import CodeBlockMy from  "component/common/CodeBlockMy";
 
 // styled
 import * as S from "component/styled/common/AllStyled";
@@ -9,8 +9,8 @@ import TitleBar from "component/styled/TitleBar";
 function State2 () {
 
   const baseData = ["배열1","배열2","배열3"];
-  const [success, setSuccess] = useState(baseData);
 
+  const [success, setSuccess] = useState(baseData);
   function successChange() {
     const newArr = [...success];
     newArr[0] = "해결";
@@ -30,7 +30,14 @@ function State2 () {
     setArr3(arr3[0]="야호");
   }
 
-  const code =""
+  const code =`  const [success, setSuccess] = useState(baseData);
+  function successChange() {
+    const newArr = [...success];
+    newArr[0] = "해결";
+    setSuccess(newArr)
+  }
+  `;
+  
   const cssGap = "20px 0 0 0";
   return (
     <div className="study">
@@ -48,11 +55,9 @@ function State2 () {
           사용하여 복사 후 값 변경 후 👉 set변경함수() 사용.
         </p>
         <div>
-        <CodeEditor
-          mode="javascript"
-          value={code}>
-          
-        </CodeEditor>
+        <CodeBlockMy
+          text={code}>
+        </CodeBlockMy>
         </div>
         <div className="box-cont">
           <p>arr : {success}</p>

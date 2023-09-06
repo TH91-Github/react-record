@@ -25,7 +25,7 @@ function ProfileTemplate(){
             <p className="job">
               <span>Publishing</span>
               <span>➕</span>
-              <span>Front-End <small>(진행중)</small></span>
+              <span>Front-End <small>(진행중) ✍️</small></span>
             </p>
             <S.SnsList $align="center" $margin="20px 0 0 0" $gap="10px">
               <S.A 
