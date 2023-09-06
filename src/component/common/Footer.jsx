@@ -3,17 +3,18 @@ import styled from 'styled-components';
 import * as S from "component/styled/common/AllStyled";
 import {colors} from 'component/styled/common/Variable';
 
-function Footer () {
-  const Footer = styled.div`
-    position:realtive;
-    padding:30px;
-    background: ${colors.subBlack};
-  `;
 
+const FooterWrap = styled.div`
+  position:realtive;
+  padding:30px;
+  background: ${colors.subBlack};
+`;
+
+function Footer () {
   return (
-    <Footer>
+    <FooterWrap>
       <S.TextP fontSize="14px;"color="#fff">T.H.</S.TextP>
-    </Footer>
+    </FooterWrap>
   )
 }
 export default Footer;

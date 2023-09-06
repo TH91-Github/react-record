@@ -1,6 +1,30 @@
 @import "assets/scss/common.scss";
 
+.record {
+  &__content {
+    padding:50px;
+  }
+  &__tab {
+    &-list {
+      display:flex;
+    }
+    &-item {
+      margin-left:10px;
+      &:first-child {
+        margin-left:0;
+      }
+    }
+  }
+  &__cont {
+    margin-top:30px;
+  }
+}
+
+
+
+
 .study {
+  position:relative;
   width: 100%;
   max-width: 450px;
   padding: 50px;
@@ -12,13 +36,19 @@
       font-size: 14px;
       color: $subTextColor;
     }
-    &-cont { 
+    &__cont { 
       margin-top:10px;
       p {
         font-size:14px;
         & + p {
-          margin-top:5px;
+          margin-top:8px;
         }
+      }
+      &-tit{
+        margin-bottom:10px;
+        padding-bottom:10px;
+        border-bottom:1px solid $lineColor;
+        font-weight:600;
       }
     }
   }

@@ -10,7 +10,6 @@ import { Email, Call, SvgVelog, Github, Naver, React, Vue, Photoshop } from "com
 // scss
 import "assets/scss/components/Profile.scss";
 
-
 // Title Style
 const styleTitPadding= "30px 0";
 const styleTItSize = "24px";
@@ -134,7 +133,7 @@ function ProfileTemplate(){
       <section>
         <div className="thank">
           <S.BoxInner>
-            <S.TextP align="center">
+            <S.TextP $align="center">
               감사합니다. 😁
             </S.TextP>
           </S.BoxInner>
