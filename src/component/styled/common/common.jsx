@@ -1,11 +1,11 @@
-import styled, {css} from 'styled-components';
-import { sizes, colors, font} from './Variable';
+import styled from 'styled-components';
+import { colors, font} from './Variable';
 
 // common 
-const MarginPadding = css`
-  margin:${props => props.$margin || "0"};
-  padding:${props => props.$padding || "0"};
-`
+// const MarginPadding = css`
+//   margin:${props => props.$margin || "0"};
+//   padding:${props => props.$padding || "0"};
+// `
 // // ♣ Base Css
 // export const Blind = styled.span`
 //   position: absolute;
@@ -77,7 +77,6 @@ const MarginPadding = css`
 // `;
 
 export const TextP = styled.p`
-  ${MarginPadding}
   font-size: ${props => props.fontSize || font.size};
   text-align: ${props => props.align || "left"};
   color: ${props => props.color || colors.black};
