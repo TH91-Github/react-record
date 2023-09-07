@@ -1,18 +1,17 @@
 // styled
 import * as S from "component/styled/common/AllStyled";
 import TitleBar from "component/styled/TitleBar";
-import Accordion from "component/styled/Accordion";
-import AccItem from "component/styled/AccItem";
-import AccBtn from "component/styled/AccBtn";
-import AccInfo from "component/styled/AccInfo";
 import { Email, Call, SvgVelog, Github, Naver, React, Vue, Photoshop } from "component/styled/common/SvgPath";
 
 // scss
 import "assets/scss/components/Profile.scss";
+import PorgressBar from "component/common/ProgressBar";
 
 // Title Style
 const styleTitPadding= "30px 0";
 const styleTItSize = "24px";
+
+// 데이터로 만들기 전 하드코딩
 
 function ProfileTemplate(){
   return (
@@ -72,7 +71,7 @@ function ProfileTemplate(){
               $padding={styleTitPadding}
               fontSize={styleTItSize}
               $align="center">
-              ABOUT
+              👨‍💻ABOUT
             </TitleBar>
             <p>새롭ㄴㅇㄴㅁ ㅇㅁㄴㅇ ㅌㅋㅊ ㅋㅌㅊ ㅋ</p>
             <p>zxc zxc asdkljas dlasㅇㅁㄴ ㅇㅁㄴㅇ</p>
@@ -84,17 +83,14 @@ function ProfileTemplate(){
               $padding={styleTitPadding}
               fontSize={styleTItSize}
               $align="center">
-              SKILS
+              🛠️SKILS
             </TitleBar>
             <div className="skils__inner">
               <ul className="skils__lists">
                 <li className="skils__lists-item">
                   <S.BoxLine className="skils__box">
                     <S.ReactBadge>React</S.ReactBadge>
-                    <div className="progress">
-                      <span className="progress-num">35%</span>
-                      <span className="progress-bar"></span>
-                    </div>
+                    <PorgressBar value={35} />
                     <div className="desc">
                       <p>React 프로젝트는 진행을 하지 못하였습니다.</p>
                       <p>React 중심으로 스터디 및 공부 진행중입니다.</p>
@@ -108,10 +104,7 @@ function ProfileTemplate(){
                 <li className="skils__lists-item">
                   <S.BoxLine className="skils__box">
                     <S.VueBadge>Vue</S.VueBadge>
-                    <div className="progress">
-                      <span className="progress-num">20%</span>
-                      <span className="progress-bar"></span>
-                    </div>
+                    <PorgressBar value={25} />
                     <div className="desc">
                       <p>현재 Vue2 프로젝트를 진행 중이며, Vue3는 개인 공부를 통해 경험을 했습니다.</p>
                       <p>axios, store, router, swiper, component 등</p>
@@ -122,10 +115,7 @@ function ProfileTemplate(){
                 <li className="skils__lists-item">
                   <S.BoxLine className="skils__box">
                     <S.JSBadge>JavaScript</S.JSBadge>
-                    <div className="progress">
-                      <span className="progress-num">50%</span>
-                      <span className="progress-bar"></span>
-                    </div>
+                    <PorgressBar value={50} />
                     <div className="desc">
                       <p>현재 Vue2 프로젝트를 진행 중이며, Vue3는 개인 공부를 통해 경험을 했습니다.</p>
                       <p>axios, store, router, swiper, component 등</p>
@@ -136,10 +126,7 @@ function ProfileTemplate(){
                 <li className="skils__lists-item">
                   <S.BoxLine className="skils__box">
                     <S.JQueryBadge>Jquery</S.JQueryBadge>
-                    <div className="progress">
-                      <span className="progress-num">75%</span>
-                      <span className="progress-bar"></span>
-                    </div>
+                    <PorgressBar value={75} />
                     <div className="desc">
                       <p>현재 Vue2 프로젝트를 진행 중이며, Vue3는 개인 공부를 통해 경험을 했습니다.</p>
                       <p>axios, store, router, swiper, component 등</p>
@@ -150,10 +137,7 @@ function ProfileTemplate(){
                 <li className="skils__lists-item">
                   <S.BoxLine className="skils__box">
                     <S.HTMLBadge>HTML</S.HTMLBadge>
-                    <div className="progress">
-                      <span className="progress-num">85%</span>
-                      <span className="progress-bar"></span>
-                    </div>
+                    <PorgressBar value={85} />
                     <div className="desc">
                       <p>현재 Vue2 프로젝트를 진행 중이며, Vue3는 개인 공부를 통해 경험을 했습니다.</p>
                       <p>axios, store, router, swiper, component 등</p>
@@ -164,10 +148,7 @@ function ProfileTemplate(){
                 <li className="skils__lists-item">
                   <S.BoxLine className="skils__box">
                     <S.CSSBadge>CSS</S.CSSBadge>
-                    <div className="progress">
-                      <span className="progress-num">85%</span>
-                      <span className="progress-bar"></span>
-                    </div>
+                    <PorgressBar value={85} />
                     <div className="desc">
                       <p>현재 Vue2 프로젝트를 진행 중이며, Vue3는 개인 공부를 통해 경험을 했습니다.</p>
                       <p>axios, store, router, swiper, component 등</p>
@@ -177,15 +158,20 @@ function ProfileTemplate(){
                 </li>
                 <li className="skils__lists-item">
                   <S.BoxLine className="skils__box">
-                    <S.EtCBadge>웹표준&#38;웹접근성</S.EtCBadge>
-                    <div className="progress">
-                      <span className="progress-num">85%</span>
-                      <span className="progress-bar"></span>
-                    </div>
+                    <S.SCSSBadge>SCSS</S.SCSSBadge>
+                    <PorgressBar value={60} />
                     <div className="desc">
-                      <p>현재 Vue2 프로젝트를 진행 중이며, Vue3는 개인 공부를 통해 경험을 했습니다.</p>
-                      <p>axios, store, router, swiper, component 등</p>
-                      <p>TodoList 및 개인작업을 통해 Vue3 진행중입니다.</p>
+                      <p>프로젝트 진행 중 사용 경험이 있습니다.</p>
+                      <p>변수, 함수형, Mixin, @content 등</p>
+                    </div>
+                  </S.BoxLine>
+                </li>
+                <li className="skils__lists-item">
+                  <S.BoxLine className="skils__box">
+                    <S.EtCBadge>웹표준&#38;웹접근성</S.EtCBadge>
+                    <PorgressBar value={80} />
+                    <div className="desc">
+                      <p>대기업 프로젝트를 진행하여 웹접근성 인증마크 작업 필수로 하기에 웹접근성, 웹표준에 맞게 작업을 하였습니다</p>
                     </div>
                   </S.BoxLine>
                 </li>
@@ -203,7 +189,7 @@ function ProfileTemplate(){
               $padding={styleTitPadding}
               fontSize={styleTItSize}
               $align="center">
-                PLAN
+                📚PLAN
             </TitleBar>
           </S.BoxInner>
         </div>
@@ -213,7 +199,7 @@ function ProfileTemplate(){
               $padding={styleTitPadding}
               fontSize={styleTItSize}
               $align="center">
-                PORTFOLIO
+                📍PORTFOLIO
             </TitleBar>
             <div className="">
 

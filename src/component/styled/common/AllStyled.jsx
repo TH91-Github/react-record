@@ -35,7 +35,7 @@ export const Icon = styled.i`
 // A
 export const A = styled.a`
   display:inline-block;
-  color: ${props => props.color || colors.black};
+  color: ${props => props.color || colors.blackColor};
 `;
 
 // P
@@ -43,7 +43,7 @@ export const TextP = styled.p`
   ${MarginPadding}
   font-size: ${props => props.fontSize || font.size};
   text-align: ${props => props.$align || "left"};
-  color: ${props => props.color || colors.black};
+  color: ${props => props.color || colors.blackColor};
   & + p { 
     margin-top: 10px;
   }
@@ -112,13 +112,13 @@ export const Badge = styled.span`
   border-radius:3px;
   font-weight:550;
   text-shadow: 0 1px 2px #000;
-  color: #fff;
   background:#000;
+  color:${props => props.color || "#ffffff"};
 `;
 export const ReactBadge = styled(Badge)`
   background:#61DAFB;
+  
 `;
-
 export const VueBadge = styled(Badge)`
   background:#20C997;
 `;
@@ -133,6 +133,9 @@ export const HTMLBadge = styled(Badge)`
 `;
 export const CSSBadge = styled(Badge)`
   background:#30ace0;
+`;
+export const SCSSBadge = styled(Badge)`
+  background:#CC6699;
 `;
 export const PSBadge = styled(Badge)`
   background:#31A8FF;

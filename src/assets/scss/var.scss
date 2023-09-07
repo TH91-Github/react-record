@@ -1,6 +1,9 @@
+// styled component Variable 동일하게.
+
 // Break Point (Desktop First 기준 내림차순 설정)
-$widthMax	: 1920px;
-$table	: 1024px;
+$maxPc	: 1920px;
+$pc : 1440px;
+$table	: 1080px;
 $mo		: 768px;
 
 // Color 
@@ -19,7 +22,6 @@ $subTextColor: #868686;
 
 // Line Color
 $lineColor: #dbdbdb;
-
 
 // Font Family
 $font: "NanumGothic";

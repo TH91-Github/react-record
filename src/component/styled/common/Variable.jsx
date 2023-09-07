@@ -1,3 +1,5 @@
+// assets/scss/var 동일하게.
+
 // styled-components전용 공통 
 export const font = {
   size : "16px",
@@ -13,16 +15,20 @@ export const sizes = {
 
 export const colors = {
   // Color 
-  white: "#ffffff",
-  black: "#000000",
+  whiteColor: "#ffffff",
+  blackColor: "#000000",
   subBlack: "#222222",
+  
   // point
   color1:"#3cb062",
   color2:"#f5b800",
   color3:"#685ef8",
   color4:"#e76647",
+
   // Text Color
-  sTextColor:"#868686",
+  textColor:"#191f28",
+  subTextColor:"#868686",
+
   // Line Color
   lineColor:"#dbdbdb",
 }
