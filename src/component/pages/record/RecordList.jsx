@@ -10,9 +10,19 @@ import TitleBar from "component/styled/TitleBar";
 function RecordList () {
   const navi = useNavigate();
   const [recordData, setRecordData] = useState(RecordRouter);
+  const [category, setCategory] = useState(null);
   const [selectTab, setSelectTab] = useState("All");
-   
-  
+
+  console.log(recordData)
+  const test = recordData.reduce((item, {path}) => {
+    if(path !== undefined) {
+      const findName = path.split("/")[0]; 
+      console.log(findName)
+      item.indexOf(findName) === -1 && item.push(findName)
+    }
+    return item; 
+  },[]);
+
   function categoryChange(){
     console.log("카테고리 체인지")
   }
@@ -65,7 +75,8 @@ function RecordList () {
                   item.view === true &&
                   <li key={idx}>
                     <button onClick={() =>{navi(item.path)}}>
-                      {item.title} 이동하기
+                      <span className="tit">{item.title} 자세히 보기</span>
+                      <span className="desc">{item.desc}</span>
                     </button>
                   </li>
                 )

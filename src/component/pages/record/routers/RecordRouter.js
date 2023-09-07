@@ -15,7 +15,7 @@ export const RecordRouter = [
     element: <State2 />,
     view: true,
     desc: "React - state (2) Array 변경",
-  }
+  },
 ]
 
 

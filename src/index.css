@@ -1,4 +1,4 @@
-body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select,svg,i {margin:0;padding:0; font-family:"NanumGothic", sans-serif; box-sizing:border-box;}
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,div,table,th,td,form,fieldset,legend,input,textarea,button,select,svg,i {margin:0;padding:0; font-family:"NanumGothic", sans-serif; box-sizing:border-box;}
 img,fieldset{border:0}
 em,address,i{font-style:normal;}
 a{text-decoration:none;}

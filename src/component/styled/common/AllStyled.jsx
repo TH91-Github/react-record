@@ -52,12 +52,14 @@ export const BoxInner = styled.div`
   position:relative;
   width:100%;
   ${props => !props.full && `max-width: ${props.maxWidth || sizes.table+'px'}`};
-  margin: 0 auto;
+  margin: ${props => props.$margin || "0 auto"};
   padding:${props => props.$padding || "0"};
 `;
 
 // line 
 export const BoxLine = styled.div`
+  position:relative;
+  ${props => props.$maxWidth && `max-width : ${props.$maxWidth}`};
   margin:${props => props.$margin || "10px 0 0 0"};
   padding:${props => props.$padding || "10px 0 0 0"};
   ${props => !(props.$top || props.$right || props.$bottom || props.$left) && `border:1px solid ${colors.lineColor};`}
