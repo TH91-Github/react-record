@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
+
 import { routerData } from "data/routerData";
 
 import { SvgLogin, SvgSetting, SvgLogOut } from "component/styled/common/SvgPath";
@@ -6,33 +8,45 @@ import "assets/scss/common.scss";
 import "assets/scss/components/Header.scss";
 
 function Header({chnageNav}) {
+  const [menuOn, setMenuOn] = useState(false);
+  const menuOpen = () => {
+    setMenuOn(!menuOn);
+  }
   const navDirection = () => {
     chnageNav();
   }
+  // router 이동 시 체크 초기화하기
+
   return (
-    <div className="header">
-      <div className="header-inner">
+    <div className={'header ' + (menuOn ?'open':'')}>
+      <div className="header__inner">
         <div className="header-logo">
           <NavLink to="/" className="header-title">
             <span className="tit">TH-91</span>
           </NavLink>
         </div>
-        <div className="header-nav">
-          <ul>
-            {
-              routerData.map((link) => (
-                <li key={link.title}>
-                  <NavLink to={link.path} className="header-link">
-                    {link.title}
-                  </NavLink>
-                </li>
-              ))
-            }
-          </ul>
+        <div className="header__nav">
+          <div className="header__nav-menu">
+            <ul>
+              {
+                routerData.map((link) => (
+                  <li key={link.title}>
+                    <NavLink to={link.path} className="header-link">
+                      {link.title}
+                    </NavLink>
+                  </li>
+                ))
+              }
+            </ul>
+          </div> 
+          <button type="button" className="header__nav-btn" onClick={menuOpen}>
+            <span>{menuOn ? 'Open' :'Off'}</span>
+          </button>
         </div>
+          
         
         { // 임시 숨김 구조 자리 안정화 후 설정
-          false && <div className="header-fix">
+          false && <div className="header__fix">
           <ul className="fix-lists">
             <li className="nav-direction">
               <button type="button" className="nav-type" onClick={navDirection} title="메뉴 위치 변경">

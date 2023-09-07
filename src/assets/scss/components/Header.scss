@@ -85,6 +85,11 @@
       
     }
   }
+  &__nav {
+    &-btn {
+      display:none;
+    }
+  }
   &-link {
     display:inline-block;
     padding:15px;
@@ -95,7 +100,7 @@
       color: $color1;
     }
   }
-  &-fix {
+  &__fix {
     $iconW:2px;
     ul {
       display: flex;
@@ -160,19 +165,21 @@
   .header{
     height:auto;
     padding:0 0 0 30px;
-    &-inner {
+    &__inner {
       display:block;
     }
     &-logo{
       position:relative;
       z-index:901;
     }
-    &-nav {
-      ul{
-        flex-direction: column;
+    &__nav {
+      &-menu {
+        ul{
+          flex-direction: column;
+        }
       }
     }
-    &-fix {
+    &__fix {
       display:flex;
       justify-content: flex-end;
       position:fixed;
@@ -207,17 +214,18 @@
 }
 @include pc {
   .header {
-    &-inner{ 
+    &__inner{ 
       display:flex;
-      justify-content: space-between;
       align-items: center;
       gap:50px;
     }
-    &-nav {
-      flex-grow:1;
-      ul {
-        display:flex;
-        gap: 15px;
+    &__nav {
+      &-menu {
+        flex-grow:1;
+        ul {
+          display:flex;
+          gap: 15px;
+        }
       }
     }
     &-link {
@@ -228,24 +236,36 @@
 @include mo {
   .header {
     padding: 0 15px;
-    &-nav {
-      display:none;
-      position:fixed;
-      z-index:999;
-      top:50px;
-      left:0;
-      width:90%;
-      height:100%;
-      background:$whiteColor;
-      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
-      animation: menuOpen 1s both;
-      @keyframes menuOpen {
-        0%{
-          left:-110%;
+    &__nav {
+      &-menu{
+        position:fixed;
+        z-index:999;
+        top:50px;
+        left:0;
+        width:90%;
+        height:100%;
+        background:$whiteColor;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+        animation: menuOff .3s both;
+        @keyframes menuOff {
+          0%{
+            opacity:1;
+          }
+          100%{
+            opacity:0;
+            display:none;
+          }
         }
-        100%{
-          left:0;
-        }
+      }
+      &-btn {
+        display:block;
+        position:absolute;
+        top:50%; 
+        right:15px;
+        width:30px;
+        height:30px;
+        text-indent:-9999px;
+        transform:translateY(-50%);
       }
     }
     &-link {
@@ -254,7 +274,19 @@
       border-top:1px solid $lineColor;
     }
     &.open {
-      display:block;
+      width:100%;
+      .header__nav-menu {
+        display:block;
+        animation: menuOpen .3s both;
+        @keyframes menuOpen {
+          0%{
+            left:-110%;
+          }
+          100%{
+            left:0;
+          }
+        }
+      }
     }
   }
 }
