@@ -31,7 +31,8 @@ function Header({chnageNav}) {
           </ul>
         </div>
         
-        <div className="header-fix">
+        { // 임시 숨김 구조 자리 안정화 후 설정
+          false && <div className="header-fix">
           <ul className="fix-lists">
             <li className="nav-direction">
               <button type="button" className="nav-type" onClick={navDirection} title="메뉴 위치 변경">
@@ -78,6 +79,7 @@ function Header({chnageNav}) {
             </li>
           </ul>
         </div>
+        }
       </div>
     </div>
   )

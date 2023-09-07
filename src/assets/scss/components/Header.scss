@@ -12,11 +12,12 @@ $iconW:2px;
     position:relative;
     justify-content: space-between;
     align-items: center;
+    gap:50px;
   }
   &-logo {
     overflow:hidden;
     position:relative;
-    width:70px;
+    width:80px;
     height:50px;
     &::before, &::after {
       display:block;
@@ -93,6 +94,7 @@ $iconW:2px;
     }
   }
   &-nav {
+    flex-grow:1;
     ul {
       display:flex;
       gap: 15px;

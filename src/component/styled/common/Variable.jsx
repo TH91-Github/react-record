@@ -7,7 +7,7 @@ export const font = {
 export const sizes = {
   maxPc: 1920,
   pc : 1440,
-  table : 1024,
+  table : 1080,
   mo : 768
 }
 

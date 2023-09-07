@@ -58,7 +58,7 @@
   }
   .contact {
     margin-top:20px;
-    ul {
+    & > ul {
       display:flex;
       justify-content: center;
       & > li {
@@ -92,6 +92,34 @@
         margin-right:5px;
       }
     }
+  }
+
+  .skils {
+    $gap: 10px;
+    &__inner {
+      padding:0 30px;
+    }
+    &__lists {
+      display:flex;
+      flex-wrap:wrap;
+      gap: $gap;
+      &-item {
+        width: calc((100% - #{$gap * 3 })/ 4);
+      }
+    }
+    &__box {
+      width:100%;
+      height:100%;
+      padding:10px;
+      border-radius:5px;
+      .desc {
+        p {
+          font-size:14px;
+          color:$textColor;
+        }
+      }
+    }
+
   }
 }
 

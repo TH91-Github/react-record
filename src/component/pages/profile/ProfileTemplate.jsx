@@ -65,7 +65,7 @@ function ProfileTemplate(){
           </div>
         </div>
       </div>
-      <section>
+      <S.BoxWrap>
         <div className="about">
           <S.BoxInner>
             <TitleBar
@@ -74,13 +74,10 @@ function ProfileTemplate(){
               $align="center">
               ABOUT
             </TitleBar>
-            <p>프론트엔드 개발자를 희망하고 있습니다</p>
             <p>새롭ㄴㅇㄴㅁ ㅇㅁㄴㅇ ㅌㅋㅊ ㅋㅌㅊ ㅋ</p>
             <p>zxc zxc asdkljas dlasㅇㅁㄴ ㅇㅁㄴㅇ</p>
           </S.BoxInner>
         </div>
-      </section>
-      <section>
         <div className="skils">
           <S.BoxInner>
             <TitleBar
@@ -89,14 +86,117 @@ function ProfileTemplate(){
               $align="center">
               SKILS
             </TitleBar>
+            <div className="skils__inner">
+              <ul className="skils__lists">
+                <li className="skils__lists-item">
+                  <S.BoxLine className="skils__box">
+                    <S.ReactBadge>React</S.ReactBadge>
+                    <div className="progress">
+                      <span className="progress-num">35%</span>
+                      <span className="progress-bar"></span>
+                    </div>
+                    <div className="desc">
+                      <p>React 프로젝트는 진행을 하지 못하였습니다.</p>
+                      <p>React 중심으로 스터디 및 공부 진행중입니다.</p>
+                      <p>
+                        fetch, axios, styled component, store, router, Hook 등 완벽하진 않지만<br />
+                        Velog를 통해 처음부터 정리하며 기록하고 있습니다.
+                      </p>
+                    </div>
+                  </S.BoxLine>
+                </li>
+                <li className="skils__lists-item">
+                  <S.BoxLine className="skils__box">
+                    <S.VueBadge>Vue</S.VueBadge>
+                    <div className="progress">
+                      <span className="progress-num">20%</span>
+                      <span className="progress-bar"></span>
+                    </div>
+                    <div className="desc">
+                      <p>현재 Vue2 프로젝트를 진행 중이며, Vue3는 개인 공부를 통해 경험을 했습니다.</p>
+                      <p>axios, store, router, swiper, component 등</p>
+                      <p>TodoList 및 개인작업을 통해 Vue3 진행중입니다.</p>
+                    </div>
+                  </S.BoxLine>
+                </li>
+                <li className="skils__lists-item">
+                  <S.BoxLine className="skils__box">
+                    <S.JSBadge>JavaScript</S.JSBadge>
+                    <div className="progress">
+                      <span className="progress-num">50%</span>
+                      <span className="progress-bar"></span>
+                    </div>
+                    <div className="desc">
+                      <p>현재 Vue2 프로젝트를 진행 중이며, Vue3는 개인 공부를 통해 경험을 했습니다.</p>
+                      <p>axios, store, router, swiper, component 등</p>
+                      <p>TodoList 및 개인작업을 통해 Vue3 진행중입니다.</p>
+                    </div>
+                  </S.BoxLine>
+                </li>
+                <li className="skils__lists-item">
+                  <S.BoxLine className="skils__box">
+                    <S.JQueryBadge>Jquery</S.JQueryBadge>
+                    <div className="progress">
+                      <span className="progress-num">75%</span>
+                      <span className="progress-bar"></span>
+                    </div>
+                    <div className="desc">
+                      <p>현재 Vue2 프로젝트를 진행 중이며, Vue3는 개인 공부를 통해 경험을 했습니다.</p>
+                      <p>axios, store, router, swiper, component 등</p>
+                      <p>TodoList 및 개인작업을 통해 Vue3 진행중입니다.</p>
+                    </div>
+                  </S.BoxLine>
+                </li>
+                <li className="skils__lists-item">
+                  <S.BoxLine className="skils__box">
+                    <S.HTMLBadge>HTML</S.HTMLBadge>
+                    <div className="progress">
+                      <span className="progress-num">85%</span>
+                      <span className="progress-bar"></span>
+                    </div>
+                    <div className="desc">
+                      <p>현재 Vue2 프로젝트를 진행 중이며, Vue3는 개인 공부를 통해 경험을 했습니다.</p>
+                      <p>axios, store, router, swiper, component 등</p>
+                      <p>TodoList 및 개인작업을 통해 Vue3 진행중입니다.</p>
+                    </div>
+                  </S.BoxLine>
+                </li>
+                <li className="skils__lists-item">
+                  <S.BoxLine className="skils__box">
+                    <S.CSSBadge>CSS</S.CSSBadge>
+                    <div className="progress">
+                      <span className="progress-num">85%</span>
+                      <span className="progress-bar"></span>
+                    </div>
+                    <div className="desc">
+                      <p>현재 Vue2 프로젝트를 진행 중이며, Vue3는 개인 공부를 통해 경험을 했습니다.</p>
+                      <p>axios, store, router, swiper, component 등</p>
+                      <p>TodoList 및 개인작업을 통해 Vue3 진행중입니다.</p>
+                    </div>
+                  </S.BoxLine>
+                </li>
+                <li className="skils__lists-item">
+                  <S.BoxLine className="skils__box">
+                    <S.EtCBadge>웹표준&#38;웹접근성</S.EtCBadge>
+                    <div className="progress">
+                      <span className="progress-num">85%</span>
+                      <span className="progress-bar"></span>
+                    </div>
+                    <div className="desc">
+                      <p>현재 Vue2 프로젝트를 진행 중이며, Vue3는 개인 공부를 통해 경험을 했습니다.</p>
+                      <p>axios, store, router, swiper, component 등</p>
+                      <p>TodoList 및 개인작업을 통해 Vue3 진행중입니다.</p>
+                    </div>
+                  </S.BoxLine>
+                </li>
+              </ul>
+            </div>
             <p>기술 목록 나열</p>
             <p>기술 목록 중 어떻게 할 수 있는지 설명</p>
             <p>HTML 태그 구조에 대해 설명 또는 React JSX 문법을 데이터 관리</p>
             <p>github 연동하여 작성</p>
           </S.BoxInner>
         </div>
-      </section>
-      <section>
         <div className="plan">
           <S.BoxInner>
             <TitleBar
@@ -107,8 +207,6 @@ function ProfileTemplate(){
             </TitleBar>
           </S.BoxInner>
         </div>
-      </section>
-      <section>
         <div className="portfolio">
           <S.BoxInner>
             <TitleBar
@@ -117,20 +215,11 @@ function ProfileTemplate(){
               $align="center">
                 PORTFOLIO
             </TitleBar>
-            <Accordion>
-              <AccItem>
-                <AccBtn>
-                  asdasdasd
-                </AccBtn>
-                <AccInfo>
-                  dAccInfo
-                </AccInfo>
-              </AccItem>
-            </Accordion>
+            <div className="">
+
+            </div>
           </S.BoxInner>
         </div>
-      </section>
-      <section>
         <div className="thank">
           <S.BoxInner>
             <S.TextP $align="center">
@@ -138,7 +227,7 @@ function ProfileTemplate(){
             </S.TextP>
           </S.BoxInner>
         </div>
-      </section>
+      </S.BoxWrap>
     </div>
   )
 }
