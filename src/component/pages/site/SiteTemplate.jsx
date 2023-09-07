@@ -1,9 +1,11 @@
 import { Outlet } from "react-router-dom";
 
+import Ing from "component/common/Ing";
 
 // styled
 import * as S from "component/styled/common/AllStyled";
 import TitleBar from "component/styled/TitleBar";
+
 
 function SiteTemplate(){
   return (
@@ -12,7 +14,7 @@ function SiteTemplate(){
         <TitleBar $align="center">
           SiteTemplate
         </TitleBar>
-        ⚠️...준비중 🚧
+        <Ing $margin="10px 0 0 0">⚠️준비중🚧</Ing>
       </S.BoxInner>
       <Outlet />
     </div>

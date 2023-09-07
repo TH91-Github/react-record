@@ -2,6 +2,7 @@ import React from "react";
 import { styled } from "styled-components";
 import { colors } from "component/styled/common/Variable";
 
+// scroll - 해당 영역에 왔을 때 on active 클래스 또는 value에 값 넣기 : 고민 중
 const PorgressWrap = styled.div`
   display:flex;
   margin: ${props => props.$margin || "0"};
@@ -38,7 +39,7 @@ const Label = styled.span`
   z-index:2;
   font-size:14px;
   color:${colors.sTextColor};
-  text-shadow: 0 1px 2px #000;
+  text-shadow: 0 1px 1px rgba(0,0,0,.7);
 `;
 
 function PorgressBar ({value, ...props}) {

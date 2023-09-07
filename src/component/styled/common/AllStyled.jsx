@@ -145,4 +145,3 @@ export const EtCBadge = styled(Badge)`
   text-shadow: 0 1px 2px #fff;
 `;
 
-

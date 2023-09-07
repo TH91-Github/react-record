@@ -5,7 +5,7 @@ import {colors} from 'component/styled/common/Variable';
 
 
 const FooterWrap = styled.div`
-  position:realtive;
+  position:relative;
   padding:30px;
   background: ${colors.subBlack};
 `;

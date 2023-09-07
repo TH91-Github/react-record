@@ -1,3 +1,6 @@
+import PorgressBar from "component/common/ProgressBar";
+import Ing from "component/common/Ing";
+
 // styled
 import * as S from "component/styled/common/AllStyled";
 import TitleBar from "component/styled/TitleBar";
@@ -5,7 +8,8 @@ import { Email, Call, SvgVelog, Github, Naver, React, Vue, Photoshop } from "com
 
 // scss
 import "assets/scss/components/Profile.scss";
-import PorgressBar from "component/common/ProgressBar";
+
+
 
 // Title Style
 const styleTitPadding= "30px 0";
@@ -58,6 +62,7 @@ function ProfileTemplate(){
                 </li>
               </ul>
             </div>
+            <Ing $margin="10px 0 0 0">프로필 수정</Ing>
           </div>
           <div className="visual-img">
             <img src="" alt="" />
@@ -83,7 +88,7 @@ function ProfileTemplate(){
               $padding={styleTitPadding}
               fontSize={styleTItSize}
               $align="center">
-              🛠️SKILS
+              SKILS
             </TitleBar>
             <div className="skils__inner">
               <ul className="skils__lists">
