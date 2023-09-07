@@ -227,6 +227,7 @@
 }
 @include mo {
   .header {
+    padding: 0 15px;
     &-nav {
       display:none;
       position:fixed;

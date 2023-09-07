@@ -62,7 +62,7 @@ function ProfileTemplate(){
                 </li>
               </ul>
             </div>
-            <Ing $margin="10px 0 0 0">프로필 수정</Ing>
+            <Ing $margin="10px 0 0 0">프로필 수정 진행중</Ing>
           </div>
           <div className="visual-img">
             <img src="" alt="" />
@@ -88,7 +88,7 @@ function ProfileTemplate(){
               $padding={styleTitPadding}
               fontSize={styleTItSize}
               $align="center">
-              SKILS
+              🛠️SKILS
             </TitleBar>
             <div className="skils__inner">
               <ul className="skils__lists">

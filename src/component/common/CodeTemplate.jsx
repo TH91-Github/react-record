@@ -1,6 +1,7 @@
 import { CodeBlock, dracula } from "react-code-blocks";
 import "assets/scss/common.scss";
 import { styled } from "styled-components";
+import { media } from "component/styled/common/Variable";
 
 const CodeWrap = styled.div`
   margin: 10px 0;
@@ -10,6 +11,9 @@ const CodeWrap = styled.div`
     padding-right:10px !important;
     font-size:14px !important;
     font-style:normal !important;
+  }
+  ${media.onlyMo} {
+    font-size:13px;
   }
 `
 function CodeTemplate({text}){

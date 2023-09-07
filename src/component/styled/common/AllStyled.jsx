@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import { sizes, colors, font} from './Variable';
+import { breakpoints, colors, font} from './Variable';
 
 // common 
 const MarginPadding = css`
@@ -75,7 +75,7 @@ export const BoxWrap = styled.div`
 export const BoxInner = styled.div`
   position:relative;
   width:100%;
-  ${props => !props.$full && `max-width: ${props.$maxWidth || sizes.table+'px'}`};
+  ${props => !props.$full && `max-width: ${props.$maxWidth || breakpoints.table+'px'}`};
   margin: ${props => props.$margin || "0 auto"};
   padding:${props => props.$padding || "0"};
 `;

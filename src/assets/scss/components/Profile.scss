@@ -141,15 +141,14 @@
     }
   }
 }
-@include pc {
-  
 
-}
 @include mo {
-  .profile {
-    
+  .profile { 
     .skils {
       $gap: 10px;
+      &__inner {
+        padding:0 15px;
+      }
       &__lists {
         gap: $gap;
         &-item {
@@ -187,6 +186,18 @@
       }
       .porgress {
         margin-top:10px;
+      }
+    }
+  }
+}
+
+@include onlyMo {
+  .profile { 
+    .skils {
+      &__lists {
+        &-item {
+          width: 100%;
+        }
       }
     }
   }

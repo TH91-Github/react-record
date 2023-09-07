@@ -1,21 +1,30 @@
-// pc
-@mixin pc {
+// 1080 ~ 
+@mixin onlyPc {
 	@media screen and (min-width: #{$table}) {
 		@content;
 	}
 }
-
-// only PC 
-// tab
+// 768 ~ 
+@mixin pc {
+	@media screen and (min-width: #{$mo}) {
+		@content;
+	}
+}
+// 768~1079 
 @mixin tab {
 	@media screen and (min-width: #{$mo}) and (max-width: #{$table - 1}){
 		@content;
 	}
 }
-// mo
+// ~767
 @mixin mo {
 	@media screen and (max-width: #{$mo - 1}) {
 		@content;
 	}
 }
-
+// ~449
+@mixin onlyMo {
+	@media screen and (max-width: #{$onlyMo - 1}) {
+		@content;
+	}
+}

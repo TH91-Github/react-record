@@ -6,12 +6,21 @@ export const font = {
   weight: "550",
 }
 
-export const sizes = {
+export const breakpoints = {
   maxPc: 1920,
   pc : 1440,
   table : 1080,
-  mo : 768
+  mo : 768,
+  onlyMo: 450,
 }
+
+export const media = {
+  onlyPc : `@media screen and (min-width:${breakpoints.table + 'px'})`,
+  pc: `@media screen and (min-width:${breakpoints.mo-1 + 'px'})`,
+  tab: `@media screen and (min-width:${breakpoints.mo + 'px'}) and (max-width: ${breakpoints.table-1 + 'px'})`,
+  mo: `@media screen and (max-width:${breakpoints.mo-1 + 'px'})`,
+  onlyMo: `@media screen and (max-width:${breakpoints.onlyMo-1 + 'px'})`,
+} 
 
 export const colors = {
   // Color 
