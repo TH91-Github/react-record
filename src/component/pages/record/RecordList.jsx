@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { RecordRouter } from "./routers/RecordRouter";
 import { useNavigate } from "react-router-dom";
 
@@ -9,26 +9,43 @@ import TitleBar from "component/styled/TitleBar";
 // Record 하위 메뉴 관리 노출 및 이동 담당
 function RecordList () {
   const navi = useNavigate();
-  const [recordData, setRecordData] = useState(RecordRouter);
+  const [recordData, setRecordData] = useState(null);
   const [category, setCategory] = useState(null);
   const [selectTab, setSelectTab] = useState("All");
 
-  console.log(recordData)
-  const test = recordData.reduce((item, {path}) => {
-    if(path !== undefined) {
-      const findName = path.split("/")[0]; 
-      console.log(findName)
-      item.indexOf(findName) === -1 && item.push(findName)
-    }
-    return item; 
+  const dataLoad = useCallback(() => {
+    // data 구조 만들고 -> fetch 사용 예정. 
+    setRecordData(RecordRouter);
+    fliterCategory(RecordRouter);
   },[]);
 
-  function categoryChange(){
-    console.log("카테고리 체인지")
+  const fliterCategory = () =>{ // 데이터 기준 카테고리 생성
+    const filterList = RecordRouter.reduce((item, {path}) => {
+      item.indexOf('All') === -1 && item.push('All');
+      if(path !== undefined) {
+        const findName = path.split("/")[0]; 
+        item.indexOf(findName) === -1 && item.push(findName)
+      }
+      return item; 
+    },[]);
+    setCategory(filterList);
   }
+
+  useEffect(() => { 
+    dataLoad(); // 임시 데이터 recordData
+  },[dataLoad])
+
+
+  function categoryChange(changeD){ // select category
+    console.log("카테고리 체인지")
+    setSelectTab(changeD)
+  }
+
+  if(!recordData) return;
   return (
     <div className="record__content">
-      {/* 
+      {
+      /* 
         현재는 임시로 보여주는 단계 진행.
         리스트 CSS 컴포넌트 제작
 
@@ -49,15 +66,11 @@ function RecordList () {
         </div>
         <div className="record__tab">
           <ul className="record__tab-list">
-            <li className="record__tab-item">
-              <button type="button">All</button>
-            </li>
             {
-              recordData.map((item,idx) => 
-                item.view === true &&
+              category.map((item,idx) => 
                 <li className="record__tab-item" key={idx}>
-                  <button onClick={categoryChange}>
-                    {item.title}
+                  <button onClick={()=>categoryChange(item)}>
+                    {item}
                   </button>
                 </li>
               )
@@ -71,7 +84,7 @@ function RecordList () {
           <div className="record__cont__list">
             <ul>
               {
-                recordData.map((item,idx) => 
+                recordData &&recordData.map((item,idx) => 
                   item.view === true &&
                   <li key={idx}>
                     <button onClick={() =>{navi(item.path)}}>
