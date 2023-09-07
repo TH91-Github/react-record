@@ -252,5 +252,8 @@
       padding:15px;
       border-top:1px solid $lineColor;
     }
+    &.open {
+      display:block;
+    }
   }
 }
