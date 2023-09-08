@@ -10,6 +10,10 @@ import SiteTemplate from 'component/pages/site/SiteTemplate';
 import { IpartnersRouter } from 'component/pages/site/ipartners/routers/IpartnersRouter';
 
 export const routerData = [
+  { // Main 쳇 페이지 임시 프로필로 
+    index: true,
+    element: <ProfileTemplate />
+  },
   {
     title:"Guide",
     path:"guide",

@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
 
 import { routerData } from "data/routerData";
 
@@ -7,7 +6,7 @@ import { SvgLogin, SvgSetting, SvgLogOut } from "component/styled/common/SvgPath
 import "assets/scss/common.scss";
 import "assets/scss/components/Header.scss";
 
-function Header({isFixed, fixChange, chnageNav}) {
+function Header({headFixed, fixChange, chnageNav}) {
   const menuOpen = () => {
     fixChange();
   }
@@ -16,7 +15,7 @@ function Header({isFixed, fixChange, chnageNav}) {
   }
   
   return (
-    <div className={'header ' + (isFixed ?'open':'')}>
+    <div className={'header ' + (headFixed ?'open':'')}>
       <div className="header__inner">
         <div className="header-logo">
           <NavLink to="/" className="header-title">
@@ -27,7 +26,9 @@ function Header({isFixed, fixChange, chnageNav}) {
           <div className="header__nav-menu">
             <ul>
               {
-                routerData.map((link) => (
+                routerData.map((link, idx) => (
+                  // 0 은 index 페이지이
+                  idx > 0 && 
                   <li key={link.title}>
                     <NavLink to={link.path} className="header-link">
                       {link.title}
@@ -38,7 +39,7 @@ function Header({isFixed, fixChange, chnageNav}) {
             </ul>
           </div> 
           <button type="button" className="header__nav-btn" onClick={menuOpen}>
-            <span>{!isFixed ? 'Open' :'Off'}</span>
+            <span>{!headFixed ? 'Open' :'Off'}</span>
           </button>
         </div>
         
