@@ -8,11 +8,11 @@ import TitleBar from "component/styled/TitleBar";
 function GuideTemplate(){
   return (
     <div className="guide">
-      <S.BoxInner $margin="30px auto">
+      <S.BoxInner $margin="0 auto">
         <TitleBar $align="center">
           GuideTemplate
         </TitleBar>
-        <Ing $margin="10px 0 0 0">⚠️준비중🚧</Ing>
+        <Ing>⚠️준비중🚧</Ing>
       </S.BoxInner>
     </div>
   )

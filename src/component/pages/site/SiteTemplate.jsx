@@ -10,11 +10,11 @@ import TitleBar from "component/styled/TitleBar";
 function SiteTemplate(){
   return (
     <div className="site">
-      <S.BoxInner $margin="30px auto">
+      <S.BoxInner $margin="0 auto">
         <TitleBar $align="center">
           SiteTemplate
         </TitleBar>
-        <Ing $margin="10px 0 0 0">⚠️준비중🚧</Ing>
+        <Ing>⚠️준비중🚧</Ing>
       </S.BoxInner>
       <Outlet />
     </div>

@@ -7,18 +7,16 @@ import { SvgLogin, SvgSetting, SvgLogOut } from "component/styled/common/SvgPath
 import "assets/scss/common.scss";
 import "assets/scss/components/Header.scss";
 
-function Header({chnageNav}) {
-  const [menuOn, setMenuOn] = useState(false);
+function Header({isFixed, fixChange, chnageNav}) {
   const menuOpen = () => {
-    setMenuOn(!menuOn);
+    fixChange();
   }
   const navDirection = () => {
     chnageNav();
   }
-  // router 이동 시 체크 초기화하기
-
+  
   return (
-    <div className={'header ' + (menuOn ?'open':'')}>
+    <div className={'header ' + (isFixed ?'open':'')}>
       <div className="header__inner">
         <div className="header-logo">
           <NavLink to="/" className="header-title">
@@ -40,10 +38,9 @@ function Header({chnageNav}) {
             </ul>
           </div> 
           <button type="button" className="header__nav-btn" onClick={menuOpen}>
-            <span>{menuOn ? 'Open' :'Off'}</span>
+            <span>{!isFixed ? 'Open' :'Off'}</span>
           </button>
         </div>
-          
         
         { // 임시 숨김 구조 자리 안정화 후 설정
           false && <div className="header__fix">

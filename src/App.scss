@@ -1,6 +1,11 @@
 /* App CSS */
 .App {
   &-wrap{
+    &.fixed { 
+      .container {
+        margin-top:50px;
+      }
+    }
     &.column{
       display:flex;
       .main-wrap{
