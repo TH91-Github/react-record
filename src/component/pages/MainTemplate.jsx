@@ -10,6 +10,7 @@ import { breakpoints } from "component/styled/common/Variable";
 // scss
 import 'assets/scss/components/MainTemplate.scss';
 
+// gnb 다 펼쳐지고 style 막기
 
 function MainTemplate () {
   const [headFixed, setHeadFixed] = useState(false);
