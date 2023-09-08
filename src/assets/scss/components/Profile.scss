@@ -93,7 +93,6 @@
       }
     }
   }
-
   .skils {
     $gap: 20px;
     &__inner {
@@ -144,6 +143,27 @@
 
 @include mo {
   .profile { 
+    .contact {
+      margin-top:20px;
+      & > ul {
+        flex-direction: column;
+        & > li {
+          position:relative;
+          margin:3px;
+          padding:0;
+          &::before {
+            display:none;
+            content:"";
+          }
+          &:first-child {
+            margin-top:0;
+          }
+        }
+      }
+      .txt {
+        justify-content: center;
+      }
+    }
     .skils {
       $gap: 10px;
       &__inner {

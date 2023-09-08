@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import SkipNav from 'component/common/SkipNav';
 import { Outlet, useLocation } from 'react-router-dom';
 
@@ -13,17 +13,30 @@ import 'assets/scss/components/MainTemplate.scss';
 
 function MainTemplate () {
   const [headFixed, setHeadFixed] = useState(false);
-  const location = useLocation();
   const [isMo, setIsMo] = useState(null);
+  const location = useLocation();
 
+  let windY = 0;
   const fixChange = () => {
-    setHeadFixed(!headFixed);
+    if(headFixed && windY <= 0){
+      setHeadFixed(!headFixed);
+    }else{ 
+      // console.log("ㅇㅇ")
+    }
+    
   }
+
   const reSizeEvent = () => {
     isMobileChk();
   }
   const scrollEvent = () => { // scroll
-    console.log(window.pageYOffset)
+    const headerH = document.querySelector('.header').offsetHeight;
+    windY = window.pageYOffset;
+    if(headerH < windY){
+      setHeadFixed(true);
+    }else{
+      setHeadFixed(false);
+    }
   }
   const isMobileChk = () => {
     const wininnW = window.innerWidth;
@@ -42,8 +55,8 @@ function MainTemplate () {
     setHeadFixed(false);
   },[location, isMo])
 
+
   useEffect (() => {
-    reSizeEvent();
     window.addEventListener("resize", reSizeEvent);
     window.addEventListener("scroll", scrollEvent);
     return () => {

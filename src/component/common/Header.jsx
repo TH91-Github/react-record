@@ -1,28 +1,55 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
 import { routerData } from "data/routerData";
 
 import { SvgLogin, SvgSetting, SvgLogOut } from "component/styled/common/SvgPath";
 import "assets/scss/common.scss";
 import "assets/scss/components/Header.scss";
 
+
 function Header({headFixed, fixChange, chnageNav}) {
+  const [chkOnOff,setchkOnOff] = useState(false);
+  const [scrolly, setScrolly] = useState(0);
+
   const menuOpen = () => {
+    if(chkOnOff){
+      mobileScrollOff(false);
+    }else {
+      mobileScrollOff(true);
+    }
+    setchkOnOff(!chkOnOff)
     fixChange();
   }
   const navDirection = () => {
     chnageNav();
   }
   
+  function mobileScrollOff(chkOnOff){ // mo 스크롤 막기
+    const tBody = document.body;
+    if(chkOnOff){
+      setScrolly(window.pageYOffset);
+      tBody.style.position = 'fixed';
+      tBody.style.width = '100%';
+    }else{
+      tBody.removeAttribute('style');
+      window.scrollTo({top:scrolly, behavior: 'instant'});
+      setTimeout(() => { // 팝업 닫은 후 이동이 안되었을 경우
+        if(window.pageYOffset < 10){
+          window.scrollTo({top:scrolly, behavior: 'instant'});
+        }
+      },50)
+    }
+  };
+
   return (
-    <div className={'header ' + (headFixed ?'open':'')}>
+    <div className={'header ' + (headFixed || chkOnOff ?'fixed':'')}>
       <div className="header__inner">
         <div className="header-logo">
           <NavLink to="/" className="header-title">
             <span className="tit">TH-91</span>
           </NavLink>
         </div>
-        <div className="header__nav">
+        <div className={'header__nav ' + (chkOnOff ?'open':'')}>
           <div className="header__nav-menu">
             <ul>
               {
@@ -39,7 +66,7 @@ function Header({headFixed, fixChange, chnageNav}) {
             </ul>
           </div> 
           <button type="button" className="header__nav-btn" onClick={menuOpen}>
-            <span>{!headFixed ? 'Open' :'Off'}</span>
+            <span>{!chkOnOff ? 'Open' :'Off'}</span>
           </button>
         </div>
         

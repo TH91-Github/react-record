@@ -4,7 +4,7 @@ import Ing from "component/common/Ing";
 // styled
 import * as S from "component/styled/common/AllStyled";
 import TitleBar from "component/styled/TitleBar";
-import { Email, Call, SvgVelog, Github, Naver, React, Vue, Photoshop } from "component/styled/common/SvgPath";
+import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/common/SvgPath";
 
 // scss
 import "assets/scss/components/Profile.scss";
