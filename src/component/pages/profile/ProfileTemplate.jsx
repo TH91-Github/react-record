@@ -77,9 +77,15 @@ function ProfileTemplate(){
               👨‍💻ABOUT
             </TitleBar>
             <div className="profile__box">
-            <S.TextP color="#ffffff" $align="center">
-              웹 에이전시에서 웹 퍼블리셔로 여러 프로젝트를 진행하면서<br />
-              데이터를 활용하여 지금보다 더 
+            <S.TextP $align="center">
+              과거엔 퍼블리셔, 현재와 미래에는 프론트엔드로<br />
+              발전하고 싶은 <span class="color1">김태훈</span>입니다.<br />
+            </S.TextP>
+            <S.TextP $align="center">
+              수동적인 개발자가 아닌 주도적으로 <br />
+              문제해결을 하고 최고의 결과물을 위해 끊임없이<br />
+              고민하는 개발자가 되려고 합니다.<br />
+              😁
             </S.TextP>
             </div>
           </S.BoxInner>

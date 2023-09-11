@@ -43,8 +43,9 @@ export const TextP = styled.p`
   ${MarginPadding}
   font-size: ${props => props.fontSize || font.size};
   font-weight: ${props => props.fontWeight || '550'};
-  text-align: ${props => props.$align || "left"};
+  text-align: ${props => props.$align || 'left'};
   color: ${props => props.color || colors.textColor};
+  line-height: ${props => props.color || '21px'};
   & + p { 
     margin-top: 10px;
   }

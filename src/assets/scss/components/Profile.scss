@@ -286,7 +286,9 @@
       }
     }
   }
-
+  .color1{
+    color:$color1;
+  }
 }
 
 @include mo {
