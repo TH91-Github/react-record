@@ -8,7 +8,7 @@ import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/co
 
 // scss
 import "assets/scss/components/Profile.scss";
-
+import ImgProfile from "assets/images/profile.jpg";
 // Title Style
 const styleTItSize = "24px";
 
@@ -62,7 +62,6 @@ function ProfileTemplate(){
             <Ing $margin="10px 0 0 0">프로필 수정 진행중</Ing>
           </div>
           <div className="visual-img">
-            <img src="" alt="" />
           </div>
         </div>
       </div>
