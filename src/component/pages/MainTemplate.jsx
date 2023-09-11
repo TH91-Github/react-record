@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import SkipNav from 'component/common/SkipNav';
 import { Outlet, useLocation } from 'react-router-dom';
-
 // component
 import Header from 'component/common/Header';
 import Footer from "component/common/Footer";
@@ -16,13 +15,13 @@ function MainTemplate () {
   const [isMo, setIsMo] = useState(null);
   const location = useLocation();
   let windY = 0;
+
   const fixChange = () => {
     if(headFixed && windY <= 0){
       setHeadFixed(!headFixed);
     }else{ 
       // console.log("Test")
     }
-    
   }
   const reSizeEvent = () => {
     isMobileChk();
@@ -43,19 +42,22 @@ function MainTemplate () {
     const winW = parseInt(wininnW - scrollbarW);
     if(isMo === null){
       winW < breakpoints.mo ? setIsMo(true) : setIsMo(false);
+      return
     }else if(winW < breakpoints.mo && isMo === true) {
       setIsMo(false)
     }else if(winW >= breakpoints.mo && isMo === false){
       setIsMo(true);
-    }
+    } 
+    isMobileChk();
   }
 
-  useEffect (() => {
-    setHeadFixed(false);
+  useEffect (() => { // ※ 개선 필요 : 스크롤 0 / 움직인 후 다시 불필요한 리렌더링 일수도 있다.
+    if(isMo) setHeadFixed(false);
   },[location, isMo])
 
   // scroll, resize event *공통으로 빼는 작업 필요.
-  useEffect (() => { 
+  useEffect (() => {  // ※ React Hook useEffect has missing dependencie 개선
+    isMobileChk();
     window.addEventListener("resize", reSizeEvent);
     window.addEventListener("scroll", scrollEvent);
     return () => {
@@ -70,7 +72,6 @@ function MainTemplate () {
   const chnageNav = () => {
     setDirection(!direction)
   }
-  
   return (
     <div className="main">
       <SkipNav />
@@ -82,7 +83,7 @@ function MainTemplate () {
           direction={direction} 
           chnageNav={chnageNav}/>
         <div className="container">
-          <Outlet />
+          <Outlet context={{isMo}} />
         </div>
         <Footer />
       </div>

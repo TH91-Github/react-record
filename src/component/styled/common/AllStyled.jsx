@@ -62,10 +62,21 @@ export const BtnWrap = styled.div`
 export const BoxFlex = styled.div`
   display:flex;
   flex-wrap:wrap;
+  flex-direction: ${props => props.$direction || 'row'};
+  justify-content : ${props => props.$justifyConent || 'flex-start'}; 
+  width: ${props => props.$width || '100%'};
   ${MarginPadding}
 `;
 
+// wrap
 export const BoxWrap = styled.div`
+  ${props => props.$display && 
+    `display:${props.$display};
+    flex-wrap:wrap;
+    flex-direction: ${props.$direction || 'row'};
+    justify-content : ${props.$justifyConent || 'flex-start'}; 
+    `
+  };
   position:relative;
   width: ${props => props.$width || '100%'};
   ${MarginPadding}
@@ -74,7 +85,7 @@ export const BoxWrap = styled.div`
 // inner
 export const BoxInner = styled.div`
   position:relative;
-  width:100%;
+  width:${props => props.$width || '100%'};
   ${props => !props.$full && `max-width: ${props.$maxWidth || breakpoints.table+'px'}`};
   margin: ${props => props.$margin || "0 auto"};
   padding:${props => props.$padding || "0"};

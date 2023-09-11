@@ -1,3 +1,5 @@
+import { useOutletContext } from "react-router-dom";
+
 import PorgressBar from "component/common/ProgressBar";
 import Ing from "component/common/Ing";
 
@@ -10,14 +12,13 @@ import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/co
 import "assets/scss/components/Profile.scss";
 
 
-
-// Title Style
-const styleTitPadding= "30px 0";
-const styleTItSize = "24px";
-
-// 데이터로 만들기 전 하드코딩
-
+// 데이터로 만들기 전 하드코딩 후 데이터로 로드 후 재수정.
 function ProfileTemplate(){
+  const {isMo} = useOutletContext();
+  console.log(isMo)
+  // Title Style
+  const styleTitPadding= "30px 0";
+  const styleTItSize = "24px";
   return (
     <div className="profile">
       <div className="visual">
@@ -69,8 +70,8 @@ function ProfileTemplate(){
           </div>
         </div>
       </div>
-      <S.BoxWrap>
-        <div className="about">
+      <S.BoxFlex >
+        <S.BoxWrap $width={isMo ? "100%" :"50%"} className="about">
           <S.BoxInner>
             <TitleBar
               $padding={styleTitPadding}
@@ -81,8 +82,21 @@ function ProfileTemplate(){
             <p>새롭ㄴㅇㄴㅁ ㅇㅁㄴㅇ ㅌㅋㅊ ㅋㅌㅊ ㅋ</p>
             <p>zxc zxc asdkljas dlasㅇㅁㄴ ㅇㅁㄴㅇ</p>
           </S.BoxInner>
-        </div>
-        <div className="skils">
+        </S.BoxWrap>
+        <S.BoxWrap $width={isMo ? "100%" :"50%"} className="plan">
+          <S.BoxInner>
+            <TitleBar
+              $padding={styleTitPadding}
+              fontSize={styleTItSize}
+              $align="center">
+                📚PLAN
+            </TitleBar>
+            <div className="plan__inner">
+              
+            </div>
+          </S.BoxInner>
+        </S.BoxWrap>
+        <S.BoxWrap className="skils">
           <S.BoxInner>
             <TitleBar
               $padding={styleTitPadding}
@@ -182,23 +196,11 @@ function ProfileTemplate(){
                 </li>
               </ul>
             </div>
-            <p>기술 목록 나열</p>
             <p>기술 목록 중 어떻게 할 수 있는지 설명</p>
             <p>HTML 태그 구조에 대해 설명 또는 React JSX 문법을 데이터 관리</p>
-            <p>github 연동하여 작성</p>
           </S.BoxInner>
-        </div>
-        <div className="plan">
-          <S.BoxInner>
-            <TitleBar
-              $padding={styleTitPadding}
-              fontSize={styleTItSize}
-              $align="center">
-                📚PLAN
-            </TitleBar>
-          </S.BoxInner>
-        </div>
-        <div className="portfolio">
+        </S.BoxWrap>
+        <S.BoxWrap className="portfolio">
           <S.BoxInner>
             <TitleBar
               $padding={styleTitPadding}
@@ -210,15 +212,15 @@ function ProfileTemplate(){
 
             </div>
           </S.BoxInner>
-        </div>
-        <div className="thank">
+        </S.BoxWrap>
+        <S.BoxWrap className="thank">
           <S.BoxInner>
             <S.TextP $align="center">
               감사합니다. 😁
             </S.TextP>
           </S.BoxInner>
-        </div>
-      </S.BoxWrap>
+        </S.BoxWrap>
+      </S.BoxFlex>
     </div>
   )
 }

@@ -160,6 +160,12 @@
       }
     }
   }
+  &.fixed {
+    position:fixed;
+    top:0;
+    width:100%;
+    background:$whiteColor;
+  }
 }
 .column {
   .header{
@@ -298,10 +304,6 @@
       border-top:1px solid $lineColor;
     }
     &.fixed {
-      position:fixed;
-      top:0;
-      width:100%;
-      background:$whiteColor;
       .open {
         .header__nav-menu {
           display:block;

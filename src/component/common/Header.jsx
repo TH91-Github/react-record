@@ -6,11 +6,10 @@ import { SvgLogin, SvgSetting, SvgLogOut } from "component/styled/common/SvgPath
 import "assets/scss/common.scss";
 import "assets/scss/components/Header.scss";
 
-
 function Header({location, headFixed, fixChange, chnageNav}) {
   const [chkOnOff,setchkOnOff] = useState(false);
   const [scrolly, setScrolly] = useState(0);
-
+   
   const menuOpen = () => {
     if(chkOnOff){
       mobileScrollOff(false);
@@ -23,11 +22,10 @@ function Header({location, headFixed, fixChange, chnageNav}) {
   const navDirection = () => {
     chnageNav();
   }
-
   useEffect(() => {
     setchkOnOff(false);
     mobileScrollOff(false);
-  },[location])
+  },[location, ])
   
   function mobileScrollOff(chkOnOff){ // mo 스크롤 막기
     const tBody = document.body;
