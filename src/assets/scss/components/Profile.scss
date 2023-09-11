@@ -1,6 +1,8 @@
 @import "assets/scss/common.scss";
 
 .profile {
+  $gap: 20px;
+
   position:relative;
   .visual{
     position:relative;
@@ -93,11 +95,10 @@
       }
     }
   }
+  &__box { 
+    padding:0 30px;
+  }
   .skils {
-    $gap: 20px;
-    &__inner {
-      padding:0 30px;
-    }
     &__lists {
       display:flex;
       flex-wrap:wrap;
@@ -139,10 +140,81 @@
       margin-top:10px;
     }
   }
+  .portfolio{
+    &__lists {
+      display: flex;
+      flex-wrap:wrap;
+      gap:$gap;
+      &-item{
+        width: calc((100% - #{$gap})/ 2);
+      }
+    }
+    &__box{
+      height:100%;
+      padding:10px;
+      border-radius:5px;
+      .title {
+        font-size:18px;
+        font-family: $fontB;
+      }
+      .txt {
+        color:$textColor;
+      }
+      .date{
+        display:flex;
+        margin-top:10px;
+        font-size:14px;
+        color:$subTextColor;
+        .start{
+          position:relative;
+          margin-right:10px;
+          padding-right:20px;
+          &::after {
+            position:absolute;
+            top:50%;
+            right:0;
+            width:15px;
+            height:15px;
+            transform: translateY(-50%);
+            line-height:1;
+            content:"➡️"
+          }
+        }
+      }
+      .member{
+        display:flex;
+        margin-top:10px;
+        font-size:14px;
+        .contribution {
+          position:relative;
+          margin-left:10px;
+          padding-left:10px;
+          &::after {
+            position:absolute;
+            top:50%;
+            left:0;
+            width:1px;
+            height:90%;
+            background:$lineColor;
+            transform: translateY(-50%);
+            content:"";
+          }
+        }
+      }
+      .review {
+        margin-top:10px;
+        color:$textColor;
+      }
+    }
+  }
+  .thank{
+    margin-top:100px;
+  }
 }
 
 @include mo {
   .profile { 
+    $gap: 10px;
     .contact {
       margin-top:20px;
       & > ul {
@@ -164,11 +236,10 @@
         justify-content: center;
       }
     }
+    &__box { 
+      padding:0 15px;
+    }
     .skils {
-      $gap: 10px;
-      &__inner {
-        padding:0 15px;
-      }
       &__lists {
         gap: $gap;
         &-item {
@@ -208,6 +279,27 @@
         margin-top:10px;
       }
     }
+    .portfolio{
+      &__lists {
+        &-item{
+          width: 100%;
+        }
+      }
+      &__box{
+        height:100%;
+        padding:10px;
+        .title {
+          font-size:16px;
+        }
+        .review {
+          margin-top:10px;
+          color:$textColor;
+        }
+      }
+    }
+    .thank{
+      margin-top:100px;
+    }
   }
 }
 
@@ -221,4 +313,5 @@
       }
     }
   }
+  
 }

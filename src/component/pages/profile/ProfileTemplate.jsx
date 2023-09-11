@@ -1,5 +1,3 @@
-import { useOutletContext } from "react-router-dom";
-
 import PorgressBar from "component/common/ProgressBar";
 import Ing from "component/common/Ing";
 
@@ -12,13 +10,14 @@ import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/co
 import "assets/scss/components/Profile.scss";
 
 
-// 데이터로 만들기 전 하드코딩 후 데이터로 로드 후 재수정.
+
+// Title Style
+const styleTitPadding= "30px 0";
+const styleTItSize = "24px";
+
+// 데이터로 만들기 전 하드코딩
+
 function ProfileTemplate(){
-  const {isMo} = useOutletContext();
-  console.log(isMo)
-  // Title Style
-  const styleTitPadding= "30px 0";
-  const styleTItSize = "24px";
   return (
     <div className="profile">
       <div className="visual">
@@ -70,8 +69,8 @@ function ProfileTemplate(){
           </div>
         </div>
       </div>
-      <S.BoxFlex >
-        <S.BoxWrap $width={isMo ? "100%" :"50%"} className="about">
+      <S.BoxWrap>
+        <div className="about">
           <S.BoxInner>
             <TitleBar
               $padding={styleTitPadding}
@@ -79,24 +78,12 @@ function ProfileTemplate(){
               $align="center">
               👨‍💻ABOUT
             </TitleBar>
-            <p>새롭ㄴㅇㄴㅁ ㅇㅁㄴㅇ ㅌㅋㅊ ㅋㅌㅊ ㅋ</p>
-            <p>zxc zxc asdkljas dlasㅇㅁㄴ ㅇㅁㄴㅇ</p>
-          </S.BoxInner>
-        </S.BoxWrap>
-        <S.BoxWrap $width={isMo ? "100%" :"50%"} className="plan">
-          <S.BoxInner>
-            <TitleBar
-              $padding={styleTitPadding}
-              fontSize={styleTItSize}
-              $align="center">
-                📚PLAN
-            </TitleBar>
-            <div className="plan__inner">
-              
+            <div className="profile__box">
+
             </div>
           </S.BoxInner>
-        </S.BoxWrap>
-        <S.BoxWrap className="skils">
+        </div>
+        <div className="skils">
           <S.BoxInner>
             <TitleBar
               $padding={styleTitPadding}
@@ -104,7 +91,7 @@ function ProfileTemplate(){
               $align="center">
               🛠️SKILS
             </TitleBar>
-            <div className="skils__inner">
+            <div className="profile__box">
               <ul className="skils__lists">
                 <li className="skils__lists-item">
                   <S.BoxLine className="skils__box">
@@ -199,8 +186,21 @@ function ProfileTemplate(){
             <p>기술 목록 중 어떻게 할 수 있는지 설명</p>
             <p>HTML 태그 구조에 대해 설명 또는 React JSX 문법을 데이터 관리</p>
           </S.BoxInner>
-        </S.BoxWrap>
-        <S.BoxWrap className="portfolio">
+        </div>
+        <div className="plan">
+          <S.BoxInner>
+            <TitleBar
+              $padding={styleTitPadding}
+              fontSize={styleTItSize}
+              $align="center">
+                📚PLAN
+            </TitleBar>
+            <div className="profile__box">
+              
+            </div>
+          </S.BoxInner>
+        </div>
+        <div className="portfolio">
           <S.BoxInner>
             <TitleBar
               $padding={styleTitPadding}
@@ -208,19 +208,63 @@ function ProfileTemplate(){
               $align="center">
                 📍PORTFOLIO
             </TitleBar>
-            <div className="">
-
+            <div className="profile__box">
+              <ul className="portfolio__lists">
+                <li className="portfolio__lists-item">
+                <S.BoxLine className="portfolio__box">
+                    <p className="title">프로젝트 이름</p>
+                    <div className="date">
+                      <span className="start">2023.09.11</span>
+                      <span className="end">2023.09.11</span>
+                    </div>
+                    <div className="member">
+                      <span className="number">총 5명</span>
+                      <span className="contribution">기여도: <span className="num">30%</span></span>
+                    </div>
+                    <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
+                      <p className="txt">
+                      리뷰 텍스트
+                      리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트
+                      </p>
+                    </S.BoxLine>
+                  </S.BoxLine>
+                </li>
+                <li className="portfolio__lists-item">
+                <S.BoxLine className="portfolio__box">
+                    <p className="title">프로젝트 이름</p>
+                    <div className="date">
+                      <span className="start">2023.09.11</span>
+                      <span className="end">2023.09.11</span>
+                    </div>
+                    <div className="member">
+                      <span className="number">
+                        <span className="txt">참여 인원 :</span>
+                        <span>5명</span>
+                      </span>
+                      <span className="contribution">
+                        <span className="txt">기여도:</span>
+                        <span className="num">30%</span>
+                      </span>
+                    </div>
+                    <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
+                      <p className="txt">
+                      cc
+                      </p>
+                    </S.BoxLine>
+                  </S.BoxLine>
+                </li>
+              </ul>
             </div>
           </S.BoxInner>
-        </S.BoxWrap>
-        <S.BoxWrap className="thank">
+        </div>
+        <div className="thank">
           <S.BoxInner>
             <S.TextP $align="center">
               감사합니다. 😁
             </S.TextP>
           </S.BoxInner>
-        </S.BoxWrap>
-      </S.BoxFlex>
+        </div>
+      </S.BoxWrap>
     </div>
   )
 }
