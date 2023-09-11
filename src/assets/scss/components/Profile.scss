@@ -6,7 +6,7 @@
   .visual{
     position:relative;
     min-height:300px;
-    padding:100px 30px 80px;
+    padding:100px 30px 50px;
     &::after {
       position:absolute;
       top:0;
@@ -276,7 +276,7 @@
   .profile { 
     $gap: 10px;
     .visual{
-      padding:100px 30px 50px;
+      padding:100px 15px 25px;
       &-info {
         padding:75px 15px 30px;
         .name{
@@ -351,6 +351,20 @@
       }
       .porgress {
         margin-top:10px;
+      }
+    }
+    .plan {
+      &__info { 
+        width: 100%;
+        margin-top:25px;
+        padding:0 15px;
+        &:first-child {
+          margin-top:0;
+        }
+      }
+      .tit {
+        font-size:20px;
+        text-align:left;
       }
     }
     .project{
