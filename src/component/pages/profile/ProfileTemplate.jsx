@@ -101,8 +101,7 @@ function ProfileTemplate(){
                     <div className="desc">
                       <p>React 프로젝트는 진행을 하지 못하였습니다.</p>
                       <p>React 중심으로 스터디 및 공부를 하며 성장중에 있습니다.</p>
-                      <p>fetch, axios, styled component, store, router, Hook 등 완벽하진 않지만</p>
-                      <p>Velog를 통해 처음부터 정리하며 기록하고 있습니다.</p>
+                      <p>fetch, axios, styled component, store, router, Hook 등 Velog를 통해 처음부터 정리하며 기록하고 있습니다.</p>
                     </div>
                   </S.BoxLine>
                 </li>
@@ -190,43 +189,172 @@ function ProfileTemplate(){
             <div className="profile__box">
               <ul className="project__lists">
                 <li className="project__lists-item">
-                <S.BoxLine className="project__box">
-                    <p className="title">📍프로젝트 이름</p>
+                  <S.BoxLine className="project__box">
+                    <p className="title">🎈현대카드 회사소개 (구축)</p>
+                    <p className="company">Ipartners</p>
                     <div className="date">
-                      <span className="start">2023.09.11</span>
-                      <span className="end">2023.09.11</span>
+                      <span className="start">2016.08</span>
+                      <span className="end">2016.10</span>
                     </div>
                     <div className="member">
-                      <span className="number">총 5명</span>
-                      <span className="contribution">기여도: <span className="num">30%</span></span>
+                      <span className="number">총 2명</span>
+                      <span className="contribution">기여도: <span className="num">25%</span></span>
                     </div>
                     <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
-                      <p className="txt">
-                      리뷰 텍스트
-                      리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트리뷰 텍스트
-                      </p>
+                      <ul className="lists">
+                        <li className="square">사이트 구축  보조 역할</li>
+                        <li className="square">디자인 시안 및 가이드라인 따라 페이지 코딩</li>
+                        <li className="square">전체 사이트 수정 진행 및 마무리 작업을 진행하였습니다.</li>
+                      </ul>
+                      <div className="skils">
+                        <p className="txt">HTML, CSS</p>
+                      </div>
                     </S.BoxLine>
                   </S.BoxLine>
                 </li>
                 <li className="project__lists-item">
-                <S.BoxLine className="project__box">
-                    <p className="title">📍프로젝트 이름</p>
+                  <S.BoxLine className="project__box">
+                    <p className="title">🎈신세계 DF (면세점) (운영)</p>
+                    <p className="company">Ipartners</p>
                     <div className="date">
-                      <span className="start">2023.09.11</span>
-                      <span className="end">2023.09.11</span>
+                      <span className="start">2016.11</span>
+                      <span className="end">2017.02</span>
                     </div>
                     <div className="member">
-                      <span className="number">
-                        <span className="txt">참여 인원 :</span>
-                        <span>5명</span>
-                      </span>
-                      <span className="contribution">
-                        <span className="txt">기여도:</span>
-                        <span className="num">30%</span>
-                      </span>
+                      <span className="number">총 3명</span>
+                      <span className="contribution">기여도: <span className="num">30%</span></span>
                     </div>
                     <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
-                     
+                      <ul className="lists">
+                        <li className="square">신세계DF 사이트 전체 모니터링 및 검수</li>
+                        <li className="square">UI, 버튼 확인 및 오류 및 결제  테스트 - 오류(개발 전달)</li>
+                        <li className="square">프로모션 페이지 제작 및 Jquery로 간단한 게임 제작</li>
+                        <li className="square">사이트 내 결제가 가능하여, 결제 관련 오류가 가장 큰 이슈였고 그러다보니 업무 시작은 전체 검수로 시작을 했습니다. 그만큼 검수를 통해 동작/오류 등 조기에 발견 수정을 하여 사이트 안정화의 중요성을 깨닫게 되는 프로젝트였습니다.</li>
+                      </ul>
+                      <div className="skils">
+                        <p className="txt">HTML, CSS, JavaScript, Jquery</p>
+                      </div>
+                    </S.BoxLine>
+                  </S.BoxLine>
+                </li>
+                <li className="project__lists-item">
+                  <S.BoxLine className="project__box">
+                    <p className="title">🎈현대자동차 그룹 (운영)</p>
+                    <p className="company">Ipartners</p>
+                    <div className="date">
+                      <span className="start">2016.11</span>
+                      <span className="end">2017.02</span>
+                    </div>
+                    <div className="member">
+                      <span className="number">총 3명</span>
+                      <span className="contribution">기여도: <span className="num">30%</span></span>
+                    </div>
+                    <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
+                      <ul className="lists">
+                        <li className="square">국문, 영문 등 여러 사이트를 운영</li>
+                        <li className="square">차량 이벤트, 소개 페이지 건 별로 하드코딩 및 기능 구현</li>
+                        <li className="square">운영 유지 보수 및 레터</li>
+                        <li className="square">리뉴얼, 웹 접근성 및 사이트 별 반응형, 적응형 작업 </li>
+                      </ul>
+                      <div className="skils">
+                        <p className="txt">HTML, CSS, JavaScript, Jquery</p>
+                      </div>
+                    </S.BoxLine>
+                  </S.BoxLine>
+                </li>
+                <li className="project__lists-item">
+                  <S.BoxLine className="project__box">
+                    <p className="title">🎈SK브로드밴드(운영)</p>
+                    <p className="company">Ipartners</p>
+                    <div className="date">
+                      <span className="start">2018.03</span>
+                      <span className="end">2021.05</span>
+                    </div>
+                    <div className="member">
+                      <span className="number">총 3명</span>
+                      <span className="contribution">기여도: <span className="num">50%</span></span>
+                    </div>
+                    <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
+                      <ul className="lists">
+                        <li className="square">사이트 운영 및 리뉴얼, 매달 프로모션 이벤트 진행</li>
+                        <li className="square">Canvas, animation, transition, transform  효과</li>
+                        <li className="square">PL 3번 팀원 총 2번 교체로 인한 PL 업무 대행</li>
+                        <li className="square">가장 오래 맡은 프로젝트로 해당 프로젝트에 대해 히스토리를 가장 많이 알게 되었고 고객사의 업무 요청이 심하여 PL, 팀원 잦은 퇴사로 직급이 낮은 상태에서 PL 업무 대행하게 되어 전체적인 업무 흐름 및 다른 팀들과 커뮤니케이션으로 힘들지만 경험을 많이 쌓게 된 프로젝트였습니다.</li>
+                      </ul>
+                      <div className="skils">
+                        <p className="txt">HTML, CSS , JavaScript Jquery, SVN(Subversion), Canvas</p>
+                      </div>
+                    </S.BoxLine>
+                  </S.BoxLine>
+                </li>
+                <li className="project__lists-item">
+                  <S.BoxLine className="project__box">
+                    <p className="title">🎈소니스토어 (리뉴얼)</p>
+                    <p className="company">Ipartners</p>
+                    <div className="date">
+                      <span className="start">2021.06</span>
+                      <span className="end">2021.11</span>
+                    </div>
+                    <div className="member">
+                      <span className="number">총 3명</span>
+                      <span className="contribution">기여도: <span className="num">40%</span></span>
+                    </div>
+                    <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
+                      <ul className="lists">
+                        <li className="square">기존 사이트 새롭게 리뉴얼 : 파견</li>
+                        <li className="square">리뉴얼 진행 시 vue 또는 React로 리뉴얼 하기로 하였으나 하드코딩으로 변경</li>
+                        <li className="square">하드코딩으로 작업으로 작업을 진행하여 큰 경험을 쌓지는 못하였지만 팀원들과 디자인 가이드 구축 후 가이드를 바탕으로 기획, 디자인과 커뮤니케이션을 하였고 작업 시 가이드 라인의 중요성을 느끼게 된 프로젝트였습니다.</li>
+                      </ul>
+                      <div className="skils">
+                        <p className="txt">HTML, CSS, SCSS, JavaScript, ,Jquery, GitLab, Zeplin</p>
+                      </div>
+                    </S.BoxLine>
+                  </S.BoxLine>
+                </li>
+                <li className="project__lists-item">
+                  <S.BoxLine className="project__box">
+                    <p className="title">🎈제네시스(운영)</p>
+                    <p className="company">Ipartners</p>
+                    <div className="date">
+                      <span className="start">2021.11</span>
+                      <span className="end">2023.06</span>
+                    </div>
+                    <div className="member">
+                      <span className="number">총 2명</span>
+                      <span className="contribution">기여도: <span className="num">50%</span></span>
+                    </div>
+                    <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
+                      <ul className="lists">
+                        <li className="square">AEM 및 컴포넌트 개발에 맞게 코딩 진행</li>
+                        <li className="square">반응형, 웹 접근성, 기능별 모듈화</li>
+                        <li className="square">첫 AEM, 컴포넌트화 프로젝트로 가이드에 맞게 완성된 컴포넌트를 통해 AEM으로 재활용하여 보다 편리하게 운영을 하였고, 재활용에 최적화할 수 있게 컴포넌트 구상 및 가독성 좋은 컴포넌트의 중요성을 배우게 되었습니다.</li>
+                      </ul>
+                      <div className="skils">
+                        <p className="txt">HTML, CSS, SCSS, JavaScript, Jquery, SVN(Subversion), GitLab</p>
+                      </div>
+                    </S.BoxLine>
+                  </S.BoxLine>
+                </li>
+                <li className="project__lists-item">
+                  <S.BoxLine className="project__box">
+                    <p className="title">🎈현대닷컴(운영)</p>
+                    <p className="company">Ipartners</p>
+                    <div className="date">
+                      <span className="start">2023.07</span>
+                      <span className="end">진행중</span>
+                    </div>
+                    <div className="member">
+                      <span className="number">총 3명</span>
+                      <span className="contribution">기여도: <span className="num">35%</span></span>
+                    </div>
+                    <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
+                      <ul className="lists">
+                        <li className="square">AEM 사이트와 Vue 사이트 운영 업무</li>
+                        <li className="square">Vue로 진행하는 첫 프로젝트로 현재 프로젝트를 바탕으로 구조 파악 및 경험 쌓기에 도움이 되고 있습니다.</li>
+                      </ul>
+                      <div className="skils">
+                        <p className="txt">HTML, CSS, SCSS, JavaScript, GitLab, Vue</p>
+                      </div>
                     </S.BoxLine>
                   </S.BoxLine>
                 </li>
@@ -246,34 +374,38 @@ function ProfileTemplate(){
               <S.BoxFlex>
                 <div className="plan__info">
                   <p className="tit"><span>목표</span></p>
-                  <ul className="lists">
-                    <li className="square">
-                      <p className="txt">velog를 통해 복습을 하며, 기술 정리</p>
-                    </li>
-                    <li className="square">
-                      <p className="txt">github 꾸준한 기록</p>
-                    </li>
-                    <li className="square">
-                      <p className="txt">현재 포트폴리오 정리 되지 않았지만, 계속된 수정을 통해 가이드 및 완성도 높게 수정 진행.</p>
-                    </li>
-                    <li className="square">
-                      <p className="txt">전체적으로 안정기를 찾은 후 naver 블로그를 통해 2차 복습 진행</p>
-                    </li>
-                  </ul>
+                  <S.BoxLine $top $margin="15px 0 0 0" $padding="15px 0 0 0">
+                    <ul className="lists">
+                      <li className="square">
+                        <p className="txt">velog를 통해 복습을 하며, 기술 정리</p>
+                      </li>
+                      <li className="square">
+                        <p className="txt">github 꾸준한 기록</p>
+                      </li>
+                      <li className="square">
+                        <p className="txt">현재 포트폴리오 정리 되지 않았지만, 계속된 수정을 통해 가이드 및 완성도 높게 수정 진행.</p>
+                      </li>
+                      <li className="square">
+                        <p className="txt">전체적으로 안정기를 찾은 후 naver 블로그를 통해 2차 복습 진행</p>
+                      </li>
+                    </ul>
+                  </S.BoxLine>
                 </div>
                 <div className="plan__info">
                   <p className="tit"><span>2023, 2024 계획</span></p>
-                  <ul className="lists">
-                    <li className="square">
-                      <p className="txt">React 중심적 기술 향상</p>
-                    </li>
-                    <li className="square">
-                      <p className="txt">2023년 React, Vue 프론트엔드에 필수 요소를 능숙하게 활용하기 위한 공부 및 발전</p>
-                    </li>
-                    <li className="square">
-                      <p className="txt">2024년 TypeScript 시작 - 개인 프로젝트 적용</p>
-                    </li>
-                  </ul>
+                  <S.BoxLine $top $margin="15px 0 0 0" $padding="15px 0 0 0">
+                    <ul className="lists">
+                      <li className="square">
+                        <p className="txt">React 중심적 기술 향상</p>
+                      </li>
+                      <li className="square">
+                        <p className="txt">React, Vue 프론트엔드에 필수 요소를 능숙하게 활용하기 위한 공부 및 발전</p>
+                      </li>
+                      <li className="square">
+                        <p className="txt">2023년 11월 ~ TypeScript 시작 - 개인 프로젝트 적용</p>
+                      </li>
+                    </ul>
+                  </S.BoxLine>
                 </div>
               </S.BoxFlex>
             </div>
