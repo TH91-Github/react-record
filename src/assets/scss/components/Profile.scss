@@ -98,6 +98,7 @@
     padding: 30px 0;
   }
   &__box { 
+    margin-top:30px;
     padding:0 30px;
   }
   .skils {
@@ -140,67 +141,6 @@
     }
     .porgress {
       margin-top:10px;
-    }
-  }
-  .plan {
-    &__info { 
-      width: 50%;
-      padding:0 20px;
-    }
-    .tit {
-      font-size:18px;
-      font-family:$fontB;
-      text-align:center;
-      & > span {
-        display:inline-block;
-        position:relative;
-        &::before {
-          position:absolute;
-          right:0;
-          bottom:0;
-          width:30%;
-          height:2px;
-          background:$color2;
-          content:"";
-        }
-        &::after{
-          position:absolute;
-          left:0;
-          bottom:0;
-          width:70%;
-          height:2px;
-          background:$color1;
-          content:"";
-        }
-      }
-    }
-    .txt {
-      font-size:14px;
-      color:$subTextColor;
-    }
-    .lists {
-      margin-top:15px;
-      padding-top:15px;
-      border-top:1px solid $lineColor;
-      & > li {
-        position:relative;
-        margin-top:8px;
-        &:first-child {
-          margin-top:0;
-        }
-      }
-      .square {
-        padding-left:10px;
-        &::after{
-          position:absolute;
-          top:5px;
-          left:0;
-          width:3px;
-          height:3px;
-          background:$subTextColor;
-          content:"";
-        }
-      }
     }
   }
   .project{
@@ -267,6 +207,67 @@
       .review {
         margin-top:10px;
         color:$textColor;
+      }
+    }
+  }
+  .plan {
+    &__info { 
+      width: 50%;
+      padding:0 20px;
+    }
+    .tit {
+      font-size:18px;
+      font-family:$fontB;
+      text-align:center;
+      & > span {
+        display:inline-block;
+        position:relative;
+        &::before {
+          position:absolute;
+          right:0;
+          bottom:0;
+          width:30%;
+          height:2px;
+          background:$color2;
+          content:"";
+        }
+        &::after{
+          position:absolute;
+          left:0;
+          bottom:0;
+          width:70%;
+          height:2px;
+          background:$color1;
+          content:"";
+        }
+      }
+    }
+    .txt {
+      font-size:14px;
+      color:$textColor;
+    }
+    .lists {
+      margin-top:15px;
+      padding-top:15px;
+      border-top:1px solid $lineColor;
+      & > li {
+        position:relative;
+        margin-top:8px;
+        &:first-child {
+          margin-top:0;
+        }
+      }
+      .square {
+        padding-left:10px;
+        &::after{
+          position:absolute;
+          top:5px;
+          left:0;
+          width:3px;
+          height:3px;
+          background:$textColor;
+          content:"";
+        }
       }
     }
   }
@@ -353,20 +354,6 @@
         margin-top:10px;
       }
     }
-    .plan {
-      &__info { 
-        width: 100%;
-        margin-top:25px;
-        padding:0 15px;
-        &:first-child {
-          margin-top:0;
-        }
-      }
-      .tit {
-        font-size:20px;
-        text-align:left;
-      }
-    }
     .project{
       &__lists {
         &-item{
@@ -383,6 +370,20 @@
           margin-top:10px;
           color:$textColor;
         }
+      }
+    }
+    .plan {
+      &__info { 
+        width: 100%;
+        margin-top:25px;
+        padding:0 15px;
+        &:first-child {
+          margin-top:0;
+        }
+      }
+      .tit {
+        font-size:20px;
+        text-align:left;
       }
     }
     .thank{

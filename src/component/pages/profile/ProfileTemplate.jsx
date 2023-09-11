@@ -10,7 +10,7 @@ import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/co
 import "assets/scss/components/Profile.scss";
 
 // Title Style
-const styleTitPadding= "30px 0";
+const styleTitPadding= "30px 0 0";
 const styleTItSize = "24px";
 
 // 데이터로 만들기 전 하드코딩
@@ -179,51 +179,6 @@ function ProfileTemplate(){
             </div>
           </S.BoxInner>
         </div>
-        <div className="section plan">
-          <S.BoxInner>
-            <TitleBar
-              $padding={styleTitPadding}
-              fontSize={styleTItSize}
-              $align="center">
-                📚PLAN
-            </TitleBar>
-            <div className="profile__box">
-              <S.BoxFlex $margin="20px 0 0 0">
-                <div className="plan__info">
-                  <p className="tit"><span>목표</span></p>
-                  <ul className="lists">
-                    <li className="square">
-                      <p className="txt">velog를 통해 복습을 하며, 기술 정리</p>
-                    </li>
-                    <li className="square">
-                      <p className="txt">github 꾸준한 기록</p>
-                    </li>
-                    <li className="square">
-                      <p className="txt">현재 포트폴리오 정리 되지 않았지만, 계속된 수정을 통해 가이드 및 완성도 높게 수정 진행.</p>
-                    </li>
-                    <li className="square">
-                      <p className="txt">전체적으로 안정기를 찾은 후 naver 블로그를 통해 2차 복습 진행</p>
-                    </li>
-                  </ul>
-                </div>
-                <div className="plan__info">
-                  <p className="tit"><span>2023, 2024 계획</span></p>
-                  <ul className="lists">
-                    <li className="square">
-                      <p className="txt">React 중심적 기술 향상</p>
-                    </li>
-                    <li className="square">
-                      <p className="txt">2023년 React, Vue 프론트엔드에 필수 요소를 능숙하게 활용하기 위한 공부 및 발전</p>
-                    </li>
-                    <li className="square">
-                      <p className="txt">2024년 TypeScript 시작 - 개인 프로젝트 적용</p>
-                    </li>
-                  </ul>
-                </div>
-              </S.BoxFlex>
-            </div>
-          </S.BoxInner>
-        </div>
         <div className="section project">
           <S.BoxInner>
             <TitleBar
@@ -279,6 +234,52 @@ function ProfileTemplate(){
             </div>
           </S.BoxInner>
         </div>
+        <div className="section plan">
+          <S.BoxInner>
+            <TitleBar
+              $padding={styleTitPadding}
+              fontSize={styleTItSize}
+              $align="center">
+                📚PLAN
+            </TitleBar>
+            <div className="profile__box">
+              <S.BoxFlex>
+                <div className="plan__info">
+                  <p className="tit"><span>목표</span></p>
+                  <ul className="lists">
+                    <li className="square">
+                      <p className="txt">velog를 통해 복습을 하며, 기술 정리</p>
+                    </li>
+                    <li className="square">
+                      <p className="txt">github 꾸준한 기록</p>
+                    </li>
+                    <li className="square">
+                      <p className="txt">현재 포트폴리오 정리 되지 않았지만, 계속된 수정을 통해 가이드 및 완성도 높게 수정 진행.</p>
+                    </li>
+                    <li className="square">
+                      <p className="txt">전체적으로 안정기를 찾은 후 naver 블로그를 통해 2차 복습 진행</p>
+                    </li>
+                  </ul>
+                </div>
+                <div className="plan__info">
+                  <p className="tit"><span>2023, 2024 계획</span></p>
+                  <ul className="lists">
+                    <li className="square">
+                      <p className="txt">React 중심적 기술 향상</p>
+                    </li>
+                    <li className="square">
+                      <p className="txt">2023년 React, Vue 프론트엔드에 필수 요소를 능숙하게 활용하기 위한 공부 및 발전</p>
+                    </li>
+                    <li className="square">
+                      <p className="txt">2024년 TypeScript 시작 - 개인 프로젝트 적용</p>
+                    </li>
+                  </ul>
+                </div>
+              </S.BoxFlex>
+            </div>
+          </S.BoxInner>
+        </div>
+        
         <div className="section thank">
           <S.BoxInner>
             <S.TextP $align="center">
