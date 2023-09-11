@@ -35,15 +35,16 @@ export const Icon = styled.i`
 // A
 export const A = styled.a`
   display:inline-block;
-  color: ${props => props.color || colors.blackColor};
+  color: ${props => props.color || colors.textColor};
 `;
 
 // P
 export const TextP = styled.p`
   ${MarginPadding}
   font-size: ${props => props.fontSize || font.size};
+  font-weight: ${props => props.fontWeight || '550'};
   text-align: ${props => props.$align || "left"};
-  color: ${props => props.color || colors.blackColor};
+  color: ${props => props.color || colors.textColor};
   & + p { 
     margin-top: 10px;
   }

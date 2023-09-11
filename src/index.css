@@ -13,9 +13,6 @@ button {
   cursor: pointer;
 }
 
-.skip-nav {
-  display: none;
-}
 .blind {
   position:absolute;
   top:-99999px;
