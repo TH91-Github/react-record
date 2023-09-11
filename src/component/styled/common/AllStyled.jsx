@@ -45,7 +45,7 @@ export const TextP = styled.p`
   font-weight: ${props => props.fontWeight || '550'};
   text-align: ${props => props.$align || 'left'};
   color: ${props => props.color || colors.textColor};
-  line-height: ${props => props.color || '21px'};
+  line-height: ${props => props.color || '1.5'};
   & + p { 
     margin-top: 10px;
   }

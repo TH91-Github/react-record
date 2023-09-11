@@ -10,7 +10,6 @@ import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/co
 import "assets/scss/components/Profile.scss";
 
 // Title Style
-const styleTitPadding= "30px 0 0";
 const styleTItSize = "24px";
 
 // 데이터로 만들기 전 하드코딩
@@ -71,7 +70,6 @@ function ProfileTemplate(){
         <div className="section about">
           <S.BoxInner>
             <TitleBar
-              $padding={styleTitPadding}
               fontSize={styleTItSize}
               $align="center">
               👨‍💻ABOUT
@@ -93,7 +91,6 @@ function ProfileTemplate(){
         <div className="section skils">
           <S.BoxInner>
             <TitleBar
-              $padding={styleTitPadding}
               fontSize={styleTItSize}
               $align="center">
               🛠️SKILS
@@ -187,7 +184,6 @@ function ProfileTemplate(){
         <div className="section project">
           <S.BoxInner>
             <TitleBar
-              $padding={styleTitPadding}
               fontSize={styleTItSize}
               $align="center">
                 📌Project
@@ -371,7 +367,6 @@ function ProfileTemplate(){
         <div className="section plan">
           <S.BoxInner>
             <TitleBar
-              $padding={styleTitPadding}
               fontSize={styleTItSize}
               $align="center">
                 📚PLAN
