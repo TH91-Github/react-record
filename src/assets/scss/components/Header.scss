@@ -305,15 +305,15 @@
       .open {
         .header__nav-menu {
           display:block;
-          animation: menuOpen .3s both;
-          @keyframes menuOpen {
-            0%{
-              left:-110%;
-            }
-            100%{
-              left:0;
-            }
-          }
+          // animation: menuOpen .3s both;
+          // @keyframes menuOpen {
+          //   0%{
+          //     left:-110%;
+          //   }
+          //   100%{
+          //     left:0;
+          //   }
+          // }
         }
         .header__nav-btn {
           &::after { 

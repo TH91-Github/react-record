@@ -15,6 +15,8 @@ function SiteTemplate(){
           SiteTemplate
         </TitleBar>
         <Ing>⚠️준비중🚧</Ing>
+        <hr />
+        <p>React로 회사 및 다른 기업 사이트 만들고 확인할 수 있는 곳.</p>
       </S.BoxInner>
       <Outlet />
     </div>

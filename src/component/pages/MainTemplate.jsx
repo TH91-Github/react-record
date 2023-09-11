@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SkipNav from 'component/common/SkipNav';
 import { Outlet, useLocation } from 'react-router-dom';
 
@@ -15,21 +15,20 @@ function MainTemplate () {
   const [headFixed, setHeadFixed] = useState(false);
   const [isMo, setIsMo] = useState(null);
   const location = useLocation();
-
   let windY = 0;
   const fixChange = () => {
     if(headFixed && windY <= 0){
       setHeadFixed(!headFixed);
     }else{ 
-      // console.log("ㅇㅇ")
+      // console.log("Test")
     }
     
   }
-
   const reSizeEvent = () => {
     isMobileChk();
   }
-  const scrollEvent = () => { // scroll
+
+  const scrollEvent = () => { // scroll *공통 빼야하는 요소
     const headerH = document.querySelector('.header').offsetHeight;
     windY = window.pageYOffset;
     if(headerH < windY){
@@ -38,7 +37,7 @@ function MainTemplate () {
       setHeadFixed(false);
     }
   }
-  const isMobileChk = () => {
+  const isMobileChk = () => { // *공통 빼야하는 요소
     const wininnW = window.innerWidth;
     const scrollbarW = parseInt(wininnW - document.body.clientWidth);
     const winW = parseInt(wininnW - scrollbarW);
@@ -55,8 +54,8 @@ function MainTemplate () {
     setHeadFixed(false);
   },[location, isMo])
 
-
-  useEffect (() => {
+  // scroll, resize event *공통으로 빼는 작업 필요.
+  useEffect (() => { 
     window.addEventListener("resize", reSizeEvent);
     window.addEventListener("scroll", scrollEvent);
     return () => {
@@ -77,6 +76,7 @@ function MainTemplate () {
       <SkipNav />
       <div className={'main-wrap' + (direction ? ' row' : ' column') + (headFixed ? ' fixed' : '')}>
         <Header
+          location={location}
           headFixed={headFixed}
           fixChange={fixChange}
           direction={direction} 

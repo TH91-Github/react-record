@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { routerData } from "data/routerData";
 
@@ -7,7 +7,7 @@ import "assets/scss/common.scss";
 import "assets/scss/components/Header.scss";
 
 
-function Header({headFixed, fixChange, chnageNav}) {
+function Header({location, headFixed, fixChange, chnageNav}) {
   const [chkOnOff,setchkOnOff] = useState(false);
   const [scrolly, setScrolly] = useState(0);
 
@@ -23,6 +23,11 @@ function Header({headFixed, fixChange, chnageNav}) {
   const navDirection = () => {
     chnageNav();
   }
+
+  useEffect(() => {
+    setchkOnOff(false);
+    mobileScrollOff(false);
+  },[location])
   
   function mobileScrollOff(chkOnOff){ // mo 스크롤 막기
     const tBody = document.body;

@@ -56,6 +56,8 @@ https://th-record-blog.netlify.app/
 <a href="https://velog.io/@th_velog"><img src="https://img.shields.io/badge/Velog-20C997?style=for-the-badge&logo=Velog&logoColor=white" alt="" /></a>
 <a href="https://blog.naver.com/k__taehoon__"><img src="https://img.shields.io/badge/Naver-03C75A?style=for-the-badge&logo=Naver&logoColor=white" alt="" /></a>
 
+## 참고
+node 14.21.0 
 ## 시작하기 & clone 
 
 ```shell
