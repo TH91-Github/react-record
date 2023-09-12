@@ -208,7 +208,7 @@ function ProfileTemplate(){
                         <li className="square">전체 사이트 수정 진행 및 마무리 작업을 진행하였습니다.</li>
                       </ul>
                       <div className="skils">
-                        <p className="txt">HTML, CSS</p>
+                        <p className="txt">HTML, CSS, JavaScript</p>
                       </div>
                     </S.BoxLine>
                   </S.BoxLine>
@@ -248,7 +248,7 @@ function ProfileTemplate(){
                     </div>
                     <div className="member">
                       <span className="number">총 3명</span>
-                      <span className="contribution">기여도: <span className="num">30%</span></span>
+                      <span className="contribution">기여도: <span className="num">35%</span></span>
                     </div>
                     <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
                       <ul className="lists">
@@ -273,7 +273,7 @@ function ProfileTemplate(){
                     </div>
                     <div className="member">
                       <span className="number">총 3명</span>
-                      <span className="contribution">기여도: <span className="num">50%</span></span>
+                      <span className="contribution">기여도: <span className="num">60%</span></span>
                     </div>
                     <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
                       <ul className="lists">
@@ -283,7 +283,7 @@ function ProfileTemplate(){
                         <li className="square">가장 오래 맡은 프로젝트로 해당 프로젝트에 대해 히스토리를 가장 많이 알게 되었고 고객사의 업무 요청이 심하여 PL, 팀원 잦은 퇴사로 직급이 낮은 상태에서 PL 업무 대행하게 되어 전체적인 업무 흐름 및 다른 팀들과 커뮤니케이션으로 힘들지만 경험을 많이 쌓게 된 프로젝트였습니다.</li>
                       </ul>
                       <div className="skils">
-                        <p className="txt">HTML, CSS , JavaScript Jquery, SVN(Subversion), Canvas</p>
+                        <p className="txt">HTML, CSS , JavaScript, Jquery, SVN(Subversion), Canvas</p>
                       </div>
                     </S.BoxLine>
                   </S.BoxLine>
@@ -298,7 +298,7 @@ function ProfileTemplate(){
                     </div>
                     <div className="member">
                       <span className="number">총 3명</span>
-                      <span className="contribution">기여도: <span className="num">40%</span></span>
+                      <span className="contribution">기여도: <span className="num">45%</span></span>
                     </div>
                     <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
                       <ul className="lists">
@@ -307,7 +307,7 @@ function ProfileTemplate(){
                         <li className="square">하드코딩으로 작업으로 작업을 진행하여 큰 경험을 쌓지는 못하였지만 팀원들과 디자인 가이드 구축 후 가이드를 바탕으로 기획, 디자인과 커뮤니케이션을 하였고 작업 시 가이드 라인의 중요성을 느끼게 된 프로젝트였습니다.</li>
                       </ul>
                       <div className="skils">
-                        <p className="txt">HTML, CSS, SCSS, JavaScript, ,Jquery, GitLab, Zeplin</p>
+                        <p className="txt">HTML, CSS, SCSS, JavaScript, Jquery, GitLab, Zeplin</p>
                       </div>
                     </S.BoxLine>
                   </S.BoxLine>
@@ -411,7 +411,6 @@ function ProfileTemplate(){
             </div>
           </S.BoxInner>
         </div>
-        
         <div className="section thank">
           <S.BoxInner>
             <S.TextP $align="center">
