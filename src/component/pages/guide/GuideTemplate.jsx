@@ -14,6 +14,7 @@ function GuideTemplate(){
           GuideTemplate
         </TitleBar>
       </Banner>
+      
 
       <S.BoxInner $margin="0 auto">
         <Ing>⚠️준비중🚧</Ing>

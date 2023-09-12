@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { colors } from 'component/styled/common/Variable';
 
-
 const baseSize = "18px";
 const SectionTitle = styled.div`
   display: ${props => props.$display || "block"};

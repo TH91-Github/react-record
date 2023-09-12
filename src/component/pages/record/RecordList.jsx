@@ -7,9 +7,9 @@ import Search from "component/common/Search";
 
 // styled
 import * as S from "component/styled/common/AllStyled";
-import TitleBar from "component/styled/TitleBar";
 import Banner from "component/styled/common/Banner";
-
+import TitleBar from "component/styled/TitleBar";
+import Ing from "component/styled/common/Ing";
 
 
 // Record 하위 메뉴 관리 노출 및 이동 담당
@@ -44,7 +44,7 @@ function RecordList () {
 
   function categoryChange(changeD){ // select category
     console.log("카테고리 체인지")
-    setSelectTab(changeD)
+    setSelectTab(changeD);
   }
 
   if(!recordData) return;
@@ -57,59 +57,60 @@ function RecordList () {
       </Banner>
       <S.BoxWrap className="search">
         <S.BoxInner $padding="30px 0" className="search__wrap">
+          <Ing>⚠️작업중🚧</Ing>
           <S.BoxFlex  $direction="row-reverse">
             <div className="search__inner">
               <Search placeholder="준비 중입니다..." btnText="확인" />
             </div>
-          </S.BoxFlex>
-        </S.BoxInner>
-      </S.BoxWrap>
-      
-      
-
-      <S.BoxInner>
-        <div className="search__wrap">
-          <div className="search">
             {/* 
               Record 관련 검색 기능 
               router.desc 구별
             */}
+          </S.BoxFlex>
+        </S.BoxInner>
+      </S.BoxWrap>
+      <S.BoxWrap className="record__content">
+        <S.BoxInner className="record__inner">
+          {/* Tab 컴포넌트 만들기 전 - 틀 */}
+          <div className="tab"> 
+            <div className="tab__select">
+              <ul>
+                {
+                  category.map((item,idx) => 
+                    <li className="record__tab-item" key={idx}>
+                      <button onClick={()=>categoryChange(item)}>
+                        {item}
+                      </button>
+                    </li>
+                  )
+                }
+              </ul>
+            </div>
+            <div className="tab__cont">
+              <div className="tab__cont-title">
+                <TitleBar>
+                  {selectTab}
+                </TitleBar>
+              </div>
+              <div className="tab__cont__inner">
+                <ul className="tab__cont__lists">
+                  {
+                    recordData.map((item,idx) => 
+                      item.view === true &&
+                      <li key={idx}>
+                        <button onClick={() =>{navi(item.path)}}>
+                          <span className="tit">{item.title} 자세히 보기</span>
+                          <span className="desc">{item.desc}</span>
+                        </button>
+                      </li>
+                    )
+                  }
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="record__tab">
-          <ul className="record__tab-list">
-            {
-              category.map((item,idx) => 
-                <li className="record__tab-item" key={idx}>
-                  <button onClick={()=>categoryChange(item)}>
-                    {item}
-                  </button>
-                </li>
-              )
-            }
-          </ul>
-        </div>
-        <div className="record__cont">
-          <TitleBar>
-            {selectTab}
-          </TitleBar>
-          <div className="record__cont__inner">
-            <ul className="record__list">
-              {
-                recordData.map((item,idx) => 
-                  item.view === true &&
-                  <li key={idx}>
-                    <button onClick={() =>{navi(item.path)}}>
-                      <span className="tit">{item.title} 자세히 보기</span>
-                      <span className="desc">{item.desc}</span>
-                    </button>
-                  </li>
-                )
-              }
-            </ul>
-          </div>
-        </div>
-      </S.BoxInner>
+        </S.BoxInner>
+      </S.BoxWrap>
     </div>
   )
 }
