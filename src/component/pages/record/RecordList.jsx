@@ -2,9 +2,15 @@ import React, { useCallback, useEffect, useState } from "react";
 import { RecordRouter } from "./routers/RecordRouter";
 import { useNavigate } from "react-router-dom";
 
+// component
+import Search from "component/common/Search";
+
 // styled
 import * as S from "component/styled/common/AllStyled";
 import TitleBar from "component/styled/TitleBar";
+import Banner from "component/styled/common/Banner";
+
+
 
 // Record 하위 메뉴 관리 노출 및 이동 담당
 function RecordList () {
@@ -33,7 +39,6 @@ function RecordList () {
 
   useEffect(() => { 
     dataLoad(); // 임시 데이터 recordData
-    
   },[dataLoad])
 
 
@@ -44,20 +49,26 @@ function RecordList () {
 
   if(!recordData) return;
   return (
-    <div className="record__content">
-      {
-      /* 
-        현재는 임시로 보여주는 단계 진행.
-        리스트 CSS 컴포넌트 제작
+    <div className="record__wrap">
+      <Banner $center>
+        <TitleBar fontSize="32px">
+          {recordData[0].title}
+        </TitleBar>
+      </Banner>
+      <S.BoxWrap className="search">
+        <S.BoxInner $padding="30px 0" className="search__wrap">
+          <S.BoxFlex  $direction="row-reverse">
+            <div className="search__inner">
+              <Search placeholder="준비 중입니다..." btnText="확인" />
+            </div>
+          </S.BoxFlex>
+        </S.BoxInner>
+      </S.BoxWrap>
+      
+      
 
-        상단 카테고리별 슬라이드 및 목록 제공
-        하단 해당 리스트 All, type1, type2 ...
-      */}
       <S.BoxInner>
-        <div>
-          <TitleBar>
-            {recordData[0].title}
-          </TitleBar>
+        <div className="search__wrap">
           <div className="search">
             {/* 
               Record 관련 검색 기능 
@@ -82,10 +93,10 @@ function RecordList () {
           <TitleBar>
             {selectTab}
           </TitleBar>
-          <div className="record__cont__list">
-            <ul>
+          <div className="record__cont__inner">
+            <ul className="record__list">
               {
-                recordData &&recordData.map((item,idx) => 
+                recordData.map((item,idx) => 
                   item.view === true &&
                   <li key={idx}>
                     <button onClick={() =>{navi(item.path)}}>

@@ -1,28 +1,8 @@
 @import "assets/scss/common.scss";
 
 .record {
-  &__content {
-    padding:50px;
-  }
-  &__tab {
-    &-list {
-      display:flex;
-    }
-    &-item {
-      margin-left:10px;
-      &:first-child {
-        margin-left:0;
-      }
-    }
-  }
-  &__cont {
-    margin-top:30px;
-  }
+  
 }
-
-
-
-
 .study {
   .box {
     .desc {
@@ -48,10 +28,4 @@
   }
 }
 
-button {
-  border:1px solid #000;
-  border-radius:3px;
-  padding:2px;
-  cursor:pointer;
-}
 

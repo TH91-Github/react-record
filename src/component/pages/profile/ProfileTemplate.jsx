@@ -1,14 +1,15 @@
-import PorgressBar from "component/common/ProgressBar";
-import Ing from "component/common/Ing";
+
+
 
 // styled
 import * as S from "component/styled/common/AllStyled";
 import TitleBar from "component/styled/TitleBar";
+import Ing from "component/styled/common/Ing";
+import PorgressBar from "component/styled/common/ProgressBar";
 import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/common/SvgPath";
 
 // scss
 import "assets/scss/components/Profile.scss";
-import ImgProfile from "assets/images/profile.jpg";
 // Title Style
 const styleTItSize = "24px";
 

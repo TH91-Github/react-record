@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-import Ing from "component/common/Ing";
+import Ing from "component/styled/common/Ing";
 
 // scss
 import "assets/scss/components/Record.scss";
@@ -9,8 +9,8 @@ import "assets/scss/components/Record.scss";
 function RecordTemplate () {
   return (
     <div className="record">
-      <Ing>⚠️작업중🚧</Ing>
       <Outlet />
+      <Ing>⚠️작업중🚧</Ing>
     </div>
   )
 }

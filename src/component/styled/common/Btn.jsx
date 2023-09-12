@@ -1,11 +1,13 @@
 import styled from 'styled-components';
+import { colors, font } from './Variable';
 
 const BaseBtn = styled.button`
   display:inline-block;
-  font-size: ${props => props.fontSize || "16px"};
-  color: ${props => props.color || "#000"};
+  border: ${props => props.$border || `1px solid ${colors.textColor}`};
+  font-size: ${props => props.fontSize || font.size};
+  color: ${props => props.color || colors.textColor };
   box-sizing:border-box;
-`
+`;
 
 function Btn({children, ...props}){
   return <BaseBtn {...props}>{children}</BaseBtn>

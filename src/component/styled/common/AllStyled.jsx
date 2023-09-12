@@ -30,15 +30,12 @@ export const Icon = styled.i`
     `
   };
 `;
-
 // ♣ Tag 
-// A
 export const A = styled.a`
   display:inline-block;
   color: ${props => props.color || colors.textColor};
 `;
 
-// P
 export const TextP = styled.p`
   ${MarginPadding}
   font-size: ${props => props.fontSize || font.size};
@@ -50,6 +47,23 @@ export const TextP = styled.p`
     margin-top: 10px;
   }
 `;
+export const Input = styled.input`
+  display:inline-block;
+  padding: ${props => props.$padding || '2px'};
+  border: ${props => props.$border || `1px solid ${colors.textColor}`};
+  font-size: ${props => props.fontSize || font.size};
+  color: ${props => props.color || colors.textColor };
+  box-sizing:border-box;
+`;
+
+export const Button = styled.button`
+  display:inline-block;
+  padding: ${props => props.$padding || '2px'};
+  border: ${props => props.$border || `1px solid ${colors.textColor}`};
+  font-size: ${props => props.fontSize || font.size};
+  color: ${props => props.color || colors.textColor };
+  box-sizing:border-box;
+`; 
 
 // ♣ btnWrap
 export const BtnWrap = styled.div`
@@ -60,7 +74,6 @@ export const BtnWrap = styled.div`
 `;
 
 // ♣ BOX
-
 export const BoxFlex = styled.div`
   display:flex;
   flex-wrap:wrap;
