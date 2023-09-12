@@ -126,8 +126,8 @@ export const BoxLine = styled.div`
 
 // ♣ Sns 
 export const SnsList = styled.div`
-  display:flex;
-  justify-content: ${props => props.$align || "flex-start"};
+  display:${props => props.$display || 'flex'};
+  justify-content: ${props => props.$justifyContent || "flex-start"};
   ${MarginPadding}
   font-size:0;
   gap:${props => props.$gap || 0 };
