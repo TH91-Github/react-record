@@ -24,7 +24,7 @@ function ProfileTemplate(){
               <span>➕</span>
               <span>Front-End <small>(진행중) ✍️</small></span>
             </p>
-            <S.SnsList $align="center" $margin="20px 0 0 0" $gap="10px">
+            <S.SnsList $justifyContent="center" $margin="20px 0 0 0" $gap="10px">
               <S.A 
                 href="https://velog.io/@th_velog" target="_blank" rel="noopener noreferrer" title="Velog 기록 URL">
                 <S.Blind>Velog Url</S.Blind>
