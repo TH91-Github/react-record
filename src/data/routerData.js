@@ -19,11 +19,11 @@ export const routerData = [
     path:"guide",
     element: <GuideTemplate />,
   },
-  // {
-  //   title:"Profile",
-  //   path:"profile",
-  //   element: <ProfileTemplate />,
-  // },
+  {
+    title:"Profile",
+    path:"profile",
+    element: <ProfileTemplate />,
+  },
   {
     title:"Record",
     path:"/record",

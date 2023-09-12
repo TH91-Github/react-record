@@ -2,6 +2,98 @@
 
 .record {
   
+  .tab { 
+    &__lists { 
+      display: flex;
+      gap:10px;
+      &-item{
+        .btn {
+          display:inline-block;
+          padding:10px 15px;
+          border:1px solid $lineColor;
+          border-radius:5px;
+          color:$textColor;
+          transition: $transitionB;
+          &:hover, &:focus {
+            border-color:$color1;
+            background:$color1;
+            color:#fff;
+          }
+        }
+      }
+    }
+    &__cont {
+      margin-top:30px;
+      &-title {
+        padding:0 0 15px;
+        border-bottom:1px solid $lineColor;
+      }
+      &__inner {
+        margin-top:20px;
+      }
+      &__lists {
+        &-item {
+          $beforeW:30px;
+          .btn {
+            display:grid;
+            gap : 5px;
+            row-gap: 5px; 
+            column-gap: 5px;
+            grid-template-columns:$beforeW auto;
+            grid-template-rows:repeat(2, 1fr);
+            overflow:hidden;
+            position:relative;
+            width:100%;
+            padding:10px 5px 6px 0;
+            border:1px solid $lineColor;
+            border-radius:5px;
+            text-align:left;
+            &::after {
+              position:absolute;
+              z-index:-1;
+              top:0;
+              left:-$beforeW;
+              width:$beforeW;
+              height:100%;
+              background:$color2;
+              transition:$transitionB;
+              opacity:0;
+              content:"";
+            }
+            &:hover, &:focus {
+              border-color:$color2;
+              &::after
+              {
+                left:0;
+                opacity:1;
+              }
+              .order {
+                color: $whiteColor;
+              }
+            }
+          }
+          .order {
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            grid-row: 1 / span 2;
+            height:100%;
+            transition: $transitionB;
+          }
+          .tit {
+            display:block;
+            font-size:18px;
+            font-family:$fontB;
+          }
+          .desc {
+            display:block;
+            line-height:1.5;
+            color:$subTextColor;
+          }
+        }
+      }
+    }
+  }
 }
 .study {
   .box {

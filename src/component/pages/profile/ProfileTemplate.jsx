@@ -1,6 +1,3 @@
-
-
-
 // styled
 import * as S from "component/styled/common/AllStyled";
 import TitleBar from "component/styled/TitleBar";
@@ -77,7 +74,7 @@ function ProfileTemplate(){
             <div className="profile__box">
             <S.TextP $align="center">
               과거엔 퍼블리셔, 현재와 미래에는 프론트엔드로<br />
-              발전하고 싶은 <span class="color1">김태훈</span>입니다.<br />
+              발전하고 싶은 <span className="color1">김태훈</span>입니다.<br />
             </S.TextP>
             <S.TextP $align="center">
               수동적인 개발자가 아닌 주도적으로 <br />

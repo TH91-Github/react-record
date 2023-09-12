@@ -36,5 +36,6 @@ $fontFamily: ($font,$fontB,$fontL);
   @include fontFace($name);
 }
 
-
+// transition
+$transitionB: all .3s;
 

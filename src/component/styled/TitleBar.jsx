@@ -3,10 +3,10 @@ import { colors } from 'component/styled/common/Variable';
 
 const baseSize = "18px";
 const SectionTitle = styled.div`
-  display: ${props => props.$display || "block"};
-  margin: ${props => props.$margin || "0 0 0 0"};
-  padding: ${props => props.$padding || "0 0 0 0"};
-  text-align: ${props => props.$align || "left"};
+  display: ${props => props.$display || 'block'};
+  margin: ${props => props.$margin || '0 0 0 0'};
+  padding: ${props => props.$padding || '0 0 0 0'};
+  ${props => props.$align && `text-align:${props.$align}`};
 `;
 const Tit = styled.p`
   display:inline-block;
@@ -16,7 +16,7 @@ const Tit = styled.p`
   font-family: var(--font-NanumGithicB);
   font-weight: ${ props => props.fontWeight || '550'};
   ${ props => props.color && `
-    color: ${props.color}
+    color: ${props.color};
   `};
   &::before { 
     position:absolute;

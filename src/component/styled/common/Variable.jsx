@@ -44,3 +44,8 @@ export const colors = {
   // Line Color
   lineColor:"#dbdbdb",
 }
+
+// transition
+export const transition = {
+  base: "all .3s",
+}

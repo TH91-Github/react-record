@@ -92,11 +92,17 @@
   &-link {
     display:inline-block;
     padding:15px;
+    transition:$transitionB;
     color:#000;
     cursor:pointer;
     &.active {
-      font-weight:600;
       color: $color1;
+      &:focus {
+        color: $color1;
+      }
+    }
+    &:hover, &:focus {
+      color: $color2;
     }
   }
   &__fix {

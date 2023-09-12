@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-import Banner from "component/styled/common/Banner";
+import Banner from "component/common/Banner";
 
 // styled
 import * as S from "component/styled/common/AllStyled";
