@@ -1,12 +1,12 @@
-@import "./font.scss";
-@import "./var.scss";
-@import "./mixin.scss";
+@import "./main";
 :root {
   --font-NanumGithic: 'NanumGothic';
   --font-NanumGithicB: 'NanumGothicBold';
   --font-NanumGithicL: 'NanumGothicLight';
 }
-
 .skip-nav {
   display: none;
+}
+body {
+  font-size:16px;
 }
