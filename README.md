@@ -10,9 +10,13 @@ github를 통해 기록하고 공유하기 위해 React로 시작을 했습니�
 </p>
 <br>
 
-### Netlify 연결 🔗
-🚧 준비중...
-https://th-record-blog.netlify.app/
+###  🔗
+🚧 준비중...<br>
+🎈Netlify<br>
+https://th-record-blog.netlify.app/<br>
+🎈Vercel<br>
+https://react-record.vercel.app/
+
 
 ### Stack 📕
 <span><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white" alt="HTML5" /></span>

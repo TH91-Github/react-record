@@ -7,21 +7,23 @@ import { SvgVelog } from "component/styled/common/SvgPath";
 import TitleBar from "component/styled/TitleBar";
 
 function State3 () {
-  
   const cssGap = "20px 0 0 0";
   return (
     <div className="study">
       <S.BoxLine $maxWidth="1000px" $margin="50px auto 0" $padding="30px">
         <BackBtn $position="absolute" $top="10px" $right="10px" fontSize="20px">↩️</BackBtn>
-        <S.SnsList>
-          <S.A 
-            href="https://velog.io/@th_velog/React-state-useState-2" target="_blank" rel="noopener noreferrer">
-            <S.Blind>Velog Url</S.Blind>
-            <S.Icon><SvgVelog color="#20C997"></SvgVelog></S.Icon>
-          </S.A>
-        </S.SnsList>
+        <div className="study__header">
+          <S.SnsBoxText $lineHeight="20px">
+            <S.A 
+              href="https://velog.io/@th_velog/React-state-useState-2" target="_blank" rel="noopener noreferrer" $display="flex">
+              <S.Icon><SvgVelog color="#20C997"></SvgVelog></S.Icon>
+              <S.SnsText $margin="0 0 0 10px">Velog Url</S.SnsText>
+            </S.A>
+          </S.SnsBoxText>
+          <TitleBar fontSize="24px">📌 React - state(3) Input, Button 값 변경 </TitleBar>
+        </div>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
-          <TitleBar>Button 증가/감소</TitleBar>
+          <TitleBar>button count +-</TitleBar>
           <p className="desc">
             ...Spread Operator(스프레드 연산자)<br />
             사용하여 복사 후 값 변경 후 👉 set변경함수() 사용.

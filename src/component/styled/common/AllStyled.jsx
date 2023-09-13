@@ -32,8 +32,9 @@ export const Icon = styled.i`
 `;
 // ♣ Tag 
 export const A = styled.a`
-  display:inline-block;
+  display:${props => props.$display || 'inline-block'};
   color: ${props => props.color || colors.textColor};
+  line-height:initial;
 `;
 
 export const TextP = styled.p`
@@ -135,13 +136,16 @@ export const SnsList = styled.div`
   gap:${props => props.$gap || 0 };
 `;
 export const SnsBoxText = styled.div`
-
-  ${props => props.$lineHeight && `line-height:${props.lineHeight}`};
-
+  display: ${props => props.$display || 'inline-block'};
+  ${MarginPadding}
+  ${props => props.$lineHeight && `line-height:${props.$lineHeight}`};
 `
 export const SnsText = styled.span`
   display:inline-block;
+  ${MarginPadding}
   font-size:${props => props.fontSize || '16px'};
+  color:${props => props.color || colors.textColor};
+  line-height:initial;
 `;
 
 // ♣ badge
