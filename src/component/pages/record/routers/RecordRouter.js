@@ -1,4 +1,6 @@
-import RecordList from '../RecordList';
+import RecordList from 'component/pages/record/RecordList';
+import Js from 'component/pages/record/study/Test';
+import Test from 'component/pages/record/study/Test';
 import State2 from 'component/pages/record/study/state/State2';
 import State3 from 'component/pages/record/study/state/State3';
 
@@ -10,6 +12,14 @@ export const RecordRouter = [
     element: <RecordList />,
     view: false,
     desc: "Record 목록 정리 관리 화면",
+  },
+  {
+    id:111111,
+    title:"Test",
+    path:"Test",
+    element: <Test />,
+    view: false,
+    desc: "Test 코드",
   },
   {
     id:2,
@@ -26,6 +36,14 @@ export const RecordRouter = [
     element: <State3 />,
     view: true,
     desc: "React-useState 활용",
+  },
+  {
+    id:4,
+    title:"JavaScript",
+    path:"js/Js",
+    element: <Js />,
+    view: true,
+    desc: "JavaScript 테스트",
   },
 ]
 

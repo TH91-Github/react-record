@@ -106,6 +106,9 @@
       margin-top:15px;
       font-size: 14px;
       color: $subTextColor;
+      & + .desc {
+        margin-top:8px;
+      }
     }
     &__cont { 
       margin-top:10px;
@@ -122,6 +125,10 @@
         font-weight:600;
       }
     }
+  }
+  .button {
+    padding:5px;
+    border:1px solid $lineColor;
   }
 }
 

@@ -8,6 +8,11 @@ import TitleBar from "component/common/TitleBar";
 import SubTitleBar from "component/common/SubTitleBar";
 
 function State3 () {
+
+  
+  const [count, setCount] = useState(0);
+
+
   const cssGap = "20px 0 0 0";
   return (
     <div className="study">
@@ -26,12 +31,22 @@ function State3 () {
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>button count +-</SubTitleBar>
           <p className="desc">
-            ...Spread Operator(스프레드 연산자)<br />
-            사용하여 복사 후 값 변경 후 👉 set변경함수() 사용.
+            간단한 Count 증가 감소
           </p>
           <CodeTemplate text={"dd"}/>
           <div className="box__cont">
             <p className="box__cont-tit">[👇실행화면👇]</p>
+            <div className="box__result">
+              <p>{count}</p>
+              <S.BtnWrap $margin="20px 0 0">
+                <button type="button" onClick={() => setCount(count+1)}>
+                  증가
+                </button>
+                <button type="button" onClick={() => setCount(count-1)}>
+                  감소
+                </button>
+              </S.BtnWrap>
+            </div>
           </div>
         </S.BoxLine>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
@@ -43,6 +58,9 @@ function State3 () {
           <CodeTemplate text={"dd"}/>
           <div className="box__cont">
             <p className="box__cont-tit">[👇실행화면👇]</p>
+            <div className="box__result">
+              <p>{count}</p>
+            </div>
           </div>
         </S.BoxLine>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
@@ -54,6 +72,10 @@ function State3 () {
           <CodeTemplate text={"dd"}/>
           <div className="box__cont">
             <p className="box__cont-tit">[👇실행화면👇]</p>
+            <div className="box__result">
+              <p>{count}</p>
+              
+            </div>
           </div>
         </S.BoxLine>
       </S.BoxLine>

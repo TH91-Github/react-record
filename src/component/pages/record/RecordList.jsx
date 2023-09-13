@@ -22,31 +22,42 @@ function RecordList () {
 
   const dataLoad = useCallback(() => {
     // data 구조 만들고 -> fetch 사용 예정. 
-    setRecordData(RecordRouter);
+    fliterList();
     fliterCategory(RecordRouter);
   },[]);
 
-  const fliterCategory = () =>{ // 데이터 기준 카테고리 생성
-    const filterList = RecordRouter.reduce((item, {path}) => {
-      item.indexOf('All') === -1 && item.push('All');
-      if(path !== undefined) {
-        const findName = path.split("/")[0]; 
-        item.indexOf(findName) === -1 && item.push(findName)
+  const fliterCategory = () => { // 데이터 기준 카테고리 생성
+    const filterList = RecordRouter.reduce((prev, {path, view}) => {
+      prev.indexOf('All') === -1 && prev.push('All');
+      if(path !== undefined && view === true) {
+        const findName = path.split("/")[0];
+        prev.indexOf(findName) === -1 && prev.push(findName);
       }
-      return item; 
+      return prev;
     },[]);
     setCategory(filterList);
+  }
+
+  const fliterList = (selectName) => { // 데이터 로드, 탭 클릭 시
+    const changeData = [...RecordRouter];
+    const viewList = changeData.filter(item => item.view && item);
+    const selectList = viewList.filter(item => item.path.indexOf(selectName) > -1 && item);
+
+    // 선별된 리스트가 없을 경우 view true 전체 노출 - all
+    selectList.length > 0 ? setRecordData(selectList)
+    : setRecordData(viewList)
   }
 
   useEffect(() => { 
     dataLoad(); // 임시 데이터 recordData
   },[dataLoad])
 
-
-  function categoryChange(changeD){ // select category
+  const categoryChange = (changeD) => { // select category
     console.log("카테고리 체인지")
     setSelectTab(changeD);
+    fliterList(changeD);
   }
+  
 
   if(!recordData) return;
   return (
@@ -101,7 +112,7 @@ function RecordList () {
                       item.view === true &&
                       <li key={idx} className="tab__cont__lists-item">
                         <button type="button" className="btn" title="자세히 보기" onClick={() =>{navi(item.path)}}>
-                          <span className="order">{idx}</span>
+                          <span className="order">{idx+1}</span>
                           <span className="tit">{item.title}</span>
                           <span className="desc">{item.desc}</span>
                         </button>

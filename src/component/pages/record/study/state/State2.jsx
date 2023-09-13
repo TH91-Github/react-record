@@ -66,19 +66,21 @@ function State2 () {
           <CodeTemplate text={successCode1}/>
           <div className="box__cont">
             <p className="box__cont-tit">[👇실행화면👇]</p>
-            <p>arr : {success}</p>
-            <p>arr[0] : {success[0]}</p>
-            <p>arr[1] : {success[1]}</p>
-            <p>arr[2] : {success[2]}</p>
+            <div className="box__result">
+              <p>arr : {success}</p>
+              <p>arr[0] : {success[0]}</p>
+              <p>arr[1] : {success[1]}</p>
+              <p>arr[2] : {success[2]}</p>
+              <S.BtnWrap $margin="20px 0 0">
+                <button type="button" className="button" onClick={successChange}>
+                  변경 버튼
+                </button>
+                <button type="button" className="button" onClick={() => { setSuccess(baseData);}}>
+                  초기화 버튼
+                </button>
+              </S.BtnWrap>
+            </div>
           </div>
-          <S.BtnWrap $margin="20px 0 0">
-            <button type="button" onClick={successChange}>
-              변경 버튼
-            </button>
-            <button type="button" onClick={() => { setSuccess(baseData);}}>
-              초기화 버튼
-          </button>
-          </S.BtnWrap>
         </S.BoxLine>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <TitleBar>실패 버전-1</TitleBar>
@@ -87,42 +89,46 @@ function State2 () {
           </p>
           <CodeTemplate text={code1}/>
           <div className="box__cont">
-          <p className="box__cont-tit">[👇실행화면👇]</p>
-            {
-              arr1.map((item) =>
-                <p key={item}>{item}</p>
-              )
-            }
+            <p className="box__cont-tit">[👇실행화면👇]</p>
+            <div className="box__result">
+              {
+                arr1.map((item) =>
+                  <p key={item}>{item}</p>
+                )
+              }
+              <S.BtnWrap $margin="20px 0 0">
+                <button type="button" className="button" onClick={arrChange1}>
+                  변경 버튼
+                </button>
+                <button type="button" className="button" onClick={() => { setArr1(baseData);}}>
+                  초기화 버튼
+                </button>
+              </S.BtnWrap>
+            </div>
           </div>
-          <S.BtnWrap $margin="20px 0 0">
-            <button type="button" onClick={arrChange1}>
-              변경 버튼
-            </button>
-            <button type="button" onClick={() => { setArr1(baseData);}}>
-              초기화 버튼
-          </button>
-          </S.BtnWrap>
         </S.BoxLine>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <TitleBar>실패 버전-2</TitleBar>
-          <p className="desc">
-            변경은 가능하지만 수정하기 위해 불필요하게 입력을 해야한다.
-          </p>
+          <p className="desc">기존 배열은 다 사라지고 야호만 나오게 되며 변경 버튼 한번 더 클릭 시 에러</p>
+          <p className="desc">⚠️ setArr()내에 저렇게 마음대로 변경을 하게 될 경우 값이 바뀌게 되니 하지 말아야 한다</p>
           <CodeTemplate text={code2}/>
           <div className="box__cont">
             <p className="box__cont-tit">[👇실행화면👇]</p>
-            <p>{arr2[0]}</p>
-            <p>{arr2[1]}</p>
-            <p>{arr2[2]}</p>
+            <div className="box__result">
+              <p>{arr2[0]}</p>
+              <p>{arr2[1]}</p>
+              <p>{arr2[2]}</p>
+              <S.BtnWrap $margin="20px 0 0">
+                <button type="button" className="button" onClick={arrChange2}>
+                  변경 버튼
+                </button>
+                <button type="button" className="button" onClick={() => { setArr2(baseData);}}>
+                  초기화 버튼
+                </button>
+              </S.BtnWrap>
+            </div>
           </div>
-          <S.BtnWrap $margin="20px 0 0">
-            <button type="button" onClick={arrChange2}>
-              변경 버튼
-            </button>
-            <button type="button" onClick={() => { setArr2(baseData);}}>
-              초기화 버튼
-          </button>
-          </S.BtnWrap>
+          
         </S.BoxLine>
       </S.BoxLine>
     </div>

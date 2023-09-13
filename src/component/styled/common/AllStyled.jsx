@@ -154,7 +154,7 @@ export const SnsList = styled.div`
   gap:${props => props.$gap || 0 };
 `;
 export const SnsBoxText = styled.div`
-  display: ${props => props.$display || 'inline-block'};
+  display: ${props => props.$display || 'block'};
   ${MarginPadding}
   ${props => props.$lineHeight && `line-height:${props.$lineHeight}`};
 `

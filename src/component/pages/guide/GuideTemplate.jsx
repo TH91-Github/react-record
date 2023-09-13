@@ -5,7 +5,6 @@ import * as S from "component/styled/common/AllStyled";
 import Ing from "component/styled/common/Ing";
 import { colors } from "component/styled/common/Variable";
 
-
 function GuideTemplate(){
   return (
     <div className="guide">
