@@ -23,19 +23,19 @@ export const RecordRouter = [
   },
   {
     id:2,
-    title:"State(2)",
+    title:"React - state (2) Array 변경",
     path:"state/state2",
     element: <State2 />,
     view: true,
-    desc: "React-state (2) Array 변경",
+    desc: "useState 활용 Array 값을 변경하는 방법",
   },
   {
     id:3,
-    title:"useState Input, Button",
+    title:"React - state(3) input 입력된 값으로 변경",
     path:"state/state3",
     element: <State3 />,
     view: true,
-    desc: "React-useState 활용",
+    desc: "useState 활용 마지막 input, button arr 수정",
   },
   {
     id:4,

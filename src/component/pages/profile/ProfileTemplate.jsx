@@ -401,7 +401,7 @@ function ProfileTemplate(){
                         <p className="txt">React, Vue 프론트엔드에 필수 요소를 능숙하게 활용하기 위한 공부 및 발전</p>
                       </li>
                       <li className="square">
-                        <p className="txt">2023년 11월 ~ TypeScript 시작 - 개인 프로젝트 적용</p>
+                        <p className="txt">2023년 11월 ~ TypeScript 시작</p>
                       </li>
                     </ul>
                   </S.BoxLine>
