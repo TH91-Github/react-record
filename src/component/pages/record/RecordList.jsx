@@ -54,6 +54,7 @@ function RecordList () {
 
   const categoryChange = (changeD) => { // select category
     console.log("카테고리 체인지")
+    console.log(changeD)
     setSelectTab(changeD);
     fliterList(changeD);
   }
@@ -64,7 +65,7 @@ function RecordList () {
     <div className="record__wrap">
       <Banner $center $align="center">
         <TitleBar fontSize="32px" color={colors.whiteColor}>
-          {recordData[0].title}
+          Record - {selectTab}
         </TitleBar>
         <S.TextP $margin="10px 0 0 0" fontSize="14px" color={colors.whiteColor}>Velog, 예제, 메모장 정보 등 기록을 정리한 페이지</S.TextP>
       </Banner>
