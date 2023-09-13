@@ -20,7 +20,7 @@ function State3 () {
     setArr(newArr)
   }
   const code2 = `  const [arr, setArr] = useState(["배열1","배열2","배열3"]);
-  const arrChange = () => {
+  const arrChange = () => { // button onClick
     const newArr = [...arr];
     // newArr[0] = "변경글자";
     newArr.push("추가" + newArr.length);
@@ -31,8 +31,8 @@ function State3 () {
   const inputChange = (e) => {
     setInputVal(e.target.value);
   }
-  const code3 = ` const [inputVal, setInputVal] = useState('');
-  const inputChange = (e) => {
+  const code3 = `  const [inputVal, setInputVal] = useState('');
+  const inputChange = (e) => { // input onChange
     setInputVal(e.target.value);
   }`;
   // 4
@@ -45,6 +45,15 @@ function State3 () {
     setChangeVal(inputVal2);
     setInputVal2(''); // 초기화
   }
+  const code4 = `  const [changeVal, setChangeVal] = useState('');
+  const [inputVal2, setInputVal2] = useState('');
+  const inputChange2 = (e) => { // input onChange
+    setInputVal2(e.target.value);
+  }
+  const textChange = () => { // button onClick
+    setChangeVal(inputVal2);
+    setInputVal2(''); // 초기화
+  }`;
 
   const cssGap = "20px 0 0 0";
   return (
@@ -118,7 +127,7 @@ function State3 () {
             ...Spread Operator(스프레드 연산자)<br />
             사용하여 복사 후 값 변경 후 👉 set변경함수() 사용.
           </p>
-          <CodeTemplate text={"dd"}/>
+          <CodeTemplate text={code4}/>
           <div className="box__cont">
             <p className="box__cont-tit">[👇실행화면👇]</p>
             <div className="box__result">
