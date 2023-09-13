@@ -47,13 +47,16 @@ function State2 () {
     <div className="study">
       <S.BoxLine $maxWidth="1000px" $margin="50px auto 0" $padding="30px">
         <BackBtn $position="absolute" $top="10px" $right="10px" fontSize="20px">↩️</BackBtn>
-        <S.SnsList>
-          <S.A 
-            href="https://velog.io/@th_velog/React-state-useState-2" target="_blank" rel="noopener noreferrer">
-            <S.Blind>Velog Url</S.Blind>
-            <S.Icon><SvgVelog color="#20C997"></SvgVelog></S.Icon>
-          </S.A>
-        </S.SnsList>
+        <div className="study__header">
+          <S.SnsBoxText $lineHeight="20px">
+            <S.A 
+              href="https://velog.io/@th_velog/React-state-useState-2" target="_blank" rel="noopener noreferrer" $display="flex">
+              <S.Icon><SvgVelog color="#20C997"></SvgVelog></S.Icon>
+              <S.SnsText $margin="0 0 0 10px">👈 Velog 확인하기</S.SnsText>
+            </S.A>
+          </S.SnsBoxText>
+          <TitleBar fontSize="24px">📌 React - state (2) Array 변경</TitleBar>
+        </div>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <TitleBar>성공버전</TitleBar>
           <p className="desc">
