@@ -1,22 +1,8 @@
 body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,div,span,table,th,td,form,fieldset,legend,input,textarea,button,select,svg,i {margin:0;padding:0; font-family:"NanumGothic", sans-serif; box-sizing:border-box;}
 img,fieldset{border:0}
 em,address,i{font-style:normal;}
-a{text-decoration:none;}
 table{border-collapse:collapse;}
 ul li, 
 ol li {
   list-style:none;
-}
-button {
-  border:none;
-  background:transparent;
-  cursor: pointer;
-}
-
-.blind {
-  position:absolute;
-  top:-99999px;
-  left:-9999px;
-  opacity:0;
-  text-indent:-9999px;
 }
