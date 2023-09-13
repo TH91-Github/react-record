@@ -109,19 +109,21 @@ export const BoxInner = styled.div`
 // line 
 export const BoxLine = styled.div`
   position:relative;
-  ${props => props.$maxWidth && `max-width : ${props.$maxWidth}`};
-  ${props => props.$width && `width : ${props.$width}`};
-  ${props => props.$height && `width : ${props.$height}`};
   margin:${props => props.$margin || "0"};
   padding:${props => props.$padding || "0"};
-  ${props => props.$borderRadius && `border-radius:${props.borderRadius}`};
-  ${props => !(props.$top || props.$right || props.$bottom || props.$left) && `border:1px solid ${colors.lineColor}`};
-  ${props => props.$top && `border-top:1px solid ${colors.lineColor}`};
-  ${props => props.$right && `border-right:1px solid ${colors.lineColor}`};
-  ${props => props.$bottom && `border-bottom:1px solid ${colors.lineColor}`};
-  ${props => props.$left && `border-left:1px solid ${colors.lineColor}`};
-  ${props => props.$borderWidth && `border-width: ${props.$borderWidth}`};
-  ${props => props.$borderColor && `border-color: ${props.$borderColor}`};
+  ${props => `
+    ${props.$maxWidth && `max-width : ${props.$maxWidth}`};
+    ${props.$width && `width : ${props.$width}`};
+    ${props.$height && `width : ${props.$height}`};
+    ${!(props.$top || props.$right || props.$bottom || props.$left) && `border:1px solid ${colors.lineColor}`};
+    ${props.$borderRadius && `border-radius:${props.borderRadius}`};
+    ${props.$top && `border-top:1px solid ${colors.lineColor}`};
+    ${props.$right && `border-right:1px solid ${colors.lineColor}`};
+    ${props.$bottom && `border-bottom:1px solid ${colors.lineColor}`};
+    ${props.$left && `border-left:1px solid ${colors.lineColor}`};
+    ${props.$borderWidth && `border-width: ${props.$borderWidth}`};
+    ${props.$borderColor && `border-color: ${props.$borderColor}`};
+  `}
 `;
 
 // ♣ Sns 
@@ -131,6 +133,15 @@ export const SnsList = styled.div`
   ${MarginPadding}
   font-size:0;
   gap:${props => props.$gap || 0 };
+`;
+export const SnsBoxText = styled.div`
+
+  ${props => props.$lineHeight && `line-height:${props.lineHeight}`};
+
+`
+export const SnsText = styled.span`
+  display:inline-block;
+  font-size:${props => props.fontSize || '16px'};
 `;
 
 // ♣ badge
