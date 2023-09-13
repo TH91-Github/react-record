@@ -4,6 +4,7 @@
   --font-NanumGithicB: 'NanumGothicBold';
   --font-NanumGithicL: 'NanumGothicLight';
 }
+body { font-family:"NanumGothic", sans-serif; }
 .blind {
   position:absolute;
   top:-99999px;
@@ -11,7 +12,6 @@
   opacity:0;
   text-indent:-9999px;
 }
-
 .skip-nav {
   display: none;
 }

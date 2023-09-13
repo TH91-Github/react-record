@@ -1,9 +1,12 @@
 // assets/scss/var 동일하게.
 
 // styled-components전용 공통 
-export const font = {
+export const fonts = {
   size : "16px",
-  weight: "550",
+  weight: "550px",
+  font: "NanumGothic",
+  fontB: "NanumGothicBold",
+  fontL: "NanumGothicLight",
 }
 
 export const breakpoints = {

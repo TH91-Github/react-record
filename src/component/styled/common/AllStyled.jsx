@@ -1,5 +1,5 @@
 import styled, {css} from 'styled-components';
-import { breakpoints, colors, font} from './Variable';
+import { breakpoints, colors, fonts} from './Variable';
 
 // common 
 const MarginPadding = css`
@@ -32,14 +32,32 @@ export const Icon = styled.i`
 `;
 // ♣ Tag 
 export const A = styled.a`
-  display:${props => props.$display || 'inline-block'};
+  ${props => `
+    ${props.$display
+      ? props.$display === 'flex' 
+        ? `
+          display:flex;
+          align-items: center;
+        `
+        : props.$display
+      : 'display:inline-block;'       
+    }
+  `}
   color: ${props => props.color || colors.textColor};
   line-height:initial;
 `;
 
+export const Btn = styled.button`
+  display:inline-block;
+  border: ${props => props.$border || `1px solid ${colors.textColor}`};
+  font-size: ${props => props.fontSize || fonts.size};
+  color: ${props => props.color || colors.textColor };
+  box-sizing:border-box;
+`;
+
 export const TextP = styled.p`
   ${MarginPadding}
-  font-size: ${props => props.fontSize || font.size};
+  font-size: ${props => props.fontSize || fonts.size};
   font-weight: ${props => props.fontWeight || '550'};
   text-align: ${props => props.$align || 'left'};
   color: ${props => props.color || colors.textColor};
@@ -52,7 +70,7 @@ export const Input = styled.input`
   display:inline-block;
   padding: ${props => props.$padding || '2px'};
   border: ${props => props.$border || `1px solid ${colors.textColor}`};
-  font-size: ${props => props.fontSize || font.size};
+  font-size: ${props => props.fontSize || fonts.size};
   color: ${props => props.color || colors.textColor };
   box-sizing:border-box;
 `;
@@ -61,7 +79,7 @@ export const Button = styled.button`
   display:inline-block;
   padding: ${props => props.$padding || '2px'};
   border: ${props => props.$border || `1px solid ${colors.textColor}`};
-  font-size: ${props => props.fontSize || font.size};
+  font-size: ${props => props.fontSize || fonts.size};
   color: ${props => props.color || colors.textColor };
   box-sizing:border-box;
 `; 

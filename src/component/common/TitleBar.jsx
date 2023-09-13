@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors } from 'component/styled/common/Variable';
+import { colors, fonts } from 'component/styled/common/Variable';
 
 const baseSize = "18px";
 const SectionTitle = styled.div`
@@ -13,11 +13,9 @@ const Tit = styled.p`
   position:relative;
   margin-left: ${ props => props.fontSize ? `calc(${props.fontSize}/2.5)` : `calc(${baseSize}/2.5)`};
   font-size: ${ props => props.fontSize || baseSize};
-  font-family: var(--font-NanumGithicB);
+  font-family: ${fonts.fontB};
   font-weight: ${ props => props.fontWeight || '550'};
-  ${ props => props.color && `
-    color: ${props.color};
-  `};
+  color: ${props => props.color || colors.textColor};
   &::before { 
     position:absolute;
     top: ${ props => props.fontSize ? `calc(${props.fontSize} / 6 * -1)` : `calc(${baseSize}/6*-1)`};
@@ -37,6 +35,10 @@ const Tit = styled.p`
     background: ${colors.color1};
     transform: rotate(45deg) translateX(-50%);
     content:"";
+  }
+  &>span{
+    font-family:inherit;
+    color:inherit;
   }
 `;
 

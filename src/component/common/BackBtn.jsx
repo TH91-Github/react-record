@@ -1,5 +1,6 @@
-const { useNavigate } = require("react-router-dom");
-const { styled } = require("styled-components");
+import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
+import * as S from "component/styled/common/AllStyled";
 
 const Btn = styled.button`
   ${props => props.$position && `position:${props.$position}`};
@@ -16,9 +17,9 @@ const Btn = styled.button`
 function BackBtn({children, ...props}){
   const navi = useNavigate();
   return (
-    <Btn type="button" {...props} onClick={()=>navi(-1)} title="뒤로가기">
+    <S.Btn type="button" {...props} onClick={()=>navi(-1)} title="뒤로가기">
       {children}
-    </Btn>
+    </S.Btn>
   )
 }
 export default BackBtn;

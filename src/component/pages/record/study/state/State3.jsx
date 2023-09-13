@@ -4,7 +4,8 @@ import BackBtn from "component/common/BackBtn";
 // styled
 import * as S from "component/styled/common/AllStyled";
 import { SvgVelog } from "component/styled/common/SvgPath";
-import TitleBar from "component/styled/TitleBar";
+import TitleBar from "component/common/TitleBar";
+import SubTitleBar from "component/common/SubTitleBar";
 
 function State3 () {
   const cssGap = "20px 0 0 0";
@@ -17,13 +18,13 @@ function State3 () {
             <S.A 
               href="https://velog.io/@th_velog/React-state-useState-2" target="_blank" rel="noopener noreferrer" $display="flex">
               <S.Icon><SvgVelog color="#20C997"></SvgVelog></S.Icon>
-              <S.SnsText $margin="0 0 0 10px">Velog Url</S.SnsText>
+              <S.SnsText $margin="0 0 0 10px">👈 Velog 확인하기</S.SnsText>
             </S.A>
           </S.SnsBoxText>
           <TitleBar fontSize="24px">📌 React - state(3) Input, Button 값 변경 </TitleBar>
         </div>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
-          <TitleBar>button count +-</TitleBar>
+          <SubTitleBar>button count +-</SubTitleBar>
           <p className="desc">
             ...Spread Operator(스프레드 연산자)<br />
             사용하여 복사 후 값 변경 후 👉 set변경함수() 사용.
@@ -34,7 +35,7 @@ function State3 () {
           </div>
         </S.BoxLine>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
-          <TitleBar>Input onChange</TitleBar>
+          <SubTitleBar>Input onChange</SubTitleBar>
           <p className="desc">
             ...Spread Operator(스프레드 연산자)<br />
             사용하여 복사 후 값 변경 후 👉 set변경함수() 사용.
@@ -45,7 +46,7 @@ function State3 () {
           </div>
         </S.BoxLine>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
-          <TitleBar>입력한 값으로 변경</TitleBar>
+          <SubTitleBar>입력한 값으로 변경</SubTitleBar>
           <p className="desc">
             ...Spread Operator(스프레드 연산자)<br />
             사용하여 복사 후 값 변경 후 👉 set변경함수() 사용.

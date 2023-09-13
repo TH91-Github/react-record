@@ -1,6 +1,7 @@
+// component
+import TitleBar from "component/common/TitleBar";
 // styled
 import * as S from "component/styled/common/AllStyled";
-import TitleBar from "component/styled/TitleBar";
 import Ing from "component/styled/common/Ing";
 import PorgressBar from "component/styled/common/ProgressBar";
 import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/common/SvgPath";

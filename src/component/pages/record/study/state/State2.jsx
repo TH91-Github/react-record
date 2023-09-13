@@ -4,7 +4,7 @@ import BackBtn from "component/common/BackBtn";
 // styled
 import * as S from "component/styled/common/AllStyled";
 import { SvgVelog } from "component/styled/common/SvgPath";
-import TitleBar from "component/styled/TitleBar";
+import TitleBar from "component/common/TitleBar";
 
 function State2 () {
   const baseData = ["배열1","배열2","배열3"];

@@ -1,18 +1,19 @@
 import { Outlet } from "react-router-dom";
 
 import Banner from "component/common/Banner";
+import TitleBar from "component/common/TitleBar";
 
 // styled
 import * as S from "component/styled/common/AllStyled";
-import TitleBar from "component/styled/TitleBar";
 import Ing from "component/styled/common/Ing";
+import { colors } from "component/styled/common/Variable";
 
 
 function SiteTemplate(){
   return (
     <div className="site">
       <Banner $center>
-        <TitleBar fontSize="32px">
+        <TitleBar fontSize="32px" color={colors.whiteColor}>
           SiteTemplate
         </TitleBar>
       </Banner>

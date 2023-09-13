@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 // component
 import Search from "component/common/Search";
 import Banner from "component/common/Banner";
+import TitleBar from "component/common/TitleBar";
 
 // styled
 import * as S from "component/styled/common/AllStyled";
-import TitleBar from "component/styled/TitleBar";
 import Ing from "component/styled/common/Ing";
 import { colors } from "component/styled/common/Variable";
 
@@ -52,7 +52,7 @@ function RecordList () {
   return (
     <div className="record__wrap">
       <Banner $center $align="center">
-        <TitleBar fontSize="32px">
+        <TitleBar fontSize="32px" color={colors.whiteColor}>
           {recordData[0].title}
         </TitleBar>
         <S.TextP $margin="10px 0 0 0" fontSize="14px" color={colors.whiteColor}>Velog, 예제, 메모장 정보 등 기록을 정리한 페이지</S.TextP>
