@@ -26,7 +26,7 @@ function RecordList () {
     fliterCategory(RecordRouter);
   },[]);
 
-  const fliterCategory = () => { // 데이터 기준 카테고리 생성
+  const fliterCategory = () => { // 카테고리 리스트 구별
     const filterList = RecordRouter.reduce((prev, {path, view}) => {
       prev.indexOf('All') === -1 && prev.push('All');
       if(path !== undefined && view === true) {
@@ -38,11 +38,10 @@ function RecordList () {
     setCategory(filterList);
   }
 
-  const fliterList = (selectName) => { // 데이터 로드, 탭 클릭 시
+  const fliterList = (selectName) => { // 보여지는 리스트 구별
     const changeData = [...RecordRouter];
     const viewList = changeData.filter(item => item.view && item);
     const selectList = viewList.filter(item => item.path.indexOf(selectName) > -1 && item);
-
     // 선별된 리스트가 없을 경우 view true 전체 노출 - all
     selectList.length > 0 ? setRecordData(selectList)
     : setRecordData(viewList)
@@ -52,13 +51,10 @@ function RecordList () {
     dataLoad(); // 임시 데이터 recordData
   },[dataLoad])
 
-  const categoryChange = (changeD) => { // select category
-    console.log("카테고리 체인지")
-    console.log(changeD)
+  const categoryChange = (changeD) => { // 카테고리 클릭 시
     setSelectTab(changeD);
     fliterList(changeD);
   }
-  
 
   if(!recordData) return;
   return (

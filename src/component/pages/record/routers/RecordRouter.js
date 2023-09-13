@@ -1,8 +1,8 @@
 import RecordList from 'component/pages/record/RecordList';
-import Js from 'component/pages/record/study/Test';
 import Test from 'component/pages/record/study/Test';
 import State2 from 'component/pages/record/study/state/State2';
 import State3 from 'component/pages/record/study/state/State3';
+import Js from 'component/pages/record/study/js/Js';
 
 export const RecordRouter = [
   {

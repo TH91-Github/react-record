@@ -1,7 +1,6 @@
 @import "assets/scss/main.scss";
 
 .record {
-  
   .tab { 
     &__lists { 
       display: flex;
@@ -129,6 +128,33 @@
   .button {
     padding:5px;
     border:1px solid $lineColor;
+  }
+}
+
+.velog{ // codesandbox에 복붙용
+  position:relative;
+  max-width:500px;
+  margin:50px auto 0;
+  padding:30px;
+  border:1px solid #dbdbdb;
+  &__box { 
+    & + .velog__box {
+      margin-top:10px;
+      padding-top:10px;
+      border-top:1px solid #dbdbdb;
+    }
+    &__result {
+      margin-top:10px;
+    }
+  }
+  &__flex{
+    display:flex;
+    gap:10px;
+    margin-top:10px;
+    button {
+      padding:5px;
+      border:1px solid #dbdbdb;
+    }
   }
 }
 
