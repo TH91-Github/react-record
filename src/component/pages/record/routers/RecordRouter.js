@@ -1,12 +1,16 @@
 import RecordList from 'component/pages/record/RecordList';
 import Test from 'component/pages/record/study/Test';
-import State2 from 'component/pages/record/study/state/State2';
-import State3 from 'component/pages/record/study/state/State3';
-import Js from 'component/pages/record/study/js/Js';
+// React
+import State2 from 'component/pages/record/study/react/State2';
+import State3 from 'component/pages/record/study/react/State3';
 
-export const RecordRouter = [
+// js
+import Js from 'component/pages/record/study/js/Js';
+import { ranDom } from 'api/common';
+
+let RecordDataList = [
   {
-    id:1,
+    // id 값은 하단 랜덤으로 생성
     title:"RecordList",
     index: true,
     element: <RecordList />,
@@ -14,7 +18,6 @@ export const RecordRouter = [
     desc: "Record 목록 정리 관리 화면",
   },
   {
-    id:111111,
     title:"Test",
     path:"Test",
     element: <Test />,
@@ -22,29 +25,34 @@ export const RecordRouter = [
     desc: "Test 코드",
   },
   {
-    id:2,
     title:"React - state (2) Array 변경",
-    path:"state/state2",
+    path:"React/state2",
     element: <State2 />,
     view: true,
     desc: "useState 활용 Array 값을 변경하는 방법",
   },
   {
-    id:3,
     title:"React - state(3) input 입력된 값으로 변경",
-    path:"state/state3",
+    path:"React/state3",
     element: <State3 />,
     view: true,
     desc: "useState 활용 마지막 input, button arr 수정",
   },
   {
-    id:4,
     title:"JavaScript",
-    path:"js/Js",
+    path:"Js/Js",
     element: <Js />,
     view: true,
     desc: "JavaScript 테스트",
   },
-]
+];
 
+export const RecordRouter = ranDomId(RecordDataList);
+function ranDomId(listData){ // id 랜덤으로 생성
+  let routerData = listData.map((item)=> {
+    const idOption = { id : ranDom(9999, "guide")}
+    return item.id === undefined ? {...idOption, ...item} : item
+  })
+  return routerData; 
+}
 

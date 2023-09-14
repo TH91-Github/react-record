@@ -67,7 +67,7 @@ function MainTemplate () {
     }
   },[])
 
-  // header 가로 or 세로 버전
+  // header 가로 or 세로 버전 -- 추후 
   const [direction, setDirection] = useState(true); 
   const chnageNav = () => {
     setDirection(!direction)
