@@ -142,14 +142,17 @@ export const BoxLine = styled(Div)`
 export const UlFlex = styled.ul`
   ${flexOption}
   ${MarginPadding}
+  ${props => props.$gap && `gap: ${props.$gap};`}
 `;
 
 export const ColorChip = styled(Div)`
   ${props => `
-    ${props.$width && `width : ${props.$width}`};
-    ${props.$maxWidth && `max-width : ${props.$maxWidth}`};
-    ${props.$height && `height : ${props.$height}`};
+    ${props.$width && `width: ${props.$width}`};
+    ${props.$maxWidth && `max-width: ${props.$maxWidth}`};
+    ${props.$height && `height: ${props.$height}`};
+    ${props.$borderRadius && `border-radius: ${props.$borderRadius}`};
   `}
+  border:1px solid ${colors.lineColor};
 `;
 
 

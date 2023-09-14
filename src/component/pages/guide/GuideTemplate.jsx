@@ -35,43 +35,26 @@ function GuideTemplate(){
           </S.DivFlex>
         </S.BoxInner>
       </S.BoxWrap>
-      <S.BoxLine $top $borderWidth="5px" $margin="30px 0 0" $padding="30px 0 0" className="">
-      <S.BoxInner $padding="0 30px" $className="guide__font">
-          <div className="guide__header">
-            <TitleBar>Font</TitleBar>
-          </div>
-          <div className="guide__cont">
-            <div className="font">
-              <S.UlFlex className="font__lists">
-                <li className="font__lists-item">
-
-                </li>
-              </S.UlFlex>
-              <div className="">
-                <SubTitleBar>사용법</SubTitleBar>
-                <S.TextP>
-                  ⚠️ SCSS와 Styled 공통 변수 동일하게 작업.
-                  
-                </S.TextP>
-              </div>
-            </div>
-          </div>
-        </S.BoxInner>
-        <S.BoxInner $padding="0 30px" $className="guide__color">
-          <div className="guide__header">
+      <S.BoxLine $top  $borderWidth="5px" $margin="30px 0 0" $padding="30px 0 0" className="">
+        <S.BoxInner $padding="0 30px">
+          <div className="guide__top">
             <TitleBar>Color</TitleBar>
           </div>
           <div className="guide__cont">
+            <div className="guide__info">
+              <SubTitleBar fontSize="16px">설명 참고</SubTitleBar>
+              <p className="desc">작성중...</p> 
+            </div>
             <div className="color">
-              <S.UlFlex className="color__lists">
-                <li>
-                  {colorData.length}
-                </li>
+              <S.UlFlex $margin="10px 0 0" className="color__lists">
                 {
                   colorData.map((colorItem,idx) => 
                   <li className="color__lists-item" key={idx}>
-                    <S.ColorChip className="color-chip" $bg="#red"/>
-                    {colorItem}
+                    <S.ColorChip className="color-chip" $width="100%" $height="100px" $bg={colorItem[1]}/>
+                    <div className="color__info">
+                      <p className="color-code">{colorItem[1]}</p>
+                      <p className="color-name">{colorItem[0]}</p>
+                    </div>
                   </li>
                   )
                 }

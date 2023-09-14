@@ -12,7 +12,7 @@ export const fonts = {
 export const breakpoints = {
   maxPc: 1920,
   pc : 1440,
-  table : 1080,
+  table : 1140,
   mo : 768,
   onlyMo: 450,
 }
@@ -30,20 +30,17 @@ export const colors = {
   whiteColor: "#ffffff",
   blackColor: "#000000",
   subBlack: "#222222",
-  
   // point
   color1:"#3cb062",
   color2:"#f5b800",
   color3:"#685ef8",
   color4:"#e76647",
-
   // bg Color 
   bgColor: "#113536",
-
+  titBgColor: "#f8f9fc",
   // Text Color
   textColor:"#191f28",
   subTextColor:"#868686",
-
   // Line Color
   lineColor:"#dbdbdb",
 }

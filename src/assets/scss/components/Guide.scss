@@ -1,10 +1,89 @@
 @import "assets/scss/main.scss";
 
 .guide {
-  &__header {
-    
+  &__top {
+    padding:15px 10px;
+    border-radius:5px;
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+    border-left:5px solid $color1;
+    background:$titBgColor;
   }
   &__cont {
-    
+    margin-top:10px;
+    padding:20px 10px;
+    border-radius:5px;
+    border:1px solid $lineColor;
+  }
+  .color {
+    &__lists {
+      gap:20px;
+      &-item {
+        width:117.5px;
+      }
+    }
+    &__info {
+      padding:10px;
+      border:1px solid $lineColor;
+      border-top:none;
+    }
+    &-name {
+      margin-top:5px;
+      font-size:14px;
+    }
+    &-code {
+      font-size:14px;
+      font-weight:600;
+    }
+  }
+}
+
+@include mo {
+  .guide {
+    &__header {
+      
+    }
+    .color {
+      &__lists {
+        gap:15px;
+        &-item {
+          width:calc((100% - 30px) / 3);
+        }
+      }
+      &__info {
+        padding:10px;
+      }
+      &-name {
+        margin-top:5px;
+        font-size:14px;
+      }
+      &-code {
+        font-size:14px;
+        font-weight:600;
+      }
+    }
+  }
+}
+
+@include onlyMo {
+  .guide {
+    .color {
+      &__lists {
+        gap:10px;
+        &-item {
+          width:calc((100% - 10px) / 2);
+        }
+      }
+      &__info {
+        padding:10px;
+      }
+      &-name {
+        font-size:14px;
+      }
+      &-code {
+        font-size:14px;
+        font-weight:600;
+      }
+    }
   }
 }
