@@ -38,7 +38,7 @@ export const colors = {
   color4:"#e76647",
 
   // bg Color 
-  $bgColor: "#113536",
+  bgColor: "#113536",
 
   // Text Color
   textColor:"#191f28",

@@ -5,6 +5,7 @@ import BackBtn from "component/common/BackBtn";
 import * as S from "component/styled/common/AllStyled";
 import { SvgVelog } from "component/styled/common/SvgPath";
 import TitleBar from "component/common/TitleBar";
+import SubTitleBar from "component/common/SubTitleBar";
 
 function State2 () {
   const baseData = ["배열1","배열2","배열3"];
@@ -58,7 +59,7 @@ function State2 () {
           <TitleBar fontSize="24px">📌 React - state (2) Array 변경</TitleBar>
         </div>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
-          <TitleBar>성공버전</TitleBar>
+          <SubTitleBar>성공버전</SubTitleBar>
           <p className="desc">
             ...Spread Operator(스프레드 연산자)<br />
             사용하여 복사 후 값 변경 후 👉 set변경함수() 사용.
@@ -83,7 +84,7 @@ function State2 () {
           </div>
         </S.BoxLine>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
-          <TitleBar>실패 버전-1</TitleBar>
+          <SubTitleBar>실패 버전-1</SubTitleBar>
           <p className="desc">
             변경은 가능하지만 수정하기 위해 불필요하게 입력을 해야한다.
           </p>
@@ -108,7 +109,7 @@ function State2 () {
           </div>
         </S.BoxLine>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
-          <TitleBar>실패 버전-2</TitleBar>
+          <SubTitleBar>실패 버전-2</SubTitleBar>
           <p className="desc">기존 배열은 다 사라지고 야호만 나오게 되며 변경 버튼 한번 더 클릭 시 에러</p>
           <p className="desc">⚠️ setArr()내에 저렇게 마음대로 변경을 하게 될 경우 값이 바뀌게 되니 하지 말아야 한다</p>
           <CodeTemplate text={code2}/>
@@ -128,7 +129,6 @@ function State2 () {
               </S.BtnWrap>
             </div>
           </div>
-          
         </S.BoxLine>
       </S.BoxLine>
     </div>

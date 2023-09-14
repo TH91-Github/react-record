@@ -370,7 +370,7 @@ function ProfileTemplate(){
                 📚PLAN
             </TitleBar>
             <div className="profile__box">
-              <S.BoxFlex>
+              <S.DivFlex>
                 <div className="plan__info">
                   <p className="tit"><span>목표</span></p>
                   <S.BoxLine $top $margin="15px 0 0 0" $padding="15px 0 0 0">
@@ -406,7 +406,7 @@ function ProfileTemplate(){
                     </ul>
                   </S.BoxLine>
                 </div>
-              </S.BoxFlex>
+              </S.DivFlex>
             </div>
           </S.BoxInner>
         </div>

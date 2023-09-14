@@ -7,7 +7,7 @@ const BannerWrap = styled.div`
   ${props => props.$center && `justify-content:center;`}
   padding:0 30px;
   min-height:200px;
-  background: ${props => props.$bg || colors.$bgColor};
+  background: ${props => props.$bg || colors.bgColor};
   ${props => props.$align && `text-align:${props.$align}`}; 
   color:#fff;
 `;

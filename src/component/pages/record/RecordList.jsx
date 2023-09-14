@@ -68,7 +68,7 @@ function RecordList () {
       <S.BoxWrap className="search">
         <S.BoxInner $padding="30px 30px 0" className="search__wrap">
           <Ing>⚠️작업중🚧</Ing>
-          <S.BoxFlex  $direction="row-reverse">
+          <S.DivFlex  $direction="row-reverse">
             <div className="search__inner">
               <Search placeholder="준비 중입니다..." btnText="확인" />
             </div>
@@ -76,7 +76,7 @@ function RecordList () {
               Record 관련 검색 기능 
               router.desc 구별
             */}
-          </S.BoxFlex>
+          </S.DivFlex>
         </S.BoxInner>
       </S.BoxWrap>
       <S.BoxLine $top $borderWidth="5px" $margin="30px 0 0" $padding="30px 0 0" className="record__content">

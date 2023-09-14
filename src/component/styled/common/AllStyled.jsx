@@ -5,7 +5,14 @@ import { breakpoints, colors, fonts} from './Variable';
 const MarginPadding = css`
   margin:${props => props.$margin || "0"};
   padding:${props => props.$padding || "0"};
-`
+`;
+const flexOption = css`
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction: ${props => props.$direction || 'row'};
+  justify-content : ${props => props.$justifyConent || 'flex-start'}; 
+`;
+
 // ♣ Base Css
 export const Blind = styled.span`
   position: absolute;
@@ -31,6 +38,11 @@ export const Icon = styled.i`
   };
 `;
 // ♣ Tag 
+export const Div = styled.div`
+  ${MarginPadding}
+  ${props => props.$bg && `background:${props.$bg};`}
+`;
+
 export const A = styled.a`
   ${props => `
     ${props.$display
@@ -47,25 +59,6 @@ export const A = styled.a`
   line-height:initial;
 `;
 
-export const Btn = styled.button`
-  display:inline-block;
-  border: ${props => props.$border || `1px solid ${colors.textColor}`};
-  font-size: ${props => props.fontSize || fonts.size};
-  color: ${props => props.color || colors.textColor };
-  box-sizing:border-box;
-`;
-
-export const TextP = styled.p`
-  ${MarginPadding}
-  font-size: ${props => props.fontSize || fonts.size};
-  font-weight: ${props => props.fontWeight || '550'};
-  text-align: ${props => props.$align || 'left'};
-  color: ${props => props.color || colors.textColor};
-  line-height: ${props => props.$lineHeight || '1.5'};
-  & + p { 
-    margin-top: 10px;
-  }
-`;
 export const Input = styled.input`
   display:inline-block;
   padding: ${props => props.$padding || '2px'};
@@ -84,6 +77,18 @@ export const Button = styled.button`
   box-sizing:border-box;
 `; 
 
+export const TextP = styled.p`
+  ${MarginPadding}
+  font-size: ${props => props.fontSize || fonts.size};
+  font-weight: ${props => props.fontWeight || '550'};
+  text-align: ${props => props.$align || 'left'};
+  color: ${props => props.color || colors.textColor};
+  line-height: ${props => props.$lineHeight || '1.5'};
+  & + p { 
+    margin-top: 10px;
+  }
+`;
+
 // ♣ btnWrap
 export const BtnWrap = styled.div`
   display: flex;
@@ -93,29 +98,20 @@ export const BtnWrap = styled.div`
 `;
 
 // ♣ BOX
-export const BoxFlex = styled.div`
-  display:flex;
-  flex-wrap:wrap;
-  flex-direction: ${props => props.$direction || 'row'};
-  justify-content : ${props => props.$justifyConent || 'flex-start'}; 
-  width: ${props => props.$width || '100%'};
-  ${MarginPadding}
-`;
-
-// wrap
-export const BoxWrap = styled.div`
-  ${props => props.$display && 
-    `display:${props.$display};
-    flex-wrap:wrap;
-    flex-direction: ${props.$direction || 'row'};
-    justify-content : ${props.$justifyConent || 'flex-start'}; 
-    `
-  };
+export const BoxWrap = styled(Div)`
+  ${props => 
+    props.$display !== undefined
+      && ( props.$display === "flex" 
+        ? flexOption 
+        :`display:${props.$display};`
+      )
+  } 
   position:relative;
   width: ${props => props.$width || '100%'};
-  ${MarginPadding}
 `;
-
+export const DivFlex = styled(Div)`
+  ${flexOption}
+`;
 // inner
 export const BoxInner = styled.div`
   position:relative;
@@ -126,14 +122,12 @@ export const BoxInner = styled.div`
 `;
 
 // line 
-export const BoxLine = styled.div`
+export const BoxLine = styled(Div)`
   position:relative;
-  margin:${props => props.$margin || "0"};
-  padding:${props => props.$padding || "0"};
   ${props => `
-    ${props.$maxWidth && `max-width : ${props.$maxWidth}`};
     ${props.$width && `width : ${props.$width}`};
-    ${props.$height && `width : ${props.$height}`};
+    ${props.$maxWidth && `max-width : ${props.$maxWidth}`};
+    ${props.$height && `height : ${props.$height}`};
     ${!(props.$top || props.$right || props.$bottom || props.$left) && `border:1px solid ${colors.lineColor}`};
     ${props.$borderRadius && `border-radius:${props.borderRadius}`};
     ${props.$top && `border-top:1px solid ${colors.lineColor}`};
@@ -145,17 +139,30 @@ export const BoxLine = styled.div`
   `}
 `;
 
+export const UlFlex = styled.ul`
+  ${flexOption}
+  ${MarginPadding}
+`;
+
+export const ColorChip = styled(Div)`
+  ${props => `
+    ${props.$width && `width : ${props.$width}`};
+    ${props.$maxWidth && `max-width : ${props.$maxWidth}`};
+    ${props.$height && `height : ${props.$height}`};
+  `}
+`;
+
+
+
 // ♣ Sns 
-export const SnsList = styled.div`
+export const SnsList = styled(Div)`
   display:${props => props.$display || 'flex'};
   justify-content: ${props => props.$justifyContent || "flex-start"};
-  ${MarginPadding}
   font-size:0;
   gap:${props => props.$gap || 0 };
 `;
-export const SnsBoxText = styled.div`
+export const SnsBoxText = styled(Div)`
   display: ${props => props.$display || 'block'};
-  ${MarginPadding}
   ${props => props.$lineHeight && `line-height:${props.$lineHeight}`};
 `
 export const SnsText = styled.span`
@@ -178,7 +185,6 @@ export const Badge = styled.span`
 `;
 export const ReactBadge = styled(Badge)`
   background:#61DAFB;
-  
 `;
 export const VueBadge = styled(Badge)`
   background:#20C997;
