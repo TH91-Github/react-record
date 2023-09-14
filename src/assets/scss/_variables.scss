@@ -1,5 +1,16 @@
 // styled component Variable 동일하게.
 
+// Font Family
+$size: 16px;
+$weight:550;
+$font: "NanumGothic";
+$fontB: "NanumGothicBold";
+$fontL: "NanumGothicLight";
+$fontFamily: ($font,$fontB,$fontL);
+@each $name in $fontFamily{
+  @include fontFace($name);
+}
+
 // Break Point (Desktop First 기준 내림차순 설정)
 $maxPc: 1920px;
 $pc: 1440px;
@@ -16,26 +27,16 @@ $color1:#3cb062;
 $color2:#f5b800;
 $color3:#685ef8;
 $color4:#e76647;
-
 // bg Color 
 $bgColor1: #113536;
 $titBgColor: #f8f9fc;
-
 // Text Color
 $textColor : #191f28;
 $subTextColor: #868686;
-
 // Line Color
 $lineColor: #dbdbdb;
 
-// Font Family
-$font: "NanumGothic";
-$fontB: "NanumGothicBold";
-$fontL: "NanumGothicLight";
-$fontFamily: ($font,$fontB,$fontL);
-@each $name in $fontFamily{
-  @include fontFace($name);
-}
+// media -> _mixin.scss
 
 // transition
 $transitionB: all .3s;

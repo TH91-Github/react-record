@@ -2,7 +2,7 @@
 
 .guide {
   &__top {
-    padding:15px 10px;
+    padding:15px 20px;
     border-radius:5px;
     border-bottom-left-radius:0;
     border-bottom-right-radius:0;
@@ -11,15 +11,49 @@
   }
   &__cont {
     margin-top:10px;
-    padding:20px 10px;
+    padding:20px;
     border-radius:5px;
     border:1px solid $lineColor;
+  }
+  &__info {
+    &__desc {
+      margin-top:15px;
+    }
+  }
+  .desc{
+    margin-top:10px;
+    font-size:14px;
+    &:first-child {
+      margin-top:10px;
+    }
+  }
+  .font {
+    &__lists {
+      gap:20px;
+    }
+    .btn {
+      padding:5px 10px;
+      border:1px solid $lineColor;
+      transition:$transitionB;
+      &:hover, &:focus { 
+        border-color:$color2;
+        background:$color2;
+        color:$subBlack;
+      }
+    }
   }
   .color {
     &__lists {
       gap:20px;
       &-item {
-        width:117.5px;
+        width:112.25px;
+      }
+    }
+    .btn {
+      transition: $transitionB;
+      &:hover, &:focus {
+        background:$subBlack;
+        color:$titBgColor;
       }
     }
     &__info {
@@ -40,14 +74,20 @@
 
 @include mo {
   .guide {
-    &__header {
-      
+    $gap:15px;
+    .font {
+      &__lists {
+        gap:$gap;
+        &-item {
+          width:calc((100% - #{$gap*2}) / 3);
+        }
+      }
     }
     .color {
       &__lists {
-        gap:15px;
+        gap:$gap;
         &-item {
-          width:calc((100% - 30px) / 3);
+          width:calc((100% - #{$gap*2}) / 3);
         }
       }
       &__info {
@@ -67,11 +107,20 @@
 
 @include onlyMo {
   .guide {
+    $gap:10px;
+    .font {
+      &__lists {
+        gap:$gap;
+        &-item {
+          width:calc((100% - $gap) / 2);
+        }
+      }
+    }
     .color {
       &__lists {
-        gap:10px;
+        gap:$gap;
         &-item {
-          width:calc((100% - 10px) / 2);
+          width:calc((100% - $gap) / 2);
         }
       }
       &__info {

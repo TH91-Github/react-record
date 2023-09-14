@@ -21,7 +21,12 @@ export const Blind = styled.span`
   opacity: 0;
   text-indent: -9999px;
 `;
-
+export const colorTag = styled.span`
+  ${props => `
+    ${props.$color && `color: ${props.$color}`};
+    ${props.$bg && `background: ${props.$bg}`};
+  `}
+`;
 // ♣ ICON
 export const Icon = styled.i`
   display:inline-block;
@@ -65,16 +70,23 @@ export const Input = styled.input`
   border: ${props => props.$border || `1px solid ${colors.textColor}`};
   font-size: ${props => props.fontSize || fonts.size};
   color: ${props => props.color || colors.textColor };
-  box-sizing:border-box;
 `;
 
-export const Button = styled.button`
+export const Button = styled.button.attrs({
+  type:'button',
+})`
   display:inline-block;
+  ${props => `
+    ${props.$width && `width:${props.$width}`};
+    ${props.$height && `width:${props.$height}`};
+  `}
+`;
+
+export const ButtonB = styled(Button)`
   padding: ${props => props.$padding || '2px'};
   border: ${props => props.$border || `1px solid ${colors.textColor}`};
   font-size: ${props => props.fontSize || fonts.size};
   color: ${props => props.color || colors.textColor };
-  box-sizing:border-box;
 `; 
 
 export const TextP = styled.p`

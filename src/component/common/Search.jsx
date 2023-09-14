@@ -15,11 +15,11 @@ function Search({placeholder, btnText}){
       <S.Input value={val} 
         onChange={(e)=>inputChange(e)} 
         placeholder={placeholder !== undefined ? placeholder : "입력해주세요"} />
-      <S.Button type="button" onClick={buttonClick}>
+      <S.ButtonB type="button" onClick={buttonClick}>
         <span>
           {btnText !== undefined ? btnText : "검색"}
         </span>
-      </S.Button>
+      </S.ButtonB>
     </>
   )
 }

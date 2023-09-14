@@ -3,7 +3,7 @@
 // styled-components전용 공통 
 export const fonts = {
   size : "16px",
-  weight: "550px",
+  weight: "550",
   font: "NanumGothic",
   fontB: "NanumGothicBold",
   fontL: "NanumGothicLight",
@@ -16,15 +16,6 @@ export const breakpoints = {
   mo : 768,
   onlyMo: 450,
 }
-
-export const media = {
-  onlyPc : `@media screen and (min-width:${breakpoints.table + 'px'})`,
-  pc: `@media screen and (min-width:${breakpoints.mo-1 + 'px'})`,
-  tab: `@media screen and (min-width:${breakpoints.mo + 'px'}) and (max-width: ${breakpoints.table-1 + 'px'})`,
-  mo: `@media screen and (max-width:${breakpoints.mo-1 + 'px'})`,
-  onlyMo: `@media screen and (max-width:${breakpoints.onlyMo-1 + 'px'})`,
-} 
-
 export const colors = {
   // Color 
   whiteColor: "#ffffff",
@@ -36,7 +27,7 @@ export const colors = {
   color3:"#685ef8",
   color4:"#e76647",
   // bg Color 
-  bgColor: "#113536",
+  bgColor1: "#113536",
   titBgColor: "#f8f9fc",
   // Text Color
   textColor:"#191f28",
@@ -44,6 +35,15 @@ export const colors = {
   // Line Color
   lineColor:"#dbdbdb",
 }
+
+export const media = {
+  onlyPc : `@media screen and (min-width:${breakpoints.table + 'px'})`,
+  pc: `@media screen and (min-width:${breakpoints.mo-1 + 'px'})`,
+  tab: `@media screen and (min-width:${breakpoints.mo + 'px'}) and (max-width: ${breakpoints.table-1 + 'px'})`,
+  mo: `@media screen and (max-width:${breakpoints.mo-1 + 'px'})`,
+  onlyMo: `@media screen and (max-width:${breakpoints.onlyMo-1 + 'px'})`,
+} 
+
 
 // transition
 export const transition = {
