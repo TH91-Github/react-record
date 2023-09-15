@@ -104,9 +104,10 @@
     .desc {
       margin-top:15px;
       font-size: 14px;
+      line-height:18px;
       color: $subTextColor;
       & + .desc {
-        margin-top:8px;
+        margin-top:5px;
       }
     }
     &__cont { 

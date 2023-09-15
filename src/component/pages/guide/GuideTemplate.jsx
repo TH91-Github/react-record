@@ -13,12 +13,9 @@ import "assets/scss/components/Guide.scss"
 function GuideTemplate(){
   const fontData = newArrChange(fonts)
   const colorData = newArrChange(colors);
-  console.log(fontData)
-
   function newArrChange(paramObj){
     return Object.entries(paramObj)
-  } 
-
+  }
   function copyBtn(){
     alert("alert / 복사 기능 준비 중...");
   }

@@ -1,24 +1,38 @@
 import { CodeBlock, dracula } from "react-code-blocks";
 import "assets/scss/common.scss";
 import { styled } from "styled-components";
-import { media } from "component/styled/common/Variable";
+import { media, colors } from "component/styled/common/Variable";
 
 const CodeWrap = styled.div`
   margin: 10px 0;
   font-size:14px;
   .linenumber {
-    min-width:auto !important;
+    position:relative;
+    width:35px !important;
+    padding-left:5px !important;
     padding-right:10px !important;
     font-size:14px !important;
     font-style:normal !important;
+    text-align:right;
+    box-sizing:border-box;
+    &::after {
+      position:absolute;
+      top:50%;
+      left:0;
+      width:2px;
+      height:30%;
+      background:${colors.color2};
+      transform:translateY(-50%);
+      content:"";
+    }
   }
   ${media.onlyMo} {
     font-size:13px;
   }
-`
-function CodeTemplate({text}){
+`;
+function CodeTemplate({text, propsClass}){
   return(
-    <CodeWrap>
+    <CodeWrap className={propsClass}>
       <CodeBlock
         language="javascript"
         codeBlock
@@ -28,5 +42,9 @@ function CodeTemplate({text}){
       />
     </CodeWrap>
   )
+}
+
+CodeTemplate.defaultProps = {
+  propsClass : "codeWrap"
 }
 export default CodeTemplate;

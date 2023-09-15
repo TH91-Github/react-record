@@ -3,6 +3,7 @@ import Test from 'component/pages/record/study/Test';
 // React
 import State2 from 'component/pages/record/study/react/State2';
 import State3 from 'component/pages/record/study/react/State3';
+import ComponentTest from 'component/pages/record/study/react/ComponentTest';
 
 // js
 import Js from 'component/pages/record/study/js/Js';
@@ -25,18 +26,25 @@ let RecordDataList = [
     desc: "Test 코드",
   },
   {
-    title:"React - state (2) Array 변경",
+    title:"State (2) Array 변경",
     path:"React/state2",
     element: <State2 />,
     view: true,
     desc: "useState 활용 Array 값을 변경하는 방법",
   },
   {
-    title:"React - state(3) input 입력된 값으로 변경",
+    title:"State(3) input 입력된 값으로 변경",
     path:"React/state3",
     element: <State3 />,
     view: true,
     desc: "useState 활용 마지막 input, button arr 수정",
+  },
+  {
+    title:"Component 생성 및 Props 전달",
+    path:"React/Component",
+    element: <ComponentTest />,
+    view: true,
+    desc: "컴포넌트 생성 및 props 전달 테스트",
   },
   {
     title:"JavaScript",
