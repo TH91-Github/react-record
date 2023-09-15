@@ -12,7 +12,7 @@ function ComponentTest () {
   const code1 = `// 👇클래스형 컴포넌트\nclass 컴포넌트 extends React.Component {\n  render() {\n    return <h1>Hello, {this.props.name}</h1>;\n  }\n}\n// 👇함수형 컴포넌트\nfunction 컴포넌트(props) {\n    return <h1>Hello, {props.name}</h1>;\n}`;
   const code2 = ` // 함수 컴포넌트\n function Velog(){\n  return (\n    <div>Velog 컴포넌트 생성</div>\n  )\n }\n // 화살표 문법으로도 작성 가능\n const Velog2 = () => {\n  return (\n    <div>Velog2 컴포넌트 생성</div>\n  )\n}`;
   const code3 = `// Velog.jsx\nimport React from "react";\nfunction Velog(){\n// javascript 입력하는 곳\n  return ( \n  // 👇JSX 문법 입력하는 곳\n  <div>Velog</div>\n  )\n}\nexport default Velog;`;
-  const code4 = `<p>👇 문자열 사용하기</p>\n<Velog props="props" />\n<p>👇 그 외 값(변수, 상위 props 등 등)</p>\n<Velog props={props} />;`
+  const code4 = `// 부모 컴포넌트\n<p>👇 문자열 사용하기</p>\n<Velog props="props" />\n<p>👇 그 외 값(변수, 상위 props 등 등)</p>\n<Velog props={props} />;`
   const code5 = `// Velog.jsx\nfunction Velog({props}){\n  console.log(props);\n  return (\n    <div>{props}</div>\n  )\n}`
   const cssGap = "20px 0 0 0";
   return (

@@ -25,7 +25,7 @@ function Header({location, headFixed, fixChange, chnageNav}) {
   useEffect(() => {
     setchkOnOff(false);
     mobileScrollOff(false);
-  },[location, ])
+  },[location ])
   
   function mobileScrollOff(chkOnOff){ // mo 스크롤 막기
     const tBody = document.body;
