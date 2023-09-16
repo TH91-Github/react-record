@@ -72,6 +72,12 @@ function MainTemplate () {
   const chnageNav = () => {
     setDirection(!direction)
   }
+  /*
+    해야할 목록
+    Data, 공통 함수, 스토어를 통해
+    공통 변수 지정
+    pc/mo, 첫 전체 데이터 등
+  */
   return (
     <div className="main">
       <SkipNav />
