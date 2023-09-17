@@ -43,6 +43,23 @@ function State2 () {
     setArr2(arr2[0]="야호");
   }`;
   
+  // React 블로그 공통 컴포넌트 생성 및 데이터를 통한 호출
+  // 실행화면을 볼 수 있게 하는 방법 찾아보기
+  const stateData2 = [
+    {
+      title : "📌 React - state (2) Array 변경",
+      velogUrl : "https://velog.io/@th_velog/React-state-useState-2",
+      cont : [
+        {
+          subTitle: "성공버전",
+          desc: [
+            "...Spread Operator(스프레드 연산자)", "사용하여 복사 후 값 변경 후 👉 set변경함수() 사용."
+          ],
+        }
+      ]
+    }
+  ]
+
   const cssGap = "20px 0 0 0";
   return (
     <div className="study">
@@ -60,10 +77,8 @@ function State2 () {
         </div>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>성공버전</SubTitleBar>
-          <p className="desc">
-            ...Spread Operator(스프레드 연산자)<br />
-            사용하여 복사 후 값 변경 후 👉 set변경함수() 사용.
-          </p>
+          <p className="desc"> ...Spread Operator(스프레드 연산자)</p>
+          <p className="desc">사용하여 복사 후 값 변경 후 👉 set변경함수() 사용.</p>
           <CodeTemplate text={successCode1}/>
           <div className="box__cont">
             <p className="box__cont-tit">[👇실행화면👇]</p>

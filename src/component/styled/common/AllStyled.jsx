@@ -116,7 +116,7 @@ export const BoxWrap = styled(Div)`
       && ( props.$display === "flex" 
         ? flexOption 
         :`display:${props.$display};`
-      )
+      ) 
   } 
   position:relative;
   width: ${props => props.$width || '100%'};
