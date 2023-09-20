@@ -5,19 +5,21 @@ import { useSelector } from "react-redux";
 import SkipNav from 'component/common/SkipNav';
 import Header from 'component/common/Header';
 import Footer from "component/common/Footer";
-// styled
+
+import { isMobile } from "api/common.js"
 import { breakpoints } from "component/styled/common/Variable";
-// scss
 import 'assets/scss/components/MainTemplate.scss';
 
 function MainTemplate () {
   const [headFixed, setHeadFixed] = useState(false);
   const [isMo, setIsMo] = useState(null);
   const location = useLocation();
-  const isMoChk = useSelector((state) => {return state});
+  const isMoChk = useSelector((state) => {return state.mobileChk});
+  const windowW = useSelector((state) => { return state.windowW})
   let windY = 0;
 
-  console.log(isMoChk.mobileChk) // mobile 체크 store 값으로
+  console.log(isMoChk) // mobile 체크 store 값으로 
+  console.log(windowW)
 
   const fixChange = () => {
     if(headFixed && windY <= 0){
@@ -26,9 +28,12 @@ function MainTemplate () {
       // console.log("Test")
     }
   }
+  
   const reSizeEvent = () => {
     isMobileChk();
   }
+
+  isMobile()
 
   const scrollEvent = () => { // scroll *공통 빼야하는 요소
     const headerH = document.querySelector('.header').offsetHeight;
@@ -55,12 +60,11 @@ function MainTemplate () {
   }
 
   useEffect (() => { // ※ 개선 필요 : 스크롤 0 / 움직인 후 다시 불필요한 리렌더링 일수도 있다.
-    if(isMo) setHeadFixed(false);
-  },[location, isMo])
+    if(isMo) setHeadFixed(false); 
+  },[location])
 
   // scroll, resize event *공통으로 빼는 작업 필요.
   useEffect (() => {  // ※ React Hook useEffect has missing dependencie 개선
-    isMobileChk();
     window.addEventListener("resize", reSizeEvent);
     window.addEventListener("scroll", scrollEvent);
     return () => {
