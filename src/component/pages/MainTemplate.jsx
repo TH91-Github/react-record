@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import SkipNav from 'component/common/SkipNav';
 import { Outlet, useLocation } from 'react-router-dom';
+import { useSelector } from "react-redux";
 // component
+import SkipNav from 'component/common/SkipNav';
 import Header from 'component/common/Header';
 import Footer from "component/common/Footer";
 // styled
@@ -9,12 +10,14 @@ import { breakpoints } from "component/styled/common/Variable";
 // scss
 import 'assets/scss/components/MainTemplate.scss';
 
-// gnb 다 펼쳐지고 style 막기 
 function MainTemplate () {
   const [headFixed, setHeadFixed] = useState(false);
   const [isMo, setIsMo] = useState(null);
   const location = useLocation();
+  const isMoChk = useSelector((state) => {return state});
   let windY = 0;
+
+  console.log(isMoChk.mobileChk) // mobile 체크 store 값으로
 
   const fixChange = () => {
     if(headFixed && windY <= 0){
