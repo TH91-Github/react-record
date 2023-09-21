@@ -1,6 +1,14 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
-// Router location 진행 예정.
+const windowW = createSlice({
+  name : 'mobile check',
+  initialState : "zz?",
+  reducers: {
+    changeLocation(state, propsName){
+      return state = propsName.payload;
+    }
+  }
+})
 const mobileChk = createSlice({
   name : 'mobile check',
   initialState : "TEST",
@@ -11,9 +19,11 @@ const mobileChk = createSlice({
     }
   }
 })
+
 export default configureStore({
   reducer: { 
     mobileChk : mobileChk.reducer,
+    windowW : windowW.reducer
   }
 }) 
 
