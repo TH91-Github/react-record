@@ -14,7 +14,6 @@ function MainTemplate () {
   const location = useLocation();
   const isMoChk = useSelector((state) => {return state.mobileChk});
   const windowW = useSelector((state) => { return state.windowW})
-  
 
   console.log(isMoChk) // mobile 체크 store 값으로 
   console.log(windowW)
@@ -22,9 +21,11 @@ function MainTemplate () {
   const fixChange = () => { // Mo 사이즈에서 메뉴 클릭 시
     if(headFixed && window.pageYOffset <= 0){
       setHeadFixed(!headFixed);
-    }else{ 
-      // console.log("Test")
     }
+  }
+  const handleReSize = () => { // resize Pc/Mo 체크 
+    let testChk = isMobile();
+    console.log(testChk)
   }
   const handleScroll = () => {
     const headerH = document.querySelector('.header').offsetHeight;
@@ -35,8 +36,10 @@ function MainTemplate () {
     }
   }
   useEffect(() => {
+    window.addEventListener("resize", handleReSize);
     window.addEventListener("scroll", handleScroll);
     return () => {
+      window.removeEventListener("resize", handleReSize);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
