@@ -242,8 +242,8 @@ function ProfileTemplate(){
                     <p className="title">🎈현대자동차 그룹 (운영)</p>
                     <p className="company">Ipartners</p>
                     <div className="date">
-                      <span className="start">2016.11</span>
-                      <span className="end">2017.02</span>
+                      <span className="start">2017.03</span>
+                      <span className="end">2018.02</span>
                     </div>
                     <div className="member">
                       <span className="number">총 3명</span>
