@@ -11,6 +11,10 @@ export const isMobile = () => { // 모바일 사이즈 체크
   return moChk;
 }
 
+// const scrollEvent = () => { // scroll *공통 빼야하는 요소 2
+
+// }
+
 export const ranDom = (_max, name) => { // 랜덤 값 (최대 값, 이름지정_랜덤 값) 
   let newId =  Math.floor(_max === undefined
     ? Math.random() * 2000

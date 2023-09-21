@@ -19,6 +19,7 @@ const mobileChk = createSlice({
     }
   }
 })
+
 export default configureStore({
   reducer: { 
     mobileChk : mobileChk.reducer,
