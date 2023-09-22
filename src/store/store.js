@@ -1,8 +1,8 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
 const windowW = createSlice({
-  name : 'mobile check',
-  initialState : "zz?",
+  name : 'window width',
+  initialState : "test",
   reducers: {
     changeLocation(state, propsName){
       return state = propsName.payload;
@@ -11,10 +11,10 @@ const windowW = createSlice({
 })
 const mobileChk = createSlice({
   name : 'mobile check',
-  initialState : "TEST",
+  initialState : false,
   reducers: {
-    changeLocation(state, propsName){
-      console.log(state)
+    sSetMobileChk(state, propsName){
+      console.log(propsName.payload)
       return state = propsName.payload;
     }
   }
@@ -27,4 +27,4 @@ export default configureStore({
   }
 }) 
 
-export const { changeLocation } = mobileChk.actions
+export const { sSetMobileChk } = mobileChk.actions

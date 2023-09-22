@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation } from 'react-router-dom';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // component
 import SkipNav from 'component/common/SkipNav';
 import Header from 'component/common/Header';
 import Footer from "component/common/Footer";
 
+import { sSetMobileChk } from "store/store";
 import { isMobile } from "api/common.js"
 import 'assets/scss/components/MainTemplate.scss';
 
 function MainTemplate () {
   const [headFixed, setHeadFixed] = useState(false);
   const location = useLocation();
-  const isMoChk = useSelector((state) => {return state.mobileChk});
-  const windowW = useSelector((state) => { return state.windowW})
-
-  console.log(isMoChk) // mobile 체크 store 값으로 
-  console.log(windowW)
+  let isMoChk = useSelector((state) => {return state.mobileChk});
+  let windowW = useSelector((state) => { return state.windowW})
+  let dispatch = useDispatch();
 
   const fixChange = () => { // Mo 사이즈에서 메뉴 클릭 시
     if(headFixed && window.pageYOffset <= 0){
@@ -24,9 +23,10 @@ function MainTemplate () {
     }
   }
   const handleReSize = () => { // resize Pc/Mo 체크 
-    let testChk = isMobile();
-    console.log(testChk)
+    let moState = isMobile();
+    dispatch(sSetMobileChk(moState)) // 개선 방향을 찾아야한다.
   }
+  
   const handleScroll = () => {
     const headerH = document.querySelector('.header').offsetHeight;
     if(headerH < window.pageYOffset){ // fixed on
@@ -35,6 +35,7 @@ function MainTemplate () {
       setHeadFixed(false);
     }
   }
+
   useEffect(() => {
     window.addEventListener("resize", handleReSize);
     window.addEventListener("scroll", handleScroll);
@@ -57,6 +58,7 @@ function MainTemplate () {
 
   return (
     <div className="main">
+      <p className={isMoChk ? "on" : "off" }> test</p>
       <SkipNav />
       <div className={'main-wrap' + (direction ? ' row' : ' column') + (headFixed ? ' fixed' : '')}>
         <Header
