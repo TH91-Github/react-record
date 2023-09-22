@@ -63,7 +63,7 @@ export const Github = ({...props}) => {
 
 // Naver styled props {color} : #03C75A
 export const Naver = ({...props}) => {
-  return <Svg {...props} viewBox="0 0 24 24" >
+  return <Svg $padding={props.$padding || "2px"} color={props.color || "#fff"} {...props} viewBox="0 0 24 24" >
    <path d="M16.273 12.845 7.376 0H0v24h7.726V11.156L16.624 24H24V0h-7.727v12.845Z"/>
   </Svg>
 }

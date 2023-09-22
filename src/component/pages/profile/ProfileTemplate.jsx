@@ -13,6 +13,7 @@ const styleTItSize = "24px";
 
 // 데이터로 만들기 전 하드코딩
 
+
 function ProfileTemplate(){
   return (
     <div className="profile">
@@ -39,7 +40,7 @@ function ProfileTemplate(){
               <S.A 
                 href="https://blog.naver.com/k__taehoon__" target="_blank" rel="noopener noreferrer" title="Naver Blog URL">
                 <S.Blind>Naver Blog Url</S.Blind>
-                <S.Icon $bg="#03C75A"><Naver $padding="2px" color="#fff"></Naver></S.Icon>
+                <S.Icon $bg="#03C75A"><Naver></Naver></S.Icon>
               </S.A>
             </S.SnsList>
             <div className="contact">
