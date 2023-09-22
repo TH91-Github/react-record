@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Outlet, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 // component
@@ -13,8 +13,6 @@ import 'assets/scss/components/MainTemplate.scss';
 function MainTemplate () {
   const [headFixed, setHeadFixed] = useState(false);
   const location = useLocation();
-  let isMoChk = useSelector((state) => {return state.mobileChk});
-  let windowW = useSelector((state) => { return state.windowW})
   let dispatch = useDispatch();
 
   const fixChange = () => { // Mo 사이즈에서 메뉴 클릭 시
@@ -22,11 +20,12 @@ function MainTemplate () {
       setHeadFixed(!headFixed);
     }
   }
-  const handleReSize = () => { // resize Pc/Mo 체크 
-    let moState = isMobile();
-    dispatch(sSetMobileChk(moState)) // 개선 방향을 찾아야한다.
-  }
   
+  const handleReSize = useCallback(()=> {
+    let moState = isMobile();
+    dispatch(sSetMobileChk(moState))
+  },[dispatch])
+
   const handleScroll = () => {
     const headerH = document.querySelector('.header').offsetHeight;
     if(headerH < window.pageYOffset){ // fixed on
@@ -37,13 +36,14 @@ function MainTemplate () {
   }
 
   useEffect(() => {
+    handleReSize();
     window.addEventListener("resize", handleReSize);
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("resize", handleReSize);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [handleReSize]);
 
   useEffect (() => { // ※ 개선 필요 : 스크롤 0 / 움직인 후 다시 불필요한 리렌더링 일수도 있다.
     let moOn = isMobile();
@@ -58,7 +58,6 @@ function MainTemplate () {
 
   return (
     <div className="main">
-      <p className={isMoChk ? "on" : "off" }> test</p>
       <SkipNav />
       <div className={'main-wrap' + (direction ? ' row' : ' column') + (headFixed ? ' fixed' : '')}>
         <Header

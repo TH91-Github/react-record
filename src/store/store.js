@@ -9,7 +9,8 @@ const windowW = createSlice({
     }
   }
 })
-const mobileChk = createSlice({
+
+const mobileChk = createSlice({ // mobile 체크
   name : 'mobile check',
   initialState : false,
   reducers: {
