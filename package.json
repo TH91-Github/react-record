@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@uiw/codemirror-theme-vscode": "^4.21.13",
     "@uiw/react-codemirror": "^4.21.13",
+    "axios": "^1.5.0",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-code-blocks": "^0.1.3",
