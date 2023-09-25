@@ -49,17 +49,14 @@ export const removeFetch = async (SERVER_URL, delData) => {
 }
 
 // Axios 확인용까지만 준비 / error 수정 및 재설정 필요
-export const loadAxios = async(SERVER_URL) => {
-  const res = await axios
-  .get(SERVER_URL)
-  .then((response) => {
-    console.log(response.data)
-  })
-  .catch((err) => {
-    console.log(err.message);
-  })
-  console.log(res) // 확인용
-  return 0;
+export const loadAxios = async (SERVER_URL) => {
+  try {
+    const res = await axios.get(SERVER_URL);
+    console.log(res)
+    return res;
+  }catch(error){
+    console.log(error);
+  }
 }
 export const postAxios = async(SERVER_URL, postData) => { 
   await axios.post(SERVER_URL , postData)

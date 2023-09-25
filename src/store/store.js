@@ -15,7 +15,6 @@ const mobileChk = createSlice({ // mobile 체크
   initialState : false,
   reducers: {
     sSetMobileChk(state, propsName){
-      console.log(propsName.payload)
       return state = propsName.payload;
     }
   }
