@@ -10,10 +10,26 @@ import { sSetMobileChk } from "store/store";
 import { isMobile } from "api/common.js"
 import 'assets/scss/components/MainTemplate.scss';
 
+import { loadAxios } from "api/fetchAxios";
+
 function MainTemplate () {
+  const [baseData, setBaseData] = useState([]);  
   const [headFixed, setHeadFixed] = useState(false);
   const location = useLocation();
   let dispatch = useDispatch();
+
+  useEffect(() => {
+    loadData()
+  }, [])
+  
+  const loadData = useCallback(async () => {
+    const res = await loadAxios("https://raw.githubusercontent.com/TH91-Github/Data_Storage/main/th-blog/data/data.json");
+    console.log(res)
+    if(res.status === 200){
+      setBaseData(res.data);
+    }
+  }, [])
+
 
   const fixChange = () => { // Mo 사이즈에서 메뉴 클릭 시
     if(headFixed && window.pageYOffset <= 0){
@@ -56,6 +72,9 @@ function MainTemplate () {
     setDirection(!direction)
   }
 
+
+  console.log(baseData);
+  
   return (
     <div className="main">
       <SkipNav />
