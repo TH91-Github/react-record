@@ -52,8 +52,9 @@ export const removeFetch = async (SERVER_URL, delData) => {
 export const loadAxios = async (SERVER_URL) => {
   try {
     const res = await axios.get(SERVER_URL);
-    console.log(res)
-    return res;
+    if(res.status === 200){
+      return res;
+    }
   }catch(error){
     console.log(error);
   }

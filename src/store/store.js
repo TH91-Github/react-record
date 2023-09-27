@@ -1,8 +1,20 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 
+
+const allData = createSlice({
+  name: "Data Load",
+  initialState: [],
+  reducers: {
+    sSetDataAll(state, propsName){
+      // console.log(propsName)
+      return state = propsName.payload;
+    }
+  }
+})
+
 const windowW = createSlice({
-  name : 'window width',
-  initialState : "test",
+  name: "Window width",
+  initialState: "test",
   reducers: {
     changeLocation(state, propsName){
       return state = propsName.payload;
@@ -11,8 +23,8 @@ const windowW = createSlice({
 })
 
 const mobileChk = createSlice({ // mobile 체크
-  name : 'mobile check',
-  initialState : false,
+  name: "Mobile check",
+  initialState: false,
   reducers: {
     sSetMobileChk(state, propsName){
       return state = propsName.payload;
@@ -22,9 +34,11 @@ const mobileChk = createSlice({ // mobile 체크
 
 export default configureStore({
   reducer: { 
-    mobileChk : mobileChk.reducer,
-    windowW : windowW.reducer
+    allData: allData.reducer,
+    mobileChk: mobileChk.reducer,
+    windowW: windowW.reducer
   }
 }) 
 
-export const { sSetMobileChk } = mobileChk.actions
+export const { sSetDataAll } = allData.actions;
+export const { sSetMobileChk } = mobileChk.actions;
