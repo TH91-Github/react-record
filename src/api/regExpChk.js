@@ -7,3 +7,13 @@ export const regExpChk = (val) => {
   }
   return val;
 }
+
+
+
+// etc 
+export const TextChange = (text) => {
+  if(!text) return;
+  let textLine = text.replaceAll(/\n/g, "<br />");
+  let resultText = textLine.replaceAll("className","class");
+  return resultText;
+}
