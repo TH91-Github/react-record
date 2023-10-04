@@ -8,8 +8,6 @@ export const regExpChk = (val) => {
   return val;
 }
 
-
-
 // etc 
 export const TextChange = (text) => {
   if(!text) return;
