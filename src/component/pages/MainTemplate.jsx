@@ -5,38 +5,38 @@ import { useDispatch } from "react-redux";
 import SkipNav from 'component/common/SkipNav';
 import Header from 'component/common/Header';
 import Footer from "component/common/Footer";
-
-import { sSetMobileChk } from "store/store";
+// store, js, css
+import { sSetDataAll, sSetMobileChk } from "store/store";
+import { loadAxios } from "api/fetchAxios";
 import { isMobile } from "api/common.js"
 import 'assets/scss/components/MainTemplate.scss';
 
-import { loadAxios } from "api/fetchAxios";
 
 function MainTemplate () {
-  const [baseData, setBaseData] = useState([]);  
+  const [baseData, setBaseData] = useState('');
   const [headFixed, setHeadFixed] = useState(false);
   const location = useLocation();
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    loadData()
-  }, [])
-  
+  // 초기 데이터 변수 저장 및 store 저장
   const loadData = useCallback(async () => {
     const res = await loadAxios("https://raw.githubusercontent.com/TH91-Github/Data_Storage/main/th-blog/data/data.json");
-    console.log(res)
-    if(res.status === 200){
-      setBaseData(res.data);
-    }
-  }, [])
+    setBaseData(res.data);
+    dispatch(sSetDataAll(res.data));
+  }, [dispatch]);
 
-
-  const fixChange = () => { // Mo 사이즈에서 메뉴 클릭 시
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
+  
+  // Mo 사이즈에서 메뉴 클릭 시
+  const fixChange = () => { 
     if(headFixed && window.pageYOffset <= 0){
       setHeadFixed(!headFixed);
     }
   }
   
+  // Resize & Scroll
   const handleReSize = useCallback(()=> {
     let moState = isMobile();
     dispatch(sSetMobileChk(moState))
@@ -50,7 +50,6 @@ function MainTemplate () {
       setHeadFixed(false);
     }
   }
-
   useEffect(() => {
     handleReSize();
     window.addEventListener("resize", handleReSize);
@@ -71,10 +70,8 @@ function MainTemplate () {
   const chnageNav = () => {
     setDirection(!direction)
   }
-
-
-  console.log(baseData);
   
+  if(!baseData) return;
   return (
     <div className="main">
       <SkipNav />
