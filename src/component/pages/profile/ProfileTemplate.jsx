@@ -16,13 +16,14 @@ function ProfileTemplate(){
   const profileData = useSelector((state) => state.allData.Profile);
   const pInfo = profileData.info;
   const pAbout = profileData.about;
+  const pSkils = profileData.skils;
   /*
     data 수정이 있을 시 
     state를 만들어서 1차 내부 data 수정 후 
     최종 버튼 클릭 시 업로드 및 store 데이터 변경
   */
-  console.log(profileData)
-  
+  // console.log(profileData)
+  console.log(pSkils)
   // Title Style
   const styleTItSize = "24px";
   return (
@@ -94,22 +95,38 @@ function ProfileTemplate(){
             <TitleBar
               fontSize={styleTItSize}
               $align="center">
-              🛠️SKILS
+              🛠️{pSkils.title}
             </TitleBar>
             <div className="profile__box">
               <ul className="skils__lists">
-                <li className="skils__lists-item">
-                  <S.BoxLine className="skils__box">
-                    <S.ReactBadge>React</S.ReactBadge>
-                    <PorgressBar value={35} />
-                    <div className="desc">
-                      <p>React 프로젝트는 진행을 하지 못하였습니다.</p>
-                      <p>React 중심으로 스터디 및 공부를 하며 성장중에 있습니다.</p>
-                      <p>fetch, axios, styled component, store, router, Hook 등 Velog를 통해 처음부터 정리하며 기록하고 있습니다.</p>
-                    </div>
-                  </S.BoxLine>
-                </li>
-                <li className="skils__lists-item">
+                {
+                  pSkils.lists.map((skilsLists, idx) =>
+                    <li className="skils__lists-item" key={idx}>
+                      <S.BoxLine className="skils__box">
+                        {/* 컴포넌트 분류 필요. */}
+                        { skilsLists.category === 'react' && <S.ReactBadge>{skilsLists.title}</S.ReactBadge> }
+                        { skilsLists.category === 'vue' && <S.VueBadge>{skilsLists.title}</S.VueBadge> }
+                        { skilsLists.category === 'javascript' && <S.JSBadge>{skilsLists.title}</S.JSBadge> }
+                        { skilsLists.category === 'jquery' && <S.JQueryBadge>{skilsLists.title}</S.JQueryBadge> }
+                        { skilsLists.category === 'html' && <S.HTMLBadge>{skilsLists.title}</S.HTMLBadge> }
+                        { skilsLists.category === 'css' && <S.CSSBadge>{skilsLists.title}</S.CSSBadge> }
+                        { skilsLists.category === 'scss' && <S.SCSSBadge>{skilsLists.title}</S.SCSSBadge> }
+                        { skilsLists.category === 'etc' && <S.EtCBadge>{skilsLists.title}</S.EtCBadge> }
+                        <PorgressBar value={skilsLists.percent} />
+                        <div className="desc">
+                          {
+                            skilsLists.desc.map((skilsDesc, idx) => (
+                              <S.TextP key={idx} dangerouslySetInnerHTML={{__html: TextChange(skilsDesc) }}></S.TextP>
+                            ))
+                          }
+                        </div>
+                      </S.BoxLine>
+                    </li>
+                  )
+                }
+                
+
+                {/* <li className="skils__lists-item">
                   <S.BoxLine className="skils__box">
                     <S.VueBadge>Vue</S.VueBadge>
                     <PorgressBar value={25} />
@@ -177,7 +194,7 @@ function ProfileTemplate(){
                       <p>웹접근성 심사전 검수 및 기능 수정 가능합니다.</p>
                     </div>
                   </S.BoxLine>
-                </li>
+                </li> */}
               </ul>
             </div>
           </S.BoxInner>
