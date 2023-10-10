@@ -11,6 +11,7 @@ import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/co
 import { TextChange } from "api/regExpChk";
 // scss
 import "assets/scss/components/Profile.scss";
+import BadgeList from "component/common/BadgeList";
 
 function ProfileTemplate(){
   const profileData = useSelector((state) => state.allData.Profile);
@@ -20,7 +21,6 @@ function ProfileTemplate(){
   const pProject = profileData.project;
   const pProPlan = profileData.plan;
 
-  console.log(pProPlan)
   // Title Style
   const styleTItSize = "24px";
   return (
@@ -101,14 +101,7 @@ function ProfileTemplate(){
                     <li className="skils__lists-item" key={idx}>
                       <S.BoxLine className="skils__box">
                         {/* 컴포넌트 분류 필요. */}
-                        { skilsLists.category === 'react' && <S.ReactBadge>{skilsLists.title}</S.ReactBadge> }
-                        { skilsLists.category === 'vue' && <S.VueBadge>{skilsLists.title}</S.VueBadge> }
-                        { skilsLists.category === 'javascript' && <S.JSBadge>{skilsLists.title}</S.JSBadge> }
-                        { skilsLists.category === 'jquery' && <S.JQueryBadge>{skilsLists.title}</S.JQueryBadge> }
-                        { skilsLists.category === 'html' && <S.HTMLBadge>{skilsLists.title}</S.HTMLBadge> }
-                        { skilsLists.category === 'css' && <S.CSSBadge>{skilsLists.title}</S.CSSBadge> }
-                        { skilsLists.category === 'scss' && <S.SCSSBadge>{skilsLists.title}</S.SCSSBadge> }
-                        { skilsLists.category === 'etc' && <S.EtCBadge>{skilsLists.title}</S.EtCBadge> }
+                        <BadgeList badgeType={skilsLists.category} badgeTit={skilsLists.title} />
                         <PorgressBar value={skilsLists.percent} />
                         <div className="desc">
                           {
