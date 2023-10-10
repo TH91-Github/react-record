@@ -18,17 +18,9 @@ function ProfileTemplate(){
   const pAbout = profileData.about;
   const pSkils = profileData.skils;
   const pProject = profileData.project;
-  /*
-    data 수정이 있을 시 
-    state를 만들어서 1차 내부 data 수정 후 
-    최종 버튼 클릭 시 업로드 및 store 데이터 변경
-  */
-  // console.log(profileData)
-  console.log(pProject)
-  const comma = (skilsList) => {
-    const commaTxt = "";
-    return commaTxt
-  }
+  const pProPlan = profileData.plan;
+
+  console.log(pProPlan)
   // Title Style
   const styleTItSize = "24px";
   return (
@@ -170,7 +162,6 @@ function ProfileTemplate(){
                                 <span className="comma" key={idx}>{skilsTxt}</span>
                               ))
                             }</p>
-                            {/* <p className="txt">{comma(projectLists.skils)}</p> */}
                           </div>
                         </S.BoxLine>
                       </S.BoxLine>
@@ -186,45 +177,28 @@ function ProfileTemplate(){
             <TitleBar
               fontSize={styleTItSize}
               $align="center">
-                📚PLAN
+                📚{pProPlan.title}
             </TitleBar>
             <div className="profile__box">
               <S.DivFlex>
-                <div className="plan__info">
-                  <p className="tit"><span>목표</span></p>
-                  <S.BoxLine $top $margin="15px 0 0 0" $padding="15px 0 0 0">
-                    <ul className="lists">
-                      <li className="square">
-                        <p className="txt">velog를 통해 복습을 하며, 기술 정리</p>
-                      </li>
-                      <li className="square">
-                        <p className="txt">github 꾸준한 기록</p>
-                      </li>
-                      <li className="square">
-                        <p className="txt">현재 포트폴리오 정리 되지 않았지만, 계속된 수정을 통해 가이드 및 완성도 높게 수정 진행.</p>
-                      </li>
-                      <li className="square">
-                        <p className="txt">전체적으로 안정기를 찾은 후 naver 블로그를 통해 2차 복습 진행</p>
-                      </li>
-                    </ul>
-                  </S.BoxLine>
-                </div>
-                <div className="plan__info">
-                  <p className="tit"><span>2023, 2024 계획</span></p>
-                  <S.BoxLine $top $margin="15px 0 0 0" $padding="15px 0 0 0">
-                    <ul className="lists">
-                      <li className="square">
-                        <p className="txt">React 중심적 기술 향상</p>
-                      </li>
-                      <li className="square">
-                        <p className="txt">React, Vue 프론트엔드에 필수 요소를 능숙하게 활용하기 위한 공부 및 발전</p>
-                      </li>
-                      <li className="square">
-                        <p className="txt">2023년 11월 ~ TypeScript 시작</p>
-                      </li>
-                    </ul>
-                  </S.BoxLine>
-                </div>
+              {
+                pProPlan.lists.map((planLists,idx) => (
+                  <div className="plan__info" key={idx}>
+                    <p className="tit"><span>{planLists.title}</span></p>
+                    <S.BoxLine $top $margin="15px 0 0 0" $padding="15px 0 0 0">
+                      <ul className="lists">
+                        {
+                          planLists.desc.map((planDesc, idx) => (
+                            <li className="square" key={idx}>
+                              <p className="txt">{planDesc}</p>
+                            </li>
+                          ))
+                        }
+                      </ul>
+                    </S.BoxLine>
+                  </div>
+                ))
+              }
               </S.DivFlex>
             </div>
           </S.BoxInner>
