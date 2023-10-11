@@ -23,8 +23,9 @@ export const Blind = styled.span`
 `;
 export const colorTag = styled.span`
   ${props => `
-    ${props.$color && `color: ${props.$color}`};
     ${props.$bg && `background: ${props.$bg}`};
+    ${props.$fontSize && `font-size: ${props.$fontSize}`};
+    ${props.$color && `color: ${props.$color}`};
   `}
 `;
 // ♣ ICON
