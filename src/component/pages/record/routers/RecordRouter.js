@@ -4,6 +4,7 @@ import Test from 'component/pages/record/study/Test';
 import State2 from 'component/pages/record/study/react/State2';
 import State3 from 'component/pages/record/study/react/State3';
 import ComponentTest from 'component/pages/record/study/react/ComponentTest';
+import UseEffectTest from 'component/pages/record/study/react/UseEffectTest';
 
 // js
 import Js from 'component/pages/record/study/js/Js';
@@ -45,6 +46,13 @@ let RecordDataList = [
     element: <ComponentTest />,
     view: true,
     desc: "컴포넌트 생성 및 props 전달 테스트",
+  },
+  {
+    title:"useEffect 사용",
+    path:"React/UseEffect",
+    element: <UseEffectTest />,
+    view: true,
+    desc: "useEffect를 활용하여 테스트",
   },
   {
     title:"JavaScript",
