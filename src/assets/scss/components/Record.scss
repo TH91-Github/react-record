@@ -101,13 +101,22 @@
 }
 .study {
   .box {
+    .tit {
+      font-size: 16px;
+      font-weight:600;
+      line-height:21px;
+      color:$textColor;
+    }
     .desc {
-      margin-top:15px;
       font-size: 14px;
       line-height:18px;
       color: $subTextColor;
-      & + .desc {
-        margin-top:5px;
+      margin-top:8px;
+      &:first-child{
+        margin-top:0;
+      }
+      & + .tit {
+        margin-top:10px;
       }
     }
     &__cont { 

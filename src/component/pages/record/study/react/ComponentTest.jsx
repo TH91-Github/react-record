@@ -34,8 +34,8 @@ function ComponentTest () {
           <p className="desc">✅ 컴포넌트란?</p>
           <p className="desc">리액트에서 앱을 이루는 가장 작은 조각이라고 하며, UI 요소를 구분할 때 컴포넌트라고 사용을 합니다!</p>
           <p className="desc">반복적으로 사용하는 요소를 컴포넌트로 만들어 재사용하면 보다 효과적으로 사용할 수 있습니다.</p>
-          <p className="desc">✅ 컴포넌트 이름은 항상 대문자로 시작해야합니다</p>
-          <p className="desc">소문자로 시작하는 컴포넌트를 DOM 태그로 처리한다고 해요.</p>
+          <p className="desc">✅ 컴포넌트 이름은 항상 대문자로 시작해야합니다.</p>
+          <p className="desc">소문자로 시작하는 컴포넌트를 DOM 태그로 처리한다고 합니다.</p>
           <CodeTemplate text={code1}/>
         </S.BoxLine>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
@@ -52,7 +52,7 @@ function ComponentTest () {
           <p className="desc">부모는 수정이 가능하지만 자식은 수정이 불가능하고 읽기만 가능합니다.</p>
           <CodeTemplate text={code4}/>
           <p className="desc">✅ props 사용하기</p>
-          <p className="desc">문자열을 전달할 때는 "" 큰따옴표를 사용하고 그 외의 값을 전달할 경우에는 {"{ } "}중괄호를 사용합니다</p>
+          <p className="desc">문자열을 전달할 때는 "" 큰따옴표를 사용하고 그 외의 값을 전달할 경우에는 {"{ } "}중괄호를 사용합니다.</p>
           <CodeTemplate text={code5}/>
           <p className="desc">전달 받은 배열 값은 JSX문법에 맞게 {"{ } "} 중괄호를 사용</p>
         </S.BoxLine>

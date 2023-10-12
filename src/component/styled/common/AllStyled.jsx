@@ -24,7 +24,7 @@ export const Blind = styled.span`
 export const colorTag = styled.span`
   ${props => `
     ${props.$bg && `background: ${props.$bg}`};
-    ${props.$fontSize && `font-size: ${props.$fontSize}`};
+    ${props.fontSize && `font-size: ${props.fontSize}`};
     ${props.$color && `color: ${props.$color}`};
   `}
 `;
@@ -152,10 +152,55 @@ export const BoxLine = styled(Div)`
   `}
 `;
 
+// ♣ flex
 export const UlFlex = styled.ul`
   ${flexOption}
   ${MarginPadding}
   ${props => props.$gap && `gap: ${props.$gap};`}
+`;
+
+// ♣l list 검색 키워드 : 목록 dash bar list 아이콘 목록
+export const listBarUl = styled.ul`
+  ${MarginPadding}
+  &>li{
+    margin-top:5px;
+    padding-left:8px;
+    &:first-child{
+      margin-top:0;
+    }
+  }
+`;
+export const listLi = styled.li`
+  position:relative;
+  color:${props => props.$bg || colors.textColor};
+  &::after{
+    position:absolute;
+    top:8px;
+    left:0;
+    content:"";
+    background: ${props => props.$bg || colors.textColor};
+  }
+`
+export const liBar = styled(listLi)`
+  &::after{ 
+    width:4px;
+    height:1px;
+  }
+`;
+
+export const liSquare = styled(listLi)`
+  &::after{ 
+    width:3px;
+    height:3px;
+  }
+`;
+
+export const liCircle = styled(listLi)`
+  &::after{ 
+    width:3px;
+    height:3px;
+    border-radius:50%;
+  }
 `;
 
 export const ColorChip = styled(Div)`
@@ -167,8 +212,6 @@ export const ColorChip = styled(Div)`
   `}
   border:1px solid ${colors.lineColor};
 `;
-
-
 
 // ♣ Sns 
 export const SnsList = styled(Div)`
