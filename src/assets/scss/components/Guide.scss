@@ -28,6 +28,8 @@
     &__lists {
       gap:20px;
       &-item {
+        display:flex;
+        flex-direction: column;
         width:112.25px;
       }
     }
@@ -36,9 +38,29 @@
       &:hover, &:focus {
         background:$subBlack;
         color:$titBgColor;
+        .color-code {
+          color:$titBgColor;
+          background:$subBlack;
+        }
       }
     }
+    &-chip {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-code {
+      display:inline-block;
+      padding:3px;
+      font-size:14px;
+      font-weight:600;
+      background:$whiteColor;
+      box-shadow:0px 3px 5px rgba(0, 0, 0, 0.2);
+      color:$subBlack;
+      transition: $transitionB;
+    }
     &__info {
+      width:100%;
       padding:10px;
       border:1px solid $lineColor;
       border-top:none;
@@ -46,10 +68,6 @@
     &-name {
       margin-top:5px;
       font-size:14px;
-    }
-    &-code {
-      font-size:14px;
-      font-weight:600;
     }
   }
   .breakpoint{

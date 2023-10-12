@@ -1,3 +1,5 @@
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+
 import Banner from "component/common/Banner";
 import Search from "component/common/Search";
 import TitleBar from "component/common/TitleBar";
@@ -17,10 +19,9 @@ function GuideTemplate(){
   function newArrChange(paramObj){
     return Object.entries(paramObj)
   }
-  function copyBtn(){
-    alert("alert / 복사 기능 준비 중...");
+  function copyBtn(text){
+    alert(text+" 복사가 완료되었습니다.");
   }
-  
   return (
     <div className="guide">
       <Banner $center>
@@ -70,13 +71,16 @@ function GuideTemplate(){
                 {
                   colorData.map((colorItem,idx) => 
                   <li className="color__lists-item" key={idx}>
-                    <S.Button $width="100%" className="btn" onClick={copyBtn}>
-                      <S.ColorChip className="color-chip" $width="100%" $height="100px" $bg={colorItem[1]}/>
-                      <div className="color__info">
-                        <p className="color-code">{colorItem[1]}</p>
-                        <p className="color-name">{colorItem[0]}</p>
-                      </div>
-                    </S.Button>
+                    <CopyToClipboard text={colorItem[0]} >
+                      <S.Button $width="100%" className="btn" onClick={()=>copyBtn(colorItem[0])}>
+                        <S.ColorChip className="color-chip" $width="100%" $height="100px" $bg={colorItem[1]}>
+                            <span className="color-code">{colorItem[1]}</span>
+                        </S.ColorChip>
+                        <div className="color__info">
+                          <p className="color-name">{colorItem[0]}</p>
+                        </div>
+                      </S.Button>
+                    </CopyToClipboard>
                   </li>
                   )
                 }
@@ -109,18 +113,16 @@ function GuideTemplate(){
             <div className="breakpoint">
               <S.UlFlex $margin="20px 0 0" className="breakpoint__lists">
                 {
-                  breakPointData.map((breakpointItme, idx) =>
+                  breakPointData.map((breakPointItme, idx) =>
                     <li className="breakpoint__lists-item" key={idx}>
-                      {
-                        console.log(breakpointItme)
-                        
-                      }
-                      <button type="button" className="screen">
-                        <span className="screen-line">
-                          <S.colorTag className="value" $color={colors.textColor}>{`${breakpointItme[1]}px;`}</S.colorTag>
-                        </span>
-                        <S.colorTag $color={colors.color4}>{`${breakpointItme[0]}`}</S.colorTag>
-                      </button>
+                      <CopyToClipboard text={breakPointItme[0]}>
+                        <button type="button" className="screen" onClick={()=>copyBtn(breakPointItme[0])}>
+                          <span className="screen-line">
+                            <S.colorTag className="value" $color={colors.textColor}>{`${breakPointItme[1]}px;`}</S.colorTag>
+                          </span>
+                          <S.colorTag $color={colors.color4}>{`${breakPointItme[0]}`}</S.colorTag>
+                        </button>
+                      </CopyToClipboard>
                     </li>
                   )
                 }
@@ -155,9 +157,11 @@ function GuideTemplate(){
                 {
                   fontData.map((fontItme, idx) =>
                     <li className="font__lists-item" key={idx}>
-                      <S.Button $width="100%" className="btn" onClick={copyBtn}>
-                        <p>{`${fontItme[0]} : ${fontItme[1]}`}</p>
-                      </S.Button>
+                      <CopyToClipboard text={fontItme[0]}>
+                        <S.Button $width="100%" className="btn" onClick={()=>copyBtn(fontItme[0])}>
+                          <p>{`${fontItme[0]} : ${fontItme[1]}`}</p>
+                        </S.Button>
+                      </CopyToClipboard>
                     </li>
                   )
                 }
