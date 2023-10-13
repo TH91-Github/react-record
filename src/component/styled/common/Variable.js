@@ -2,7 +2,10 @@
 
 // styled-components전용 공통 
 export const fonts = {
-  size : "16px",
+  size18:"18px",
+  size: "16px",
+  size14: "14px",
+  size12: "12px",
   weight: "550",
   font: "NanumGothic",
   fontB: "NanumGothicBold",

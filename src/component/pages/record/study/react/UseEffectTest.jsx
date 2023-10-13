@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from "react";
+import {React} from "react";
 import CodeTemplate from "component/common/CodeTemplate";
 import BackBtn from "component/common/BackBtn";
 

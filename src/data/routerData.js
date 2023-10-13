@@ -1,4 +1,8 @@
+// Guide router
 import GuideTemplate from 'component/pages/guide/GuideTemplate';
+import { GuideRouter } from 'component/pages/guide/routers/GuideRouter';
+
+// Profile router
 import ProfileTemplate from 'component/pages/profile/ProfileTemplate';
 
 // Record router
@@ -18,6 +22,9 @@ export const routerData = [
     title:"Guide",
     path:"guide",
     element: <GuideTemplate />,
+    children:[
+      ...GuideRouter
+    ]
   },
   {
     title:"Profile",

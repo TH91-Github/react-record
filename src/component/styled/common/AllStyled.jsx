@@ -102,6 +102,14 @@ export const TextP = styled.p`
   }
 `;
 
+export const TextS = styled.span`
+  display: ${props => props.$display || 'inline-block'};
+  ${MarginPadding}
+  font-size: ${props => props.fontSize || fonts.size14};
+  font-weight: ${props => props.fontWeight || '500'};
+  color: ${props => props.color || colors.subTextColor};
+`
+
 // ♣ btnWrap
 export const BtnWrap = styled.div`
   display: flex;
