@@ -1,9 +1,18 @@
 // React
+import GuideList from '../GuideList';
 import GuideSwiper from 'component/pages/guide/details/GuideSwiper';
 
 import { ranDom } from 'api/common';
 
 let GuideDataList = [
+  {
+    // id 값은 하단 랜덤으로 생성
+    title:"GuideList",
+    index: true,
+    element: <GuideList />,
+    view: false,
+    desc: "Record 목록 정리 관리 화면",
+  },
   {
     // id 값은 하단 랜덤으로 생성
     title:"Swiper Guide",
