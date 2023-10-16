@@ -1,9 +1,10 @@
+import SwiperSlider from "component/common/SwiperSlider";
 
 
 function GuideSwiper () {
   return (
     <div>
-      swiperdddddddddd
+      <SwiperSlider>dd</SwiperSlider>
     </div>
   )
 }
