@@ -83,7 +83,7 @@ function MainTemplate () {
           direction={direction} 
           chnageNav={chnageNav}/>
         <div className="container">
-          <Outlet />
+          <Outlet context={location} />
         </div>
         <Footer />
       </div>
