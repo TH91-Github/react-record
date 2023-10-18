@@ -34,8 +34,6 @@ function GuideTemplate(){
           GuideTemplate
         </TitleBar>
       </Banner>
-      
-      
         {
           baseListView === "guide" 
           ?
@@ -54,7 +52,7 @@ function GuideTemplate(){
                 </S.DivFlex>
               </S.BoxInner>
             </S.BoxWrap>
-            <S.BoxLine $top  $borderWidth="5px" $margin="30px 0 0" $padding="30px 0 0" className="">
+            <S.BoxLine $top  $borderWidth="5px" $marginTop="30px" $paddingTop="30px" className="">
               {/* color */}
               <S.BoxInner $margin="0 auto" $padding="0 30px">
                 <div className="guide__top">
@@ -78,7 +76,7 @@ function GuideTemplate(){
                     </div>
                   </div>
                   <div className="color">
-                    <S.UlFlex $margin="20px 0 0" className="color__lists">
+                    <S.UlFlex $marginTop="20px" className="color__lists">
                       {
                         colorData.map((colorItem,idx) => 
                         <li className="color__lists-item" key={idx}>

@@ -3,8 +3,18 @@ import { breakpoints, colors, fonts} from './Variable';
 
 // common 
 const MarginPadding = css`
-  margin:${props => props.$margin || "0"};
-  padding:${props => props.$padding || "0"};
+  margin: ${props => props.$margin || 0};
+  padding: ${props => props.$padding || 0};
+  ${props => `
+    ${props.$marginTop && `margin-top:${props.$marginTop}`};
+    ${props.$marginRight && `margin-right:${props.$marginRight}`};
+    ${props.$marginBottom && `margin-bottom:${props.$marginBottom}`};
+    ${props.$marginLeft && `margin-left:${props.$marginLeft}`};
+    ${props.$paddingTop && `padding-top:${props.$paddingTop}`};
+    ${props.$paddingRight && `padding-right:${props.$paddingRight}`};
+    ${props.$paddingBottom && `padding-bottom:${props.$paddingBottom}`};
+    ${props.$paddingLeft && `padding-left:${props.$paddingLeft}`};
+  `}
 `;
 const flexOption = css`
   display:flex;
@@ -69,7 +79,7 @@ export const Input = styled.input`
   display:inline-block;
   padding: ${props => props.$padding || '2px'};
   border: ${props => props.$border || `1px solid ${colors.textColor}`};
-  font-size: ${props => props.fontSize || fonts.size};
+  font-size: ${props => props.fontSize || `${fonts.size}px`};
   color: ${props => props.color || colors.textColor };
 `;
 
@@ -86,13 +96,13 @@ export const Button = styled.button.attrs({
 export const ButtonB = styled(Button)`
   padding: ${props => props.$padding || '2px'};
   border: ${props => props.$border || `1px solid ${colors.textColor}`};
-  font-size: ${props => props.fontSize || fonts.size};
+  font-size: ${props => props.fontSize || `${fonts.size}px`};
   color: ${props => props.color || colors.textColor };
 `; 
 
 export const TextP = styled.p`
   ${MarginPadding}
-  font-size: ${props => props.fontSize || fonts.size};
+  font-size: ${props => props.fontSize || `${fonts.size}px`};
   font-weight: ${props => props.fontWeight || '550'};
   text-align: ${props => props.$align || 'left'};
   color: ${props => props.color || colors.textColor};
@@ -105,7 +115,7 @@ export const TextP = styled.p`
 export const TextS = styled.span`
   display: ${props => props.$display || 'inline-block'};
   ${MarginPadding}
-  font-size: ${props => props.fontSize || fonts.size14};
+  font-size: ${props => props.fontSize || `${fonts.size14}px`};
   font-weight: ${props => props.fontWeight || '500'};
   color: ${props => props.color || colors.subTextColor};
 `
@@ -193,6 +203,8 @@ export const liBar = styled(listLi)`
   &::after{ 
     width:4px;
     height:1px;
+    top:${props => `${(props.fontSize || fonts.size) -5}px`};
+
   }
 `;
 
