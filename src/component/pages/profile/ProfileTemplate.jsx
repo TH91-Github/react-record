@@ -12,17 +12,18 @@ import { TextChange } from "api/regExpChk";
 // scss
 import "assets/scss/components/Profile.scss";
 import BadgeList from "component/common/BadgeList";
+import ProfileAbout from "./ProfileAbout";
 
 function ProfileTemplate(){
   const profileData = useSelector((state) => state.allData.Profile);
   const pInfo = profileData.info;
-  const pAbout = profileData.about;
   const pSkils = profileData.skils;
   const pProject = profileData.project;
   const pProPlan = profileData.plan;
 
   // Title Style
   const styleTItSize = "24px";
+  
   return (
     <div className="profile">
       <div className="visual">
@@ -71,22 +72,8 @@ function ProfileTemplate(){
         </div>
       </div>
       <S.BoxWrap>
-        <div className="section about">
-          <S.BoxInner>
-            <TitleBar
-              fontSize={styleTItSize}
-              $align="center">
-              {pAbout.title}
-            </TitleBar>
-            <div className="profile__box">
-              {
-                pAbout.desc.map((aboutDesc, idx) => (
-                  <S.TextP $align="center" key={idx} dangerouslySetInnerHTML={{__html: TextChange(aboutDesc) }}></S.TextP>
-                ))
-              }
-            </div>
-          </S.BoxInner>
-        </div>
+        <ProfileAbout propsData={profileData} />
+
         <div className="section skils">
           <S.BoxInner>
             <TitleBar
