@@ -13,6 +13,7 @@ import { TextChange } from "api/regExpChk";
 import "assets/scss/components/Profile.scss";
 import BadgeList from "component/common/BadgeList";
 import ProfileAbout from "./ProfileAbout";
+import ProfileSkils from "./ProfileSkils";
 
 function ProfileTemplate(){
   const profileData = useSelector((state) => state.allData.Profile);
@@ -72,7 +73,11 @@ function ProfileTemplate(){
         </div>
       </div>
       <S.BoxWrap>
+        {/* ABOUT */}
         <ProfileAbout propsData={profileData} />
+
+        {/* <ProfileSkils propsData={profileData} /> */}
+
 
         <div className="section skils">
           <S.BoxInner>

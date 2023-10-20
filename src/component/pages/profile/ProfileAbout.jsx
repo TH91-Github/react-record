@@ -4,7 +4,6 @@ import TitleBar from "component/common/TitleBar";
 import { TextChange } from "api/regExpChk";
 function ProfileAbout({propsData}) {
   const pAbout = propsData.about; 
-  console.log(pAbout)
   return (
     <>
       <SP.Section>
@@ -14,13 +13,13 @@ function ProfileAbout({propsData}) {
             $align="center">
             {pAbout.title}
           </TitleBar>
-          <SP.AboutBox>
+          <SP.SectionBox>
             {
               pAbout.desc.map((aboutDesc, idx) => (
                 <S.TextP $align="center" key={idx} dangerouslySetInnerHTML={{__html: TextChange(aboutDesc) }}></S.TextP>
               ))
             }
-          </SP.AboutBox>
+          </SP.SectionBox>
         </S.BoxInner>
       </SP.Section>
     </>
