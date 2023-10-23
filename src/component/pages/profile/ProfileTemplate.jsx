@@ -5,7 +5,6 @@ import TitleBar from "component/common/TitleBar";
 // styled
 import * as S from "component/styled/common/AllStyled";
 import Ing from "component/styled/common/Ing";
-import PorgressBar from "component/styled/common/ProgressBar";
 import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/common/SvgPath";
 
 import { TextChange } from "api/regExpChk";
@@ -14,6 +13,7 @@ import "assets/scss/components/Profile.scss";
 import BadgeList from "component/common/BadgeList";
 import ProfileAbout from "./ProfileAbout";
 import ProfileSkils from "./ProfileSkils";
+import PorgressBar from "component/common/ProgressBar";
 
 function ProfileTemplate(){
   const profileData = useSelector((state) => state.allData.Profile);

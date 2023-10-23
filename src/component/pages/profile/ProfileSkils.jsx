@@ -1,18 +1,24 @@
+
+import { useSelector } from "react-redux";
+
 import * as S from "component/styled/common/AllStyled";
 import * as SP from "component/pages/profile/styled/ProfileStyled";
 import TitleBar from "component/common/TitleBar";
-import { useSelector } from "react-redux";
+import BadgeList from "component/common/BadgeList";
+import { TextChange } from "api/regExpChk";
+import PorgressBar from "component/common/ProgressBar";
+
 
 function ProfileSkils({propsData}) {
   const pSkils = propsData.skils;
   const isMobile = useSelector((state) => state.mobileChk);
-  const gap = moChk("20px","10px");
+  const gap = moChk(20,10);
 
-  console.log(gap)
   function moChk(t,f){
     // pc / mo 순
     return !isMobile ? t : f
   }
+
   return (
     <>
       <SP.Section>
@@ -23,10 +29,28 @@ function ProfileSkils({propsData}) {
             🛠️{pSkils.title}
           </TitleBar>
           <SP.SectionBox>
-            <S.UlFlex $gap={gap}>
-              <li>dasdasd</li>
-              <SP.SkilsLiBox>zxc</SP.SkilsLiBox>
-              {/* <SP.LiBox $gap={gap} $size={moChk(4,2)}>ddd</SP.LiBox> */}
+            <S.UlFlex $gap={gap} $size={moChk(4,2)}>
+              {
+                pSkils.lists.map((skilsLists, idx) => (
+                  <SP.SkilsLi key={idx}>
+                    <SP.SkilsBox className="skils__box">
+                      <BadgeList badgeType={skilsLists.category} badgeTit={skilsLists.title} />
+                      <PorgressBar $marginTop="10px" value={skilsLists.percent} />
+                      <SP.DescBox className="desc">
+                        {
+                          skilsLists.desc.map((skilsDesc, idx) => (
+                            <S.LiCircle key={idx}>
+                              <p dangerouslySetInnerHTML={{__html: TextChange(skilsDesc) }}></p>
+                            </S.LiCircle>
+                          ))
+                        }
+                      </SP.DescBox>
+                    </SP.SkilsBox>
+                  </SP.SkilsLi>
+                ))
+
+
+              }
             </S.UlFlex>
           </SP.SectionBox>
         </S.BoxInner>

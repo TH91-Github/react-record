@@ -1,3 +1,4 @@
+import { colors } from 'component/styled/common/Variable';
 import styled from 'styled-components';
 
 
@@ -9,11 +10,22 @@ export const SectionBox = styled.div`
   padding:0 30px;
 `;
 
-export const SkilsLiBox = styled.li`
+export const SkilsLi = styled.li`
   position:relative;
 `;
 
-// export const SkilsLi = styled.li`
-//   width: ${props => `calc((100% - 60px) / ${props.$size}` || "100%;"};
-//   border:1px solid red;
-// `;
+export const SkilsBox = styled.div`
+  width:100%;
+  height:100%;
+  padding:10px;
+  border-radius:5px;
+  border:1px solid ${colors.lineColor};
+`;
+export const DescBox = styled.div`
+  margin-top:10px;
+  & p {
+    font-size:14px;
+    line-height:19px;
+    color:${colors.textColor};
+  }
+`;

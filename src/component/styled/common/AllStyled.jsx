@@ -174,7 +174,12 @@ export const BoxLine = styled(Div)`
 export const UlFlex = styled.ul`
   ${flexOption}
   ${MarginPadding}
-  ${props => props.$gap && `gap: ${props.$gap};`}
+  ${props => `
+    ${props.$gap && `gap : ${props.$gap}px`};
+    ${props.$size && `
+      &>li {width: calc((100% - ${(props.$gap * (props.$size-1))}px) / ${props.$size});}
+    `};
+  `}
 `;
 
 // ♣l list 검색 키워드 : 목록 dash bar list 아이콘 목록
@@ -215,11 +220,14 @@ export const liSquare = styled(listLi)`
   }
 `;
 
-export const liCircle = styled(listLi)`
-  &::after{ 
-    width:3px;
-    height:3px;
-    border-radius:50%;
+export const LiCircle = styled.li`
+  position:relative;
+  border:1px solid red;
+  padding-left:10px;
+  &::before {
+    position:absolute;
+    left:0;
+    content:"\22C5";
   }
 `;
 
