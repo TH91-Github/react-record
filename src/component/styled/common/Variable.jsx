@@ -21,17 +21,17 @@ export const breakpoints = {
 }
 export const colors = {
   // Color 
-  whiteColor: "#ffffff",
-  blackColor: "#000000",
+  baseWhite: "#ffffff",
+  baseBlack: "#000000",
   subBlack: "#222222",
   // point
-  color1:"#3cb062",
-  color2:"#f5b800",
-  color3:"#685ef8",
-  color4:"#e76647",
+  green3cb062:"#3cb062",
+  yellowf5b800:"#f5b800",
+  blue685ef8:"#685ef8",
+  rede76647:"#e76647",
   // bg Color 
-  bgColor1: "#113536",
-  titBgColor: "#f8f9fc",
+  bgGreen: "#113536",
+  bgWhite: "#f8f9fc",
   // Text Color
   textColor:"#191f28",
   subTextColor:"#868686",

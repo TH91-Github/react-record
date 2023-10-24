@@ -17,7 +17,7 @@ const BaseSlide = styled.div`
   width:100%;
   height:200px;
   background:${colors.subTextColor};
-  color:${colors.whiteColor};
+  color:${colors.baseWhite};
 `
 
 function SwiperSlider({swiperData, swiperOpt}) {

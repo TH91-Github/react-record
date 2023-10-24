@@ -30,7 +30,7 @@ function GuideTemplate(){
   return (
     <div className="guide">
       <Banner $center>
-        <TitleBar fontSize="32px" color={colors.whiteColor}>
+        <TitleBar fontSize="32px" color={colors.baseWhite}>
           GuideTemplate
         </TitleBar>
       </Banner>
@@ -66,12 +66,12 @@ function GuideTemplate(){
                       <p className="desc">SCSS : assets/scss/_variables.scss</p>
                       <p className="desc">
                         ✅ 사용법 EX) :
-                        <S.colorTag $color={colors.color4}> $whiteColor;</S.colorTag>
+                        <S.colorTag $color={colors.rede76647}> $whiteColor;</S.colorTag>
                       </p>
                       <p className="desc">Styled Var: component/styled/common/Variable.js</p>
                       <p className="desc">
                         ✅ 사용법 EX) : 
-                        <S.colorTag $color={colors.color4}> Styled - colors.whiteColor</S.colorTag>
+                        <S.colorTag $color={colors.rede76647}> Styled - colors.baseWhite</S.colorTag>
                       </p>
                     </div>
                   </div>
@@ -110,12 +110,12 @@ function GuideTemplate(){
                       <p className="desc">SCSS : assets/scss/_variables.scss</p>
                       <p className="desc">
                         ✅ 사용법 EX) :
-                        <S.colorTag $color={colors.color4}>{` @include onlyMo { ... }`}</S.colorTag>
+                        <S.colorTag $color={colors.rede76647}>{` @include onlyMo { ... }`}</S.colorTag>
                       </p>
                       <p className="desc">Styled Var: component/styled/common/Variable.js</p>
                       <p className="desc">
                         ✅ 사용법 EX) : 
-                        <S.colorTag $color={colors.color4}> breakpoints.pc</S.colorTag>
+                        <S.colorTag $color={colors.rede76647}> breakpoints.pc</S.colorTag>
                       </p>
                     </div>
                   </div>
@@ -129,7 +129,7 @@ function GuideTemplate(){
                                 <span className="screen-line">
                                   <S.colorTag className="value" $color={colors.textColor}>{`${breakPointItme[1]}px;`}</S.colorTag>
                                 </span>
-                                <S.colorTag $color={colors.color4}>{`${breakPointItme[0]}`}</S.colorTag>
+                                <S.colorTag $color={colors.rede76647}>{`${breakPointItme[0]}`}</S.colorTag>
                               </button>
                             </CopyToClipboard>
                           </li>
@@ -152,12 +152,12 @@ function GuideTemplate(){
                       <p className="desc">SCSS : assets/scss/_variables.scss</p>
                       <p className="desc">
                         ✅ 사용법 EX) :
-                        <S.colorTag $color={colors.color4}>$fontB;</S.colorTag>
+                        <S.colorTag $color={colors.rede76647}>$fontB;</S.colorTag>
                       </p>
                       <p className="desc">Styled Var: component/styled/common/Variable.js</p>
                       <p className="desc">
                         ✅ 사용법 EX) : 
-                        <S.colorTag $color={colors.color4}>Styled - fonts.fontB</S.colorTag>
+                        <S.colorTag $color={colors.rede76647}>Styled - fonts.fontB</S.colorTag>
                       </p>
                     </div>
                   </div>

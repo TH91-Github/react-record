@@ -21,7 +21,7 @@ const CodeWrap = styled.div`
       left:0;
       width:2px;
       height:30%;
-      background:${colors.color2};
+      background:${colors.yellowf5b800};
       transform:translateY(-50%);
       content:"";
     }

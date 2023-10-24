@@ -22,7 +22,7 @@ const Tit = styled.p`
     right: ${ props => props.fontSize ? `calc(${props.fontSize} / 6 * -1)` : `calc(${baseSize}/6*-1)`};
     width: ${ props => props.fontSize || baseSize};
     height:2px;
-    background:  ${colors.color2};
+    background:  ${colors.yellowf5b800};
     transform: rotate(45deg) translateX(50%);
     content:"";
   }
@@ -32,7 +32,7 @@ const Tit = styled.p`
     left: ${ props => props.fontSize ? `calc(${props.fontSize} / 6 * -1)` : `calc(${baseSize}/6*-1)`};
     width: ${ props => props.fontSize || baseSize};
     height:2px; 
-    background: ${colors.color1};
+    background: ${colors.green3cb062};
     transform: rotate(45deg) translateX(-50%);
     content:"";
   }

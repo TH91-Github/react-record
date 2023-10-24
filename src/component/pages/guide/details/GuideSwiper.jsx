@@ -19,14 +19,14 @@ function GuideSwiper () {
           <TitleBar>Swiper Slider</TitleBar>
           <S.listBarUl $marginTop="20px"> 
             <S.liBar>
-              <S.TextP><S.colorTag $color={colors.color4}>import 경로 : </S.colorTag> "src/component/common/SwiperSlider";</S.TextP>
+              <S.TextP><S.colorTag $color={colors.rede76647}>import 경로 : </S.colorTag> "src/component/common/SwiperSlider";</S.TextP>
             </S.liBar>
             <S.liBar>
-              <S.TextP><S.colorTag $color={colors.color4}>참고 : </S.colorTag> https://swiperjs.com/</S.TextP>
+              <S.TextP><S.colorTag $color={colors.rede76647}>참고 : </S.colorTag> https://swiperjs.com/</S.TextP>
             </S.liBar>
           </S.listBarUl>
         </S.BoxInner>
-        <S.BoxLine $top $borderWidth="5px" $borderColor={colors.blackColor} $marginTop="30px" $paddingTop="30px" className="">
+        <S.BoxLine $top $borderWidth="5px" $borderColor={colors.baseBlack} $marginTop="30px" $paddingTop="30px" className="">
           <S.BoxInner $margin="0 auto" $padding="0 30px">
             <S.Div>
               <SubTitleBar fontSize="16px">기본 default</SubTitleBar>

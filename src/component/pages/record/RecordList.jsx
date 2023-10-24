@@ -60,10 +60,10 @@ function RecordList () {
   return (
     <div className="record__wrap">
       <Banner $center $align="center">
-        <TitleBar fontSize="32px" color={colors.whiteColor}>
+        <TitleBar fontSize="32px" color={colors.baseWhite}>
           Record - {selectTab}
         </TitleBar>
-        <S.TextP $margin="10px 0 0 0" fontSize="14px" color={colors.whiteColor}>Velog, 예제, 메모장 정보 등 기록을 정리한 페이지</S.TextP>
+        <S.TextP $margin="10px 0 0 0" fontSize="14px" color={colors.baseWhite}>Velog, 예제, 메모장 정보 등 기록을 정리한 페이지</S.TextP>
       </Banner>
       <S.BoxWrap className="search">
         <S.BoxInner $padding="30px 30px 0" className="search__wrap">

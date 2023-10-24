@@ -1,22 +1,24 @@
 import { useSelector } from "react-redux";
-// component
-import TitleBar from "component/common/TitleBar";
 
 // styled
 import * as S from "component/styled/common/AllStyled";
+import * as SP from "component/pages/profile/styled/ProfileStyled";
 import Ing from "component/styled/common/Ing";
 import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/common/SvgPath";
 
-// scss
-import "assets/scss/components/Profile.scss";
 import ProfileAbout from "./ProfileAbout";
 import ProfileSkils from "./ProfileSkils";
 import ProfileProject from "./ProfileProject";
+import ProfilePlan from "./ProfilePlan";
+
+// scss
+import "assets/scss/components/Profile.scss";
+import ProfileMain from "./ProfileMain";
+
 
 function ProfileTemplate(){
   const profileData = useSelector((state) => state.allData.Profile);
   const pInfo = profileData.info;
-  const pProject = profileData.project;
   const pProPlan = profileData.plan;
 
   // Title Style
@@ -24,6 +26,9 @@ function ProfileTemplate(){
   
   return (
     <div className="profile">
+      {/* Top */}
+      <ProfileMain />
+
       <div className="visual">
         <div className="visual-box">
           <div className="visual-info">
@@ -74,48 +79,15 @@ function ProfileTemplate(){
         <ProfileAbout propsData={profileData} />
         {/* SKilS */}
         <ProfileSkils propsData={profileData} />
-
         {/* PROJECT */}
         <ProfileProject propsData={profileData} />
-
-        <div className="section plan">
-          <S.BoxInner>
-            <TitleBar
-              fontSize={styleTItSize}
-              $align="center">
-                📚{pProPlan.title}
-            </TitleBar>
-            <div className="profile__box">
-              <S.DivFlex>
-              {
-                pProPlan.lists.map((planLists,idx) => (
-                  <div className="plan__info" key={idx}>
-                    <p className="tit"><span>{planLists.title}</span></p>
-                    <S.BoxLine $top $margin="15px 0 0 0" $padding="15px 0 0 0">
-                      <ul className="lists">
-                        {
-                          planLists.desc.map((planDesc, idx) => (
-                            <li className="square" key={idx}>
-                              <p className="txt">{planDesc}</p>
-                            </li>
-                          ))
-                        }
-                      </ul>
-                    </S.BoxLine>
-                  </div>
-                ))
-              }
-              </S.DivFlex>
-            </div>
-          </S.BoxInner>
-        </div>
-        <div className="section thank">
-          <S.BoxInner>
-            <S.TextP $align="center">
-              감사합니다. 😁
-            </S.TextP>
-          </S.BoxInner>
-        </div>
+        {/* PLAN */}
+        <ProfilePlan propsData={profileData} />              
+        <SP.Section>
+          <S.TextP $align="center">
+            감사합니다. 😁
+          </S.TextP>
+        </SP.Section>
       </S.BoxWrap>
     </div>
   )

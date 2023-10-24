@@ -73,6 +73,12 @@ export const MemberBox = styled.div`
 `;
 export const DescUl = styled.ul`
   margin-top:10px;
+  &>li {
+    margin-top:8px;
+    &:first-child {
+      margin-top:0;
+    }
+  }
   & p {
     font-size:14px;
     line-height:19px;
@@ -89,6 +95,34 @@ export const ComaSpan = styled.span`
   &:first-child {
     &::before {
       display:none;
+    }
+  }
+`;
+
+export const PlanTit = styled.p`
+  font-size:${fonts.size18}px;
+  font-family:${fonts.fontB};
+  text-align:center;
+  & > span {
+    display:inline-block;
+    position:relative;
+    &::before{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 30%;
+      height: 2px;
+      background: ${colors.yellowf5b800};
+      content: "";
+    }
+    &::after{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 70%;
+      height: 2px;
+      background: ${colors.green3cb062};
+      content: "";
     }
   }
 `;

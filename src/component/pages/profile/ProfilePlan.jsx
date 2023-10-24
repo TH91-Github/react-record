@@ -4,18 +4,18 @@ import { useSelector } from "react-redux";
 import * as S from "component/styled/common/AllStyled";
 import * as SP from "component/pages/profile/styled/ProfileStyled";
 import TitleBar from "component/common/TitleBar";
-import BadgeList from "component/common/BadgeList";
-import PorgressBar from "component/common/ProgressBar";
 
-function ProfileSkils({propsData}) {
-  const pSkils = propsData.skils;
+function ProfilePlan({propsData}) {
+  const pProPlan = propsData.plan;
   const isMobile = useSelector((state) => state.mobileChk);
-  const gap = moChk(20,10);
+  const gap = moChk(20);
   function moChk(t,f){
+    t = t ?? 1;
+    f = f ?? t;
     // pc / mo 순
     return !isMobile ? t : f
   }
-  console.log(pSkils)
+  const contMarginTop = 10;
   return (
     <>
       <SP.Section>
@@ -23,27 +23,29 @@ function ProfileSkils({propsData}) {
           <TitleBar
             fontSize="24px"
             $align="center">
-            🛠️{pSkils.title}
+            📚{pProPlan.title}
           </TitleBar>
           <SP.SectionBox>
-            <S.UlFlex $gap={gap} $size={moChk(4,2)}>
+            <S.UlFlex $gap={gap} $size={moChk(2,1)}>
               {
-                pSkils.lists.map((skilsLists, idx) => (
+                pProPlan.lists.map((planLists,idx) => (
                   <li key={idx}>
-                    <SP.SkilsBox>
-                      <BadgeList badgeType={skilsLists.category} badgeTit={skilsLists.title} />
-                      <PorgressBar $marginTop="10px" value={skilsLists.percent} />
+                    <SP.PlanTit><span>{planLists.title}</span></SP.PlanTit>
+                    <S.BoxLine $top $marginTop={`${contMarginTop}px`}>
                       <SP.DescUl>
                         {
-                          skilsLists.desc.map((skilsDesc, idx) => (
+                          planLists.desc.map((planDesc, idx) => (
                             <S.LiCircle key={idx}>
-                              <p>{skilsDesc}</p>
+                              <p>{planDesc}</p>
                             </S.LiCircle>
                           ))
                         }
                       </SP.DescUl>
-                    </SP.SkilsBox>
+                    </S.BoxLine>
+
+
                   </li>
+                  
                 ))
               }
             </S.UlFlex>
@@ -53,4 +55,4 @@ function ProfileSkils({propsData}) {
     </>
   )
 }
-export default ProfileSkils;
+export default ProfilePlan;
