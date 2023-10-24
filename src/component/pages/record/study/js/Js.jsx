@@ -12,7 +12,7 @@ function Js() {
       <S.BoxLine $maxWidth="1000px" $margin="50px auto 0" $padding="30px">
         <BackBtn $position="absolute" $top="10px" $right="10px" fontSize="20px">↩️</BackBtn>
         <div className="study__header">
-          <TitleBar fontSize="24px">📌 JavaScript 기록 공간 예정 </TitleBar>
+          <TitleBar $fontSize="24px">📌 JavaScript 기록 공간 예정 </TitleBar>
         </div>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>📍 부제목</SubTitleBar>

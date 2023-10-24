@@ -60,7 +60,7 @@ function RecordList () {
   return (
     <div className="record__wrap">
       <Banner $center $align="center">
-        <TitleBar fontSize="32px" color={colors.baseWhite}>
+        <TitleBar $fontSize="32px" $color={colors.baseWhite}>
           Record - {selectTab}
         </TitleBar>
         <S.TextP $margin="10px 0 0 0" fontSize="14px" color={colors.baseWhite}>Velog, 예제, 메모장 정보 등 기록을 정리한 페이지</S.TextP>
@@ -98,7 +98,7 @@ function RecordList () {
             </div>
             <div className="tab__cont">
               <div className="tab__cont-title">
-                <TitleBar fontWeight="600">
+                <TitleBar $fontWeight="600">
                   {selectTab}
                 </TitleBar>
               </div>

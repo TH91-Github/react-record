@@ -56,7 +56,7 @@ function State2 () {
               <S.SnsText $margin="0 0 0 10px">👈 Velog 확인하기</S.SnsText>
             </S.A>
           </S.SnsBoxText>
-          <TitleBar fontSize="24px">📌 React - state (2) Array 변경</TitleBar>
+          <TitleBar $fontSize="24px">📌 React - state (2) Array 변경</TitleBar>
         </div>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>성공버전</SubTitleBar>

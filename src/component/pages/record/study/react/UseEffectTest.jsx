@@ -27,7 +27,7 @@ function UseEffectTest () {
               <S.SnsText $margin="0 0 0 10px">👈 Velog 확인하기</S.SnsText>
             </S.A>
           </S.SnsBoxText>
-          <TitleBar fontSize="24px">📌 React - useEffect</TitleBar>
+          <TitleBar $fontSize="24px">📌 React - useEffect</TitleBar>
         </div>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>useEffect란?</SubTitleBar>

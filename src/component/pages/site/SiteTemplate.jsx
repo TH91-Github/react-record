@@ -13,7 +13,7 @@ function SiteTemplate(){
   return (
     <div className="site">
       <Banner $center>
-        <TitleBar fontSize="32px" color={colors.baseWhite}>
+        <TitleBar $fontSize="32px" $color={colors.baseWhite}>
           SiteTemplate
         </TitleBar>
       </Banner>

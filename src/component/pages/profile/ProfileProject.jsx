@@ -21,7 +21,7 @@ function ProfileProject({propsData}) {
       <SP.Section>
         <S.BoxInner>
           <TitleBar
-            fontSize="24px"
+            $fontSize="24px"
             $align="center">
             📌{pProject.title}
           </TitleBar>

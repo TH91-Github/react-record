@@ -68,7 +68,7 @@ function State3 () {
               <S.SnsText $margin="0 0 0 10px">👈 Velog 확인하기</S.SnsText>
             </S.A>
           </S.SnsBoxText>
-          <TitleBar fontSize="24px">📌 React - state(3) input 입력된 값으로 변경 </TitleBar>
+          <TitleBar $fontSize="24px">📌 React - state(3) input 입력된 값으로 변경 </TitleBar>
         </div>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>📍 button array 값 변경</SubTitleBar>

@@ -9,7 +9,7 @@ function ProfileAbout({propsData}) {
       <SP.Section>
         <S.BoxInner>
           <TitleBar
-            fontSize="24px"
+            $fontSize="24px"
             $align="center">
             {pAbout.title}
           </TitleBar>

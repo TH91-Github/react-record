@@ -30,7 +30,7 @@ function GuideTemplate(){
   return (
     <div className="guide">
       <Banner $center>
-        <TitleBar fontSize="32px" color={colors.baseWhite}>
+        <TitleBar $fontSize="32px" $color={colors.baseWhite}>
           GuideTemplate
         </TitleBar>
       </Banner>

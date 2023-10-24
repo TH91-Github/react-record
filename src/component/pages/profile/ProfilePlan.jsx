@@ -21,7 +21,7 @@ function ProfilePlan({propsData}) {
       <SP.Section>
         <S.BoxInner>
           <TitleBar
-            fontSize="24px"
+            $fontSize="24px"
             $align="center">
             📚{pProPlan.title}
           </TitleBar>

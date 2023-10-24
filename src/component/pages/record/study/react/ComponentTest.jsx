@@ -27,7 +27,7 @@ function ComponentTest () {
               <S.SnsText $margin="0 0 0 10px">👈 Velog 확인하기</S.SnsText>
             </S.A>
           </S.SnsBoxText>
-          <TitleBar fontSize="24px">📌 컴포넌트 생성 및 Props</TitleBar>
+          <TitleBar $fontSize="24px">📌 컴포넌트 생성 및 Props</TitleBar>
         </div>
         <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>Component</SubTitleBar>
