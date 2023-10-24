@@ -222,12 +222,11 @@ export const liSquare = styled(listLi)`
 
 export const LiCircle = styled.li`
   position:relative;
-  border:1px solid red;
   padding-left:10px;
   &::before {
     position:absolute;
     left:0;
-    content:"\22C5";
+    content:'·';
   }
 `;
 

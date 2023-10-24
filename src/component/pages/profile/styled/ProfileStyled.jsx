@@ -21,7 +21,7 @@ export const SkilsBox = styled.div`
   border-radius:5px;
   border:1px solid ${colors.lineColor};
 `;
-export const DescBox = styled.div`
+export const DescUl = styled.ul`
   margin-top:10px;
   & p {
     font-size:14px;

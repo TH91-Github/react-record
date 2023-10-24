@@ -75,41 +75,9 @@ function ProfileTemplate(){
       <S.BoxWrap>
         {/* ABOUT */}
         <ProfileAbout propsData={profileData} />
+        {/* SKilS */}
+        <ProfileSkils propsData={profileData} />
 
-        {/* <ProfileSkils propsData={profileData} /> */}
-
-
-        <div className="section skils">
-          <S.BoxInner>
-            <TitleBar
-              fontSize={styleTItSize}
-              $align="center">
-              🛠️{pSkils.title}
-            </TitleBar>
-            <div className="profile__box">
-              <ul className="skils__lists">
-                {
-                  pSkils.lists.map((skilsLists, idx) => (
-                    <li className="skils__lists-item" key={idx}>
-                      <S.BoxLine className="skils__box">
-                        {/* 컴포넌트 분류 필요. */}
-                        <BadgeList badgeType={skilsLists.category} badgeTit={skilsLists.title} />
-                        <PorgressBar value={skilsLists.percent} />
-                        <div className="desc">
-                          {
-                            skilsLists.desc.map((skilsDesc, idx) => (
-                              <S.TextP key={idx} dangerouslySetInnerHTML={{__html: TextChange(skilsDesc) }}></S.TextP>
-                            ))
-                          }
-                        </div>
-                      </S.BoxLine>
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-          </S.BoxInner>
-        </div>
         <div className="section project">
           <S.BoxInner>
             <TitleBar
