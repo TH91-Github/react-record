@@ -1,5 +1,6 @@
 import { colors, fonts } from 'component/styled/common/Variable';
 import styled from 'styled-components';
+import profileImg from '../../../../assets/images/profile.jpg'
 
 export const ProfileWrap = styled.div`
   position: relative;
@@ -82,7 +83,7 @@ export const ProfileImg = styled.div`
   left: 50%;
   width: 150px;
   height: 150px;
-  background: url(https://react-record.vercel.app/static/media/profile.2b5bf24fca21ec5d6308.jpg) no-repeat 0 0;
+  background: url(${profileImg}) no-repeat 0 0;
   background-size: cover;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
   border-radius: 50%;
