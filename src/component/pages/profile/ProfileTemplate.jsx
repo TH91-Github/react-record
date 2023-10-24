@@ -27,7 +27,7 @@ function ProfileTemplate(){
   return (
     <div className="profile">
       {/* Top */}
-      <ProfileMain />
+      {/* <ProfileMain /> */}
 
       <div className="visual">
         <div className="visual-box">
