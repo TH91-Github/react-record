@@ -1,7 +1,96 @@
 import { colors, fonts } from 'component/styled/common/Variable';
 import styled from 'styled-components';
 
+export const ProfileWrap = styled.div`
+  position: relative;
+  min-height: 300px;
+  padding: 100px 30px 50px;
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: #f5b800;
+    content: "";
+  }
+  .profile{
+    &__inner{
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 10px;
+      background: ${colors.baseWhite};
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    &__info{ 
+      display: flex;
+      flex-direction: column;
+      padding: 75px 30px 30px;
+      .name {
+        margin-top: 30px;
+        font-size: 24px;
+        font-family:${fonts.fontB};
+      }
+    }
+  }
+`;
+export const Contact = styled.div`
+  margin-top: 20px;
+  & > ul {
+    display: flex;
+    justify-content: center;
+    &>li{
+      position: relative;
+      margin-left: 10px;
+      padding-left: 10px;
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 1px;
+        height: 80%;
+        background: #000;
+        transform: translateY(-50%);
+        content: "";
+      }
+      &:first-child {
+        &::before {
+          display:none;
+        }
+      }
+    }
+  }
+  .txt {
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 14px;
+    color: #000;
+  }
+  i {
+    margin-right:5px;
+  }
+`;
+export const ProfileImg = styled.div`
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  background: url(/static/media/profile.2b5bf24fca21ec5d6308.jpg) no-repeat 0 0;
+  background-size: cover;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all .5s;
+`;
 
+// content
 export const Section = styled.div`
   padding:30px 0;
 `;

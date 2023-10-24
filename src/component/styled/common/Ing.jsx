@@ -5,7 +5,11 @@ const SettingWrap = styled.div`
   display:flex;
   justify-content:center;
   align-items: center;
-  ${props => props.$margin && `margin: ${props.$margin}`};
+  ${props => `
+    ${props.$margin && `margin: ${props.$margin}`};
+    ${props.$marginTop && `margin-top:${props.$marginTop}`};
+  `}
+ 
 `;
 
 const Txt = styled.span`

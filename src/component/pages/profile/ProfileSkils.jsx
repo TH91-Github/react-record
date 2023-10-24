@@ -1,27 +1,23 @@
-
-import { useSelector } from "react-redux";
-
 import * as S from "component/styled/common/AllStyled";
 import * as SP from "component/pages/profile/styled/ProfileStyled";
 import TitleBar from "component/common/TitleBar";
 import BadgeList from "component/common/BadgeList";
 import PorgressBar from "component/common/ProgressBar";
 
-function ProfileSkils({propsData}) {
-  const pSkils = propsData.skils;
-  const isMobile = useSelector((state) => state.mobileChk);
+function ProfileSkils({propsOpt}) {
+  const {data,titSize,isMo} = propsOpt;
+  const pSkils = data.skils;
   const gap = moChk(20,10);
   function moChk(t,f){
     // pc / mo 순
-    return !isMobile ? t : f
+    return !isMo ? t : f
   }
-  console.log(pSkils)
   return (
     <>
       <SP.Section>
         <S.BoxInner>
           <TitleBar
-            $fontSize="24px"
+            $fontSize={`${titSize}px`}
             $align="center">
             🛠️{pSkils.title}
           </TitleBar>

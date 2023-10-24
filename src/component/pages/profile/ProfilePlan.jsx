@@ -1,19 +1,16 @@
-
-import { useSelector } from "react-redux";
-
 import * as S from "component/styled/common/AllStyled";
 import * as SP from "component/pages/profile/styled/ProfileStyled";
 import TitleBar from "component/common/TitleBar";
 
-function ProfilePlan({propsData}) {
-  const pProPlan = propsData.plan;
-  const isMobile = useSelector((state) => state.mobileChk);
+function ProfilePlan({propsOpt}) {
+  const {data,titSize,isMo} = propsOpt;
+  const pProPlan = data.plan;
   const gap = moChk(20);
   function moChk(t,f){
     t = t ?? 1;
     f = f ?? t;
     // pc / mo 순
-    return !isMobile ? t : f
+    return !isMo ? t : f
   }
   const contMarginTop = 10;
   return (
@@ -21,7 +18,7 @@ function ProfilePlan({propsData}) {
       <SP.Section>
         <S.BoxInner>
           <TitleBar
-            $fontSize="24px"
+            $fontSize={`${titSize}px`}
             $align="center">
             📚{pProPlan.title}
           </TitleBar>

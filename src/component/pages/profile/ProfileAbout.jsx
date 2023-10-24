@@ -2,14 +2,15 @@ import * as S from "component/styled/common/AllStyled";
 import * as SP from "component/pages/profile/styled/ProfileStyled";
 import TitleBar from "component/common/TitleBar";
 import { TextChange } from "api/regExpChk";
-function ProfileAbout({propsData}) {
-  const pAbout = propsData.about; 
+function ProfileAbout({propsOpt}) {
+  const {data,titSize} = propsOpt;
+  const pAbout = data.about; 
   return (
     <>
       <SP.Section>
         <S.BoxInner>
           <TitleBar
-            $fontSize="24px"
+            $fontSize={`${titSize}px`}
             $align="center">
             {pAbout.title}
           </TitleBar>
