@@ -17,6 +17,7 @@ function ProfileSkils({propsData}) {
     // pc / mo 순
     return !isMobile ? t : f
   }
+  console.log(pSkils)
   return (
     <>
       <SP.Section>
@@ -30,7 +31,7 @@ function ProfileSkils({propsData}) {
             <S.UlFlex $gap={gap} $size={moChk(4,2)}>
               {
                 pSkils.lists.map((skilsLists, idx) => (
-                  <SP.SkilsLi key={idx}>
+                  <li key={idx}>
                     <SP.SkilsBox>
                       <BadgeList badgeType={skilsLists.category} badgeTit={skilsLists.title} />
                       <PorgressBar $marginTop="10px" value={skilsLists.percent} />
@@ -38,13 +39,13 @@ function ProfileSkils({propsData}) {
                         {
                           skilsLists.desc.map((skilsDesc, idx) => (
                             <S.LiCircle key={idx}>
-                              <p dangerouslySetInnerHTML={{__html: TextChange(skilsDesc) }}></p>
+                              <p>{skilsDesc}</p>
                             </S.LiCircle>
                           ))
                         }
                       </SP.DescUl>
                     </SP.SkilsBox>
-                  </SP.SkilsLi>
+                  </li>
                 ))
               }
             </S.UlFlex>

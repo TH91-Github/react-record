@@ -209,7 +209,6 @@ export const liBar = styled(listLi)`
     width:4px;
     height:1px;
     top:${props => `${(props.fontSize || fonts.size) -5}px`};
-
   }
 `;
 
@@ -226,10 +225,13 @@ export const LiCircle = styled.li`
   &::before {
     position:absolute;
     left:0;
-    content:'·';
+    content:'\\22C5';
   }
+  &.bold {
+    font-weight:bold;
+  }
+  ${props => props.$bold && `font-weight: bold`};
 `;
-
 export const ColorChip = styled(Div)`
   ${props => `
     ${props.$width && `width: ${props.$width}`};

@@ -7,18 +7,15 @@ import * as S from "component/styled/common/AllStyled";
 import Ing from "component/styled/common/Ing";
 import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/common/SvgPath";
 
-import { TextChange } from "api/regExpChk";
 // scss
 import "assets/scss/components/Profile.scss";
-import BadgeList from "component/common/BadgeList";
 import ProfileAbout from "./ProfileAbout";
 import ProfileSkils from "./ProfileSkils";
-import PorgressBar from "component/common/ProgressBar";
+import ProfileProject from "./ProfileProject";
 
 function ProfileTemplate(){
   const profileData = useSelector((state) => state.allData.Profile);
   const pInfo = profileData.info;
-  const pSkils = profileData.skils;
   const pProject = profileData.project;
   const pProPlan = profileData.plan;
 
@@ -78,53 +75,9 @@ function ProfileTemplate(){
         {/* SKilS */}
         <ProfileSkils propsData={profileData} />
 
-        <div className="section project">
-          <S.BoxInner>
-            <TitleBar
-              fontSize={styleTItSize}
-              $align="center">
-                📌{pProject.title}
-            </TitleBar>
-            <div className="profile__box">
-              <ul className="project__lists">
-                {
-                  pProject.lists.map((projectLists, idx) => (
-                    <li className="project__lists-item" key={idx}>
-                      <S.BoxLine className="project__box">
-                        <p className="title">{projectLists.title}</p>
-                        <p className="company">{projectLists.company}</p>
-                        <div className="date">
-                          <span className="start">{projectLists.date.start}</span>
-                          <span className="end">{projectLists.date.end}</span>
-                        </div>
-                        <div className="member">
-                          <span className="number">총 {projectLists.totalPeople}명</span>
-                          <span className="contribution">기여도: <span className="num">{projectLists.participation}%</span></span>
-                        </div>
-                        <S.BoxLine $top $margin="10px 0 0 0" $padding="10px 0 0 0" className="review">
-                          <ul className="lists">
-                            {
-                              projectLists.desc.map((projectDesc, idx) => (
-                                <li className="square" key={idx}>{projectDesc}</li>
-                              ))
-                            }
-                          </ul>
-                          <div className="skils">
-                            <p className="txt">{
-                              projectLists.skils.map((skilsTxt ,idx) => (
-                                <span className="comma" key={idx}>{skilsTxt}</span>
-                              ))
-                            }</p>
-                          </div>
-                        </S.BoxLine>
-                      </S.BoxLine>
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-          </S.BoxInner>
-        </div>
+        {/* PROJECT */}
+        <ProfileProject propsData={profileData} />
+
         <div className="section plan">
           <S.BoxInner>
             <TitleBar
