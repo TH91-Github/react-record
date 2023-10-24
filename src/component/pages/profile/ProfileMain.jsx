@@ -3,6 +3,9 @@ import * as SP from "component/pages/profile/styled/ProfileStyled";
 import Ing from "component/styled/common/Ing";
 import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/common/SvgPath";
 
+// scss
+import "assets/scss/components/Profile.scss";
+
 function ProfileMain({propsOpt}) {
   const pInfo = propsOpt.data.info;
   return (
@@ -47,7 +50,8 @@ function ProfileMain({propsOpt}) {
               </ul>
             </SP.Contact>
             <Ing $marginTop="10px">프로필 수정 진행중</Ing>
-            <SP.ProfileImg />
+            <div className="visual-img"></div>
+            {/* <SP.ProfileImg /> */}
           </div>
         </div>
       </SP.ProfileWrap>
