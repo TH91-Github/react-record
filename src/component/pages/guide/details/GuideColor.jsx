@@ -8,23 +8,19 @@ import { colors } from "component/styled/common/Variable";
 
 
 function GuideColor() {
-  const colorVar = newArrChange(colors);
-  function newArrChange(paramObj){
-    return Object.entries(paramObj)
-  }
   const colorData = {
     id:1,
     title: "Color",
     desc:[
-      "SCSS, Styled var 둘 다 수정.",
-      "SCSS : assets/scss/_variables.scss",
       "경로 : component/styled/common/Variable.js",
       "import { colors } from 'component/styled/common/Variable';",
       "사용 : colors.baseWhite"
     ],
     lists: newArrChange(colors)
   }
-
+  function newArrChange(paramObj){
+    return Object.entries(paramObj)
+  }
   function copyBtn(text){
     alert(text+" 복사가 완료되었습니다.");
   }
