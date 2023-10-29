@@ -7,7 +7,6 @@ import * as S from "component/styled/common/AllStyled";
 import * as SG from "component/pages/guide/styled/GuideStyled";
 import { breakpoints, colors } from "component/styled/common/Variable";
 
-
 function GuideBreakPoint() {
   const breakpointData = {
     id:1,

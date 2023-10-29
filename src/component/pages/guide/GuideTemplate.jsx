@@ -34,6 +34,10 @@ function GuideTemplate(){
           GuideTemplate
         </TitleBar>
       </Banner>
+      {/* 
+        guide 목록으로 오는 경로 만들기
+        상세 페이지 입장시에만 노출
+      */}
         {
           baseListView === "guide" 
           ?
@@ -52,6 +56,7 @@ function GuideTemplate(){
                 </S.DivFlex>
               </S.BoxInner>
             </S.BoxWrap>
+          
             <S.BoxLine $top  $borderWidth="5px" $marginTop="30px" $paddingTop="30px" className="">
               {/* color */}
               <S.BoxInner $margin="0 auto" $padding="0 30px">
@@ -184,9 +189,7 @@ function GuideTemplate(){
           </>
           :
           <>
-            <S.BoxWrap>
-              <Outlet />
-            </S.BoxWrap>
+            <Outlet />
           </>
         }
     </div>
