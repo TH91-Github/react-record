@@ -16,43 +16,33 @@ const MarginPadding = css`
     ${props.$paddingLeft && `padding-left:${props.$paddingLeft}`};
   `}
 `;
+
+// 유지 css
 const flexOption = css`
   display:flex;
   flex-wrap:wrap;
   flex-direction: ${props => props.$direction || 'row'};
   justify-content : ${props => props.$justifyConent || 'flex-start'}; 
-`;
-
-// ♣ Base Css
-export const Blind = styled.span`
-  position: absolute;
-  top: -99999px;
-  left: -9999px;
-  opacity: 0;
-  text-indent: -9999px;
-`;
-export const colorTag = styled.span`
   ${props => `
-    ${props.$bg && `background: ${props.$bg}`};
-    ${props.fontSize && `font-size: ${props.fontSize}`};
-    ${props.$color && `color: ${props.$color}`};
+    ${props.$gap && `gap : ${props.$gap}px`};
+    ${props.$size && `
+      &>li {width: calc((100% - ${(props.$gap * (props.$size-1))}px) / ${props.$size});}
+    `};
   `}
 `;
-// ♣ ICON
-export const Icon = styled.i`
+
+// ♣ button
+export const Button = styled.button.attrs({
+  type:'button',
+})`
   display:inline-block;
-  position:relative;
-  width: ${props => props.width || "20px"};
-  height: ${props => props.width || "20px"};
-  border-radius: ${props => props.$borderRadius || 0};
-  ${props => props.$bg 
-    && 
-    `
-      background: ${props.$bg};
-      border:1px solid ${props.$bg};
-    `
-  };
+  ${props => `
+    ${props.$width && `width:${props.$width}`};
+    ${props.$height && `width:${props.$height}`};
+  `}
 `;
+
+
 // ♣ Tag 
 export const Div = styled.div`
   ${MarginPadding}
@@ -83,15 +73,7 @@ export const Input = styled.input`
   color: ${props => props.color || colors.textColor };
 `;
 
-export const Button = styled.button.attrs({
-  type:'button',
-})`
-  display:inline-block;
-  ${props => `
-    ${props.$width && `width:${props.$width}`};
-    ${props.$height && `width:${props.$height}`};
-  `}
-`;
+
 
 export const ButtonB = styled(Button)`
   padding: ${props => props.$padding || '2px'};
@@ -140,9 +122,7 @@ export const BoxWrap = styled(Div)`
   position:relative;
   width: ${props => props.$width || '100%'};
 `;
-export const DivFlex = styled(Div)`
-  ${flexOption}
-`;
+
 // inner
 export const BoxInner = styled.div`
   position:relative;
@@ -170,17 +150,7 @@ export const BoxLine = styled(Div)`
   `}
 `;
 
-// ♣ flex
-export const UlFlex = styled.ul`
-  ${flexOption}
-  ${MarginPadding}
-  ${props => `
-    ${props.$gap && `gap : ${props.$gap}px`};
-    ${props.$size && `
-      &>li {width: calc((100% - ${(props.$gap * (props.$size-1))}px) / ${props.$size});}
-    `};
-  `}
-`;
+
 
 // ♣l list 검색 키워드 : 목록 dash bar list 아이콘 목록
 export const listBarUl = styled.ul`
@@ -241,6 +211,64 @@ export const ColorChip = styled(Div)`
   `}
   border:1px solid ${colors.lineColor};
 `;
+
+
+
+// ♣ 유지할 목록 👇 
+
+// ♣ Base Css
+export const Blind = styled.span`
+  position: absolute;
+  top: -99999px;
+  left: -9999px;
+  opacity: 0;
+  text-indent: -9999px;
+`;
+export const colorTag = styled.span`
+  ${props => `
+    ${props.$bg && `background: ${props.$bg}`};
+    ${props.fontSize && `font-size: ${props.fontSize}`};
+    ${props.$color && `color: ${props.$color}`};
+  `}
+`;
+// ♣ ICON
+export const Icon = styled.i`
+  display:inline-block;
+  position:relative;
+  width: ${props => props.width || "20px"};
+  height: ${props => props.width || "20px"};
+  border-radius: ${props => props.$borderRadius || 0};
+  ${props => props.$bg 
+    && 
+    `
+      background: ${props.$bg};
+      border:1px solid ${props.$bg};
+    `
+  };
+`;
+
+// ♣ flex Ul
+export const DivFlex = styled.div`
+  ${flexOption}
+`;
+
+export const UlFlex = styled.ul`
+  ${flexOption}
+  ${MarginPadding}
+`;
+
+
+
+export const BarTxt = styled.p`
+  position:relative;
+  padding-left:10px;
+  &::after{
+    position:absolute;
+    left:0;
+    content:"-"
+  }
+`;
+
 
 // ♣ Sns 
 export const SnsList = styled(Div)`

@@ -1,5 +1,3 @@
-// assets/scss/var 동일하게.
-
 // styled-components전용 공통 
 export const fonts = {
   size18:18,
@@ -19,6 +17,16 @@ export const breakpoints = {
   mo : 768,
   onlyMo: 450,
 }
+
+export const media = {
+  onlyPc : `@media screen and (min-width:${breakpoints.table + 'px'})`,
+  pc: `@media screen and (min-width:${breakpoints.mo-1 + 'px'})`,
+  tab: `@media screen and (min-width:${breakpoints.mo + 'px'}) and (max-width: ${breakpoints.table-1 + 'px'})`,
+  mo: `@media screen and (max-width:${breakpoints.mo-1 + 'px'})`,
+  onlyMo: `@media screen and (max-width:${breakpoints.onlyMo-1 + 'px'})`,
+} 
+
+
 export const colors = {
   // Color 
   baseWhite: "#ffffff",
@@ -39,13 +47,7 @@ export const colors = {
   lineColor:"#dbdbdb",
 }
 
-export const media = {
-  onlyPc : `@media screen and (min-width:${breakpoints.table + 'px'})`,
-  pc: `@media screen and (min-width:${breakpoints.mo-1 + 'px'})`,
-  tab: `@media screen and (min-width:${breakpoints.mo + 'px'}) and (max-width: ${breakpoints.table-1 + 'px'})`,
-  mo: `@media screen and (max-width:${breakpoints.mo-1 + 'px'})`,
-  onlyMo: `@media screen and (max-width:${breakpoints.onlyMo-1 + 'px'})`,
-} 
+
 
 
 // transition

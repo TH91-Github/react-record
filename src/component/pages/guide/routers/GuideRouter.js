@@ -1,8 +1,12 @@
 // React
-import GuideList from '../GuideList';
+import GuideList from 'component/pages/guide/GuideList';
+import GuideColor from 'component/pages/guide/details/GuideColor';
+import GuideBreakPoint from 'component/pages/guide/details/GuideBreakPoint';
+import GuideFont from 'component/pages/guide/details/GuideFont';
 import GuideSwiper from 'component/pages/guide/details/GuideSwiper';
 
 import { ranDom } from 'api/common';
+
 
 let GuideDataList = [
   {
@@ -15,6 +19,27 @@ let GuideDataList = [
   },
   {
     // id 값은 하단 랜덤으로 생성
+    title:"Color Guide",
+    path:"/guide/color",
+    element: <GuideColor />,
+    view: true,
+    desc: "👉 Color Guide 자세히 보러가기",
+  },
+  {
+    title:"BreakPoint Guide",
+    path:"/guide/breakpoint",
+    element: <GuideBreakPoint />,
+    view: true,
+    desc: "👉 BreakPoint Guide 자세히 보러가기",
+  },
+  {
+    title:"Font Guide",
+    path:"/guide/font",
+    element: <GuideFont />,
+    view: true,
+    desc: "👉 Font Guide 자세히 보러가기",
+  },
+  {
     title:"Swiper Guide",
     path:"/guide/swiper",
     element: <GuideSwiper />,

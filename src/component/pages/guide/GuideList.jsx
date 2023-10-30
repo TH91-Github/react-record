@@ -4,6 +4,7 @@ import { GuideRouter } from './routers/GuideRouter';
 import TitleBar from "component/common/TitleBar";
 // styled
 import * as S from "component/styled/common/AllStyled";
+import * as SG from "component/pages/guide/styled/GuideStyled";
 
 function GuideList() {
   const navi = useNavigate();
@@ -27,21 +28,22 @@ function GuideList() {
   },[dataLoad])
 
   return (
-    <>
-      {
-        guideData && guideData.map((etcList,idx) => (
-          <S.BoxInner $margin="30px auto 0" $padding="0 30px" key={idx}>
-            <div className="guide__top">
-              <button type="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
-                <TitleBar $display="inline-block">{etcList.title}</TitleBar>
-                <S.TextS $margin="0 0 0 20px;">{etcList.desc}</S.TextS>
-              </button>
-            </div>
-            {/* <button type="button" className="btn" title="자세히 보기" onClick={() =>{navi(item.path)}}></button> */}
-          </S.BoxInner>
-        ))
-      }
-    </>
+    <S.BoxLine $top  $borderWidth="5px" $marginTop="30px" $paddingTop="30px" className="">
+      <S.DivFlex>
+        {
+          guideData && guideData.map((etcList,idx) => (
+            <SG.GuideBoxInner key={idx}>
+              <div className="guide__top">
+                <button type="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
+                  <TitleBar $display="inline-block">{etcList.title}</TitleBar>
+                  <S.TextS $margin="0 0 0 20px;">{etcList.desc}</S.TextS>
+                </button>
+              </div>
+            </SG.GuideBoxInner>
+          ))
+        }
+      </S.DivFlex>
+    </S.BoxLine>
   )
 }
 
