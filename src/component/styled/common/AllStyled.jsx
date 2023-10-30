@@ -257,7 +257,14 @@ export const UlFlex = styled.ul`
   ${MarginPadding}
 `;
 
-
+export const LineTitle = styled.div`
+  padding:15px 20px;
+  border-radius:5px;
+  border-top-right-radius:0;
+  border-bottom-left-radius:0;
+  border-left:5px solid ${colors.green3cb062};
+  background: ${colors.bgWhite};
+`;
 
 export const BarTxt = styled.p`
   position:relative;

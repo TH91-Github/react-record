@@ -33,12 +33,12 @@ function GuideList() {
         {
           guideData && guideData.map((etcList,idx) => (
             <SG.GuideBoxInner key={idx}>
-              <div className="guide__top">
+              <S.LineTitle>
                 <button type="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
                   <TitleBar $display="inline-block">{etcList.title}</TitleBar>
                   <S.TextS $margin="0 0 0 20px;">{etcList.desc}</S.TextS>
                 </button>
-              </div>
+              </S.LineTitle>
             </SG.GuideBoxInner>
           ))
         }
