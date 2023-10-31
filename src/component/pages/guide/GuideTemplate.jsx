@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom';
 import { useOutletContext } from "react-router";
 import {colors } from "component/styled/common/Variable";
 import Banner from "component/common/Banner";
-import Search from "component/common/Search";
 import TitleBar from "component/common/TitleBar";
 
 function GuideTemplate(){

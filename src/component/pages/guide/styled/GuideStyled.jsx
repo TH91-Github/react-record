@@ -2,6 +2,16 @@ import * as S from "component/styled/common/AllStyled";
 import { breakpoints, colors, fonts, media } from 'component/styled/common/Variable';
 import styled from 'styled-components';
 
+export const GuideSearch = styled.div`
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  padding:30px 0;
+`;
+export const GuideSearchInner = styled.div`
+  position:relative;
+  width:300px;
+`;
 export const GuideBoxInner = styled.div`
   width:100%;
   max-width:${breakpoints.table}px;
