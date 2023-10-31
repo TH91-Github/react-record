@@ -17,7 +17,7 @@ const MarginPadding = css`
   `}
 `;
 
-// 유지 css
+// css - 유지
 const flexOption = css`
   display:flex;
   flex-wrap:wrap;
@@ -31,7 +31,7 @@ const flexOption = css`
   `}
 `;
 
-// ♣ button
+// ♣ button - 유지
 export const Button = styled.button.attrs({
   type:'button',
 })`
@@ -64,16 +64,6 @@ export const A = styled.a`
   color: ${props => props.color || colors.textColor};
   line-height:initial;
 `;
-
-export const Input = styled.input`
-  display:inline-block;
-  padding: ${props => props.$padding || '2px'};
-  border: ${props => props.$border || `1px solid ${colors.textColor}`};
-  font-size: ${props => props.fontSize || `${fonts.size}px`};
-  color: ${props => props.color || colors.textColor };
-`;
-
-
 
 export const ButtonB = styled(Button)`
   padding: ${props => props.$padding || '2px'};

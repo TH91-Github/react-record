@@ -5,6 +5,7 @@ export const fonts = {
   size14: 14,
   size12: 12,
   weight: 550,
+  bold: 600,
   font: "NanumGothic",
   fontB: "NanumGothicBold",
   fontL: "NanumGothicLight",
@@ -26,7 +27,6 @@ export const media = {
   onlyMo: `@media screen and (max-width:${breakpoints.onlyMo-1 + 'px'})`,
 } 
 
-
 export const colors = {
   // Color 
   baseWhite: "#ffffff",
@@ -47,10 +47,7 @@ export const colors = {
   lineColor:"#dbdbdb",
 }
 
-
-
-
 // transition
-export const transition = {
+export const transitions = {
   base: "all .3s",
 }
