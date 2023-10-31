@@ -16,6 +16,7 @@ let GuideDataList = [
     element: <GuideList />,
     view: false,
     desc: "Record 목록 정리 관리 화면",
+    keyWord:"#Guide #메인 #리스트 #메인리스트"
   },
   {
     // id 값은 하단 랜덤으로 생성
@@ -24,6 +25,7 @@ let GuideDataList = [
     element: <GuideColor />,
     view: true,
     desc: "👉 Color Guide 자세히 보러가기",
+    keyWord:"#Guide #Color #컬러 #색상 #코드"
   },
   {
     title:"BreakPoint Guide",
@@ -31,6 +33,7 @@ let GuideDataList = [
     element: <GuideBreakPoint />,
     view: true,
     desc: "👉 BreakPoint Guide 자세히 보러가기",
+    keyWord:"#Guide #BreakPoint #브레이크 #브레이크포인트 #화면사이즈"
   },
   {
     title:"Font Guide",
@@ -38,6 +41,7 @@ let GuideDataList = [
     element: <GuideFont />,
     view: true,
     desc: "👉 Font Guide 자세히 보러가기",
+    keyWord:"#Guide #font #폰트 #폰트사이즈 #글자 #폰트종류"
   },
   {
     title:"Swiper Guide",
@@ -45,6 +49,7 @@ let GuideDataList = [
     element: <GuideSwiper />,
     view: true,
     desc: "👉 Swiper 라이브러리 사용 보러가기 : 제작 중",
+    keyWord:"#Guide #슬라이드 #swiper #배너슬라이드 #슬라이가이드 #slide #slider"
   },
 ];
 
