@@ -47,7 +47,7 @@ function GuideColor() {
             <div className="guide__list">
               <S.ColorList>
                 {
-                  colorData.listSC.map((colorItem, idx) => (
+                  colorData.lists.map((colorItem, idx) => (
                     <li key={idx}>
                       <CopyToClipboard text={colorItem[0]} >
                         <S.ColorBtn $colorCode={colorItem[1]} onClick={()=> copyBtn(colorItem[0])}>

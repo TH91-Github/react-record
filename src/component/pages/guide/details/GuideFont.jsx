@@ -46,7 +46,7 @@ function GuideFont() {
             <div className="guide__list">
               <S.FontList>
                 {
-                  fontData.listSC.map((fontItme, idx) => (
+                  fontData.lists.map((fontItme, idx) => (
                     <li key={idx}>
                       <CopyToClipboard text={fontItme[0]}>
                         <S.FontBtn onClick={()=>copyBtn(fontItme[0])}>
