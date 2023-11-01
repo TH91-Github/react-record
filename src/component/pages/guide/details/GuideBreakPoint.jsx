@@ -3,8 +3,8 @@ import TitleBar from "component/common/TitleBar";
 import SubTitleBar from "component/common/SubTitleBar";
 
 // styled
-import * as S from "component/styled/common/AllStyled";
-import * as SG from "component/pages/guide/styled/GuideStyled";
+import * as SC from "component/styled/common/AllStyled";
+import * as S from "component/pages/guide/styled/GuideStyled";
 import { breakpoints, colors } from "component/styled/common/Variable";
 
 function GuideBreakPoint() {
@@ -26,43 +26,45 @@ function GuideBreakPoint() {
   }
   return(
     <>
-      <S.ContBoxInner>
-        <SG.GuideTitle>
+      <SC.ContBoxInner>
+        <S.GuideTitle>
           <TitleBar>{breakpointData.title}</TitleBar>
-        </SG.GuideTitle>
-        <SG.GuideCont>
+        </S.GuideTitle>
+        <S.GuideCont>
           <div className="guide__info">
             <SubTitleBar $fontSize="16px">설명 참고</SubTitleBar>
             <div className="guide__info__desc">
               {
                 breakpointData.desc.map((breakpointDesc,idx) => (
-                  <SG.GuideTxtBar key={idx}>
+                  <S.GuideTxtBar key={idx}>
                     {breakpointDesc}
-                  </SG.GuideTxtBar>
+                  </S.GuideTxtBar>
                 ))
               }
             </div>
             <div className="guide__list">
-              <SG.BreakpointList>
+              <S.BreakpointList>
                 {
                   breakpointData.lists.map((breakPointItme, idx) => (
                     <li key={idx}>
                       <CopyToClipboard text={breakPointItme[0]}>
-                        <SG.BreakpointBtn onClick={()=>copyBtn(breakPointItme[0])}>
+                        <S.BreakpointBtn onClick={()=>copyBtn(breakPointItme[0])}>
                           <span className="screen">
-                            <S.colorTag className="val" $color={colors.textColor}>{`${breakPointItme[1]}px;`}</S.colorTag>
+                            <SC.ColorTag className="val" $color={colors.textColor}>{`${breakPointItme[1]}px;`}
+                            </SC.ColorTag>
                           </span>
-                          <S.colorTag $color={colors.rede76647}>{`${breakPointItme[0]}`}</S.colorTag>
-                        </SG.BreakpointBtn>
+                          <SC.ColorTag $color={colors.rede76647}>{`${breakPointItme[0]}`}
+                          </SC.ColorTag>
+                        </S.BreakpointBtn>
                       </CopyToClipboard>
                     </li>
                   ))
                 }
-              </SG.BreakpointList>
+              </S.BreakpointList>
             </div>
           </div>
-        </SG.GuideCont>
-      </S.ContBoxInner>
+        </S.GuideCont>
+      </SC.ContBoxInner>
     </>
   )
 }

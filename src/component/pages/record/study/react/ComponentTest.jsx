@@ -2,7 +2,7 @@ import {React} from "react";
 import CodeTemplate from "component/common/CodeTemplate";
 import BackBtn from "component/common/BackBtn";
 // styled
-import * as S from "component/styled/common/AllStyled";
+import * as SC from "component/styled/common/AllStyled";
 import { SvgVelog } from "component/styled/common/SvgPath";
 import TitleBar from "component/common/TitleBar";
 import SubTitleBar from "component/common/SubTitleBar";
@@ -17,19 +17,19 @@ function ComponentTest () {
   const cssGap = "20px 0 0 0";
   return (
     <div className="study">
-      <S.BoxLine $maxWidth="1000px" $margin="50px auto 0" $padding="30px">
+      <SC.BoxLine $maxWidth="1000px" $margin="50px auto 0" $padding="30px">
         <BackBtn $position="absolute" $top="10px" $right="10px" fontSize="20px">↩️</BackBtn>
         <div className="study__header">
-          <S.SnsBoxText $lineHeight="20px">
-            <S.A 
+          <SC.SnsBoxText $lineHeight="20px">
+            <SC.A 
               href="https://velog.io/@th_velog/React-컴포넌트-생성-및-Props" target="_blank" rel="noopener noreferrer" $display="flex">
-              <S.Icon><SvgVelog color="#20C997"></SvgVelog></S.Icon>
-              <S.SnsText $margin="0 0 0 10px">👈 Velog 확인하기</S.SnsText>
-            </S.A>
-          </S.SnsBoxText>
+              <SC.Icon><SvgVelog color="#20C997"></SvgVelog></SC.Icon>
+              <SC.SnsText $margin="0 0 0 10px">👈 Velog 확인하기</SC.SnsText>
+            </SC.A>
+          </SC.SnsBoxText>
           <TitleBar $fontSize="24px">📌 컴포넌트 생성 및 Props</TitleBar>
         </div>
-        <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
+        <SC.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>Component</SubTitleBar>
           <p className="desc">✅ 컴포넌트란?</p>
           <p className="desc">리액트에서 앱을 이루는 가장 작은 조각이라고 하며, UI 요소를 구분할 때 컴포넌트라고 사용을 합니다!</p>
@@ -37,15 +37,15 @@ function ComponentTest () {
           <p className="desc">✅ 컴포넌트 이름은 항상 대문자로 시작해야합니다.</p>
           <p className="desc">소문자로 시작하는 컴포넌트를 DOM 태그로 처리한다고 합니다.</p>
           <CodeTemplate text={code1}/>
-        </S.BoxLine>
-        <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
+        </SC.BoxLine>
+        <SC.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>컴포넌트 생성</SubTitleBar>
           <CodeTemplate text={code2}/>
           <p className="desc">src 폴더 내 component 폴더를 만들고 대문자로 파일명 작성 후 .jsx 확장자로 만든다.</p>
           <CodeTemplate text={code3}/>
           <p className="desc"> 👆 파일 생성 후 해당 컴포넌트를 사용하는 곳에서 import로 불러온 후 사용.</p>
-        </S.BoxLine>
-        <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
+        </SC.BoxLine>
+        <SC.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>props</SubTitleBar>
           <p className="desc">✅ Props란?</p>
           <p className="desc">props(property)는 상위 컴포넌트(부모)가 하위 컴포넌트(자식) 에게 값을 전달할 때 사용을 하는 속성</p>
@@ -55,8 +55,8 @@ function ComponentTest () {
           <p className="desc">문자열을 전달할 때는 "" 큰따옴표를 사용하고 그 외의 값을 전달할 경우에는 {"{ } "}중괄호를 사용합니다.</p>
           <CodeTemplate text={code5}/>
           <p className="desc">전달 받은 배열 값은 JSX문법에 맞게 {"{ } "} 중괄호를 사용</p>
-        </S.BoxLine>
-      </S.BoxLine>
+        </SC.BoxLine>
+      </SC.BoxLine>
     </div>
   )
 }

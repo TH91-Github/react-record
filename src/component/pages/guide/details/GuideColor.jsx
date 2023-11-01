@@ -3,8 +3,8 @@ import TitleBar from "component/common/TitleBar";
 import SubTitleBar from "component/common/SubTitleBar";
 
 // styled
-import * as S from "component/styled/common/AllStyled";
-import * as SG from "component/pages/guide/styled/GuideStyled";
+import * as SC from "component/styled/common/AllStyled";
+import * as S from "component/pages/guide/styled/GuideStyled";
 import { colors } from "component/styled/common/Variable";
 
 
@@ -15,7 +15,7 @@ function GuideColor() {
     desc:[
       "경로 : component/styled/common/Variable.js",
       "import { colors } from 'component/styled/common/Variable';",
-      "사용 : colors.baseWhite"
+      "사용 : colorSC.baseWhite"
     ],
     lists: newArrChange(colors)
   }
@@ -28,45 +28,45 @@ function GuideColor() {
 
   return(
     <>
-      <S.ContBoxInner>
-        <SG.GuideTitle>
+      <SC.ContBoxInner>
+        <S.GuideTitle>
           <TitleBar>{colorData.title}</TitleBar>
-        </SG.GuideTitle>
-        <SG.GuideCont>
+        </S.GuideTitle>
+        <S.GuideCont>
           <div className="guide__info">
             <SubTitleBar $fontSize="16px">설명 참고</SubTitleBar>
             <div className="guide__info__desc">
               {
                 colorData.desc.map((colorDesc,idx) => (
-                  <SG.GuideTxtBar key={idx}>
+                  <S.GuideTxtBar key={idx}>
                     {colorDesc}
-                  </SG.GuideTxtBar>
+                  </S.GuideTxtBar>
                 ))
               }
             </div>
             <div className="guide__list">
-              <SG.ColorList>
+              <S.ColorList>
                 {
-                  colorData.lists.map((colorItem, idx) => (
+                  colorData.listSC.map((colorItem, idx) => (
                     <li key={idx}>
                       <CopyToClipboard text={colorItem[0]} >
-                        <SG.ColorBtn $colorCode={colorItem[1]} onClick={()=> copyBtn(colorItem[0])}>
+                        <S.ColorBtn $colorCode={colorItem[1]} onClick={()=> copyBtn(colorItem[0])}>
                           <span className="bg">
                             <span className="code">{colorItem[1]}</span>
                           </span>
                           <span className="info">
                             <span className="val">{colorItem[0]}</span>
                           </span>
-                        </SG.ColorBtn>
+                        </S.ColorBtn>
                       </CopyToClipboard>
                     </li>
                   ))
                 }
-              </SG.ColorList>              
+              </S.ColorList>              
             </div>
           </div>
-        </SG.GuideCont>
-      </S.ContBoxInner>
+        </S.GuideCont>
+      </SC.ContBoxInner>
     </>
   )
 }

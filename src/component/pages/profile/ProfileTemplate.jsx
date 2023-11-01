@@ -6,8 +6,8 @@ import ProfileSkils from "./ProfileSkils";
 import ProfileProject from "./ProfileProject";
 import ProfilePlan from "./ProfilePlan";
 // styled
-import * as S from "component/styled/common/AllStyled";
-import * as SP from "component/pages/profile/styled/ProfileStyled";
+import * as SC from "component/styled/common/AllStyled";
+import * as S from "component/pages/profile/styled/ProfileStyled";
 
 function ProfileTemplate(){
   const profileData = useSelector((state) => state.allData.Profile);
@@ -21,7 +21,7 @@ function ProfileTemplate(){
     <div className="profile">
       {/* Profile Info */}
       <ProfileMain propsOpt={componentOpt} />
-      <S.BoxWrap>
+      <SC.BoxWrap>
         {/* ABOUT */}
         <ProfileAbout propsOpt={componentOpt} />
         {/* SKilS */}
@@ -30,12 +30,12 @@ function ProfileTemplate(){
         <ProfileProject propsOpt={componentOpt} />
         {/* PLAN */}
         <ProfilePlan propsOpt={componentOpt} />              
-        <SP.Section>
-          <S.TextP $align="center">
+        <S.Section>
+          <SC.TextP $align="center">
             감사합니다. 😁
-          </S.TextP>
-        </SP.Section>
-      </S.BoxWrap>
+          </SC.TextP>
+        </S.Section>
+      </SC.BoxWrap>
     </div>
   )
 }

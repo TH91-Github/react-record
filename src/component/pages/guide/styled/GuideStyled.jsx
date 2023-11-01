@@ -12,7 +12,6 @@ export const GuideSearchInner = styled.div`
   position:relative;
   width:300px;
 `;
-
 export const GuideTitle = styled.div`
   padding: 15px 20px;
   border-radius: 5px;
@@ -21,7 +20,6 @@ export const GuideTitle = styled.div`
   border-left: 5px solid ${colors.green3cb062};
   background: ${colors.bgWhite};
 `;
-
 export const GuideCont = styled.div`
   margin-top: 10px;
   padding: 20px;

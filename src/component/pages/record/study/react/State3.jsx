@@ -2,7 +2,7 @@ import {React, useState,} from "react";
 import CodeTemplate from "component/common/CodeTemplate";
 import BackBtn from "component/common/BackBtn";
 // styled
-import * as S from "component/styled/common/AllStyled";
+import * as SC from "component/styled/common/AllStyled";
 import { SvgVelog } from "component/styled/common/SvgPath";
 import TitleBar from "component/common/TitleBar";
 import SubTitleBar from "component/common/SubTitleBar";
@@ -58,19 +58,19 @@ function State3 () {
   const cssGap = "20px 0 0 0";
   return (
     <div className="study">
-      <S.BoxLine $maxWidth="1000px" $margin="50px auto 0" $padding="30px">
+      <SC.BoxLine $maxWidth="1000px" $margin="50px auto 0" $padding="30px">
         <BackBtn $position="absolute" $top="10px" $right="10px" fontSize="20px">↩️</BackBtn>
         <div className="study__header">
-          <S.SnsBoxText $lineHeight="20px">
-            <S.A 
+          <SC.SnsBoxText $lineHeight="20px">
+            <SC.A 
               href="https://velog.io/@th_velog/React-state3-Input-Button-값-변경" target="_blank" rel="noopener noreferrer" $display="flex">
-              <S.Icon><SvgVelog color="#20C997"></SvgVelog></S.Icon>
-              <S.SnsText $margin="0 0 0 10px">👈 Velog 확인하기</S.SnsText>
-            </S.A>
-          </S.SnsBoxText>
+              <SC.Icon><SvgVelog color="#20C997"></SvgVelog></SC.Icon>
+              <SC.SnsText $margin="0 0 0 10px">👈 Velog 확인하기</SC.SnsText>
+            </SC.A>
+          </SC.SnsBoxText>
           <TitleBar $fontSize="24px">📌 React - state(3) input 입력된 값으로 변경 </TitleBar>
         </div>
-        <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
+        <SC.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>📍 button array 값 변경</SubTitleBar>
           <p className="desc">button count +-</p>
           <CodeTemplate text={code1}/>
@@ -78,18 +78,18 @@ function State3 () {
             <p className="box__cont-tit">[👇실행화면👇]</p>
             <div className="box__result">
               <p>{count}</p>
-              <S.BtnWrap $margin="20px 0 0">
+              <SC.BtnWrap $margin="20px 0 0">
                 <button type="button" className="button" onClick={() => setCount(count+1)}>
                   증가
                 </button>
                 <button type="button" className="button" onClick={() => setCount(count-1)}>
                   감소
                 </button>
-              </S.BtnWrap>
+              </SC.BtnWrap>
             </div>
           </div>
-        </S.BoxLine>
-        <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
+        </SC.BoxLine>
+        <SC.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>📍 button array 값 변경</SubTitleBar>
           <p className="desc">
             Button 클릭 시 Array 값이 추가
@@ -99,13 +99,13 @@ function State3 () {
             <p className="box__cont-tit">[👇실행화면👇]</p>
             <div className="box__result">
               <p>{arr}</p>
-              <S.BtnWrap $margin="20px 0 0">
+              <SC.BtnWrap $margin="20px 0 0">
                 <button type="button" className="button" onClick={arrChange}>배열 변경</button>
-              </S.BtnWrap>
+              </SC.BtnWrap>
             </div>
           </div>
-        </S.BoxLine>
-        <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
+        </SC.BoxLine>
+        <SC.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>📍 input onChange 값 변경</SubTitleBar>
           <p className="desc">
             input onChange 변경 시 e.target.value 값을 변경함수에 전달.
@@ -115,13 +115,13 @@ function State3 () {
             <p className="box__cont-tit">[👇실행화면👇]</p>
             <div className="box__result">
               <p>{inputVal}</p>
-              <S.BtnWrap $margin="20px 0 0">
+              <SC.BtnWrap $margin="20px 0 0">
                 <input type="text" onChange={(e) => inputChange(e)} />
-              </S.BtnWrap>
+              </SC.BtnWrap>
             </div>
           </div>
-        </S.BoxLine>
-        <S.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
+        </SC.BoxLine>
+        <SC.BoxLine $top $margin={cssGap} $padding={cssGap} className="box">
           <SubTitleBar>📍 input + button 값 변경</SubTitleBar>
           <p className="desc">
             ...Spread Operator(스프레드 연산자)<br />
@@ -132,14 +132,14 @@ function State3 () {
             <p className="box__cont-tit">[👇실행화면👇]</p>
             <div className="box__result">
               <p>{changeVal}</p>
-              <S.BtnWrap $margin="20px 0 0">
+              <SC.BtnWrap $margin="20px 0 0">
                 <input type="text" value={inputVal2} onChange={(e)=>inputChange2(e)}/>
                 <button type="button" className="button" onClick={textChange}>입력 값으로 변경</button>
-              </S.BtnWrap>
+              </SC.BtnWrap>
             </div>
           </div>
-        </S.BoxLine>
-      </S.BoxLine>
+        </SC.BoxLine>
+      </SC.BoxLine>
     </div>
   )
 }

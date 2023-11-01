@@ -1,5 +1,5 @@
-import * as S from "component/styled/common/AllStyled";
-import * as SP from "component/pages/profile/styled/ProfileStyled";
+import * as SC from "component/styled/common/AllStyled";
+import * as S from "component/pages/profile/styled/ProfileStyled";
 import TitleBar from "component/common/TitleBar";
 
 function ProfilePlan({propsOpt}) {
@@ -15,40 +15,40 @@ function ProfilePlan({propsOpt}) {
   const contMarginTop = 10;
   return (
     <>
-      <SP.Section>
-        <S.BoxInner>
+      <S.Section>
+        <SC.BoxInner>
           <TitleBar
             $fontSize={`${titSize}px`}
             $align="center">
             📚{pProPlan.title}
           </TitleBar>
-          <SP.SectionBox>
-            <S.UlFlex $gap={gap} $size={moChk(2,1)}>
+          <S.SectionBox>
+            <SC.UlFlex $gap={gap} $size={moChk(2,1)}>
               {
                 pProPlan.lists.map((planLists,idx) => (
                   <li key={idx}>
-                    <SP.PlanTit><span>{planLists.title}</span></SP.PlanTit>
-                    <S.BoxLine $top $marginTop={`${contMarginTop}px`}>
-                      <SP.DescUl>
+                    <S.PlanTit><span>{planLists.title}</span></S.PlanTit>
+                    <SC.BoxLine $top $marginTop={`${contMarginTop}px`}>
+                      <S.DescUl>
                         {
                           planLists.desc.map((planDesc, idx) => (
-                            <S.LiCircle key={idx}>
+                            <SC.LiCircle key={idx}>
                               <p>{planDesc}</p>
-                            </S.LiCircle>
+                            </SC.LiCircle>
                           ))
                         }
-                      </SP.DescUl>
-                    </S.BoxLine>
+                      </S.DescUl>
+                    </SC.BoxLine>
 
 
                   </li>
                   
                 ))
               }
-            </S.UlFlex>
-          </SP.SectionBox>
-        </S.BoxInner>
-      </SP.Section>
+            </SC.UlFlex>
+          </S.SectionBox>
+        </SC.BoxInner>
+      </S.Section>
     </>
   )
 }

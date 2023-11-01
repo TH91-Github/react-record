@@ -1,5 +1,5 @@
-import * as S from "component/styled/common/AllStyled";
-import * as SP from "component/pages/profile/styled/ProfileStyled";
+import * as SC from "component/styled/common/AllStyled";
+import * as S from "component/pages/profile/styled/ProfileStyled";
 import TitleBar from "component/common/TitleBar";
 import { TextChange } from "api/regExpChk";
 function ProfileAbout({propsOpt}) {
@@ -7,22 +7,22 @@ function ProfileAbout({propsOpt}) {
   const pAbout = data.about; 
   return (
     <>
-      <SP.Section>
-        <S.BoxInner>
+      <S.Section>
+        <SC.BoxInner>
           <TitleBar
             $fontSize={`${titSize}px`}
             $align="center">
             {pAbout.title}
           </TitleBar>
-          <SP.SectionBox>
+          <S.SectionBox>
             {
               pAbout.desc.map((aboutDesc, idx) => (
-                <S.TextP $align="center" key={idx} dangerouslySetInnerHTML={{__html: TextChange(aboutDesc) }}></S.TextP>
+                <SC.TextP $align="center" key={idx} dangerouslySetInnerHTML={{__html: TextChange(aboutDesc) }}></SC.TextP>
               ))
             }
-          </SP.SectionBox>
-        </S.BoxInner>
-      </SP.Section>
+          </S.SectionBox>
+        </SC.BoxInner>
+      </S.Section>
     </>
   )
 }

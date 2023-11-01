@@ -1,5 +1,5 @@
-import * as S from "component/styled/common/AllStyled";
-import * as SP from "component/pages/profile/styled/ProfileStyled";
+import * as SC from "component/styled/common/AllStyled";
+import * as S from "component/pages/profile/styled/ProfileStyled";
 import TitleBar from "component/common/TitleBar";
 
 function ProfileProject({propsOpt}) {
@@ -15,58 +15,58 @@ function ProfileProject({propsOpt}) {
   const contMarginTop = 10;
   return (
     <>
-      <SP.Section>
-        <S.BoxInner>
+      <S.Section>
+        <SC.BoxInner>
           <TitleBar
             $fontSize={`${titSize}px`}
             $align="center">
             📌{pProject.title}
           </TitleBar>
-          <SP.SectionBox>
-            <S.UlFlex $gap={gap} $size={moChk(2,1)}>
+          <S.SectionBox>
+            <SC.UlFlex $gap={gap} $size={moChk(2,1)}>
               {
                 pProject.lists.map((projectLists, idx) => 
                   <li key={idx}>
-                    <SP.ProjectBox>
-                      <SP.ProjectTit>{projectLists.title}</SP.ProjectTit>
-                      <SP.Company>{projectLists.company}</SP.Company>
-                      <SP.DateBox>
+                    <S.ProjectBox>
+                      <S.ProjectTit>{projectLists.title}</S.ProjectTit>
+                      <S.Company>{projectLists.company}</S.Company>
+                      <S.DateBox>
                         <span className="start">{projectLists.date.start}</span>
                         <span className="end">{projectLists.date.end}</span>
-                      </SP.DateBox>
-                      <SP.MemberBox>
+                      </S.DateBox>
+                      <S.MemberBox>
                         <span className="number">총 {projectLists.totalPeople}명</span>
                         <span className="participation">
                           기여도: 
                           <span className="num">{projectLists.participation}%</span>
                         </span>
-                      </SP.MemberBox>
-                      <S.BoxLine $top $marginTop={`${contMarginTop}px`}>
-                        <SP.DescUl>
+                      </S.MemberBox>
+                      <SC.BoxLine $top $marginTop={`${contMarginTop}px`}>
+                        <S.DescUl>
                           {
                             projectLists.desc.map((projectDesc, idx) => (
-                              <S.LiCircle key={idx}>
+                              <SC.LiCircle key={idx}>
                                 <p>{projectDesc}</p>
-                              </S.LiCircle>
+                              </SC.LiCircle>
                             ))
                           }
-                        </SP.DescUl>
-                        <S.Div $marginTop={`${contMarginTop}px`}>
+                        </S.DescUl>
+                        <SC.Div $marginTop={`${contMarginTop}px`}>
                           {
                             projectLists.skils.map((skilsTxt ,idx) => (
-                              <SP.ComaSpan key={idx}>{skilsTxt}</SP.ComaSpan>
+                              <S.ComaSpan key={idx}>{skilsTxt}</S.ComaSpan>
                             ))
                           }
-                        </S.Div>
-                      </S.BoxLine>
-                    </SP.ProjectBox>
+                        </SC.Div>
+                      </SC.BoxLine>
+                    </S.ProjectBox>
                   </li>
                 )
               }
-            </S.UlFlex>
-          </SP.SectionBox>
-        </S.BoxInner>
-      </SP.Section>
+            </SC.UlFlex>
+          </S.SectionBox>
+        </SC.BoxInner>
+      </S.Section>
     </>
   )
 }

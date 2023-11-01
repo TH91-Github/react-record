@@ -4,8 +4,8 @@ import { GuideRouter } from './routers/GuideRouter';
 import TitleBar from "component/common/TitleBar";
 import Search from "component/common/Search";
 // styled
-import * as S from "component/styled/common/AllStyled";
-import * as SG from "component/pages/guide/styled/GuideStyled";
+import * as SC from "component/styled/common/AllStyled";
+import * as S from "component/pages/guide/styled/GuideStyled";
 
 function GuideList() {
   const navi = useNavigate();
@@ -37,29 +37,29 @@ function GuideList() {
   };
   return (
     <div className="guid">
-      <SG.GuideSearch>
-        <SG.GuideSearchInner>
+      <S.GuideSearch>
+        <S.GuideSearchInner>
           <Search propsEvent={searchResult}/>
-        </SG.GuideSearchInner>
-      </SG.GuideSearch>
-      <S.BoxLine $top  $borderWidth="5px" $paddingTop="30px" className="">
-        <S.ContBoxInner className="guid__inner">
-          <S.DivFlex $direction="column" $gap={15}>
+        </S.GuideSearchInner>
+      </S.GuideSearch>
+      <SC.BoxLine $top  $borderWidth="5px" $paddingTop="30px" className="">
+        <SC.ContBoxInner className="guid__inner">
+          <SC.DivFlex $direction="column" $gap={15}>
             {
               guideData && guideData.map((etcList,idx) => (
                 <div key={idx}>
-                  <S.LineTitle>
+                  <SC.LineTitle>
                     <button type="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
                       <TitleBar $display="inline-block">{etcList.title}</TitleBar>
-                      <S.TextS $margin="0 0 0 20px;">{etcList.desc}</S.TextS>
+                      <SC.TextS $margin="0 0 0 20px;">{etcList.desc}</SC.TextS>
                     </button>
-                  </S.LineTitle>
+                  </SC.LineTitle>
                 </div>
               ))
             }
-          </S.DivFlex>
-        </S.ContBoxInner>
-      </S.BoxLine>
+          </SC.DivFlex>
+        </SC.ContBoxInner>
+      </SC.BoxLine>
 
     </div>
   )

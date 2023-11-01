@@ -1,5 +1,5 @@
-import * as S from "component/styled/common/AllStyled";
-import * as SP from "component/pages/profile/styled/ProfileStyled";
+import * as SC from "component/styled/common/AllStyled";
+import * as S from "component/pages/profile/styled/ProfileStyled";
 import TitleBar from "component/common/TitleBar";
 import BadgeList from "component/common/BadgeList";
 import PorgressBar from "component/common/ProgressBar";
@@ -14,38 +14,38 @@ function ProfileSkils({propsOpt}) {
   }
   return (
     <>
-      <SP.Section>
-        <S.BoxInner>
+      <S.Section>
+        <SC.BoxInner>
           <TitleBar
             $fontSize={`${titSize}px`}
             $align="center">
             🛠️{pSkils.title}
           </TitleBar>
-          <SP.SectionBox>
-            <S.UlFlex $gap={gap} $size={moChk(4,2)}>
+          <S.SectionBox>
+            <SC.UlFlex $gap={gap} $size={moChk(4,2)}>
               {
                 pSkils.lists.map((skilsLists, idx) => (
                   <li key={idx}>
-                    <SP.SkilsBox>
+                    <S.SkilsBox>
                       <BadgeList badgeType={skilsLists.category} badgeTit={skilsLists.title} />
                       <PorgressBar $marginTop="10px" value={skilsLists.percent} />
-                      <SP.DescUl>
+                      <S.DescUl>
                         {
                           skilsLists.desc.map((skilsDesc, idx) => (
-                            <S.LiCircle key={idx}>
+                            <SC.LiCircle key={idx}>
                               <p>{skilsDesc}</p>
-                            </S.LiCircle>
+                            </SC.LiCircle>
                           ))
                         }
-                      </SP.DescUl>
-                    </SP.SkilsBox>
+                      </S.DescUl>
+                    </S.SkilsBox>
                   </li>
                 ))
               }
-            </S.UlFlex>
-          </SP.SectionBox>
-        </S.BoxInner>
-      </SP.Section>
+            </SC.UlFlex>
+          </S.SectionBox>
+        </SC.BoxInner>
+      </S.Section>
     </>
   )
 }
