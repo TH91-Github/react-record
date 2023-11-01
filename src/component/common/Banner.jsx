@@ -10,6 +10,10 @@ const BannerWrap = styled.div`
   background: ${props => props.$bg || colors.bgGreen};
   ${props => props.$align && `text-align:${props.$align}`}; 
   color:#fff;
+  .txt {
+    margin-top:10px;
+    font-size:14px;
+  }
 `;
 
 function Banner({children, ...props}){
@@ -18,7 +22,7 @@ function Banner({children, ...props}){
       {
         props.$center
         ?
-        <div>
+        <div className="center">
           {children}
         </div>
         :children

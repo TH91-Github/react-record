@@ -50,7 +50,7 @@ function Search({placeholder, btnText, propsEvent}){
     SetVal(e.target.value)
   }
   const buttonClick = () => {
-    !propsEvent ?? propsEvent(val);
+    propsEvent && propsEvent(val)
     SetVal(''); // 초기화
   }
   const keyUp = (e) => {
