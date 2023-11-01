@@ -9,7 +9,7 @@ import TitleBar from "component/common/TitleBar";
 
 // styled
 import * as S from "component/styled/common/AllStyled";
-import Ing from "component/styled/common/Ing";
+import * as SR from "component/pages/record/styled/RecordStyled";
 import { colors } from "component/styled/common/Variable";
 
 
@@ -37,13 +37,21 @@ function RecordList () {
     },[]);
     setCategory(filterList);
   }
-
-  const fliterList = (selectName) => { // 보여지는 리스트 구별
+  const fliterList = (selectName, type) => { // 보여지는 리스트 구별
     const changeData = [...RecordRouter];
     const viewList = changeData.filter(item => item.view && item);
-    const selectList = viewList.filter(item => item.path.indexOf(selectName) > -1 && item);
+    const selectList = viewList.filter(item => {
+      return type === "key" 
+       ? 
+        selectName === undefined || selectName === '' 
+        ? item
+        : item.keyWord.toLowerCase().includes(selectName.toLowerCase())
+       : item.path.indexOf(selectName) > -1 && item
+    });
     // 선별된 리스트가 없을 경우 view true 전체 노출 - all
-    selectList.length > 0 ? setRecordData(selectList)
+    console.log(selectList)
+    selectList.length > 0 
+    ? setRecordData(selectList)
     : setRecordData(viewList)
   }
 
@@ -55,32 +63,26 @@ function RecordList () {
     setSelectTab(changeD);
     fliterList(changeD);
   }
-
+  const searchResult = (searchVale) => {
+    fliterList(searchVale, "key");
+  };
   if(!recordData) return;
   return (
-    <div className="record__wrap">
+    <div className="record">
       <Banner $center $align="center">
         <TitleBar $fontSize="32px" $color={colors.baseWhite}>
           Record - {selectTab}
         </TitleBar>
-        <S.TextP $margin="10px 0 0 0" fontSize="14px" color={colors.baseWhite}>Velog, 예제, 메모장 정보 등 기록을 정리한 페이지</S.TextP>
+        <p className="txt">Velog, 예제, 메모장 정보 등 기록을 정리한 페이지</p>
       </Banner>
-      <S.BoxWrap className="search">
-        <S.BoxInner $padding="30px 30px 0" className="search__wrap">
-          <Ing>⚠️작업중🚧</Ing>
-          <S.DivFlex  $direction="row-reverse">
-            <div className="search__inner">
-              <Search placeholder="준비 중입니다..." btnText="확인" />
-            </div>
-            {/* 
-              Record 관련 검색 기능 
-              router.desc 구별
-            */}
-          </S.DivFlex>
-        </S.BoxInner>
-      </S.BoxWrap>
-      <S.BoxLine $top $borderWidth="5px" $margin="30px 0 0" $padding="30px 0 0" className="record__content">
-        <S.BoxInner $padding="0 30px" $className="record__inner">
+      <SR.RecordSearch>
+        <SR.RecordSearchInner>
+          <Search propsEvent={searchResult}/>
+        </SR.RecordSearchInner>
+      </SR.RecordSearch>
+
+      <S.BoxLine $top $borderWidth="5px" $paddingTop="30px">
+        <S.ContBoxInner className="record__inner">
           {/* Tab 컴포넌트 만들기 전 - 틀 */}
           <div className="tab"> 
             <div className="tab__select">
@@ -96,6 +98,7 @@ function RecordList () {
                 }
               </ul>
             </div>
+            
             <div className="tab__cont">
               <div className="tab__cont-title">
                 <TitleBar $fontWeight="600">
@@ -120,7 +123,7 @@ function RecordList () {
               </div>
             </div>
           </div>
-        </S.BoxInner>
+        </S.ContBoxInner>
       </S.BoxLine>
     </div>
   )

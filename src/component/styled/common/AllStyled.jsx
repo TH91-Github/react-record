@@ -247,6 +247,13 @@ export const UlFlex = styled.ul`
   ${MarginPadding}
 `;
 
+export const ContBoxInner = styled.div`
+  position:relative;
+  max-width:${breakpoints.table}px;
+  margin:0 auto;
+  padding:0 30px;
+`;
+
 export const LineTitle = styled.div`
   padding:15px 20px;
   border-radius:5px;
