@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom';
-import { useOutletContext } from "react-router";
+// import { useOutletContext } from "react-router";
 import {colors } from "component/styled/common/Variable";
 import Banner from "component/common/Banner";
 import TitleBar from "component/common/TitleBar";
 
 function GuideTemplate(){
-  const pathName = useOutletContext().pathname;
-  const bannerTitle = pathName.replace('/','');
+  // const pathName = useOutletContext().pathname;
+  // const bannerTitle = pathName.replace('/','');
 
   return (
     <div className="guide">

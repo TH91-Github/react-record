@@ -1,5 +1,5 @@
 import * as S from "component/styled/common/AllStyled";
-import { breakpoints, colors, fonts, media } from 'component/styled/common/Variable';
+import { colors, fonts, media } from 'component/styled/common/Variable';
 import styled from 'styled-components';
 
 export const GuideSearch = styled.div`

@@ -6,11 +6,14 @@ import { useNavigate } from "react-router-dom";
 import Search from "component/common/Search";
 import Banner from "component/common/Banner";
 import TitleBar from "component/common/TitleBar";
+import ListItem from "component/common/unit/ListItem";
 
 // styled
-import * as S from "component/styled/common/AllStyled";
-import * as SR from "component/pages/record/styled/RecordStyled";
+import * as SC from "component/styled/common/AllStyled";
+import * as S from "component/pages/record/styled/RecordStyled";
 import { colors } from "component/styled/common/Variable";
+import TabBtn from "component/common/TabBtn";
+
 
 
 // Record 하위 메뉴 관리 노출 및 이동 담당
@@ -66,6 +69,10 @@ function RecordList () {
   const searchResult = (searchVale) => {
     fliterList(searchVale, "key");
   };
+
+  const listClick = (itemPath) => {
+    navi(itemPath)
+  }
   if(!recordData) return;
   return (
     <div className="record">
@@ -75,56 +82,35 @@ function RecordList () {
         </TitleBar>
         <p className="txt">Velog, 예제, 메모장 정보 등 기록을 정리한 페이지</p>
       </Banner>
-      <SR.RecordSearch>
-        <SR.RecordSearchInner>
+      <S.RecordSearch>
+        <S.RecordSearchInner>
           <Search propsEvent={searchResult}/>
-        </SR.RecordSearchInner>
-      </SR.RecordSearch>
-
-      <S.BoxLine $top $borderWidth="5px" $paddingTop="30px">
-        <S.ContBoxInner className="record__inner">
-          {/* Tab 컴포넌트 만들기 전 - 틀 */}
-          <div className="tab"> 
-            <div className="tab__select">
-              <ul className="tab__lists">
+        </S.RecordSearchInner>
+      </S.RecordSearch>
+      <SC.BoxLine $top $borderWidth="5px" $paddingTop="30px">
+        <SC.ContBoxInner className="record__inner">
+          <TabBtn propsList={category} propsEvent={categoryChange}/>
+          <S.RecordCont>
+            <TitleBar $fontWeight="600">
+              {selectTab}
+            </TitleBar>
+            <SC.BoxLine $top className="record__list">
+              <S.RecordList>
                 {
-                  category.map((item,idx) => 
-                    <li className="tab__lists-item" key={idx}>
-                      <button type="button" className="btn" onClick={()=>categoryChange(item)}>
-                        {item}
-                      </button>
-                    </li>
-                  )
+                  recordData.map((item,idx) => (
+                    <ListItem 
+                      propsItem={item} 
+                      propsIdx={idx}
+                      propsEvent={listClick}
+                      key={idx} 
+                      />
+                  ))
                 }
-              </ul>
-            </div>
-            
-            <div className="tab__cont">
-              <div className="tab__cont-title">
-                <TitleBar $fontWeight="600">
-                  {selectTab}
-                </TitleBar>
-              </div>
-              <div className="tab__cont__inner">
-                <ul className="tab__cont__lists">
-                  {
-                    recordData.map((item,idx) => 
-                      item.view === true &&
-                      <li key={idx} className="tab__cont__lists-item">
-                        <button type="button" className="btn" title="자세히 보기" onClick={() =>{navi(item.path)}}>
-                          <span className="order">{idx+1}</span>
-                          <span className="tit">{item.title}</span>
-                          <span className="desc">{item.desc}</span>
-                        </button>
-                      </li>
-                    )
-                  }
-                </ul>
-              </div>
-            </div>
-          </div>
-        </S.ContBoxInner>
-      </S.BoxLine>
+              </S.RecordList>
+            </SC.BoxLine>
+          </S.RecordCont>
+        </SC.ContBoxInner>
+      </SC.BoxLine>
     </div>
   )
 }

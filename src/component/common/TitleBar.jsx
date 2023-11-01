@@ -43,9 +43,9 @@ const Tit = styled.p`
 `;
 
 function TitleBar({children, ...props}){
-  return <SectionTitle {...props}>
-    <Tit {...props}>
-      <span className="title">
+  return <SectionTitle {...props} className="title-wrap">
+    <Tit {...props} className="title">
+      <span>
       {children}
       </span>
     </Tit>
