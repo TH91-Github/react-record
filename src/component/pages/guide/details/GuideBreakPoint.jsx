@@ -24,10 +24,9 @@ function GuideBreakPoint() {
   function copyBtn(text){
     alert(text+" 복사가 완료되었습니다.");
   }
-
   return(
     <>
-      <SG.GuideBoxInner>
+      <S.ContBoxInner>
         <SG.GuideTitle>
           <TitleBar>{breakpointData.title}</TitleBar>
         </SG.GuideTitle>
@@ -63,7 +62,7 @@ function GuideBreakPoint() {
             </div>
           </div>
         </SG.GuideCont>
-      </SG.GuideBoxInner>
+      </S.ContBoxInner>
     </>
   )
 }

@@ -3,6 +3,7 @@ import TitleBar from "component/common/TitleBar";
 import SubTitleBar from "component/common/SubTitleBar";
 
 // styled
+import * as S from "component/styled/common/AllStyled";
 import * as SG from "component/pages/guide/styled/GuideStyled";
 import { colors } from "component/styled/common/Variable";
 
@@ -27,7 +28,7 @@ function GuideColor() {
 
   return(
     <>
-      <SG.GuideBoxInner>
+      <S.ContBoxInner>
         <SG.GuideTitle>
           <TitleBar>{colorData.title}</TitleBar>
         </SG.GuideTitle>
@@ -65,7 +66,7 @@ function GuideColor() {
             </div>
           </div>
         </SG.GuideCont>
-      </SG.GuideBoxInner>
+      </S.ContBoxInner>
     </>
   )
 }

@@ -3,6 +3,7 @@ import TitleBar from "component/common/TitleBar";
 import SubTitleBar from "component/common/SubTitleBar";
 
 // styled
+import * as S from "component/styled/common/AllStyled";
 import * as SG from "component/pages/guide/styled/GuideStyled";
 import { fonts } from "component/styled/common/Variable";
 
@@ -26,7 +27,7 @@ function GuideFont() {
 
   return(
     <>
-      <SG.GuideBoxInner>
+      <S.ContBoxInner>
         <SG.GuideTitle>
           <TitleBar>{fontData.title}</TitleBar>
         </SG.GuideTitle>
@@ -59,7 +60,7 @@ function GuideFont() {
             </div>
           </div>
         </SG.GuideCont>
-      </SG.GuideBoxInner>
+      </S.ContBoxInner>
     </>
   )
 }

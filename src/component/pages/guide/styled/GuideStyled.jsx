@@ -12,12 +12,6 @@ export const GuideSearchInner = styled.div`
   position:relative;
   width:300px;
 `;
-export const GuideBoxInner = styled.div`
-  width:100%;
-  max-width:${breakpoints.table}px;
-  margin:10px auto 0;
-  padding: 0 30px;
-`;
 
 export const GuideTitle = styled.div`
   padding: 15px 20px;

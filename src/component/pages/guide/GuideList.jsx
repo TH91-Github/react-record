@@ -14,13 +14,10 @@ function GuideList() {
   const fliterList = (selectName) => { // 보여지는 리스트 구별
     const changeData = [...GuideRouter];
     const viewList = changeData.filter(item => item.view && item);
-    // const selectList = viewList.filter(item => item.keyWord.indexOf(selectName) > -1 && item);
     const selectList = viewList.filter(item => {
-      if(selectName === undefined || selectName === ''){
-        return item;
-      }else{
-        return item.keyWord.toLowerCase().includes(selectName.toLowerCase());
-      }
+      return selectName === undefined || selectName === ''
+      ? item
+      : item.keyWord.toLowerCase().includes(selectName.toLowerCase())
     });
     // 선별된 리스트가 없을 경우 view true 전체 노출 - all
     selectList.length > 0 ? setGuideData(selectList)
@@ -39,27 +36,29 @@ function GuideList() {
     fliterList(searchVale);
   };
   return (
-    <div>
+    <div className="guid">
       <SG.GuideSearch>
         <SG.GuideSearchInner>
           <Search propsEvent={searchResult}/>
         </SG.GuideSearchInner>
       </SG.GuideSearch>
       <S.BoxLine $top  $borderWidth="5px" $paddingTop="30px" className="">
-        <S.DivFlex>
-          {
-            guideData && guideData.map((etcList,idx) => (
-              <SG.GuideBoxInner key={idx}>
-                <S.LineTitle>
-                  <button type="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
-                    <TitleBar $display="inline-block">{etcList.title}</TitleBar>
-                    <S.TextS $margin="0 0 0 20px;">{etcList.desc}</S.TextS>
-                  </button>
-                </S.LineTitle>
-              </SG.GuideBoxInner>
-            ))
-          }
-        </S.DivFlex>
+        <S.ContBoxInner className="guid__inner">
+          <S.DivFlex $direction="column" $gap={15}>
+            {
+              guideData && guideData.map((etcList,idx) => (
+                <div key={idx}>
+                  <S.LineTitle>
+                    <button type="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
+                      <TitleBar $display="inline-block">{etcList.title}</TitleBar>
+                      <S.TextS $margin="0 0 0 20px;">{etcList.desc}</S.TextS>
+                    </button>
+                  </S.LineTitle>
+                </div>
+              ))
+            }
+          </S.DivFlex>
+        </S.ContBoxInner>
       </S.BoxLine>
 
     </div>
