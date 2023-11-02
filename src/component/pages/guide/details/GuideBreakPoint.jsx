@@ -25,7 +25,7 @@ function GuideBreakPoint() {
     alert(text+" 복사가 완료되었습니다.");
   }
   return(
-    <>
+    <S.GuidDetailWrap>
       <SC.ContBoxInner>
         <S.GuideTitle>
           <TitleBar>{breakpointData.title}</TitleBar>
@@ -65,7 +65,7 @@ function GuideBreakPoint() {
           </div>
         </S.GuideCont>
       </SC.ContBoxInner>
-    </>
+    </S.GuidDetailWrap>
   )
 }
 

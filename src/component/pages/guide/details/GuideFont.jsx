@@ -26,7 +26,7 @@ function GuideFont() {
   }
 
   return(
-    <>
+    <S.GuidDetailWrap>
       <SC.ContBoxInner>
         <S.GuideTitle>
           <TitleBar>{fontData.title}</TitleBar>
@@ -61,7 +61,7 @@ function GuideFont() {
           </div>
         </S.GuideCont>
       </SC.ContBoxInner>
-    </>
+    </S.GuidDetailWrap>
   )
 }
 

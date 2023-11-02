@@ -12,6 +12,9 @@ export const GuideSearchInner = styled.div`
   position:relative;
   width:300px;
 `;
+export const GuidDetailWrap = styled.div`
+  margin-top:30px;
+`;
 export const GuideTitle = styled.div`
   padding: 15px 20px;
   border-radius: 5px;
@@ -47,16 +50,16 @@ export const GuideTxtBar = styled(S.BarTxt)`
     margin-top:0;
   }
 `;
-const colorGap = ["20px","15px"];
+const _colorGap = ["20px","15px"];
 export const ColorList = styled(S.UlFlex)`
-  gap:${colorGap[0]};
+  gap:${_colorGap[0]};
   &>li {
     width:112.25px;
   }
   ${media.mo} {
-    gap:${colorGap[1]};
+    gap:${_colorGap[1]};
     &>li {
-      width: calc((100% - ${colorGap[1]} * 2) / 3);
+      width: calc((100% - ${_colorGap[1]} * 2) / 3);
     }
   }
   ${media.onlyMo} {
@@ -138,17 +141,17 @@ export const BreakpointBtn = styled(S.Button)`
   }
 `; 
 
-const fontGap = ["20px","15px","10px"]
+const _fontGap = ["20px","15px","10px"]
 export const FontList = styled(S.UlFlex)`
-  gap:${fontGap[0]};
+  gap:${_fontGap[0]};
   ${media.mo} {
-    gap:${colorGap[1]};
+    gap:${_colorGap[1]};
     &>li {
-      width: calc((100% - ${colorGap[1]} * 2) / 3);
+      width: calc((100% - ${_colorGap[1]} * 2) / 3);
     }
   }
   ${media.onlyMo} {
-    gap:${fontGap[2]};
+    gap:${_fontGap[2]};
     &>li {
       width:100%;
     }

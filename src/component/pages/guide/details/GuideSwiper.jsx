@@ -3,7 +3,7 @@ import TitleBar from "component/common/TitleBar";
 import SubTitleBar from "component/common/SubTitleBar";
 import { colors } from "component/styled/common/Variable";
 import * as SC from "component/styled/common/AllStyled";
-
+import * as S from "component/pages/guide/styled/GuideStyled";
 function GuideSwiper () {
   const swiperOpt = {
     pagination: {
@@ -12,7 +12,7 @@ function GuideSwiper () {
     navigation: true
   }
   return (
-    <div>
+    <S.GuidDetailWrap>
       <SC.BoxWrap className="search">
         <SC.BoxInner $padding="30px 30px 0">
           <TitleBar>Swiper Slider</TitleBar>
@@ -43,7 +43,7 @@ function GuideSwiper () {
         </SC.BoxLine>
       </SC.BoxWrap>
       
-    </div>
+    </S.GuidDetailWrap>
   )
 }
 export default GuideSwiper;

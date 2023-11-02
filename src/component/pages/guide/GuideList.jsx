@@ -6,6 +6,8 @@ import Search from "component/common/Search";
 // styled
 import * as SC from "component/styled/common/AllStyled";
 import * as S from "component/pages/guide/styled/GuideStyled";
+import styled from 'styled-components';
+import { media } from 'component/styled/common/Variable';
 
 function GuideList() {
   const navi = useNavigate();
@@ -47,12 +49,12 @@ function GuideList() {
           <SC.DivFlex $direction="column" $gap={15}>
             {
               guideData && guideData.map((etcList,idx) => (
-                <div key={idx}>
+                <div className="guid-List" key={idx}>
                   <SC.LineTitle>
-                    <button type="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
+                    <Btn type="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
                       <TitleBar $display="inline-block">{etcList.title}</TitleBar>
-                      <SC.TextS $margin="0 0 0 20px;">{etcList.desc}</SC.TextS>
-                    </button>
+                      <SC.TextS className="text" $margin="0 0 0 20px;">{etcList.desc}</SC.TextS>
+                    </Btn>
                   </SC.LineTitle>
                 </div>
               ))
@@ -64,5 +66,13 @@ function GuideList() {
     </div>
   )
 }
+/* 임시 */
+const Btn = styled.button`
+  text-align:left;
+  ${media.mo} {
+    .title-wrap {display:block;}
+    .text {margin:10px 0 0 0;}
+  }
+`;
 
 export default GuideList;

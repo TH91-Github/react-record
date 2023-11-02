@@ -27,7 +27,7 @@ function GuideColor() {
   }
 
   return(
-    <>
+    <S.GuidDetailWrap>
       <SC.ContBoxInner>
         <S.GuideTitle>
           <TitleBar>{colorData.title}</TitleBar>
@@ -67,7 +67,7 @@ function GuideColor() {
           </div>
         </S.GuideCont>
       </SC.ContBoxInner>
-    </>
+    </S.GuidDetailWrap>
   )
 }
 
