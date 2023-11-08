@@ -18,8 +18,8 @@ const Btn = styled(SC.Button)`
   color:${colors.textColor};
   transition: ${transitions.base};
   &:hover, &:focus {
-    border-color:${colors.green3cb062};
-    background:${colors.green3cb062};
+    border-color:${colors.green};
+    background:${colors.green};
     color:${colors.baseWhite};
   }
 `;

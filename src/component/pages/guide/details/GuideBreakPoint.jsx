@@ -53,7 +53,7 @@ function GuideBreakPoint() {
                             <SC.ColorTag className="val" $color={colors.textColor}>{`${breakPointItme[1]}px;`}
                             </SC.ColorTag>
                           </span>
-                          <SC.ColorTag $color={colors.rede76647}>{`${breakPointItme[0]}`}
+                          <SC.ColorTag $color={colors.red}>{`${breakPointItme[0]}`}
                           </SC.ColorTag>
                         </S.BreakpointBtn>
                       </CopyToClipboard>

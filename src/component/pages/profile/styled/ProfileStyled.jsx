@@ -202,7 +202,7 @@ export const PlanTit = styled.p`
       bottom: 0;
       width: 30%;
       height: 2px;
-      background: ${colors.yellowf5b800};
+      background: ${colors.yellow};
       content: "";
     }
     &::after{
@@ -211,7 +211,7 @@ export const PlanTit = styled.p`
       bottom: 0;
       width: 70%;
       height: 2px;
-      background: ${colors.green3cb062};
+      background: ${colors.green};
       content: "";
     }
   }

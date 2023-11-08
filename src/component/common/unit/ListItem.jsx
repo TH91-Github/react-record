@@ -29,13 +29,13 @@ const ItemBtn = styled(SC.Button)`
     left:-30px;
     width:30px;
     height:100%;
-    background:${colors.yellowf5b800};
+    background:${colors.yellow};
     transition:${transitions.base};
     opacity:0;
     content:"";
   }
   &:hover, &:focus {
-    border-color:${colors.yellowf5b800};
+    border-color:${colors.yellow};
     &::after
     {
       left:0;

@@ -33,10 +33,10 @@ export const colors = {
   baseBlack: "#000000",
   subBlack: "#222222",
   // point
-  green3cb062:"#3cb062",
-  yellowf5b800:"#f5b800",
-  blue685ef8:"#685ef8",
-  rede76647:"#e76647",
+  green:"#3cb062",
+  yellow:"#f5b800",
+  blue:"#685ef8",
+  red:"#e8392c",
   // bg Color 
   bgGreen: "#113536",
   bgWhite: "#f8f9fc",

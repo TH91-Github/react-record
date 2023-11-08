@@ -26,7 +26,7 @@ const Porgress = styled.span`
     left:0;
     width:${props => props.value+'%'};
     height:100%;
-    background: ${colors.green3cb062};
+    background: ${colors.green};
     animation: ${props => "gauge"+props.value} 1s both;
     content:"";
     @keyframes ${props => "gauge"+props.value} {

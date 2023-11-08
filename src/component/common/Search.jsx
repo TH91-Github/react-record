@@ -10,10 +10,10 @@ const SearchWrap = styled.div`
   box-shadow: 0 5px 10px rgba(203,210,222,.5);
   &:hover {
     .search-input {
-      border:1px solid ${colors.yellowf5b800};
+      border:1px solid ${colors.yellow};
     }
     .search-btn {
-      background: ${colors.yellowf5b800};
+      background: ${colors.yellow};
     }
   }
 `;
@@ -28,7 +28,7 @@ const SearchInput = styled.input`
   transition: ${transitions.base};
   outline:none;
   &:focus {
-    border:1px solid ${colors.blue685ef8};
+    border:1px solid ${colors.blue};
   }
 `;
 const SearchBtn = styled(S.Button)`
@@ -36,12 +36,12 @@ const SearchBtn = styled(S.Button)`
   height: 40px;
   border-top-right-radius:5px;
   border-bottom-right-radius:5px;
-  background: ${colors.green3cb062};
+  background: ${colors.green};
   color: ${colors.baseWhite};
   transition: ${transitions.base};
   outline:none;
   &:focus {
-    background: ${colors.blue685ef8};
+    background: ${colors.blue};
   }
 `;
 function Search({placeholder, btnText, propsEvent}){

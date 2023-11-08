@@ -19,10 +19,10 @@ const ArrowButton = styled(Button)`
   &:hover, &:focus {
     &>span{
       &::before {
-        background: ${colors.green3cb062};
+        background: ${colors.green};
       }
       &::after {
-        background: ${colors.yellowf5b800};
+        background: ${colors.yellow};
       }
     }
   }

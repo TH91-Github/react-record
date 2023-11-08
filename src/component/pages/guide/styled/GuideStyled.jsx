@@ -20,7 +20,7 @@ export const GuideTitle = styled.div`
   border-radius: 5px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border-left: 5px solid ${colors.green3cb062};
+  border-left: 5px solid ${colors.green};
   background: ${colors.bgWhite};
 `;
 export const GuideCont = styled.div`
@@ -164,8 +164,8 @@ export const FontBtn = styled(S.Button)`
   border: 1px solid ${colors.lineColor};
   transition: all 0.3s;
   &:hover{
-    border-color:${colors.green3cb062};
-    background:${colors.green3cb062};
+    border-color:${colors.green};
+    background:${colors.green};
     color:${colors.baseWhite};
   }
   p {

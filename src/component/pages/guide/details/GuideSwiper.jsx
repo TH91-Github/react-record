@@ -18,10 +18,10 @@ function GuideSwiper () {
           <TitleBar>Swiper Slider</TitleBar>
           <SC.ListBarUl $marginTop="20px"> 
             <SC.LiBar>
-              <SC.TextP><SC.ColorTag $color={colors.rede76647}>import 경로 : </SC.ColorTag> "src/component/common/SwiperSlider";</SC.TextP>
+              <SC.TextP><SC.ColorTag $color={colors.red}>import 경로 : </SC.ColorTag> "src/component/common/SwiperSlider";</SC.TextP>
             </SC.LiBar>
             <SC.LiBar>
-              <SC.TextP><SC.ColorTag $color={colors.rede76647}>참고 : </SC.ColorTag> https://swiperjs.com/</SC.TextP>
+              <SC.TextP><SC.ColorTag $color={colors.red}>참고 : </SC.ColorTag> https://swiperjs.com/</SC.TextP>
             </SC.LiBar>
           </SC.ListBarUl>
         </SC.BoxInner>

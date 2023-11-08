@@ -259,7 +259,7 @@ export const LineTitle = styled.div`
   border-radius:5px;
   border-top-right-radius:0;
   border-bottom-left-radius:0;
-  border-left:5px solid ${colors.green3cb062};
+  border-left:5px solid ${colors.green};
   background: ${colors.bgWhite};
 `;
 

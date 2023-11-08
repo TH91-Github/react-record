@@ -26,7 +26,7 @@ const Tit = styled.p`
     left:${props => props.$fontSize ? `calc((${numW(props.$fontSize)} / 2) - 1px )` : `calc((${numW(baseSize)} / 2) - 1px )`};
     width: 2px;
     height:${ props => props.$fontSize ? `calc(${numW(props.$fontSize)})` : `calc(${numW(baseSize)})`};
-    background:  ${colors.yellowf5b800};
+    background:  ${colors.yellow};
     transform: translateY(-50%);
     content:"";
   }
@@ -36,7 +36,7 @@ const Tit = styled.p`
     left:0;
     width: ${ props => props.$fontSize ? `calc(${numW(props.$fontSize)})` : `calc(${numW(baseSize)})`};
     height:2px; 
-    background: ${colors.green3cb062};
+    background: ${colors.green};
     transform:translateY(-50%);
     content:"";
   }
