@@ -10,16 +10,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-
-
-
-const BaseSlide = styled.div`
-  width:100%;
-  height:200px;
-  background:${colors.subTextColor};
-  color:${colors.baseWhite};
-`
-
 function SwiperSlider({swiperData, swiperOpt}) {
   console.log(swiperOpt)
   function onSwiper(swiperE){
@@ -71,4 +61,12 @@ function SwiperSlider({swiperData, swiperOpt}) {
     </>
   )
 }
+
+const BaseSlide = styled.div`
+  width:100%;
+  height:200px;
+  background:${colors.subTextColor};
+  color:${colors.baseWhite};
+`
+
 export default SwiperSlider;

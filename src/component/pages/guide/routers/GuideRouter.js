@@ -44,7 +44,7 @@ let GuideDataList = [
     keyWord:"#Guide #font #폰트 #폰트사이즈 #글자 #폰트종류"
   },
   {
-    title:"Swiper Guide",
+    title:"Slider Guide",
     path:"/guide/swiper",
     element: <GuideSwiper />,
     view: true,

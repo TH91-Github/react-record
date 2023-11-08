@@ -17,7 +17,7 @@ const Tit = styled.p`
   margin:0;
   padding-left:${ props => props.$fontSize || baseSize};
   font-size: ${ props => props.$fontSize || baseSize};
-  font-family: ${fonts.fontB}
+  font-family: ${fonts.fontB};
   font-weight: ${ props => props.fontWeight || '600'};
   color: ${props => props.color || colors.textColor};
   &::before { 
