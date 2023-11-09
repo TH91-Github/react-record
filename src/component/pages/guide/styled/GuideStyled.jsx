@@ -172,3 +172,22 @@ export const FontBtn = styled(S.Button)`
     word-break: break-word;
   }
 `;
+
+// 설명 영역
+export const GuideTest = styled.div`
+  margin-top:15px;
+  padding-top:15px;
+  border-top:2px solid ${colors.lineColor};
+  &:first-child {
+    margin-top:0;
+    border-top:2px solid ${colors.baseBlack};
+  }
+`;
+export const GuideTestTxt = styled.div`
+  margin-top:5px;
+  font-size:${fonts.size14}px;
+`;
+export const GuideTestBox = styled.div`
+  position:relative;
+  margin:10px auto;
+`;

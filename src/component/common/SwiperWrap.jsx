@@ -10,14 +10,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-function SwiperSlider({swiperData, swiperOpt}) {
-  console.log(swiperOpt)
+function SwiperWrap({swiperOpt, children}) {
+  const baseSlide = new Array(3).fill('Slide');
   function onSwiper(swiperE){
     console.log("init Swiper")
   }
   function onSlideChange(changeE) {
     console.log(changeE)
   }
+  console.log(swiperOpt)
   return (
     // 샘플
     <>
@@ -27,19 +28,17 @@ function SwiperSlider({swiperData, swiperOpt}) {
         onSwiper={onSwiper}
         onSlideChange={onSlideChange}>
           {
-            swiperData > 0
-            ?
+            children == undefined
+            ? // default 기본 슬라이드 - 확인용
               <>
-                <SwiperSlide>Slide 1<br />Slide 1Slide 1Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 1<br />Slide 1Slide 1Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 1<br />Slide 1Slide 1Slide 1</SwiperSlide>
+                {
+                  baseSlide.map((slide, idx) => 
+                  <SwiperSlide key={idx}><BaseSlide><span>{slide +'-'+ (idx+1) }</span></BaseSlide></SwiperSlide>
+                  )
+                }
               </>
             : 
-              <>
-                <SwiperSlide><BaseSlide>Slide 1 Slide 1Slide 1Slide 1</BaseSlide></SwiperSlide>
-                <SwiperSlide><BaseSlide>Slide 1 Slide 1Slide 1Slide 1</BaseSlide></SwiperSlide>
-                <SwiperSlide><BaseSlide>Slide 1 Slide 1Slide 1Slide 1</BaseSlide></SwiperSlide>
-              </>
+            children
           }
       </Swiper>
 
@@ -63,10 +62,13 @@ function SwiperSlider({swiperData, swiperOpt}) {
 }
 
 const BaseSlide = styled.div`
+  display:flex;
+  justify-content:center;
+  align-items:center;
   width:100%;
   height:200px;
-  background:${colors.subTextColor};
+  background:${colors.bgGreen};
   color:${colors.baseWhite};
 `
 
-export default SwiperSlider;
+export default SwiperWrap;
