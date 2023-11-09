@@ -6,6 +6,27 @@ import { media, colors } from "component/styled/common/Variable";
 const CodeWrap = styled.div`
   margin: 10px 0;
   font-size:14px;
+  ${props => `
+    ${props.$tagColor && `
+      .token {
+        color:${colors.yellow};
+      }
+    `};
+  `}
+  ${props => `
+    ${props.$side && `
+      .punctuation {
+        color:${colors.yellow};
+      }
+      .boolean {
+        color:${colors.red};
+      }
+      .operator {
+
+      }
+    `};
+  `}
+  
   .linenumber {
     position:relative;
     width:35px !important;
@@ -30,14 +51,14 @@ const CodeWrap = styled.div`
     font-size:13px;
   }
 `;
-function CodeTemplate({text, propsClass}){
+function CodeTemplate({showLineNumbers, text, propsClass, ...props}){
   return(
-    <CodeWrap className={propsClass}>
+    <CodeWrap {...props} className={propsClass}>
       <CodeBlock
         language="javascript"
         codeBlock
         theme={dracula}
-        showLineNumbers={true}
+        showLineNumbers={showLineNumbers??true}
         text={text ? text : "console.log('테스트')"}
       />
     </CodeWrap>

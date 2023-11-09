@@ -34,7 +34,7 @@ function GuideSwiper () {
       subTitle: "사용 - SwiperWrap 컴포넌트에 children으로 전달",
       desc:["영역 및 테스트 용도 - SwiperWrap 컴포넌트 빈 값"],
       code1:`<SwiperWrap><SwiperSlide>필요한 구조 및 데이터</SwiperSlide></SwiperWrap>`,
-      code2:'',
+      code2:`opt:{pagination: {clickable: true,},navigation: true}`,
       slides:[
         "테스트입니다 1",
         "테스트입니다 2",
@@ -73,7 +73,8 @@ function GuideSwiper () {
                       {
                         slideTest.desc.map((slideTestDesc,idx) => <S.GuideTestTxt key={idx}>{slideTestDesc}</S.GuideTestTxt>)
                       }
-                      <CodeTemplate text={slideTest.code1}/>
+                      <CodeTemplate $tagColor showLineNumbers={false} text={slideTest.code1}/>
+                      {slideTest.code2 && <CodeTemplate $side showLineNumbers={false} text={slideTest.code2}/> }
                       <S.GuideTestBox>
                         <SwiperWrap swiperOpt={slideTest.opt}>
                           {
