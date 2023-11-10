@@ -21,9 +21,6 @@ const CodeWrap = styled.div`
       .boolean {
         color:${colors.red};
       }
-      .operator {
-
-      }
     `};
   `}
   

@@ -31,19 +31,100 @@ function GuideSwiper () {
       code1:`<SwiperWrap></SwiperWrap>`,
     },
     {
-      subTitle: "사용 - SwiperWrap 컴포넌트에 children으로 전달",
-      desc:["영역 및 테스트 용도 - SwiperWrap 컴포넌트 빈 값"],
-      code1:`<SwiperWrap><SwiperSlide>필요한 구조 및 데이터</SwiperSlide></SwiperWrap>`,
-      code2:`opt:{pagination: {clickable: true,},navigation: true}`,
+      subTitle: "Custom - SwiperWrap 컴포넌트에 children으로 전달",
+      desc:["swiper/react 에서 SwiperSlide를 불러와서 사용","swiperOpt로 옵션 데이터를 넘긴다."],
+      code1:`<SwiperWrap swiperOpt={slideTest.opt}><SwiperSlide>필요한 구조 및 데이터</SwiperSlide></SwiperWrap>`,
+      code2:`opt:{pagination: {clickable: true,},navigation: true} // 좌우 버튼 및 페이지 버튼`,
       slides:[
-        "테스트입니다 1",
-        "테스트입니다 2",
-        "테스트입니다 3"
+        "2번 슬라이드 1",
+        "2번 슬라이드 2",
+        "2번 슬라이드 3"
       ]
       ,
       opt:{pagination: {clickable: true,},navigation: true}
     },
+    {
+      subTitle: "navigation : 좌우 버튼",
+      desc:["swiper 옵션 값 : navigation: true"],
+      code1:`<SwiperWrap swiperOpt={slideTest.opt}><SwiperSlide>입력 값</SwiperSlide></SwiperWrap>`,
+      code2:`opt:{navigation: true} // 옵션 navigation - 좌우 arrow 버튼`,
+      slides:[
+        "navigation : true 1",
+        "navigation : true 2",
+        "navigation : true 3"
+      ]
+      ,
+      opt:{navigation: true}
+    },
+    {
+      subTitle: "pagination : 하단 페이지 버튼",
+      desc:["swiper 옵션 값 : pagination: true 생성", "추가로 clickable: true 하면 클릭 가능" ],
+      code1:`<SwiperWrap swiperOpt={slideTest.opt}><SwiperSlide>입력 값</SwiperSlide></SwiperWrap>`,
+      code2:`opt:{pagination: {clickable: true}} // 옵션 pagination - 하단 페이지 버튼 및 클릭 여부`,
+      slides:[
+        "pagination : true 1",
+        "pagination : true 2",
+        "pagination : true 3"
+      ]
+      ,
+      opt:{pagination: {clickable: true}}
+    },
+    {
+      subTitle: "Infinite loop",
+      desc:["swiper 옵션 값 : loop: true 생성" ],
+      code1:`<SwiperWrap swiperOpt={slideTest.opt}><SwiperSlide>입력 값</SwiperSlide></SwiperWrap>`,
+      code2:`opt:{loop:true} // 옵션 loop - 루프/반복 여부`,
+      slides:[
+        "loop : true 1",
+        "loop : true 2",
+        "loop : true 3"
+      ]
+      ,
+      opt:{loop:true}
+    },
+    {
+      subTitle: "autoplay 자동 반복",
+      desc:["swiper 옵션 값 : autoplay: {delay: 2000, disableOnInteraction:false} ","delay: 자동 재생 시간","disableOnInteraction: 스와이프 후 자동 재생 여부"],
+      code1:`<SwiperWrap swiperOpt={slideTest.opt}><SwiperSlide>입력 값</SwiperSlide></SwiperWrap>`,
+      code2:`opt:{autoplay:{delay: 2000, disableOnInteraction: false,}} // 옵션 autoplay - 자동  여부`,
+      slides:[
+        "autoplay : true 1",
+        "autoplay : true 2",
+        "autoplay : true 3"
+      ],
+      opt:{autoplay: {delay: 2000, disableOnInteraction:false,}}
+    },
+    {
+      subTitle: "초기 함수 실행 Change",
+      desc:["초기 실행 onInit={함수}", "swiper 처음 발생 시 이벤트 발생 값을 반환 받을 수 있다", "console 확인"],
+      code1:`<SwiperWrap onInit={함수}><SwiperSlide>입력 값</SwiperSlide></SwiperWrap>`,
+      slides:[
+        "init Func 1",
+        "init Func 2",
+        "init Func 3"
+      ],
+      init: function initTest(e) {
+        console.log("초기 실행 TEST")
+        console.log(e)
+      }
+    },
+    {
+      subTitle: "스와이프 시 함수 실행 Change",
+      desc:["스와이프 시 실행 onChange={함수}", "swiper onSlideChange 이벤트 발생 값을 반환 받을 수 있다", "console 확인"],
+      code1:`<SwiperWrap onChange={함수}><SwiperSlide>입력 값</SwiperSlide></SwiperWrap>`,
+      slides:[
+        "change Func 1",
+        "change Func 2",
+        "change Func 3"
+      ],
+      change: function changeTest(e) {
+        console.log("change TEST")
+        console.log(e)
+      }
+    },
   ]
+
+  
 
   return (
     <>
@@ -76,7 +157,10 @@ function GuideSwiper () {
                       <CodeTemplate $tagColor showLineNumbers={false} text={slideTest.code1}/>
                       {slideTest.code2 && <CodeTemplate $side showLineNumbers={false} text={slideTest.code2}/> }
                       <S.GuideTestBox>
-                        <SwiperWrap swiperOpt={slideTest.opt}>
+                        <SwiperWrap 
+                          swiperOpt={slideTest.opt && slideTest.opt} 
+                          onInit={slideTest.init && slideTest.init}
+                          onChange={slideTest.change && slideTest.change}>
                           {
                             slideTest.slides &&
                             <>
@@ -109,6 +193,7 @@ export const SlideBox = styled.div`
   justify-content:center;
   align-items:center;
   height:250px;
-  border:1px solid ${colors.green};
-  color:${colors.textColor};
+  background:${colors.bgGreen};
+  color:${colors.baseWhite};
+
 `;
