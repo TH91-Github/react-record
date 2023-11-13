@@ -7,8 +7,8 @@ import Header from 'component/common/Header';
 import Footer from "component/common/Footer";
 // store, js, css
 import { sSetDataAll, sSetMobileChk } from "store/store";
-import { loadAxios } from "api/fetchAxios";
-import { isMobile } from "api/common.js"
+import { loadAxios } from "utils/fetchAxios";
+import { isMobile } from "utils/common.js"
 import 'assets/scss/components/MainTemplate.scss';
 
 

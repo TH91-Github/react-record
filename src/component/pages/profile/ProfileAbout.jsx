@@ -1,7 +1,7 @@
 import * as SC from "component/styled/common/AllStyled";
 import * as S from "component/pages/profile/styled/ProfileStyled";
 import TitleBar from "component/common/TitleBar";
-import { TextChange } from "api/regExpChk";
+import { TextChange } from "utils/regExpChk";
 function ProfileAbout({propsOpt}) {
   const {data,titSize} = propsOpt;
   const pAbout = data.about; 

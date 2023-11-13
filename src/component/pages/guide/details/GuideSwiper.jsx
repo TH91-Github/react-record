@@ -12,7 +12,6 @@ import styled from "styled-components";
 
 function GuideSwiper () {
   const SlideData = {
-    id:1,
     title: "Swiper",
     desc:[
       "참고 : https://swiperjs.com/",
@@ -123,9 +122,7 @@ function GuideSwiper () {
       }
     },
   ]
-
   
-
   return (
     <>
       <S.GuidDetailWrap>

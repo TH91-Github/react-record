@@ -5,7 +5,7 @@ import GuideBreakPoint from 'component/pages/guide/details/GuideBreakPoint';
 import GuideFont from 'component/pages/guide/details/GuideFont';
 import GuideSwiper from 'component/pages/guide/details/GuideSwiper';
 
-import { ranDom } from 'api/common';
+import { ranDom } from 'utils/common';
 
 
 let GuideDataList = [
