@@ -11,7 +11,7 @@ import CodeTemplate from "component/common/CodeTemplate";
 import styled from "styled-components";
 
 function GuideSwiper () {
-  const SlideData = {
+  const GuideData = {
     title: "Swiper",
     desc:[
       "참고 : https://swiperjs.com/",
@@ -23,7 +23,7 @@ function GuideSwiper () {
     ],
     code:`<SwiperWrap> // 제작 컴포넌트 \n  <SwiperSlide>슬라이드1</SwiperSlide> // swiper - SwiperSlide 사용 \n  <SwiperSlide>슬라이드2</SwiperSlide>\n  <SwiperSlide>슬라이드3</SwiperSlide>\n</SwiperWrap>`
   }
-  const slideTestData = [
+  const guideTestData = [
     {
       subTitle: "기본 default",
       desc:["영역 및 테스트 용도 - SwiperWrap 컴포넌트 빈 값"],
@@ -128,41 +128,41 @@ function GuideSwiper () {
       <S.GuidDetailWrap>
         <SC.ContBoxInner>
           <S.GuideTitle>
-            <TitleBar>{SlideData.title}</TitleBar>
+            <TitleBar>{GuideData.title}</TitleBar>
           </S.GuideTitle>
           <S.GuideCont>
             <div className="guide__info">
               <SubTitleBar $fontSize="16px">설명 참고</SubTitleBar>
               <div className="guide__info__desc">
                 {
-                  SlideData.desc.map((slideDesc,idx) => (
+                  GuideData.desc.map((guideDesc,idx) => (
                     <S.GuideTxtBar key={idx}>
-                      {slideDesc}
+                      {guideDesc}
                     </S.GuideTxtBar>
                   ))
                 }
               </div>
-              <CodeTemplate text={SlideData.code}/>
+              <CodeTemplate text={GuideData.code}/>
               <div className="guide__list">
                 {
-                  slideTestData.map((slideTest, idx) => (
+                  guideTestData.map((guideTest, idx) => (
                     <S.GuideTest key={idx}>
-                      <SubTitleBar>{idx+1}. {slideTest.subTitle}</SubTitleBar>
+                      <SubTitleBar>{idx+1}. {guideTest.subTitle}</SubTitleBar>
                       {
-                        slideTest.desc.map((slideTestDesc,idx) => <S.GuideTestTxt key={idx}>{slideTestDesc}</S.GuideTestTxt>)
+                        guideTest.desc.map((guideTestDesc,idx) => <S.GuideTestTxt key={idx}>{guideTestDesc}</S.GuideTestTxt>)
                       }
-                      <CodeTemplate $tagColor showLineNumbers={false} text={slideTest.code1}/>
-                      {slideTest.code2 && <CodeTemplate $side showLineNumbers={false} text={slideTest.code2}/> }
+                      <CodeTemplate $tagColor showLineNumbers={false} text={guideTest.code1}/>
+                      {guideTest.code2 && <CodeTemplate $side showLineNumbers={false} text={guideTest.code2}/> }
                       <S.GuideTestBox>
                         <SwiperWrap 
-                          swiperOpt={slideTest.opt && slideTest.opt} 
-                          onInit={slideTest.init && slideTest.init}
-                          onChange={slideTest.change && slideTest.change}>
+                          swiperOpt={guideTest.opt && guideTest.opt} 
+                          onInit={guideTest.init && guideTest.init}
+                          onChange={guideTest.change && guideTest.change}>
                           {
-                            slideTest.slides &&
+                            guideTest.slides &&
                             <>
                               {
-                                slideTest.slides.map((slideInfo, idx) => {
+                                guideTest.slides.map((slideInfo, idx) => {
                                   return <SwiperSlide key={idx}>
                                     <SlideBox>{slideInfo}</SlideBox>
                                   </SwiperSlide>

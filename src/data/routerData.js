@@ -19,7 +19,7 @@ export const routerData = [
     element: <ProfileTemplate />
   },
   {
-    title:"Guide",
+    title:"가이드",
     path:"guide",
     element: <GuideTemplate />,
     children:[
@@ -27,12 +27,12 @@ export const routerData = [
     ]
   },
   {
-    title:"Profile",
+    title:"프로필",
     path:"profile",
     element: <ProfileTemplate />,
   },
   {
-    title:"Record",
+    title:"기록",
     path:"/record",
     element: <RecordTemplate />,
     children:[
@@ -40,7 +40,7 @@ export const routerData = [
     ]
   },
   {
-    title:"Site",
+    title:"기타",
     path:"site",
     element: <SiteTemplate />,
     children:[

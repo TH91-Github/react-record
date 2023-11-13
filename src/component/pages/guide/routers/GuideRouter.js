@@ -6,6 +6,7 @@ import GuideFont from 'component/pages/guide/details/GuideFont';
 import GuideSwiper from 'component/pages/guide/details/GuideSwiper';
 
 import { ranDom } from 'utils/common';
+import GuideTab from '../details/GuideTab';
 
 
 let GuideDataList = [
@@ -48,9 +49,17 @@ let GuideDataList = [
     path:"/guide/swiper",
     element: <GuideSwiper />,
     view: true,
-    desc: "👉 Swiper 라이브러리 사용 보러가기 : 제작 중",
+    desc: "👉 Swiper 라이브러리 사용 보러가기",
     keyWord:"#Guide #슬라이드 #swiper #배너슬라이드 #슬라이가이드 #slide #slider"
   },
+  {
+    title:"Tab Guide",
+    path:"/guide/tab",
+    element:<GuideTab />,
+    view:true,
+    desc: "👉 TAB 메뉴 사용 보러가기 : 제작 중",
+    keyWord:"#Guide #Tab #탭 #탭메뉴 #탭버튼"
+  }
 ];
 
 export const GuideRouter = ranDomId(GuideDataList);

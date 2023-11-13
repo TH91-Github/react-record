@@ -25,15 +25,17 @@ const Btn = styled(SC.Button)`
 `;
 
 function TabBtn({propsList, propsEvent, ...props}) {
-  console.log(propsList)
+  const tabData = propsList ?? ["Tab"];
   const tabClick = (tabEl) => {
-    propsEvent(tabEl)
+    propsEvent ? propsEvent(tabEl)
+    : console.log("Tab Btn Click")
   }
+  console.log(propsList)
   return (
     <TabWrap {...props}>
       <TabList {...props}>
         {
-          propsList.map((item,idx) => (
+          tabData.map((item,idx) => (
             <li key={idx}>
               <Btn onClick={ (e)=> tabClick(item) }>
                 {item}
