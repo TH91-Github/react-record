@@ -99,7 +99,6 @@ export const SnsList = styled(SC.DivFlex)`
   margin-top:20px;
 `;
 
-
 // content
 export const Section = styled.div`
   padding:30px 0;
@@ -223,5 +222,16 @@ export const PlanTit = styled.p`
       background: ${colors.green};
       content: "";
     }
+  }
+`;
+export const TextCenter = styled.p`
+  font-size: ${props => props.fontSize || `${fonts.size}px`};
+  font-weight: ${props => props.fontWeight || '550'};
+  text-align: ${props => props.$align || 'left'};
+  color: ${props => props.color || colors.textColor};
+  line-height: ${props => props.$lineHeight || '1.5'};  
+  text-align:center;
+  & + p { 
+    margin-top: 10px;
   }
 `;

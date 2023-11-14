@@ -72,18 +72,6 @@ export const ButtonB = styled(Button)`
   color: ${props => props.color || colors.textColor };
 `; 
 
-export const TextP = styled.p`
-  ${MarginPadding}
-  font-size: ${props => props.fontSize || `${fonts.size}px`};
-  font-weight: ${props => props.fontWeight || '550'};
-  text-align: ${props => props.$align || 'left'};
-  color: ${props => props.color || colors.textColor};
-  line-height: ${props => props.$lineHeight || '1.5'};
-  & + p { 
-    margin-top: 10px;
-  }
-`;
-
 // ♣ btnWrap
 export const BtnWrap = styled.div`
   display: flex;

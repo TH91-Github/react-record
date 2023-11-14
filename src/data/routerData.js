@@ -10,8 +10,9 @@ import RecordTemplate from 'component/pages/record/RecordTemplate';
 import { RecordRouter } from 'component/pages/record/routers/RecordRouter';
 
 // Site router
-import SiteTemplate from 'component/pages/site/SiteTemplate';
-import { IpartnersRouter } from 'component/pages/site/ipartners/routers/IpartnersRouter';
+import ETCTemplate from 'component/pages/etc/ETCTemplate';
+import { ETCRouter } from 'component/pages/etc/routers/ETCRouter';
+
 
 export const routerData = [
   { // Main 쳇 페이지 임시 프로필로 
@@ -41,10 +42,10 @@ export const routerData = [
   },
   {
     title:"기타",
-    path:"site",
-    element: <SiteTemplate />,
+    path:"etc",
+    element: <ETCTemplate />,
     children:[
-      ...IpartnersRouter
+      ...ETCRouter
     ]
   },
 ]

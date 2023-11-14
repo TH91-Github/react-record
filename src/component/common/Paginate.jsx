@@ -53,7 +53,7 @@ const NextBtn = styled(ArrowButton)`
 const ArrowICon = styled.span`
   display:inline-block;
   position:relative;
-  width:100%;
+  width:50%;
   height:100%;
   text-indent:-9999px;
   &::before {
@@ -93,12 +93,12 @@ const PaginateBtn = styled(Button)`
   width:30px;
   height:30px;
   border:1px solid ${colors.lineColor};
-  border-right:none;
+  border-right:transparent;
   transition:all .3s;
   text-align:center;
   &.active {
     z-index:1;
-    border: 1px solid ${colors.green};
+    border:1px solid ${colors.green};
     transform:scale(1.1);
     color: ${colors.green};
     &>span {

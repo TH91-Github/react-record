@@ -42,16 +42,21 @@ export const GuideCont = styled.div`
   }
 `;
 
-export const GuideListBtn = styled(SC.Button)`
-  text-align:left;
-  ${media.mo} {
-    .title-wrap {display:block;}
+const guideListGap = 15;
+export const GuideList = styled(SC.DivFlex)`
+  gap:${guideListGap}px;
+  & > div { 
+    width:100%;
   }
 `;
 
-export const GuideTxt = styled.p`
-  font-size:${fonts.size14};
-  color:${colors.textColor};
+export const GuideListBtn = styled(SC.Button)`
+  display:flex;
+  text-align:left;
+  ${media.mo} {
+    display:block;
+    .title-wrap {display:block;}
+  }
 `;
 
 export const GuideListText = styled(SC.TextSub)`

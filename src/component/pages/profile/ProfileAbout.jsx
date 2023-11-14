@@ -17,7 +17,7 @@ function ProfileAbout({propsOpt}) {
           <S.SectionBox>
             {
               pAbout.desc.map((aboutDesc, idx) => (
-                <SC.TextP $align="center" key={idx} dangerouslySetInnerHTML={{__html: TextChange(aboutDesc) }}></SC.TextP>
+                <S.TextCenter key={idx} dangerouslySetInnerHTML={{__html: TextChange(aboutDesc) }}></S.TextCenter>
               ))
             }
           </S.SectionBox>

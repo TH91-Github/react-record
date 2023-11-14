@@ -7,8 +7,8 @@ import ComponentTest from 'component/pages/record/study/react/ComponentTest';
 import UseEffectTest from 'component/pages/record/study/react/UseEffectTest';
 
 // js
-import Js from 'component/pages/record/study/js/Js';
 import { ranDom } from 'utils/common';
+import Js from 'component/pages/record/study/js/Js';
 
 let RecordDataList = [
   {

@@ -36,28 +36,28 @@ function GuideList() {
     fliterList(searchVale);
   };
   return (
-    <div className="guid">
+    <div className="guide">
       <S.GuideSearch>
         <S.GuideSearchInner>
           <Search propsEvent={searchResult}/>
         </S.GuideSearchInner>
       </S.GuideSearch>
       <S.GuideLineWrap $top  $borderWidth="5px">
-        <SC.ContBoxInner className="guid__inner">
-          <SC.DivFlex $direction="column" $gap={15}>
+        <SC.ContBoxInner className="guide__inner">
+          <S.GuideList className="guide__lists">
             {
               guideData && guideData.map((etcList,idx) => (
-                <div className="guid-List" key={idx}>
+                <div className="guide__lists-item" key={idx}>
                   <SC.LineTitle>
                     <S.GuideListBtn type="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
                       <TitleBar $display="inline-block">{etcList.title}</TitleBar>
-                      <S.GuideTxt className="text" $margin="0 0 0 20px;">{etcList.desc}</S.GuideTxt>
+                      <S.GuideListText className="text">{etcList.desc}</S.GuideListText>
                     </S.GuideListBtn>
                   </SC.LineTitle>
                 </div>
               ))
             }
-          </SC.DivFlex>
+          </S.GuideList>
         </SC.ContBoxInner>
       </S.GuideLineWrap>
 

@@ -31,9 +31,9 @@ function ProfileTemplate(){
         {/* PLAN */}
         <ProfilePlan propsOpt={componentOpt} />              
         <S.Section>
-          <SC.TextP $align="center">
+          <S.TextCenter>
             감사합니다. 😁
-          </SC.TextP>
+          </S.TextCenter>
         </S.Section>
       </SC.BoxWrap>
     </div>

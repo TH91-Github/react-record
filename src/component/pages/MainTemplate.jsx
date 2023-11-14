@@ -9,8 +9,6 @@ import Footer from "component/common/Footer";
 import { sSetDataAll, sSetMobileChk } from "store/store";
 import { loadAxios } from "utils/fetchAxios";
 import { isMobile } from "utils/common.js"
-import 'assets/scss/components/MainTemplate.scss';
-
 
 function MainTemplate () {
   const [baseData, setBaseData] = useState('');

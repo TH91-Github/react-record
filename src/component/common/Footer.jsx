@@ -1,7 +1,6 @@
 // Svg styled component
 import styled from 'styled-components';
-import * as S from "component/styled/common/AllStyled";
-import {colors} from 'component/styled/common/Variable';
+import {colors, fonts} from 'component/styled/common/Variable';
 
 
 const FooterWrap = styled.div`
@@ -9,11 +8,14 @@ const FooterWrap = styled.div`
   padding:30px;
   background: ${colors.subBlack};
 `;
-
+const FooterText = styled.p`
+  font-size:${fonts.size14}px;
+  color:${colors.baseWhite};
+`;
 function Footer () {
   return (
     <FooterWrap>
-      <S.TextP fontSize="14px;"color="#fff">T.H.</S.TextP>
+      <FooterText fontSize="14px;"color="#fff">T.H.</FooterText>
     </FooterWrap>
   )
 }
