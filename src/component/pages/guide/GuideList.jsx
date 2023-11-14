@@ -44,20 +44,20 @@ function GuideList() {
       </S.GuideSearch>
       <S.GuideLineWrap $top  $borderWidth="5px">
         <SC.ContBoxInner className="guide__inner">
-          <S.GuideList className="guide__lists">
+          <S.GuideListWrap className="guide__lists">
             {
               guideData && guideData.map((etcList,idx) => (
-                <div className="guide__lists-item" key={idx}>
+                <S.GuideList key={idx} $delay={0.2*idx}>
                   <SC.LineTitle>
                     <S.GuideListBtn type="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
                       <TitleBar $display="inline-block">{etcList.title}</TitleBar>
                       <S.GuideListText className="text">{etcList.desc}</S.GuideListText>
                     </S.GuideListBtn>
                   </SC.LineTitle>
-                </div>
+                </S.GuideList>
               ))
             }
-          </S.GuideList>
+          </S.GuideListWrap>
         </SC.ContBoxInner>
       </S.GuideLineWrap>
     </div>

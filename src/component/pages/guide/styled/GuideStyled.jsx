@@ -1,5 +1,5 @@
 import * as SC from "component/styled/common/AllStyled";
-import { colors, fonts, media } from 'component/styled/common/Variable';
+import { animaion, colors, fonts, keyFrames, media } from 'component/styled/common/Variable';
 import styled from 'styled-components';
 
 export const GuideSearch = styled.div`
@@ -37,22 +37,52 @@ export const GuideCont = styled.div`
   }
 `;
 
-const guideListGap = 15;
-export const GuideList = styled(SC.DivFlex)`
+const guideListGap = 20;
+export const GuideListWrap = styled(SC.UlFlex)`
   gap:${guideListGap}px;
-  & > div { 
-    width:100%;
-  }
 `;
 
+export const GuideList = styled.li`
+  position:relative;
+  width: calc((100% - ${guideListGap}px)/2);
+  animation: ${animaion.fadeIn};
+  ${props => props.$delay && `animation-delay:${props.$delay}s;`}
+  ${keyFrames.fadeIn}
+  &>div {
+    height:100%;
+  }
+  ${media.mo}{
+    width: 100%;
+  }
+`
 export const GuideListBtn = styled(SC.Button)`
   display:flex;
+  align-items:center;
+  position:relative;
   width:100%;
+  height:100%;
   padding:15px 20px;
   text-align:left;
   ${media.mo} {
     display:block;
     .title-wrap {display:block;}
+  }
+  &::before, &::after {
+    position:absolute;
+    bottom:0;
+    right:0;
+    background:${colors.yellow};
+    content:"";
+  }
+  &::before {
+    width:15px;
+    height:2px;
+    transform:translateX(25%);
+  }
+  &::after {
+    width:2px;
+    height:15px;
+    transform:translateY(25%);
   }
 `;
 

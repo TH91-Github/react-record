@@ -51,3 +51,13 @@ export const colors = {
 export const transitions = {
   base: "all .3s",
 }
+
+export const animaion = {
+  fadeIn : `fadeIn 2s ease both`
+}
+export const keyFrames = {
+  fadeIn : `@keyframes fadeIn { 0%{opacity:0; transform:translateY(50px);} 100%{opacity:1; transform:translateY(0)} }`
+}
+
+
+
