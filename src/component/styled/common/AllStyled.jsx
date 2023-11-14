@@ -286,7 +286,6 @@ export const ContBoxInner = styled.div`
 `;
 
 export const LineTitle = styled.div`
-  padding:15px 20px;
   border-radius:5px;
   border-top-right-radius:0;
   border-bottom-left-radius:0;

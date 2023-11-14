@@ -19,13 +19,8 @@ export const GuideLineWrap = styled(SC.LineBox)`
 export const GuidDetailWrap = styled.div`
   margin-top:30px;
 `;
-export const GuideTitle = styled.div`
+export const GuideTitle = styled(SC.LineTitle)`
   padding: 15px 20px;
-  border-radius: 5px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-left: 5px solid ${colors.green};
-  background: ${colors.bgWhite};
 `;
 export const GuideCont = styled.div`
   margin-top: 10px;
@@ -52,6 +47,8 @@ export const GuideList = styled(SC.DivFlex)`
 
 export const GuideListBtn = styled(SC.Button)`
   display:flex;
+  width:100%;
+  padding:15px 20px;
   text-align:left;
   ${media.mo} {
     display:block;
