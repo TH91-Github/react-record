@@ -1,15 +1,10 @@
 import { styled } from "styled-components";
 
-
 const SettingWrap = styled.div`
   display:flex;
   justify-content:center;
   align-items: center;
-  ${props => `
-    ${props.$margin && `margin: ${props.$margin}`};
-    ${props.$marginTop && `margin-top:${props.$marginTop}`};
-  `}
- 
+  margin-top:20px;
 `;
 
 const Txt = styled.span`

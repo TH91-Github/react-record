@@ -39,10 +39,7 @@ function ProfilePlan({propsOpt}) {
                         }
                       </S.DescUl>
                     </SC.BoxLine>
-
-
                   </li>
-                  
                 ))
               }
             </SC.UlFlex>

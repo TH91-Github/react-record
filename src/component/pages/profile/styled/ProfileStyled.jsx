@@ -1,4 +1,5 @@
 import { colors, fonts } from 'component/styled/common/Variable';
+import * as SC from "component/styled/common/AllStyled";
 import styled from 'styled-components';
 import profileImg from '../../../../assets/images/profile.jpg'
 
@@ -90,6 +91,14 @@ export const ProfileImg = styled.div`
   transform: translate(-50%, -50%);
   transition: all .5s;
 `;
+export const LineWrap = styled(SC.LineBox)`
+  margin-top:20px;
+  padding-top:20px;
+`;
+export const SnsList = styled(SC.DivFlex)`
+  margin-top:20px;
+`;
+
 
 // content
 export const Section = styled.div`

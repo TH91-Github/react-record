@@ -84,14 +84,6 @@ export const TextP = styled.p`
   }
 `;
 
-export const TextS = styled.span`
-  display: ${props => props.$display || 'inline-block'};
-  ${MarginPadding}
-  font-size: ${props => props.fontSize || `${fonts.size14}px`};
-  font-weight: ${props => props.fontWeight || '500'};
-  color: ${props => props.color || colors.subTextColor};
-`
-
 // ♣ btnWrap
 export const BtnWrap = styled.div`
   display: flex;
@@ -206,6 +198,53 @@ export const ColorChip = styled(Div)`
 
 // ♣ 유지할 목록 👇 
 
+// css option
+const _Flex = css`
+  display:flex;
+  flex-wrap:wrap;
+  flex-direction: ${props => props.$direction || 'row'};
+  justify-content : ${props => props.$justifyContent || 'flex-start'}; 
+  ${props => `
+    ${props.$gap && `gap : ${props.$gap}px`};
+    ${props.$size && `
+      &>li {width: calc((100% - ${(props.$gap * (props.$size-1))}px) / ${props.$size});}
+    `};
+  `}
+`;
+const _Margin = css`
+  ${props => `
+    ${!(props.$marginTop || props.$marginRight || props.$marginBottom || props.$marginLeft) && `margin: ${props.$margin || 0}`};
+    ${props.$marginTop && `margin-top:${props.$marginTop}`};
+    ${props.$marginRight && `margin-right:${props.$marginRight}`};
+    ${props.$marginBottom && `margin-bottom:${props.$marginBottom}`};
+    ${props.$marginLeft && `margin-left:${props.$marginLeft}`};
+  `}
+`;
+const _Padding = css`
+  ${props => `
+    ${!(props.$paddingTop || props.$paddingRight || props.$paddingBottom || props.$paddingLeft) && `padding: ${props.$padding || 0}`};
+    ${props.$paddingTop && `padding-top:${props.$paddingTop}`};
+    ${props.$paddingRight && `padding-right:${props.$paddingRight}`};
+    ${props.$paddingBottom && `padding-bottom:${props.$paddingBottom}`};
+    ${props.$paddingLeft && `padding-left:${props.$paddingLeft}`};
+  `}
+`;
+const _LineOpt = css`
+  ${props => `
+    ${props.$width && `width : ${props.$width}`};
+    ${props.$maxWidth && `max-width : ${props.$maxWidth}`};
+    ${props.$height && `height : ${props.$height}`};
+    ${!(props.$top || props.$right || props.$bottom || props.$left) && `border:1px solid ${colors.lineColor}`};
+    ${props.$borderRadius && `border-radius:${props.borderRadius}`};
+    ${props.$top && `border-top:1px solid ${colors.lineColor}`};
+    ${props.$right && `border-right:1px solid ${colors.lineColor}`};
+    ${props.$bottom && `border-bottom:1px solid ${colors.lineColor}`};
+    ${props.$left && `border-left:1px solid ${colors.lineColor}`};
+    ${props.$borderWidth && `border-width: ${props.$borderWidth}`};
+    ${props.$borderColor && `border-color: ${props.$borderColor}`};
+  `}
+`;
+
 // ♣ Base Css
 export const Blind = styled.span`
   position: absolute;
@@ -221,6 +260,7 @@ export const ColorTag = styled.span`
     ${props.$color && `color: ${props.$color}`};
   `}
 `;
+
 // ♣ ICON
 export const Icon = styled.i`
   display:inline-block;
@@ -239,12 +279,15 @@ export const Icon = styled.i`
 
 // ♣ flex Ul
 export const DivFlex = styled.div`
-  ${flexOption}
+  ${_Flex}
 `;
 
 export const UlFlex = styled.ul`
-  ${flexOption}
-  ${MarginPadding}
+  ${_Flex}
+`;
+
+export const LineBox = styled.div`
+  ${_LineOpt}
 `;
 
 export const ContBoxInner = styled.div`
@@ -273,9 +316,22 @@ export const BarTxt = styled.p`
   }
 `;
 
+export const ATag = styled.a`
+  display: ${props => props.$display || 'inline-block;'};
+  color: ${props => props.color || colors.textColor};
+  line-height:initial;
+`;
+
+export const TextSub = styled.span`
+  display: ${props => props.$display || 'inline-block;'};
+  font-size: ${props => props.fontSize || `${fonts.size14}px`};
+  font-weight: ${props => props.fontWeight || '500'};
+  color: ${props => props.color || colors.subTextColor};
+`;
+
 
 // ♣ Sns 
-export const SnsList = styled(Div)`
+export const SnsList = styled.div`
   display:${props => props.$display || 'flex'};
   justify-content: ${props => props.$justifyContent || "flex-start"};
   font-size:0;

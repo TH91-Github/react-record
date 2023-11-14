@@ -44,35 +44,26 @@ function GuideList() {
           <Search propsEvent={searchResult}/>
         </S.GuideSearchInner>
       </S.GuideSearch>
-      <SC.BoxLine $top  $borderWidth="5px" $paddingTop="30px" className="">
+      <S.GuideLineWrap $top  $borderWidth="5px">
         <SC.ContBoxInner className="guid__inner">
           <SC.DivFlex $direction="column" $gap={15}>
             {
               guideData && guideData.map((etcList,idx) => (
                 <div className="guid-List" key={idx}>
                   <SC.LineTitle>
-                    <Btn type="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
+                    <S.GuideListBtn type="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
                       <TitleBar $display="inline-block">{etcList.title}</TitleBar>
-                      <SC.TextS className="text" $margin="0 0 0 20px;">{etcList.desc}</SC.TextS>
-                    </Btn>
+                      <S.GuideTxt className="text" $margin="0 0 0 20px;">{etcList.desc}</S.GuideTxt>
+                    </S.GuideListBtn>
                   </SC.LineTitle>
                 </div>
               ))
             }
           </SC.DivFlex>
         </SC.ContBoxInner>
-      </SC.BoxLine>
+      </S.GuideLineWrap>
 
     </div>
   )
 }
-/* 임시 */
-const Btn = styled.button`
-  text-align:left;
-  ${media.mo} {
-    .title-wrap {display:block;}
-    .text {margin:10px 0 0 0;}
-  }
-`;
-
 export default GuideList;

@@ -1,4 +1,4 @@
-import * as S from "component/styled/common/AllStyled";
+import * as SC from "component/styled/common/AllStyled";
 import { colors, fonts, media } from 'component/styled/common/Variable';
 import styled from 'styled-components';
 
@@ -12,6 +12,10 @@ export const GuideSearchInner = styled.div`
   position:relative;
   width:300px;
 `;
+export const GuideLineWrap = styled(SC.LineBox)`
+  padding-top:30px;
+`;
+
 export const GuidDetailWrap = styled.div`
   margin-top:30px;
 `;
@@ -38,12 +42,27 @@ export const GuideCont = styled.div`
   }
 `;
 
+export const GuideListBtn = styled(SC.Button)`
+  text-align:left;
+  ${media.mo} {
+    .title-wrap {display:block;}
+  }
+`;
+
 export const GuideTxt = styled.p`
   font-size:${fonts.size14};
   color:${colors.textColor};
 `;
 
-export const GuideTxtBar = styled(S.BarTxt)`
+export const GuideListText = styled(SC.TextSub)`
+  margin-left:20px;
+  ${media.mo} {
+    margin:10px 0 0 0;
+  }
+`;
+
+
+export const GuideTxtBar = styled(SC.BarTxt)`
   margin-top:8px;
   font-size:${fonts.size14}px;
   &:first-child{
@@ -51,7 +70,7 @@ export const GuideTxtBar = styled(S.BarTxt)`
   }
 `;
 const _colorGap = ["20px","15px"];
-export const ColorList = styled(S.UlFlex)`
+export const ColorList = styled(SC.UlFlex)`
   gap:${_colorGap[0]};
   &>li {
     width:112.25px;
@@ -69,7 +88,7 @@ export const ColorList = styled(S.UlFlex)`
   }
 `;
 
-export const ColorBtn = styled(S.Button)`
+export const ColorBtn = styled(SC.Button)`
   width:100%;
   border:1px solid ${colors.lineColor};
   background:${props => props.$colorCode || colors.bgWhite};
@@ -107,10 +126,10 @@ export const ColorBtn = styled(S.Button)`
   }
 `;
 
-export const BreakpointList = styled(S.UlFlex)`
+export const BreakpointList = styled(SC.UlFlex)`
   gap:20px;
 `;
-export const BreakpointBtn = styled(S.Button)`
+export const BreakpointBtn = styled(SC.Button)`
   text-align:center;
   .screen {
     display: flex;
@@ -142,7 +161,7 @@ export const BreakpointBtn = styled(S.Button)`
 `; 
 
 const _fontGap = ["20px","15px","10px"]
-export const FontList = styled(S.UlFlex)`
+export const FontList = styled(SC.UlFlex)`
   gap:${_fontGap[0]};
   ${media.mo} {
     gap:${_colorGap[1]};
@@ -158,7 +177,7 @@ export const FontList = styled(S.UlFlex)`
   }
 `;
 
-export const FontBtn = styled(S.Button)`
+export const FontBtn = styled(SC.Button)`
   width:100%;
   padding: 5px 10px;
   border: 1px solid ${colors.lineColor};

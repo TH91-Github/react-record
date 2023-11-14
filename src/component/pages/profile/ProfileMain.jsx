@@ -1,6 +1,5 @@
 import * as SC from "component/styled/common/AllStyled";
 import * as S from "component/pages/profile/styled/ProfileStyled";
-import Ing from "component/styled/common/Ing";
 import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/common/SvgPath";
 
 function ProfileMain({propsOpt}) {
@@ -11,12 +10,12 @@ function ProfileMain({propsOpt}) {
         <div className="profile__inner">
           <div className="profile__info">
             <p className="name">{pInfo.name}</p>
-            <SC.BoxLine $top $marginTop={`${20}px`} $paddingTop={`${20}px`}>
+            <S.LineWrap $top>
               <span>Publishing</span>
               <span>➕</span>
               <span>Front-End <small>(진행중) ✍️</small></span>
-            </SC.BoxLine>
-            <SC.SnsList $justifyContent="center" $margin="20px 0 0 0" $gap="10px">
+            </S.LineWrap>
+            <S.SnsList $justifyContent="center" $gap="10">
               {
                 pInfo.sns.map((sns) => {
                   return <SC.A 
@@ -29,7 +28,7 @@ function ProfileMain({propsOpt}) {
                   </SC.A>
                 })
               }
-            </SC.SnsList>
+            </S.SnsList>
             <S.Contact>
               <ul>
                 <li className="phone">
@@ -46,7 +45,6 @@ function ProfileMain({propsOpt}) {
                 </li>
               </ul>
             </S.Contact>
-            <Ing $marginTop="10px">프로필 수정 진행중</Ing>
             <S.ProfileImg />
           </div>
         </div>
