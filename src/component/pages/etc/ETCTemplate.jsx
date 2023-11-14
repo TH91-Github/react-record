@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 
-
 function ETCTemplate(){
   return (
     <div className="etc">

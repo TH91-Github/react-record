@@ -7,14 +7,12 @@ import Search from "component/common/Search";
 import Banner from "component/common/Banner";
 import TitleBar from "component/common/TitleBar";
 import ListItem from "component/common/unit/ListItem";
+import TabBtn from "component/common/TabBtn";
 
 // styled
 import * as SC from "component/styled/common/AllStyled";
 import * as S from "component/pages/record/styled/RecordStyled";
 import { colors } from "component/styled/common/Variable";
-import TabBtn from "component/common/TabBtn";
-
-
 
 // Record 하위 메뉴 관리 노출 및 이동 담당
 function RecordList () {
