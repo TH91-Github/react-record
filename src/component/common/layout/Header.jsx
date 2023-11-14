@@ -69,11 +69,13 @@ function Header ({location}) {
 export default Header;
 
 const HeaderWrap = styled.div`
-  position:relative;
+  position:fixed;
+  z-index:10;
+  top:0;
+  left:0;
+  width:100%;
+  background:${colors.baseWhite};
   box-shadow:0px 0px 10px rgba(0, 0, 0, 0.25);
-  &.fixed {
-
-  }
 `;
 const HeaderInner = styled.div`
   max-width:${breakpoints.table}px;

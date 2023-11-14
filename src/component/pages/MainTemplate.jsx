@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Outlet, useLocation } from 'react-router-dom';
 import { useDispatch } from "react-redux";
+import styled from "styled-components";
 // component
 import SkipNav from 'component/common/SkipNav';
 import Header from "component/common/layout/Header";
@@ -9,7 +10,6 @@ import Footer from "component/common/Footer";
 import { sSetDataAll, sSetMobileChk } from "store/store";
 import { loadAxios } from "utils/fetchAxios";
 import { isMobile } from "utils/common.js"
-
 
 function MainTemplate () {
   const [baseData, setBaseData] = useState('');
@@ -53,12 +53,16 @@ function MainTemplate () {
       <div>
         <Header 
           location={location} />
-        <div className="container">
+        <Container>
           <Outlet context={location} />
-        </div>
+        </Container>
         <Footer />
       </div>
     </div>
   )
 }
 export default MainTemplate;
+
+const Container = styled.div`
+  padding-top:50px;
+`; 
