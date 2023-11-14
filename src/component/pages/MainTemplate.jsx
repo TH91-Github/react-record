@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 // component
 import SkipNav from 'component/common/SkipNav';
 import Header from "component/common/layout/Header";
-import HeaderCm from 'component/common/HeaderCm';
 import Footer from "component/common/Footer";
 // store, js, css
 import { sSetDataAll, sSetMobileChk } from "store/store";
@@ -14,7 +13,6 @@ import { isMobile } from "utils/common.js"
 
 function MainTemplate () {
   const [baseData, setBaseData] = useState('');
-  const [headFixed, setHeadFixed] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -28,27 +26,15 @@ function MainTemplate () {
   useEffect(() => {
     loadData();
   }, [loadData]);
-  
-  // Mo 사이즈에서 메뉴 클릭 시
-  const fixChange = () => { 
-    if(headFixed && window.pageYOffset <= 0){
-      setHeadFixed(!headFixed);
-    }
-  }
-  
-  // Resize & Scroll
+
+  // Resize
   const handleReSize = useCallback(()=> {
     let moState = isMobile();
     dispatch(sSetMobileChk(moState))
   },[dispatch])
 
   const handleScroll = () => {
-    const headerH = document.querySelector('.header').offsetHeight;
-    if(0 < window.pageYOffset){ // fixed on
-      setHeadFixed(true);
-    }else{
-      setHeadFixed(false);
-    }
+    console.log("scroll")
   }
   useEffect(() => {
     handleReSize();
@@ -60,29 +46,13 @@ function MainTemplate () {
     };
   }, [handleReSize]);
 
-  useEffect (() => { // ※ 개선 필요 : 스크롤 0 / 움직인 후 다시 불필요한 리렌더링 일수도 있다.
-    let moOn = isMobile();
-    if(moOn) setHeadFixed(false); 
-  },[location])
-
-  // header 가로 or 세로 버전 -- 추후 
-  const [direction, setDirection] = useState(true); 
-  const chnageNav = () => {
-    setDirection(!direction)
-  }
-  
   if(!baseData) return;
   return (
     <div className="main">
       <SkipNav />
-      <div className={'main-wrap' + (direction ? ' row' : ' column') + (headFixed ? ' fixed' : '')}>
-        <HeaderCm
-          location={location}
-          headFixed={headFixed}
-          fixChange={fixChange}
-          direction={direction} 
-          chnageNav={chnageNav}/>
-        <Header />
+      <div>
+        <Header 
+          location={location} />
         <div className="container">
           <Outlet context={location} />
         </div>
