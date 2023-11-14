@@ -6,8 +6,6 @@ import Search from "component/common/Search";
 // styled
 import * as SC from "component/styled/common/AllStyled";
 import * as S from "component/pages/guide/styled/GuideStyled";
-import styled from 'styled-components';
-import { media } from 'component/styled/common/Variable';
 
 function GuideList() {
   const navi = useNavigate();

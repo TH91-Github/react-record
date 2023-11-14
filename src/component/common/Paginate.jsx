@@ -1,4 +1,5 @@
 import { colors } from "component/styled/common/Variable";
+import { useState } from "react";
 import styled from "styled-components";
 const PaginateWrap = styled.div`
     display:flex;
@@ -91,37 +92,39 @@ const PaginateBtn = styled(Button)`
   position:relative;
   width:30px;
   height:30px;
-  border:1px solid ${styleColors.lineGrayColor};
+  border:1px solid ${colors.lineColor};
   border-right:none;
   transition:all .3s;
   text-align:center;
   &.active {
     z-index:1;
-    border: 1px solid ${styleColors.mainColorPink};
+    border: 1px solid ${colors.green};
     transform:scale(1.1);
-    color: ${styleColors.mainColorPink};
+    color: ${colors.green};
     &>span {
-      border-bottom:1px solid ${styleColors.mainColorPink};
+      border-bottom:1px solid ${colors.green};
     }
   }
 `;
 
 function Paginate ({propsOpt, propsEvent}) {
   const paginateData = propsOpt ?? [];
-  const {total, num, cutNum} = paginateData;
+  const {total, num, cutNum} = paginateData; // 총, 현재 Num, 한 줄에 보여지는 Num
   const totalNum = total;
-  const pageNum = num;
+  const [pageNum, setPageNum] = useState(num);
   const cutPaginate = cutNum??10;
   const quotient = Math.floor((pageNum-1)/cutPaginate);
   const PaginateList = paginateData <=0 
     ? Array(1).fill(1) 
     : Array.from({length: cutPaginate*(quotient+1) > totalNum ? totalNum-(cutPaginate*(quotient)) : 10}, (v,i)=> i+cutPaginate*(quotient)+1 ); 
   function pageFunction (selectNum){
-    propsEvent(selectNum);
+    setPageNum(selectNum);
+    propsEvent && propsEvent(selectNum)
   }
+
   return (
     <PaginateWrap>
-      <PrevBtn disabled={pageNum <= 1 && true || pageNum == undefined } onClick={() => pageFunction(pageNum-1)}>
+      <PrevBtn disabled={pageNum <= 1 && true || pageNum === undefined } onClick={() => pageFunction(pageNum-1)}>
         <LeftArrow>prev</LeftArrow>
       </PrevBtn>
       <PaginateFlex>
@@ -135,7 +138,7 @@ function Paginate ({propsOpt, propsEvent}) {
           ))
         }
       </PaginateFlex>
-      <NextBtn disabled={pageNum >= totalNum && true || pageNum == undefined } onClick={() => pageFunction(pageNum+1)}>
+      <NextBtn disabled={pageNum >= totalNum && true || pageNum === undefined } onClick={() => pageFunction(pageNum+1)}>
         <RightArrow>next</RightArrow>
       </NextBtn>
     </PaginateWrap>

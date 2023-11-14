@@ -7,6 +7,7 @@ import GuideSwiper from 'component/pages/guide/details/GuideSwiper';
 
 import { ranDom } from 'utils/common';
 import GuideTab from '../details/GuideTab';
+import GuidePaginate from '../details/GuidePaginate';
 
 
 let GuideDataList = [
@@ -57,8 +58,16 @@ let GuideDataList = [
     path:"/guide/tab",
     element:<GuideTab />,
     view:true,
-    desc: "👉 TAB 메뉴 사용 보러가기 : 제작 중",
+    desc: "👉 TAB 메뉴 사용 보러가기",
     keyWord:"#Guide #Tab #탭 #탭메뉴 #탭버튼"
+  },
+  {
+    title:"Paginate Guide",
+    path:"/guide/paginate",
+    element:<GuidePaginate />,
+    view:true,
+    desc: "👉 Paginate 사용 보러가기 : 제작 중",
+    keyWord:"#Guide #Paginate #페이지번호 #페이징 #번호리스트"
   }
 ];
 

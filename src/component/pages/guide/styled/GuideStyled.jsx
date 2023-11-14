@@ -61,7 +61,6 @@ export const GuideListText = styled(SC.TextSub)`
   }
 `;
 
-
 export const GuideTxtBar = styled(SC.BarTxt)`
   margin-top:8px;
   font-size:${fonts.size14}px;
