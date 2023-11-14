@@ -282,7 +282,7 @@ export const ContBoxInner = styled.div`
   position:relative;
   max-width:${breakpoints.table}px;
   margin:0 auto;
-  padding:0 30px;
+  padding:0 30px 80px;
 `;
 
 export const LineTitle = styled.div`

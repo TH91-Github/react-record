@@ -60,7 +60,6 @@ function GuideList() {
           </S.GuideList>
         </SC.ContBoxInner>
       </S.GuideLineWrap>
-
     </div>
   )
 }

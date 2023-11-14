@@ -3,12 +3,14 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 // component
 import SkipNav from 'component/common/SkipNav';
-import Header from 'component/common/Header';
+import Header from "component/common/layout/Header";
+import HeaderCm from 'component/common/HeaderCm';
 import Footer from "component/common/Footer";
 // store, js, css
 import { sSetDataAll, sSetMobileChk } from "store/store";
 import { loadAxios } from "utils/fetchAxios";
 import { isMobile } from "utils/common.js"
+
 
 function MainTemplate () {
   const [baseData, setBaseData] = useState('');
@@ -42,7 +44,7 @@ function MainTemplate () {
 
   const handleScroll = () => {
     const headerH = document.querySelector('.header').offsetHeight;
-    if(headerH < window.pageYOffset){ // fixed on
+    if(0 < window.pageYOffset){ // fixed on
       setHeadFixed(true);
     }else{
       setHeadFixed(false);
@@ -74,12 +76,13 @@ function MainTemplate () {
     <div className="main">
       <SkipNav />
       <div className={'main-wrap' + (direction ? ' row' : ' column') + (headFixed ? ' fixed' : '')}>
-        <Header
+        <HeaderCm
           location={location}
           headFixed={headFixed}
           fixChange={fixChange}
           direction={direction} 
           chnageNav={chnageNav}/>
+        <Header />
         <div className="container">
           <Outlet context={location} />
         </div>
