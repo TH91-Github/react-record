@@ -1,5 +1,5 @@
 import * as SC from "component/styled/common/AllStyled";
-import { animaion, colors, fonts, keyFrames, media } from 'component/styled/common/Variable';
+import { colors, fonts, media } from 'component/styled/common/Variable';
 import styled from 'styled-components';
 
 export const GuideSearch = styled.div`
@@ -45,9 +45,6 @@ export const GuideListWrap = styled(SC.UlFlex)`
 export const GuideList = styled.li`
   position:relative;
   width: calc((100% - ${guideListGap}px)/2);
-  animation: ${animaion.fadeIn};
-  ${props => props.$delay && `animation-delay:${props.$delay}s;`}
-  ${keyFrames.fadeIn}
   &>div {
     height:100%;
   }
