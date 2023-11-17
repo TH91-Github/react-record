@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Banner from "component/common/Banner";
 import TitleBar from "component/common/TitleBar";
 import Search from "component/common/Search";
 import { ETCRouter } from "./routers/ETCRouter";
@@ -8,7 +7,6 @@ import { ETCRouter } from "./routers/ETCRouter";
 // styled
 import * as SC from "component/styled/common/AllStyled";
 import * as S from "component/pages/etc/styled/ETCStyled";
-import { colors } from "component/styled/common/Variable";
 
 // etc 하위 메뉴 관리 노출 및 이동 담당
 function ETCList () {
@@ -35,8 +33,7 @@ function ETCList () {
     fliterList();
   },[]);
   useEffect(() => { 
-    console.log("ㅇㅁㄴㅇ")
-   dataLoad(); // 임시 데이터 recordData
+   dataLoad(); // 임시 데이터 
   },[dataLoad])
 
   const searchResult = (searchVale) => {

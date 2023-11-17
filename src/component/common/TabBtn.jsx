@@ -1,8 +1,8 @@
+import { useState } from "react";
 import styled from "styled-components";
 // styled
 import * as SC from "component/styled/common/AllStyled";
 import { colors, transitions } from "component/styled/common/Variable";
-
 const TabWrap = styled.div`
   position:relative;
 `;
@@ -32,11 +32,19 @@ const Btn = styled(SC.Button)`
     background:${colors.green};
     color:${colors.baseWhite};
   }
+  &.active {
+    border-color:${colors.green};
+    background:${colors.green};
+    color:${colors.baseWhite};
+  }
+  
 `;
 
 function TabBtn({propsList, propsEvent, ...props}) {
+  const [activeIndex, setActiveIndex] = useState(0);
   const tabData = propsList ?? ["Tab"];
-  const tabClick = (tabEl) => {
+  const tabClick = (tabEl,tabIdx) => {
+    setActiveIndex(tabIdx);
     propsEvent ? propsEvent(tabEl)
     : console.log("Tab Btn Click")
   }
@@ -46,7 +54,9 @@ function TabBtn({propsList, propsEvent, ...props}) {
         {
           tabData.map((item,idx) => (
             <li key={idx}>
-              <Btn onClick={ (e)=> tabClick(item) }>
+              <Btn 
+                className={activeIndex === idx && "active"}
+                onClick={ (e)=> tabClick(item, idx) }>
                 {item}
               </Btn>
             </li>

@@ -1,7 +1,7 @@
 import ETCList from 'component/pages/etc/ETCList';
 // js
-import { ranDom, ranDomId } from 'utils/common';
-import TabListMotion from '../details/TabListMotion';
+import { ranDomId } from 'utils/common';
+import TabListMotion from 'component/pages/etc/details/TabListMotion';
 
 let ETCDataList = [
   {

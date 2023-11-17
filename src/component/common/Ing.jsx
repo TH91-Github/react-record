@@ -1,3 +1,4 @@
+import { media } from "component/styled/common/Variable";
 import { styled } from "styled-components";
 
 const SettingWrap = styled.div`
@@ -5,10 +6,14 @@ const SettingWrap = styled.div`
   justify-content:center;
   align-items: center;
   margin-top:20px;
+  ${media.mo} {
+    flex-direction: column;
+  }
 `;
 
 const Txt = styled.span`
   font-size:14px;
+  line-height:18px;
 `;
 const RotateInfinite = styled.span`
   display:inline-block;

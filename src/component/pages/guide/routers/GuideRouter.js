@@ -5,7 +5,7 @@ import GuideBreakPoint from 'component/pages/guide/details/GuideBreakPoint';
 import GuideFont from 'component/pages/guide/details/GuideFont';
 import GuideSwiper from 'component/pages/guide/details/GuideSwiper';
 
-import { ranDom, ranDomId } from 'utils/common';
+import { ranDomId } from 'utils/common';
 import GuideTab from '../details/GuideTab';
 import GuidePaginate from '../details/GuidePaginate';
 
