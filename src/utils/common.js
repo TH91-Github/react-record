@@ -15,6 +15,15 @@ export const isMobile = () => { // 모바일 사이즈 체크
 
 // }
 
+export function ranDomId(listData, name){ // id 랜덤으로 생성
+  const firstName = name ?? "random"
+  let listIdData = listData.map((item)=> {
+    const idOption = { id : ranDom(9999, firstName)}
+    return item.id === undefined ? {...idOption, ...item} : item
+  })
+  return listIdData; 
+}
+
 export const ranDom = (_max, name) => { // 랜덤 값 (최대 값, 이름지정_랜덤 값) 
   let newId =  Math.floor(_max === undefined
     ? Math.random() * 2000

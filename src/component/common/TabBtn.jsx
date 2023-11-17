@@ -41,7 +41,7 @@ function TabBtn({propsList, propsEvent, ...props}) {
     : console.log("Tab Btn Click")
   }
   return (
-    <TabWrap {...props}>
+    <TabWrap className="tab" {...props}>
       <TabList {...props}>
         {
           tabData.map((item,idx) => (

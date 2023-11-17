@@ -7,7 +7,7 @@ import ComponentTest from 'component/pages/record/study/react/ComponentTest';
 import UseEffectTest from 'component/pages/record/study/react/UseEffectTest';
 
 // js
-import { ranDom } from 'utils/common';
+import { ranDom, ranDomId } from 'utils/common';
 import Js from 'component/pages/record/study/js/Js';
 
 let RecordDataList = [
@@ -70,12 +70,5 @@ let RecordDataList = [
   },
 ];
 
-export const RecordRouter = ranDomId(RecordDataList);
-function ranDomId(listData){ // id 랜덤으로 생성
-  let routerData = listData.map((item)=> {
-    const idOption = { id : ranDom(9999, "guide")}
-    return item.id === undefined ? {...idOption, ...item} : item
-  })
-  return routerData; 
-}
+export const RecordRouter = ranDomId(RecordDataList,"Record");
 

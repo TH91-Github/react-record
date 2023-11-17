@@ -44,6 +44,18 @@ function GuideTab () {
         console.log(e)
       }
     },
+    {
+      subTitle: "탭 컴포넌트 props 옵션 설정",
+      desc:["메인축 방향 정렬 : justify-content", "$center, $right, $justifyContent={값}"],
+      code1:`<TabBtn $center />, <TabBtn $right />, <TabBtn $justifyContent={"space-between"} />`,
+      code2:`<TabBtn $center propsList={tabs} /> //$center 가운데 정렬`,
+      tabs:[
+        "탭 메뉴1",
+        "탭 메뉴2",
+        "탭 메뉴3"
+      ],
+      props:"$center"
+    },
   ]
   
   return (
@@ -79,7 +91,8 @@ function GuideTab () {
                       <S.GuideTestBox>
                         <TabBtn 
                           propsList={guideTest.tabs && guideTest.tabs} 
-                          propsEvent={guideTest.click && guideTest.click}/>
+                          propsEvent={guideTest.click && guideTest.click}
+                          $center={guideTest.props} />
                       </S.GuideTestBox>
                     </S.GuideTest>
                   ))

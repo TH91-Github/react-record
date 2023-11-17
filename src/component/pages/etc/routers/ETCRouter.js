@@ -1,6 +1,6 @@
 import ETCList from 'component/pages/etc/ETCList';
 // js
-import { ranDom } from 'utils/common';
+import { ranDom, ranDomId } from 'utils/common';
 import TabListMotion from '../details/TabListMotion';
 
 let ETCDataList = [
@@ -22,13 +22,5 @@ let ETCDataList = [
     keyWord:"#샘플 #무빙 #카테고리리스트 #자연스러운움직임"
   },
 ];
-
-export const ETCRouter = ranDomId(ETCDataList);
-function ranDomId(listData){ // id 랜덤으로 생성
-  let routerData = listData.map((item)=> {
-    const idOption = { id : ranDom(9999, "guide")}
-    return item.id === undefined ? {...idOption, ...item} : item
-  })
-  return routerData; 
-}
+export const ETCRouter = ranDomId(ETCDataList, "Etc");
 
