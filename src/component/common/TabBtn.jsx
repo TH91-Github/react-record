@@ -8,7 +8,17 @@ const TabWrap = styled.div`
 `;
 const TabList = styled.ul`
   display:flex;
+  flex-wrap:wrap;
+  flex-direction: ${props => props.$direction || 'row'};
+  ${props => `
+    ${!(props.$center || props.$right || props.$justifyContent) && `justify-content: flex-start;`};
+    ${props.$center && `justify-content: center`};
+    ${props.$right && `justify-content: flex-end`};
+    ${props.$justifyContent && `justify-content: ${props.$justifyContent}`};
+  `}
   gap: ${props => props.$gap || "10px"};
+
+
 `;
 const Btn = styled(SC.Button)`
   display:inline-block;
@@ -30,7 +40,6 @@ function TabBtn({propsList, propsEvent, ...props}) {
     propsEvent ? propsEvent(tabEl)
     : console.log("Tab Btn Click")
   }
-  console.log(propsList)
   return (
     <TabWrap {...props}>
       <TabList {...props}>
