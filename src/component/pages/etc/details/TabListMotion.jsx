@@ -16,15 +16,16 @@ const TabListMotion = ({pcView,moView,max}) => {
     max: max ?? 20,
   }
   // 타입 1, 2, 임시 데이터 생성
-  const categoryBg = ["빨","주","노","초","파","남","보"];
+  const categoryBg = ["전체","빨","주","노","초","파","남","보"];
   const categoryColor =[...categoryBg];
   const listData = new Array(listOpt.max).fill("테스트").map((item, idx) => (
       {
         title:`${item}-${idx}`,
-        filter: [categoryBg[ranDom(categoryBg.length-1)], categoryColor[ranDom(categoryColor.length-1)]] // 랜덤 [랜,랜] 
+        filter: [categoryBg[ranDom(categoryBg.length-2)+1], categoryColor[ranDom(categoryColor.length-2)+1]] // 랜덤 [랜,랜] 
       }
   ));
-  
+
+
   const [column, setColumn] = useState(4);
   const ListWrap = useRef();
   // 리스트 한 라인에 보여지는 수
@@ -33,7 +34,9 @@ const TabListMotion = ({pcView,moView,max}) => {
   },[isMobile, listOpt.mo, listOpt.pc])
   const positionSetting = (e) => {
     // console.log("포오지션")
+    
   }
+
   // Resize
   const handleReSize = useCallback(()=> {
     widthW();
@@ -48,14 +51,24 @@ const TabListMotion = ({pcView,moView,max}) => {
     };
   }, [handleReSize]);
 
-
- 
-
   // const random 
-  console.log(listData)
-  const categoryBtn = (e) => {
+  // console.log(listData)
+  const categoryBtn = (e,typeChk) => {
     console.log("category")
+    console.log(e)
+    console.log(typeChk)
+    const test = listData.filter((item, idx) => {
+
+      // console.log(item.filter[0])
+      // console.log(item.filter[1])
+
+      // bg === 파 & colro === "같다"
+    })
+    console.log(test)
   }
+
+
+
 
   return (
     <div>
@@ -68,9 +81,9 @@ const TabListMotion = ({pcView,moView,max}) => {
         </DescWrap>
         <TabWrap>
           <Tit>배경색</Tit>
-          <TabBtn $center propsList={categoryBg} propsEvent={categoryBtn}/>
+          <TabBtn $center propsList={categoryBg} propsEvent={(e)=>categoryBtn(e,"bg")}/>
           <Tit>글자색</Tit>
-          <TabBtn $center propsList={categoryColor} propsEvent={categoryBtn}/>
+          <TabBtn $center propsList={categoryColor} propsEvent={(e)=>categoryBtn(e,"color")}/>
         </TabWrap>
         <SelectWrap>
           <ListBox className="lists" ref={ListWrap}>
@@ -79,8 +92,8 @@ const TabListMotion = ({pcView,moView,max}) => {
                 <Lists key={idx} $column={column} $top={positionSetting()} >
                   <ListTit>
                     <span>{list.title}</span>
-                    <span>{list.filter[0]}라색</span>
-                    <span>{list.filter[1]}라색</span>
+                    <span>{list.filter[0]}</span>
+                    <span>{list.filter[1]}</span>
                   </ListTit>
                 </Lists>
               ))
@@ -132,12 +145,13 @@ const ListBox = styled.ul`
 const Lists = styled.li`
   display:flex;
   justify-content:center;
-  align-items:center;   
+  align-items:center;
   ${props => `
     ${!props.$column && 'width: auto'};
     ${props.$column && `width: calc(100% / ${props.$column})`};
   `};
   height:150px;
+  border:1px solid ${colors.lineColor};
 `;
 const ListTit = styled.p`
   color:${props => props.$textColor || colors.textColor};

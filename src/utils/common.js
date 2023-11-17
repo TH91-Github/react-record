@@ -24,7 +24,7 @@ export function ranDomId(listData, name){ // id 랜덤으로 생성
   return listIdData; 
 }
 
-export const ranDom = (_max, name) => { // 랜덤 값 (최대 값, 이름지정_랜덤 값) 
+export const ranDom = (_max, name, firstNum) => { // 랜덤 값 (최대 값, 이름지정_랜덤 값)
   let newId =  Math.floor(_max === undefined
     ? Math.random() * 2000
     : Math.random() * Number(_max + 1)

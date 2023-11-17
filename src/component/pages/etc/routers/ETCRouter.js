@@ -14,7 +14,7 @@ let ETCDataList = [
     keyWord:"#etc #기타 #기타등등"
   },
   {
-    title:"카테고리 TAB - 리스트 움직임",
+    title:"카테고리 TAB - 리스트 모션",
     path:"/etc/tab-list-motion",
     element: <TabListMotion />,
     view: true,

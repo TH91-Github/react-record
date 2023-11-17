@@ -34,7 +34,7 @@ function MainTemplate () {
   },[dispatch])
 
   const handleScroll = () => {
-    console.log("scroll")
+    // console.log("scroll")
   }
   useEffect(() => {
     handleReSize();
