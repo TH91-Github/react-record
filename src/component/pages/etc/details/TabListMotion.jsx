@@ -16,7 +16,7 @@ const TabListMotion = ({pcView,moView,max}) => {
     max: max ?? 20,
   }
   // 타입 1, 2, 임시 데이터 생성
-  const categoryBg = ["전체","빨","주","노","초","파","남","보"];
+  const categoryBg = ["전체","빨강","주황","노란","초록","파랑","남","보라"];
   const categoryColor =[...categoryBg];
   const listData = new Array(listOpt.max).fill("테스트").map((item, idx) => (
       {
@@ -155,4 +155,8 @@ const Lists = styled.li`
 `;
 const ListTit = styled.p`
   color:${props => props.$textColor || colors.textColor};
+  &>span { 
+    display:block;
+  }
+  text-align:center;
 `;
