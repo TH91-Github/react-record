@@ -10,7 +10,7 @@ function ProfileMain({propsOpt}) {
   
   return (
     <>
-      <S.ProfileWrap>n
+      <S.ProfileWrap>
         <div className="profile__inner">
           <div className="profile__info">
             <p className="name">{pInfo.name}</p>
