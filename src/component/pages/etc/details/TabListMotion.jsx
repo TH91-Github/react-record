@@ -7,25 +7,22 @@ import TabBtn from "component/common/TabBtn";
 import Ing from "component/common/Ing";
 import { ranDom } from "utils/common";
 
-const TabListMotion = ({pcView,moView,max}) => {
-  const isMobile = useSelector((state) => state.mobileChk);
-  // 리스트 기본 옵션
-  const listOpt = {
-    pc: pcView ?? 4,
-    mo: moView ?? 2,
-    max: max ?? 20,
-  }
-  // 타입 1, 2, 임시 데이터 생성
-  const categoryBg = ["전체","빨강","주황","노란","초록","파랑","남","보라"];
+const TabListMotion = () => {
+  // TEST Data
+  const listOpt = { pc: 4, mo: 2, max: 20,}
+  const categoryBg = ["전체","빨강","초록","노란","파랑"];
   const categoryColor =[...categoryBg];
   const listData = new Array(listOpt.max).fill("테스트").map((item, idx) => (
-      {
-        title:`${item}-${idx}`,
-        filter: [categoryBg[ranDom(categoryBg.length-2)+1], categoryColor[ranDom(categoryColor.length-2)+1]] // 랜덤 [랜,랜] 
-      }
+    {
+      title:`${item}-${idx}`,
+      filter: [categoryBg[ranDom(categoryBg.length-2)+1], categoryColor[ranDom(categoryColor.length-2)+1]] // 랜덤 [랜,랜] 
+    }
   ));
-
-
+  
+  const isMobile = useSelector((state) => state.mobileChk);
+  const [baseData, setBaseData] = useState(listData);
+  const [viewData, setViewData] = useState(listData);
+  
   const [column, setColumn] = useState(4);
   const ListWrap = useRef();
   // 리스트 한 라인에 보여지는 수
@@ -33,8 +30,7 @@ const TabListMotion = ({pcView,moView,max}) => {
     setColumn( isMobile ? listOpt.mo : listOpt.pc)
   },[isMobile, listOpt.mo, listOpt.pc])
   const positionSetting = (e) => {
-    // console.log("포오지션")
-    
+    // console.log("포지션")
   }
 
   // Resize
@@ -57,19 +53,25 @@ const TabListMotion = ({pcView,moView,max}) => {
     console.log("category")
     console.log(e)
     console.log(typeChk)
-    const test = listData.filter((item, idx) => {
-
-      // console.log(item.filter[0])
-      // console.log(item.filter[1])
-
-      // bg === 파 & colro === "같다"
+    const filterType = typeChk === 'bg' ? 0 :1;
+    const testArr = [...viewData];
+    // console.log(listData)
+    console.log(filterType)
+    const filterData = testArr.filter((item, idx) => {
+      return item
+      // console.log(item.filter[filterType]);
+      // 하나씩 걸러지는게 맞다. -> 클릭 시 들어오는 타입에 따라 리스트 재조정하면 끝.
     })
-    console.log(test)
+    console.log(viewData)
+    console.log(filterData)
+    
+    e === "전체"
+    ? setViewData(baseData)
+    : setViewData(filterData)
+  
   }
 
-
-
-
+  console.log(viewData)
   return (
     <div>
       <Ing>⚠️작업중</Ing>
@@ -88,7 +90,7 @@ const TabListMotion = ({pcView,moView,max}) => {
         <SelectWrap>
           <ListBox className="lists" ref={ListWrap}>
             {
-              listData.map((list, idx) => (
+              viewData && viewData.map((list, idx) => (
                 <Lists key={idx} $column={column} $top={positionSetting()} >
                   <ListTit>
                     <span>{list.title}</span>
