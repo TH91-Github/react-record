@@ -53,7 +53,7 @@ function ETCList () {
             {
               etcData && etcData.map((etcList,idx) => (
                 <div key={idx}>
-                  <S.ETCTitleList title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
+                  <S.ETCTitleList as="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
                       <TitleBar $display="inline-block">{etcList.title}</TitleBar>
                       <S.ETCListText className="text">{etcList.desc}</S.ETCListText>
                   </S.ETCTitleList>
