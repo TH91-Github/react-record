@@ -53,20 +53,13 @@ const TabListMotion = () => {
     const pick = el === '전체' ? '' : el
     const newTab = [...selectTab];
     newTab[typeChk] = pick;
-
-    const filterData = baseData.filter(item => {
-      if(item.filter[0] === newTab[0] || newTab[0] === '' ){
-        if(item.filter[1] === newTab[1] || newTab[1] === '' ){
-          return item
-        }else{
-          return false;
-        }
-      }else{
-        return false;
-      }
-    })
+    const filterTab1 = listFilter(baseData,0); // 1차 필터
+    const filterTab2 = listFilter(filterTab1,1); // 2차 필터
+    function listFilter (fData,num) {
+      return fData.filter(item => (item.filter[num] === newTab[num] || newTab[num] === '') && item)
+    }
     setSelectTab(newTab); // 선택된 탭
-    setViewData(filterData); // 조건에 맞는 리스트
+    setViewData(filterTab2); // 조건에 맞는 리스트
   }
   const categoryBtn = (e,num) => {
     selectList(e,num);
@@ -88,25 +81,32 @@ const TabListMotion = () => {
           <TabBtn $center propsList={categoryColor} propsEvent={(e)=>categoryBtn(e,1)}/>
         </TabWrap>
         <SelectWrap>
-          <ListBox className="lists" ref={ListWrap}>
-            {
-              viewData && viewData.map((list, idx) => (
-                <Lists key={idx} $column={column} $top={positionSetting()} >
-                  <ListTit>
-                    <span>{list.title}</span>
-                    <span>{list.filter[0]}</span>
-                    <span>{list.filter[1]}</span>
-                  </ListTit>
-                </Lists>
-              ))
-            }
-          </ListBox>
+          {
+            viewData.length > 0 
+            ? 
+            <ListBox className="lists" ref={ListWrap}>
+              {
+                viewData.map((list, idx) => (
+                  <Lists key={idx} $column={column} $top={positionSetting()} >
+                    <ListTit>
+                      <span>{list.title}</span>
+                      <span>{list.filter[0]}</span>
+                      <span>{list.filter[1]}</span>
+                    </ListTit>
+                  </Lists>
+                ))
+              }
+            </ListBox>
+            : 
+            <ExceptionWrap>
+              <p>{`배경색: ${selectTab[0]} / 글자색: ${selectTab[1]} 해당 되는 정보가 없습니다.`}</p>
+            </ExceptionWrap>
+          }
         </SelectWrap>
       </Inner>
     </div>
   )
 }
-
 export default TabListMotion;
 
 // styled-components
@@ -162,3 +162,13 @@ const ListTit = styled.p`
   }
   text-align:center;
 `;
+
+const ExceptionWrap = styled.div`
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:200px;
+  & > p {
+
+  }
+`
