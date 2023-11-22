@@ -1,10 +1,13 @@
+import { useSelector } from "react-redux";
 import * as SC from "component/styled/common/AllStyled";
 import * as S from "component/pages/profile/styled/ProfileStyled";
 import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/common/SvgPath";
 import Ing from "component/common/Ing";
 
 function ProfileMain({propsOpt}) {
+  const isMobile = useSelector((state) => state.mobileChk);
   const pInfo = propsOpt.data.info;
+  
   return (
     <>
       <S.ProfileWrap>
@@ -16,7 +19,7 @@ function ProfileMain({propsOpt}) {
               <span>➕</span>
               <span>Front-End <small>(진행중) ✍️</small></span>
             </S.LineWrap>
-            <Ing>초기 단계이지만 개인 기술 블로그로 진행 중입니다!</Ing>
+            <Ing>초기 단계이지만 개인 기술 블로그로{ isMobile && <br />}진행 중입니다!</Ing>
             <S.SnsList $justifyContent="center" $gap="10">
               {
                 pInfo.sns.map((sns) => {
