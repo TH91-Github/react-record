@@ -8,20 +8,22 @@ import Ing from "component/common/Ing";
 import { ranDom } from "utils/common";
 
 const TabListMotion = () => {
-  // TEST Data
+  // s: TEST Data
   const listOpt = { pc: 4, mo: 2, max: 20,}
-  const categoryBg = ["전체","빨강","초록","노란","파랑"];
+  const categoryBg = ["전체","빨강","초록","노랑","파랑"];
   const categoryColor =[...categoryBg];
   const listData = new Array(listOpt.max).fill("테스트").map((item, idx) => (
     {
-      title:`${item}-${idx}`,
+      title:`${item}-${idx+1}`,
       filter: [categoryBg[ranDom(categoryBg.length-2)+1], categoryColor[ranDom(categoryColor.length-2)+1]] // 랜덤 [랜,랜] 
     }
   ));
+  // e: TEST Data
   
   const isMobile = useSelector((state) => state.mobileChk);
   const [baseData, setBaseData] = useState(listData);
   const [viewData, setViewData] = useState(listData);
+  const [selectTab, setSelectTab] = useState(['','']);
   
   const [column, setColumn] = useState(4);
   const ListWrap = useRef();
@@ -47,31 +49,29 @@ const TabListMotion = () => {
     };
   }, [handleReSize]);
 
-  // const random 
-  // console.log(listData)
-  const categoryBtn = (e,typeChk) => {
-    console.log("category")
-    console.log(e)
-    console.log(typeChk)
-    const filterType = typeChk === 'bg' ? 0 :1;
-    const testArr = [...viewData];
-    // console.log(listData)
-    console.log(filterType)
-    const filterData = testArr.filter((item, idx) => {
-      return item
-      // console.log(item.filter[filterType]);
-      // 하나씩 걸러지는게 맞다. -> 클릭 시 들어오는 타입에 따라 리스트 재조정하면 끝.
+  const selectList= (el,typeChk) => { // 선택한 탭에 맞는 리스트 변환
+    const pick = el === '전체' ? '' : el
+    const newTab = [...selectTab];
+    newTab[typeChk] = pick;
+
+    const filterData = baseData.filter(item => {
+      if(item.filter[0] === newTab[0] || newTab[0] === '' ){
+        if(item.filter[1] === newTab[1] || newTab[1] === '' ){
+          return item
+        }else{
+          return false;
+        }
+      }else{
+        return false;
+      }
     })
-    console.log(viewData)
-    console.log(filterData)
-    
-    e === "전체"
-    ? setViewData(baseData)
-    : setViewData(filterData)
-  
+    setSelectTab(newTab); // 선택된 탭
+    setViewData(filterData); // 조건에 맞는 리스트
+  }
+  const categoryBtn = (e,num) => {
+    selectList(e,num);
   }
 
-  console.log(viewData)
   return (
     <div>
       <Ing>⚠️작업중</Ing>
@@ -83,9 +83,9 @@ const TabListMotion = () => {
         </DescWrap>
         <TabWrap>
           <Tit>배경색</Tit>
-          <TabBtn $center propsList={categoryBg} propsEvent={(e)=>categoryBtn(e,"bg")}/>
+          <TabBtn $center propsList={categoryBg} propsEvent={(e)=>categoryBtn(e,0)}/>
           <Tit>글자색</Tit>
-          <TabBtn $center propsList={categoryColor} propsEvent={(e)=>categoryBtn(e,"color")}/>
+          <TabBtn $center propsList={categoryColor} propsEvent={(e)=>categoryBtn(e,1)}/>
         </TabWrap>
         <SelectWrap>
           <ListBox className="lists" ref={ListWrap}>
