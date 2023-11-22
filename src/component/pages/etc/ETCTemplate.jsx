@@ -3,7 +3,7 @@ import TitleBar from "component/common/TitleBar";
 import {colors } from "component/styled/common/Variable";
 import { Outlet } from "react-router-dom";
 
-function ETCTemplate(){
+function ETCTemplate(){ 
   return (
     <div className="etc">
       <Banner $center>
