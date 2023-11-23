@@ -7,42 +7,107 @@ import TabBtn from "component/common/TabBtn";
 import Ing from "component/common/Ing";
 import { ranDom } from "utils/common";
 
+// 고정 값 
+const listOpt = {pc:4, mo:2, max:10}; // pc, mo 열 값 / 리스트 총 수
+const categoryBg = ["전체","빨강","초록","노랑","파랑"];
+const categoryColor =[...categoryBg];
+const newData = new Array(listOpt.max).fill("테스트").map((item, idx) => (
+  {
+    title:`${item}-${idx+1}`,
+    filter: [categoryBg[ranDom(categoryBg.length-2)+1], categoryColor[ranDom(categoryColor.length-2)+1]] // 랜덤 [랜,랜] 
+  }
+))
+
 const TabListMotion = () => {
   const isMobile = useSelector((state) => state.mobileChk);
-
-  const listOpt = { pc: 4, mo: 2}
-  const column = useMemo(() => { 
-    return isMobile ? listOpt.mo : listOpt.pc 
-  },[isMobile, listOpt.mo, listOpt.pc])
-  const categoryBg = ["전체","빨강","초록","노랑","파랑"];
-  const categoryColor =[...categoryBg];
-  const maxList = 20;
-  const listData = new Array(maxList).fill("테스트").map((item, idx) => (
-    {
-      title:`${item}-${idx+1}`,
-      filter: [categoryBg[ranDom(categoryBg.length-2)+1], categoryColor[ranDom(categoryColor.length-2)+1]] // 랜덤 [랜,랜] 
-    }
-  ));
-  
-  const [baseData, setBaseData] = useState(listData);
+  const column = useMemo(() => (isMobile ? listOpt.mo : listOpt.pc),[isMobile]);
+  const [viewData, setViewData] = useState(newData);
   const [selectTab, setSelectTab] = useState(['','']);
-  
   const ListWrap = useRef(); // ul
+  const ListArr = useRef('');
 
-  const selectFilter= (el,typeChk) => { // 선택한 탭에 맞는 리스트 변환
-  
+  const selectFilter = (el,typeChk) => { // 선택한 탭에 맞는 리스트 변환
+    const pick = el === '전체' ? '' : el
+    const newTab = [...selectTab];
+    newTab[typeChk] = pick;
+    ListArr.current.forEach((item) => {
+      const dataBg = item.dataset.bg;
+      const dataColor = item.dataset.color;
+      const filterChk = (dataBg === newTab[0] || newTab[0] === '') && (dataColor === newTab[1] || newTab[1] === '') 
+      filterChk ? item.style.display='flex':item.style.display='none'; 
+    })
+    setSelectTab(newTab); // 선택된 탭
+    positionSetting();
   }
-
+  
   // 리스트 한 라인에 보여지는 수 체크와 가로 값 지정
   const widthW = useCallback(() => {
-   
-  },[])
+    const listWidth = ListWrap.current.clientWidth;
+    const itemWidth = (listWidth/column).toFixed(2);
+    const list = ListWrap.current.querySelectorAll('li');
+    Array.prototype.forEach.call(list,(item) => {
+      item.style.width = `${itemWidth}px`;
+    })
+  },[column])
 
+  const positionSetting = useCallback(() => {
+    const listWrap = ListWrap.current.querySelector('ul');
+    const listLi =  listWrap.querySelectorAll('li');
+    const _duration = 300;
+    const lineHArr = [];
+    let baseClassChk;
 
-  const positionSetting = () => {
-   
-  }
+    ListArr.current = [...listLi];
 
+    listWrap.classList.value.includes("base-ui") 
+    ?  baseClassChk = setInterval(()=>{
+      listWrap.classList.value.includes("base-ui") ? listWrap.classList.remove("base-ui")
+      : clearInterval(baseClassChk)
+    },50)
+    : clearInterval(baseClassChk)
+
+    listLi.forEach((item,idx)=>{
+      const elH = item.getBoundingClientRect().height.toFixed(2);
+      const elW = listLi.length > 0 ? listLi[0].getBoundingClientRect().width : 0
+      const elRow = Math.floor(idx / column); // row 행
+      const elColumn = idx % column; // column 열
+      const xLine = lineHArr[elRow]; // 현재 행 값
+      // 행별 최대 높이 값 입력
+      !xLine ? lineHArr.push(parseFloat(elH)) : lineHArr[elRow] = parseFloat(Math.max(xLine,elH))
+
+      const rowTop = lineHArr.reduce((prev,cur,idx)=>{ // 이전 행의 최대 높이를 top으로 지정한다
+        return idx+1 < lineHArr.length ? prev + cur : prev 
+      },0)
+      const resultTop = rowTop;
+      const resultLeft = elW * elColumn;
+
+      const movingT = resultTop - item.style.top.replace('px', '')
+      const movingL = resultLeft - item.style.left.replace('px', '')
+      item.style.transitionDuration = `${_duration}ms`;
+      item.style.transform = `translate3d(${movingL}px, ${movingT}px , 0)`;
+      setTimeout(()=>{
+        item.style.removeProperty('transition-duration');
+        item.style.removeProperty('transform');
+        item.style.top = resultTop + "px";
+        item.style.left = resultLeft + "px";
+      },_duration)
+
+    })
+    if(listLi.length > 0){
+      listWrap.style.transitionDuration = `${_duration}ms`;
+      listWrap.style.height = (lineHArr.reduce((prev,cur) => (prev+cur),0)) + "px";
+      setTimeout(()=>{
+        listWrap.style.removeProperty('transition-duration');
+      },_duration)
+    }else{
+      listWrap.style.height ='auto';
+    }
+  },[column, ListArr]);
+
+  useEffect(()=> {
+    positionSetting();
+  },[positionSetting])
+  
   // Resize
   const handleReSize = useCallback(()=> {
     widthW();
@@ -57,7 +122,7 @@ const TabListMotion = () => {
   }, [handleReSize]);
   
   const categoryBtn = (e,num) => {
-
+    selectFilter(e,num); // 선택된 조건에 맞는 Data
   }
 
   return (
@@ -68,7 +133,7 @@ const TabListMotion = () => {
           <Tit>선택에 맞는 리스트 노출 및 모션</Tit>
           <Txt>배경색, 글자색 선택에 맞는 리스트 노출.</Txt>
           <Txt>리스트 display none, block으로 설정. 움직임을 나타내기 위해</Txt>
-          <Txt>리스트 수 - {maxList}</Txt>
+          <Txt>리스트 수 - {listOpt.max}</Txt>
         </DescWrap>
         <TabWrap>
           <Tit>배경색</Tit>
@@ -76,14 +141,14 @@ const TabListMotion = () => {
           <Tit>글자색</Tit>
           <TabBtn $center propsList={categoryColor} propsEvent={(e)=>categoryBtn(e,1)}/>
         </TabWrap>
-        <SelectWrap>
+        <SelectWrap ref={ListWrap}>
           {
-            baseData.length > 0 
+            viewData 
             ? 
-            <ListBox className="lists base-ui" ref={ListWrap}>
+            <ListBox className="lists base-ui">
               {
-                baseData.map((list, idx) => (
-                  <Lists key={idx} $column={column}>
+                viewData.map((list, idx) => (
+                  <Lists key={idx} $column={column} data-bg={list.filter[0]} data-color={list.filter[1]} >
                     <ListTit>
                       <span>{list.title}</span>
                       <span>{list.filter[0]}</span>
@@ -140,6 +205,7 @@ const SelectWrap = styled.div`
 const ListBox = styled.ul`
   display:flex;
   flex-wrap:wrap;
+  position:relative;
   &.base-ui {
     & > li {
       position:relative;
