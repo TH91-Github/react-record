@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
@@ -8,37 +8,44 @@ import Ing from "component/common/Ing";
 import { ranDom } from "utils/common";
 
 const TabListMotion = () => {
-  // s: TEST Data
-  const listOpt = { pc: 4, mo: 2, max: 20,}
+  const isMobile = useSelector((state) => state.mobileChk);
+
+  const listOpt = { pc: 4, mo: 2}
+  const column = useMemo(() => { 
+    return isMobile ? listOpt.mo : listOpt.pc 
+  },[isMobile, listOpt.mo, listOpt.pc])
   const categoryBg = ["전체","빨강","초록","노랑","파랑"];
   const categoryColor =[...categoryBg];
-  const listData = new Array(listOpt.max).fill("테스트").map((item, idx) => (
+  const maxList = 20;
+  const listData = new Array(maxList).fill("테스트").map((item, idx) => (
     {
       title:`${item}-${idx+1}`,
       filter: [categoryBg[ranDom(categoryBg.length-2)+1], categoryColor[ranDom(categoryColor.length-2)+1]] // 랜덤 [랜,랜] 
     }
   ));
-  // e: TEST Data
   
-  const isMobile = useSelector((state) => state.mobileChk);
   const [baseData, setBaseData] = useState(listData);
-  const [viewData, setViewData] = useState(listData);
   const [selectTab, setSelectTab] = useState(['','']);
   
-  const [column, setColumn] = useState(4);
-  const ListWrap = useRef();
-  // 리스트 한 라인에 보여지는 수
+  const ListWrap = useRef(); // ul
+
+  const selectFilter= (el,typeChk) => { // 선택한 탭에 맞는 리스트 변환
+  
+  }
+
+  // 리스트 한 라인에 보여지는 수 체크와 가로 값 지정
   const widthW = useCallback(() => {
-    setColumn( isMobile ? listOpt.mo : listOpt.pc)
-  },[isMobile, listOpt.mo, listOpt.pc])
-  const positionSetting = (e) => {
-    // console.log("포지션")
+   
+  },[])
+
+
+  const positionSetting = () => {
+   
   }
 
   // Resize
   const handleReSize = useCallback(()=> {
     widthW();
-    positionSetting();
   },[widthW])
 
   useEffect(() => {
@@ -48,21 +55,9 @@ const TabListMotion = () => {
       window.removeEventListener("resize", handleReSize);
     };
   }, [handleReSize]);
-
-  const selectList= (el,typeChk) => { // 선택한 탭에 맞는 리스트 변환
-    const pick = el === '전체' ? '' : el
-    const newTab = [...selectTab];
-    newTab[typeChk] = pick;
-    const filterTab1 = listFilter(baseData,0); // 1차 필터
-    const filterTab2 = listFilter(filterTab1,1); // 2차 필터
-    function listFilter (fData,num) {
-      return fData.filter(item => (item.filter[num] === newTab[num] || newTab[num] === '') && item)
-    }
-    setSelectTab(newTab); // 선택된 탭
-    setViewData(filterTab2); // 조건에 맞는 리스트
-  }
+  
   const categoryBtn = (e,num) => {
-    selectList(e,num);
+
   }
 
   return (
@@ -72,7 +67,8 @@ const TabListMotion = () => {
         <DescWrap>
           <Tit>선택에 맞는 리스트 노출 및 모션</Tit>
           <Txt>배경색, 글자색 선택에 맞는 리스트 노출.</Txt>
-          <Txt>리스트 수 - {listOpt.max}</Txt>
+          <Txt>리스트 display none, block으로 설정. 움직임을 나타내기 위해</Txt>
+          <Txt>리스트 수 - {maxList}</Txt>
         </DescWrap>
         <TabWrap>
           <Tit>배경색</Tit>
@@ -82,12 +78,12 @@ const TabListMotion = () => {
         </TabWrap>
         <SelectWrap>
           {
-            viewData.length > 0 
+            baseData.length > 0 
             ? 
-            <ListBox className="lists" ref={ListWrap}>
+            <ListBox className="lists base-ui" ref={ListWrap}>
               {
-                viewData.map((list, idx) => (
-                  <Lists key={idx} $column={column} $top={positionSetting()} >
+                baseData.map((list, idx) => (
+                  <Lists key={idx} $column={column}>
                     <ListTit>
                       <span>{list.title}</span>
                       <span>{list.filter[0]}</span>
@@ -138,16 +134,23 @@ const TabWrap = styled.div`
 `;
 const SelectWrap = styled.div`
   margin-top:30px;
+  padding-top:30px;
   border-top:2px solid ${colors.lineColor};
 `; 
 const ListBox = styled.ul`
   display:flex;
   flex-wrap:wrap;
+  &.base-ui {
+    & > li {
+      position:relative;
+    }
+  }
 `;
 const Lists = styled.li`
   display:flex;
   justify-content:center;
   align-items:center;
+  position:absolute;
   ${props => `
     ${!props.$column && 'width: auto'};
     ${props.$column && `width: calc(100% / ${props.$column})`};
@@ -162,7 +165,6 @@ const ListTit = styled.p`
   }
   text-align:center;
 `;
-
 const ExceptionWrap = styled.div`
   display:flex;
   justify-content:center;
