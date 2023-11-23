@@ -27,19 +27,21 @@ const TabListMotion = () => {
   const ListArr = useRef('');
 
   const selectFilter = (el,typeChk) => { // 선택한 탭에 맞는 리스트 변환
+    const filterLi =  ListWrap.current.querySelectorAll('li');
     const pick = el === '전체' ? '' : el
     const newTab = [...selectTab];
     newTab[typeChk] = pick;
-    ListArr.current.forEach((item) => {
+    console.log(ListArr.current.length)
+    ListArr.current = [...filterLi].filter((item) => {
       const dataBg = item.dataset.bg;
       const dataColor = item.dataset.color;
       const filterChk = (dataBg === newTab[0] || newTab[0] === '') && (dataColor === newTab[1] || newTab[1] === '') 
       filterChk ? item.style.display='flex':item.style.display='none'; 
+      return filterChk && item
     })
     setSelectTab(newTab); // 선택된 탭
     positionSetting();
   }
-  
   // 리스트 한 라인에 보여지는 수 체크와 가로 값 지정
   const widthW = useCallback(() => {
     const listWidth = ListWrap.current.clientWidth;
@@ -49,65 +51,65 @@ const TabListMotion = () => {
       item.style.width = `${itemWidth}px`;
     })
   },[column])
-
   const positionSetting = useCallback(() => {
-    const listWrap = ListWrap.current.querySelector('ul');
-    const listLi =  listWrap.querySelectorAll('li');
+    const posUl = ListWrap.current.querySelector('ul');
+    const posLi = ListArr.current;
     const _duration = 300;
     const lineHArr = [];
     let baseClassChk;
 
-    ListArr.current = [...listLi];
-
-    listWrap.classList.value.includes("base-ui") 
+    posUl.classList.value.includes("base-ui") 
     ?  baseClassChk = setInterval(()=>{
-      listWrap.classList.value.includes("base-ui") ? listWrap.classList.remove("base-ui")
+      posUl.classList.value.includes("base-ui") ? posUl.classList.remove("base-ui")
       : clearInterval(baseClassChk)
     },50)
     : clearInterval(baseClassChk)
 
-    listLi.forEach((item,idx)=>{
+    posLi.forEach((item,idx)=>{
       const elH = item.getBoundingClientRect().height.toFixed(2);
-      const elW = listLi.length > 0 ? listLi[0].getBoundingClientRect().width : 0
+      const elW = posLi.length > 0 ? posLi[0].getBoundingClientRect().width : 0
       const elRow = Math.floor(idx / column); // row 행
       const elColumn = idx % column; // column 열
       const xLine = lineHArr[elRow]; // 현재 행 값
       // 행별 최대 높이 값 입력
       !xLine ? lineHArr.push(parseFloat(elH)) : lineHArr[elRow] = parseFloat(Math.max(xLine,elH))
-
       const rowTop = lineHArr.reduce((prev,cur,idx)=>{ // 이전 행의 최대 높이를 top으로 지정한다
         return idx+1 < lineHArr.length ? prev + cur : prev 
       },0)
       const resultTop = rowTop;
       const resultLeft = elW * elColumn;
-
       const movingT = resultTop - item.style.top.replace('px', '')
       const movingL = resultLeft - item.style.left.replace('px', '')
       item.style.transitionDuration = `${_duration}ms`;
       item.style.transform = `translate3d(${movingL}px, ${movingT}px , 0)`;
+
       setTimeout(()=>{
         item.style.removeProperty('transition-duration');
         item.style.removeProperty('transform');
         item.style.top = resultTop + "px";
         item.style.left = resultLeft + "px";
       },_duration)
-
     })
-    if(listLi.length > 0){
-      listWrap.style.transitionDuration = `${_duration}ms`;
-      listWrap.style.height = (lineHArr.reduce((prev,cur) => (prev+cur),0)) + "px";
+    if(posLi.length > 0){
+      posUl.style.transitionDuration = `${_duration}ms`;
+      posUl.style.height = (lineHArr.reduce((prev,cur) => (prev+cur),0)) + "px";
       setTimeout(()=>{
-        listWrap.style.removeProperty('transition-duration');
+        posUl.style.removeProperty('transition-duration');
       },_duration)
     }else{
-      listWrap.style.height ='auto';
+      posUl.style.height ='auto';
     }
-  },[column, ListArr]);
-
+  },[column]);
+  const listAdd = () => {
+    const addWrap = ListWrap.current.querySelector('ul');
+    const addLi =  addWrap.querySelectorAll('li');
+    ListArr.current = [...addLi];
+    console.log("listAdd")
+  }
   useEffect(()=> {
-    positionSetting();
-  },[positionSetting])
-  
+    listAdd();
+  },[])
+
   // Resize
   const handleReSize = useCallback(()=> {
     widthW();
