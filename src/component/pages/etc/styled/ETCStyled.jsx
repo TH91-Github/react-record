@@ -26,7 +26,17 @@ export const ETCListWrap = styled(SC.DivFlex)`
 export const ETCTitleList = styled(SC.LineTitle).attrs({
   type: 'button'
 })`
+  position:relative;
+  max-width:300px;
   padding:15px 20px;
+  text-align:left;
+  span {
+    display:block;
+    margin:10px 0 0;
+    &:first-child {
+      margin:0;
+    }
+  }
   ${media.mo} {
     display:block;
     .title-wrap {display:block;}
@@ -38,3 +48,9 @@ export const ETCListText = styled(SC.TextSub)`
     margin:10px 0 0 0;
   }
 `;
+export const GIfBox = styled.div`
+  margin-top:10px;
+  img {
+    width:100%;
+  }
+`

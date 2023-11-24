@@ -4,6 +4,8 @@ import TitleBar from "component/common/TitleBar";
 import Search from "component/common/Search";
 import { ETCRouter } from "./routers/ETCRouter";
 
+import gifMain from 'assets/images/gif/tabListFilter.gif';
+
 // styled
 import * as SC from "component/styled/common/AllStyled";
 import * as S from "component/pages/etc/styled/ETCStyled";
@@ -56,6 +58,8 @@ function ETCList () {
                   <S.ETCTitleList as="button" title={`${etcList.title} 자세히 보기`} onClick={() =>{navi(etcList.path)}}>
                       <TitleBar $display="inline-block">{etcList.title}</TitleBar>
                       <S.ETCListText className="text">{etcList.desc}</S.ETCListText>
+                      {/* 경로 및 데이터 수정 필요. */}
+                      <S.GIfBox><img src={gifMain} alt="" /></S.GIfBox>
                   </S.ETCTitleList>
                 </div>
               ))

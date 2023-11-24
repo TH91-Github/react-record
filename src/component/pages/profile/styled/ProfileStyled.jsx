@@ -1,7 +1,7 @@
 import { colors, fonts } from 'component/styled/common/Variable';
 import * as SC from "component/styled/common/AllStyled";
 import styled from 'styled-components';
-import profileImg from '../../../../assets/images/profile.jpg'
+import profileImg from 'assets/images/profile.jpg'
 
 export const ProfileWrap = styled.div`
   position: relative;
