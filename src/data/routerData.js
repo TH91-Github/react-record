@@ -41,7 +41,7 @@ export const routerData = [
     ]
   },
   {
-    title:"기타",
+    title:"샘플",
     path:"etc",
     element: <ETCTemplate />,
     children:[
