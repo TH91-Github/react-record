@@ -26,7 +26,7 @@ const TabListMotion = () => {
   const [loading, setLoading] = useState(false); 
   const [selectTab, setSelectTab] = useState(['','']);
   const ListWrap = useRef(); // ul
-  const ListArr = useRef([]);
+  const ListArr = useRef([""]);
 
   const selectFilter = (el,typeChk) => { // 선택한 탭에 맞는 리스트 변환
     const filterLi = ListWrap.current.querySelectorAll('li');
@@ -201,6 +201,7 @@ export default TabListMotion;
 
 // styled-components
 const Inner = styled.div`
+  overflow:hidden;
   position:relative;
   width:100%;
   margin:0 auto;
