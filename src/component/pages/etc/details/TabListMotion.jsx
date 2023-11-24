@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import styled from "styled-components";
 
+import styled from "styled-components";
 import { breakpoints, colors, fonts, media } from "component/styled/common/Variable";
 import TabBtn from "component/common/TabBtn";
-import Ing from "component/common/Ing";
-import { ranDom } from "utils/common";
 import SubTitleBar from "component/common/SubTitleBar";
+
+import { ranDom } from "utils/common";
 
 // 고정 값 
 const listOpt = {pc:4, mo:2, max:20}; // pc, mo 열 값 / 리스트 총 수
@@ -133,7 +133,6 @@ const TabListMotion = () => {
     }else{
       clearTimeout(timer);
       timer = setTimeout( ()=>{
-        console.log("resize")
         widthW();
         positionSetting();
       },500);
@@ -154,7 +153,6 @@ const TabListMotion = () => {
 
   return (
     <div>
-      <Ing>⚠️작업중</Ing>
       <Inner>
       <SubTitleBar $align="center">선택에 맞는 리스트 필터 및 움직이는 효과</SubTitleBar>
         <DescWrap>
