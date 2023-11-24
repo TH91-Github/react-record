@@ -2,14 +2,15 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-import { breakpoints, colors, fonts } from "component/styled/common/Variable";
+import { breakpoints, colors, fonts, media } from "component/styled/common/Variable";
 import TabBtn from "component/common/TabBtn";
 import Ing from "component/common/Ing";
 import { ranDom } from "utils/common";
+import SubTitleBar from "component/common/SubTitleBar";
 
 // 고정 값 
-const listOpt = {pc:4, mo:2, max:10}; // pc, mo 열 값 / 리스트 총 수
-const categoryBg = ["전체","빨강","초록","노랑","파랑"];
+const listOpt = {pc:4, mo:2, max:20}; // pc, mo 열 값 / 리스트 총 수
+const categoryBg = ["전체","#cc9cd9","#f2522e","#f2cb05","#63bf94","#1a6dd9"];
 const categoryColor =[...categoryBg];
 const newData = new Array(listOpt.max).fill("테스트").map((item, idx) => (
   {
@@ -17,21 +18,21 @@ const newData = new Array(listOpt.max).fill("테스트").map((item, idx) => (
     filter: [categoryBg[ranDom(categoryBg.length-2)+1], categoryColor[ranDom(categoryColor.length-2)+1]] // 랜덤 [랜,랜] 
   }
 ))
+let timer; 
 
 const TabListMotion = () => {
   const isMobile = useSelector((state) => state.mobileChk);
   const column = useMemo(() => (isMobile ? listOpt.mo : listOpt.pc),[isMobile]);
-  const [viewData, setViewData] = useState(newData);
+  const [loading, setLoading] = useState(false); 
   const [selectTab, setSelectTab] = useState(['','']);
   const ListWrap = useRef(); // ul
-  const ListArr = useRef('');
+  const ListArr = useRef([]);
 
   const selectFilter = (el,typeChk) => { // 선택한 탭에 맞는 리스트 변환
-    const filterLi =  ListWrap.current.querySelectorAll('li');
+    const filterLi = ListWrap.current.querySelectorAll('li');
     const pick = el === '전체' ? '' : el
     const newTab = [...selectTab];
     newTab[typeChk] = pick;
-    console.log(ListArr.current.length)
     ListArr.current = [...filterLi].filter((item) => {
       const dataBg = item.dataset.bg;
       const dataColor = item.dataset.color;
@@ -40,25 +41,31 @@ const TabListMotion = () => {
       return filterChk && item
     })
     setSelectTab(newTab); // 선택된 탭
+    widthW();
     positionSetting();
+    !loading && setLoading(true);
   }
-  // 리스트 한 라인에 보여지는 수 체크와 가로 값 지정
+  
+  // 리스트 한 라인에 보여지는 수 체크와 가로 값 지정 & resize
   const widthW = useCallback(() => {
     const listWidth = ListWrap.current.clientWidth;
     const itemWidth = (listWidth/column).toFixed(2);
-    const list = ListWrap.current.querySelectorAll('li');
+    const list = ListArr.current;
     Array.prototype.forEach.call(list,(item) => {
       item.style.width = `${itemWidth}px`;
     })
+    
   },[column])
-  const positionSetting = useCallback(() => {
+
+  // 위치 값 지정
+  const positionSetting = useCallback(() => { 
     const posUl = ListWrap.current.querySelector('ul');
     const posLi = ListArr.current;
     const _duration = 300;
     const lineHArr = [];
     let baseClassChk;
 
-    posUl.classList.value.includes("base-ui") 
+    posUl.classList.value.includes("base-ui")
     ?  baseClassChk = setInterval(()=>{
       posUl.classList.value.includes("base-ui") ? posUl.classList.remove("base-ui")
       : clearInterval(baseClassChk)
@@ -76,12 +83,19 @@ const TabListMotion = () => {
       const rowTop = lineHArr.reduce((prev,cur,idx)=>{ // 이전 행의 최대 높이를 top으로 지정한다
         return idx+1 < lineHArr.length ? prev + cur : prev 
       },0)
+
       const resultTop = rowTop;
       const resultLeft = elW * elColumn;
-      const movingT = resultTop - item.style.top.replace('px', '')
-      const movingL = resultLeft - item.style.left.replace('px', '')
-      item.style.transitionDuration = `${_duration}ms`;
-      item.style.transform = `translate3d(${movingL}px, ${movingT}px , 0)`;
+
+      if(loading){
+        const movingT = resultTop - item.style.top.replace('px', '')
+        const movingL = resultLeft - item.style.left.replace('px', '')
+        item.style.transitionDuration = `${_duration}ms`;
+        item.style.transform = `translate3d(${movingL}px, ${movingT}px , 0)`;
+      }else{
+        item.style.top = `${resultTop}px`;
+        item.style.left = `${resultLeft}px`;
+      }
 
       setTimeout(()=>{
         item.style.removeProperty('transition-duration');
@@ -99,12 +113,13 @@ const TabListMotion = () => {
     }else{
       posUl.style.height ='auto';
     }
-  },[column]);
+  },[column, loading]);
+
+  // 초기 리스트 업
   const listAdd = () => {
     const addWrap = ListWrap.current.querySelector('ul');
     const addLi =  addWrap.querySelectorAll('li');
     ListArr.current = [...addLi];
-    console.log("listAdd")
   }
   useEffect(()=> {
     listAdd();
@@ -112,8 +127,18 @@ const TabListMotion = () => {
 
   // Resize
   const handleReSize = useCallback(()=> {
-    widthW();
-  },[widthW])
+    if(!loading){
+      widthW();
+      positionSetting();
+    }else{
+      clearTimeout(timer);
+      timer = setTimeout( ()=>{
+        console.log("resize")
+        widthW();
+        positionSetting();
+      },500);
+    }
+  },[loading, widthW, positionSetting])
 
   useEffect(() => {
     handleReSize();
@@ -131,8 +156,8 @@ const TabListMotion = () => {
     <div>
       <Ing>⚠️작업중</Ing>
       <Inner>
+      <SubTitleBar $align="center">선택에 맞는 리스트 필터 및 움직이는 효과</SubTitleBar>
         <DescWrap>
-          <Tit>선택에 맞는 리스트 노출 및 모션</Tit>
           <Txt>배경색, 글자색 선택에 맞는 리스트 노출.</Txt>
           <Txt>리스트 display none, block으로 설정. 움직임을 나타내기 위해</Txt>
           <Txt>리스트 수 - {listOpt.max}</Txt>
@@ -144,23 +169,27 @@ const TabListMotion = () => {
           <TabBtn $center propsList={categoryColor} propsEvent={(e)=>categoryBtn(e,1)}/>
         </TabWrap>
         <SelectWrap ref={ListWrap}>
+          <ListBox className={"lists " + (!loading && "base-ui")} >
+            {
+              newData.map((list, idx) => (
+                <Lists 
+                  $column={column} 
+                  $bg={list.filter[0]}
+                  $color={list.filter[1]}
+                  data-bg={list.filter[0]}
+                  data-color={list.filter[1]} 
+                  key={idx}>
+                  <ListTit>
+                    <span>{list.title}</span>
+                    <span>BG - {list.filter[0]}</span>
+                    <span>COLO - {list.filter[1]}</span>
+                  </ListTit>
+                </Lists>
+              ))
+            }
+          </ListBox>
           {
-            viewData 
-            ? 
-            <ListBox className="lists base-ui">
-              {
-                viewData.map((list, idx) => (
-                  <Lists key={idx} $column={column} data-bg={list.filter[0]} data-color={list.filter[1]} >
-                    <ListTit>
-                      <span>{list.title}</span>
-                      <span>{list.filter[0]}</span>
-                      <span>{list.filter[1]}</span>
-                    </ListTit>
-                  </Lists>
-                ))
-              }
-            </ListBox>
-            : 
+            ListArr.current.length < 1 &&
             <ExceptionWrap>
               <p>{`배경색: ${selectTab[0]} / 글자색: ${selectTab[1]} 해당 되는 정보가 없습니다.`}</p>
             </ExceptionWrap>
@@ -177,7 +206,7 @@ const Inner = styled.div`
   position:relative;
   width:100%;
   margin:0 auto;
-  padding:0 30px 80px;
+  padding:30px 30px 80px;
   max-width:${breakpoints.table}px;
 `;
 const DescWrap = styled.div`
@@ -222,23 +251,31 @@ const Lists = styled.li`
   ${props => `
     ${!props.$column && 'width: auto'};
     ${props.$column && `width: calc(100% / ${props.$column})`};
+    ${props.$bg && `background:${props.$bg}`};
+    ${props.$color && `color:${props.$color}`};
   `};
   height:150px;
   border:1px solid ${colors.lineColor};
 `;
 const ListTit = styled.p`
-  color:${props => props.$textColor || colors.textColor};
   &>span { 
     display:block;
+    padding:5px 10px;
+    border-radius:5px;
+    background:rgba(255,255,255,.5);
+    text-shadow: 1px 1px 1px rgba(0,0,0,.8);
+    &:first-child{
+      color:${colors.textColor};
+    }
   }
   text-align:center;
+  ${media.mo} {
+    font-size:${fonts.size14}px;
+  }
 `;
 const ExceptionWrap = styled.div`
   display:flex;
   justify-content:center;
   align-items:center;
   min-height:200px;
-  & > p {
-
-  }
 `
