@@ -2,6 +2,7 @@ import ETCList from 'component/pages/etc/ETCList';
 // js
 import { ranDomId } from 'utils/common';
 import TabListMotion from 'component/pages/etc/details/TabListMotion';
+import CountDown from '../details/CountDown';
 
 let ETCDataList = [
   {
@@ -20,6 +21,14 @@ let ETCDataList = [
     view: true,
     desc: "카테고리 선택 클릭 시 리스트자연스러운 무빙 샘플",
     keyWord:"#샘플 #무빙 #카테고리리스트 #자연스러운움직임"
+  },
+  {
+    title:"카운트 다운",
+    path:"/etc/tab-list-motion",
+    element: <CountDown />,
+    view: false,
+    desc: "지정된 수에서 0까지 카운트 다운",
+    keyWord:"#카운트다운 #CountDown #진행바 #progress #progressbar #프로그레스바"
   },
 ];
 export const ETCRouter = ranDomId(ETCDataList, "Etc");

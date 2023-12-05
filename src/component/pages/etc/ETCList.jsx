@@ -59,7 +59,7 @@ function ETCList () {
                       <TitleBar $display="inline-block">{etcList.title}</TitleBar>
                       <S.ETCListText className="text">{etcList.desc}</S.ETCListText>
                       {/* 경로 및 데이터 수정 필요. */}
-                      <S.GIfBox><img src={gifMain} alt="" /></S.GIfBox>
+                      <S.GIfBox><img src={require('assets/images/gif/tabListFilter.gif')} alt="" /></S.GIfBox>
                   </S.ETCTitleList>
                 </div>
               ))
