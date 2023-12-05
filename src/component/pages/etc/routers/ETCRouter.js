@@ -2,7 +2,7 @@ import ETCList from 'component/pages/etc/ETCList';
 // js
 import { ranDomId } from 'utils/common';
 import TabListMotion from 'component/pages/etc/details/TabListMotion';
-import CountDown from '../details/CountDown';
+import CountDown from 'component/pages/etc/details/CountDown';
 
 let ETCDataList = [
   {

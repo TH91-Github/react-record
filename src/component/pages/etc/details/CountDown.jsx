@@ -1,10 +1,7 @@
 
 import styled from "styled-components";
-import { breakpoints, colors, fonts, media } from "component/styled/common/Variable";
-import TabBtn from "component/common/TabBtn";
+import { breakpoints, colors, fonts } from "component/styled/common/Variable";
 import SubTitleBar from "component/common/SubTitleBar";
-
-import { ranDom } from "utils/common";
 
 const CountDown = () => {
   
