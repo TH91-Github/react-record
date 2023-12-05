@@ -2,10 +2,12 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
   body {
-    font-size: 16px;
+    font-family: 'SUIT',sans-serif; font-weight:500; 
   }
   img {
     vertical-align: top;
+    width:100%;
+    max-width:100%;
   }
   a {
     text-decoration: none;
@@ -18,7 +20,5 @@ export const GlobalStyles = createGlobalStyle`
     color: inherit;
     cursor: pointer;
   }
-  li {
-    list-style:none;
-  }
 `;
+

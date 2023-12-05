@@ -3,6 +3,6 @@ img,fieldset{border:0}
 em,address,i{font-style:normal;}
 table{border-collapse:collapse;}
 ul li, 
-ol li {
+ol li, li {
   list-style:none;
 }

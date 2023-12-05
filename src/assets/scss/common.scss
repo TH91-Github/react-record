@@ -1,5 +1,4 @@
 @import "./main";
-body { font-family: 'SUIT',sans-serif; font-weight:500; }
 .blind {
   position:absolute;
   top:-99999px;
@@ -10,13 +9,4 @@ body { font-family: 'SUIT',sans-serif; font-weight:500; }
 .skip-nav {
   display: none;
 }
-button {
-  border:none;
-  background:transparent;
-  cursor: pointer;
-  color: $textColor;
-}
-a{
-  color: $textColor;
-  text-decoration:none;
-}
+
