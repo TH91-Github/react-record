@@ -50,6 +50,7 @@ export const GuideList = styled.li`
   }
   ${media.mo}{
     width: 100%;
+    
   }
 `
 export const GuideListBtn = styled(SC.Button)`
@@ -62,6 +63,7 @@ export const GuideListBtn = styled(SC.Button)`
   text-align:left;
   ${media.mo} {
     display:block;
+    padding:10px;
     .title-wrap {display:block;}
   }
   &::before, &::after {
@@ -86,7 +88,8 @@ export const GuideListBtn = styled(SC.Button)`
 export const GuideListText = styled(SC.TextSub)`
   margin-left:20px;
   ${media.mo} {
-    margin:10px 0 0 0;
+    margin:8px 0 0 0;
+    font-size:12px;
   }
 `;
 

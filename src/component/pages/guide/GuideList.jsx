@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { GuideRouter } from './routers/GuideRouter';
 import TitleBar from "component/common/TitleBar";
 import Search from "component/common/Search";
@@ -9,7 +10,7 @@ import * as S from "component/pages/guide/styled/GuideStyled";
 
 function GuideList() {
   const navi = useNavigate();
-
+  const isMobile = useSelector((state) => state.mobileChk);
   // component Guide list 
   const [guideData, setGuideData] = useState([]);
   const fliterList = (selectName) => { // 보여지는 리스트 구별
@@ -48,10 +49,10 @@ function GuideList() {
           <S.GuideListWrap className="guide__lists">
             {
               guideData && guideData.map((guideList,idx) => (
-                <S.GuideList key={idx}>
+                <S.GuideList className="guide__lists-item" key={idx}>
                   <SC.LineTitle>
                     <S.GuideListBtn type="button" title={`${guideList.title} 자세히 보기`} onClick={() =>{navi(guideList.path)}}>
-                      <TitleBar $display="inline-block">{guideList.title}</TitleBar>
+                      <TitleBar $display="inline-block" $fontSize={!isMobile ? `16px` : `14px`}>{guideList.title}</TitleBar>
                       <S.GuideListText className="text">{guideList.desc}</S.GuideListText>
                     </S.GuideListBtn>
                   </SC.LineTitle>
