@@ -41,7 +41,7 @@ function Header ({location}) {
       <HeaderInner>
         <HeaderLogo>
           <NavLink to="/" className="logo-link">
-            <HeaderTit>TH-91</HeaderTit>
+            <HeaderTit>TH-Blog</HeaderTit>
           </NavLink>
         </HeaderLogo>
         <HeaderNav className={navChk &&'open'}>
@@ -152,12 +152,12 @@ const HeaderLogo = styled.div`
   }
 `;
 const HeaderTit = styled.span`
-  display:inline-block;
+  display:block;
   position:absolute;
   z-index:2;
   top:50%;
   left:13px;
-  width:50px;
+  width:60px;
   padding:2px 3px;
   border-top-left-radius:4px;
   border-bottom-left-radius:4px;
