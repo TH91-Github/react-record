@@ -7,3 +7,15 @@
          url($path + '.ttf') format('truetype');  
   }
 }
+
+@mixin NfontFace($family, $index){
+  $path: '../fonts/' + $family;
+  @font-face {
+    font-family: 'SUITE';
+    font-weight: calc($index * 100);
+    src: 
+    url($path+'.otf') format('opentype'),
+    url($path+'.woff2') format('woff2'),
+    url($path+'.ttf') format('truetype');
+  }
+}

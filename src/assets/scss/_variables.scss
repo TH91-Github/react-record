@@ -1,14 +1,24 @@
 // styled component Variable 동일하게.
 
+// NanumGothic 걷어내기
+
 // Font Family
 $size: 16px;
 $weight:550;
 $font: "NanumGothic";
 $fontB: "NanumGothicBold";
 $fontL: "NanumGothicLight";
+
 $fontFamily: ($font,$fontB,$fontL);
 @each $name in $fontFamily{
   @include fontFace($name);
+}
+
+// 새로운
+$NfontFamily: ('SUITE-Light','SUITE-Regular','SUITE-Medium','SUITE-SemiBold','SUITE-Bold','SUITE-ExtraBold','SUITE-Heavy');
+@each $name in $NfontFamily{
+  $i: index($NfontFamily, $name);
+  @include NfontFace($name, $i+2);
 }
 
 // Break Point (Desktop First 기준 내림차순 설정)
