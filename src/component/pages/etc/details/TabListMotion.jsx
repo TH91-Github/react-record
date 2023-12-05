@@ -154,7 +154,7 @@ const TabListMotion = () => {
   return (
     <div>
       <Inner>
-      <SubTitleBar $align="center">선택에 맞는 리스트 필터 및 움직이는 효과</SubTitleBar>
+        <SubTitleBar $align="center">선택에 맞는 리스트 필터 및 움직이는 효과</SubTitleBar>
         <DescWrap>
           <Txt>배경색, 글자색 선택에 맞는 리스트 노출.</Txt>
           <Txt>리스트 display none, block으로 설정. 움직임을 나타내기 위해</Txt>
