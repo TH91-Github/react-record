@@ -2,6 +2,7 @@ import React from 'react';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import App from 'App';
 import { routerData } from './routerData';
+import Error from 'components/common/layout/Error';
 
 function RouterTemplate(){
   const router = createBrowserRouter([
@@ -15,7 +16,7 @@ function RouterTemplate(){
     },
     {
       path:"/*",
-      element:<div>오류</div>
+      element:<Error />
     }
   ])
   return <RouterProvider router={router} />;

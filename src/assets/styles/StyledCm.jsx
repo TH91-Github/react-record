@@ -10,4 +10,5 @@ export const Button = styled.button.attrs({
     ${props.$width && `width:${props.$width}`};
     ${props.$height && `width:${props.$height}`};
   `}
+  cursor:pointer;
 `;
