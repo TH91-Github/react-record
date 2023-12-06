@@ -1,7 +1,7 @@
 import React from 'react';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import App from 'App';
-import { routerData } from './routerData';
+import { routerData } from './reRouterData';
 import Error from 'components/common/layout/Error';
 
 function RouterTemplate(){

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { routerData } from "routes/routerData";
+import { routerData } from "routes/reRouterData";
 import { colors, transitions } from "assets/styles/Variable";
 import { TextCase } from "utils/textChk";
 import * as SC from "assets/styles/StyledCm";
@@ -125,11 +125,14 @@ const VisualCategoryItem = styled.div`
   transition:${transitions.base};
   &.active {
     width:calc((100% - 60px) / 2.5);
-    .tit-kr { 
+    .tit-kr {
+      display:inline-block;
       font-size:24px;
     }
-    .tit-en { 
-      font-size:20px;
+    .tit-en {
+      display:inline-block;
+      margin-left:5px;
+      font-size:16px;
     }
   }
   border:1px solid red;
@@ -161,25 +164,25 @@ const VisualCategoryBox = styled.div`
   border:1px solid red;
   text-align:left;
 `;
-const VisualCategoryKr = styled.p`
+const VisualCategoryKr = styled.span`
+  display:block;
   font-size:18px;
   color:#fff;
   transition:${transitions.base};
   text-shadow:1px 1px 3px rgba(0, 0, 0, 0.5);
 `;
-const VisualCategoryEn = styled.p`
-  font-size:16px;
+const VisualCategoryEn = styled.span`
+  display:block;
+  font-size:14px;
   color:#fff;
   transition:${transitions.base};
 `;
-
 
 const VisualMove = styled.div`
   position:absolute;
   bottom:30%;
   width:calc(30% - 15px);
   margin-top:50px;
-  border:1px solid red;
   text-align:center;
 `;
 const VisualMoveBtn = styled(SC.Button)`

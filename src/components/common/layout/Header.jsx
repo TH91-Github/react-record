@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { colors, media, transitions } from "assets/styles/Variable";
 import { Button, InnerStyle } from "assets/styles/StyledCm";
-import { routerData } from "routes/routerData";
+import { routerData } from "routes/reRouterData";
 import { TextCase } from "utils/textChk";
 
 
