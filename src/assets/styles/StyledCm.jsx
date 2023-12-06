@@ -22,3 +22,12 @@ export const InnerStyle = styled.div`
     padding: 0 15px;
   }
 `;
+
+export const MotionLR = styled.span`
+  display:inline-block;
+  animation: LeftRightInfinite 1.5s linear infinite;
+  @keyframes LeftRightInfinite {
+    from, to { transform:translateX(0) }
+    50% {  transform:translateX(5px)}
+  }
+`;

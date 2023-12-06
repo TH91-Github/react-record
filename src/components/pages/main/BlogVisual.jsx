@@ -1,8 +1,10 @@
-import { Button, InnerStyle } from "assets/styles/StyledCm";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { routerData } from "routes/routerData";
-import { transitions } from "assets/styles/Variable";
+import { colors, transitions } from "assets/styles/Variable";
+import { TextCase } from "utils/textChk";
+import * as SC from "assets/styles/StyledCm";
+
 
 function BlogVisual(){
   const [exceptionH, setExceptionH] = useState(0);
@@ -14,7 +16,21 @@ function BlogVisual(){
     setExceptionH(headerH)
   },[]);
   const itemClick = (idx) => {
-    setActiveIdx(idx)
+    const movingBtn = document.querySelector('.visual__move-btn');
+    if(activeIdx !== idx){
+      if([...movingBtn.classList].includes('ani')){
+        movingBtn.classList.remove('ani');
+        setTimeout(()=>{
+          movingBtn.classList.add('ani');
+        },100)
+      }else{
+        movingBtn.classList.add('ani');
+      }
+    }
+    setActiveIdx(idx);
+  }
+  const movingScroll = () => {
+    console.log("해당 컨텐츠 무빙")
   }
   return (
     <VisualWrap $headerH={exceptionH} className="visual">
@@ -35,20 +51,28 @@ function BlogVisual(){
                   key={idx} 
                   className={`visual__item ${activeIdx === idx ? 'active' :''}`}>
                   <VisualCategoryBtn className="visual__item-btn">
-                    <p>{item.title}</p>
+                    <VisualCategoryBox>
+                      <VisualCategoryKr className="tit-kr">{item.title}</VisualCategoryKr>
+                      <VisualCategoryEn className="tit-en">{TextCase(item.path)}</VisualCategoryEn>
+                    </VisualCategoryBox>
                   </VisualCategoryBtn>
                 </VisualCategoryItem>
               ))
             }
           </VisualCategoryLists>
         </VisualCategory>
-        <VisualCategoryMove className="visual__move">
+        <VisualMove className="visual__move">
             {/* 바뀌는 텍스트 */}
-            <p>{visualList[activeIdx].title} 미리보기 👉</p>
-            <VisualCategoryMoveBtn className="visual__move-btn">
-              <span className="arrow">Arrow</span>
-            </VisualCategoryMoveBtn>
-        </VisualCategoryMove>
+            <p>{visualList[activeIdx].title} 미리보기 <SC.MotionLR>👉</SC.MotionLR></p>
+            <VisualMoveBtn onClick={() => movingScroll()} className="visual__move-btn">
+              <VisualMoveText className="text">
+                <span className="before">Click</span>
+                <span className="blind">또는</span>
+                <span className="after">Scroll</span>
+                <span className="blind">하여 아래 내용 확인하기</span>
+              </VisualMoveText> 
+            </VisualMoveBtn>
+        </VisualMove>
       </VisualInner>
     </VisualWrap>
   )
@@ -63,7 +87,7 @@ const VisualWrap = styled.div`
   padding-bottom:50px;
   border:1px solid green;
 `;
-const VisualInner = styled(InnerStyle)`
+const VisualInner = styled(SC.InnerStyle)`
   display:flex;
   position:relative;
   height:100%;
@@ -84,26 +108,7 @@ const VisualTextBox = styled.div`
     font-weight:800;
   }
 `;
-const VisualCategoryMove = styled.div`
-  position:absolute;
-  bottom:30%;
-  width:calc(30% - 15px);
-  margin-top:50px;
-  border:1px solid red;
-  text-align:center;
-`;
-const VisualCategoryMoveBtn = styled(Button)`
-  position:absolute;
-  top:50%;
-  left:100%;
-  width:80px;
-  height:80px;
-  background:#000;
-  font-size:24px;
-  font-weight:600;
-  color:#fff;
-  transform: translate(-50%, -50%);
-`; 
+
 const VisualCategory = styled.div`
   width:70%;
   height:100%;
@@ -120,11 +125,124 @@ const VisualCategoryItem = styled.div`
   transition:${transitions.base};
   &.active {
     width:calc((100% - 60px) / 2.5);
+    .tit-kr { 
+      font-size:24px;
+    }
+    .tit-en { 
+      font-size:20px;
+    }
   }
   border:1px solid red;
 `;
 
-const VisualCategoryBtn = styled(Button)`
+const VisualCategoryBtn = styled(SC.Button)`
+  position:relative;
   width:100%;
   height:100%;
+  &::after {
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 65%,rgba(0,0,0,0.62) 99%,rgba(0,0,0,0.65) 100%);
+    pointer-events : none;
+    content:"";
+  }
+`;
+const VisualCategoryBox = styled.div`
+  position:absolute;
+  z-index:2;
+  bottom:0;
+  width:100%;
+  height:25%;
+  padding:30px;
+  border:1px solid red;
+  text-align:left;
+`;
+const VisualCategoryKr = styled.p`
+  font-size:18px;
+  color:#fff;
+  transition:${transitions.base};
+  text-shadow:1px 1px 3px rgba(0, 0, 0, 0.5);
+`;
+const VisualCategoryEn = styled.p`
+  font-size:16px;
+  color:#fff;
+  transition:${transitions.base};
+`;
+
+
+const VisualMove = styled.div`
+  position:absolute;
+  bottom:30%;
+  width:calc(30% - 15px);
+  margin-top:50px;
+  border:1px solid red;
+  text-align:center;
+`;
+const VisualMoveBtn = styled(SC.Button)`
+  overflow:hidden;
+  position:absolute;
+  top:50%;
+  left:100%;
+  width:80px;
+  height:80px;
+  background:${colors.bgGreen};
+  font-size:24px;
+  font-weight:600;
+  color:#fff;
+  transform: translate(-50%, -50%);
+  &::before {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:${colors.yellow};
+    transition: ${transitions.base};
+    transform: translateX(-105%);
+    content:"";
+  }
+  &:hover {
+    &::before {
+      transform: translateX(0);
+    }
+    .text {
+      transform: translateX(0);
+    }
+  }
+  &::after {
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:90%;
+    height:90%;
+    border:1px solid #fff;
+    transform:translate(-50%, -50%);
+    content:"";
+  }
+  &.ani {
+    &::after {
+      animation: boxRotate .3s linear;
+      @keyframes boxRotate {
+        from { transform:translate(-50%, -50%) rotate(0); }
+        to {transform:translate(-50%, -50%) rotate(180deg); }
+      }
+    }
+  }
+`; 
+const VisualMoveText = styled.span`
+  display:flex;
+  position:relative;
+  z-index:2;
+  width:200%;
+  text-shadow:1px 1px 3px rgba(0, 0, 0, 0.5);
+  &>span{
+    display:block;
+    width:100%;
+  }
+  transition:${transitions.base};
+  transform: translateX(-50%);
 `;
