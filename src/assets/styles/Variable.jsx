@@ -26,18 +26,19 @@ export const colors = {
   baseBlack: "#000000",
   subBlack: "#222222",
   // point
-  green:"#3cb062",
-  yellow:"#f5b800",
-  blue:"#685ef8",
-  red:"#e8392c",
+  green: "#3cb062",
+  yellow: "#f5b800",
+  blue: "#685ef8",
+  red: "#e8392c",
+  navy: "#65636e",
   // bg Color 
   bgGreen: "#113536",
   bgWhite: "#f8f9fc",
   // Text Color
-  textColor:"#191f28",
-  subTextColor:"#868686",
+  textColor: "#191f28",
+  subTextColor: "#868686",
   // Line Color
-  lineColor:"#dbdbdb",
+  lineColor: "#dbdbdb",
 }
 
 // transition

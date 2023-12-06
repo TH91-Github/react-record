@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 import SkipNav from "components/common/layout/SkipNav";
@@ -8,12 +8,13 @@ import Footer from "components/common/layout/Footer";
 
 
 function BlogTemplate () {
+  const location = useLocation();
 
   return (
     <div className="wrap">
       <SkipNav />
       <div>
-        <Header />
+        <Header location={location} />
         <Container>
           <Outlet />
         </Container>
@@ -25,5 +26,5 @@ function BlogTemplate () {
 export default BlogTemplate;
 
 const Container = styled.div`
-  padding-top:50px;
+  padding-top:80px;
 `; 
