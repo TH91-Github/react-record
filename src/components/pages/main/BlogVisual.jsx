@@ -10,7 +10,7 @@ function BlogVisual(){
   const [exceptionH, setExceptionH] = useState(0);
   const [activeIdx, setActiveIdx] = useState(0);
   const visualList = routerData.filter((item)=> item.title);
-
+  
   useEffect(()=>{
     const headerH = document.querySelector('.header').clientHeight;
     setExceptionH(headerH)
@@ -86,6 +86,29 @@ const VisualWrap = styled.div`
   min-height:600px;
   padding-bottom:50px;
   border:1px solid green;
+  opacity:0;
+  &.on {
+    opacity:1;
+    .visual__info__box {
+      & > p {
+        &:nth-child(1){
+          ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
+        }
+        &:nth-child(2){
+          ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
+        }
+        &:nth-child(3){
+          ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
+        }
+      }
+    }
+    .visual__lists{
+      ${SC.animation(SC.fadeIn('-x', 100))}
+    }
+    .visual__move {
+      ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
+    }
+  }
 `;
 const VisualInner = styled(SC.InnerStyle)`
   display:flex;
@@ -106,15 +129,6 @@ const VisualTextBox = styled.div`
   & > p {
     font-size:48px;
     font-weight:800;
-    &:nth-child(1){
-      ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
-    }
-    &:nth-child(2){
-      ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
-    }
-    &:nth-child(3){
-      ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
-    }
   }
 `;
 
@@ -127,7 +141,6 @@ const VisualCategoryLists = styled.div`
   display:flex;
   gap:20px;
   height:100%;
-  ${SC.animation(SC.fadeIn('-x', 100))}
 `;
 const VisualCategoryItem = styled.div`
   width:calc((100% - 60px) / 5);
@@ -195,7 +208,6 @@ const VisualMove = styled.div`
   width:calc(30% - 15px);
   margin-top:50px;
   text-align:center;
-  ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
 `;
 const VisualMoveBtn = styled(SC.Button)`
   overflow:hidden;

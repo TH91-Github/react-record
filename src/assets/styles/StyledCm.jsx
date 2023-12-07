@@ -34,6 +34,7 @@ export const MotionLR = styled.span`
 
 // css
 export const animation =(aniName, t,ttf,d,fm) => css`
+  opacity:0;
   animation: ${aniName} ${t ? t : '1'}s ${ttf ? ttf :'ease'} ${d ? d : 0}s ${fm ? fm : 'both'};
 `
 // keyframes

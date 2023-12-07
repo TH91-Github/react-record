@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import BlogVisual from "./BlogVisual";
+import LazyLoad from "components/common/element/LazyLoad";
 
 
 function BlogMain(){
+
   return (
     <div className="blog">
-      <BlogVisual />
-      <BlogTest>
+      <LazyLoad>
+        <BlogBox />
+        <BlogVisual/>
+        <BlogTest>
           dd
-      </BlogTest>
+        </BlogTest>
+      </LazyLoad>
     </div>
   )
 }
@@ -18,4 +23,10 @@ const BlogTest = styled.div`
   width:100%;
   height:500px;
   border:1px solid red;
-`
+`;
+
+const BlogBox = styled.div`
+  width:100%;
+  height:800px;
+  background:gray;
+`;
