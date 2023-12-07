@@ -106,6 +106,15 @@ const VisualTextBox = styled.div`
   & > p {
     font-size:48px;
     font-weight:800;
+    &:nth-child(1){
+      ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
+    }
+    &:nth-child(2){
+      ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
+    }
+    &:nth-child(3){
+      ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
+    }
   }
 `;
 
@@ -118,6 +127,7 @@ const VisualCategoryLists = styled.div`
   display:flex;
   gap:20px;
   height:100%;
+  ${SC.animation(SC.fadeIn('-x', 100))}
 `;
 const VisualCategoryItem = styled.div`
   width:calc((100% - 60px) / 5);
@@ -180,10 +190,12 @@ const VisualCategoryEn = styled.span`
 
 const VisualMove = styled.div`
   position:absolute;
+  z-index:5;
   bottom:30%;
   width:calc(30% - 15px);
   margin-top:50px;
   text-align:center;
+  ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
 `;
 const VisualMoveBtn = styled(SC.Button)`
   overflow:hidden;

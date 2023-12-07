@@ -1,5 +1,5 @@
-import styled, {css} from 'styled-components';
-import { breakpoints, colors, fonts, media} from './Variable';
+import styled, {css, keyframes} from 'styled-components';
+import { breakpoints, media} from './Variable';
 
 
 export const Button = styled.button.attrs({
@@ -31,3 +31,44 @@ export const MotionLR = styled.span`
     50% {  transform:translateX(5px)}
   }
 `;
+
+// css
+export const animation =(aniName, t,ttf,d,fm) => css`
+  animation: ${aniName} ${t ? t : '1'}s ${ttf ? ttf :'ease'} ${d ? d : 0}s ${fm ? fm : 'both'};
+`
+// keyframes
+export const fadeIn = (xy, num) => keyframes`
+  0%{
+    transform: ${
+      xy === '-x'
+      ? `translateX(${num ? num*-1 : -50}px)`
+      : xy === '-x'
+      ? `translateX(${num ? num : 50}px)`
+      : xy === '-y'
+      ? `translateY(${num ? num*-1 : -50}px)`
+      : `translateY(${num ? num : 50}px)`
+    };
+    opacity:0;
+  }
+  100%{
+    transform: translate(0,0);
+    opacity:1;
+  }
+`;
+
+// transform: translate${xy === 'x' ? 'X' : 'Y'}(${num > 0 ? num : 50}px);
+// transform: translate${xy === 'x' ? 'X' : 'Y'}(0);
+
+/*
+
+transform: ${
+      `
+      ${xy === 'x' && `translateX(${num ? num : 50}px)`};
+      ${xy === '-x' && `translateX(${num ? num*-1 : -50}px)`};
+      ${xy === 'y' && `translateY(${num ? num : 50}px)`};
+      ${xy === '-y' && `translateY(${num ? num*-1 : -50}px)`};
+      `
+    }
+
+
+ */
