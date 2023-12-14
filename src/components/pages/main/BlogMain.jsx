@@ -8,7 +8,6 @@ function BlogMain(){
   return (
     <div className="blog">
       <LazyLoad>
-        <BlogBox />
         <BlogVisual/>
         <BlogTest>
           dd

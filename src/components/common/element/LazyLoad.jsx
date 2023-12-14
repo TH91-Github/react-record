@@ -5,7 +5,6 @@ function LazyLoad ({children, onClass}) { // lazyload El , className
   const el = useRef(null);
 
   // 추가 옵션은 제작 하면서 조건 및 추가.
-
   const updateObserver = (entries, observer) => {
     entries.forEach((entry) => {
       // 교차 지점에 들어오면
@@ -23,7 +22,7 @@ function LazyLoad ({children, onClass}) { // lazyload El , className
       const lazloadEl = [...el.current.children]; // lazyLoad 목록
       observer = new IntersectionObserver((updateObserver),{
         // 옵션 입력 
-        threshold: 0.3 //30% 보였을 경우 실행
+        threshold: 0.1 //30% 보였을 경우 실행
       });
       lazloadEl.forEach(item => {
         observer.observe(item);
