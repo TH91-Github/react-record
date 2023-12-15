@@ -97,30 +97,17 @@ const VisualWrap = styled.div`
   opacity:0;
   &.on {
     opacity:1;
-    .visual__info__box {
-      & > p {
-        &:nth-child(1){
-          ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
-        }
-        &:nth-child(2){
-          ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
-        }
-        &:nth-child(3){
-          ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
-        }
-      }
-    }
     ${media.pc}{
       .visual__info__box {
         & > p {
           &:nth-child(1){
-            animation-play-state:running;
+            ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
           }
           &:nth-child(2){
-            animation-play-state:running;
+            ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
           }
           &:nth-child(3){
-            animation-play-state:running;
+            ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
           }
         }
       }
@@ -143,6 +130,19 @@ const VisualWrap = styled.div`
       }
     }
     ${media.mo} {
+      .visual__info__box {
+        & > p {
+          &:nth-child(1){
+            ${SC.animation(SC.fadeIn('-x'), 1, 'ease', .3)}
+          }
+          &:nth-child(2){
+            ${SC.animation(SC.fadeIn('-x'), 1, 'ease', .4)}
+          }
+          &:nth-child(3){
+            ${SC.animation(SC.fadeIn('-x'), 1, 'ease', .5)}
+          }
+        }
+      }
       .visual__info__box {
         & > p {
           &:nth-child(1){
@@ -179,6 +179,7 @@ const MainInner = styled(SC.InnerStyle)`
   height:100%;
   ${media.mo} {
     flex-direction: column;
+    min-height:560px;
   }
 `
 const VisualInfo = styled.div`
@@ -187,9 +188,11 @@ const VisualInfo = styled.div`
   height:100%;
   border:1px solid red;
   ${media.mo} {
+    display:flex;
+    justify-content:center;
+    align-items:center;
     width:100%;
-    height:auto;
-    padding-top:50px;
+    height:40%;
   }
 `;
 const VisualTextBox = styled.div`
@@ -214,8 +217,7 @@ const VisualCategory = styled.div`
   border:1px solid blue;
   ${media.mo} {
     width:100%;
-    height:auto;
-    padding-top:30px;
+    height:60%;
   }
 `;
 const VisualCategoryLists = styled.div`
@@ -224,9 +226,11 @@ const VisualCategoryLists = styled.div`
   height:100%;
   ${media.mo} {
     flex-wrap: wrap;
+    justify-content:center;
+    align-items:center;
     max-width: 400px;
     margin:0 auto;
-    height:auto;
+    height:100%;
   }
 `;
 const VisualCategoryItem = styled.div`
