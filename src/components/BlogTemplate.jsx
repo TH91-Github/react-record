@@ -4,6 +4,7 @@ import styled from "styled-components";
 import SkipNav from "components/common/layout/SkipNav";
 import Header from "components/common/layout/Header";
 import Footer from "components/common/layout/Footer";
+import { media } from "assets/styles/Variable";
 
 
 
@@ -13,18 +14,23 @@ function BlogTemplate () {
   return (
     <div className="wrap">
       <SkipNav />
-      <div>
+      <Blog>
         <Header location={location} />
         <Container>
           <Outlet />
         </Container>
         <Footer />
-      </div>
+      </Blog>
     </div>
   )
 }
 export default BlogTemplate;
-
+const Blog = styled.div`
+  min-width:320px;
+`;
 const Container = styled.div`
   padding-top:80px;
+  ${media.mo}{
+    padding-top:70px;
+  }
 `; 

@@ -103,7 +103,6 @@ const HeaderInner = styled(InnerStyle)`
   display:flex;
   align-items:center;
   height:100%;
-  
 `;
 const HeaderLogo = styled.div`
   overflow:hidden;

@@ -15,11 +15,11 @@ export const Button = styled.button.attrs({
 
 export const InnerStyle = styled.div`
   width:100%;
-  max-width:${breakpoints.tab}px;
+  max-width:${breakpoints.pc}px;
   margin:0 auto;
   padding:0 30px;
   ${media.mo} {
-    padding: 0 15px;
+    padding: 0 20px;
   }
 `;
 

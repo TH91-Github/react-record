@@ -1,28 +1,23 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
-
-function LazyLoad ({children, onClass}) { // lazyload El , className 
+function Observer ({children, onClass, maintenance}) { // lazyload El , className , 관찰여부
   const el = useRef(null);
-
-  // 추가 옵션은 제작 하면서 조건 및 추가.
-  const updateObserver = (entries, observer) => {
+  const updateObserver = useCallback((entries, observer) => {
     entries.forEach((entry) => {
-      // 교차 지점에 들어오면
-      if (entry.isIntersecting) {          
-        // console.log(entry.target);         // 해당 컴포넌트를 콘솔로 찍어봄
-        //observer.unobserve(entry.target);  // 관찰을 끊는다.
-      }
       entry.target.classList.toggle(onClass ? onClass : 'on', entry.isIntersecting);
+      if (entry.isIntersecting) { // 교차 상태인지    
+        // maintenance 👉 false 경우 observer 끊기
+        !(maintenance ?? true) && observer.unobserve(entry.target)
+      }
     });
-  }
-
+  },[onClass,maintenance]);
   useEffect(() => {
     let observer;
     if (el.current) {
       const lazloadEl = [...el.current.children]; // lazyLoad 목록
       observer = new IntersectionObserver((updateObserver),{
         // 옵션 입력 
-        threshold: 0.1 //30% 보였을 경우 실행
+        threshold: 0.1 // 20% 보였을 경우 실행
       });
       lazloadEl.forEach(item => {
         observer.observe(item);
@@ -31,7 +26,7 @@ function LazyLoad ({children, onClass}) { // lazyload El , className
     return () => { // clean up function
       observer && observer.disconnect()
     }
-  },[])
+  },[updateObserver])
   return (
     <div ref={el}>
       {children}
@@ -39,4 +34,4 @@ function LazyLoad ({children, onClass}) { // lazyload El , className
   )
 }
 
-export default LazyLoad;
+export default Observer;
