@@ -47,12 +47,12 @@ export const Icon = styled.i`
     `
   };
 `;
-
 // css
 export const animation =(aniName, t,ttf,d,fm) => css`
   opacity:0;
   animation: ${aniName} ${t ? t : '1'}s ${ttf ? ttf :'ease'} ${d ? d : 0}s ${fm ? fm : 'both'};
-`
+`;
+
 // keyframes
 export const fadeIn = (xy, num) => keyframes`
   0%{
@@ -69,6 +69,22 @@ export const fadeIn = (xy, num) => keyframes`
   }
   100%{
     transform: translate(0,0);
+    opacity:1;
+  }
+`;
+
+// keyframes
+export const TitMark = (lar) => keyframes`
+  0%{
+    transform: translateX(${(75*lar)}%);
+    opacity:1;
+  }
+  50%{
+    transform: translateX(${(25*lar)}%);
+    opacity:.8;
+  }
+  100%{
+    transform: translateX(${(75*lar)}%);
     opacity:1;
   }
 `;

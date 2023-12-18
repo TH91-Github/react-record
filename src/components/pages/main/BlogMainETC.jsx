@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import * as SC from "assets/styles/StyledCm";
-
+import * as S from "./Styled";
 function BlogMainETC(){
   return (
     <MainGuideWrap>
-      <MainInner>
+      <SC.InnerStyle>
         BlogMainETC 입니다  
-      </MainInner>
+      </SC.InnerStyle>
     </MainGuideWrap>
   )
 }
@@ -15,11 +15,8 @@ export default BlogMainETC;
 
 
 const MainGuideWrap = styled.div`
-  height:100vh;
+  padding:50px 0;
   border:1px solid green;
 `;
 
-const MainInner = styled(SC.InnerStyle)`
-
-`;
 

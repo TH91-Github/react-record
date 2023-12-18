@@ -4,7 +4,8 @@ import { routerData } from "routes/reRouterData";
 import { colors, media, transitions } from "assets/styles/Variable";
 import { TextCase } from "utils/textChk";
 import * as SC from "assets/styles/StyledCm";
-import { CodeIcon, GuideIcon, ProfileIcon, RecordIcon } from "assets/styles/SvgPath";
+import * as S from "./Styled";
+import { SvgCode, SvgGuide, SvgProfile, SvgRecord } from "assets/styles/SvgPath";
 
 function BlogMainVisual(){
   const [exceptionH, setExceptionH] = useState(0);
@@ -35,7 +36,7 @@ function BlogMainVisual(){
   }
   return (
     <VisualWrap $headerH={exceptionH} className="visual">
-      <MainInner className="visual__inner">
+      <VisualInner className="visual__inner">
         <VisualInfo className="visual__info">
           <VisualTextBox className="visual__info__box">
             <p className="visual-tit">TEXT, TEXT</p>
@@ -54,10 +55,10 @@ function BlogMainVisual(){
                   <VisualCategoryBtn className="visual__item-btn">
                     <VisualCategoryIcon $bg={colorsArr[idx]} className="icon">
                       <CategoryIcon>
-                        {idx === 0 && <ProfileIcon $fillColor="#fff"/> }
-                        {idx === 1 && <GuideIcon $fillColor="#fff"/> }
-                        {idx === 2 && <RecordIcon $fillColor="#fff"/> }
-                        {idx === 3 && <CodeIcon $fillColor="#fff"/> }
+                        {idx === 0 && <SvgProfile $fillColor="#fff"/> }
+                        {idx === 1 && <SvgGuide $fillColor="#fff"/> }
+                        {idx === 2 && <SvgRecord $fillColor="#fff"/> }
+                        {idx === 3 && <SvgCode $fillColor="#fff"/> }
                       </CategoryIcon>
                     </VisualCategoryIcon>
                     <VisualCategoryBox className="txt">
@@ -84,7 +85,7 @@ function BlogMainVisual(){
               </VisualMoveText> 
             </VisualMoveBtn>
         </VisualMove>
-      </MainInner>
+      </VisualInner>
     </VisualWrap>
   )
 }
@@ -99,7 +100,6 @@ const VisualWrap = styled.div`
       : 'height: 100vh'
   };
   min-height:600px;
-  padding-bottom:30px;
   border:1px solid green;
   opacity:0;
   &.on {
@@ -181,7 +181,7 @@ const VisualWrap = styled.div`
     }
   }
 `;
-const MainInner = styled(SC.InnerStyle)`
+const VisualInner = styled(SC.InnerStyle)`
   display:flex;
   position:relative;
   height:100%;
@@ -189,11 +189,14 @@ const MainInner = styled(SC.InnerStyle)`
     flex-direction: column;
     min-height:560px;
   }
-`
+`;
 const VisualInfo = styled.div`
   position:relative;
   width:30%;
   height:100%;
+  ${media.tab}{
+    width:50%;
+  }
   ${media.mo} {
     display:flex;
     justify-content:center;
@@ -221,6 +224,9 @@ const VisualTextBox = styled.div`
 const VisualCategory = styled.div`
   width:70%;
   height:100%;
+  ${media.tab}{
+    width:50%;
+  }
   ${media.mo} {
     display:flex;
     align-items:center;
@@ -232,6 +238,9 @@ const VisualCategoryLists = styled.div`
   display:flex;
   gap:20px;
   height:100%;
+  ${media.tab}{
+    gap:10px;
+  }
   ${media.mo} {
     flex-wrap: wrap;
     max-width: 400px;
@@ -257,6 +266,9 @@ const VisualCategoryItem = styled.div`
         font-size:16px;
       }
     }
+  }
+  ${media.tab}{
+    width:calc((50% - 30px) / 3);
   }
   ${media.mo}{
     width:calc((100% - 20px) / 2);
@@ -300,6 +312,18 @@ const VisualCategoryIcon = styled.span`
     margin:0 auto;
     background:${props => props.$bg || '#fff'};
     border-radius:50%;
+    &::before {
+      display:block;
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background: linear-gradient(135deg,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+      opacity: 0.4;
+      pointer-events:none;
+      content:"";
+    }
     &::after{
       display:block;
       position:absolute;
@@ -331,6 +355,9 @@ const VisualCategoryBox = styled.div`
   height:25%;
   padding:30px;
   text-align:left;
+  ${media.tab}{
+    padding:30px 10px;
+  }
   ${media.mo}{
     overflow:hidden;
     position:relative;
