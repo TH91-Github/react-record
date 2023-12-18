@@ -16,9 +16,9 @@ function Header ({location}) {
   const menuList = routerData.filter((item)=> item.title);
   // scroll
   const eventScroll = () => {
-    const headerH = document.querySelector('.header').clientHeight;
+    // const headerH = document.querySelector('.header').clientHeight;
     scrollY = window.pageYOffset
-    scrollY > headerH ? setScrollZero(true) : setScrollZero(false)
+    scrollY > 0 ? setScrollZero(true) : setScrollZero(false)
   };
 
   useEffect(()=>{
@@ -87,7 +87,7 @@ const HeaderWrap = styled.div`
   left:0;
   width:100%;
   height:80px;
-  background:${colors.baseWhite};
+  background:${colors.bgWhite};
   transition:${transitions.base};
   &.header-fixed {
     height:50px;

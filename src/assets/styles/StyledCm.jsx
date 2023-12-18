@@ -32,6 +32,22 @@ export const MotionLR = styled.span`
   }
 `;
 
+// ♣ ICON
+export const Icon = styled.i`
+  display:inline-block;
+  position:relative;
+  width: ${props => props.width || "20px"};
+  height: ${props => props.width || "20px"};
+  border-radius: ${props => props.$borderRadius || 0};
+  ${props => props.$bg 
+    && 
+    `
+      background: ${props.$bg};
+      border:1px solid ${props.$bg};
+    `
+  };
+`;
+
 // css
 export const animation =(aniName, t,ttf,d,fm) => css`
   opacity:0;
@@ -56,20 +72,3 @@ export const fadeIn = (xy, num) => keyframes`
     opacity:1;
   }
 `;
-
-// transform: translate${xy === 'x' ? 'X' : 'Y'}(${num > 0 ? num : 50}px);
-// transform: translate${xy === 'x' ? 'X' : 'Y'}(0);
-
-/*
-
-transform: ${
-      `
-      ${xy === 'x' && `translateX(${num ? num : 50}px)`};
-      ${xy === '-x' && `translateX(${num ? num*-1 : -50}px)`};
-      ${xy === 'y' && `translateY(${num ? num : 50}px)`};
-      ${xy === '-y' && `translateY(${num ? num*-1 : -50}px)`};
-      `
-    }
-
-
- */

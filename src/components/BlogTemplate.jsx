@@ -4,7 +4,7 @@ import styled from "styled-components";
 import SkipNav from "components/common/layout/SkipNav";
 import Header from "components/common/layout/Header";
 import Footer from "components/common/layout/Footer";
-import { media } from "assets/styles/Variable";
+import { colors, media } from "assets/styles/Variable";
 
 
 
@@ -27,6 +27,7 @@ function BlogTemplate () {
 export default BlogTemplate;
 const Blog = styled.div`
   min-width:320px;
+  background:${colors.bgWhite};
 `;
 const Container = styled.div`
   padding-top:80px;
