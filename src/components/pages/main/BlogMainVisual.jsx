@@ -6,8 +6,10 @@ import { TextCase } from "utils/textChk";
 import * as SC from "assets/styles/StyledCm";
 import * as S from "./Styled";
 import { SvgCode, SvgGuide, SvgProfile, SvgRecord } from "assets/styles/SvgPath";
+import { useSelector } from "react-redux";
 
 function BlogMainVisual(){
+  const isMobile = useSelector((state) => state.mobileChk);
   const [exceptionH, setExceptionH] = useState(0);
   const [activeIdx, setActiveIdx] = useState(0);
   const visualList = routerData.filter((item)=> item.title);
@@ -18,24 +20,36 @@ function BlogMainVisual(){
     setExceptionH(headerH)
   },[]);
   const itemClick = (idx) => {
+    if(!isMobile){
+      itemPc(idx);
+    }else{
+      
+    }
+    setActiveIdx(idx);
+  }
+
+  const itemPc = (num) => {
     const movingBtn = document.querySelector('.visual__move-btn');
-    if(activeIdx !== idx){
+    if(activeIdx !== num){
       if([...movingBtn.classList].includes('ani')){
         movingBtn.classList.remove('ani');
-        setTimeout(()=>{
-          movingBtn.classList.add('ani');
-        },100)
+        setTimeout(()=>movingBtn.classList.add('ani'),100);
       }else{
         movingBtn.classList.add('ani');
       }
     }
-    setActiveIdx(idx);
+  } 
+  const itemMo = () => {
+    
   }
+
+
   const movingScroll = () => {
-    console.log("해당 컨텐츠 무빙")
+    console.log("해당 컨텐츠 무빙");
+
   }
   return (
-    <VisualWrap $headerH={exceptionH} className="visual">
+    <BlogWrap $headerH={exceptionH} id="b-visual" className="visual">
       <VisualInner className="visual__inner">
         <VisualInfo className="visual__info">
           <VisualTextBox className="visual__info__box">
@@ -86,12 +100,12 @@ function BlogMainVisual(){
             </VisualMoveBtn>
         </VisualMove>
       </VisualInner>
-    </VisualWrap>
+    </BlogWrap>
   )
 }
 export default BlogMainVisual;
 
-const VisualWrap = styled.div`
+const BlogWrap = styled.div`
   position:relative;
   width:100%;
   ${props => 
