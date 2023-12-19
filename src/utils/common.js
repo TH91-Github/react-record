@@ -11,9 +11,11 @@ export const isMobile = () => { // 모바일 사이즈 체크
   return moChk;
 }
 
-// const scrollEvent = () => { // scroll *공통 빼야하는 요소 2
-
-// }
+export const targetScroll = (target) => { // 타겟 scroll
+  const targetTop = window.scrollY + target.getBoundingClientRect().top;
+  // const headerH = document.querySelector('.header').offsetHeight 
+  window.scrollTo({top: targetTop - 100, behavior: 'smooth'});
+}
 
 export function ranDomId(listData, name){ // id 랜덤으로 생성
   const firstName = name ?? "random"

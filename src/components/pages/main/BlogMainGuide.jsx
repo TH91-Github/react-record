@@ -19,7 +19,7 @@ function BlogMainGuide(){
           <S.BlogLinkBtn $hoverBg={colors.yellow}>
             <span>
               <S.BlogLinkIcon><Svglink></Svglink></S.BlogLinkIcon>
-              Profile
+              Guide
             </span> 
           </S.BlogLinkBtn>
         </S.BtnArticle>

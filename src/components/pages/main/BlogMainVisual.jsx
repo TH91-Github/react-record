@@ -7,6 +7,7 @@ import * as SC from "assets/styles/StyledCm";
 import * as S from "./Styled";
 import { SvgCode, SvgGuide, SvgProfile, SvgRecord } from "assets/styles/SvgPath";
 import { useSelector } from "react-redux";
+import { targetScroll } from "utils/common";
 
 function BlogMainVisual(){
   const isMobile = useSelector((state) => state.mobileChk);
@@ -19,15 +20,15 @@ function BlogMainVisual(){
     const headerH = document.querySelector('.header').clientHeight;
     setExceptionH(headerH)
   },[]);
-  const itemClick = (idx) => {
+
+  const itemClick = (el, idx) => { // 리스트 클릭
     if(!isMobile){
-      itemPc(idx);
+      itemPc(el, idx);
     }else{
-      
+      idTargetScroll(el);
     }
     setActiveIdx(idx);
   }
-
   const itemPc = (num) => {
     const movingBtn = document.querySelector('.visual__move-btn');
     if(activeIdx !== num){
@@ -39,15 +40,14 @@ function BlogMainVisual(){
       }
     }
   } 
-  const itemMo = () => {
-    
+  // const itemMo = (el) => { 
+  //   console.log()
+  // }
+  const idTargetScroll = () => {
+    const targetId = document.getElementById(`b-${visualList[activeIdx].path}`);
+    targetScroll(targetId);
   }
 
-
-  const movingScroll = () => {
-    console.log("해당 컨텐츠 무빙");
-
-  }
   return (
     <BlogWrap $headerH={exceptionH} id="b-visual" className="visual">
       <VisualInner className="visual__inner">
@@ -63,7 +63,7 @@ function BlogMainVisual(){
             {
               visualList.map((item, idx) => (
                 <VisualCategoryItem 
-                  onClick={() => itemClick(idx) }
+                  onClick={(e) => itemClick(e, idx) }
                   key={idx} 
                   className={`visual__item ${activeIdx === idx ? 'active' :''}`}>
                   <VisualCategoryBtn className="visual__item-btn">
@@ -90,7 +90,7 @@ function BlogMainVisual(){
         <VisualMove className="visual__move">
             {/* 바뀌는 텍스트 */}
             <p>{visualList[activeIdx].title} 미리보기 <SC.MotionLR>👉</SC.MotionLR></p>
-            <VisualMoveBtn onClick={() => movingScroll()} className="visual__move-btn">
+            <VisualMoveBtn onClick={() => idTargetScroll()} $hoverColor={activeIdx} className="visual__move-btn">
               <VisualMoveText className="text">
                 <span className="before">Click</span>
                 <span className="blind">또는</span>
@@ -461,7 +461,17 @@ const VisualMoveBtn = styled(SC.Button)`
     left:0;
     width:100%;
     height:100%;
-    background:${colors.yellow};
+    background:${props => 
+      props.$hoverColor === 0 
+        ? colors.green
+        : props.$hoverColor === 1 
+        ? colors.yellow
+        : props.$hoverColor === 2
+        ? colors.blue
+        : props.$hoverColor === 3
+        ? colors.red
+        : colors.baseBlack
+    }; 
     transition: ${transitions.base};
     transform: translateX(-105%);
     content:"";

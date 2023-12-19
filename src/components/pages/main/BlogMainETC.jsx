@@ -19,7 +19,7 @@ function BlogMainETC(){
           <S.BlogLinkBtn $hoverBg={colors.red}>
             <span>
               <S.BlogLinkIcon><Svglink></Svglink></S.BlogLinkIcon>
-              Profile
+              ETC
             </span> 
           </S.BlogLinkBtn>
         </S.BtnArticle>

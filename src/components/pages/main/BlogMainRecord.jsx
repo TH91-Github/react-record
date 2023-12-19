@@ -19,7 +19,7 @@ function BlogMainRecord(){
             <S.BlogLinkBtn $hoverBg={colors.blue}>
               <span>
                 <S.BlogLinkIcon><Svglink></Svglink></S.BlogLinkIcon>
-                Profile
+                Record
               </span> 
             </S.BlogLinkBtn>
           </S.BtnArticle>
