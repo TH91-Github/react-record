@@ -56,6 +56,16 @@ export const Button = styled.button.attrs({
   cursor:pointer;
 `;
 
+export const BtnArticle = styled.div`
+  display:flex;
+  justify-content : ${props => props.$justifyConent || 'flex-start'};
+  ${props => props.gap && `gap: ${props.$gap}`};
+  margin-top:${props => props.$marginTop || 30 }px;
+  ${media.mo}{
+    margin-top:${props => props.$marginTop || 20 }px;
+  }
+`;  
+
 export const InnerStyle = styled.div`
   width:100%;
   max-width:${breakpoints.pc}px;
@@ -153,3 +163,4 @@ export const SubTxt = styled.p`
     font-size:${props => props.$fontSize || 14}px;
   }
 `;
+

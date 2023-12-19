@@ -20,31 +20,15 @@ function BlogMainVisual(){
     const headerH = document.querySelector('.header').clientHeight;
     setExceptionH(headerH)
   },[]);
-
-  const itemClick = (el, idx) => { // 리스트 클릭
-    if(!isMobile){
-      itemPc(el, idx);
-    }else{
-      idTargetScroll(el);
+  const itemClick = (idx) => { // 리스트 클릭
+    if(isMobile){
+      idTargetScroll(idx);
     }
     setActiveIdx(idx);
   }
-  const itemPc = (num) => {
-    const movingBtn = document.querySelector('.visual__move-btn');
-    if(activeIdx !== num){
-      if([...movingBtn.classList].includes('ani')){
-        movingBtn.classList.remove('ani');
-        setTimeout(()=>movingBtn.classList.add('ani'),100);
-      }else{
-        movingBtn.classList.add('ani');
-      }
-    }
-  } 
-  // const itemMo = (el) => { 
-  //   console.log()
-  // }
-  const idTargetScroll = () => {
-    const targetId = document.getElementById(`b-${visualList[activeIdx].path}`);
+  const idTargetScroll = (idx) => {
+    const targetId = document.getElementById(`b-${visualList[idx].path}`);
+    console.log(targetId)
     targetScroll(targetId);
   }
 
@@ -63,7 +47,7 @@ function BlogMainVisual(){
             {
               visualList.map((item, idx) => (
                 <VisualCategoryItem 
-                  onClick={(e) => itemClick(e, idx) }
+                  onClick={() => itemClick(idx) }
                   key={idx} 
                   className={`visual__item ${activeIdx === idx ? 'active' :''}`}>
                   <VisualCategoryBtn className="visual__item-btn">
@@ -90,7 +74,10 @@ function BlogMainVisual(){
         <VisualMove className="visual__move">
             {/* 바뀌는 텍스트 */}
             <p>{visualList[activeIdx].title} 미리보기 <SC.MotionLR>👉</SC.MotionLR></p>
-            <VisualMoveBtn onClick={() => idTargetScroll()} $hoverColor={activeIdx} className="visual__move-btn">
+            <VisualMoveBtn 
+              onClick={() => idTargetScroll(activeIdx)} 
+              $hoverColor={colorsArr[activeIdx]}
+              className="visual__move-btn">
               <VisualMoveText className="text">
                 <span className="before">Click</span>
                 <span className="blind">또는</span>
@@ -150,7 +137,7 @@ const BlogWrap = styled.div`
       }
   }
   ${media.mo} {
-    min-height:300px;
+    min-height:560px;
     &.on {
       .visual__info__box {
         & > p {
@@ -201,7 +188,6 @@ const VisualInner = styled(SC.InnerStyle)`
   height:100%;
   ${media.mo} {
     flex-direction: column;
-    min-height:560px;
   }
 `;
 const VisualInfo = styled.div`
@@ -461,17 +447,7 @@ const VisualMoveBtn = styled(SC.Button)`
     left:0;
     width:100%;
     height:100%;
-    background:${props => 
-      props.$hoverColor === 0 
-        ? colors.green
-        : props.$hoverColor === 1 
-        ? colors.yellow
-        : props.$hoverColor === 2
-        ? colors.blue
-        : props.$hoverColor === 3
-        ? colors.red
-        : colors.baseBlack
-    }; 
+    background:${props => props.$hoverColor || colors.baseBlack};
     transition: ${transitions.base};
     transform: translateX(-105%);
     content:"";
@@ -493,15 +469,6 @@ const VisualMoveBtn = styled(SC.Button)`
     border:1px solid #fff;
     transform:translate(-50%, -50%);
     content:"";
-  }
-  &.ani {
-    &::after {
-      animation: boxRotate .3s linear;
-      @keyframes boxRotate {
-        from { transform:translate(-50%, -50%) rotate(0); }
-        to {transform:translate(-50%, -50%) rotate(180deg); }
-      }
-    }
   }
 `; 
 const VisualMoveText = styled.span`

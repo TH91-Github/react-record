@@ -1,7 +1,7 @@
 const { breakpoints } = require("component/styled/common/Variable");
 
 
-export const isMobile = () => { // 모바일 사이즈 체크
+export const isMobileChk = () => { // 모바일 사이즈 체크
   const wininnW = window.innerWidth;
   const scrollbarW = parseInt(wininnW - document.body.clientWidth);
   const winW = parseInt(wininnW - scrollbarW);
@@ -12,9 +12,10 @@ export const isMobile = () => { // 모바일 사이즈 체크
 }
 
 export const targetScroll = (target) => { // 타겟 scroll
+  console.log(target)
   const targetTop = window.scrollY + target.getBoundingClientRect().top;
   // const headerH = document.querySelector('.header').offsetHeight 
-  window.scrollTo({top: targetTop - 100, behavior: 'smooth'});
+  window.scrollTo({top: targetTop - 60, behavior: 'smooth'});
 }
 
 export function ranDomId(listData, name){ // id 랜덤으로 생성

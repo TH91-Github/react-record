@@ -6,14 +6,6 @@ export const MainGuideWrap = styled.div`
   padding:50px 0;
   border:1px solid pink;
 `;
-
-export const BtnArticle = styled.div`
-  margin-top:${props => props.$marginTop || 30 }px;
-  ${media.mo}{
-    margin-top:${props => props.$marginTop || 20 }px;
-  }
-`;  
-
 export const BlogLinkBtn = styled(SC.Button)`
   overflow:hidden;
   position:relative;
