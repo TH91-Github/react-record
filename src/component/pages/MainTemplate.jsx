@@ -9,7 +9,7 @@ import Footer from "component/common/Footer";
 // store, js, css
 import { sSetDataAll, sSetMobileChk } from "store/store";
 import { loadAxios } from "utils/fetchAxios";
-import { isMobile } from "utils/common.js"
+import { isMobileChk } from "utils/common.js"
 
 function MainTemplate () {
   const [baseData, setBaseData] = useState('');
@@ -29,7 +29,7 @@ function MainTemplate () {
 
   // Resize
   const handleReSize = useCallback(()=> {
-    let moState = isMobile();
+    let moState = isMobileChk();
     dispatch(sSetMobileChk(moState))
   },[dispatch])
 
