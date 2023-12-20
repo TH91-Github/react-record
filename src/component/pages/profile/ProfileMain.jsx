@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import * as SC from "component/styled/common/AllStyled";
 import * as S from "component/pages/profile/styled/ProfileStyled";
-import { Email, Call, SvgVelog, Github, Naver, React } from "component/styled/common/SvgPath";
+import { Email, Call, SvgVelog, Github, React } from "component/styled/common/SvgPath";
 import Ing from "component/common/Ing";
 
 function ProfileMain({propsOpt}) {

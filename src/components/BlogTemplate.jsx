@@ -30,7 +30,7 @@ function BlogTemplate () {
 
   return (
     <div className="wrap">
-      <SkipNav />
+      {/* <SkipNav /> */}
       <Blog>
         <Header location={location} />
         <Container>
