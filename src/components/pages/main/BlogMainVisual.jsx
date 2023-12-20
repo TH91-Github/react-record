@@ -4,7 +4,6 @@ import { routerData } from "routes/reRouterData";
 import { colors, media, transitions } from "assets/styles/Variable";
 import { TextCase } from "utils/textChk";
 import * as SC from "assets/styles/StyledCm";
-import * as S from "./Styled";
 import { SvgCode, SvgGuide, SvgProfile, SvgRecord } from "assets/styles/SvgPath";
 import { useSelector } from "react-redux";
 import { targetScroll } from "utils/common";
@@ -149,19 +148,6 @@ const BlogWrap = styled.div`
           }
           &:nth-child(3){
             ${SC.animation(SC.fadeIn('-x'), 1, 'ease', .5)}
-          }
-        }
-      }
-      .visual__info__box {
-        & > p {
-          &:nth-child(1){
-            animation-play-state:running;
-          }
-          &:nth-child(2){
-            animation-play-state:running;
-          }
-          &:nth-child(3){
-            animation-play-state:running;
           }
         }
       }
