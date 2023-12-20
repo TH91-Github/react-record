@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { colors } from './Variable';
+import { colors, media } from './Variable';
 
 export const GlobalStyles = createGlobalStyle`
   body {
@@ -21,7 +21,20 @@ export const GlobalStyles = createGlobalStyle`
     color: inherit;
     cursor: pointer;
   }
-
+  .pc-br {
+    display:block;
+  }
+  .m-br {
+    display:none;
+  }
+  ${media.mo}{
+    .pc-br {
+      display:none;
+    }
+    .m-br {
+      display:block;
+    } 
+  }
   /* 스크롤바 전체 */
   body::-webkit-scrollbar {
     width:8px;

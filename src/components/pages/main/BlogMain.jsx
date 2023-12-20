@@ -1,21 +1,21 @@
-import styled from "styled-components";
-import BlogVisual from "./BlogVisual";
-
+import BlogMainVisual from "./BlogMainVisual";
+import Observer from "components/common/element/Observer";
+import BlogMainETC from "./BlogMainETC";
+import BlogMainGuide from "./BlogMainGuide";
+import BlogMainProfile from "./BlogMainProfile";
+import BlogMainRecord from "./BlogMainRecord";
 
 function BlogMain(){
   return (
     <div className="blog">
-      <BlogVisual />
-      <BlogTest>
-          dd
-      </BlogTest>
+      <Observer >
+        <BlogMainVisual />
+        <BlogMainProfile />
+        <BlogMainGuide />
+        <BlogMainRecord />
+        <BlogMainETC />
+      </Observer>
     </div>
   )
 }
 export default BlogMain;
-
-const BlogTest = styled.div`
-  width:100%;
-  height:500px;
-  border:1px solid red;
-`

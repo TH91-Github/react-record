@@ -34,6 +34,7 @@ export const colors = {
   // bg Color 
   bgGreen: "#113536",
   bgWhite: "#f8f9fc",
+  bgGray: "#efefef",
   // Text Color
   textColor: "#191f28",
   subTextColor: "#868686",
