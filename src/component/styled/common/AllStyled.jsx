@@ -165,7 +165,7 @@ export const LiCircle = styled.li`
   &::before {
     position:absolute;
     left:0;
-    content:'\\22C5';
+    content:'※';
   }
   &.bold {
     font-weight:bold;

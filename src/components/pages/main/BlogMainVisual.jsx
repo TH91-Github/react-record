@@ -8,12 +8,17 @@ import { SvgCode, SvgGuide, SvgProfile, SvgRecord } from "assets/styles/SvgPath"
 import { useSelector } from "react-redux";
 import { targetScroll } from "utils/common";
 
+const colorsArr  = [colors.green,colors.yellow,colors.blue,colors.red];
+const VisualTIt = [
+  "TEXT, TEXT",
+  "TEXT, TEXT",
+  "TEXT"
+]
 function BlogMainVisual(){
   const isMobile = useSelector((state) => state.mobileChk);
   const [exceptionH, setExceptionH] = useState(0);
   const [activeIdx, setActiveIdx] = useState(0);
   const visualList = routerData.filter((item)=> item.title);
-  const colorsArr  = [colors.green,colors.yellow,colors.blue,colors.red];
   
   useEffect(()=>{
     const headerH = document.querySelector('.header').clientHeight;
@@ -36,9 +41,9 @@ function BlogMainVisual(){
       <VisualInner className="visual__inner">
         <VisualInfo className="visual__info">
           <VisualTextBox className="visual__info__box">
-            <p className="visual-tit">TEXT, TEXT</p>
-            <p className="visual-tit">TEXT, TEXT </p>
-            <p className="visual-tit">TEXT, TEXT </p>
+            {
+              VisualTIt.map((item, idx) => <p className="visual-tit ani-ini" key={idx}>{item}</p> )
+            }
           </VisualTextBox>
         </VisualInfo>
         <VisualCategory className="visual__category" >
@@ -70,7 +75,7 @@ function BlogMainVisual(){
             }
           </VisualCategoryLists>
         </VisualCategory>
-        <VisualMove className="visual__move">
+        <VisualMove className="visual__move ani-ini">
             {/* 바뀌는 텍스트 */}
             <p>{visualList[activeIdx].title} 미리보기 <SC.MotionLR>👉</SC.MotionLR></p>
             <VisualMoveBtn 
@@ -96,12 +101,10 @@ const BlogWrap = styled.div`
   width:100%;
   ${props => 
     props.$headerH 
-      ? `height: calc(100vh - ${props.$headerH}px)`
-      : 'height: 100vh'
+      ? `height: calc(100svh - ${props.$headerH}px)`
+      : 'height: 100svh'
   };
   min-height:600px;
-  border:1px solid green;
-  opacity:0;
   &.on {
     opacity:1;
       .visual__info__box {

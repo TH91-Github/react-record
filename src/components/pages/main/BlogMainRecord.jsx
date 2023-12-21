@@ -19,13 +19,13 @@ function BlogMainRecord(){
           </SC.SubTxt>
         </SC.TitleBox>
         <SC.BtnArticle $justifyConent="center">
-            <S.BlogLinkBtn $hoverBg={colors.blue}>
-              <span>
-                <S.BlogLinkIcon><Svglink></Svglink></S.BlogLinkIcon>
-                Record
-              </span> 
-            </S.BlogLinkBtn>
-          </SC.BtnArticle>
+          <S.BlogLinkBtn $hoverBg={colors.blue}>
+            <span>
+              <S.BlogLinkIcon><Svglink></Svglink></S.BlogLinkIcon>
+              Record
+            </span> 
+          </S.BlogLinkBtn>
+        </SC.BtnArticle>
       </SC.InnerStyle>
     </BlogWrap>
   )
