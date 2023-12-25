@@ -6,6 +6,9 @@ import { Svglink } from "assets/styles/SvgPath";
 import { TextUpLow } from "utils/textChk";
 
 const pointColor = colors.blue;
+// 메모
+// 한번 움직이고 나서 다시 아래에서 위로 올라오는 모션
+// src 1차 배경색을 보여준 이후 두번째는 동일한 배경색에 컬러색상을 강조
 const RecordList = [
   {
     title:"React",
