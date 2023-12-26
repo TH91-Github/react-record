@@ -53,7 +53,7 @@ function BlogMainVisual(){
                 <VisualCategoryItem 
                   onClick={() => itemClick(idx) }
                   key={idx} 
-                  className={`visual__item ${activeIdx === idx ? 'active' :''}`}>
+                  className={`visual__item ani-ini ${activeIdx === idx ? 'active' :''}`}>
                   <VisualCategoryBtn className="visual__item-btn">
                     <VisualCategoryIcon $bg={colorsArr[idx]} className="icon">
                       <CategoryIcon>
@@ -110,32 +110,32 @@ const BlogWrap = styled.div`
       .visual__info__box {
         & > p {
           &:nth-child(1){
-            ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
+            ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
           }
           &:nth-child(2){
-            ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
+            ${SC.animation(SC.fadeIn, 1, 'ease', .7)}
           }
           &:nth-child(3){
-            ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
+            ${SC.animation(SC.fadeIn, 1, 'ease', .8)}
           }
         }
       }
       .visual__item {
         &:nth-child(1){
-          ${SC.animation(SC.fadeIn('-x', 100), 1, 'ease', .5)}
+          ${SC.animation(SC.fadeIn('-x', 100), 1, 'ease', .8)}
         }
         &:nth-child(2){
-          ${SC.animation(SC.fadeIn('-x', 100), 1, 'ease', .4)}
+          ${SC.animation(SC.fadeIn('-x', 100), 1, 'ease', .7)}
         }
         &:nth-child(3){
-          ${SC.animation(SC.fadeIn('-x', 100), 1, 'ease', .3)}
+          ${SC.animation(SC.fadeIn('-x', 100), 1, 'ease', .6)}
         }
         &:nth-child(4){
-          ${SC.animation(SC.fadeIn('-x', 100), 1, 'ease', .2)}
+          ${SC.animation(SC.fadeIn('-x', 100), 1, 'ease', .5)}
         }
       }
       .visual__move {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
       }
   }
   ${media.mo} {

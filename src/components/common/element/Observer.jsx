@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useRef } from "react";
+import { React, useCallback, useEffect, useRef, useState } from "react";
 
-function Observer ({children, onClass, maintenance}) { // lazyload El , className , 관찰여부
+function Observer ({children, onClass, maintenance, percentage}) { // lazyload El , className , 관찰여부
   const el = useRef(null);
   const updateObserver = useCallback((entries, observer) => {
     entries.forEach((entry) => {
@@ -17,7 +17,7 @@ function Observer ({children, onClass, maintenance}) { // lazyload El , classNam
       const lazloadEl = [...el.current.children]; // lazyLoad 목록
       observer = new IntersectionObserver((updateObserver),{
         // 옵션 입력 
-        threshold: 0.1 // 20% 보였을 경우 실행
+        threshold: percentage??0.1 // 기본 값 10% 보였을 경우 실행
       });
       lazloadEl.forEach(item => {
         observer.observe(item);

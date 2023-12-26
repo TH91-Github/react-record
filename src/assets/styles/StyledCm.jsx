@@ -13,7 +13,25 @@ export const notice = css`
     content:'※';
   }
 `;
-
+/* icon
+자물쇠:"\f023";
+시계:"\f017";
+화살표⬆️:"\f062";
+오른쪽화살➡️:"\f061";
+따봉:"\f087";
+집:"\f015";
+체크:"\f00c";
+다운:"\f01a";
+재활용화살표:"\f021";
+스마일:"\f118";
+나쁜표정:"\f119";
+전화기:"\f095";
+링크:"\f0c6";
+별:"\f005";
+별2: "\f006";
+물방울:"\f043";
+*/
+// animation
 export const animation =(aniName, t,ttf,d,fm) => css`
   animation: ${aniName} ${t ? t : '1'}s ${ttf ? ttf :'ease'} ${d ? d : 0}s ${fm ? fm : 'both'};
 `;

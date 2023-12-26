@@ -1,49 +1,41 @@
 import styled from "styled-components";
 import * as SC from "assets/styles/StyledCm";
 import * as S from "./Styled";
-import { colors } from "assets/styles/Variable";
+import { colors, media } from "assets/styles/Variable";
 import { Svglink } from "assets/styles/SvgPath";
 import { TextUpLow } from "utils/textChk";
 
 const pointColor = colors.blue;
-// 메모
-// 한번 움직이고 나서 다시 아래에서 위로 올라오는 모션
-// src 1차 배경색을 보여준 이후 두번째는 동일한 배경색에 컬러색상을 강조
 const RecordList = [
   {
     title:"React",
-    src:"",
-    background:""
+    background:"rgba(54,54,54,.9)",
   },
   {
     title:"JS",
-    src:"",
-    background:""
+    background:"#f7df1e",
   },
   {
     title:"HTML",
-    src:"",
-    background:""
+    background:"rgba(221,75,37,.9)",
   },
   {
-    title:"CSS & SCSS",
-    src:"",
-    background:""
+    title:"SCSS",
+    background:"rgba(218,89,152,.9)",
   },
   {
     title:"GIT",
-    src:"",
-    background:""
+    background:"",
   },
 ];
 function BlogMainRecord(){
   return (
     <BlogWrap id="b-record">
       <SC.InnerStyle>
-        <RecordTextBox className="guide__text__box">
+        <RecordTextBox className="record__text__box ani-ini">
           <SC.TitleBox>
             <SC.Title className="tit ani-ini">
-              <CartegoryTit>Record</CartegoryTit> - JS, React, CSS 등 설명
+              <CartegoryTit>Record</CartegoryTit> - React, JS, SCSS 등 설명
             </SC.Title>
             <SC.SubTxt className="txt ani-ini">
               React, JS, CSS 등 간단한 설명과 함께 코드로 설명을 합니다.
@@ -58,16 +50,25 @@ function BlogMainRecord(){
             </S.BlogLinkBtn>
           </SC.BtnArticle>
         </RecordTextBox>
-        <RecordVisual>
+        <RecordVisual className="record__visual">
           {/* React git js css html */}
           {
             RecordList.map((item, idx) =>{
-              return <RecordItem className={`item ${TextUpLow(item.title,"lower")}`} key={idx}>
-                <span>{item.title}</span>
+              return <RecordItem 
+                $bg={item.background}
+                className={`record__visual-item ${TextUpLow(item.title,"lower")}`}
+                key={idx}>
+                <div className="box ani-ini">
+                  {item.title === "React" && (
+                    <ItemImg>
+                      <img src={process.env.PUBLIC_URL+'logo192.png'} alt="" />
+                    </ItemImg>
+                  )}
+                  <span className="tit">{item.title}</span>
+                </div>
               </RecordItem>
             })
           }
-          
         </RecordVisual>
       </SC.InnerStyle>
     </BlogWrap>
@@ -76,70 +77,197 @@ function BlogMainRecord(){
 
 export default BlogMainRecord;
 
-
 const BlogWrap = styled.div`
   position:relative;
   padding:250px 0;
-  border:1px solid pink;
+  text-align:center;
   &.on {
-    .guide__text__box {
+    .record__text__box {
+      ${SC.animation(SC.fadeIn, 1, 'ease', 1.7)}
       .tit {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .1)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', 1.8)}
       }
       .txt {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .2)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', 1.9)}
       }
       .link-btn {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', 2)}
+      }
+    }
+    .record__visual-item {
+      &.react .box{
+        ${SC.animation(SC.fadeIn('y',200), 1, 'ease', .7)}
+      }
+      &.js .box {
+        ${SC.animation(SC.fadeIn('y',250), 1.1, 'ease', .7)}
+      }
+      &.html .box {
+        ${SC.animation(SC.fadeIn('y',200), 1, 'ease', .6)}
+      }
+      &.scss .box {
+        ${SC.animation(SC.fadeIn('y',250), 1.2, 'ease', .5)}
+      }
+      &.git .box {
+        ${SC.animation(SC.fadeIn('y',200), 1, 'ease', .7)}
       }
     }
   }
 `;
 const RecordTextBox = styled.div`
+  display:inline-block;
   position:relative;
-  z-index:2;
-  padding: 0;
+  z-index:7;
+  ${media.pc}{
+    padding: 50px;
+    background:rgba(255,255,255,.9);
+    box-shadow:1px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  ${media.mo}{
+    padding:20px;
+  }
 `;
 
 const CartegoryTit = styled.strong`
   color:${pointColor};
 `;
-
 const RecordVisual = styled.div`
   position:absolute;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  border:1px solid green;
 `;
 const RecordItem = styled.div`
-  display:flex;
-  justify-content:center;
-  align-items:center;
   position:absolute;
+  top:50%;
+  left:50%;
   font-size:34px;
   font-weight:900;
   color:${colors.baseWhite};
-  &.react {
-    top:50%;
-    left:50%;
-    width:300px;
-    height:200px;
-    border:1px solid blue;
-    background:${pointColor};
-    transform: translate(-50%, -50%);
+  .box {
+    position:relative;
+    width:100%;
+    height:100%;
+    background:${props => props.$bg || '#fff'};
   }
-  &.js {
-    border:1px solid yellow;
+  ${media.pc}{
+    .tit {
+      position:absolute;
+    }
+    &.react {
+      z-index:4;
+      width:300px;
+      height:300px;
+      transform: translate(-50%, -50%);
+      .box {
+        display:flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items:center;
+        .tit{
+          position:relative;
+        }  
+      }
+    }
+    &.js {
+      z-index:3;
+      width:380px;
+      height:280px;
+      color:#000;
+      transform: translate(-24%, -25%);
+      .tit {
+        bottom:10px;
+        right:10px;
+        font-size:48px;
+      }
+    }
+    &.html {
+      z-index:2;
+      width:350px;
+      height:200px;
+      transform: translate(-94%, -100%);
+      .tit {
+        top:30px;
+        left:30px;
+        font-size:42px;
+        color:#000;
+      }
+    }
+    &.scss{
+      z-index:5;
+      width:300px;
+      height:210px;
+      transform: translate(-100%, 30%);
+      .tit{
+        left:60px;
+        bottom:40px;
+        font-size:32px;
+      }
+    }
+    &.git {
+      width:360px;
+      height:230px;
+      transform: translate(-13%, -114%);
+      .box {
+        border:1px solid #000;
+      }
+      .tit {
+        top:15%;
+        right:29%;
+        font-size:48px;
+        color:#000;
+      }
+    }
   }
-  &.html {
-    border:1px solid red;
+  
+  ${media.mo}{
+    .box {
+      display:flex;
+      flex-direction: column;
+      justify-content:center;
+      align-items:center;
+      width:80px;
+      height:80px;
+    }
+    .tit{
+      font-size:21px;
+    }
+    &.react{
+      transform: translate(74%, -200%);
+    }
+    &.js{
+      transform: translate(20%, 177%);
+      .tit{
+        color:#000;
+      }
+    }
+    &.html{
+      transform: translate(-180%, -250%);
+      .tit{
+      }
+    }
+    &.scss{
+      transform: translate(-160%, 150%);
+      .tit{
+      }
+    }
+    &.git{
+      transform: translate(120%, 0%);
+      .box{
+        border:1px solid #000;
+      }
+      .tit{
+        color:#000;
+      }
+    }
   }
-  &[class*='css']{
-    border:1px solid aqua;
-  }
-  &.git {
-    border:1px solid black;
+`;
+const ItemImg = styled.span`
+  display:inline-block;
+  width:35px;
+  height:35px;
+  & > img {
+    width:100%;
+    max-width:100%;
   }
 `;

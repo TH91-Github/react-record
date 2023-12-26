@@ -64,13 +64,13 @@ const BlogWrap = styled.div`
   &.on {
     .profile__text__box {
       .tit {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .1)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
       }
       .txt {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .2)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
       }
       .link-btn {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
       }
     }
     .profile__list{
@@ -80,16 +80,16 @@ const BlogWrap = styled.div`
     }
     .profile__list-li{
       &:nth-child(1) {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .1)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
       }
       &:nth-child(2) {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .2)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
       }
       &:nth-child(3) {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
       }
       &:nth-child(4) {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .7)}
       }
     }
   }

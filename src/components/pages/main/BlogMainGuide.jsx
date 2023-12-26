@@ -8,7 +8,6 @@ const pointColor = colors.yellow;
 const colorPalette = ["#FEF1AB","#FFE070", "#FCBD47", "#FDCA2D","#F5B800"];
  
 function BlogMainGuide(){
-  console.log(colorPalette)
   return (
     <BlogWrap id="b-guide">
       <SC.InnerStyle>
@@ -47,7 +46,9 @@ function BlogMainGuide(){
             }
           </GuideColors>
           <div>
-            <Colordesc className="guide__colors-notice ani-ini"> EX) colors.yellow : {pointColor} &#8251; </Colordesc>
+            <Colordesc className="guide__colors-notice ani-ini">
+              EX) colors.yellow : {pointColor} &#8251;
+            </Colordesc>
           </div>
         </GuideVisual>
       </SC.InnerStyle>
@@ -57,38 +58,38 @@ function BlogMainGuide(){
 export default BlogMainGuide;
 
 const BlogWrap = styled.div`
-  padding:50px 0;
+  padding:100px 0;
   &.on {
     .guide__text__box {
       .tit {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .1)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
       }
       .txt {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .2)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
       }
       .link-btn {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
       }
     }
     .guide__colors-item{
       &:nth-child(1){
-        ${SC.animation(SC.fadeIn, 1, 'ease', .1)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
       }
       &:nth-child(2){
-        ${SC.animation(SC.fadeIn, 1.1, 'ease', .2)}
+        ${SC.animation(SC.fadeIn, 1.1, 'ease', .5)}
       }
       &:nth-child(3){
-        ${SC.animation(SC.fadeIn, 1.2, 'ease', .3)}
+        ${SC.animation(SC.fadeIn, 1.2, 'ease', .6)}
       }
       &:nth-child(4){
-        ${SC.animation(SC.fadeIn, 1.3, 'ease', .4)}
+        ${SC.animation(SC.fadeIn, 1.3, 'ease', .7)}
       }
       &:nth-child(5){
-        ${SC.animation(SC.fadeIn, 1.4, 'ease', .5)}
+        ${SC.animation(SC.fadeIn, 1.4, 'ease', .8)}
       }
     }
     .guide__colors-notice {
-      ${SC.animation(SC.fadeIn, 1.4, 'ease', .6)}
+      ${SC.animation(SC.fadeIn, 1.4, 'ease', .9)}
     }
   }
 `;

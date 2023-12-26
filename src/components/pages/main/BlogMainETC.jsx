@@ -35,7 +35,7 @@ function BlogMainETC(){
 export default BlogMainETC;
 
 const BlogWrap = styled.div`
-  padding:50px 0;
+  padding:100px 0;
   border:1px solid green;
 `;
 const CartegoryTit = styled.strong`

@@ -8,7 +8,7 @@ import BlogMainRecord from "./BlogMainRecord";
 function BlogMain(){
   return (
     <div className="blog">
-      <Observer >
+      <Observer maintenance={false} percentage={0.2}>
         <BlogMainVisual />
         <BlogMainProfile />
         <BlogMainGuide />
