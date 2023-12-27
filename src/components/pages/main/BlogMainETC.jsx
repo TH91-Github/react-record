@@ -5,23 +5,21 @@ import { colors } from "assets/styles/Variable";
 import { Svglink } from "assets/styles/SvgPath";
 
 const pointColor = colors.red;
-
 function BlogMainETC(){
-  
   return (
     <BlogWrap id="b-etc">
       <SC.InnerStyle>
         <div className="etc__text__box">
           <SC.TitleBox>
-            <SC.Title className="tit">
+            <SC.Title className="tit ani-ini">
               <CartegoryTit>E.T.C</CartegoryTit> - Style, Component 등
             </SC.Title>
-            <SC.SubTxt className="txt">
+            <SC.SubTxt className="txt ani-ini">
               React, JS 등 간단한 예제, 샘플용을 만들어 테스트 및 기능 구현 설명을 샘플을 보여주어 이해를 돕기 위한 화면
             </SC.SubTxt>
           </SC.TitleBox>
           <SC.BtnArticle $justifyConent="center">
-            <S.BlogLinkBtn $hoverBg={pointColor}>
+            <S.BlogLinkBtn $hoverBg={pointColor} className="link-btn ani-ini">
               <span>
                 <S.BlogLinkIcon><Svglink></Svglink></S.BlogLinkIcon>
                 ETC
@@ -29,7 +27,7 @@ function BlogMainETC(){
             </S.BlogLinkBtn>
           </SC.BtnArticle>
         </div>
-        <EtcVisual>
+        <EtcVisual className="etc__effect ani-ini">
           <EtcItem className="effect-1">
             <LineWrap>
                 <LineTit><span>SAMPLE</span></LineTit>
@@ -63,7 +61,6 @@ function BlogMainETC(){
                     key={idx}>
                     {item}
                   </BarItem>
-
                 )
               }
             </SampleBar>
@@ -79,6 +76,22 @@ export default BlogMainETC;
 const BlogWrap = styled.div`
   overflow:hidden;
   padding:100px 0;
+  &.on {
+    .etc__text__box {
+      .tit {
+        ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
+      }
+      .txt {
+        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
+      }
+      .link-btn {
+        ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
+      }
+    }
+    .etc__effect {
+      ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
+    }
+  }
 `;
 const CartegoryTit = styled.strong`
   color:${pointColor};

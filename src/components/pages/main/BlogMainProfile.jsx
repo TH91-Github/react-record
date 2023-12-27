@@ -30,7 +30,7 @@ function BlogMainProfile(){
             </S.BlogLinkBtn>
           </SC.BtnArticle>
         </ProfileTextBox>
-        <ProfileInfoBox className="profile__info">
+        <ProfileVisual className="profile__info">
           <SquareList className="profile__list">
             {
               profileData.map((item, idx) => {
@@ -48,7 +48,7 @@ function BlogMainProfile(){
               })
             }
           </SquareList>
-        </ProfileInfoBox>
+        </ProfileVisual>
       </ProfileInner>
       
     </BlogWrap>
@@ -64,13 +64,13 @@ const BlogWrap = styled.div`
   &.on {
     .profile__text__box {
       .tit {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
       }
       .txt {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
       }
       .link-btn {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
       }
     }
     .profile__list{
@@ -80,16 +80,16 @@ const BlogWrap = styled.div`
     }
     .profile__list-li{
       &:nth-child(1) {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
       }
       &:nth-child(2) {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
       }
       &:nth-child(3) {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
       }
       &:nth-child(4) {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .7)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
       }
     }
   }
@@ -118,7 +118,8 @@ const ProfileTextBox = styled.div`
 const CartegoryTit = styled.strong`
   color:${pointColor};
 `;
-const ProfileInfoBox = styled.div`
+
+const ProfileVisual = styled.div`
   margin-top:30px;
   ${media.pc}{
     display:flex;

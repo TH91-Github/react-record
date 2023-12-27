@@ -3,35 +3,23 @@ import * as SC from "assets/styles/StyledCm";
 import * as S from "./Styled";
 import { colors, media } from "assets/styles/Variable";
 import { Svglink } from "assets/styles/SvgPath";
-import { TextUpLow } from "utils/textChk";
+import CodeTemplate from "components/common/element/CodeTemplate";
 
 const pointColor = colors.blue;
-const RecordList = [
-  {
-    title:"React",
-    background:"rgba(54,54,54,.9)",
-  },
-  {
-    title:"JS",
-    background:"#f7df1e",
-  },
-  {
-    title:"HTML",
-    background:"rgba(221,75,37,.9)",
-  },
-  {
-    title:"SCSS",
-    background:"rgba(218,89,152,.9)",
-  },
-  {
-    title:"MEMO",
-    background:"",
-  },
-];
+const textList = ["Blog와 같이 여러 가지 기술을","기록하고 찾아볼 수 있도록 제작.","타이틀 내용을 직접 입력 후","Github 업로드 후 데이터를 활용하기 위함."]
+const testCode =` function App() {
+    return (
+      <div className="App">
+        TEST
+      </div>
+    )
+  }`;
+
+
 function BlogMainRecord(){
   return (
     <BlogWrap id="b-record">
-      <SC.InnerStyle>
+      <RecordInner>
         <RecordTextBox className="record__text__box ani-ini">
           <SC.TitleBox>
             <SC.Title className="tit ani-ini">
@@ -51,26 +39,27 @@ function BlogMainRecord(){
           </SC.BtnArticle>
         </RecordTextBox>
         <RecordVisual className="record__visual">
-          {/* React js css html */}
-          {
-            RecordList.map((item, idx) =>{
-              return <RecordItem 
-                $bg={item.background}
-                className={`record__visual-item ${TextUpLow(item.title,"lower")}`}
-                key={idx}>
-                <div className="box ani-ini">
-                  {item.title === "React" && (
-                    <ItemImg>
-                      <img src={process.env.PUBLIC_URL+'logo192.png'} alt="" />
-                    </ItemImg>
-                  )}
-                  <span className="tit">{item.title}</span>
-                </div>
-              </RecordItem>
-            })
-          }
+          <Detail className="record__detail ani-ini">
+            <DetailInner className="record__detail__inner">
+              <DetailHeader className="record__header">
+                <HeaderIcon><img src={process.env.PUBLIC_URL+'logo192.png'} alt="" /></HeaderIcon>
+                <HeaderTit>Record Page</HeaderTit>
+              </DetailHeader>
+              <DetailBody className="record__body">
+                <Tit>📍Record</Tit>
+                {
+                  textList.map((text,idx)=>
+                    <Txt key={idx}>{text}</Txt>
+                  )
+                }
+                <CodeBox>
+                  <CodeTemplate text={testCode}/>
+                </CodeBox>
+              </DetailBody>
+            </DetailInner>
+          </Detail>
         </RecordVisual>
-      </SC.InnerStyle>
+      </RecordInner>
     </BlogWrap>
   )
 }
@@ -80,194 +69,166 @@ export default BlogMainRecord;
 const BlogWrap = styled.div`
   overflow:hidden;
   position:relative;
-  padding:250px 0;
-  text-align:center;
+  padding:100px 0;
   &.on {
     .record__text__box {
-      ${SC.animation(SC.fadeIn, 1, 'ease', 1.5)}
+      ${SC.animation(SC.fadeIn, 1, 'ease', 0.3)}
       .tit {
-        ${SC.animation(SC.fadeIn, 1, 'ease', 1.6)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', 0.4)}
       }
       .txt {
-        ${SC.animation(SC.fadeIn, 1, 'ease', 1.7)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', 0.5)}
       }
       .link-btn {
-        ${SC.animation(SC.fadeIn, 1, 'ease', 1.8)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', 0.6)}
       }
     }
-    .record__visual-item {
-      &.react .box{
-        ${SC.animation(SC.fadeIn('y',200), 1, 'ease', .7)}
+    .record__detail{
+      ${SC.animation(SC.fadeIn('x'), 1, 'ease', 0.6)}
+      ${media.mo}{
+        ${SC.animation(SC.fadeIn, 1, 'ease', 0.6)}
       }
-      &.js .box {
-        ${SC.animation(SC.fadeIn('y',250), 1.1, 'ease', .7)}
-      }
-      &.html .box {
-        ${SC.animation(SC.fadeIn('y',200), 1, 'ease', .6)}
-      }
-      &.scss .box {
-        ${SC.animation(SC.fadeIn('y',250), 1.2, 'ease', .5)}
-      }
-      &.memo .box {
-        ${SC.animation(SC.fadeIn('y',200), 1, 'ease', .7)}
-      }
+    }
+    
+  }
+`;
+const RecordInner = styled(SC.InnerStyle)`
+  display:flex;
+  height:100%;
+  ${media.mo}{
+    flex-direction: column;
+    & > div { 
+      width:100%;
     }
   }
 `;
 const RecordTextBox = styled.div`
-  display:inline-block;
-  position:relative;
-  z-index:7;
-  ${media.pc}{
-    padding: 50px;
-    background:rgba(255,255,255,.9);
-    box-shadow:1px 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  ${media.mo}{
-    padding:20px;
-  }
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  width:40%;
 `;
 const CartegoryTit = styled.strong`
   color:${pointColor};
 `;
 const RecordVisual = styled.div`
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  display:flex;
+  justify-content:center;
+  margin-top:20px;
+  ${media.pc}{
+    width:60%;
+    margin-top:0px;
+  }
 `;
-const RecordItem = styled.div`
-  position:absolute;
-  top:50%;
-  left:50%;
-  font-size:34px;
-  font-weight:900;
-  color:${colors.baseWhite};
-  .box {
-    position:relative;
+const Detail = styled.div`
+  position: relative;
+  transform: skewX(-1deg);
+  &::before {
+    positioN:absolute;
+    top:50%;
+    left:50%;
     width:100%;
     height:100%;
-    background:${props => props.$bg || '#fff'};
+    background:${colors.baseWhite};
+    transform: translate(-25%, -50%) scale(0.7);
+    box-shadow:3px 3px 5px rgba(0, 0, 0, 0.3);
+    content:"";
   }
-  ${media.pc}{
-    .tit {
-      position:absolute;
-    }
-    &.react {
-      z-index:4;
-      width:300px;
-      height:300px;
-      transform: translate(-50%, -50%);
-      .box {
-        display:flex;
-        flex-direction: column;
-        justify-content:center;
-        align-items:center;
-        .tit{
-          position:relative;
-        }  
-      }
-    }
-    &.js {
-      z-index:3;
-      width:380px;
-      height:280px;
-      color:#000;
-      transform: translate(-24%, -25%);
-      .tit {
-        bottom:10px;
-        right:10px;
-        font-size:48px;
-      }
-    }
-    &.html {
-      z-index:2;
-      width:350px;
-      height:200px;
-      transform: translate(-94%, -100%);
-      .tit {
-        top:30px;
-        left:30px;
-        font-size:42px;
-        color:#000;
-      }
-    }
-    &.scss{
-      z-index:5;
-      width:300px;
-      height:210px;
-      transform: translate(-100%, 30%);
-      .tit{
-        left:60px;
-        bottom:40px;
-        font-size:32px;
-      }
-    }
-    &.memo {
-      width:360px;
-      height:230px;
-      transform: translate(-13%, -114%);
-      .box {
-        border:1px solid #000;
-      }
-      .tit {
-        top:15%;
-        right:12%;
-        font-size:36px;
-        color:#000;
-      }
-    }
+  &::after {
+    positioN:absolute;
+    top:50%;
+    left:50%;
+    width:100%;
+    height:100%;
+    background:${pointColor};
+    transform: translate(-40%, -50%) scale(0.9);
+    box-shadow:3px 3px 5px rgba(0, 0, 0, 0.3);
+    content:"";
   }
-  
   ${media.mo}{
-    .box {
-      display:flex;
-      flex-direction: column;
-      justify-content:center;
-      align-items:center;
-      width:80px;
-      height:80px;
+    &::before{
+      transform: translate(-50%, -25%) scale(0.7);
     }
-    .tit{
-      font-size:21px;
-    }
-    &.react{
-      transform: translate(74%, -200%);
-    }
-    &.js{
-      transform: translate(-50%, 177%);
-      .tit{
-        color:#000;
-      }
-    }
-    &.html{
-      transform: translate(-180%, -250%);
-      .tit{
-      }
-    }
-    &.scss{
-      transform: translate(-197%, 150%);
-      .tit{
-      }
-    }
-    &.memo{
-      transform: translate(110%, 124%);
-      .box{
-        border:1px solid #000;
-      }
-      .tit{
-        color:#000;
-      }
+    &::after{
+      transform: translate(-50%, -40%) scale(0.9);
     }
   }
 `;
-const ItemImg = styled.span`
+const DetailInner = styled.div`
+  position:relative;
+  z-index:2;
+  width:300px;
+  min-height:200px;
+  padding:10px 20px;
+  background:#343434;
+  box-shadow:3px 3px 5px rgba(0, 0, 0, 0.1);
+`;
+
+const DetailHeader = styled.div`
+  display:flex;
+  align-items:center;
+  gap:10px;
+  position:relative;
+  padding-bottom:10px;
+  &::after{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:2px;
+    background:${pointColor};
+    content:"";
+  }
+`;
+const HeaderIcon = styled.span`
   display:inline-block;
   width:35px;
   height:35px;
+  animation:iconAni 4s infinite linear;
   & > img {
     width:100%;
     max-width:100%;
+  }
+  @keyframes iconAni {
+    0%{
+      transform:rotate(0deg);
+    }
+    100%{
+      transform:rotate(360deg);
+    }
+  }
+`;
+const HeaderTit = styled.p`
+  font-size:18px;
+  font-weight:800;
+  color:${colors.baseWhite};
+`;
+const DetailBody = styled.div`
+  padding:10px;
+`;
+const Tit = styled.p`
+  font-weight:700;
+  color:#fff;
+`;
+const Txt = styled.p`
+  font-size:14px;
+  color:#fff;
+  margin-top:5px;
+`;
+
+// codeTemplate inline styled - !important로 수정
+const CodeBox = styled.div`
+  margin-top:10px;
+  .codeWrap{
+    margin:0;
+    &>span{
+      &>code{
+        padding:2px !important;
+        &>span{
+          min-width: auto !important;
+          padding-right:2px !important;
+        }
+      }
+    }
   }
 `;

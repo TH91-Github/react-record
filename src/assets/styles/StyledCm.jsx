@@ -24,7 +24,7 @@ export const fadeIn = (xy, num) => keyframes`
     transform: ${
       xy === '-x'
       ? `translateX(${num ? num*-1 : -50}px)`
-      : xy === '-x'
+      : xy === 'x'
       ? `translateX(${num ? num : 50}px)`
       : xy === '-y'
       ? `translateY(${num ? num*-1 : -50}px)`

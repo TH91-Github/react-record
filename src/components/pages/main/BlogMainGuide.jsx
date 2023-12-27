@@ -17,7 +17,7 @@ function BlogMainGuide(){
               <CartegoryTit>Guide</CartegoryTit> - Style, Component 등
             </SC.Title>
             <SC.SubTxt className="txt ani-ini">
-              Color, Font, BreakPoint, Tab, Slide 등 스타일과 컴포넌트<br className="pc-br" /> 가이드를 만들어 재사용에 편함을 제공
+              Color, Font, BreakPoint, Tab, Slide 등 스타일과 컴포넌트<br className="pc-br" /> 가이드를 만들어 작업자에게 가이드 라인 제공
             </SC.SubTxt>
           </SC.TitleBox>
           <SC.BtnArticle $justifyConent="center">
@@ -62,34 +62,34 @@ const BlogWrap = styled.div`
   &.on {
     .guide__text__box {
       .tit {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
       }
       .txt {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
       }
       .link-btn {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .5)}
       }
     }
     .guide__colors-item{
       &:nth-child(1){
-        ${SC.animation(SC.fadeIn, 1, 'ease', .4)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', .3)}
       }
       &:nth-child(2){
-        ${SC.animation(SC.fadeIn, 1.1, 'ease', .5)}
+        ${SC.animation(SC.fadeIn, 1.1, 'ease', .4)}
       }
       &:nth-child(3){
-        ${SC.animation(SC.fadeIn, 1.2, 'ease', .6)}
+        ${SC.animation(SC.fadeIn, 1.2, 'ease', .5)}
       }
       &:nth-child(4){
-        ${SC.animation(SC.fadeIn, 1.3, 'ease', .7)}
+        ${SC.animation(SC.fadeIn, 1.3, 'ease', .6)}
       }
       &:nth-child(5){
-        ${SC.animation(SC.fadeIn, 1.4, 'ease', .8)}
+        ${SC.animation(SC.fadeIn, 1.4, 'ease', .7)}
       }
     }
     .guide__colors-notice {
-      ${SC.animation(SC.fadeIn, 1.4, 'ease', .9)}
+      ${SC.animation(SC.fadeIn, 1.4, 'ease', .8)}
     }
   }
 `;
