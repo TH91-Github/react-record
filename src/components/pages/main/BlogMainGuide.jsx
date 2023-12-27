@@ -92,6 +92,9 @@ const BlogWrap = styled.div`
       ${SC.animation(SC.fadeIn, 1.4, 'ease', .8)}
     }
   }
+  ${media.mo}{
+    padding: 50px 0;
+  }
 `;
 const GuideTextBox = styled.div`
   position:relative;

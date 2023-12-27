@@ -89,7 +89,9 @@ const BlogWrap = styled.div`
         ${SC.animation(SC.fadeIn, 1, 'ease', 0.6)}
       }
     }
-    
+  }
+  ${media.mo}{
+    padding: 50px 0;
   }
 `;
 const RecordInner = styled(SC.InnerStyle)`

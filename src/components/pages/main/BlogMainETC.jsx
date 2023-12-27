@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import * as SC from "assets/styles/StyledCm";
 import * as S from "./Styled";
-import { colors } from "assets/styles/Variable";
+import { colors, media } from "assets/styles/Variable";
 import { Svglink } from "assets/styles/SvgPath";
 
 const pointColor = colors.red;
@@ -91,6 +91,9 @@ const BlogWrap = styled.div`
     .etc__effect {
       ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
     }
+  }
+  ${media.mo}{
+    padding: 50px 0;
   }
 `;
 const CartegoryTit = styled.strong`

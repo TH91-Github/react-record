@@ -32,8 +32,8 @@ function BlogMainVisual(){
   }
   const idTargetScroll = (idx) => {
     const targetId = document.getElementById(`b-${visualList[idx].path}`);
-    console.log(targetId)
-    targetScroll(targetId);
+    const targetPadding = (parseInt(getComputedStyle(targetId).paddingTop))/2;
+    targetScroll(targetId, targetPadding);
   }
 
   return (

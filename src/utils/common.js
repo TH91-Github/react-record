@@ -8,11 +8,12 @@ export const isMobileChk = () => { // 모바일 사이즈 체크
   : moChk = true;
   return moChk;
 }
-export const targetScroll = (target) => { // 타겟 scroll
-  console.log(target)
+export const targetScroll = (target, addNum) => { // 타겟 scroll
   const targetTop = window.scrollY + target.getBoundingClientRect().top;
+  const correction = addNum ?? 0;
+  console.log(correction)
   // const headerH = document.querySelector('.header').offsetHeight 
-  window.scrollTo({top: targetTop - 60, behavior: 'smooth'});
+  window.scrollTo({top: targetTop - 60 + correction, behavior: 'smooth'});
 }
 export function ranDomId(listData, name){ // id 랜덤으로 생성
   const firstName = name ?? "random"
