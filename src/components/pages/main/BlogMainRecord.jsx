@@ -24,7 +24,7 @@ const RecordList = [
     background:"rgba(218,89,152,.9)",
   },
   {
-    title:"GIT",
+    title:"MEMO",
     background:"",
   },
 ];
@@ -51,7 +51,7 @@ function BlogMainRecord(){
           </SC.BtnArticle>
         </RecordTextBox>
         <RecordVisual className="record__visual">
-          {/* React git js css html */}
+          {/* React js css html */}
           {
             RecordList.map((item, idx) =>{
               return <RecordItem 
@@ -78,20 +78,21 @@ function BlogMainRecord(){
 export default BlogMainRecord;
 
 const BlogWrap = styled.div`
+  overflow:hidden;
   position:relative;
   padding:250px 0;
   text-align:center;
   &.on {
     .record__text__box {
-      ${SC.animation(SC.fadeIn, 1, 'ease', 1.7)}
+      ${SC.animation(SC.fadeIn, 1, 'ease', 1.5)}
       .tit {
-        ${SC.animation(SC.fadeIn, 1, 'ease', 1.8)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', 1.6)}
       }
       .txt {
-        ${SC.animation(SC.fadeIn, 1, 'ease', 1.9)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', 1.7)}
       }
       .link-btn {
-        ${SC.animation(SC.fadeIn, 1, 'ease', 2)}
+        ${SC.animation(SC.fadeIn, 1, 'ease', 1.8)}
       }
     }
     .record__visual-item {
@@ -107,7 +108,7 @@ const BlogWrap = styled.div`
       &.scss .box {
         ${SC.animation(SC.fadeIn('y',250), 1.2, 'ease', .5)}
       }
-      &.git .box {
+      &.memo .box {
         ${SC.animation(SC.fadeIn('y',200), 1, 'ease', .7)}
       }
     }
@@ -126,7 +127,6 @@ const RecordTextBox = styled.div`
     padding:20px;
   }
 `;
-
 const CartegoryTit = styled.strong`
   color:${pointColor};
 `;
@@ -204,7 +204,7 @@ const RecordItem = styled.div`
         font-size:32px;
       }
     }
-    &.git {
+    &.memo {
       width:360px;
       height:230px;
       transform: translate(-13%, -114%);
@@ -213,8 +213,8 @@ const RecordItem = styled.div`
       }
       .tit {
         top:15%;
-        right:29%;
-        font-size:48px;
+        right:12%;
+        font-size:36px;
         color:#000;
       }
     }
@@ -236,7 +236,7 @@ const RecordItem = styled.div`
       transform: translate(74%, -200%);
     }
     &.js{
-      transform: translate(20%, 177%);
+      transform: translate(-50%, 177%);
       .tit{
         color:#000;
       }
@@ -247,12 +247,12 @@ const RecordItem = styled.div`
       }
     }
     &.scss{
-      transform: translate(-160%, 150%);
+      transform: translate(-197%, 150%);
       .tit{
       }
     }
-    &.git{
-      transform: translate(120%, 0%);
+    &.memo{
+      transform: translate(110%, 124%);
       .box{
         border:1px solid #000;
       }
