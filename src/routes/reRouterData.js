@@ -14,7 +14,7 @@ import ProfileMain from 'components/pages/profile/ProfileMain';
 import RecordMain from 'components/pages/record/RecordMain';
 
 export const routerData = [
-  { // Main 쳇 페이지 임시 프로필로 
+  { // Main
     index: true,
     element: <BlogMain />
   },
