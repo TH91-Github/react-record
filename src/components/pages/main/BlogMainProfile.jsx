@@ -59,8 +59,7 @@ export default BlogMainProfile;
 
 const BlogWrap = styled.div`
   position:relative;
-  height:100vh;
-  min-height:700px;
+  height:700px;
   &.on {
     .profile__text__box {
       .tit {
