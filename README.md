@@ -23,7 +23,6 @@ https://react-record.vercel.app/
 <span><img src="https://img.shields.io/badge/JavaScript-f7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white" alt="JavaScript" /></span>
 <span><img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jQuery&logoColor=white" alt="jQuery" /></span>
 <span><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub" /></span>
-<span><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub" /></span>
 <span>웹표준,웹접근성</span>
 
 <br><br>
