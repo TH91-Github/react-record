@@ -10,13 +10,11 @@ github를 통해 기록하고 공유하기 위해 React로 시작을 했습니�
 </p>
 <br>
 
-###  🔗
-🚧 준비중...<br>
-🎈Netlify<br>
-https://th-record-blog.netlify.app/<br>
-🎈Vercel<br>
-https://react-record.vercel.app/
+<hr />
+###  🔗 https://react-record.vercel.app/
+🚧 작업중...<br>
 
+<hr />
 ### Stack 📕
 <span><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white" alt="HTML5" /></span>
 <span><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white" alt="CSS3" /></span>
@@ -36,26 +34,32 @@ https://react-record.vercel.app/
 <span><img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white" alt="React" /></span>
 <span><img src="https://img.shields.io/badge/Vue-4FC08D?style=for-the-badge&logo=Vue&logoColor=white" alt="Vue" /></span>
 
+<hr />
+
 ### 목표&계획 🚩
 꾸준한 관리
 - React & Vue 개인 기록, 블로그
 - 포트폴리오(portfolio)
 - guide 생성
-- todolist 처음부터 완성까지 설명 및 작성
-- 슬라이드, 탭, 스크롤 기능 컴포넌트
+- 슬라이드, 탭, 스크롤 등 기능 컴포넌트 제작 안내
 - 만들어 놓은 기능별 페이지 소개 제작
+  
+<hr />
 
 #### 사용 목적으로도 만들기
 - 타입별 가격대 비교 
 - op.gg
 - . . .
-
+  
+<hr />
 
 ### 기록
 <p>github, velog, naver blog</p>
 <a href="https://github.com/TH91-Github"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" alt="" /></a>
 <a href="https://velog.io/@th_velog"><img src="https://img.shields.io/badge/Velog-20C997?style=for-the-badge&logo=Velog&logoColor=white" alt="" /></a>
 <a href="https://blog.naver.com/k__taehoon__"><img src="https://img.shields.io/badge/Naver-03C75A?style=for-the-badge&logo=Naver&logoColor=white" alt="" /></a>
+
+<hr />
 
 ## 참고
 node 14.21.0 
