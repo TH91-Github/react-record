@@ -17,19 +17,18 @@ https://th-record-blog.netlify.app/<br>
 🎈Vercel<br>
 https://react-record.vercel.app/
 
-
 ### Stack 📕
 <span><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white" alt="HTML5" /></span>
 <span><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white" alt="CSS3" /></span>
 <span><img src="https://img.shields.io/badge/JavaScript-f7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white" alt="JavaScript" /></span>
 <span><img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jQuery&logoColor=white" alt="jQuery" /></span>
 <span><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub" /></span>
+<span><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub" /></span>
 <span>웹표준,웹접근성</span>
 
 <br><br>
 ### 디자인툴 📘
 <span><img src="https://img.shields.io/badge/Adobe Photoshop-31A8FF?style=for-the-badge&logo=Adobe Photoshop&logoColor=white" alt="Photoshop" /></span>
-<span><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub" /></span>
 <span><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma" /></span>
 <span>제플린(Zeplin)</span>
 
