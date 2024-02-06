@@ -17,8 +17,13 @@ export const targetScroll = (target, addNum) => { // 타겟 scroll
 }
 export function ranDomId(listData, name){ // id 랜덤으로 생성
   const firstName = name ?? "random"
-  let listIdData = listData.map((item)=> {
-    const idOption = { id : ranDom(9999, firstName)}
+    let listIdData = listData.map((item)=> {
+    let idOption = '';
+    for(let idNum = 0 ; idNum < 1; idNum++){
+      idOption = { id : ranDom(9999, firstName)}
+      // 중복 된 id가 나올 경우 다시 랜덤 
+      listData.findIndex((idItem) => idItem.id === idOption.id) >= 0 && idNum--;
+    }
     return item.id === undefined ? {...idOption, ...item} : item
   })
   return listIdData; 
