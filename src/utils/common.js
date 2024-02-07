@@ -15,12 +15,12 @@ export const targetScroll = (target, addNum) => { // 타겟 scroll
   // const headerH = document.querySelector('.header').offsetHeight 
   window.scrollTo({top: targetTop - 60 + correction, behavior: 'smooth'});
 }
-export function ranDomId(listData, name){ // id 랜덤으로 생성
+export function randomListId(listData, name){ // 리스트 id 없는 값 id 랜덤으로 생성
   const firstName = name ?? "random"
   let listIdData = listData.map((item)=> {
     let idOption = undefined;
     for(let idNum = 0 ; idNum < 1; idNum++){
-      let newId = { id : ranDom(9999, firstName)}
+      let newId = { id : randomNum(9999, firstName)}
       // 중복 된 id가 나올 경우 다시 랜덤 
       listData.findIndex((idItem) => idItem.id === newId.id) >= 0 && idNum--;
       idOption = newId;
@@ -29,13 +29,15 @@ export function ranDomId(listData, name){ // id 랜덤으로 생성
   })
   return listIdData; 
 }
-export const ranDom = (_max, name, firstNum) => { // 랜덤 값 (최대 값, 이름지정_랜덤 값)
-  let newId =  Math.floor(_max === undefined
-    ? Math.random() * 2000
-    : Math.random() * Number(_max + 1)
-  );
-  if(name !== undefined ) newId = `${name}_${newId}`;
-  return newId;
+export function randomIdChk (listId, name) { // (비교리스트, 지정id값) 리스트 내 id 비교 중복 값 없는 id 지정
+  const idName = name ?? "random"
+  let uniqueId = '';
+  for(let idNum = 0 ; idNum < 1; idNum++){
+    let createId = { id : randomNum(9999, idName)}
+    listId.findIndex((idItem) => idItem.id === createId.id) >= 0 && idNum--;
+    uniqueId = createId.id;
+  }
+  return uniqueId;
 }
 export function TextBr (text) {  // br 태그 삽입 삭제 예정 textChk로 이동
   if(!text) return;

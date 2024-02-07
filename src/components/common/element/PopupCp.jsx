@@ -4,13 +4,13 @@ import { tColors } from "components/ux_th/styled/StyledTH";
 import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components"
 
-export default function ThPopup({ children, popupOn, ...props }){
+export default function ThPopup({ children, popupState, popupSet, ...props }){
   const [beforeY, setBeforeY] = useState(0);
   const popupClosed = () => { // 닫기
     mobileScrollOff(false);
-    popupOn(false)
+    popupSet(false)
   }
-  const mobileScrollOff = useCallback((chkOnOff)=>{
+  const mobileScrollOff = useCallback((chkOnOff)=>{ // 스크롤 막기
     const body = document.body;
     if(chkOnOff){
       setBeforeY(window.pageYOffset);
@@ -21,9 +21,12 @@ export default function ThPopup({ children, popupOn, ...props }){
       window.scrollTo({top:beforeY, behavior: 'instant'});
     }
   },[beforeY])
-  useEffect(()=>{
-    mobileScrollOff(true);
-  },[mobileScrollOff])
+
+  useEffect(()=>{ 
+    popupState
+    ? mobileScrollOff(true)
+    : mobileScrollOff(false)
+  },[popupState, mobileScrollOff])
 
   return (
     <PopupLayer className="popup">
