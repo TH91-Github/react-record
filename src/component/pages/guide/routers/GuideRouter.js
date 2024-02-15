@@ -5,7 +5,7 @@ import GuideBreakPoint from 'component/pages/guide/details/GuideBreakPoint';
 import GuideFont from 'component/pages/guide/details/GuideFont';
 import GuideSwiper from 'component/pages/guide/details/GuideSwiper';
 
-import { ranDomId } from 'utils/common';
+import { randomListId } from 'utils/common';
 import GuideTab from '../details/GuideTab';
 import GuidePaginate from '../details/GuidePaginate';
 
@@ -70,4 +70,4 @@ let GuideDataList = [
     keyWord:"#Guide #Paginate #페이지번호 #페이징 #번호리스트"
   }
 ];
-export const GuideRouter = ranDomId(GuideDataList, "Guide");
+export const GuideRouter = randomListId(GuideDataList, "Guide");

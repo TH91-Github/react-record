@@ -39,6 +39,14 @@ export function randomIdChk (listId, name) { // (비교리스트, 지정id값) �
   }
   return uniqueId;
 }
+export const randomNum = (_max, name, firstNum) => { // 랜덤 값 (최대 값, 이름지정_랜덤 값)
+  let newId =  Math.floor(_max === undefined
+    ? Math.random() * 2000
+    : Math.random() * Number(_max + 1)
+  );
+  if(name !== undefined ) newId = `${name}_${newId}`;
+  return newId;
+}
 export function TextBr (text) {  // br 태그 삽입 삭제 예정 textChk로 이동
   if(!text) return;
   const brTag ="<br />";
