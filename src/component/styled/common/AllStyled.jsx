@@ -161,11 +161,11 @@ export const LiSquare = styled(ListLi)`
 
 export const LiCircle = styled.li`
   position:relative;
-  padding-left:10px;
+  padding-left:12px;
   &::before {
     position:absolute;
     left:0;
-    content:'※';
+    content:"⋅";
   }
   &.bold {
     font-weight:bold;

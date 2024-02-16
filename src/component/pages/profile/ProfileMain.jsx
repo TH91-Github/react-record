@@ -7,7 +7,7 @@ import Ing from "component/common/Ing";
 function ProfileMain({propsOpt}) {
   const isMobile = useSelector((state) => state.mobileChk);
   const pInfo = propsOpt.data.info;
-  
+  console.log(pInfo)
   return (
     <>
       <S.ProfileWrap>
@@ -29,7 +29,7 @@ function ProfileMain({propsOpt}) {
                     <SC.Blind>{sns.title} Url</SC.Blind>
                     { sns.title === 'Velog' && <SC.Icon><SvgVelog></SvgVelog></SC.Icon> }
                     { sns.title === 'Git' && <SC.Icon><Github></Github></SC.Icon> }
-                    {/* { sns.title === 'Naver' && <SC.Icon $bg="#03C75A"><Naver></Naver></SC.Icon> } */}
+                    
                   </SC.A>
                 })
               }

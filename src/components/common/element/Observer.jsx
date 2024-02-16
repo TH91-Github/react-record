@@ -1,4 +1,4 @@
-import { React, useCallback, useEffect, useRef, useState } from "react";
+import { React, useCallback, useEffect, useRef } from "react";
 
 function Observer ({children, onClass, maintenance, percentage}) { // lazyload El , className , 관찰여부
   const el = useRef(null);
@@ -26,7 +26,7 @@ function Observer ({children, onClass, maintenance, percentage}) { // lazyload E
     return () => { // clean up function
       observer && observer.disconnect()
     }
-  },[updateObserver])
+  },[updateObserver, percentage])
   return (
     <div ref={el}>
       {children}

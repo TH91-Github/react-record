@@ -1,474 +1,140 @@
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import { routerData } from "routes/reRouterData";
-import { colors, media, transitions } from "assets/styles/Variable";
-import { TextCase } from "utils/textChk";
-import * as SC from "assets/styles/StyledCm";
-import { SvgCode, SvgGuide, SvgProfile, SvgRecord } from "assets/styles/SvgPath";
+import { useState } from "react";
 import { useSelector } from "react-redux";
-import { targetScroll } from "utils/common";
+import styled from "styled-components";
+import TypingTag from "components/common/element/TypingTag";
+import { colors } from "assets/styles/Variable";
 
-const colorsArr  = [colors.green,colors.yellow,colors.blue,colors.red];
-const VisualTIt = [
-  "TEXT, TEXT",
-  "TEXT, TEXT",
-  "TEXT"
-]
-function BlogMainVisual(){
+// Data 정보 통합 예정
+const VisualText = ["Hello","Hola","안녕하세요."];
+
+function MainVisual(){
+  const [nextStage, setNextStage] = useState(false);
   const isMobile = useSelector((state) => state.mobileChk);
-  const [exceptionH, setExceptionH] = useState(0);
-  const [activeIdx, setActiveIdx] = useState(0);
-  const visualList = routerData.filter((item)=> item.title);
-  
-  useEffect(()=>{
-    const headerH = document.querySelector('.header').clientHeight;
-    setExceptionH(headerH)
-  },[]);
-  const itemClick = (idx) => { // 리스트 클릭
-    if(isMobile){
-      idTargetScroll(idx);
-    }
-    setActiveIdx(idx);
+  const typingOpt = {
+    fontSize:isMobile? '42px':'96px',
+    fontWeight: 600,
+    speed: 150,
+    dark: true
   }
-  const idTargetScroll = (idx) => {
-    const targetId = document.getElementById(`b-${visualList[idx].path}`);
-    const targetPadding = (parseInt(getComputedStyle(targetId).paddingTop))/2;
-    targetScroll(targetId, targetPadding);
+  const tagAniEnd = () => {
+    setNextStage(true);
   }
-
   return (
-    <BlogWrap $headerH={exceptionH} id="b-visual" className="visual">
-      <VisualInner className="visual__inner">
-        <VisualInfo className="visual__info">
-          <VisualTextBox className="visual__info__box">
-            {
-              VisualTIt.map((item, idx) => <p className="visual-tit ani-ini" key={idx}>{item}</p> )
-            }
-          </VisualTextBox>
-        </VisualInfo>
-        <VisualCategory className="visual__category" >
-          <VisualCategoryLists className="visual__lists">
-            {
-              visualList.map((item, idx) => (
-                <VisualCategoryItem 
-                  onClick={() => itemClick(idx) }
-                  key={idx} 
-                  className={`visual__item ani-ini ${activeIdx === idx ? 'active' :''}`}>
-                  <VisualCategoryBtn className="visual__item-btn">
-                    <VisualCategoryIcon $bg={colorsArr[idx]} className="icon">
-                      <CategoryIcon>
-                        {idx === 0 && <SvgProfile $fillColor="#fff"/> }
-                        {idx === 1 && <SvgGuide $fillColor="#fff"/> }
-                        {idx === 2 && <SvgRecord $fillColor="#fff"/> }
-                        {idx === 3 && <SvgCode $fillColor="#fff"/> }
-                      </CategoryIcon>
-                    </VisualCategoryIcon>
-                    <VisualCategoryBox className="txt">
-                      <VisualCategoryTxt $delay={idx+1} $color={colorsArr[idx]}>
-                        <VisualCategoryKr className="tit-kr">{item.title}</VisualCategoryKr>
-                        <VisualCategoryEn className="tit-en">{TextCase(item.path)}</VisualCategoryEn>
-                      </VisualCategoryTxt>
-                    </VisualCategoryBox>
-                  </VisualCategoryBtn>
-                </VisualCategoryItem>
-              ))
-            }
-          </VisualCategoryLists>
-        </VisualCategory>
-        <VisualMove className="visual__move ani-ini">
-            {/* 바뀌는 텍스트 */}
-            <p>{visualList[activeIdx].title} 미리보기 <SC.MotionLR>👉</SC.MotionLR></p>
-            <VisualMoveBtn 
-              onClick={() => idTargetScroll(activeIdx)} 
-              $hoverColor={colorsArr[activeIdx]}
-              className="visual__move-btn">
-              <VisualMoveText className="text">
-                <span className="before">Click</span>
-                <span className="blind">또는</span>
-                <span className="after">Scroll</span>
-                <span className="blind">하여 아래 내용 확인하기</span>
-              </VisualMoveText> 
-            </VisualMoveBtn>
-        </VisualMove>
-      </VisualInner>
-    </BlogWrap>
+    <VisualWrap id="b-visual" className="visual">
+      <VisualTextBox>
+        <TypingTag 
+          titData={VisualText}
+          typingOpt={typingOpt}
+          view={true}
+          endTag={false} 
+          endFunc={tagAniEnd}
+        />
+      </VisualTextBox>
+      {
+        nextStage && 
+          <TextScroll>
+            <span>Scroll</span>
+          </TextScroll>
+      }
+    </VisualWrap>
   )
 }
-export default BlogMainVisual;
+export default MainVisual;
 
-const BlogWrap = styled.div`
+const VisualWrap = styled.div`
   position:relative;
   width:100%;
-  ${props => 
-    props.$headerH 
-      ? `height: calc(100svh - ${props.$headerH}px)`
-      : 'height: 100svh'
-  };
+  height:100svh;
   min-height:600px;
-  &.on {
-    opacity:1;
-      .visual__info__box {
-        & > p {
-          &:nth-child(1){
-            ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
-          }
-          &:nth-child(2){
-            ${SC.animation(SC.fadeIn, 1, 'ease', .7)}
-          }
-          &:nth-child(3){
-            ${SC.animation(SC.fadeIn, 1, 'ease', .8)}
-          }
-        }
-      }
-      .visual__item {
-        &:nth-child(1){
-          ${SC.animation(SC.fadeIn('-x', 100), 1, 'ease', .8)}
-        }
-        &:nth-child(2){
-          ${SC.animation(SC.fadeIn('-x', 100), 1, 'ease', .7)}
-        }
-        &:nth-child(3){
-          ${SC.animation(SC.fadeIn('-x', 100), 1, 'ease', .6)}
-        }
-        &:nth-child(4){
-          ${SC.animation(SC.fadeIn('-x', 100), 1, 'ease', .5)}
-        }
-      }
-      .visual__move {
-        ${SC.animation(SC.fadeIn, 1, 'ease', .6)}
-      }
-  }
-  ${media.mo} {
-    min-height:560px;
-    &.on {
-      .visual__info__box {
-        & > p {
-          &:nth-child(1){
-            ${SC.animation(SC.fadeIn('-x'), 1, 'ease', .3)}
-          }
-          &:nth-child(2){
-            ${SC.animation(SC.fadeIn('-x'), 1, 'ease', .4)}
-          }
-          &:nth-child(3){
-            ${SC.animation(SC.fadeIn('-x'), 1, 'ease', .5)}
-          }
-        }
-      }
-      .visual__item {
-        &:nth-child(1){
-          ${SC.animation(SC.fadeIn, 1.5, 'ease', .4)}
-        }
-        &:nth-child(2){
-          ${SC.animation(SC.fadeIn, 1.5, 'ease', .5)}
-        }
-        &:nth-child(3){
-          ${SC.animation(SC.fadeIn, 1.5, 'ease', .6)}
-        }
-        &:nth-child(4){
-          ${SC.animation(SC.fadeIn, 1.5, 'ease', .7)}
-        }
-      }
-    }
-  }
-`;
-const VisualInner = styled(SC.InnerStyle)`
-  display:flex;
-  position:relative;
-  height:100%;
-  ${media.mo} {
-    flex-direction: column;
-  }
-`;
-const VisualInfo = styled.div`
-  position:relative;
-  width:30%;
-  height:100%;
-  ${media.tab}{
-    width:50%;
-  }
-  ${media.mo} {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    width:100%;
-    height:35%;
-  }
+  background:${colors.baseBlack};
 `;
 const VisualTextBox = styled.div`
-  position:relative;
+  position:absolute;
   top:50%;
   width:100%;
-  transform: translateY(-120%);
-  & > p {
-    font-size:clamp(32px, 9.6vw, 48px);
-    font-weight:800;
-  }
-  ${media.mo} {
-    top:0;
-    transform: none;
-    text-align:center;
-  }
+  transform: translateY(-50%);
+  text-align:center;
 `;
-
-const VisualCategory = styled.div`
-  width:70%;
-  height:100%;
-  ${media.tab}{
-    width:50%;
-  }
-  ${media.mo} {
-    display:flex;
-    align-items:center;
-    width:100%;
-    height:65%;
-  }
-`;
-const VisualCategoryLists = styled.div`
+const TextScroll = styled.div`
   display:flex;
-  gap:20px;
-  height:100%;
-  ${media.tab}{
-    gap:10px;
-  }
-  ${media.mo} {
-    flex-wrap: wrap;
-    max-width: 400px;
-    margin:0 auto;
-    height:auto;
-  }
-`;
-const VisualCategoryItem = styled.div`
-  position:relative;
-  width:calc((50% - 60px) / 3);
-  height:100%;
-  transition:${transitions.base};
-  ${media.pc}{
-    &.active {
-      width:50%;
-      .tit-kr {
-        display:inline-block;
-        font-size:24px;
-      }
-      .tit-en {
-        display:inline-block;
-        margin-left:5px;
-        font-size:16px;
-      }
+  flex-direction:column;
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform: translateX(-50%);
+  animation: textFadeIn 1s;
+  @keyframes textFadeIn {
+    0% {
+      opacity:0;
+      transform: translate(-50%, 100%);
+    }
+    100%{
+      opacity:1;
+      transform: translate(-50%, 0);
     }
   }
-  ${media.tab}{
-    width:calc((50% - 30px) / 3);
-  }
-  ${media.mo}{
-    width:calc((100% - 20px) / 2);
-    height:auto;
-  }
-`;
-
-const VisualCategoryBtn = styled(SC.Button)`
-  position:relative;
-  width:100%;
-  height:100%;
-  &::after {
-    display:block;
+  &::before, &::after{
     position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 65%,rgba(0,0,0,0.62) 99%,rgba(0,0,0,0.65) 100%);
-    pointer-events : none;
+    left:50%;
+    width:12px;
+    height:2px;
+    border-radius:3px;
+    background:#fff;
     content:"";
   }
-  ${media.mo}{
-    height:auto;
-    padding:25px 20px;
-    border-radius:20px;
-    background:rgba(255,255,255,.7);
-    box-shadow:1px 2px 5px rgba(0, 0, 0, 0.1);
-    &::after {
-      display:none;
-    }
+  &::before{
+    bottom:-5px;
+    transform: translateX(calc(-50% - 4px)) rotate(-140deg);
+    animation: arrowDownL 2s .1s infinite;
   }
-`;
-const VisualCategoryIcon = styled.span`
-  display:inline-block;
-  overflow:hidden;
-  position:relative;
-  ${media.mo}{
-    width:clamp(30px, 50% ,60px);
-    padding-bottom: clamp(30px, 50% ,60px);
-    margin:0 auto;
-    background:${props => props.$bg || '#fff'};
-    border-radius:50%;
-    &::before {
-      display:block;
+  &::after{
+    bottom:-5px;
+    transform: translateX(calc(-50% + 4px)) rotate(-40deg);
+    animation: arrowDownR 2s .1s infinite;
+  }
+  & > span {
+    padding-bottom:2px;
+    font-size:14px;
+    color:#fff;
+    &::before, &::after{
       position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      opacity: 0.4;
-      pointer-events:none;
+      left:50%;
+      width:12px;
+      height:2px;
+      border-radius:3px;
+      background:#fff;
+      opacity:0;
       content:"";
+    }
+    &::before{
+      bottom:-15px;
+      transform: translateX(calc(-50% - 4px)) rotate(-140deg);
+      animation: arrowDownL 2s infinite;
     }
     &::after{
-      display:block;
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background: linear-gradient(150deg,  rgba(0,0,0,0) 63%,rgba(0,0,0,0.65) 100%,rgba(0,0,0,0.65) 100%);
-      opacity: 0.4;
-      pointer-events:none;
-      content:"";
+      bottom:-15px;
+      transform: translateX(calc(-50% + 4px)) rotate(-40deg);
+      animation: arrowDownR 2s infinite;
     }
   }
-`;
-const CategoryIcon = styled(SC.Icon)`
-  position:absolute;
-  top:50%;
-  left:50%;
-  width: 50%;
-  height: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const VisualCategoryBox = styled.div`
-  position:absolute;
-  z-index:2;
-  bottom:0;
-  width:100%;
-  height:25%;
-  padding:30px;
-  text-align:left;
-  ${media.tab}{
-    padding:30px 10px;
-  }
-  ${media.mo}{
-    overflow:hidden;
-    position:relative;
-    bottom:auto;
-    margin-top:10px;
-    padding:1px;
-    height:22px;
-    text-align:center;
-    line-height:20px;
-  }
-`;
-const VisualCategoryTxt = styled.div`
-  display:block;
-  color: #fff;
-  & > span {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  ${media.mo}{
-    color: ${props => props.$color || '#fff'};
-    animation : textAni 5s ease
-    ${props => 
-      props.$delay
-      ? `${(props.$delay*0.2)+1}s`
-      : '1s'
+  @keyframes arrowDownL {
+    0%, 100%{
+      opacity:.3;
+      transform: translate(calc(-50% - 4px), 0) rotate(-140deg);
     }
-    infinite;
-    @keyframes textAni {
-      0%, 100%{ transform: translateY(0) }
-      20%{transform: translateY(0)}
-      40%{transform: translateY(-20px)}
-      60%{transform: translateY(-20px)}
-      80%{ transform: translateY(-20px)}
+    50%{
+      opacity:.7;
+      transform: translate(calc(-50% - 4px), 5px) rotate(-140deg);
     }
   }
-`;
-const VisualCategoryKr = styled.span`
-  display:block;
-  font-size:14px;
-  color:inherit;
-  transition:${transitions.base};
-  ${media.pc}{
-    text-shadow:1px 1px 3px rgba(0, 0, 0, 0.5);
-  }
-  ${media.mo}{
-    font-size:16px;
-    color:${colors.textColor};
-  }
-`;
-const VisualCategoryEn = styled.span`
-  display:block;
-  font-size:13px;
-  color:inherit;
-  transition:${transitions.base};
-  ${media.mo}{
-    font-size:16px;
-  }
-`;
-
-const VisualMove = styled.div`
-  position:absolute;
-  z-index:5;
-  bottom:30%;
-  width:calc(30% - 15px);
-  margin-top:50px;
-  text-align:center;
-  ${media.mo}{
-    display:none;
-  }
-`;
-const VisualMoveBtn = styled(SC.Button)`
-  overflow:hidden;
-  position:absolute;
-  top:50%;
-  left:100%;
-  width:80px;
-  height:80px;
-  background:${colors.bgGreen};
-  font-size:24px;
-  font-weight:600;
-  color:#fff;
-  transform: translate(-50%, -50%);
-  &::before {
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:${props => props.$hoverColor || colors.baseBlack};
-    transition: ${transitions.base};
-    transform: translateX(-105%);
-    content:"";
-  }
-  &:hover {
-    &::before {
-      transform: translateX(0);
+  @keyframes arrowDownR {
+    0%, 100%{
+      opacity:.3;
+      transform: translate(calc(-50% + 4px), 0) rotate(-40deg);
     }
-    .text {
-      transform: translateX(0);
+    50%{
+      opacity:.7;
+      transform: translate(calc(-50% + 4px), 5px) rotate(-40deg);
     }
   }
-  &::after {
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:90%;
-    height:90%;
-    border:1px solid #fff;
-    transform:translate(-50%, -50%);
-    content:"";
-  }
-`; 
-const VisualMoveText = styled.span`
-  display:flex;
-  position:relative;
-  z-index:2;
-  width:200%;
-  text-shadow:1px 1px 3px rgba(0, 0, 0, 0.5);
-  &>span{
-    display:block;
-    width:100%;
-  }
-  transition:${transitions.base};
-  transform: translateX(-50%);
 `;
