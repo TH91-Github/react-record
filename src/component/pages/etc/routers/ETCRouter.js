@@ -1,6 +1,6 @@
 import ETCList from 'component/pages/etc/ETCList';
 // js
-import { ranDomId } from 'utils/common';
+import { randomListId } from 'utils/common';
 import TabListMotion from 'component/pages/etc/details/TabListMotion';
 import CountDown from 'component/pages/etc/details/CountDown';
 
@@ -31,5 +31,5 @@ let ETCDataList = [
     keyWord:"#카운트다운 #CountDown #진행바 #progress #progressbar #프로그레스바"
   },
 ];
-export const ETCRouter = ranDomId(ETCDataList, "Etc");
+export const ETCRouter = randomListId(ETCDataList, "Etc");
 

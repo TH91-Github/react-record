@@ -1,5 +1,5 @@
 // React
-import { ranDomId } from 'utils/common';
+import { randomListId } from 'utils/common';
 
 
 let GuideDataList = [
@@ -23,4 +23,4 @@ let GuideDataList = [
     // keyWord:"#Guide #Color #컬러 #색상 #코드"
   },
 ];
-export const GuideRouter = ranDomId(GuideDataList, "Guide");
+export const GuideRouter = randomListId(GuideDataList, "Guide");

@@ -8,7 +8,7 @@ function ETCTemplate(){
     <div className="etc">
       <Banner $center>
         <TitleBar $fontSize="32px" $color={colors.baseWhite}>
-          EtC
+          ETC
         </TitleBar>
         <p className="txt">기능, 샘플 코드</p>
       </Banner>

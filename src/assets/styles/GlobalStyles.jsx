@@ -27,6 +27,9 @@ export const GlobalStyles = createGlobalStyle`
   .m-br {
     display:none;
   }
+  .ani-ini {
+    opacity:0;
+  }
   ${media.mo}{
     .pc-br {
       display:none;

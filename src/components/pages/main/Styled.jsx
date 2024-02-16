@@ -1,12 +1,14 @@
 import * as SC from "assets/styles/StyledCm";
 import { colors, media, transitions } from "assets/styles/Variable";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const MainGuideWrap = styled.div`
   padding:50px 0;
   border:1px solid pink;
 `;
-export const BlogLinkBtn = styled(SC.Button)`
+
+export const BlogLinkBtn = styled(NavLink)`
   overflow:hidden;
   position:relative;
   min-width:150px;
