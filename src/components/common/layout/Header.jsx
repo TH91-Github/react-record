@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { colors, media, transitions } from "assets/styles/Variable";
 import { Button, InnerStyle } from "assets/styles/StyledCm";
-import { routerData } from "routes/reRouterData";
+import { routerData } from "routes/RouterData";
 import { TextCase } from "utils/textChk";
 
-
-let scrollY = 0;
-
-function Header ({location}) {
+function Header () {
   const [scrollZero, setScrollZero] = useState(false);
   const [memoriesY, setMemoriesY] = useState(0);
   const [menuState, setMenuState] = useState(false);
   const menuList = routerData.filter((item)=> item.title);
+  let scrollY = useRef(0); 
   // scroll
   const eventScroll = () => {
     // const headerH = document.querySelector('.header').clientHeight;
