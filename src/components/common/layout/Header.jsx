@@ -11,7 +11,7 @@ function Header ({location}) {
   const [memoriesY, setMemoriesY] = useState(0);
   const [menuState, setMenuState] = useState(false);
   const menuList = routerData.filter((item)=> item.title);
-  let scrollY = useRef(0);
+  let scrollY = useRef(0); 
   // scroll
   const eventScroll = () => {
     // const headerH = document.querySelector('.header').clientHeight;
