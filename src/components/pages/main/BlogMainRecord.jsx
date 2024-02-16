@@ -30,7 +30,7 @@ function BlogMainRecord(){
             </SC.SubTxt>
           </SC.TitleBox>
           <SC.BtnArticle $justifyConent="center">
-            <S.BlogLinkBtn $hoverBg={colors.blue} className="link-btn ani-ini">
+            <S.BlogLinkBtn to={'/record'} $hoverBg={colors.blue} className="link-btn ani-ini">
               <span>
                 <S.BlogLinkIcon><Svglink></Svglink></S.BlogLinkIcon>
                 Record

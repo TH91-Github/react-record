@@ -19,7 +19,7 @@ function BlogMainETC(){
             </SC.SubTxt>
           </SC.TitleBox>
           <SC.BtnArticle $justifyConent="center">
-            <S.BlogLinkBtn $hoverBg={pointColor} className="link-btn ani-ini">
+            <S.BlogLinkBtn to={'/etc'} $hoverBg={pointColor} className="link-btn ani-ini">
               <span>
                 <S.BlogLinkIcon><Svglink></Svglink></S.BlogLinkIcon>
                 ETC

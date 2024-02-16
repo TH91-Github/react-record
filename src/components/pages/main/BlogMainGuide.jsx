@@ -21,7 +21,7 @@ function BlogMainGuide(){
             </SC.SubTxt>
           </SC.TitleBox>
           <SC.BtnArticle $justifyConent="center">
-            <S.BlogLinkBtn $hoverBg={colors.yellow} className="link-btn ani-ini">
+            <S.BlogLinkBtn to={'/guide'} $hoverBg={colors.yellow} className="link-btn ani-ini">
               <span>
                 <S.BlogLinkIcon><Svglink></Svglink></S.BlogLinkIcon>
                 Guide

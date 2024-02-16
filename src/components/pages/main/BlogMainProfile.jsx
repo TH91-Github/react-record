@@ -22,7 +22,7 @@ function BlogMainProfile(){
             </SC.SubTxt>
           </SC.TitleBox>
           <SC.BtnArticle $justifyConent="center" className="profile__link">
-            <S.BlogLinkBtn $hoverBg={colors.green} className="link-btn ani-ini">
+            <S.BlogLinkBtn to={'/profile'} $hoverBg={colors.green} className="link-btn ani-ini">
               <span>
                 <S.BlogLinkIcon><Svglink></Svglink></S.BlogLinkIcon>
                 Profile
