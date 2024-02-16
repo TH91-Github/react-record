@@ -1,32 +1,28 @@
 // Main router
 import BlogMain from 'components/pages/main/BlogMain';
-// Guide router 👈 기본 스타일, 컴포넌트 가이드 
-import GuideMain from 'components/pages/guide/GuideMain';
-import { GuideRouter } from 'components/pages/guide/router/GuideRouter';
-// Profile router 
 
-// Record router 👈 기록, 설명 등 
-
-// etc router 👈 샘플, 기타
-import ETCMain from 'components/pages/etc/ETCMain';
-import { ETCRouter } from 'components/pages/etc/router/ETCRouter';
-import ProfileMain from 'components/pages/profile/ProfileMain';
-import RecordMain from 'components/pages/record/RecordMain';
+import { GuideRouter } from 'component/pages/guide/routers/GuideRouter';
+import GuideTemplate from 'component/pages/guide/GuideTemplate';
+import ProfileTemplate from 'component/pages/profile/ProfileTemplate';
+import RecordTemplate from 'component/pages/record/RecordTemplate';
+import { RecordRouter } from 'component/pages/record/routers/RecordRouter';
+import ETCTemplate from 'component/pages/etc/ETCTemplate';
+import { ETCRouter } from 'component/pages/etc/routers/ETCRouter';
 
 export const routerData = [
-  { // Main 쳇 페이지 임시 프로필로 
+  { // Main
     index: true,
     element: <BlogMain />
   },
   {
     title:"프로필",
     path:"profile",
-    element: <ProfileMain/>,
+    element: <ProfileTemplate/>,
   },
   {
     title:"가이드",
     path:"guide",
-    element: <GuideMain />,
+    element: <GuideTemplate />,
     children:[
       ...GuideRouter
     ]
@@ -34,12 +30,15 @@ export const routerData = [
   {
     title:"기록",
     path:"record",
-    element: <RecordMain />,
+    element: <RecordTemplate />,
+    children:[
+      ...RecordRouter
+    ]
   },
   {
     title:"샘플",
     path:"etc",
-    element: <ETCMain />,
+    element: <ETCTemplate />,
     children:[
       ...ETCRouter
     ]

@@ -1,10 +1,20 @@
 import styled, {css, keyframes} from 'styled-components';
 import { breakpoints, colors, media} from './Variable';
 
-
 // css
+export const notice = css`
+  display:inline-block;
+  position:relative;
+  padding-left:1em;
+  &::before {
+    position:absolute;
+    top:0;
+    left:0;
+    content:'※';
+  }
+`;
+// animation
 export const animation =(aniName, t,ttf,d,fm) => css`
-  opacity:0;
   animation: ${aniName} ${t ? t : '1'}s ${ttf ? ttf :'ease'} ${d ? d : 0}s ${fm ? fm : 'both'};
 `;
 
@@ -14,7 +24,7 @@ export const fadeIn = (xy, num) => keyframes`
     transform: ${
       xy === '-x'
       ? `translateX(${num ? num*-1 : -50}px)`
-      : xy === '-x'
+      : xy === 'x'
       ? `translateX(${num ? num : 50}px)`
       : xy === '-y'
       ? `translateY(${num ? num*-1 : -50}px)`
@@ -43,7 +53,6 @@ export const TitMark = (lar) => keyframes`
     opacity:1;
   }
 `;
-
 
 export const Button = styled.button.attrs({
   type:'button',
@@ -163,4 +172,3 @@ export const SubTxt = styled.p`
     font-size:${props => props.$fontSize || 14}px;
   }
 `;
-

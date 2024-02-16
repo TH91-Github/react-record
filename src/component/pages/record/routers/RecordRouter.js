@@ -7,7 +7,7 @@ import ComponentTest from 'component/pages/record/study/react/ComponentTest';
 import UseEffectTest from 'component/pages/record/study/react/UseEffectTest';
 
 // js
-import { ranDomId } from 'utils/common';
+import { randomListId } from 'utils/common';
 import Js from 'component/pages/record/study/js/Js';
 
 let RecordDataList = [
@@ -70,5 +70,5 @@ let RecordDataList = [
   },
 ];
 
-export const RecordRouter = ranDomId(RecordDataList,"Record");
+export const RecordRouter = randomListId(RecordDataList,"Record");
 

@@ -1,5 +1,5 @@
 // React
-import { ranDomId } from 'utils/common';
+import { randomListId } from 'utils/common';
 
 
 let ETCDataList = [
@@ -23,4 +23,4 @@ let ETCDataList = [
     // keyWord:"#Guide #Color #컬러 #색상 #코드"
   },
 ];
-export const ETCRouter = ranDomId(ETCDataList, "ETC");
+export const ETCRouter = randomListId(ETCDataList, "ETC");

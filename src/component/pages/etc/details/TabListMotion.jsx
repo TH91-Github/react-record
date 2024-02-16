@@ -6,7 +6,7 @@ import { breakpoints, colors, fonts, media } from "component/styled/common/Varia
 import TabBtn from "component/common/TabBtn";
 import SubTitleBar from "component/common/SubTitleBar";
 
-import { ranDom } from "utils/common";
+import { randomNum } from "utils/common";
 
 // 고정 값 
 const listOpt = {pc:4, mo:2, max:20}; // pc, mo 열 값 / 리스트 총 수
@@ -15,7 +15,7 @@ const categoryColor =[...categoryBg];
 const newData = new Array(listOpt.max).fill("테스트").map((item, idx) => (
   {
     title:`${item}-${idx+1}`,
-    filter: [categoryBg[ranDom(categoryBg.length-2)+1], categoryColor[ranDom(categoryColor.length-2)+1]] // 랜덤 [랜,랜] 
+    filter: [categoryBg[randomNum(categoryBg.length-2)+1], categoryColor[randomNum(categoryColor.length-2)+1]] // 랜덤 [랜,랜] 
   }
 ))
 let timer; 

@@ -17,6 +17,7 @@ function ProfileTemplate(){
     titSize : 24,
     isMo : isMobile
   }
+  console.log(componentOpt)
   return (
     <div className="profile">
       {/* Profile Info */}
@@ -29,7 +30,7 @@ function ProfileTemplate(){
         {/* PROJECT */}
         <ProfileProject propsOpt={componentOpt} />
         {/* PLAN */}
-        <ProfilePlan propsOpt={componentOpt} />              
+        <ProfilePlan propsOpt={componentOpt} />
         <S.Section>
           <S.TextCenter>
             감사합니다. 😁
