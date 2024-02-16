@@ -13,8 +13,7 @@ function MainVisual(){
   const typingOpt = {
     fontSize:isMobile? '42px':'96px',
     fontWeight: 600,
-    speed: 150,
-    dark: true
+    speed: 150
   }
   const tagAniEnd = () => {
     setNextStage(true);
@@ -46,7 +45,7 @@ const VisualWrap = styled.div`
   width:100%;
   height:100svh;
   min-height:600px;
-  background:${colors.baseBlack};
+  // background:${colors.baseBlack};
 `;
 const VisualTextBox = styled.div`
   position:absolute;
