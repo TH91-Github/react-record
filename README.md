@@ -12,7 +12,7 @@ github를 통해 기록하고 공유하기 위해 React로 시작을 했습니�
 
 <hr />
 ###  🔗 https://react-record.vercel.app/
-🚧 작업중...<br>
+🚧 현재 중지... TypeScript, Next.js 진행 중<br>
 
 <hr />
 ### Stack 📕
@@ -46,12 +46,6 @@ github를 통해 기록하고 공유하기 위해 React로 시작을 했습니�
   
 <hr />
 
-#### 사용 목적으로도 만들기
-- 타입별 가격대 비교 
-- op.gg
-- . . .
-  
-<hr />
 
 ### 기록
 <p>github, velog, naver blog</p>
@@ -62,7 +56,10 @@ github를 통해 기록하고 공유하기 위해 React로 시작을 했습니�
 <hr />
 
 ## 참고
-node 14.21.0 
+* 다른 업무로 인해 node 낮은 버전
+- node 14.21.0 
+- next.js 습득 후 node 18 버전 이후로 다시 제작 예정.
+
 ## 시작하기 & clone 
 
 ```shell
