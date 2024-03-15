@@ -6,7 +6,7 @@ import { Button, InnerStyle } from "assets/styles/StyledCm";
 import { routerData } from "routes/RouterData";
 import { TextCase } from "utils/textChk";
 
-function Header ({location}) {
+function Header () {
   const [scrollZero, setScrollZero] = useState(false);
   const [memoriesY, setMemoriesY] = useState(0);
   const [menuState, setMenuState] = useState(false);
