@@ -1,5 +1,6 @@
 # React 기록 📚
 
+<!-- 
 ## 🖥️ https://github.com/TH91-Github/react-record
 
 ## 소개
@@ -75,3 +76,4 @@ npm start
 ```
 
 <p align="center">감사합니다. 😁</P>
+-->
