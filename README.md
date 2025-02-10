@@ -1,79 +1,70 @@
-# React 기록 📚
+# Getting Started with Create React App
 
-<!-- 
-## 🖥️ https://github.com/TH91-Github/react-record
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## 소개
-<p>
-- 메모장, OneNote, 클라우드 등 정리했던 흔적 등
-- 이슈 관련 등
-github를 통해 기록하고 공유하기 위해 React로 시작을 했습니다
-</p>
-<br>
+## Available Scripts
 
-<hr />
-###  🔗 https://react-record.vercel.app/
-🚧 현재 중지... TypeScript, Next.js 진행 중<br>
+In the project directory, you can run:
 
-<hr />
-### Stack 📕
-<span><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white" alt="HTML5" /></span>
-<span><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white" alt="CSS3" /></span>
-<span><img src="https://img.shields.io/badge/JavaScript-f7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white" alt="JavaScript" /></span>
-<span><img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jQuery&logoColor=white" alt="jQuery" /></span>
-<span><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" alt="GitHub" /></span>
-<span>웹표준,웹접근성</span>
+### `npm start`
 
-<br><br>
-### 디자인툴 📘
-<span><img src="https://img.shields.io/badge/Adobe Photoshop-31A8FF?style=for-the-badge&logo=Adobe Photoshop&logoColor=white" alt="Photoshop" /></span>
-<span><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma" /></span>
-<span>제플린(Zeplin)</span>
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-<br><br>
-### 진행중 📖
-<span><img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white" alt="React" /></span>
-<span><img src="https://img.shields.io/badge/Vue-4FC08D?style=for-the-badge&logo=Vue&logoColor=white" alt="Vue" /></span>
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-<hr />
+### `npm test`
 
-### 목표&계획 🚩
-꾸준한 관리
-- React & Vue 개인 기록, 블로그
-- 포트폴리오(portfolio)
-- guide 생성
-- 슬라이드, 탭, 스크롤 등 기능 컴포넌트 제작 안내
-- 만들어 놓은 기능별 페이지 소개 제작
-  
-<hr />
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
-### 기록
-<p>github, velog, naver blog</p>
-<a href="https://github.com/TH91-Github"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" alt="" /></a>
-<a href="https://velog.io/@th_velog"><img src="https://img.shields.io/badge/Velog-20C997?style=for-the-badge&logo=Velog&logoColor=white" alt="" /></a>
-<a href="https://blog.naver.com/k__taehoon__"><img src="https://img.shields.io/badge/Naver-03C75A?style=for-the-badge&logo=Naver&logoColor=white" alt="" /></a>
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-<hr />
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## 참고
-* 다른 업무로 인해 node 낮은 버전
-- node 14.21.0 
-- next.js 습득 후 node 18 버전 이후로 다시 제작 예정.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## 시작하기 & clone 
+### `npm run eject`
 
-```shell
-git clone https://github.com/TH91-Github/react-record
-```
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-```shell
-npm install
-```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-```shell
-npm start
-```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-<p align="center">감사합니다. 😁</P>
--->
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
