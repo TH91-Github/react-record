@@ -6,7 +6,7 @@ export default {
   title: 'Component/TestButton',
   component: TestButton,
   parameters: {
-    componentSubtitle:'TestButton 컴포넌트',
+    componentSubtitle:'TestButton 컴포넌트 테스트 진행중입니다.',
     docs:{
       description: {
         component: 'TestButton 컴포넌트 description 입니다.',
