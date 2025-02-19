@@ -1,8 +1,11 @@
 # Workflow name
-name: 'Chromatic Deployment TEST '
+name: 'Chromatic Deployment TEST1 '
 
 # Event for the workflow
-on: push
+on:
+  push:
+    branches:
+      - main
 
 # List of jobs
 jobs:
@@ -12,7 +15,7 @@ jobs:
     # Job steps
     steps:
       - uses: actions/checkout@v1
-      - run: yarn
+      - run: npm install
         #👇 Adds Chromatic as a step in the workflow
       - uses: chromaui/action@v1
         # Options required for Chromatic's GitHub Action
@@ -20,3 +23,4 @@ jobs:
           #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/ to obtain it
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ secrets.GH_PAT_TOKEN }}
