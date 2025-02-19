@@ -12,15 +12,19 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v1
         with:
           fetch-depth: 0
-      - run: yarn
+      - run: npm
         #👇 Adds Chromatic as a step in the workflow
-      - uses: chromaui/action@latest
+      - uses: chromaui/action@v1
         # Options required for Chromatic's GitHub Action
         with:
           #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/ to obtain it
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           githubToken: ${{ secrets.GH_PAT_TOKEN }}
+
+
+
+          name: 'Chromatic Deployment Test'
