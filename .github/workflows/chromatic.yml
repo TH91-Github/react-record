@@ -1,24 +1,18 @@
-
 # Workflow name
-name: 'Chromatic Deployment Test'
+name: 'Chromatic Deployment TEST '
 
 # Event for the workflow
-on:
-  push:
-    branches:
-      - main 
+on: push
 
 # List of jobs
 jobs:
-  chromatic:
-    name: 'Run Chromatic'
+  test:
+    # Operating System
     runs-on: ubuntu-latest
     # Job steps
     steps:
       - uses: actions/checkout@v1
-        with:
-          fetch-depth: 0
-      - run: npm
+      - run: yarn
         #👇 Adds Chromatic as a step in the workflow
       - uses: chromaui/action@v1
         # Options required for Chromatic's GitHub Action
