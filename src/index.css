@@ -1,3 +1,7 @@
+@font-face {
+  font-family: Pretendard;
+  src: url('./assets/fonts/PretendardVariable.woff2') format('woff2');
+}
 body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,div,span,table,th,td,form,fieldset,legend,input,textarea,button,select,svg,i,label {margin:0;padding:0;box-sizing:border-box;}
 img,fieldset{border:0}
 em,address,i{font-style:normal;}
@@ -7,14 +11,8 @@ ol li, li {
   list-style:none;
 }
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Pretendard',sans-serif; 
+  font-weight:500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

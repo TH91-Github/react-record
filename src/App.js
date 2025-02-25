@@ -1,9 +1,19 @@
+import { GlobalStyles } from 'assets/style/GlobalStyles';
+import { Outlet } from 'react-router-dom';
 import './App.css';
+import { HeaderLayout } from 'components/header/HeaderLayout';
+import { ContentWrap } from 'components/layout/ContentWrap';
+import { FooterLayout } from 'components/footer/FooterLayout';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-     APP TEST
+      <GlobalStyles />
+      <HeaderLayout />
+      <ContentWrap>
+        <Outlet />
+      </ContentWrap>
+      <FooterLayout />
     </div>
   );
 }
