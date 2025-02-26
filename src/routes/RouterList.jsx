@@ -1,5 +1,6 @@
 import { GuidePage } from "pages/guide/GuidePage";
 import { MainPage } from "pages/main/MainPage";
+import { TestPage } from "test/TestPage";
 
 export const routerList = [
   { // Main
@@ -13,7 +14,12 @@ export const routerList = [
     title:'📔 가이드',
     element: <GuidePage />
   },
-  
+  {
+    id:'Test',
+    path:'test',
+    title:'테스트',
+    element: <TestPage />
+  }
   // {
   //   id: "Resume",
   //   path: "resume",

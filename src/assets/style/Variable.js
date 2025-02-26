@@ -26,11 +26,11 @@ export const media = {
 } 
 
 export const colors = {
-  red: "#e8392c",
-  green: "#0C9463",
-  yellow: "#FFB000",
-  // medium -> m
-  mSlateBlue:'#6a67e5',
+  red: '#e8392c',
+  green: '#0C9463',
+  yellow: '#FFB000',
+  black:'#050b21',
+  mSlateBlue:'#6a67e5',  // medium -> m
   darkNavy:"#03053a",
   text:'#191f28',
   subText:'#868686',
@@ -38,7 +38,7 @@ export const colors = {
 }
 
 export const shadow = {
-  shadowLine:' box-shadow: rgba(17,19,32,0.2) 0px -1px 6px;',
+  base:'box-shadow: rgba(17,19,32,0.2) 1px 1px 6px;',
 }
 
 export const ellipsisStyle = (lineClamp, fontSize) => {

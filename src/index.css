@@ -13,6 +13,7 @@ ol li, li {
 body {
   font-family: 'Pretendard',sans-serif; 
   font-weight:500;
+  line-height:1.3;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

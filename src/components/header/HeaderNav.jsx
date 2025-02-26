@@ -27,6 +27,10 @@ export const HeaderNav = () => {
   )
 }
 const StyleWrap = styled.nav`
+  & > ul {
+    display:flex;
+    align-items:center;
+  }
   .nav-item{
     display:inline-block;
     padding:8px 15px;

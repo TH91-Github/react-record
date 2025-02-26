@@ -1,12 +1,12 @@
-import { breakpoints, shadow } from "assets/style/Variable";
+import { breakpoints } from "assets/style/Variable";
 import { Logo } from "components/common/Logo";
 import styled from "styled-components";
 import { HeaderNav } from "./HeaderNav";
 
 export const HeaderLayout = () => {
- 
+  
   return (
-    <StyleWrap id="header" className="header">
+    <StyleWrap id="header" className={`header ${true ? 'full-layout': ''}`}>
       <div className="header-inner">
         <Logo />
         <HeaderNav />
@@ -19,7 +19,7 @@ const StyleWrap = styled.header`
   position:absolute;
   z-index:2;
   width:100%;
-  ${shadow.shadowLine};
+  box-shadow: rgba(17,19,32,0.2) 0px -1px 6px;
   .header-inner{
     display:flex;
     align-items: center;
@@ -32,6 +32,9 @@ const StyleWrap = styled.header`
   }
   .nav {
     margin-left:50px;
+  }
+  &.full-layout {
+    max-width:${breakpoints.maxPc}px;
   }
 `;
 

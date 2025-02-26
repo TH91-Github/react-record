@@ -12,6 +12,5 @@ export const ContentWrap = ({children}) => {
 
 const StyleWrap = styled.div`
   position:relative;
-  min-height:100svh;
   padding-top:55px;
 `;
