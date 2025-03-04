@@ -9,7 +9,7 @@ export const GuidePage = () => {
       <SideMenu />
       {/* content */}
       <div className="guide-inner">
-
+      {/* component */}
       </div>
     </StyleWrap>
   )
