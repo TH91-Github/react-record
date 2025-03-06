@@ -1,4 +1,5 @@
 import { SideMenu } from "components/pages/guide/SideMenu";
+import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
 
@@ -10,6 +11,7 @@ export const GuidePage = () => {
       {/* content */}
       <div className="guide-inner">
       {/* component */}
+        <Outlet />
       </div>
     </StyleWrap>
   )
