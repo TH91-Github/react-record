@@ -9,9 +9,8 @@ export const stateColor = atom({
   default:`${colors.mSlateBlue}`, // 기본값
 })
 
-
 // header 높이
-export const stateHeaderH = atom({
+export const stateHeaderHeight = atom({
   key: 'headerHeight',  
   default: 55,     
 });

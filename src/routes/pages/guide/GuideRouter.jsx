@@ -3,6 +3,7 @@ import { ComponentsPage } from "pages/guide/components/ComponentsPage";
 import { BreakpointsPage } from "pages/guide/foundation/BreakpointsPage";
 import { DesignPage } from "pages/guide/foundation/DesignPage";
 import { FoundationPage } from "pages/guide/foundation/FoundationPage";
+import { IconPage } from "pages/guide/foundation/IconPage";
 import { HooksPage } from "pages/guide/hooks/HooksPage";
 import { PreferencesPage } from "pages/guide/preferences/PreferencesPage";
 import { FolderStructurePage } from "pages/guide/principles/FolderStructurePage";
@@ -40,8 +41,14 @@ export const guideList = [
       {
         id:'Design',
         path: "design",
-        title:'디자인 규칙',
+        title:'디자인',
         element: <DesignPage />
+      },
+      {
+        id:'Icon',
+        path: "icon",
+        title:'아이콘 모음',
+        element: <IconPage />
       },
       {
         id:'Breakpoints',
