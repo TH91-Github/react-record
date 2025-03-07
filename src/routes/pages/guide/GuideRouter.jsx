@@ -1,11 +1,14 @@
-import { FolderStructure } from "pages/guide/principles/FolderStructure";
+import { AssetsPage } from "pages/guide/assets/AssetsPage";
+import { ComponentsPage } from "pages/guide/components/ComponentsPage";
+import { BreakpointsPage } from "pages/guide/foundation/BreakpointsPage";
+import { DesignPage } from "pages/guide/foundation/DesignPage";
+import { FoundationPage } from "pages/guide/foundation/FoundationPage";
+import { HooksPage } from "pages/guide/hooks/HooksPage";
+import { PreferencesPage } from "pages/guide/preferences/PreferencesPage";
+import { FolderStructurePage } from "pages/guide/principles/FolderStructurePage";
 import { NamingConventionsPage } from "pages/guide/principles/NamingConventionsPage";
 import { PrinciplesPage } from "pages/guide/principles/PrinciplesPage";
-
-/*
-
-
-*/
+import { UtilsPage } from "pages/guide/utils/UtilsPage";
 
 export const guideList = [
   {
@@ -21,18 +24,66 @@ export const guideList = [
         element: <NamingConventionsPage />
       },
       {
-        id:'NamingConventions',
+        id:'FolderStructure',
         path: "naming-conventions",
         title:'📂 폴더 구조',
-        element: <FolderStructure />
+        element: <FolderStructurePage />
       },
     ],
   },
-
+  {
+    id:'Foundation',
+    path: "foundation",
+    title:'기본 가이드',
+    element: <FoundationPage />,
+    children: [
+      {
+        id:'Design',
+        path: "design",
+        title:'디자인 규칙',
+        element: <DesignPage />
+      },
+      {
+        id:'Breakpoints',
+        path: "breakpoints",
+        title:'Breakpoints',
+        element: <BreakpointsPage />
+      },
+    ],
+  },
+  {
+    id:'Assets', 
+    path: "assets",
+    title:'리소스',
+    element: <AssetsPage />,
+  },
+  {
+    id:'Components',
+    path: "components",
+    title:'컴포넌트',
+    element: <ComponentsPage />,
+  },
+  {
+    id:'Hooks',
+    path: "hooks",
+    title:'커스텀 훅',
+    element: <HooksPage />,
+  },
+  {
+    id:'Utils',
+    path: "utils",
+    title:'유틸 함수',
+    element: <UtilsPage />,
+  },
+  {
+    id:'Preferences',
+    path: "preferences",
+    title:'환경설정',
+    element: <PreferencesPage />,
+  },
 ];
 
 /*
-
 guide/
 ├── principles/ # 규칙
 │   ├── namingConventions - class, 컴포넌트 명 style 등
@@ -42,6 +93,8 @@ guide/
 ├── foundation/      # 기본적인 규칙 (컬러,
 │   ├── design - colors, , font, shadows
 │   ├── breakpoints
+│   ├── Dark mode
+│   ├── Themes
 │   └── Animation
 ├── assets/
 │   ├── 

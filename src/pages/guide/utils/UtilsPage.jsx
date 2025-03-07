@@ -1,10 +1,10 @@
 import styled from "styled-components"
 
 
-export const FolderStructure = () => {
+export const UtilsPage = () => {
   return (
     <StyleWrap>
-      NamingConventions
+      UtilsPage
     </StyleWrap>
   )
 }
