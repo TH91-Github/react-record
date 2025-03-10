@@ -19,7 +19,11 @@ export const GlobalStyles = createGlobalStyle`
     font-family: inherit;
     color: inherit;
     cursor: pointer;
-  }   
+  }
+  svg {
+    width:100%;
+    height:100%;
+  }
   .blind{
     position:absolute;
     top:-9999px;

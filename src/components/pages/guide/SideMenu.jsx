@@ -11,7 +11,7 @@ export const SideMenu = () => {
   const headerHeight = useRecoilValue(stateHeaderHeight);
   const pointColor = useRecoilValue(stateColor); 
   const [isExtend, useExtend] = useToggle(false);
-
+console.log(GUIDE_ITEMS)
   return(
     <StyleWrap 
       $headerHeight={headerHeight}
