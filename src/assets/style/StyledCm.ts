@@ -2,9 +2,14 @@ import styled from 'styled-components';
 
 // css
 
+interface ButtonPropsType {
+  $width?: string;
+  $height?: string;
+}
+
 export const Button = styled.button.attrs({
   type:'button',
-})`
+})<ButtonPropsType>`
   display:inline-block;
   ${props => `
     ${props.$width && `width:${props.$width}`};
@@ -13,8 +18,14 @@ export const Button = styled.button.attrs({
   cursor:pointer;
 `;
 
+interface IconPropsType {
+  $width?: string;
+  $height?: string;
+  $borderRadius: string;
+  $bg?: string;
+}
 // ♣ ICON
-export const Icon = styled.i`
+export const Icon = styled.i<IconPropsType>`
   display:inline-block;
   position:relative;
   width: ${props => props.$width || "20px"};

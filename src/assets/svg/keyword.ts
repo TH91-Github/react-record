@@ -1,4 +1,4 @@
-import { SvgCode, SvgSearch } from "./common";
+import { SvgCode, SvgCube, SvgSearch } from "./common";
 
 // 검색 키워드
 export const IconKeyword = [

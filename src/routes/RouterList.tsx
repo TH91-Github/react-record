@@ -1,7 +1,7 @@
-import { GuidePage } from "pages/guide/GuidePage";
-import { MainPage } from "pages/main/MainPage";
-import { TestPage } from "test/TestPage";
 import { guideList } from "./pages/guide/GuideRouter";
+import { MainPage } from "pages/main/MainPage";
+import { GuidePage } from "pages/guide/GuidePage";
+import { TestPage } from "test/TestPage";
 
 export const routerList = [
   { // Main

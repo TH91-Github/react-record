@@ -41,7 +41,7 @@ export const shadow = {
   base:'box-shadow: rgba(17,19,32,0.2) 1px 1px 6px;',
 }
 
-export const ellipsisStyle = (lineClamp, fontSize) => {
+export const ellipsisStyle = (lineClamp:number, fontSize:number) => {
   const lineHeight = fontSize ? fontSize : 20 ;
   const lineNum = lineClamp ?? 1;
   return `
