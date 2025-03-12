@@ -42,5 +42,40 @@ export const GlobalStyles = createGlobalStyle`
       display:block;
     }
   }
+  .test-wrap{
+    margin:50px auto;
+    width:500px;
+    height:500px;
+    padding:30px;
+    border:1px solid #dbdbdb; 
+    input { 
+      padding:6px 10px;
+      border:1px solid #dbdbdb;
+    }
+    .btns{
+      display:flex;
+      gap:10px;
+      margin-top:25px;
+      & > button {
+        padding:6px 10px;
+        border-radius:5px;
+        border:1px solid #dbdbdb;
+      }
+    }
+    .input-item{
+      position:relative;
+      
+    }
+    .error{
+      border:1px solid red;
+      color:red; 
+    }
+    .error-txt{
+      position:absolute;
+      top:calc(100% + 5px);
+      font-size:12px;
+      color:red;
+    }
+  }
 `;
 
