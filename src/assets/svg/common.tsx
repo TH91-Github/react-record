@@ -1,7 +1,7 @@
 import React from "react";
 
 interface SvgType {
-  fill:string
+  fill?:string
 }
 
 // magnifying-glass, 검색

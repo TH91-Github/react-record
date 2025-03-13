@@ -3,7 +3,7 @@ import { colors, media, shadow } from "assets/style/Variable";
 import styled from "styled-components";
 
 
-export default React.memo(function Logoback () {
+const Logoback = React.memo(() => {
   const cube = new Array(9).fill(0);
   return (
     <StyleWrap className="logo">
@@ -24,6 +24,7 @@ export default React.memo(function Logoback () {
     </StyleWrap>
   )
 })
+export default Logoback;
 
 const StyleWrap = styled.div`
   display:flex;

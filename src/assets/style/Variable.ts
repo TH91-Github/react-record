@@ -31,9 +31,10 @@ export const colors = {
   yellow: '#FFB000',
   black:'#050b21',
   mSlateBlue:'#6a67e5',  // medium -> m
+  blue:'#395acc',
   darkNavy:"#03053a",
-  text:'#191f28',
-  subText:'#868686',
+  text:'#42464d',
+  subText:'#8d9095',
   lineColor: "#dbdbdb",
 }
 

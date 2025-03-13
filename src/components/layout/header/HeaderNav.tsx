@@ -16,7 +16,7 @@ export const HeaderNav = () => {
         {
           navLists.map((navItem, navIdx) => (
             <li key={'nav' + navIdx}>
-              <NavLink to={navItem.path} className="nav-item">
+              <NavLink to={navItem.path ?? '/'} className="nav-item">
                 <span>{navItem.title}</span>
               </NavLink>
             </li>

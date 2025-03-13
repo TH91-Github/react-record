@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useToggle = (toggleState = false) => {
+const useToggle = (toggleState = false): [boolean, () => void] => {
   const [toggle, setToggle] = useState(toggleState);
 
   const toggleChange = () => setToggle((prev) => !prev);

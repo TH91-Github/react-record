@@ -1,6 +1,11 @@
+import { ReactNode } from "react";
 import styled from "styled-components"
 
-export const ContentWrap = ({children}) => {
+interface ContentLayoutPropsType {
+  children: ReactNode;
+}
+
+export const ContentLayout = ({children}:ContentLayoutPropsType) => {
   return (
     <StyleWrap>
       <main>

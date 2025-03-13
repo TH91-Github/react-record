@@ -1,7 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
-import { media } from './Variable';
+import { colors, media } from './Variable';
 
 export const GlobalStyles = createGlobalStyle`
+  body {
+    color:${colors.text};
+  }
   img {
     vertical-align: top;
     width:100%;
