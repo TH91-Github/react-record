@@ -1,5 +1,5 @@
 import { SideLayout } from "components/layout/SideLayout";
-import { SideNav } from "components/pages/guide/SideNav";
+import { SideMenu } from "components/pages/guide/SideMenu";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
@@ -8,7 +8,7 @@ export const GuidePage = () => {
     <StyleWrap className="guide">
       {/* side */}
       <SideLayout>
-        <SideNav />
+        <SideMenu />
       </SideLayout>
       {/* content */}
       <div className="guide-inner">

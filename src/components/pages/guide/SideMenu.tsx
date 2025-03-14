@@ -4,15 +4,13 @@ import { Search } from "components/modules/Search";
 import useToggle from "hooks/useToggle";
 import { useRecoilValue } from "recoil";
 import { stateColor } from "recoil/atoms";
-import { guideList } from "routes/pages/guide/GuideRouter";
 import styled from "styled-components";
+import { GuideNav } from "./GuideNav";
 
-const GUIDE_ITEMS = guideList;
-export const SideNav = () => {
+
+export const SideMenu = () => {
   const pointColor = useRecoilValue(stateColor); 
   const [isExtend, useExtend] = useToggle(false);
-
-console.log(GUIDE_ITEMS)
 
   return(
     <StyleWrap className={`nav-wrap ${isExtend ? 'extend': ''}`}>
@@ -24,23 +22,11 @@ console.log(GUIDE_ITEMS)
           </h2>
         </div>
         <div className="nav-item">
-          <Search placeholder={'검색 기능 작업 진행 중...'}/>
+          <Search icon={{size:24}} placeholder={'검색 기능 작업 진행 중...'}/>
         </div>
         <div className="nav-item">
           <h3 className="title">Menu</h3>
-          <nav className="nav">
-            <ul>
-              {
-                GUIDE_ITEMS.map((navItem,idx) => (
-                  <li key={'guide-nav-'+idx}>
-                    <span>
-                      {navItem.title}
-                    </span>
-                  </li>
-                ))
-              }
-            </ul>
-          </nav>
+          <GuideNav />
         </div>
         <div className="extend-btn">
           <button
@@ -80,6 +66,12 @@ const StyleWrap = styled.div`
   .nav-item {
     padding:15px 20px;
     border-top:1px solid #dbdbdb;
+    .title{
+      font-size:18px;
+    }
+  }
+  .search {
+    gap:5px;
   }
   .extend-btn {
     position:absolute;

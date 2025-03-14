@@ -4,30 +4,30 @@ import styled from "styled-components"
 
 interface SearchPropsType {
   icon?: {
-    isOn: boolean, // 사용 여부 
-    size: number, // 크기 (정사각형) 
+    isOn?: boolean,
+    size?: number,
   },
   placeholder?:string,
 }
 export const Search = ({
-  icon = {isOn:true, size:25}, // 검색(돋보기) 아이콘 사용 여부
+  icon = {},
   placeholder = '',
 }:SearchPropsType) => {
+  const { isOn = true, size = 24 } = icon; // 기본 값
+  
   return (
     <StyleWrap 
       className="search"
-      $iconSize={icon.size}
+      $iconSize={size}
     >
-      { icon.isOn && <i className="icon"><SvgSearch /></i>}
+      {isOn && <i className="icon"><SvgSearch /></i>}
       <InputText 
         id="search"
         placeholder={placeholder}
-        disabled={true}
       />
     </StyleWrap>
   )
 }
-
 interface StyleWrapType {
   $iconSize? : number,
 }
@@ -37,6 +37,7 @@ const StyleWrap = styled.div<StyleWrapType>`
   align-items: center;
   gap:10px;
   .icon{
+    flex-shrink: 0;
     display:inline-block;
     position:relative;
     ${({$iconSize}) => `
@@ -45,7 +46,7 @@ const StyleWrap = styled.div<StyleWrapType>`
     `}
   }
   .input-item {
-    width:calc(100% - ${({$iconSize}) => $iconSize}px - 10px);
+    flex:1;
     height:30px;
   }
 `;

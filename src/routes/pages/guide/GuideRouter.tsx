@@ -17,19 +17,19 @@ export const guideList = [
   {
     id:'principles',
     path: "principles",
-    title:'📔 규칙',
+    title:'규칙',
     element: <PrinciplesPage />,
     children: [
       {
         id:'NamingConventions',
         path: "naming-conventions",
-        title:'✍️ 네이밍 규칙',
+        title:'네이밍 규칙',
         element: <NamingConventionsPage />
       },
       {
         id:'FolderStructure',
         path: "naming-conventions",
-        title:'📂 폴더 구조',
+        title:'폴더 구조',
         element: <FolderStructurePage />
       },
     ],
