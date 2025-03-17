@@ -5,9 +5,12 @@ interface AccordionProps<T> {
   data: T[];
   mode?: "single" | "multiple"; // 하나만 열기 or 각 open
   className?: string,
+  accOpt?:{
+    openIcon:'arrow'
+  }
   children: (item: T) => {
     accTit: React.ReactNode;
-    content: React.ReactNode;
+    content: React.ReactNode | null;
   };
 }
 
@@ -15,6 +18,7 @@ export const Accordion = <T,>({
   data,
   mode = "multiple", 
   className,
+  accOpt,
   children,
 }: AccordionProps<T>) => {
   const [singleActive, setSingleActive] = useState<number | null>(null);
@@ -26,7 +30,7 @@ export const Accordion = <T,>({
   }, [singleActive, mode]);
 
   return (
-    <StyleWrap className={`accordion-wrap ${className ? className :''}`}>
+    <StyleWrap className={`accordion-wrap ${className ? className :''} ${accOpt?.openIcon ==='arrow' ? 'acc-arrow': ''}`}>
       {
         data.length > 0 
         ? (
@@ -56,7 +60,7 @@ export const Accordion = <T,>({
 
 interface AccordionItemPropsType {
   accTit: React.ReactNode;
-  content: React.ReactNode;
+  content: React.ReactNode | null;
   itemIndex: number;
   singleOpen: boolean; // single 전용
   singleChange?: (index: number) => void; // single 전용 - 활성 idx
@@ -83,40 +87,92 @@ const AccordionItem = ({
   }, [itemIndex, singleChange]);
 
   return (
-    <li className="acc-item">
+    <li className={`acc-item ${isOpen? 'open':''}`}>
       <div className="acc-head">
-        <button 
-          type="button" 
-          className="acc-btn"
-          onClick={handleClick}
-        >
-          {accTit}
-          <span className="blind">{isOpen ? '닫기': '열기'}</span>
-        </button>
+        {
+          content
+          ? ( 
+            <button 
+              type="button" 
+              className="acc-btn"
+              onClick={handleClick}
+            >
+              {accTit}
+              <span className="blind">{isOpen ? '닫기': '열기'}</span>
+            </button>
+          )
+          : (
+            <span className="acc-tit">{accTit}</span>
+          )
+        }
+        
       </div>
-      <div className={`acc-content ${isOpen ? "open" : ""}`}>
-        {content}
-      </div>
+      {
+        content && (
+          <div className={`acc-content ${isOpen ? "open" : ""}`}>
+            {content}
+          </div>
+        )
+      }
+      
     </li>
   );
 };
 
 const MemoAccordionItem = memo(AccordionItem, (prevProps, nextProps) => {
-  return prevProps.singleOpen === nextProps.singleOpen && prevProps.itemIndex === nextProps.itemIndex;
+  return(
+    prevProps.singleOpen === nextProps.singleOpen &&
+    prevProps.itemIndex === nextProps.itemIndex 
+  )
 });
-
 
 const StyleWrap = styled.div`
   .acc-item{
     position:relative;
   }
-  .acc-btn{
-    display:block;
-  }
   .acc-content {
     display: none;
     &.open {
       display: block;
+    }
+  }
+  .acc-btn, .acc-tit {
+    padding:10px 15px 10px 0;
+    svg { 
+      max-width:30px;
+      max-height:30px;
+    }
+  }
+  &.acc-arrow {
+    .acc-btn{ 
+      width:100%;
+      padding-right:30px;
+      &::before, &::after{
+        position:absolute;
+        top:20px;
+        right:12px;
+        width:10px; 
+        height:2px;
+        border-radius:30px; 
+        background:#000; 
+        transform:rotate(-135deg);
+        transition:transform .3s ease-in-out;
+        content:'';
+      }
+      &::after{
+        right:6px;
+        transform:rotate(135deg);
+      }
+    }
+    .open {
+      .acc-btn{ 
+        &::before{
+          transform:rotate(-45deg);
+        }
+        &::after{
+          transform:rotate(45deg);
+        }
+      }
     }
   }
 `;

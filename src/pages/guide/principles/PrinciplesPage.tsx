@@ -1,11 +1,11 @@
+import { DepthHeader } from "components/pages/guide/DepthHeader";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components"
-
 
 export const PrinciplesPage = () => {
   return (
     <StyleWrap>
-      <h2>principles</h2>
+      {/* <DepthHeader title={'principlddes'}/> */}
       <Outlet />
     </StyleWrap>
   )

@@ -30,7 +30,7 @@
     "src"
   ],
   "exclude": [
-    "node_modules"              // `node_modules` 폴더는 제외
+    "node_modules" // `node_modules` 폴더는 제외
   ]
 }
 

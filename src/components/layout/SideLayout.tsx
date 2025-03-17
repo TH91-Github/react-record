@@ -41,9 +41,11 @@ const StyleWrap = styled.div<StyleWrapPropsType>`
   position:${({$position}) => $position};
   width:100%;
   max-width:${({$width}) => $width}px;
-  height:calc(100svh - ${props => (props.$headerHeight)}px);
+  min-height:calc(100svh - ${props => (props.$headerHeight)}px);
   & > aside {
-    width:100%;
-    height:100%;
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
   }
 `;

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { colors, media } from './Variable';
+import { colors, media, rootStyle } from './Variable';
 
 export const GlobalStyles = createGlobalStyle`
   body {
@@ -79,6 +79,10 @@ export const GlobalStyles = createGlobalStyle`
       font-size:12px;
       color:red;
     }
+  }
+
+  :root {
+    ${rootStyle.transition}
   }
 `;
 

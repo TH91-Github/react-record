@@ -1,10 +1,12 @@
+import { Outlet } from "react-router-dom";
 import styled from "styled-components"
 
 
 export const FoundationPage = () => {
   return (
     <StyleWrap>
-      NamingConventions
+      FoundationPage
+      <Outlet />
     </StyleWrap>
   )
 }

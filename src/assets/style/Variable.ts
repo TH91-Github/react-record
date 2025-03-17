@@ -1,6 +1,9 @@
 
 // styled-components전용 공통 
-
+export const rootStyle = {
+  transition: '--transition: 0.3s ease-in-out;',
+    
+}
 export const breakpoints = {
   maxPc: 1920,
   pc : 1440,

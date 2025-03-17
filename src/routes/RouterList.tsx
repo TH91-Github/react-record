@@ -12,7 +12,7 @@ export const routerList = [
   {
     id:'ComponentGuide',
     path: "guide",
-    title:'📔 Test',
+    title:'📔 가이드',
     element: <GuidePage />,
     children: [
       ...guideList

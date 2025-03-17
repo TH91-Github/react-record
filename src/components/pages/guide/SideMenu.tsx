@@ -7,7 +7,6 @@ import { stateColor } from "recoil/atoms";
 import styled from "styled-components";
 import { GuideNav } from "./GuideNav";
 
-
 export const SideMenu = () => {
   const pointColor = useRecoilValue(stateColor); 
   const [isExtend, useExtend] = useToggle(false);
@@ -22,7 +21,7 @@ export const SideMenu = () => {
           </h2>
         </div>
         <div className="nav-item">
-          <Search icon={{size:24}} placeholder={'검색 기능 작업 진행 중...'}/>
+          <Search icon={{size:20}} placeholder={'검색 기능 작업 진행 중...'}/>
         </div>
         <div className="nav-item">
           <h3 className="title">Menu</h3>

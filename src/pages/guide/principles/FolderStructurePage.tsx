@@ -4,7 +4,7 @@ import styled from "styled-components"
 export const FolderStructurePage = () => {
   return (
     <StyleWrap>
-      NamingConventions
+      FolderStructurePage
     </StyleWrap>
   )
 }

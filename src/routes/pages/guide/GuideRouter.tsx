@@ -1,5 +1,3 @@
-
-
 import { AssetsPage } from "pages/guide/assets/AssetsPage";
 import { ComponentsPage } from "pages/guide/components/ComponentsPage";
 import { BreakpointsPage } from "pages/guide/foundation/BreakpointsPage";
@@ -15,7 +13,7 @@ import { UtilsPage } from "pages/guide/utils/UtilsPage";
 
 export const guideList = [
   {
-    id:'principles',
+    id:'Principles',
     path: "principles",
     title:'규칙',
     element: <PrinciplesPage />,
@@ -28,7 +26,7 @@ export const guideList = [
       },
       {
         id:'FolderStructure',
-        path: "naming-conventions",
+        path: "folder-structure",
         title:'폴더 구조',
         element: <FolderStructurePage />
       },

@@ -4,7 +4,7 @@ import styled from "styled-components"
 export const DesignPage = () => {
   return (
     <StyleWrap>
-      NamingConventions
+      DesignPage
     </StyleWrap>
   )
 }

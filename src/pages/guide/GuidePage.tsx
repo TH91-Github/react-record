@@ -3,6 +3,7 @@ import { SideMenu } from "components/pages/guide/SideMenu";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
+
 export const GuidePage = () => {
   return (
     <StyleWrap className="guide">
