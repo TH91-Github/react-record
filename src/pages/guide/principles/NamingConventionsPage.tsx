@@ -5,10 +5,8 @@ import styled from "styled-components";
 export const NamingConventionsPage = () => {
   return (
     <StyleWrap className="naming-convention">
-      <div className="naming-inner">
-        <NamingHeader />
-        <NamingContent />
-      </div>
+      <NamingHeader />
+      <NamingContent />
     </StyleWrap>
   )
 }
@@ -16,8 +14,6 @@ export const NamingConventionsPage = () => {
 const StyleWrap = styled.div`
   
 `;
-
-
 
 // 대표적인 네이밍 컨벤션
 // camelCase 

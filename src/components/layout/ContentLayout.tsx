@@ -16,6 +16,8 @@ export const ContentLayout = ({children}:ContentLayoutPropsType) => {
 }
 
 const StyleWrap = styled.div`
+  max-width: 1920px;
+  margin:0 auto;
   position:relative;
   padding-top:55px;
 `;

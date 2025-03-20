@@ -1,36 +1,42 @@
-import { colors, shadow } from "assets/style/Variable";
+import { breakpoints, colors, shadow } from "assets/style/Variable";
 import styled from "styled-components"
 
 export const NamingHeader = () =>{
 
   return(
     <StyleWrap>
-      <div className="header-content">
-        <h2 className="path">Naming Conventions</h2>
-        <h3 className="title">
-          <span>좋은 이름이 뭐길래?</span>
-          <span>네이밍 고민...</span>
-          <span><span className="color">명명(命名)</span> 규칙으로 해결하기!</span>
-        </h3>
-        <p className="desc">
-          <span>"네이밍 때문에 고민하는 시간 줄이고 </span>
-          <span>명확한 네이밍 규칙으로 가독성과 유지보수를 쉽게!</span>
-          <span>효율적인 협업을 위해, <span className="color">명명(命名)</span> 규칙 가이드를 공유하고자 만든</span>
-          <span>네이밍 규칙 확립 가이드입니다."</span>
-        </p>
-      </div>
-      <div className="category-lists">
-        
+      <div className="header-inner">
+        <div className="header-content">
+          <h2 className="path">Naming Conventions</h2>
+          <h3 className="title">
+            <span>좋은 이름이 뭐길래?</span>
+            <span>네이밍 고민...</span>
+            <span><span className="color">명명(命名)</span> 규칙으로 해결하기!</span>
+          </h3>
+          <p className="desc">
+            <span>"네이밍 때문에 고민하는 시간 줄이고 </span>
+            <span>명확한 네이밍 규칙으로 가독성과 유지보수를 쉽게!</span>
+            <span>효율적인 협업을 위해, <span className="color">명명(命名)</span> 규칙 가이드를 공유하고자 만든</span>
+            <span>네이밍 규칙 확립 가이드입니다."</span>
+          </p>
+        </div>
+        <div className="category-lists">
+          
+        </div>
       </div>
     </StyleWrap>
   )
 }
 const StyleWrap = styled.div`
-  overflow:hidden;
-  display:flex;
-  position:relative;
-  padding:30px;
   ${shadow.test};
+  .header-inner{
+    overflow:hidden;
+    display:flex;
+    position:relative;
+    padding:30px;
+    max-width:${breakpoints.tab}px;
+    margin:0 auto;
+  }
   .header-content{
     width:55%;
   }

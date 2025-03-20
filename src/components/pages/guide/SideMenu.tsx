@@ -48,7 +48,7 @@ const StyleWrap = styled.div`
   .nav-inner{
   }
   .nav-head{
-    padding:20px;
+    padding:20px 30px;
     .svg {
       display:inline-block;
       position:relative;
@@ -63,7 +63,7 @@ const StyleWrap = styled.div`
     }  
   }
   .nav-item {
-    padding:15px 20px;
+    padding:15px 30px;
     border-top:1px solid #dbdbdb;
     .title{
       font-size:18px;

@@ -39,6 +39,10 @@ interface StyleWrapPropsType {
 
 const StyleWrap = styled.div<StyleWrapPropsType>`
   position:${({$position}) => $position};
+  ${({$position}) => $position === 'absolute' && `
+    top:0;
+    left:0;
+  `}
   width:100%;
   max-width:${({$width}) => $width}px;
   min-height:calc(100svh - ${props => (props.$headerHeight)}px);
