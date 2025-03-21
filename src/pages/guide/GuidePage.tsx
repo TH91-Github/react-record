@@ -12,7 +12,7 @@ export const GuidePage = () => {
         <SideMenu />
       </SideLayout>
       {/* content */}
-      <div className="guide-inner">
+      <div className="guide-content">
       {/* component */}
         <Outlet />
       </div>
@@ -23,10 +23,11 @@ export const GuidePage = () => {
 const StyleWrap = styled.div`
   display:flex;
   position:relative;
-  .side-menu{
+  .side-layout{
     flex-shrink: 0;
   }
-  .guide-inner {
-    flex-grow:1;
+  .guide-content {
+    position:relative;
+    width: calc(100% - 300px);
   }
 `;

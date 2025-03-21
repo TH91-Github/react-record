@@ -1,14 +1,8 @@
 
-// 폴더 하이픈 케밥 케이스
-
-// 파일 및 폴더 네이밍 (예: camelCase, kebab-case, PascalCase)
-// 컴포넌트 네이밍 (예: ButtonPrimary, ModalContainer)
-// 상태 및 변수 네이밍 (예: isLoading, userList)
-// 함수 네이밍 (예: handleClick, fetchUserData)
 export const namingData = [
   {
     id:'naming-class',
-    title:'Class',
+    title:'클래스 규칙 (Class)',
     desc:[
       '스타일 일관성을 위해 공통 클래스를 정의',
       '클래스명은 역할에 맞게 직관적으로 구성',
@@ -43,20 +37,136 @@ export const namingData = [
     ], 
   },
   {
-    id:'naming-class',
-    title:'Class',
+    id:'naming-folder',
+    title:'파일 및 폴더 규칙 (Folder & File)',
     desc:[
-      '스타일 일관성을 위해 공통 클래스를 정의',
-      '클래스명은 역할에 맞게 직관적으로 구성',
-      '타이틀, 텍스트 등의 기본적인 스타일을 포함',
+      '명확하고 일관된 네이밍으로 가독성을 높이고 유지보수, 효율성을 높이기 위해',
+      '파일의 목적을 쉽게 파악할 수 있기 위해',
     ],
     section:[
       {
-        sectionTit:'타이틀, 텍스트 Class',
+        sectionTit:'폴더 네이밍',
         lists:[
-
+          {
+            tit:'소문자 사용',
+            desc: '폴더 이름은 모두 소문자로 작성하여 일관성 있게 유지',
+            ex:['GuidePage.jsx','NamingContent.tsx']
+          },
+          {
+            tit:'하이픈(-) 구분',
+            desc: '여러 단어로 이루어진 폴더 이름은 하이픈(-)을 사용하여 구분',
+            ex:['user-profile/', 'product-list/']
+          },
+          {
+            tit:'기능 중심',
+            desc: '폴더 이름은 그 폴더 안에 포함된 파일들의 기능을 반영하기',
+            ex:['hooks/', 'components/','utils/', 'pages/']
+          },
+        ]
+      },
+      {
+        sectionTit:'파일 네이밍 규칙',
+        lists:[
+          {
+            tit:'라우터 지정 컴포넌트',
+            desc: 'Router path 경로로 설정한 컴포넌트는 마지막에 page를 붙인다. * App 제외',
+            ex:['GuidePage.jsx','ErrorPage.tsx']
+          },
+          {
+            tit:'컴포넌트',
+            desc: 'React 컴포넌트 파일은 PascalCase를 사용하여 이름을 작성',
+            ex:['GuidePage.jsx','NamingContent.tsx']
+          },
+          {
+            tit: '유틸리티 및 데이터 파일',
+            desc: '유틸리티 함수와 데이터 관련 파일은 소문자와 하이픈(-) 구분을 사용하여 작성합니다.',
+            ex: ['user-data.js', 'utils.ts']
+          },
+          // hook, router, 등 각 기능에 따른 파일 규칙 필요성
+          {
+            tit: '함수 모음 파일',
+            desc: '공통으로 사용이 가능함 함수 크게는 전역 작게는 컴포넌트 단위로 소문자와 하이픈(-) 구분을 사용하여 작성합니다.',
+            ex: ['common.js','weather.js', 'calculate-price.ts']
+          },
+          {
+            tit:'상수 파일',
+            desc: '상수 값이 정의된 파일은 모두 대문자와 스네이크 케이스를 사용하여 작성',
+            ex: ['MAX_LENGTH.js', 'DEFAULT_CONFIG.ts']
+          },
+        ]
+      },
+      {
+        sectionTit:'확장자',
+        lists:[
+          {
+            tit:'일반 컴포넌트 파일',
+            desc: 'React 컴포넌트는 `.jsx` 확장자를 사용하여 생성합니다.',
+            ex:['App.jsx','GuidePage.jsx']
+          },
+          {
+            tit:'타입스크립트 컴포넌트 파일',
+            desc: 'TypeScript가 적용된 React 컴포넌트는 `.tsx` 확장자를 사용하여 생성합니다.',
+            ex:['App.tsx','GuidePage.tsx']
+          },
+          {
+            tit: '일반 JavaScript 파일 .js',
+            desc: 'JavaScript로 작성된 파일은 `.js` 확장자를 사용합니다.',
+            ex: ['common.js', 'utils.js']
+          },
+          {
+            tit: '타입스크립트 파일 .ts',
+            desc: 'TypeScript로 작성된 파일은 `.ts` 확장자를 사용합니다.',
+            ex: ['common.ts', 'utils.ts']
+          }
         ]
       }
-    ]
+    ], 
+  },
+  {
+    id:'naming-variable',
+    title:'변수 규칙 (Variable)',
+    desc:[
+      '변수명은 명확하고 직관적으로 작성해야 하며, 의미 있는 이름을 사용',
+    ],
+    // useState, ref 등등
+  },
+  {
+    id:'naming-variable',
+    title:'함수 규칙 (Function)',
+    desc:[
+      '함수명',
+    ],
+    // handle 이벤트
+    // 컴포넌트 내 함수 화살표 함수 
+    // 유틸 함수로 빠지는 경우 function 으로 사용 - hook 도 포함
+  },
+  {
+    id:'naming-method',
+    title:'메서드 규칙 (Method)',
+    desc:[
+      '메서드명',
+    ],
+  },
+  {
+    id:'naming-props',
+    title:'속성 규칙 (Props)',
+    desc:[
+      'props',
+    ],
+  },
+  {
+    id:'naming-type',
+    title:'타입 규칙 (Type)',
+    desc:[
+      '타입 지정',
+    ],
+    // data, props, components
+  },
+  {
+    id:'naming-type',
+    title:'타입 규칙 (Type)',
+    desc:[
+      '폴더명은 hook 시작',
+    ],
   }
 ]

@@ -1,5 +1,13 @@
 import { breakpoints, colors, shadow } from "assets/style/Variable";
+import Carousel from "components/common/Carousel";
 import styled from "styled-components"
+import { namingData } from "../../data/namingData";
+
+const simplifiedData = namingData.map(item => ({
+  id: item.id,
+  title: item.title
+}));
+
 
 export const NamingHeader = () =>{
 
@@ -21,7 +29,11 @@ export const NamingHeader = () =>{
           </p>
         </div>
         <div className="category-lists">
-          
+          <Carousel carouselOpt={{slidesPerView:1}}>
+            <div>
+              1
+            </div>
+          </Carousel>
         </div>
       </div>
     </StyleWrap>
@@ -65,6 +77,7 @@ const StyleWrap = styled.div`
     }
   }
   .category-lists{
+    position:relative;
     width:45%;
   }
 `;

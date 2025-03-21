@@ -23,6 +23,7 @@ export const SideLayout = ({
       $position={position}
       $width={sideWidth}
       $headerHeight={ (sideHeight ?? headerHeight) ?? 0}
+      className="side-layout"
     >
       <aside> 
         {children}
