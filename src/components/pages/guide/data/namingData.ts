@@ -1,3 +1,77 @@
+export const namingConventionsData = {
+  title:'네이밍 컨벤션 표기법',
+  url:'https://th91.tistory.com/28',
+  desc:'코드 작성 시 일관성과 가독성을 위해 변수명, 함수명, 클래스명 등을 명확하고 규칙적으로 작성하는 방법',
+  lists:[
+    {
+      tit:'카멜 케이스',
+      enTit:'camelCase',
+      descLists:[
+        '첫 단어는 소문자로 시작하고 이후 단어의 첫 글자를 대문자로 작성하는 방식',
+        'JavaScript/TypeScript 변수명, 함수명, React props, 객체 속성명, 메서드 이름'
+      ],
+      codeLists:[
+        'userName', 'firstName', 'handleClick', 'isLoading'
+      ]
+    },
+    {
+      tit:'파스칼 케이스',
+      enTit:'PascalCase',
+      descLists:[
+        '모든 단어의 첫 글자를 대문자로 작성하는 방식',
+        'React/Vue 컴포넌트 이름, 클래스 이름 (Java, C#, TypeScript), 인터페이스 이름 (TypeScript),타입 정의 (TypeScript)'
+      ],
+      codeLists:[
+        'UserProfile', 'NavigationBar', 'ProductCard', 'ReactComponent'
+      ]
+    },
+    {
+      tit:'케밥 케이스',
+      enTit:'kebab-case',
+      descLists:[
+        '모든 단어를 소문자로 작성하고 하이픈(-)으로 연결',
+        'HTML 태그 속성, CSS 클래스명, URL 경로, 파일명 (Vue 컴포넌트), npm 패키지명'
+      ],
+      codeLists:[
+        'main-container', 'user-profile', 'navigation-bar', 'button-component'
+      ]
+    },
+    {
+      tit:'스네이크 케이스',
+      enTit:'snake_case',
+      descLists:[
+        '모든 단어를 밑줄(_)를 사용하여 단어를 구분하는 방',
+        'Ruby 변수명과 메서드명, Python 변수명과 함수명, PHP 변수명, SQL 테이블명과 컬럼명, 일부 설정 파일'
+      ],
+      codeLists:[
+        'user_name', 'fetch_data', 'file_path'
+      ]
+    },
+    {
+      tit:'스크리밍 스네이크 케이스',
+      enTit:'SCREAMING_SNAKE_CASE',
+      descLists:[
+        '모든 단어를  대문자로만 작성하고 밑줄 (_)로 단어를 구분하는 방식',
+        '가독성이 좋고, 변하지 않는 값을 강조할 때 적합',
+        '상수값 (JavaScript, Java, Python 등), 환경 변수, 매크로 (C/C++), 열거형(enum) 값'
+      ],
+      codeLists:[
+        'MAX_USER_COUNT', 'API_URL', 'API_KEY' 
+      ]
+    },
+    {
+      tit:'헝가리안 표기법',
+      enTit:'Hungarian Notation',
+      descLists:[
+        '변수명 앞에 데이터 타입을 접두어로 붙이는 방식',
+        '요즘은 잘 사용되지 않음, 레거시 Windows API, 오래된 C/C++ 코드, 일부 기업 내부 코딩 표준',
+      ],
+      codeLists:[
+        'numAge', 'strUserName', 'bIsActive', 'arrItems'
+      ]
+    }
+  ]
+}
 
 export const namingData = [
   {
@@ -131,7 +205,7 @@ export const namingData = [
     // useState, ref 등등
   },
   {
-    id:'naming-variable',
+    id:'naming-function',
     title:'함수 규칙 (Function)',
     desc:[
       '함수명',
@@ -160,11 +234,40 @@ export const namingData = [
     desc:[
       '타입 지정',
     ],
+    section:[
+      {
+        sectionTit:'일반 타입 지정 순서',
+        lists:[
+          {
+            tit:'기본 타입 정렬',
+            desc: 'type Example = number | boolean | string | null | undefined;<br /> 숫자 → 불리언 → 문자열 → null/undefined 순서로 정리',
+          },
+        ]
+      },
+      {
+        sectionTit:'객체 포함 타입 정렬',
+        lists:[
+          {
+            tit:'기본 타입 정렬',
+            desc: 'type Example = number | boolean | string | null | undefined | object | (() => void);<br /> 기본 타입 → 객체 → 함수 순서',
+          },
+        ]
+      },
+      {
+        sectionTit:'유니온 타입 정렬',
+        lists:[
+          {
+            tit:'기본 타입 정렬',
+            desc: 'type Status = "loading" | "success" | "error" | boolean | null;<br /> 리터럴 값 → 불리언 → null 순서',
+          },
+        ]
+      }
+    ]
     // data, props, components
   },
   {
-    id:'naming-type',
-    title:'타입 규칙 (Type)',
+    id:'naming-hook',
+    title:'훅 규칙 (Hook)',
     desc:[
       '폴더명은 hook 시작',
     ],

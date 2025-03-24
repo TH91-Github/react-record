@@ -1,9 +1,10 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Swiper, SwiperSlide, SwiperClass, SwiperProps, SwiperRef } from 'swiper/react';
-import { A11y, Autoplay, Navigation, Pagination, Virtual } from 'swiper/modules';
+import { A11y, Autoplay, Mousewheel, Navigation, Pagination, Scrollbar, Virtual } from 'swiper/modules';
 import "swiper/css";
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 import 'swiper/css/virtual';
 import styled from 'styled-components';
 
@@ -21,8 +22,8 @@ interface CarouselRefType {
 }
 
 const DEFAULT_OPT: SwiperProps = {
-  spaceBetween: 10,
   slidesPerView: 3,
+  spaceBetween: 10,
   observer:true,
   observeParents:true,
   virtual:false,
@@ -31,7 +32,7 @@ const DEFAULT_OPT: SwiperProps = {
 export default forwardRef<CarouselRefType, CarouselPropsType>(({
   children, 
   carouselClassName = 'carousel-wrap',
-  carouselOpt=DEFAULT_OPT, 
+  carouselOpt, 
   onCarousel, onChangeEvent
 }: CarouselPropsType, ref) => {
   const swiperRef = useRef<SwiperRef | null>(null);
@@ -39,19 +40,22 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
   const prevBtnRef = useRef<HTMLButtonElement | null>(null);
   const nextBtnRef = useRef<HTMLButtonElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(true); 
-  const { 
-  slidesPerView, spaceBetween, pagination, navigation, speed, autoplay,  virtual, 
-  } = carouselOpt; 
+  const option = useMemo(() => ({ ...DEFAULT_OPT, ...carouselOpt }), [carouselOpt]);
 
-  const handleAutoPlay = () => {
+  const handleAutoPlay = useCallback(() => {
     if (!swiperRef.current) return;
     if (isPlaying) {
       swiperRef.current?.swiper.autoplay.stop();
     } else {
       swiperRef.current?.swiper.autoplay.start();
     }
-    setIsPlaying(!isPlaying);
+    setIsPlaying((prev) => !prev);
+  }, [isPlaying]);
+
+  const handleChange = (e:SwiperClass) => {
+    onChangeEvent && onChangeEvent();
   }
+
   const handleOnSwiper = (e:SwiperClass) => {
     onCarousel && onCarousel();
   }
@@ -66,15 +70,15 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
     }
   }));
 
-
   return(
-    <StyleWrap>
+    <StyleWrap className={`${option.direction ==='vertical' ? 'vertical': ''}`}>
       <Swiper
         ref={swiperRef}
-        modules={[Navigation, Pagination, A11y, Autoplay, Virtual]}
-        virtual={virtual ? { slides: React.Children.toArray(children) } : undefined}
+        modules={[Navigation, Pagination, A11y, Autoplay, Virtual, Scrollbar, Mousewheel]}
+        virtual={option.virtual ? { slides: React.Children.toArray(children) } : undefined}
+        onSlideChange={handleChange}
         onSwiper={handleOnSwiper}
-        {...carouselOpt}
+        {...option}
         className={carouselClassName}
       >
         {
@@ -86,16 +90,16 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
         }
       </Swiper>
       {
-        pagination && (
+        option.pagination && (
           <div ref={paginationRef} className="carousel-pagination">
           </div>
         )
       }
       {
-        (navigation || autoplay) && (
+        (option.navigation || option.autoplay) && (
           <div className="carousel-btns">
             {
-              navigation && (
+              option.navigation && (
                 <>
                   <button 
                     ref={prevBtnRef}
@@ -115,7 +119,7 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
               )
             }
             {
-              autoplay && (
+              option.autoplay && (
                 <div className="autoplay-btn">
                   <button
                     type="button"
@@ -135,4 +139,10 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
 
 const StyleWrap = styled.div`
   position:relative;
+  &.vertical {
+    height:100%;
+    .swiper{ 
+      height:100%;
+    }
+  }
 `;

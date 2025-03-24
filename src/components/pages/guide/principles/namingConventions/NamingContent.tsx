@@ -1,18 +1,60 @@
 import styled from "styled-components"
+import { namingConventionsData as baseData, namingData } from "../../data/namingData";
+import { colors } from "assets/style/Variable";
 
-export const NamingContent = () => {
+interface NamingContentPropsType {
+  selectNaming: null | string;
+}
+export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
+
+  console.log(selectNaming)
+  console.log(baseData)
   return( 
     <StyleWrap>
       {/* 데이터 활용 */}
-      <div>
-
+      <div className="naming-base">
+        <h4 className="title">{baseData.title}</h4>
+        {
+          baseData.url && (
+            <a href={baseData.url} target="_blank" rel="noopener noreferrer">티스토리</a>
+          )
+        }
+        <ul className="naming-lists">
+          {
+            baseData.lists.map((item, idx) => (
+              <li key={idx}>
+                <p className="tit">
+                  {item.tit}
+                  <span>{item.enTit}</span>
+                </p>
+                {
+                  item.descLists.map((descItem, descIdx) => (
+                    <p key={descIdx}>{descItem}</p>
+                  ))
+                }
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </StyleWrap>
   )
 }
 
 const StyleWrap = styled.div`
-  
+  padding:30px;
+  .naming-lists{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+    & > li {
+      width:calc((100% - 10px) / 2);
+      padding:20px;
+      border-radius:10px;
+      border:1px solid ${colors.lineColor};
+    }
+  }
 `;
 /*
   EX) 작성 가이드
