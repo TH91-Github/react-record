@@ -36,32 +36,26 @@ export const NamingHeader = ({selectNaming, updateNaming}:NamingHeaderPropsType)
           </p>
         </div>
         <div className="category-lists">
-          {
-            namingCategory 
-            ? (
-              <Carousel carouselOpt={{direction:'vertical', slidesPerView:'auto', spaceBetween:15}} >
-                {
-                  namingCategory.map((namingItem,idx) => (
-                    <div 
-                      className={`category-item ${selectNaming === namingItem.id? 'selected': ''} `}
-                      key={idx}>
-                      <button 
-                        type="button" 
-                        className="category-btn"
-                        onClick={() => handleClick(namingItem.id)}>
-                          <span>{namingItem.title}</span>
-                        </button>
-                    </div>
-                  ))
-                }
-              </Carousel >
-            )
-            : (
-              <div className="error-item">
-                불러오지 못하였습니다.
-              </div>
-            )
-          }
+          {namingCategory ? (
+            <Carousel carouselOpt={{direction:'vertical', slidesPerView:'auto', spaceBetween:15, mousewheel:true}} >
+              { namingCategory.map((namingItem,idx) => (
+                  <div 
+                    className={`category-item ${selectNaming === namingItem.id? 'selected': ''} `}
+                    key={idx}>
+                    <button 
+                      type="button" 
+                      className="category-btn"
+                      onClick={() => handleClick(namingItem.id)}>
+                        <span>{namingItem.title}</span>
+                      </button>
+                  </div>
+              ))}
+            </Carousel >
+          ) : (
+            <div className="error-item">
+              불러오지 못하였습니다.
+            </div>
+          )}
           
         </div>
       </div>

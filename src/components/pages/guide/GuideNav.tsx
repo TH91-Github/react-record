@@ -1,5 +1,5 @@
 import { colors } from "assets/style/Variable";
-import { SvgBook, SvgCode, SvgFolder, SvgPuzzle, SvgSetting, SvgSquareStack } from "assets/svg/common";
+import { SvgBook, SvgCode, SvgFolder, SvgPuzzle, SvgSetting, SvgSquareStack } from "assets/svg/Common";
 import { Accordion } from "components/common/Accordion";
 import { useMemo } from "react";
 import { NavLink } from "react-router-dom";

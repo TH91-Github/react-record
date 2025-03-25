@@ -1,5 +1,5 @@
 import { colors, media } from "assets/style/Variable";
-import { SvgCube } from "assets/svg/common";
+import { SvgCube } from "assets/svg/Common";
 import { Search } from "components/modules/Search";
 import useToggle from "hooks/useToggle";
 import { useRecoilValue } from "recoil";
@@ -14,7 +14,7 @@ export const SideMenu = () => {
   return(
     <StyleWrap className={`nav-wrap ${isExtend ? 'extend': ''}`}>
       <div className="nav-inner">
-        <div className="nav-head">
+        <div className="nav-heading">
           <h2 className="title">
             <span className="svg"><SvgCube fill={pointColor} /></span>
             <span>전체 가이드</span>
@@ -40,14 +40,17 @@ export const SideMenu = () => {
 }
 
 const StyleWrap = styled.div`
-  position:relative;
+  overflow-y:auto;
+  position:absolute;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
   border-right:1px solid ${colors.lineColor};
   background:#f5f6fa;
   .nav-inner{
   }
-  .nav-head{
+  .nav-heading{
     padding:20px 30px;
     .svg {
       display:inline-block;

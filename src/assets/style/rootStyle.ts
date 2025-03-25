@@ -1,0 +1,4 @@
+// root style
+export const rootStyle = {
+  transition: '--transition: 0.3s ease-in-out;',
+}

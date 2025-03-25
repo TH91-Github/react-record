@@ -1,16 +1,3 @@
-
-// styled-components전용 공통 
-export const rootStyle = {
-  transition: '--transition: 0.3s ease-in-out;',
-    
-}
-export const breakpoints = {
-  maxPc: 1920,
-  pc : 1440,
-  tab : 1140,
-  mo : 768,
-  onlyMo: 450,
-}
 /*
 onlyPc: 1140 ~
 pc: 768 ~ 
@@ -18,6 +5,14 @@ tab: 768 ~ 1139
 mo: ~ 767
 onlyMo: ~ 449
 */
+export const breakpoints = {
+  maxPc: 1920,
+  pc : 1440,
+  tab : 1140,
+  mo : 768,
+  onlyMo: 450,
+}
+
 export const media = {
   minPc:`@media screen and (min-width:${breakpoints.pc + 'px'})`,
   onlyPc : `@media screen and (min-width:${breakpoints.tab + 'px'})`,
@@ -37,17 +32,17 @@ export const colors = {
   blue:'#395acc',
   darkNavy:"#03053a",
   text:'#42464d',
+  desc:'#495057',
   subText:'#8d9095',
   lineColor: "#dbdbdb",
 }
-
+export const bgOpacity = { 
+  white: `background: rgba(255,255,255,.7)`,
+}
 export const shadow = {
   base:'box-shadow: rgba(17,19,32,0.2) 1px 1px 6px;',
   test:'box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;'
 }
-
-
-
 
 export const ellipsisStyle = (lineClamp:number, fontSize:number) => {
   const lineHeight = fontSize ? fontSize : 20 ;

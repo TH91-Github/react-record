@@ -1,4 +1,4 @@
-import { breakpoints } from "assets/style/Variable";
+import { bgOpacity, breakpoints } from "assets/style/Variable";
 import { Logo } from "components/common/Logo";
 import styled from "styled-components";
 import { HeaderNav } from "./HeaderNav";
@@ -16,9 +16,12 @@ export const HeaderLayout = () => {
 }
 
 const StyleWrap = styled.header`
-  position:absolute;
-  z-index:2;
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:20;
   width:100%;
+  ${bgOpacity.white};
   box-shadow: rgba(17,19,32,0.2) 0px -1px 6px;
   .header-inner{
     display:flex;

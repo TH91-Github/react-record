@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-import { colors, media, rootStyle } from './Variable';
+import { colors, media } from './Variable';
+import { rootStyle } from './rootStyle';
+import { commonStyle } from './commonStyle';
 
 // const headerHeight = useRecoilValue(stateHeaderHeight);
 export const GlobalStyles = createGlobalStyle`
@@ -31,6 +33,12 @@ export const GlobalStyles = createGlobalStyle`
     width:100%;
     height:100%;
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight:700;
+  }
+  .tit {
+    font-weight:600;
+  }
   .color{
     color:${colors.mSlateBlue};
   }
@@ -44,7 +52,7 @@ export const GlobalStyles = createGlobalStyle`
   .m-br{
     display:none;
   }
-
+  ${commonStyle}
   ${media.mo}{
     .pc-br{
       display:none;

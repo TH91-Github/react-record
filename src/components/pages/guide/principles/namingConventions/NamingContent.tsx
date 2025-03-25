@@ -1,49 +1,105 @@
-import styled from "styled-components"
+import { breakpoints, colors } from "assets/style/Variable";
+import { SvgTistory } from "assets/svg/BrandLogo";
+import styled from "styled-components";
 import { namingConventionsData as baseData, namingData } from "../../data/namingData";
-import { colors } from "assets/style/Variable";
+import { useEffect, useMemo, useState } from "react";
 
 interface NamingContentPropsType {
   selectNaming: null | string;
 }
 export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
 
-  console.log(selectNaming)
-  console.log(baseData)
+  const selectNamingData = useMemo(()=> {
+    return namingData.find(namingItem => namingItem.id === selectNaming) || null;
+  },[selectNaming])
+
   return( 
     <StyleWrap>
-      {/* 데이터 활용 */}
-      <div className="naming-base">
-        <h4 className="title">{baseData.title}</h4>
-        {
-          baseData.url && (
-            <a href={baseData.url} target="_blank" rel="noopener noreferrer">티스토리</a>
-          )
-        }
-        <ul className="naming-lists">
-          {
-            baseData.lists.map((item, idx) => (
+      <div className="content-inner">
+        <div 
+          className={`naming-base ${selectNamingData ? 'hide':''}`}
+          aria-hidden={selectNamingData ? 'true' : 'false'}
+        >
+          <div className="base-heading">
+            <h4 className="title">{baseData.title}</h4>
+            { baseData.url && (
+              <a href={baseData.url} target="_blank" rel="noopener noreferrer" className="icon-link" title="티스토리 글 보러가기">
+                <span className="icon"><SvgTistory /></span>
+                <span className="txt">티스토리</span>
+              </a>
+            )}
+          </div>
+          <ul className="base-lists">
+            { baseData.lists.map((item, idx) => (
               <li key={idx}>
                 <p className="tit">
                   {item.tit}
-                  <span>{item.enTit}</span>
+                  <span> {item.enTit}</span>
                 </p>
-                {
-                  item.descLists.map((descItem, descIdx) => (
-                    <p key={descIdx}>{descItem}</p>
-                  ))
-                }
+                <ul className="bullet-lists">
+                  {item.descLists.map((descItem, descIdx) => (
+                    <li key={descIdx} className="desc">{descItem}</li>
+                  ))}
+                </ul>
+                <div className="examples-box">
+                  <span className="tit">사용 예:</span>
+                  <ul className="code-lists">
+                    {item.codeLists.map((codeItem, codeIdx) => (
+                      <li key={codeIdx}>
+                        <code>{codeItem}</code>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </li>
-            ))
-          }
-        </ul>
+            ))}
+          </ul>
+        </div>
+          { selectNamingData && (
+            <div key={selectNaming} className={`naming-select fade-up`} >
+              <div  className="select-heading">
+                <h4 className="title">{selectNamingData.title}</h4>
+              </div>
+              
+            </div>
+          )}
       </div>
     </StyleWrap>
   )
 }
 
 const StyleWrap = styled.div`
-  padding:30px;
-  .naming-lists{
+  .content-inner{
+    max-width:${breakpoints.tab}px;
+    margin:0 auto;
+    padding:30px;
+  }
+  .naming-base{
+    transition: opacity var(--transition);
+    &.hide {
+      position:absolute;
+      opacity:0;
+    }
+  }
+
+  h4.title {
+    font-size:28px;
+  }
+  .icon-link{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    margin-top:10px;
+    .icon{
+      display:block;
+      width:15px;
+      height:15px;
+    }
+    .txt { 
+      font-size:14px;
+    }
+  }
+  .base-lists{
     display:flex;
     flex-wrap:wrap;
     gap:10px;
@@ -53,53 +109,29 @@ const StyleWrap = styled.div`
       padding:20px;
       border-radius:10px;
       border:1px solid ${colors.lineColor};
+      & > .tit{
+        font-size:20px;
+        & > span { 
+          font-size:16px;
+        }
+      }
+    }
+    .bullet-lists{
+      margin-top:15px;
+      .desc {
+        position:relative;
+        font-weight:400;
+        color:${colors.desc};
+      }
+    }
+  }
+  .examples-box{
+    display:flex;
+    align-content: flex-start;
+    gap:10px;
+    margin-top:15px;
+    .tit {
+      flex-shrink: 0;
     }
   }
 `;
-/*
-  EX) 작성 가이드
-{ 
-
-
-카멜 표기법 (Camel Case)
-
-- camelCase
-- 단봉낙타 표기법
-- 각 단어의 첫문자를 대문자로 표기하고 붙여쓰는 표기법
-- 띄어쓰기 대신 대문자로 단어를 구분하는 표기 방식
-- 예시 : backgroundColor, typeName, iPhone
-
- 
-
-파스칼 표기법 (PasCal Case)
-
-단어와 단어 사이를 점이나 공백없이 대소문자로 구별. 낙타의 혹처럼 둘쑥날쑥
-- 쌍봉낙타 표기법
-- 첫 단어를 대문자로 시작하는 카멜 표기법
-- 예시 BackgroundColor, TypeName, PowerPoint
-
- 
-
-스네이크 표기법 (Snake Case)
-
-- 단어를 밑줄문자로 구분하는 표기법
-- 예시 : background_color, type_name
-
- 
-
-헝가리언 표기법 (Hungarian Case) 
-
-변수 선언시 접두어를 붙여 변수의 의미를 명확하게 하기 위한 규칙 
-- ex) strName, bBusy, szName
-○접두어 예시
-  - b : 불리언(boolean)
-  - ch : 문자(char)
-  - f : float 
-  - sz : NULL로 끝나는 문자열 (string+zero)
-
-  
-
-}
-*/
-
-

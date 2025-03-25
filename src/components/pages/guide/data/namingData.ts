@@ -65,6 +65,7 @@ export const namingConventionsData = {
       descLists:[
         '변수명 앞에 데이터 타입을 접두어로 붙이는 방식',
         '요즘은 잘 사용되지 않음, 레거시 Windows API, 오래된 C/C++ 코드, 일부 기업 내부 코딩 표준',
+        '접두어 예시 - numAge : 숫자(number), strUserName 문자열(string), bIsActive (불리언), arrItems (배열)'
       ],
       codeLists:[
         'numAge', 'strUserName', 'bIsActive', 'arrItems'
@@ -107,6 +108,64 @@ export const namingData = [
             desc:'설명(.desc)과 구분되는 일반적인 글자 (.txt 사용)'
           }
         ]
+      },
+      {
+        sectionTit:'전체와 영역을 감싸는 구조 layout',
+        lists:[
+          {
+            tit: '&-wrap',
+            desc: 'page 내 가장 전체를 감싸는 layout / 주로 페이지의 전체 구조를 정의하는 데 사용'
+          },
+          {
+            tit: '&-inner',
+            desc: 'wrap 하위 영역. 주로 가운데 정렬된 컨텐츠나 페이지의 주요 콘텐츠가 위치하는 부분'
+          },
+          {
+            tit: '&-section',
+            desc: '페이지의 주요 구획을 나누는 영역. 예를 들어, 헤더, 본문, 푸터 등 주요 섹션을 정의'
+          },
+          {
+            tit: '&-heading',
+            desc: '페이지의 상단 헤더 영역 / 네비게이션 바나 로고 등을 포함'
+          },
+          {
+            tit: '&-cont',
+            desc: '본문 내용이 포함되는 영역 /페이지의 주요 콘텐츠가 위치하는 곳'
+          }
+        ]
+      },
+      {
+        sectionTit:'특정 요소를 묶는 layout',
+        lists:[
+          {
+            tit: '&-lists',
+            desc: '관련된 항목들을 묶는 영역 / 주로 목록이나 리스트 형태의 콘텐츠를 포함'
+          },
+          {
+            tit: '&-item',
+            desc: '목록 또는 컨테이너 내 개별 항목 / 각 아이템을 정의하는 데 사용'
+          },
+          {
+            tit: '&-box',
+            desc: '어떤 콘텐츠나 요소를 감싸는 컨테이너 역할'
+          },
+          {
+            tit: '&-info',
+            desc: '정보 제공을 목적으로 하는 영역에 사용'
+          },
+          {
+            tit: '&-description',
+            desc: '설명글이나 텍스트로 이루어진 정보를 포함하는 부분'
+          },
+          {
+            tit: '.img',
+            desc:'이미지를 포함하는 요소를 스타일링할 때 사용'
+          },
+          {
+            tit: '.icon',
+            desc:'svg, icon으로 사용하는 요소를 감싸거나 스타일링할 때 사용'
+          }
+        ]
       }
     ], 
   },
@@ -124,17 +183,17 @@ export const namingData = [
           {
             tit:'소문자 사용',
             desc: '폴더 이름은 모두 소문자로 작성하여 일관성 있게 유지',
-            ex:['GuidePage.jsx','NamingContent.tsx']
+            codeLists:['components','assets','pages','hooks','routes']
           },
           {
             tit:'하이픈(-) 구분',
             desc: '여러 단어로 이루어진 폴더 이름은 하이픈(-)을 사용하여 구분',
-            ex:['user-profile/', 'product-list/']
+            codeLists:['user-profile/', 'product-list/']
           },
           {
             tit:'기능 중심',
             desc: '폴더 이름은 그 폴더 안에 포함된 파일들의 기능을 반영하기',
-            ex:['hooks/', 'components/','utils/', 'pages/']
+            codeLists:['hooks/', 'components/','utils/', 'pages/']
           },
         ]
       },
@@ -142,30 +201,35 @@ export const namingData = [
         sectionTit:'파일 네이밍 규칙',
         lists:[
           {
-            tit:'라우터 지정 컴포넌트',
-            desc: 'Router path 경로로 설정한 컴포넌트는 마지막에 page를 붙인다. * App 제외',
-            ex:['GuidePage.jsx','ErrorPage.tsx']
-          },
-          {
             tit:'컴포넌트',
             desc: 'React 컴포넌트 파일은 PascalCase를 사용하여 이름을 작성',
-            ex:['GuidePage.jsx','NamingContent.tsx']
+            codeLists:['GuidePage.jsx','NamingContent.tsx']
+          },
+          {
+            tit:'라우터 지정 컴포넌트',
+            desc: 'Router path 경로로 설정한 컴포넌트는 마지막에 page를 붙인다. * App 제외',
+            codeLists:['GuidePage.jsx','ErrorPage.tsx']
+          },
+          {
+            tit: 'TypeScript 파일',
+            desc: '첫 글자가 대문자인 PascalCase 파스칼 케이스로 작성하며, 설정 파일이나 타입 정의 파일에 주로 사용',
+            codeLists: ['UserType.ts', 'CommonType.ts']
           },
           {
             tit: '유틸리티 및 데이터 파일',
-            desc: '유틸리티 함수와 데이터 관련 파일은 소문자와 하이픈(-) 구분을 사용하여 작성합니다.',
-            ex: ['user-data.js', 'utils.ts']
+            desc: '유틸리티 함수와 데이터 관련 파일은 소문자와 하이픈(-) 구분을 사용하여 작성',
+            codeLists: ['user-data.js', 'utils.ts']
           },
           // hook, router, 등 각 기능에 따른 파일 규칙 필요성
           {
             tit: '함수 모음 파일',
-            desc: '공통으로 사용이 가능함 함수 크게는 전역 작게는 컴포넌트 단위로 소문자와 하이픈(-) 구분을 사용하여 작성합니다.',
-            ex: ['common.js','weather.js', 'calculate-price.ts']
+            desc: '공통으로 사용이 가능함 함수 크게는 전역 작게는 컴포넌트 단위로 소문자와 하이픈(-) 구분을 사용하여 작성',
+            codeLists: ['common.js','weather.js', 'calculate-price.ts']
           },
           {
             tit:'상수 파일',
             desc: '상수 값이 정의된 파일은 모두 대문자와 스네이크 케이스를 사용하여 작성',
-            ex: ['MAX_LENGTH.js', 'DEFAULT_CONFIG.ts']
+            codeLists: ['MAX_LENGTH.js', 'DEFAULT_CONFIG.ts']
           },
         ]
       },
@@ -175,22 +239,22 @@ export const namingData = [
           {
             tit:'일반 컴포넌트 파일',
             desc: 'React 컴포넌트는 `.jsx` 확장자를 사용하여 생성합니다.',
-            ex:['App.jsx','GuidePage.jsx']
+            codeLists:['App.jsx','GuidePage.jsx']
           },
           {
             tit:'타입스크립트 컴포넌트 파일',
             desc: 'TypeScript가 적용된 React 컴포넌트는 `.tsx` 확장자를 사용하여 생성합니다.',
-            ex:['App.tsx','GuidePage.tsx']
+            codeLists:['App.tsx','GuidePage.tsx']
           },
           {
             tit: '일반 JavaScript 파일 .js',
             desc: 'JavaScript로 작성된 파일은 `.js` 확장자를 사용합니다.',
-            ex: ['common.js', 'utils.js']
+            codeLists: ['common.js', 'utils.js']
           },
           {
             tit: '타입스크립트 파일 .ts',
             desc: 'TypeScript로 작성된 파일은 `.ts` 확장자를 사용합니다.',
-            ex: ['common.ts', 'utils.ts']
+            codeLists: ['common.ts', 'utils.ts']
           }
         ]
       }

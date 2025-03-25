@@ -5,14 +5,14 @@ import styled from "styled-components"
 
 // 사이드 레이아웃
 interface SideLayoutPropsType {
-  position?: 'relative' | 'absolute' | 'sticky' | 'fixed',
+  $position?: 'relative' | 'absolute' | 'sticky' | 'fixed',
   sideWidth?: number,
   sideHeight?:number,
   children: ReactNode,
 }
 
 export const SideLayout = ({
-  position = 'relative',
+  $position = 'fixed',
   sideWidth = 300,  // pc 최대 가로 사이즈
   sideHeight, // height 지정 없는 경우 header 제외 높이
   children 
@@ -20,7 +20,7 @@ export const SideLayout = ({
   const headerHeight = useRecoilValue(stateHeaderHeight);
   return (
     <StyleWrap 
-      $position={position}
+      $position={$position}
       $width={sideWidth}
       $headerHeight={ (sideHeight ?? headerHeight) ?? 0}
       className="side-layout"
@@ -40,17 +40,9 @@ interface StyleWrapPropsType {
 
 const StyleWrap = styled.div<StyleWrapPropsType>`
   position:${({$position}) => $position};
-  ${({$position}) => $position === 'absolute' && `
-    top:0;
-    left:0;
-  `}
+  top:${({$headerHeight}) => $headerHeight}px;
+  z-index:10;
   width:100%;
   max-width:${({$width}) => $width}px;
-  min-height:calc(100svh - ${props => (props.$headerHeight)}px);
-  & > aside {
-    position: relative;
-    width: 100%;
-    min-height: 100%;
-    height: 100%;
-  }
+  height:100%;
 `;

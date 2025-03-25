@@ -1,4 +1,4 @@
-import { SvgSearch } from "assets/svg/common";
+import { SvgSearch } from "assets/svg/Common";
 import InputText from "components/common/InputText";
 import styled from "styled-components"
 

@@ -10,7 +10,7 @@ import styled from 'styled-components';
 
 interface CarouselPropsType {
   children: React.ReactNode,
-  carouselClassName?: string,
+  customClass?: string,
   carouselOpt?: SwiperProps,
   onCarousel?: () => void,
   onChangeEvent?: () => void,
@@ -31,7 +31,7 @@ const DEFAULT_OPT: SwiperProps = {
 
 export default forwardRef<CarouselRefType, CarouselPropsType>(({
   children, 
-  carouselClassName = 'carousel-wrap',
+  customClass = 'carousel-wrap',
   carouselOpt, 
   onCarousel, onChangeEvent
 }: CarouselPropsType, ref) => {
@@ -79,7 +79,7 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
         onSlideChange={handleChange}
         onSwiper={handleOnSwiper}
         {...option}
-        className={carouselClassName}
+        className={customClass}
       >
         {
           React.Children.toArray(children).map((childEl, index) => (
