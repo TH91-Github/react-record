@@ -2,7 +2,6 @@ import React from 'react';
 import { colors, media, shadow } from "assets/style/Variable";
 import styled from "styled-components";
 
-
 const Logoback = React.memo(() => {
   const cube = new Array(9).fill(0);
   return (
