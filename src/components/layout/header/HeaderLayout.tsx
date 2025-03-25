@@ -1,5 +1,5 @@
 import { bgOpacity, breakpoints } from "assets/style/Variable";
-import { Logo } from "components/common/Logo";
+import { Logo } from "components/ui/Logo";
 import styled from "styled-components";
 import { HeaderNav } from "./HeaderNav";
 

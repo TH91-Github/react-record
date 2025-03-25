@@ -11,15 +11,28 @@ export const commonStyle = `
       &:first-child{ 
         margin-top:0;
       }
-      &::before{
-        position:absolute;
-        top:6px;
-        left:0;
-        width:4px;
-        height:4px;
-        border-radius:50%;
-        background:${colors.text};
-        content:'';
+      &.circle {
+        &::before{
+          position:absolute;
+          top:6px;
+          left:0;
+          width:4px;
+          height:4px;
+          border-radius:50%;
+          background:${colors.text};
+          content:'';
+        }
+      }
+      &.bar {
+        &::before{
+          position:absolute;
+          top:6px;
+          left:0;
+          width:4px;
+          height:2px;
+          background:${colors.text};
+          content:'';
+        }
       }
     }
   }

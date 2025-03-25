@@ -274,6 +274,9 @@ export const namingData = [
     desc:[
       '함수명',
     ],
+    section:[
+      
+    ]
     // handle 이벤트
     // 컴포넌트 내 함수 화살표 함수 
     // 유틸 함수로 빠지는 경우 function 으로 사용 - hook 도 포함
@@ -335,5 +338,8 @@ export const namingData = [
     desc:[
       '폴더명은 hook 시작',
     ],
+    section:[
+      
+    ]
   }
 ]

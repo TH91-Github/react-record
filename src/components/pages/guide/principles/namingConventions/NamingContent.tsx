@@ -1,8 +1,9 @@
-import { breakpoints, colors } from "assets/style/Variable";
+import { useMemo } from "react";
 import { SvgTistory } from "assets/svg/BrandLogo";
-import styled from "styled-components";
+import { TitlePoint } from "components/ui/TitlePoint";
+import { breakpoints, colors } from "assets/style/Variable";
 import { namingConventionsData as baseData, namingData } from "../../data/namingData";
-import { useEffect, useMemo, useState } from "react";
+import styled from "styled-components";
 
 interface NamingContentPropsType {
   selectNaming: null | string;
@@ -21,7 +22,13 @@ export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
           aria-hidden={selectNamingData ? 'true' : 'false'}
         >
           <div className="base-heading">
-            <h4 className="title">{baseData.title}</h4>
+            <TitlePoint 
+              $display="block"
+              titleTag="h4"
+              titleText={baseData.title}
+              pointer="underline"
+              $fontSize={28}
+            />
             { baseData.url && (
               <a href={baseData.url} target="_blank" rel="noopener noreferrer" className="icon-link" title="티스토리 글 보러가기">
                 <span className="icon"><SvgTistory /></span>
@@ -38,7 +45,7 @@ export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
                 </p>
                 <ul className="bullet-lists">
                   {item.descLists.map((descItem, descIdx) => (
-                    <li key={descIdx} className="desc">{descItem}</li>
+                    <li className="desc circle" key={descIdx}>{descItem}</li>
                   ))}
                 </ul>
                 <div className="examples-box">
@@ -58,9 +65,34 @@ export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
           { selectNamingData && (
             <div key={selectNaming} className={`naming-select fade-up`} >
               <div  className="select-heading">
-                <h4 className="title">{selectNamingData.title}</h4>
+                <TitlePoint 
+                  titleText={selectNamingData.title} 
+                  pointer="underline"
+                  $fontSize={28}
+                />
+                <ul className="desc-lists bullet-lists">
+                  {selectNamingData.desc.map((descItem, descIdx) => (
+                    <li key={descIdx} className="desc circle">{descItem}</li>
+                  ))}
+                </ul>
+                {
+                  selectNamingData.section?.map((sectionItem, sectionItemIdx)=>(
+                    <div className="section" key={sectionItemIdx}>
+                      <TitlePoint 
+                        titleText={sectionItem.sectionTit}
+                        pointer="circle" 
+                        $fontSize={20}
+                      />
+                      { sectionItem.lists.map((listsItem, listsItemIdx) => (
+                        <div key={listsItemIdx} className="section-item">
+                          <p className="s-tit">{`${(listsItemIdx+1)}. ${listsItem.tit}`}</p>
+                          <p className="desc">{listsItem.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ))
+                }
               </div>
-              
             </div>
           )}
       </div>
@@ -70,6 +102,7 @@ export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
 
 const StyleWrap = styled.div`
   .content-inner{
+    overflow:hidden;
     max-width:${breakpoints.tab}px;
     margin:0 auto;
     padding:30px;
@@ -77,14 +110,13 @@ const StyleWrap = styled.div`
   .naming-base{
     transition: opacity var(--transition);
     &.hide {
+      visibility:hidden;
       position:absolute;
+      top:0;
       opacity:0;
     }
   }
 
-  h4.title {
-    font-size:28px;
-  }
   .icon-link{
     display:inline-flex;
     align-items:center;
@@ -117,7 +149,7 @@ const StyleWrap = styled.div`
       }
     }
     .bullet-lists{
-      margin-top:15px;
+      margin-top: 20px;
       .desc {
         position:relative;
         font-weight:400;
@@ -132,6 +164,26 @@ const StyleWrap = styled.div`
     margin-top:15px;
     .tit {
       flex-shrink: 0;
+    }
+  }
+  .naming-select{
+    .desc-lists{
+      margin-top: 20px;
+    }
+    .section{
+      margin-top:30px;
+      padding-top:30px;
+      border-top:1px solid ${colors.lineColor};
+    }
+    .section-item{
+      margin-top:15px;
+      padding-left:20px;
+      .desc{
+        margin-top:5px;
+        font-size:14px;
+        font-weight:400;
+        color:${colors.subText};
+      }
     }
   }
 `;
