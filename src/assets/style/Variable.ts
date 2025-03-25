@@ -36,6 +36,9 @@ export const colors = {
   subText:'#8d9095',
   lineColor: "#dbdbdb",
 }
+export const bgColor = {
+  sideWite:'#F1F3F5',
+}
 export const bgOpacity = { 
   white: `background: rgba(255,255,255,.7)`,
 }

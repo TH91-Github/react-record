@@ -70,6 +70,9 @@ const StyleWrap = styled.div`
       width:20px;
       height:20px;
     }
+    .tit{
+      font-weight:500;
+    }
   }
   .acc-content {
   

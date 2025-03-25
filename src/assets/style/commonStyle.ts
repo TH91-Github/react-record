@@ -1,4 +1,4 @@
-import { colors } from "./Variable";
+import { bgColor, colors } from "./Variable";
 
 // 특정 요소 공통 style  
 export const commonStyle = `
@@ -52,7 +52,7 @@ export const commonStyle = `
       & > code{
         padding:2px 5px;
         border-radius:5px;
-        background:#f5f6fa;
+        background:${bgColor.sideWite};
         font-size:14px;
         color:${colors.mSlateBlue};
       } 

@@ -182,7 +182,7 @@ const StyleWrap = styled.div`
         margin-top:5px;
         font-size:14px;
         font-weight:400;
-        color:${colors.subText};
+        color:${colors.desc};
       }
     }
   }

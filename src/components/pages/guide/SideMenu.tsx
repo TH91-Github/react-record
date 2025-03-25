@@ -1,4 +1,4 @@
-import { colors, media } from "assets/style/Variable";
+import { bgColor, colors, media } from "assets/style/Variable";
 import { SvgCube } from "assets/svg/Common";
 import { Search } from "components/modules/Search";
 import useToggle from "hooks/useToggle";
@@ -47,7 +47,7 @@ const StyleWrap = styled.div`
   width:100%;
   height:100%;
   border-right:1px solid ${colors.lineColor};
-  background:#f5f6fa;
+  background:${bgColor.sideWite};
   .nav-inner{
   }
   .nav-heading{
