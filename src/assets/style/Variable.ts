@@ -44,7 +44,6 @@ export const bgOpacity = {
 }
 export const shadow = {
   base:'box-shadow: rgba(17,19,32,0.2) 1px 1px 6px;',
-  test:'box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;'
 }
 
 export const ellipsisStyle = (lineClamp:number, fontSize:number) => {

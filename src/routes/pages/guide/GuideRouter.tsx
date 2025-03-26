@@ -6,7 +6,7 @@ import { FoundationPage } from "pages/guide/foundation/FoundationPage";
 import { IconPage } from "pages/guide/foundation/IconPage";
 import { HooksPage } from "pages/guide/hooks/HooksPage";
 import { PreferencesPage } from "pages/guide/preferences/PreferencesPage";
-import { FolderStructurePage } from "pages/guide/principles/FolderStructurePage";
+import { DirectoryStructurePage } from "pages/guide/principles/DirectoryStructurePage";
 import { NamingConventionsPage } from "pages/guide/principles/NamingConventionsPage";
 import { PrinciplesPage } from "pages/guide/principles/PrinciplesPage";
 import { UtilsPage } from "pages/guide/utils/UtilsPage";
@@ -25,10 +25,10 @@ export const guideList = [
         element: <NamingConventionsPage />
       },
       {
-        id:'FolderStructure',
-        path: "folder-structure",
-        title:'폴더 구조',
-        element: <FolderStructurePage />
+        id:'DirectoryStructure',
+        path: "directory-structure",
+        title:'디렉토리 트리 구조',
+        element: <DirectoryStructurePage />
       },
     ],
   },

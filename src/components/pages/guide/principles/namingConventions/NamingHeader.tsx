@@ -19,10 +19,10 @@ export const NamingHeader = ({selectNaming, updateNaming}:NamingHeaderPropsType)
     updateNaming(selectNaming === id ? null : id);
   }
   return(
-    <StyleWrap>
+    <StyleWrap className="header-wrap">
       <div className="header-inner">
         <div className="header-content">
-          <h2 className="path">Naming Conventions</h2>
+          <h2 className="name-tag">Naming Conventions</h2>
           <h3 className="title">
             <span>좋은 이름이 뭐길래?</span>
             <span>네이밍 고민...</span>
@@ -56,50 +56,19 @@ export const NamingHeader = ({selectNaming, updateNaming}:NamingHeaderPropsType)
               불러오지 못하였습니다.
             </div>
           )}
-          
         </div>
       </div>
     </StyleWrap>
   )
 }
 const StyleWrap = styled.div`
-  position:relative;
-  ${shadow.test};
   .header-inner{
-    overflow:hidden;
     display:flex;
     position:relative;
     height:400px;
-    padding:30px;
-    max-width:${breakpoints.tab}px;
-    margin:0 auto;
   }
   .header-content{
     width:55%;
-  }
-  .path{
-    display:inline-block;
-    border-radius:5px;
-    padding:4px 8px;
-    background:${colors.mSlateBlue};
-    font-size:12px;
-    font-weight:400;
-    color:#fff;
-  }
-  .title {
-    margin-top:30px;
-    & > span {
-      display:block;
-      font-size:32px;
-      line-height:1.3;
-    }
-  }
-  .desc {
-    margin-top:20px;
-    & > span{
-      display:block;
-      line-height:1.5;
-    }
   }
   .category-lists{
     position:relative;

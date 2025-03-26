@@ -2,6 +2,15 @@ import { bgColor, colors } from "./Variable";
 
 // 특정 요소 공통 style  
 export const commonStyle = `
+  .name-tag {
+    display:inline-block;
+    border-radius:5px;
+    padding:4px 8px;
+    background:${colors.mSlateBlue};
+    font-size:12px;
+    font-weight:400;
+    color:#fff;
+  }
   .bullet-lists {
     position: relative;
     & > li {

@@ -1,14 +1,13 @@
 import styled from "styled-components"
 
 
-export const FolderStructurePage = () => {
+export const DirectoryContent = () => {
   return (
     <StyleWrap>
-      FolderStructurePage
+      DirectoryContent
     </StyleWrap>
   )
 }
-
 const StyleWrap = styled.div`
 
 `;

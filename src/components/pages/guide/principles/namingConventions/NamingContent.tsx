@@ -1,9 +1,9 @@
-import { useMemo } from "react";
+import { colors } from "assets/style/Variable";
 import { SvgTistory } from "assets/svg/BrandLogo";
 import { TitlePoint } from "components/ui/TitlePoint";
-import { breakpoints, colors } from "assets/style/Variable";
-import { namingConventionsData as baseData, namingData } from "../../data/namingData";
+import { useMemo } from "react";
 import styled from "styled-components";
+import { namingConventionsData as baseData, namingData } from "../../data/namingData";
 
 interface NamingContentPropsType {
   selectNaming: null | string;
@@ -101,12 +101,6 @@ export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
 }
 
 const StyleWrap = styled.div`
-  .content-inner{
-    overflow:hidden;
-    max-width:${breakpoints.tab}px;
-    margin:0 auto;
-    padding:30px;
-  }
   .naming-base{
     transition: opacity var(--transition);
     &.hide {
@@ -116,7 +110,6 @@ const StyleWrap = styled.div`
       opacity:0;
     }
   }
-
   .icon-link{
     display:inline-flex;
     align-items:center;
