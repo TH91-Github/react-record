@@ -1,31 +1,33 @@
 import { AssetsPage } from "pages/guide/assets/AssetsPage";
 import { ComponentsPage } from "pages/guide/components/ComponentsPage";
-import { BreakpointsPage } from "pages/guide/foundation/BreakpointsPage";
-import { DesignPage } from "pages/guide/foundation/DesignPage";
-import { FoundationPage } from "pages/guide/foundation/FoundationPage";
-import { IconPage } from "pages/guide/foundation/IconPage";
+import { BreakpointsPage } from "pages/guide/design/BreakpointsPage";
+import { DesignPage } from "pages/guide/design/DesignPage";
+import { IconPage } from "pages/guide/ui-elements/IconPage";
 import { HooksPage } from "pages/guide/hooks/HooksPage";
 import { PreferencesPage } from "pages/guide/preferences/PreferencesPage";
 import { DirectoryStructurePage } from "pages/guide/principles/DirectoryStructurePage";
 import { NamingConventionsPage } from "pages/guide/principles/NamingConventionsPage";
 import { PrinciplesPage } from "pages/guide/principles/PrinciplesPage";
 import { UtilsPage } from "pages/guide/utils/UtilsPage";
+import { FontsPage } from "pages/guide/design/FontsPage";
+import { ColorsPage } from "pages/guide/design/ColorsPage";
+import { ButtonPage } from "pages/guide/ui-elements/ButtonPage";
 
 export const guideList = [
   {
-    id:'Principles',
+    id:'principles',
     path: "principles",
     title:'규칙',
     element: <PrinciplesPage />,
     children: [
       {
-        id:'NamingConventions',
+        id:'naming-conventions',
         path: "naming-conventions",
         title:'네이밍 규칙',
         element: <NamingConventionsPage />
       },
       {
-        id:'DirectoryStructure',
+        id:'directory-structure',
         path: "directory-structure",
         title:'디렉토리 트리 구조',
         element: <DirectoryStructurePage />
@@ -33,57 +35,77 @@ export const guideList = [
     ],
   },
   {
-    id:'Foundation',
-    path: "foundation",
-    title:'기본 가이드',
-    element: <FoundationPage />,
+    id:'design',
+    path: "design",
+    title:'디자인',
+    element: <DesignPage />,
     children: [
       {
-        id:'Design',
-        path: "design",
-        title:'디자인',
-        element: <DesignPage />
+        id:'colors',
+        path: "colors",
+        title:'색상',
+        element: <ColorsPage />
       },
       {
-        id:'Icon',
-        path: "icon",
-        title:'아이콘 모음',
-        element: <IconPage />
+        id:'fonts',
+        path: "fonts",
+        title:'글자',
+        element: <FontsPage />
       },
       {
-        id:'Breakpoints',
+        id:'breakpoints',
         path: "breakpoints",
-        title:'Breakpoints',
+        title:'브레이크 포인트',
         element: <BreakpointsPage />
       },
     ],
   },
   {
-    id:'Assets', 
+    id:'ui',
+    path: "ui",
+    title:'UI 요소',
+    element: <DesignPage />,
+    children: [
+      {
+        id:'icon',
+        path: "icon",
+        title:'아이콘',
+        element: <IconPage />
+      },
+      {
+        id:'button',
+        path: "button",
+        title:'버튼',
+        element: <ButtonPage />
+      },
+    ],
+  },
+  {
+    id:'assets', 
     path: "assets",
     title:'리소스',
     element: <AssetsPage />,
   },
   {
-    id:'Components',
+    id:'components',
     path: "components",
     title:'컴포넌트',
     element: <ComponentsPage />,
   },
   {
-    id:'Hooks',
+    id:'hooks',
     path: "hooks",
     title:'커스텀 훅',
     element: <HooksPage />,
   },
   {
-    id:'Utils',
+    id:'utils',
     path: "utils",
     title:'유틸 함수',
     element: <UtilsPage />,
   },
   {
-    id:'Preferences',
+    id:'preferences',
     path: "preferences",
     title:'환경설정',
     element: <PreferencesPage />,

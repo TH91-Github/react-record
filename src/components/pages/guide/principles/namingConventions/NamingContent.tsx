@@ -15,87 +15,85 @@ export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
   },[selectNaming])
 
   return( 
-    <StyleWrap>
-      <div className="content-inner">
-        <div 
-          className={`naming-base ${selectNamingData ? 'hide':''}`}
-          aria-hidden={selectNamingData ? 'true' : 'false'}
-        >
-          <div className="base-heading">
-            <TitlePoint 
-              $display="block"
-              titleTag="h4"
-              titleText={baseData.title}
-              pointer="underline"
-              $fontSize={28}
-            />
-            { baseData.url && (
-              <a href={baseData.url} target="_blank" rel="noopener noreferrer" className="icon-link" title="티스토리 글 보러가기">
-                <span className="icon"><SvgTistory /></span>
-                <span className="txt">티스토리</span>
-              </a>
-            )}
-          </div>
-          <ul className="base-lists">
-            { baseData.lists.map((item, idx) => (
-              <li key={idx}>
-                <p className="tit">
-                  {item.tit}
-                  <span> {item.enTit}</span>
-                </p>
-                <ul className="bullet-lists">
-                  {item.descLists.map((descItem, descIdx) => (
-                    <li className="desc circle" key={descIdx}>{descItem}</li>
-                  ))}
-                </ul>
-                <div className="examples-box">
-                  <span className="tit">사용 예:</span>
-                  <ul className="code-lists">
-                    {item.codeLists.map((codeItem, codeIdx) => (
-                      <li key={codeIdx}>
-                        <code>{codeItem}</code>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-          { selectNamingData && (
-            <div key={selectNaming} className={`naming-select fade-up`} >
-              <div  className="select-heading">
-                <TitlePoint 
-                  titleText={selectNamingData.title} 
-                  pointer="underline"
-                  $fontSize={28}
-                />
-                <ul className="desc-lists bullet-lists">
-                  {selectNamingData.desc.map((descItem, descIdx) => (
-                    <li key={descIdx} className="desc circle">{descItem}</li>
-                  ))}
-                </ul>
-                {
-                  selectNamingData.section?.map((sectionItem, sectionItemIdx)=>(
-                    <div className="section" key={sectionItemIdx}>
-                      <TitlePoint 
-                        titleText={sectionItem.sectionTit}
-                        pointer="circle" 
-                        $fontSize={20}
-                      />
-                      { sectionItem.lists.map((listsItem, listsItemIdx) => (
-                        <div key={listsItemIdx} className="section-item">
-                          <p className="s-tit">{`${(listsItemIdx+1)}. ${listsItem.tit}`}</p>
-                          <p className="desc">{listsItem.desc}</p>
-                        </div>
-                      ))}
-                    </div>
-                  ))
-                }
-              </div>
-            </div>
+    <StyleWrap className="content-inner">
+      <div 
+        className={`naming-base ${selectNamingData ? 'hide':''}`}
+        aria-hidden={selectNamingData ? 'true' : 'false'}
+      >
+        <div className="base-heading">
+          <TitlePoint 
+            $display="block"
+            titleTag="h4"
+            titleText={baseData.title}
+            pointer="underline"
+            $fontSize={28}
+          />
+          { baseData.url && (
+            <a href={baseData.url} target="_blank" rel="noopener noreferrer" className="icon-link" title="티스토리 글 보러가기">
+              <span className="icon"><SvgTistory /></span>
+              <span className="txt">티스토리</span>
+            </a>
           )}
+        </div>
+        <ul className="base-lists">
+          { baseData.lists.map((item, idx) => (
+            <li key={idx}>
+              <p className="tit">
+                {item.tit}
+                <span> {item.enTit}</span>
+              </p>
+              <ul className="bullet-lists">
+                {item.descLists.map((descItem, descIdx) => (
+                  <li className="desc circle" key={descIdx}>{descItem}</li>
+                ))}
+              </ul>
+              <div className="examples-box">
+                <span className="tit">사용 예:</span>
+                <ul className="code-lists">
+                  {item.codeLists.map((codeItem, codeIdx) => (
+                    <li key={codeIdx}>
+                      <code>{codeItem}</code>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
+        { selectNamingData && (
+          <div key={selectNaming} className={`naming-select fade-up`} >
+            <div  className="select-heading">
+              <TitlePoint 
+                titleText={selectNamingData.title} 
+                pointer="underline"
+                $fontSize={28}
+              />
+              <ul className="desc-lists bullet-lists">
+                {selectNamingData.desc.map((descItem, descIdx) => (
+                  <li key={descIdx} className="desc circle">{descItem}</li>
+                ))}
+              </ul>
+              {
+                selectNamingData.section?.map((sectionItem, sectionItemIdx)=>(
+                  <div className="section" key={sectionItemIdx}>
+                    <TitlePoint 
+                      titleText={sectionItem.sectionTit}
+                      pointer="circle" 
+                      $fontSize={20}
+                    />
+                    { sectionItem.lists.map((listsItem, listsItemIdx) => (
+                      <div key={listsItemIdx} className="section-item">
+                        <p className="s-tit">{`${(listsItemIdx+1)}. ${listsItem.tit}`}</p>
+                        <p className="desc">{listsItem.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        )}
     </StyleWrap>
   )
 }

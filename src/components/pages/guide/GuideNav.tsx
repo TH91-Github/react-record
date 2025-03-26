@@ -1,5 +1,5 @@
 import { colors } from "assets/style/Variable";
-import { SvgBook, SvgCode, SvgFolder, SvgPuzzle, SvgSetting, SvgSquareStack } from "assets/svg/Common";
+import { SvgBook, SvgCode, SvgDesign, SvgFolder, SvgPuzzle, SvgRectangleStack, SvgSetting, SvgSquareStack } from "assets/svg/Common";
 import { Accordion } from "components/common/Accordion";
 import { useMemo } from "react";
 import { NavLink } from "react-router-dom";
@@ -10,13 +10,14 @@ export const GUIDE_NAV_LIST = guideList;
 export const GuideNav = () =>{
   const iconTit:{[key:string] : React.ReactNode} = useMemo(() =>{ 
     return {
-      Principles: <SvgBook/>, // 규칙
-      Foundation: <SvgSetting />, // 기본 가이드
-      Assets: <SvgFolder/>,
-      Components: <SvgSquareStack/>,
-      Hooks: <SvgCode/>,
-      Utils: <SvgPuzzle/>,
-      Preferences: <SvgSetting />,
+      principles: <SvgBook/>, // 규칙
+      design: <SvgDesign />, // 디자인
+      ui: <SvgRectangleStack />,
+      assets: <SvgFolder/>,
+      components: <SvgSquareStack/>,
+      hooks: <SvgCode/>,
+      utils: <SvgPuzzle/>,
+      preferences: <SvgSetting />,
     };
   },[]);
 

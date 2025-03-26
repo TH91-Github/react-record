@@ -3,8 +3,8 @@ import styled from "styled-components"
 
 export const DirectoryContent = () => {
   return (
-    <StyleWrap>
-      DirectoryContent
+    <StyleWrap className="content-inner">
+      
     </StyleWrap>
   )
 }

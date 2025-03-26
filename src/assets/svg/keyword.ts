@@ -40,6 +40,14 @@ export const IconKeyword = [
   {
     code:'SvgSetting',
     keyword:['세팅', '수정','편집','preferences','환경설정']
+  },
+  {
+    code:'SvgDesign',
+    keyword:['디자인','Design','color','font','breakpoints']
+  },
+  {
+    code:'SvgEyeDropper',
+    keyword:['UI 요소','스포이드', 'style','rectangle-stack', '모음']
   }
 ]
 
