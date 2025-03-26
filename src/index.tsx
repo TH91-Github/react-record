@@ -26,7 +26,7 @@ if (rootElement) {
     </React.StrictMode>
   );
 } else {
-  console.error('Root : <div id="root"></div> 확인! ');
+  console.error('Root : <div id="root"></div> 확인 필요 ');
 }
 
 reportWebVitals();
