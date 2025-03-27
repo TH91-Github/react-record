@@ -2,9 +2,10 @@ import { useState, memo, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
 interface AccordionProps<T> {
-  data: T[];
-  mode?: "single" | "multiple"; // 하나만 열기 or 각 open
+  data: T[],
+  mode?: "single" | "multiple", // 하나만 열기 or 각 open
   className?: string,
+  activeItems?: number[], // 활성화 필요한 목록
   accOpt?:{
     openIcon:'arrow'
   }
@@ -13,128 +14,115 @@ interface AccordionProps<T> {
     content: React.ReactNode | null;
   };
 }
+// 아코디언 item type
+interface AccordionItemPropsType {
+  accTit: React.ReactNode;
+  content: React.ReactNode | null;
+  isActive:boolean,
+  onChange: () => void;
+}
 
 export const Accordion = <T,>({
   data,
   mode = "multiple", 
   className,
+  activeItems = [],
   accOpt,
   children,
 }: AccordionProps<T>) => {
-  const [singleActive, setSingleActive] = useState<number | null>(null);
+  const [isActives, setIsActives] = useState<number[]>([...activeItems]);
 
   const handleChange = useCallback((index: number) => {
-    if (mode === "single") {
-      setSingleActive(index === singleActive ? null : index); 
-    }
-  }, [singleActive, mode]);
-
+    setIsActives(prevState => {
+      const isIndexActive = prevState.includes(index);
+      if (mode === 'single') {
+        return isIndexActive ? [] : [index];  // single 모드에서는 하나만 선택
+      }
+      return isIndexActive 
+        ? prevState.filter(item => item !== index) // 삭제
+        : [...prevState, index];  // 추가
+    });
+  }, [setIsActives, mode]);
   return (
     <StyleWrap className={`accordion-wrap ${className ? className :''} ${accOpt?.openIcon ==='arrow' ? 'acc-arrow': ''}`}>
-      {
-        data.length > 0 
-        ? (
-          <ul>
-            {
-              data.map((accItem, accIdx) => {
-                const { accTit, content } = children(accItem);
-                return (
-                  <MemoAccordionItem
-                    key={accIdx}
-                    itemIndex={accIdx}
-                    singleOpen={mode === "single" ? singleActive === accIdx : false}
-                    singleChange={mode === "single" ? handleChange : undefined}
-                    accTit={accTit}
-                    content={content}
-                  />
-                );
-              })
-            }
-          </ul>
-        )
-        : <div className="acc-empty">목록이 없습니다.</div>
+      { data.length > 0 ? (
+        <ul>
+          {
+            data.map((accItem, accIdx) => {
+              const { accTit, content } = children(accItem);
+              return (
+                <MemoAccordionItem
+                  key={accIdx}
+                  isActive={isActives.includes(accIdx)}
+                  onChange={() => handleChange(accIdx)}
+                  accTit={accTit}
+                  content={content}
+                />
+              );
+            })
+          }
+        </ul>
+        ) : <div className="acc-empty">목록이 없습니다.</div>
       }
     </StyleWrap>
   );
 };
 
-interface AccordionItemPropsType {
-  accTit: React.ReactNode;
-  content: React.ReactNode | null;
-  itemIndex: number;
-  singleOpen: boolean; // single 전용
-  singleChange?: (index: number) => void; // single 전용 - 활성 idx
-}
-
 const AccordionItem = ({
   accTit,
   content,
-  itemIndex,
-  singleOpen,
-  singleChange,
+  isActive,
+  onChange,
 }: AccordionItemPropsType) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => { // single 하나만 open을 위해
-    setIsOpen(singleOpen);
-  }, [singleOpen]);
 
   const handleClick = useCallback(() => {
-    setIsOpen(prev => !prev);
-    if (singleChange) {
-      singleChange(itemIndex);
-    }
-  }, [itemIndex, singleChange]);
+    onChange();
+  }, [onChange]);
 
   return (
-    <li className={`acc-item ${isOpen? 'open':''}`}>
+    <li className={`acc-item ${isActive? 'open':''}`}>
       <div className="acc-head">
-        {
-          content
-          ? ( 
-            <button 
-              type="button" 
-              className="acc-btn"
-              onClick={handleClick}
-            >
-              {accTit}
-              <span className="blind">{isOpen ? '닫기': '열기'}</span>
-            </button>
-          )
-          : (
-            <span className="acc-tit">{accTit}</span>
-          )
-        }
-        
+        {content ? ( 
+          <button 
+            type="button" 
+            className="acc-btn"
+            onClick={handleClick}
+          >
+            {accTit}
+            <span className="blind">{isActive ? '닫기': '열기'}</span>
+          </button>
+        ) : (
+          <span className="acc-tit">{accTit}</span>
+        )}
       </div>
       {
         content && (
-          <div className={`acc-content ${isOpen ? "open" : ""}`}>
+          <div className={`acc-content`}>
             {content}
           </div>
         )
       }
-      
     </li>
   );
 };
 
 const MemoAccordionItem = memo(AccordionItem, (prevProps, nextProps) => {
   return(
-    prevProps.singleOpen === nextProps.singleOpen &&
-    prevProps.itemIndex === nextProps.itemIndex 
+    prevProps.isActive === nextProps.isActive
   )
 });
 
 const StyleWrap = styled.div`
   .acc-item{
     position:relative;
-  }
-  .acc-content {
-    display: none;
-    &.open {
-      display: block;
+    &.open{
+      .acc-content{
+        display:block;
+      }
     }
+  }
+  .acc-content{
+    display:none;
   }
   .acc-btn, .acc-tit {
     padding:10px 15px 10px 0;
@@ -143,6 +131,7 @@ const StyleWrap = styled.div`
       max-height:30px;
     }
   }
+
   &.acc-arrow {
     .acc-btn{ 
       width:100%;

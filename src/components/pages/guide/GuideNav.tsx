@@ -2,12 +2,14 @@ import { colors } from "assets/style/Variable";
 import { SvgBook, SvgCode, SvgDesign, SvgFolder, SvgPuzzle, SvgRectangleStack, SvgSetting, SvgSquareStack } from "assets/svg/Common";
 import { Accordion } from "components/common/Accordion";
 import { useMemo } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { guideList } from "routes/pages/guide/GuideRouter";
 import styled from "styled-components";
 
 export const GUIDE_NAV_LIST = guideList;
 export const GuideNav = () =>{
+  const location = useLocation();
+
   const iconTit:{[key:string] : React.ReactNode} = useMemo(() =>{ 
     return {
       principles: <SvgBook/>, // 규칙
@@ -24,7 +26,7 @@ export const GuideNav = () =>{
   return (
     <StyleWrap className="nav">
       <nav>
-        <Accordion data={GUIDE_NAV_LIST} accOpt={{openIcon:'arrow'}}>
+        <Accordion data={GUIDE_NAV_LIST} activeItems={[1]} accOpt={{openIcon:'arrow'}}>
           {(item) => ({
             accTit: (
               <>
@@ -33,8 +35,7 @@ export const GuideNav = () =>{
               </>
             ),
             content: (
-              item.children
-              ? (
+              item.children ? (
                 <div className="nav-depth">
                   <ul>
                     {
@@ -48,8 +49,7 @@ export const GuideNav = () =>{
                     }
                   </ul>
                 </div>
-              )
-              : null
+              ) : null
             ),
           })}
         </Accordion>
