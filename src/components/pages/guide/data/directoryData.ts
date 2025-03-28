@@ -9,7 +9,7 @@ export const directoryData  = [
         id:'assets',
         title:'/assets',
         type:'folder',
-        desc:'',
+        desc:'이미지, 아이콘, 스타일, 폰트 등',
         children:[
           {
             id:'fonts',

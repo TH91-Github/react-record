@@ -27,13 +27,13 @@ export const SideMenu = () => {
           <h3 className="title">Menu</h3>
           <GuideNav />
         </div>
-        <div className="extend-btn">
+        {/* <div className="extend-btn">
           <button
             type="button"
             onClick={useExtend}>
             <span>{isExtend ? '펼치기' : '접기' }</span>
           </button>
-        </div>
+        </div> */}
       </div>
     </StyleWrap>
   )

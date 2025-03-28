@@ -18,8 +18,8 @@ export const GuideNav = () =>{
   const iconTit:{[key:string] : React.ReactNode} = useMemo(() =>{ 
     return {
       principles: <SvgBook/>, // 규칙
-      design: <SvgDesign />, // 디자인
-      ui: <SvgRectangleStack />,
+      design: <SvgDesign />, 
+      ui: <SvgRectangleStack />, 
       assets: <SvgFolder/>,
       components: <SvgSquareStack/>,
       hooks: <SvgCode/>,

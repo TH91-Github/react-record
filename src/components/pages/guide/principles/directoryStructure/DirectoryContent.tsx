@@ -1,9 +1,10 @@
 import styled from "styled-components"
 import { directoryData } from "../../data/directoryData";
 import { TitlePoint } from "components/ui/TitlePoint";
+import { MemoTreeLists, TreeLists } from "components/ui/TreeLists";
 
 export const DirectoryContent = () => {
-  // console.log(directoryData)
+  console.log(directoryData)
   return (
     <StyleWrap className="content-inner">
       <div className="content-heading">
@@ -16,8 +17,8 @@ export const DirectoryContent = () => {
         />
         <p className="desc">폴더 구조를 나타내고 각 폴더의 역할을 간략히 설명</p>
       </div>
-      <div className="tree-ui">
-        
+      <div className="directory-wrap">
+        <MemoTreeLists data={directoryData} />
       </div>
     </StyleWrap>
   )
@@ -27,5 +28,10 @@ const StyleWrap = styled.div`
     .desc{
       margin-top:10px;
     }
+  }
+
+
+  .tree-ui {
+
   }
 `;
