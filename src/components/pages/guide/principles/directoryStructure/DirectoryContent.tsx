@@ -18,7 +18,19 @@ export const DirectoryContent = () => {
         <p className="desc">폴더 구조를 나타내고 각 폴더의 역할을 간략히 설명</p>
       </div>
       <div className="directory-wrap">
-        <MemoTreeLists data={directoryData} />
+        {/* <MemoTreeLists data={directoryData} /> */}
+        <MemoTreeLists<any> data={directoryData} >
+          {(item) => ({
+            content: (
+              <>
+                <p className="tit">{item.title}</p>
+                {item.children && (
+                <MemoTreeLists data={item.children} depth={1}/>
+                )}
+              </>
+            ),
+          })}
+        </MemoTreeLists>
       </div>
     </StyleWrap>
   )
