@@ -9,6 +9,11 @@ import styled from "styled-components";
 export const GUIDE_NAV_LIST = guideList;
 export const GuideNav = () =>{
   const location = useLocation();
+  const currentIdx = useMemo(()=>{
+    const pathArr = location.pathname.split('/').filter(Boolean) ?? '';
+    const findIdx = GUIDE_NAV_LIST.findIndex(item => item.id === pathArr[1]);
+    return findIdx
+  },[location.pathname])
 
   const iconTit:{[key:string] : React.ReactNode} = useMemo(() =>{ 
     return {
@@ -26,7 +31,7 @@ export const GuideNav = () =>{
   return (
     <StyleWrap className="nav">
       <nav>
-        <Accordion data={GUIDE_NAV_LIST} activeItems={[1]} accOpt={{openIcon:'arrow'}}>
+        <Accordion data={GUIDE_NAV_LIST} activeItems={[currentIdx]} accOpt={{openIcon:'arrow'}}>
           {(item) => ({
             accTit: (
               <>

@@ -2,9 +2,8 @@ import styled from "styled-components"
 import { directoryData } from "../../data/directoryData";
 import { TitlePoint } from "components/ui/TitlePoint";
 
-
 export const DirectoryContent = () => {
-  console.log(directoryData)
+  // console.log(directoryData)
   return (
     <StyleWrap className="content-inner">
       <div className="content-heading">
