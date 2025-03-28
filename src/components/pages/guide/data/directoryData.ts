@@ -15,25 +15,25 @@ export const directoryData  = [
             id:'fonts',
             title:'/fonts',
             type:'folder',
-            desc:'',
+            desc:'사용 폰트 관리 (.woff2)',
           },
           {
             id:'images',
             title:'/images',
             type:'folder',
-            desc:'',
+            desc:'공통 또는 사용 페이지에 맞게 폴더 생성 후 이미지',
           },
           {
             id:'style',
             title:'/style',
             type:'folder',
-            desc:'',
+            desc:'글로벌 스타일, 스타일변수(Variable)',
           },
           {
             id:'svg',
             title:'/svg',
             type:'folder',
-            desc:'',
+            desc:'SVG 아이콘 이미지를 컴포넌트',
           }
         ]
       },
@@ -41,25 +41,25 @@ export const directoryData  = [
         id:'components',
         title:'/components',
         type:'folder',
-        desc:'Router Page 제외 컴포넌트 관리',
+        desc:'Pages 폴더 내 생성 그 외 page 담당이 아닌 컴포넌트는 components/해당폴더/생성',
         children:[
           {
             id:'common',
             title:'/common',
             type:'folder',
-            desc:'',
+            desc:'기능 요소가 있는 공통 컴포넌트',
           },
           {
             id:'layout',
             title:'/layout',
             type:'folder',
-            desc:'',
+            desc:'header, content, footer, 전체를 감싸는 레이아웃 컴포넌트',
           },
           {
             id:'modules',
             title:'/modules',
             type:'folder',
-            desc:'',
+            desc:'재사용 가능하고 2개 이상의 컴포넌트 결합된 컴포넌트',
           },
           {
             id:'pages',

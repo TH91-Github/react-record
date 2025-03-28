@@ -76,12 +76,45 @@ export const namingConventionsData = {
 
 export const namingData = [
   {
+    id:'naming-guidelines',
+    title:'추천 네이밍',
+    desc:[
+      'open → 접고 펼치는 경우',
+      'on → 특정 상태나 기능이 활성화될 때 사용',
+      'active → 항목을 활성화할 때',
+      'title, tit → 타이틀',
+      'desc → 설명이 포함된 텍스트',
+      'text → 일반 텍스트',
+      'lists → 목록이 있는 경우',
+      'box → 소규모 컨텐츠를 감싸는 경우',
+      'info → 상세 정보를 포함한 경우',
+      'select → 가장 기본적인 선택',
+      'selected → 선택된 상태',
+      'choose → 여러 옵션 중 하나를 고를 때',
+      'check → 체크박스 등에서 선택할 때',
+      'filter → 특정 조건을 만족하는 항목만 선택할 때',
+      'update → 기존 데이터를 수정할 때',
+      'modify → 일부 내용을 변경할 때',
+      'replace → 기존 값을 새로운 값으로 완전히 교체할 때',
+      'loading → 로딩 중일 때',
+      'disabled → 비활성화된 상태일 때',
+      'error → 오류 발생 시',
+      'success → 성공적인 상태일 때',
+      'hidden → 숨겨진 상태일 때',
+      'focus → 포커스가 맞춰진 상태',
+      'highlighted → 강조된 항목',
+      'empty → 비어 있는, 없는 상태', 
+      '...'
+    ],
+  },
+  {
     id:'naming-class',
     title:'클래스 규칙 (Class)',
     desc:[
       '스타일 일관성을 위해 공통 클래스를 정의',
       '클래스명은 역할에 맞게 직관적으로 구성',
       '타이틀, 텍스트 등의 기본적인 스타일을 포함',
+      '케밥 케이스 kebab-case로 작성'
     ],
     section:[
       {
@@ -106,7 +139,7 @@ export const namingData = [
           {
             tit:'텍스트 (Text) -> .txt',
             desc:'설명(.desc)과 구분되는 일반적인 글자 (.txt 사용)'
-          }
+          },
         ]
       },
       {
@@ -166,7 +199,28 @@ export const namingData = [
             desc:'svg, icon으로 사용하는 요소를 감싸거나 스타일링할 때 사용'
           }
         ]
+      },
+      {
+        sectionTit:'UI & 상태에 따른 class',
+        lists:[
+          {
+            tit:'특별한 기능 없이 공통 스타일 목적으로 만들어진 글로벌 UI',
+            desc:'-ui 끝나는 네이밍으로 하며 공통적인 스타일을 적용하기 위한 UI 스타일'
+          },
+          {
+            tit:'button class',
+            desc:'btn, btn-primary, btn-submit, btn-icon, 목적, 상태에 따라 -을 사용하여 구분'
+          },
+          {
+            tit:'숨기거나 감추는 목적 class',
+            desc:'hide, -hide 사용 ※ .blind 클래스는 스크린 리더 전용으로, 화면에서는 보이지 않지만 내용을 읽을 수 있도록 사용중'
+          }
+        ]
       }
+
+
+      
+
     ], 
   },
   {
