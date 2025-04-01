@@ -1,14 +1,27 @@
+import { GuideHeading } from "components/pages/guide/GuideHeading";
+import { useLocationCurrent } from "hooks/useLocationCustom";
+import { useMatchItem } from "hooks/useMatchItem";
 import { Outlet } from "react-router-dom";
-import styled from "styled-components"
-
+import { GUIDE_LIST } from "routes/pages/guide/GuideRouter";
+import styled from "styled-components";
 
 export const DesignPage = () => {
+
+  const {locationItem, locationPath}= useLocationCurrent(GUIDE_LIST, 'id', 1);
+  const { matchItem } = useMatchItem({
+    data:locationItem?.children ?? [],
+    idKey: 'id', 
+    findVal: locationPath[locationPath.length-1]
+  });
+
   return (
     <StyleWrap>
-      <div className="heading">
-        <h2 className="name-tag">Directory Structure</h2>
-        <h3 className="title">색상 <span className="color">Color</span></h3>
-      </div>
+      <GuideHeading category={locationItem ? locationItem.path : 'category'}>
+        <h3 className="title">
+          {matchItem?.title} 
+          <span className="color">{matchItem?.id}</span>
+        </h3>
+      </GuideHeading>
       <Outlet />    
     </StyleWrap>
   )

@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// 🔹 기본 toggle
 const useToggle = (toggleState = false): [boolean, () => void] => {
   const [toggle, setToggle] = useState(toggleState);
 
