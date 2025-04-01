@@ -1,6 +1,5 @@
 import { DirectoryContent } from "components/pages/guide/principles/directoryStructure/DirectoryContent"
 
-
 export const DirectoryStructurePage = () => {
   return (
     <div className="directory-structure">

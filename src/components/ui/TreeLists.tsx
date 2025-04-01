@@ -39,7 +39,7 @@ export const TreeLists = <T extends TreeItemType>({
             <TreeLists data={item.children as T[]} depth={depth + 1} children={children} />
           ) : null;
 
-        // 🔹 children 있다면 커스텀 적용
+        // children 있다면 커스텀 적용
         if (children) {
           const { content, customClass } = children(item, childrenContent);
           return (
@@ -48,7 +48,7 @@ export const TreeLists = <T extends TreeItemType>({
             </li>
           );
         }
-        // 🔹 기본 트리 구조
+        // 기본 트리 구조
         return (
           <li key={idx} className="tree-item">
             <p>{item.title}</p>

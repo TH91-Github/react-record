@@ -353,7 +353,10 @@ export const namingData = [
     id:'naming-type',
     title:'타입 규칙 (Type)',
     desc:[
-      '타입 지정',
+      '로컬 타입 지정일 경우 컴포넌트 파일 내 정의',
+      '2곳 이상 사용 시 공통 /types/ 폴더 내 해당 파일에 정의',
+      'type 공통 파일 생성 시 camelCase.ts',
+      '타입 지정은 PascalCase'
     ],
     section:[
       {

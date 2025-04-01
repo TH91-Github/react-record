@@ -13,7 +13,7 @@ import { FontsPage } from "pages/guide/design/FontsPage";
 import { ColorsPage } from "pages/guide/design/ColorsPage";
 import { ButtonPage } from "pages/guide/ui-elements/ButtonPage";
 
-export const guideList = [
+export const GUIDE_LIST = [
   {
     id:'principles',
     path: "principles",

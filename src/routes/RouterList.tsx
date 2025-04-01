@@ -1,7 +1,7 @@
-import { guideList } from "./pages/guide/GuideRouter";
 import { MainPage } from "pages/main/MainPage";
 import { GuidePage } from "pages/guide/GuidePage";
 import { TestPage } from "test/TestPage";
+import { GUIDE_LIST } from "./pages/guide/GuideRouter";
 
 export const routerList = [
   { // Main
@@ -15,7 +15,7 @@ export const routerList = [
     title:'📔 가이드',
     element: <GuidePage />,
     children: [
-      ...guideList
+      ...GUIDE_LIST
     ],
   },
   {

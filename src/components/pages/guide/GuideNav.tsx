@@ -2,9 +2,10 @@ import { colors } from "assets/style/Variable";
 import { SvgBook, SvgCode, SvgDesign, SvgFolder, SvgPuzzle, SvgRectangleStack, SvgSetting, SvgSquareStack } from "assets/svg/Common";
 import { Accordion } from "components/common/Accordion";
 import { MemoTreeLists, TreeItemType } from "components/ui/TreeLists";
+import { useLocationCurrent } from "hooks/useLocationCustom";
 import { useMemo } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import { guideList } from "routes/pages/guide/GuideRouter";
+import { NavLink } from "react-router-dom";
+import { GUIDE_LIST } from "routes/pages/guide/GuideRouter";
 import styled from "styled-components";
 
 interface NavItemType extends TreeItemType {
@@ -14,14 +15,8 @@ interface NavItemType extends TreeItemType {
   children?: NavItemType[];
 }
 
-export const GUIDE_NAV_LIST = guideList;
 export const GuideNav = () =>{
-  const location = useLocation();
-  const currentIdx = useMemo(()=>{
-    const pathArr = location.pathname.split('/').filter(Boolean) ?? '';
-    const findIdx = GUIDE_NAV_LIST.findIndex(item => item.id === pathArr[1]);
-    return findIdx
-  },[location.pathname])
+  const {locationIdx} = useLocationCurrent(GUIDE_LIST, 'id', 1);
 
   const iconTit:{[key:string] : React.ReactNode} = useMemo(() =>{ 
     return {
@@ -39,7 +34,7 @@ export const GuideNav = () =>{
   return (
     <StyleWrap className="nav">
       <nav>
-        <Accordion data={GUIDE_NAV_LIST} activeItems={[currentIdx]} accOpt={{openIcon:'arrow'}}>
+        <Accordion data={GUIDE_LIST} activeItems={[locationIdx]} accOpt={{openIcon:'arrow'}}>
           {(item) => ({
             heading: (
               <>
