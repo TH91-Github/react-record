@@ -17,7 +17,7 @@ export const DirectoryContent = () => {
         />
         <p className="desc">폴더 구조를 나타내고 각 폴더의 역할을 간략히 설명</p>
       </div>
-      <div className="directory-wrap">
+      <div className="directory-tree">
         <MemoTreeLists data={directoryData}>
           {(item, childrenContent) => ({
             content: (
@@ -42,7 +42,7 @@ const StyleWrap = styled.div`
       margin-top:10px;
     }
   }
-  .directory-wrap{
+  .directory-tree{
     margin-top:20px;
   }
   .directory-heading{

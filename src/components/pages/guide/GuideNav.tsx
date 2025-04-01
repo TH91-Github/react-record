@@ -41,12 +41,13 @@ export const GuideNav = () =>{
       <nav>
         <Accordion data={GUIDE_NAV_LIST} activeItems={[currentIdx]} accOpt={{openIcon:'arrow'}}>
           {(item) => ({
-            accTit: (
+            heading: (
               <>
                 <span className="icon">{iconTit[item.id]}</span>
                 <span className="tit">{item.title}</span>
               </>
             ),
+            accTit:item.title,
             content: (
               item.children ? (
                 <div className="nav-depth">
@@ -54,7 +55,7 @@ export const GuideNav = () =>{
                     {(childrenItem) => ({
                       content: (
                         <>
-                          <NavLink to={`${item.path}/${childrenItem.path}`} className="link">
+                          <NavLink to={`${item.path}/${childrenItem.path}`} className="link" title={`${childrenItem.title} 보기`}>
                             <span>{childrenItem.title}</span>
                           </NavLink>
                         </>

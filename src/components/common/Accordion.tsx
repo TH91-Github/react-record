@@ -2,23 +2,25 @@ import { useState, memo, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
 interface AccordionProps<T> {
-  data: T[],
-  mode?: "single" | "multiple", // 하나만 열기 or 각 open
-  className?: string,
-  activeItems?: number[], // 활성화 필요한 목록
+  data: T[];
+  mode?: "single" | "multiple"; // 하나만 열기 or 각 open
+  className?: string;
+  activeItems?: number[]; // 활성화 필요한 목록
   accOpt?:{
     openIcon:'arrow'
   }
   children: (item: T) => {
-    accTit: React.ReactNode;
+    heading: React.ReactNode;
+    accTit: string;
     content: React.ReactNode | null;
   };
 }
 // 아코디언 item type
 interface AccordionItemPropsType {
-  accTit: React.ReactNode;
+  heading: React.ReactNode;
+  accTit: string;
   content: React.ReactNode | null;
-  isActive:boolean,
+  isActive:boolean;
   onChange: () => void;
 }
 
@@ -49,13 +51,14 @@ export const Accordion = <T,>({
         <ul>
           {
             data.map((accItem, accIdx) => {
-              const { accTit, content } = children(accItem);
+              const { heading, accTit, content } = children(accItem);
               return (
                 <MemoAccordionItem
                   key={accIdx}
                   isActive={isActives.includes(accIdx)}
                   onChange={() => handleChange(accIdx)}
                   accTit={accTit}
+                  heading={heading}
                   content={content}
                 />
               );
@@ -70,6 +73,7 @@ export const Accordion = <T,>({
 
 const AccordionItem = ({
   accTit,
+  heading,
   content,
   isActive,
   onChange,
@@ -87,21 +91,20 @@ const AccordionItem = ({
             type="button" 
             className="acc-btn"
             onClick={handleClick}
+            title={accTit}
           >
-            {accTit}
+            {heading}
             <span className="blind">{isActive ? '닫기': '열기'}</span>
           </button>
         ) : (
           <span className="acc-tit">{accTit}</span>
         )}
       </div>
-      {
-        content && (
+      { content && (
           <div className={`acc-content`}>
             {content}
           </div>
-        )
-      }
+      )}
     </li>
   );
 };

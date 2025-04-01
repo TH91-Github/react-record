@@ -21,7 +21,7 @@ export const NamingHeader = ({selectNaming, updateNaming}:NamingHeaderPropsType)
   return(
     <StyleWrap className="header-wrap">
       <div className="header-inner">
-        <div className="header-content">
+        <div className="heading">
           <h2 className="name-tag">Naming Conventions</h2>
           <h3 className="title">
             <span>좋은 이름이 뭐길래?</span>
@@ -67,7 +67,7 @@ const StyleWrap = styled.div`
     position:relative;
     height:400px;
   }
-  .header-content{
+  .heading{
     width:55%;
   }
   .category-lists{
