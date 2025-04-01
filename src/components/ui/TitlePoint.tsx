@@ -2,12 +2,12 @@ import { colors } from "assets/style/Variable";
 import styled from "styled-components"
 
 interface TitlePointPropsType {
-  titleTag?: 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p',
-  titleText: string,
-  pointer?: 'circle' | 'underline',
-  $display?: 'inline-block' | 'block',
-  $fontSize?: number,
-  $activeColor?: string,
+  titleTag?: 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
+  titleText: string;
+  pointer?: 'circle' | 'underline';
+  $display?: 'inline-block' | 'block';
+  $fontSize?: number;
+  $activeColor?: string;
 }
 
 export const TitlePoint = ({

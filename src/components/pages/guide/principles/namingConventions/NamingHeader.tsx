@@ -1,12 +1,12 @@
-import { breakpoints, colors, shadow } from "assets/style/Variable";
+import { colors } from "assets/style/Variable";
 import Carousel from "components/common/Carousel";
 import { useFixedData } from "hooks/useDataProcessing";
 import styled from "styled-components";
 import { namingData } from "../../data/namingData";
 
 interface NamingHeaderPropsType {
-  selectNaming: string | null,
-  updateNaming: (e:string | null) => void,
+  selectNaming: string | null;
+  updateNaming: (e:string | null) => void;
 }
 export const NamingHeader = ({selectNaming, updateNaming}:NamingHeaderPropsType) =>{
   const namingCategory = useFixedData(() =>

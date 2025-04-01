@@ -50,7 +50,7 @@ export const GuideNav = () =>{
             content: (
               item.children ? (
                 <div className="nav-depth">
-                  <MemoTreeLists<NavItemType> data={item.children} >
+                  <MemoTreeLists<NavItemType> data={item.children} firstStart={true}>
                     {(childrenItem) => ({
                       content: (
                         <>
@@ -71,18 +71,6 @@ export const GuideNav = () =>{
     </StyleWrap>
   )
 }
-
-{/* <ul>
-  {
-    item.children && item.children.map((childrenItem, childrenIdx) => (
-    <li className="depth-item" key={childrenIdx}>
-      <NavLink to={`${item.path}/${childrenItem.path}`} className="link">
-        <span>{childrenItem.title}</span>
-      </NavLink>
-    </li>
-    ))
-  }
-</ul> */}
 
 const StyleWrap = styled.div`
   .accordion-wrap{
