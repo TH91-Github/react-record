@@ -217,10 +217,6 @@ export const namingData = [
           }
         ]
       }
-
-
-      
-
     ], 
   },
   {
@@ -323,17 +319,90 @@ export const namingData = [
     // useState, ref 등등
   },
   {
-    id:'naming-function',
-    title:'함수 규칙 (Function)',
-    desc:[
-      '함수명',
+    id: "naming-function",
+    title: "함수 규칙 (Function)",
+    desc: [
+      "카멜 케이스(camelCas)로 작성",
+      "선언은 const를 사용하여 재할당 방지",
+      "컴포넌트 내/외 함수",
+      "이벤트, 커스텀, 동작 등 함수에 대한 네이밍",
     ],
-    section:[
-      
+    section: [
+      {
+        sectionTit: "React 내장 함수는 화살표 함수로 선언",
+        lists: [
+          {
+            tit: "React 내장 함수 useState, useEffect 등 포함한다면 화살표 함수",
+            desc: "React의 useState, useEffect 등 내장 Hook을 사용하려면 화살표 함수로 선언하는 것으로 합니다.",
+            codeLists: ["const useFetchData = () => {...}"]
+          }
+        ]
+      },
+      {
+        sectionTit: "컴포넌트 내 함수",
+        lists: [
+          {
+            tit: "컴포넌트 내에 함수는 화살표 함수",
+            desc: "컴포넌트 내부에서만 사용하는 함수는 화살표 함수로 선언. this 바인딩 문제를 피할 수 있으며, 일관된 코드를 유지할 수 있습니다.",
+            codeLists: ["const handleClick = () => {...}"]
+          }
+        ]
+      },
+      {
+        sectionTit: "유틸리티 함수 & 외부 함수",
+        lists: [
+          {
+            tit: "컴포넌트 외부에 있는 함수는 function 키워드로 선언합니다.",
+            desc: "유틸 함수나 API 함수 등 재사용되는 함수는 function 키워드를 사용하여 선언",
+            codeLists: ["function fetchUser(date) {...}", "function userData() {...}"]
+          }
+        ]
+      },
+      {
+        sectionTit: "이벤트 핸들러",
+        lists: [
+          {
+            tit: "이벤트 핸들러는 handle 접두어를 사용",
+            desc: "이벤트 핸들러 함수는 handle 접두어를 붙여 직관적으로 알 수 있도록 합니다.",
+            codeLists: ["const handleInputChange = () => {...;","const handleClick () => {...}"]
+          }
+        ]
+      },
+      {
+        sectionTit: "커스텀 훅",
+        lists: [
+          {
+            tit: "커스텀 훅 화살표 함수와 use 접두어를 사용",
+            desc: "리액트의 규칙(Rules of Hooks)을 준수하며, 훅임을 명확하게 식별할 수 있도록 use 접두어를 사용합니다.",
+            codeLists: [
+              "const useFetchData(url) = () => {...}", "const useLocationCurrent = () => {...}"
+            ]
+          }
+        ]
+      },
+      {
+        sectionTit: "네이밍 스타일 가이드",
+        lists: [
+          {
+            tit: "동작을 나타내는 동사 사용",
+            desc: "get, set, fetch, update, remove, clear 등을 활용하여 함수의 역할을 명확하게 표현합니다.",
+            codeLists: [
+              "function getUserData() {...}",
+              "function updateProfile() {...}",
+              "function clearCache() {...}"
+            ]
+          },
+          {
+            tit: "불린 값 반환 함수는 is 또는 has 접두어 사용",
+            desc: "불린 값을 반환하는 함수는 is 또는 has 접두어를 사용하여 명확하게 구분합니다.",
+            codeLists: [
+              "function isUserLoggedIn() {...}",
+              "function hasPermission() {...}"
+            ]
+          }
+        ]
+      }
     ]
-    // handle 이벤트
-    // 컴포넌트 내 함수 화살표 함수 
-    // 유틸 함수로 빠지는 경우 function 으로 사용 - hook 도 포함
   },
   {
     id:'naming-method',

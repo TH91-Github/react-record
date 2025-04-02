@@ -3,12 +3,12 @@
 // 띄어쓰기 기준 앞글자 대문자 or 소문자
 
 // value 일부 비공개 
-export const partialUndisclosed = (
+export function partialUndisclosed(
   eVal:string, // 전체 val 
   cutNum:number=3, // 비공개 시작점
   cutType:string='@', // 비공개 기준 앞쪽
   closedText:string="*" // 비공개 text 타입
-) =>{
+){
   const [localPart, domain] = eVal.split(cutType);
   let resultVal:string;
 
