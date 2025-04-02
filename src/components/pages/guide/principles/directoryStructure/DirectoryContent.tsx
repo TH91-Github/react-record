@@ -6,7 +6,7 @@ import { colors } from "assets/style/Variable";
 
 export const DirectoryContent = () => {
   return (
-    <StyleWrap className="content-inner">
+    <StyleWrap className="content-wrap">
       <div className="content-heading">
         <TitlePoint 
           $display="block"

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export const PrinciplesPage = () => {
   return (
-    <StyleWrap>
+    <StyleWrap className="principles">
       <Outlet />
     </StyleWrap>
   )
@@ -14,7 +14,7 @@ const StyleWrap = styled.div`
   .header-wrap{
     ${shadow.base};
     .title {
-      margin-top:30px;
+      margin-top:20px;
       & > span {
         display:block;
         font-size:32px;
@@ -29,10 +29,5 @@ const StyleWrap = styled.div`
       }
     }
   }
-  .header-inner, .content-inner{
-    overflow:hidden;
-    max-width:${breakpoints.tab}px;
-    margin:0 auto;
-    padding:30px;
-  }
+  
 `;

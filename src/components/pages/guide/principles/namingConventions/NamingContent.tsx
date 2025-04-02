@@ -15,7 +15,7 @@ export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
   },[selectNaming])
 
   return( 
-    <StyleWrap className="content-inner">
+    <StyleWrap className="content-wrap">
       <div 
         className={`naming-base ${selectNamingData ? 'hide':''}`}
         aria-hidden={selectNamingData ? 'true' : 'false'}
@@ -112,7 +112,7 @@ const StyleWrap = styled.div`
     display:inline-flex;
     align-items:center;
     gap:5px;
-    margin-top:10px;
+    margin-top:20px;
     .icon{
       display:block;
       width:15px;

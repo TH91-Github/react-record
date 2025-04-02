@@ -1,3 +1,4 @@
+import { guideStyle } from "assets/style/commonStyle";
 import { SideLayout } from "components/layout/SideLayout";
 import { SideMenu } from "components/pages/guide/SideMenu";
 import { Outlet } from "react-router-dom";
@@ -26,4 +27,5 @@ const StyleWrap = styled.div`
     width: 100%;
     padding-left:300px;
   }
+  ${guideStyle}
 `;

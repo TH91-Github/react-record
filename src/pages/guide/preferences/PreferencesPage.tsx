@@ -4,7 +4,7 @@ import styled from "styled-components"
 
 export const PreferencesPage = () => {
   return (
-    <StyleWrap>
+    <StyleWrap className="preferences">
       PreferencesPage
       <Outlet />
     </StyleWrap>

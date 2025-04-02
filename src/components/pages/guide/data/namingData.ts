@@ -155,17 +155,17 @@ export const namingData = [
             desc: 'wrap 하위 영역. 주로 가운데 정렬된 컨텐츠나 페이지의 주요 콘텐츠가 위치하는 부분'
           },
           {
-            tit: '&-section',
+            tit: '.section-, &-section',
             desc: '페이지의 주요 구획을 나누는 영역. 예를 들어, 헤더, 본문, 푸터 등 주요 섹션을 정의'
           },
           {
-            tit: '&-heading, .heading',
+            tit: '.header-, &-heading, .heading',
             desc: '페이지의 상단 헤더 영역 / 네비게이션 바나 로고 등을 포함'
           },
           {
-            tit: '&-cont',
+            tit: '.content-, &-cont',
             desc: '본문 내용이 포함되는 영역 /페이지의 주요 콘텐츠가 위치하는 곳'
-          }
+          },
         ]
       },
       {

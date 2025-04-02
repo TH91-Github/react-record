@@ -10,6 +10,7 @@ import { NamingConventionsPage } from "pages/guide/principles/NamingConventionsP
 import { PrinciplesPage } from "pages/guide/principles/PrinciplesPage";
 import { UtilsPage } from "pages/guide/utils/UtilsPage";
 import { FontsPage } from "pages/guide/design/FontsPage";
+import { UIElementsPage } from "pages/guide/ui-elements/UIElementsPage";
 import { ColorsPage } from "pages/guide/design/ColorsPage";
 import { ButtonPage } from "pages/guide/ui-elements/ButtonPage";
 
@@ -64,7 +65,7 @@ export const GUIDE_LIST = [
     id:'ui',
     path: "ui",
     title:'UI 요소',
-    element: <DesignPage />,
+    element: <UIElementsPage />,
     children: [
       {
         id:'icon',

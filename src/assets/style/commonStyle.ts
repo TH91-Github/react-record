@@ -1,4 +1,4 @@
-import { bgColor, colors } from "./Variable";
+import { bgColor, breakpoints, colors } from "./Variable";
 
 // 특정 요소 공통 style  
 export const commonStyle = `
@@ -80,5 +80,20 @@ export const commonStyle = `
       }
     }
   }
+`;
 
-`
+// guide 공통 스타일
+export const guideStyle = `
+  .header-inner{
+    overflow:hidden;
+    max-width:${breakpoints.tab}px;
+    margin:0 auto;
+    padding:30px;
+  }
+  .content-wrap{
+    overflow:hidden;
+    max-width:${breakpoints.tab}px;
+    margin:0 auto;
+    padding:30px;
+  }
+`;
