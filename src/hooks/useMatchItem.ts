@@ -10,7 +10,7 @@ interface MatchItmePropsType<T> {
 // 🔹 일치하는 값(item) - 하나
 export const useMatchItem = <T,>({ 
   data, idKey, findVal,  
-}:MatchItmePropsType<T>):{matchIdx:number, matchItem: T | undefined } => {
+}:MatchItmePropsType<T>):{ matchIdx: number, matchItem: T | undefined } => {
   return useMemo(() => {
     const currentIdx = data.findIndex((item) => item[idKey] === findVal);
     const currentItem = currentIdx !== -1 ? data[currentIdx] : undefined;
