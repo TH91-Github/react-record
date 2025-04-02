@@ -65,15 +65,18 @@ const StyleWrap = styled.div`
   .header-inner{
     display:flex;
     position:relative;
-    height:400px;
+    width:100%:
   }
   .heading{
     width:55%;
   }
   .category-lists{
-    position:relative;
+    position:absolute;
+    top: 0;
+    right:0;
     width:45%;
     height:100%;
+    padding:30px;
   }
   .carousel-item{
     height:auto;

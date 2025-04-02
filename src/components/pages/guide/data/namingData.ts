@@ -104,6 +104,7 @@ export const namingData = [
       'focus → 포커스가 맞춰진 상태',
       'highlighted → 강조된 항목',
       'empty → 비어 있는, 없는 상태', 
+      'formatText → 특정 규칙에 맞춰 재구성, 새로운 형태,',
       '...'
     ],
   },

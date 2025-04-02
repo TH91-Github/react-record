@@ -1,8 +1,16 @@
 // 📍 문자 관련 공통 함수
 
-// 띄어쓰기 기준 앞글자 대문자 or 소문자
+// 🔹 띄어쓰기 기준 앞글자 대문자 or 소문자
+export function formatText (text:string, capital:boolean = true) {
+  return text.split(' ').map(textItem => (
+    capital 
+      ? textItem.charAt(0).toLocaleUpperCase() + textItem.slice(1)
+      : textItem.charAt(0).toLowerCase() + textItem.slice(1)
+  )).join(' ');
+}
+// word.charAt(0).toUpperCase() + word.slice(1)
 
-// value 일부 비공개 
+// 🔹 value 일부 비공개 
 export function partialUndisclosed(
   eVal:string, // 전체 val 
   cutNum:number=3, // 비공개 시작점
