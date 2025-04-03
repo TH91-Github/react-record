@@ -11,6 +11,6 @@ export const useGuideLocation = () => {
     idKey: 'id',
     findVal: locationPath[locationPath.length - 1]
   });
-  // matchItem : {...} or undefined 
-  return { guideData : matchItem};
+  // 🔽 data : {...} or undefined 
+  return { locationData: locationItem, guideData : matchItem};
 };

@@ -1,4 +1,4 @@
-import { colors } from "assets/style/Variable";
+import { colors } from "assets/style/variable";
 import Carousel from "components/common/Carousel";
 import { useFixedData } from "hooks/useDataProcessing";
 import styled from "styled-components";

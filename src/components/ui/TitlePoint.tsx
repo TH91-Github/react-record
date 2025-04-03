@@ -1,4 +1,4 @@
-import { colors } from "assets/style/Variable";
+import { colors } from "assets/style/variable";
 import styled from "styled-components"
 
 interface TitlePointPropsType {
@@ -22,7 +22,7 @@ export const TitlePoint = ({
     <StyleWrap 
       $display={$display}
       $fontSize={$fontSize || 18}
-      className={`${titleTag === 'p' ? 'tit':'title'} ${pointer ? pointer:'' }`}
+      className={`${titleTag === 'p' ? 'tit':'title'} ${pointer ? pointer : '' }`}
       $activeColor={$activeColor || colors.mSlateBlue}
       as={titleTag}
     >

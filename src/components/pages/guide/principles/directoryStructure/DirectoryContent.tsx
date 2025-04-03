@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { directoryData } from "../../data/directoryData";
 import { TitlePoint } from "components/ui/TitlePoint";
 import { MemoTreeLists } from "components/ui/TreeLists";
-import { colors } from "assets/style/Variable";
+import { colors, textColor } from "assets/style/variable";
 
 export const DirectoryContent = () => {
   return (
@@ -51,7 +51,7 @@ const StyleWrap = styled.div`
     gap:10px;
     .desc{
       font-size:14px;
-      color:${colors.desc};
+      color:${textColor.desc};
     }
   }
   .tree-lists{

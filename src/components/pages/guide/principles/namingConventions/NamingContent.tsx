@@ -1,4 +1,4 @@
-import { colors } from "assets/style/Variable";
+import { colors, textColor } from "assets/style/variable";
 import { SvgTistory } from "assets/svg/BrandLogo";
 import { TitlePoint } from "components/ui/TitlePoint";
 import { useMemo } from "react";
@@ -144,7 +144,7 @@ const StyleWrap = styled.div`
       .desc {
         position:relative;
         font-weight:400;
-        color:${colors.desc};
+        color:${textColor.desc};
       }
     }
   }
@@ -173,7 +173,7 @@ const StyleWrap = styled.div`
         margin-top:5px;
         font-size:14px;
         font-weight:400;
-        color:${colors.desc};
+        color:${textColor.desc};
       }
     }
   }

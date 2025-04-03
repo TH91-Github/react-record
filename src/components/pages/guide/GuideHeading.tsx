@@ -1,4 +1,4 @@
-import { shadow } from "assets/style/Variable";
+import { shadow } from "assets/style/variable";
 import { useGuideLocation } from "hooks/guide/useGuideHook";
 import styled from "styled-components";
 import { formatText } from "utils/character";
@@ -7,19 +7,18 @@ interface GuideHeadingPropsType {
   children?: React.ReactNode;
 }
 export const GuideHeading = ({children}:GuideHeadingPropsType) => {
-  const {guideData} = useGuideLocation();
-
+  const {locationData, guideData} = useGuideLocation();
   return (
     <StyleWrap className="header-wrap">
       <div className="header-inner">
         <div className="headding">
-          <h2 className="name-tag">{formatText(guideData?.path ?? 'category')}</h2>
+          <h2 className="name-tag">{formatText(locationData?.path ?? 'category')}</h2>
           <h3 className="title">
             <span>{guideData?.title}</span>
             <span className="color">{formatText(guideData?.id ?? 'guide')}</span>
           </h3>
-          {children}
         </div>
+        {children}
       </div>
     </StyleWrap>
   )

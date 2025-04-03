@@ -1,4 +1,4 @@
-import { breakpoints } from "assets/style/Variable";
+import { breakpoints } from "assets/style/variable";
 
 // 모바일 사이즈 체크
 export function isMobileSizeChk():boolean{ 

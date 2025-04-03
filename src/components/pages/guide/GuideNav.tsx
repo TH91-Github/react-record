@@ -1,4 +1,4 @@
-import { colors } from "assets/style/Variable";
+import { colors } from "assets/style/variable";
 import { SvgBook, SvgCode, SvgDesign, SvgFolder, SvgPuzzle, SvgRectangleStack, SvgSetting, SvgSquareStack } from "assets/svg/Common";
 import { Accordion } from "components/common/Accordion";
 import { MemoTreeLists, TreeItemType } from "components/ui/TreeLists";

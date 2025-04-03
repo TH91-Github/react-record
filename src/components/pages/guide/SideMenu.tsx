@@ -1,4 +1,4 @@
-import { bgColor, colors, media } from "assets/style/Variable";
+import { bgColor, colors, media } from "assets/style/variable";
 import { SvgCube } from "assets/svg/Common";
 import { Search } from "components/modules/Search";
 import useToggle from "hooks/useToggle";

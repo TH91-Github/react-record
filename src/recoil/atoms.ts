@@ -1,4 +1,4 @@
-import { colors } from 'assets/style/Variable';
+import { colors } from 'assets/style/variable';
 import { atom } from 'recoil';
 
 //  📍recoil - UI 관련 값 사용

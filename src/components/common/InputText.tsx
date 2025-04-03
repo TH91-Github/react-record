@@ -1,4 +1,4 @@
-import { colors } from "assets/style/Variable";
+import { colors, textColor } from "assets/style/variable";
 import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from "react";
 import styled from "styled-components"
 
@@ -153,7 +153,7 @@ const StyleWrap = styled.div<StyleProps>`
     transition: border-color .3s;
     outline:0;
     &:disabled + .placeholder{
-      color:${colors.subText};
+      color:${textColor.subText};
     }
   }
   .placeholder {

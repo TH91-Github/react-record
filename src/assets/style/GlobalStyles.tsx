@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { colors, media } from './Variable';
+import { colors, media, textColor } from './variable';
 import { rootStyle } from './rootStyle';
 import { commonStyle } from './commonStyle';
 
@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     font-size:16px;
     font-weight:500;
     line-height:1.3;
-    color:${colors.text};
+    color:${textColor.text};
   }
   img {
     vertical-align: top;

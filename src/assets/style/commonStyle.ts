@@ -1,4 +1,4 @@
-import { bgColor, breakpoints, colors } from "./Variable";
+import { bgColor, breakpoints, colors, textColor } from "./variable";
 
 // 특정 요소 공통 style  
 export const commonStyle = `
@@ -28,7 +28,7 @@ export const commonStyle = `
           width:4px;
           height:4px;
           border-radius:50%;
-          background:${colors.text};
+          background:${textColor.text};
           content:'';
         }
       }
@@ -39,7 +39,7 @@ export const commonStyle = `
           left:0;
           width:4px;
           height:2px;
-          background:${colors.text};
+          background:${textColor.text};
           content:'';
         }
       }
