@@ -39,7 +39,7 @@ export const DirectoryContent = () => {
 const StyleWrap = styled.div`
   .content-heading {
     .desc{
-      margin-top:10px;
+      margin-top:15px;
     }
   }
   .directory-tree{
@@ -51,7 +51,6 @@ const StyleWrap = styled.div`
     gap:10px;
     .desc{
       font-size:14px;
-      color:${textColor.desc};
     }
   }
   .tree-lists{

@@ -24,7 +24,7 @@ export const GuideHeading = ({children}:GuideHeadingPropsType) => {
   )
 }
 const StyleWrap = styled.div`
-  ${shadow.base};
+  box-shadow:${shadow.base};
   .title {
     margin-top:20px;
     font-size:24px;

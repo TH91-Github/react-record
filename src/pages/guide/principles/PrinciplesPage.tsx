@@ -12,7 +12,7 @@ export const PrinciplesPage = () => {
 
 const StyleWrap = styled.div`
   .header-wrap{
-    ${shadow.base};
+    box-shadow:${shadow.base};
     .title {
       margin-top:20px;
       & > span {

@@ -34,7 +34,7 @@ export const colors = {
   lineColor: "#dbdbdb",
 }
 export const textColor = {
-  title:'#050b21',
+  title:'#353844',
   text:'#42464d',
   desc:'#495057',
   subText:'#8d9095',
@@ -43,10 +43,10 @@ export const bgColor = {
   sideWite:'#F1F3F5',
 }
 export const bgOpacity = { 
-  white: `background: rgba(255,255,255,.7)`,
+  white: `rgba(255,255,255,.7)`,
 }
 export const shadow = {
-  base:'box-shadow: rgba(17,19,32,0.2) 1px 1px 6px;',
+  base:'rgba(17,19,32,0.2) 1px 1px 6px;',
 }
 
 export const ellipsisStyle = (lineClamp:number, fontSize:number) => {

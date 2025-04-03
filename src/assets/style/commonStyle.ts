@@ -2,6 +2,12 @@ import { bgColor, breakpoints, colors, textColor } from "./variables";
 
 // 특정 요소 공통 style  
 export const commonStyle = `
+  .title, .tit{
+    color:${textColor.title};
+  }
+  .desc{
+    color:${textColor.desc};
+  }
   .name-tag {
     display:inline-block;
     border-radius:5px;

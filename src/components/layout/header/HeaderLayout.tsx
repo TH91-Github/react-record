@@ -21,7 +21,7 @@ const StyleWrap = styled.header`
   left:0;
   z-index:20;
   width:100%;
-  ${bgOpacity.white};
+  background:${bgOpacity.white};
   box-shadow: rgba(17,19,32,0.2) 0px -1px 6px;
   .header-inner{
     display:flex;

@@ -123,7 +123,7 @@ export const namingData = [
         lists:[
           {
             tit:'h 태그를 사용한 타이틀 -> .title',
-            desc: 'h1~h6에 .title을 별도 클래스 사용 (header-title ❌)',
+            desc: 'h1~h6에 .title을 별도 클래스 사용 (header-title ❌ / .title ✅)',
           },
           {
             tit:'일반 태그 타이틀 -> .tit',

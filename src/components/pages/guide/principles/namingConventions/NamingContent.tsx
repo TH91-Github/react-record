@@ -144,7 +144,6 @@ const StyleWrap = styled.div`
       .desc {
         position:relative;
         font-weight:400;
-        color:${textColor.desc};
       }
     }
   }
@@ -173,7 +172,6 @@ const StyleWrap = styled.div`
         margin-top:5px;
         font-size:14px;
         font-weight:400;
-        color:${textColor.desc};
       }
     }
   }
