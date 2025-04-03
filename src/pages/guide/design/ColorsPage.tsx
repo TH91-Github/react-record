@@ -1,4 +1,4 @@
-import { textColor } from "assets/style/variable";
+import { textColor } from "assets/style/variables";
 import { TitlePoint } from "components/ui/TitlePoint";
 import styled from "styled-components";
 

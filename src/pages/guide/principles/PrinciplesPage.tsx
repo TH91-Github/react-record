@@ -1,4 +1,4 @@
-import { breakpoints, shadow } from "assets/style/variable";
+import { breakpoints, shadow } from "assets/style/variables";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 

@@ -1,4 +1,4 @@
-import { colors } from "assets/style/variable";
+import { colors } from "assets/style/variables";
 import styled from "styled-components"
 
 interface TitlePointPropsType {

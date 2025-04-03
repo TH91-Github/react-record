@@ -1,4 +1,4 @@
-import { colors, textColor } from "assets/style/variable";
+import { colors, textColor } from "assets/style/variables";
 import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from "react";
 import styled from "styled-components"
 

@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { directoryData } from "../../data/directoryData";
 import { TitlePoint } from "components/ui/TitlePoint";
 import { MemoTreeLists } from "components/ui/TreeLists";
-import { colors, textColor } from "assets/style/variable";
+import { colors, textColor } from "assets/style/variables";
 
 export const DirectoryContent = () => {
   return (

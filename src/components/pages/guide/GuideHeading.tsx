@@ -1,4 +1,4 @@
-import { shadow } from "assets/style/variable";
+import { shadow } from "assets/style/variables";
 import { useGuideLocation } from "hooks/guide/useGuideHook";
 import styled from "styled-components";
 import { formatText } from "utils/character";

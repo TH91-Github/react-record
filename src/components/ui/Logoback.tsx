@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors, media, shadow } from "assets/style/variable";
+import { colors, media, shadow } from "assets/style/variables";
 import styled from "styled-components";
 
 const Logoback = React.memo(() => {

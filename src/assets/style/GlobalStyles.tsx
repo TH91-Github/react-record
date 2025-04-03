@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-import { colors, media, textColor } from './variable';
 import { rootStyle } from './rootStyle';
 import { commonStyle } from './commonStyle';
+import { colors, media, textColor } from './variables';
 
 // const headerHeight = useRecoilValue(stateHeaderHeight);
 export const GlobalStyles = createGlobalStyle`

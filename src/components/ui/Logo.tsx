@@ -1,4 +1,4 @@
-import { colors } from "assets/style/variable";
+import { colors } from "assets/style/variables";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components"
 

@@ -1,4 +1,4 @@
-import { bgOpacity, breakpoints } from "assets/style/variable";
+import { bgOpacity, breakpoints } from "assets/style/variables";
 import { Logo } from "components/ui/Logo";
 import styled from "styled-components";
 import { HeaderNav } from "./HeaderNav";
