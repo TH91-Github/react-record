@@ -1,4 +1,4 @@
-import { breakpoints } from "assets/style/variables";
+import { guideStyle } from "assets/style/guide/guideStyle";
 import { GuideHeading } from "components/pages/guide/GuideHeading";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
@@ -6,16 +6,11 @@ import styled from "styled-components";
 export const DesignPage = () => {
 
   return (
-    <StyleWrap>
+    <div className="design-guide">
       <GuideHeading />
       <div className="content-wrap">
         <Outlet />  
       </div>    
-    </StyleWrap>
+    </div>
   )
 }
-
-const StyleWrap = styled.div`
-  
-  
-`;

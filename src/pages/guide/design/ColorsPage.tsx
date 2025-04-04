@@ -31,7 +31,7 @@ export const ColorsPage = () => {
                 pointer="circle"
                 $fontSize={20}
               />
-              <p className="desc">{item.id}.key</p>
+              <p className="desc">사용 코드 : {item.id}.<span className="color">key</span></p>
               {
                 item.desc?.map((descItem, descIdx) => (
                   <p key={descIdx} className="desc">{descItem}</p>
@@ -48,13 +48,6 @@ export const ColorsPage = () => {
 }
 
 const StyleWrap = styled.div`
-  .bullet-lists{
-    margin-top:20px;
-  }
-  .section-wrap{
-    margin-top:30px;
-    border-top: 1px solid ${colors.lineBlack};
-  }
   .section-item {
     margin-top:30px;
     .desc{

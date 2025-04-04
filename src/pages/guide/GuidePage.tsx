@@ -1,4 +1,4 @@
-import { guideStyle } from "assets/style/commonStyle";
+import { guideStyle } from "assets/style/guide/guideStyle";
 import { SideLayout } from "components/layout/SideLayout";
 import { SideMenu } from "components/pages/guide/SideMenu";
 import { Outlet } from "react-router-dom";

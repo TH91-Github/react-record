@@ -1,4 +1,6 @@
 // 📍 date 시간 관련 공통 함수
+
+// 🔹현재 시간
 export function currentTime() {
   const now = new Date();
   return {

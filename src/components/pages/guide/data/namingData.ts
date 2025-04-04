@@ -105,6 +105,8 @@ export const namingData = [
       'highlighted → 강조된 항목',
       'empty → 비어 있는, 없는 상태', 
       'formatText → 특정 규칙에 맞춰 재구성, 새로운 형태,',
+      'token → 고유 token, import 가능한 코드',
+      'code → 코드 관련',
       '...'
     ],
   },

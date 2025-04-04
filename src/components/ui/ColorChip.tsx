@@ -1,16 +1,20 @@
-import { bgShadow, textShadow } from "assets/style/variables";
-import { useCallback } from "react";
+import { bgOpacity, bgShadow, colors, textShadow } from "assets/style/variables";
 import styled from "styled-components";
 import { ColorChipDataType } from "types/ui";
+import { copyClipboard } from "utils/common";
 
 interface ColorChipPropsType {
   data: ColorChipDataType[];
 }
 export const ColorChip = ({data}:ColorChipPropsType) => {
-  console.log(data)
-  const colorImport = useCallback(()=>{
 
-  },[])
+  const handleClickCopy = async (e:string) => {
+    const copySuccess = await copyClipboard(e);
+    // 👇 popup 컴포넌트 완료 후 교체
+    copySuccess 
+      ? console.log('성공') 
+      : console.log('실패') 
+  };
 
   return (
     <StyleWrap className="color-chip">
@@ -19,11 +23,23 @@ export const ColorChip = ({data}:ColorChipPropsType) => {
           <li key={idx} className={`${(item.id).includes('bgOpacity') ? 'color-opacity' : ''}`}>
             <ColorChipItem $bgColor={item.code}>
               <div className="color-bg">
-                <span className="color-code">{item.code}</span>
+                <button className="color-hex" onClick={() => handleClickCopy(item.code)}>
+                  <span className="tit">{item.code}</span>
+                </button>
               </div>
               <div className="color-info">
-                <span className="tit">{item.title}</span>
+                <button className="color-token" onClick={() => handleClickCopy(`colors.${item.title}`)}>
+                  <span className="tit">{item.title}</span>
+                </button>
               </div>
+              {(item.desc && false) && ( // 설명 툴팁 진행 예정.
+                <>
+                  <button className="tooltip"></button>
+                  <div className="desc-box">
+
+                  </div>
+                </>
+              )}
             </ColorChipItem>
           </li>
         ))}
@@ -53,22 +69,79 @@ const ColorChipItem = styled.div<ColorChipItemType>`
     height:70px;
     background:${({$bgColor}) => $bgColor};
   }
-  .color-code{
+  .color-hex{
     position:absolute;
     top:50%;
     left:50%;
-    font-size:14px;
-    text-shadow:${textShadow.bgBlack};
-    color:#fff;
+    padding:5px;
+    border-radius:5px;
+    outline:0;
     transform: translate(-50%, -50%);
+    .tit{
+      font-size:14px;
+      text-shadow:${textShadow.bgBlack};
+      color:#fff;
+    }
+    &:focus{
+      background:${bgOpacity.white};
+      .tit {
+        color:${colors.black};
+      }
+    }
   }
   .color-info {
     padding:10px 10px;
-    .tit {
+    border: 2px solid #fff;
+    border-top:none;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    background:#fff;
+    transition: border-color var(--transition);
+    .color-token{
+      display:inline-block;
+      position:relative;
+      max-width:100%;
+      outline:0;
+      &::before, &::after{
+        position:absolute;
+        bottom:-1px;
+        left:0;
+        width:100%;
+        height:2px;
+        background:${colors.lineColor};
+        content:'';
+        transform: scaleX(0);
+        transition: transform var(--transition);
+        transform-origin:center left;
+      }
+      &::after{
+        z-index:1;
+        bottom:0;
+        background:${({$bgColor}) => $bgColor};
+      }
+      &:focus {
+        &::before, &::after{ 
+          transform: scaleX(1);
+        }
+      }
+      
+    }
+    .tit{
       display:block;
       white-space:nowrap; 
       overflow:hidden; 
       text-overflow:ellipsis; 
+      line-height:1;
     }
+  }
+  &:hover{ 
+    .color-info {
+      border-color: ${({$bgColor}) => $bgColor};
+    }
+  }
+
+  .tooltip, .desc-box{
+    position:absolute;
+    top:0;
   }
 `;
