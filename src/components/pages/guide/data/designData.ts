@@ -52,9 +52,15 @@ export const designData : DesignDataType[] = [
         code:'#03053a',
       },
       {
+        id:'colors-lineBlack',
+        title:'lineBlack',
+        desc:['border 또는 line 주로 사용 - 어두운 버전'],
+        code:'#273036',
+      },
+      {
         id:'colors-lineColor',
         title:'lineColor',
-        desc:['border 또는 line 주로 사용'],
+        desc:['border 또는 line 주로 사용 - 연한 버전'],
         code:'#dbdbdb',
       },
     ]

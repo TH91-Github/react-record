@@ -31,6 +31,7 @@ export const colors = {
   mSlateBlue:'#6a67e5',  // medium -> m
   blue:'#395acc',
   darkNavy:"#03053a",
+  lineBlack:"#111619",
   lineColor: "#dbdbdb",
 }
 export const textColor = {

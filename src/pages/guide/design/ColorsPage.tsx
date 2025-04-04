@@ -53,9 +53,10 @@ const StyleWrap = styled.div`
   }
   .section-wrap{
     margin-top:30px;
+    border-top: 1px solid ${colors.lineBlack};
   }
   .section-item {
-    margin-top:20px;
+    margin-top:30px;
     .desc{
       margin-top:10px;
     }
