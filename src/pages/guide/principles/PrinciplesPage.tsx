@@ -1,4 +1,4 @@
-import { breakpoints, shadow } from "assets/style/variables";
+import { bgShadow } from "assets/style/variables";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
@@ -12,7 +12,7 @@ export const PrinciplesPage = () => {
 
 const StyleWrap = styled.div`
   .header-wrap{
-    box-shadow:${shadow.base};
+    box-shadow:${bgShadow.base};
     .title {
       margin-top:20px;
       & > span {

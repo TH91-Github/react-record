@@ -45,9 +45,15 @@ export const bgColor = {
 export const bgOpacity = { 
   white: `rgba(255,255,255,.7)`,
 }
-export const shadow = {
+export const bgShadow = {
   base:'rgba(17,19,32,0.2) 1px 1px 6px;',
 }
+
+export const textShadow ={
+  base:'rgb(127, 127, 127,1) 0.7px 1px 1px',
+  bgBlack:'rgb(45, 45, 45, 1) 0px 1px 10px',
+}
+
 
 export const ellipsisStyle = (lineClamp:number, fontSize:number) => {
   const lineHeight = fontSize ? fontSize : 20 ;

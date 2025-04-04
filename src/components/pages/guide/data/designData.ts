@@ -1,16 +1,12 @@
 // ✅ variables 동기화, 추후 DB 관리
 
-interface DesignListsType {
-  id: string;
-  title: string;
-  desc?: string[];
-  code: string;
-}
+import { ColorChipDataType } from "types/ui";
 
 interface DesignDataType  {
   id:string | number;
   title:string;
-  lists: DesignListsType[]
+  desc?:string[];
+  lists: ColorChipDataType[]
 }
 
 export const designData : DesignDataType[] = [
@@ -41,7 +37,7 @@ export const designData : DesignDataType[] = [
       },
       {
         id:'colors-mSlateBlue',
-        title:'green',
+        title:'mSlateBlue',
         desc:['default 포인트 색상','색상 이름 mediumSlateBlue이며 medium -> m 약어를 사용하고 있습니다.'],
         code:'#6a67e5',
       },
@@ -60,6 +56,31 @@ export const designData : DesignDataType[] = [
         title:'lineColor',
         desc:['border 또는 line 주로 사용'],
         code:'#dbdbdb',
+      },
+    ]
+  },
+  {
+    id:'bgColor',
+    title:'배경에 사용하는 색상',
+    lists:[
+      {
+        id:'bgColor-sideWite',
+        title:'sideWite',
+        desc:['사이드 메뉴 BG 색상으로 사용'],
+        code:'#F1F3F5',
+      },
+    ]
+  },
+  {
+    id:'bgOpacity',
+    title:'투명도가 적용된 배경 색상',
+    desc:['투명도를 확인하기 위해 박스가 움직이고 있습니다.'],
+    lists:[
+      {
+        id:'bgOpacity-white',
+        title:'white',
+        desc:['투명도를 위해 rgba 사용'],
+        code:'rgba(255,255,255,.7)',
       },
     ]
   },
@@ -93,28 +114,4 @@ export const designData : DesignDataType[] = [
       },
     ]
   },
-  {
-    id:'bgColor',
-    title:'배경에 사용하는 색상',
-    lists:[
-      {
-        id:'bgColor-sideWite',
-        title:'sideWite',
-        desc:['사이드 메뉴 BG 색상으로 사용'],
-        code:'#F1F3F5',
-      },
-    ]
-  },
-  {
-    id:'bgOpacity',
-    title:'투명도가 적용된 배경 색상',
-    lists:[
-      {
-        id:'bgOpacity-white',
-        title:'white',
-        desc:['투명도를 위해 rgba 사용'],
-        code:'rgba(255,255,255,.7)',
-      },
-    ]
-  }
 ]

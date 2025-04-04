@@ -1,4 +1,4 @@
-import { shadow } from "assets/style/variables";
+import { bgShadow } from "assets/style/variables";
 import { useGuideLocation } from "hooks/guide/useGuideHook";
 import styled from "styled-components";
 import { formatText } from "utils/character";
@@ -24,7 +24,7 @@ export const GuideHeading = ({children}:GuideHeadingPropsType) => {
   )
 }
 const StyleWrap = styled.div`
-  box-shadow:${shadow.base};
+  box-shadow:${bgShadow.base};
   .title {
     margin-top:20px;
     font-size:24px;

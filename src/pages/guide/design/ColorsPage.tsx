@@ -1,7 +1,8 @@
-import { textColor } from "assets/style/variables";
+import { colors } from "assets/style/variables";
+import { designData } from "components/pages/guide/data/designData";
+import { ColorChip } from "components/ui/ColorChip";
 import { TitlePoint } from "components/ui/TitlePoint";
 import styled from "styled-components";
-
 
 export const ColorsPage = () => {
   return (
@@ -20,15 +21,27 @@ export const ColorsPage = () => {
         </ul>
       </div>
       <div className="section-wrap">
-        <div className="section-item">
-          <TitlePoint 
-            $display="block"
-            titleTag="h5"
-            titleText={'주요 사용 색상'}
-            pointer="circle"
-            $fontSize={28}
-          />
-        </div>
+        {
+          designData.map((item, idx) => (
+            <div className="section-item" key={idx}>
+              <TitlePoint 
+                $display="block"
+                titleTag="h5"
+                titleText={item.title}
+                pointer="circle"
+                $fontSize={20}
+              />
+              <p className="desc">{item.id}.key</p>
+              {
+                item.desc?.map((descItem, descIdx) => (
+                  <p key={descIdx} className="desc">{descItem}</p>
+                ))
+              }
+              <ColorChip data={item.lists} />
+              
+            </div>
+          ))
+        }
       </div>
     </StyleWrap>
   )
@@ -39,6 +52,38 @@ const StyleWrap = styled.div`
     margin-top:20px;
   }
   .section-wrap{
+    margin-top:30px;
+  }
+  .section-item {
+    margin-top:20px;
+    .desc{
+      margin-top:10px;
+    }
+    .color-opacity{
+      position:relative;
+      &::before{
+        position:absolute;
+        top:30px;
+        right:0;
+        width:10px;
+        height:10px;
+        border-radius:5px;
+        background:${colors.mSlateBlue};
+        animation: opacityChcekAni 3s infinite;
+        content:'';
+      }
+      @keyframes opacityChcekAni {
+        0%, 100% {
+          transform: translateX(0px);
+        }
+        50%{
+          transform: translateX(10px);
+        }
+      }
+    }
+  }
+  
+  .color-chip{
     margin-top:20px;
   }
 `;
