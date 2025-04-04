@@ -23,4 +23,10 @@ export const guideStyle = `
     margin-top:30px;
     border-top: 1px solid ${colors.lineBlack};
   }
+  .section-item {
+    margin-top:30px;
+    .desc{
+      margin-top:10px;
+    }
+  }
 `;

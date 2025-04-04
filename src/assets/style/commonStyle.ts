@@ -1,12 +1,31 @@
-import { bgColor, breakpoints, colors, textColor } from "./variables";
+import { bgColor, colors, media, textColor } from "./variables";
 
 // 특정 요소 공통 style  
 export const commonStyle = `
+  h1, h2, h3, h4, h5, h6, .title {
+    font-weight:700;
+  }
+  .tit {
+    font-weight:600;
+  }
   .title, .tit{
     color:${textColor.title};
   }
   .desc{
     color:${textColor.desc};
+  }
+  .color{
+    color:${colors.mSlateBlue};
+  }
+  .blind{
+    position:absolute;
+    top:-9999px;
+    left:-9999px;
+    font-size:1px;
+    opacity:0;
+  }
+  .m-br{
+    display:none;
   }
   .name-tag {
     display:inline-block;
@@ -84,6 +103,15 @@ export const commonStyle = `
         opacity:1;
         transform: translateY(0px);
       }
+    }
+  }
+
+  ${media.mo}{
+    .pc-br{
+      display:none;
+    }
+    .m-br{
+      display:block;
     }
   }
 `;

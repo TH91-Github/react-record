@@ -38,7 +38,6 @@ export const ColorsPage = () => {
                 ))
               }
               <ColorChip data={item.lists} />
-              
             </div>
           ))
         }
@@ -48,35 +47,28 @@ export const ColorsPage = () => {
 }
 
 const StyleWrap = styled.div`
-  .section-item {
-    margin-top:30px;
-    .desc{
-      margin-top:10px;
+  .color-opacity{
+    position:relative;
+    &::before{
+      position:absolute;
+      top:30px;
+      right:0;
+      width:10px;
+      height:10px;
+      border-radius:5px;
+      background:${colors.mSlateBlue};
+      animation: opacityChcekAni 3s infinite;
+      content:'';
     }
-    .color-opacity{
-      position:relative;
-      &::before{
-        position:absolute;
-        top:30px;
-        right:0;
-        width:10px;
-        height:10px;
-        border-radius:5px;
-        background:${colors.mSlateBlue};
-        animation: opacityChcekAni 3s infinite;
-        content:'';
+    @keyframes opacityChcekAni {
+      0%, 100% {
+        transform: translateX(0px);
       }
-      @keyframes opacityChcekAni {
-        0%, 100% {
-          transform: translateX(0px);
-        }
-        50%{
-          transform: translateX(10px);
-        }
+      50%{
+        transform: translateX(10px);
       }
     }
   }
-  
   .color-chip{
     margin-top:20px;
   }

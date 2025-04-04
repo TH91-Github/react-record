@@ -126,7 +126,6 @@ const ColorChipItem = styled.div<ColorChipItemType>`
           transform: scaleX(1);
         }
       }
-      
     }
     .tit{
       display:block;
@@ -141,7 +140,6 @@ const ColorChipItem = styled.div<ColorChipItemType>`
       border-color: ${props => props.$isReadable ? colors.black : props.$bgColor};
     }
   }
-
   .tooltip, .desc-box{
     position:absolute;
     top:0;

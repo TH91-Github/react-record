@@ -1,6 +1,5 @@
-import { colors } from "assets/style/variables";
 import { TitlePoint } from "components/ui/TitlePoint";
-import styled from "styled-components"
+import styled from "styled-components";
 
 
 export const BreakpointsPage = () => {

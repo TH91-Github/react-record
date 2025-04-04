@@ -2,22 +2,28 @@ import { colors, textColor } from "assets/style/variables";
 import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from "react";
 import styled from "styled-components"
 
+interface InputStylePropsType {
+  $maxWidth?: number;
+  $defaultLine?:boolean; // default line 유무
+  $lineColor?:string;
+}
 interface InputPropsType {
-  name?: string,
-  id: string,
-  className?: string,
-  title?: string,
-  placeholder?: string,
-  initVal?: string,
-  disabled?: boolean,
-  inputError?: boolean,
-  focusColor?: string,
-  maxWidth?: number,
-  keyEnter?: () => void,
-  changeEvent?: (e: string) => void,
-  focusEvent?: () => void,
-  removeEvent?: () => void,
-  blurEvent?: (e:React.FocusEvent<HTMLInputElement>) => void,
+  name?: string;
+  id: string;
+  className?: string;
+  title?: string;
+  placeholder?: string;
+  initVal?: string;
+  disabled?: boolean;
+  inputError?: boolean;
+  focusColor?: string;
+  isError?:boolean;
+  styleOpt?:InputStylePropsType;
+  keyEnter?: () => void;
+  changeEvent?: (e: string) => void;
+  focusEvent?: () => void;
+  removeEvent?: () => void;
+  blurEvent?: (e:React.FocusEvent<HTMLInputElement>) => void;
 }
 
 interface InputTextRefType {
@@ -29,7 +35,7 @@ interface InputTextRefType {
 
 export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
   {
-    name, id, className, title, placeholder, initVal, disabled, maxWidth, inputError, focusColor,
+    name, id, className, title, placeholder, initVal, disabled, inputError, focusColor, isError, styleOpt,
     keyEnter, changeEvent, focusEvent, blurEvent, removeEvent
   }: InputPropsType, ref ) {
 
@@ -88,8 +94,8 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
   
   return( 
     <StyleWrap
-      className={`input-item${inputError ? ' error' : ''}${isFocus ? ' isFocus' : '' }`}
-      $maxWidth={maxWidth ? maxWidth : undefined} 
+      className={`input-item${inputError ? ' error' : ''}${isFocus ? ' isFocus' : '' } ${isError ? 'error' : ''}` }
+      $maxWidth={styleOpt?.$maxWidth ? styleOpt.$maxWidth : undefined} 
       $lineColor={focusColor === undefined ? colors.blue: focusColor}
     >
       <input
@@ -97,7 +103,7 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
         type="text"
         id={id}
         name={name}
-        className={`input ${className ? className : ''}`}
+        className={`input ${className ? className : ''} ${styleOpt?.$defaultLine ? 'line':''}`}
         value={val}
         onFocus={handleFocusIn}
         onBlur={handleFocusOut}
@@ -122,30 +128,22 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
           </span>
         </button>
       }
-      
     </StyleWrap>
   )
 }));
 
-type StyleProps = {
-  $maxWidth?: number,
-  $lineColor: string,
-};
-
-const StyleWrap = styled.div<StyleProps>`
+const StyleWrap = styled.div<InputStylePropsType>`
   display:block;
-  overflow:hidden;
   position:relative;
   width:100%;
   ${props => props.$maxWidth && `max-width: ${props.$maxWidth}px;`}
-  font-size:14px;
-  height:25px;
+  font-size:16px;
+  min-height:20px;
   line-height:1;
   .input {
     display:block;
     width:100%;
-    height:inherit;
-    padding:0 10px;
+    padding:5px 10px;
     border:1px solid transparent;
     border-radius:5px;
     background:transparent;
@@ -154,6 +152,9 @@ const StyleWrap = styled.div<StyleProps>`
     outline:0;
     &:disabled + .placeholder{
       color:${textColor.subText};
+    }
+    &.line {
+      border-color:${colors.lineColor};
     }
   }
   .placeholder {
