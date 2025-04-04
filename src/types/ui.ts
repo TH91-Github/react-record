@@ -5,4 +5,5 @@ export interface ColorChipDataType { // ColorChip
   title: string;
   desc?: string[];
   code: string;
+  readable?:boolean; // 접근성 관련 색상 보완
 }

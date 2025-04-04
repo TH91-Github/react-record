@@ -21,7 +21,7 @@ export const ColorChip = ({data}:ColorChipPropsType) => {
       <ul>
         { data.map((item,idx) => (
           <li key={idx} className={`${(item.id).includes('bgOpacity') ? 'color-opacity' : ''}`}>
-            <ColorChipItem $bgColor={item.code}>
+            <ColorChipItem $bgColor={item.code} $isReadable={item?.readable}>
               <div className="color-bg">
                 <button className="color-hex" onClick={() => handleClickCopy(item.code)}>
                   <span className="tit">{item.code}</span>
@@ -57,6 +57,7 @@ const StyleWrap = styled.div`
 
 type ColorChipItemType = {
   $bgColor:string;
+  $isReadable?:boolean;
 }
 const ColorChipItem = styled.div<ColorChipItemType>`
   overflow:hidden;
@@ -85,14 +86,14 @@ const ColorChipItem = styled.div<ColorChipItemType>`
     &:focus{
       background:${bgOpacity.white};
       .tit {
-        color:${colors.black};
+        text-shadow:unset;
+        color: ${props => props.$isReadable ? colors.black : props.$bgColor};
       }
     }
   }
   .color-info {
     padding:10px 10px;
     border: 2px solid #fff;
-    border-top:none;
     border-bottom-left-radius:5px;
     border-bottom-right-radius:5px;
     background:#fff;
@@ -105,7 +106,7 @@ const ColorChipItem = styled.div<ColorChipItemType>`
       &::before, &::after{
         position:absolute;
         bottom:-1px;
-        left:0;
+        left:1px;
         width:100%;
         height:2px;
         background:${colors.lineColor};
@@ -116,8 +117,9 @@ const ColorChipItem = styled.div<ColorChipItemType>`
       }
       &::after{
         z-index:1;
+        left:0;
         bottom:0;
-        background:${({$bgColor}) => $bgColor};
+        background: ${props => props.$isReadable ? colors.black : props.$bgColor};
       }
       &:focus {
         &::before, &::after{ 
@@ -136,7 +138,7 @@ const ColorChipItem = styled.div<ColorChipItemType>`
   }
   &:hover{ 
     .color-info {
-      border-color: ${({$bgColor}) => $bgColor};
+      border-color: ${props => props.$isReadable ? colors.black : props.$bgColor};
     }
   }
 

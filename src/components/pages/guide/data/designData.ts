@@ -62,6 +62,7 @@ export const designData : DesignDataType[] = [
         title:'lineColor',
         desc:['border 또는 line 주로 사용 - 연한 버전'],
         code:'#dbdbdb',
+        readable:true,
       },
     ]
   },
@@ -74,6 +75,7 @@ export const designData : DesignDataType[] = [
         title:'sideWite',
         desc:['사이드 메뉴 BG 색상으로 사용'],
         code:'#F1F3F5',
+        readable:true,
       },
     ]
   },
@@ -87,6 +89,7 @@ export const designData : DesignDataType[] = [
         title:'white',
         desc:['투명도를 위해 rgba 사용'],
         code:'rgba(255,255,255,.7)',
+        readable:true,
       },
     ]
   },
