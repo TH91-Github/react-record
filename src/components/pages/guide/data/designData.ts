@@ -1,8 +1,6 @@
 // ✅ variables 동기화, 추후 DB 관리
 import {  BreakpointsDataType, ColorChipDataType } from "types/ui";
 
-
-
 export const colorsData : ColorChipDataType[] = [
   {
     id:'colors',

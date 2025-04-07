@@ -6,7 +6,9 @@ export const UIElementsPage = () => {
   return(
     <StyleWrap className="ui-elements">
       <GuideHeading />
-      <Outlet />
+      <div className="content-wrap">
+        <Outlet />  
+      </div>    
     </StyleWrap>  
   )
 }

@@ -7,7 +7,6 @@ import ImgArrow from 'assets/images/svg/arrow.svg';
 
 
 export const BreakpointsPage = () => {
-
   const handleClickCopy = async (e:string) => {
     const copySuccess = await copyClipboard(e);
     // 👇 popup 컴포넌트 완료 후 교체
@@ -15,7 +14,6 @@ export const BreakpointsPage = () => {
       ? console.log('성공') 
       : console.log('실패') 
   };
-
   return (
     <StyleWrap>
       <div className="content-heading">
@@ -114,20 +112,16 @@ const StyleWrap = styled.div`
         content:'';
       }
     }
-    .breakpoint-info {
-      .btn-token{
-        width:100%;
-        padding:10px 10px;
-        border: 2px solid #fff;
-        border-bottom-left-radius:5px;
-        border-bottom-right-radius:5px;
-        background:#fff;
-        text-align:left;
-        transition: border-color var(--transition);
-      }
-    }
-    &:hover{ 
-      .btn-token {
+    .btn-token{
+      width:100%;
+      padding:10px 10px;
+      border: 2px solid #fff;
+      border-bottom-left-radius:5px;
+      border-bottom-right-radius:5px;
+      background:#fff;
+      text-align:left;
+      transition: border-color var(--transition);
+      &:hover, &:focus {
         border-color: ${colors.lineBlack};
       }
     }
