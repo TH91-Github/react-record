@@ -17,6 +17,13 @@ export const SvgCode = React.memo(({fill='#000'}:SvgPropsType) => (
   </svg>
 ));
 
+// arrow < > 모양, chevron
+export const SvgArrow = React.memo(({fill='#000'}:SvgPropsType) => (
+  <svg viewBox="0 0 24 24"  fill="none" strokeWidth={1.5} stroke={fill} >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+  </svg>
+));
+
 // cube-transparent 큐브
 export const SvgCube = React.memo(({fill='#000'}:SvgPropsType) => (
   <svg viewBox="0 0 24 24" fill={fill}>

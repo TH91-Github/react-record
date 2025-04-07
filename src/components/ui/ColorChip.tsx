@@ -1,13 +1,14 @@
 import { bgOpacity, bgShadow, colors, textShadow } from "assets/style/variables";
 import styled from "styled-components";
-import { ColorChipDataType } from "types/ui";
+import { ColorChipListsType } from "types/ui";
 import { copyClipboard } from "utils/common";
 
 interface ColorChipPropsType {
-  data: ColorChipDataType[];
+  data: ColorChipListsType[];
+  keyValue?: string;
 }
-export const ColorChip = ({data}:ColorChipPropsType) => {
-
+export const ColorChip = ({data, keyValue}:ColorChipPropsType) => {
+  console.log(data)
   const handleClickCopy = async (e:string) => {
     const copySuccess = await copyClipboard(e);
     // 👇 popup 컴포넌트 완료 후 교체
@@ -23,12 +24,12 @@ export const ColorChip = ({data}:ColorChipPropsType) => {
           <li key={idx} className={`${(item.id).includes('bgOpacity') ? 'color-opacity' : ''}`}>
             <ColorChipItem $bgColor={item.code} $isReadable={item?.readable}>
               <div className="color-bg">
-                <button className="color-hex" onClick={() => handleClickCopy(item.code)}>
+                <button className="btn-hex" onClick={() => handleClickCopy(item.code)}>
                   <span className="tit">{item.code}</span>
                 </button>
               </div>
               <div className="color-info">
-                <button className="color-token" onClick={() => handleClickCopy(`colors.${item.title}`)}>
+                <button className="btn-token" onClick={() => handleClickCopy(`${keyValue || 'color'}.${item.title}`)}>
                   <span className="tit">{item.title}</span>
                 </button>
               </div>
@@ -70,7 +71,7 @@ const ColorChipItem = styled.div<ColorChipItemType>`
     height:70px;
     background:${({$bgColor}) => $bgColor};
   }
-  .color-hex{
+  .btn-hex{
     position:absolute;
     top:50%;
     left:50%;
@@ -78,12 +79,14 @@ const ColorChipItem = styled.div<ColorChipItemType>`
     border-radius:5px;
     outline:0;
     transform: translate(-50%, -50%);
+    transition: background var(--transition);
     .tit{
       font-size:14px;
       text-shadow:${textShadow.bgBlack};
       color:#fff;
+      transition: color var(--transition), text-shadow var(--transition);
     }
-    &:focus{
+    &:hover, &:focus{
       background:${bgOpacity.white};
       .tit {
         text-shadow:unset;
@@ -92,43 +95,24 @@ const ColorChipItem = styled.div<ColorChipItemType>`
     }
   }
   .color-info {
-    padding:10px 10px;
-    border: 2px solid #fff;
-    border-bottom-left-radius:5px;
-    border-bottom-right-radius:5px;
-    background:#fff;
-    transition: border-color var(--transition);
-    .color-token{
-      display:inline-block;
+    .btn-token{
+      display:block;
       position:relative;
-      max-width:100%;
+      width:100%;
+      padding:10px 10px;
+      border: 2px solid #fff;
+      border-bottom-left-radius:5px;
+      border-bottom-right-radius:5px;
+      background:#fff;
+      transition: border-color var(--transition);
+      text-align:left;
       outline:0;
-      &::before, &::after{
-        position:absolute;
-        bottom:-1px;
-        left:1px;
-        width:100%;
-        height:2px;
-        background:${colors.lineColor};
-        content:'';
-        transform: scaleX(0);
-        transition: transform var(--transition);
-        transform-origin:center left;
-      }
-      &::after{
-        z-index:1;
-        left:0;
-        bottom:0;
-        background: ${props => props.$isReadable ? colors.black : props.$bgColor};
-      }
       &:focus {
-        &::before, &::after{ 
-          transform: scaleX(1);
-        }
+        border-color: ${props => props.$isReadable ? colors.black : props.$bgColor};
       }
     }
     .tit{
-      display:block;
+      display:inline-block;
       white-space:nowrap; 
       overflow:hidden; 
       text-overflow:ellipsis; 
@@ -136,7 +120,7 @@ const ColorChipItem = styled.div<ColorChipItemType>`
     }
   }
   &:hover{ 
-    .color-info {
+    .btn-token {
       border-color: ${props => props.$isReadable ? colors.black : props.$bgColor};
     }
   }

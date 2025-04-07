@@ -8,19 +8,28 @@ onlyMo: ~ 449
 export const breakpoints = {
   maxPc: 1920,
   pc : 1440,
-  tab : 1140,
+  tablet : 1140,
   mo : 768,
-  onlyMo: 450,
+  smallMo: 450,
 }
 
 export const media = {
-  minPc:`@media screen and (min-width:${breakpoints.pc + 'px'})`,
-  onlyPc : `@media screen and (min-width:${breakpoints.tab + 'px'})`,
-  pc: `@media screen and (min-width:${breakpoints.mo + 'px'})`,
-  tab: `@media screen and (min-width:${breakpoints.mo + 'px'}) and (max-width: ${breakpoints.tab-1 + 'px'})`,
-  tabMo: `@media screen and (max-width:${breakpoints.tab-1 + 'px'})`,
-  mo: `@media screen and (max-width:${breakpoints.mo-1 + 'px'})`,
-  onlyMo: `@media screen and (max-width:${breakpoints.onlyMo-1 + 'px'})`,
+  // ~ 1920
+  maxPc:`@media screen and (max-width:${breakpoints.maxPc}px)`,
+  // 1440 ~
+  pc:`@media screen and (min-width:${breakpoints.pc}px)`,
+  // 1140 ~ 1439
+  smailPc : `@media screen and (min-width:${breakpoints.tablet}px) and (max-width:${breakpoints.pc-1}px)`,
+  // 768 ~
+  tabletPc: `@media screen and (min-width:${breakpoints.mo}px})`,
+  // 768 ~ 1139
+  tablet: `@media screen and (min-width:${breakpoints.mo}px) and (max-width:${breakpoints.tablet-1}px)`,
+  // ~ 1139
+  tabletMo: `@media screen and (max-width:${breakpoints.tablet-1}px)`,
+  // ~ 767
+  mo: `@media screen and (max-width:${breakpoints.mo-1}px)`,
+  // ~ 450
+  smallMo: `@media screen and (max-width:${breakpoints.smallMo-1}px)`
 } 
 
 export const colors = {

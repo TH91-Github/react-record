@@ -10,6 +10,10 @@ export const IconKeyword = [
     keyword:['코드', 'code-bracket', 'code'],
   },
   {
+    code:'SvgArrow',
+    keyword:['arrow','< >','chevron','화살표','방향']
+  },
+  {
     code:'SvgCube',
     keyword:['큐브', 'cube-transparent', 'cube'],
   },
@@ -46,8 +50,8 @@ export const IconKeyword = [
     keyword:['디자인','Design','color','font','breakpoints']
   },
   {
-    code:'SvgEyeDropper',
-    keyword:['UI 요소','스포이드', 'style','rectangle-stack', '모음']
+    code:'SvgRectangleStack',
+    keyword:['박스 여러개', 'style','rectangle-stack', '모음']
   }
 ]
 

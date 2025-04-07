@@ -1,5 +1,5 @@
 import { colors } from "assets/style/variables";
-import { designData } from "components/pages/guide/data/designData";
+import { colorsData } from "components/pages/guide/data/designData";
 import { ColorChip } from "components/ui/ColorChip";
 import { TitlePoint } from "components/ui/TitlePoint";
 import styled from "styled-components";
@@ -22,7 +22,7 @@ export const ColorsPage = () => {
       </div>
       <div className="section-wrap">
         {
-          designData.map((item, idx) => (
+          colorsData.map((item, idx) => (
             <div className="section-item" key={idx}>
               <TitlePoint 
                 $display="block"
@@ -37,7 +37,7 @@ export const ColorsPage = () => {
                   <p key={descIdx} className="desc">{descItem}</p>
                 ))
               }
-              <ColorChip data={item.lists} />
+              <ColorChip data={item.lists} keyValue={item.id}/>
             </div>
           ))
         }

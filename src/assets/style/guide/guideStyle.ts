@@ -4,13 +4,13 @@ import { breakpoints, colors } from "../variables";
 export const guideStyle = `
   .header-inner{
     overflow:hidden;
-    max-width:${breakpoints.tab}px;
+    max-width:${breakpoints.tablet}px;
     margin:0 auto;
     padding:30px;
   }
   .content-wrap{
     overflow:hidden;
-    max-width:${breakpoints.tab}px;
+    max-width:${breakpoints.tablet}px;
     margin:0 auto;
     padding:30px;
   }
