@@ -193,7 +193,7 @@ const ArrowText = styled.span<ArrowTextPropsType>`
     border-left:2px solid ${colors.mSlateBlue};
     border-radius:5px;
     &::before {
-      content:'mix'
+      content:'min'
     }
   }
   &.max {
