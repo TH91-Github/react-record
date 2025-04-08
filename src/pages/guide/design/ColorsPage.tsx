@@ -1,46 +1,39 @@
 import { colors } from "assets/style/variables";
 import { colorsData } from "components/pages/guide/data/designData";
 import { ColorChip } from "components/ui/ColorChip";
+import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";
 import styled from "styled-components";
 
 export const ColorsPage = () => {
+  const {headData, bodyData} = colorsData
   return (
     <StyleWrap>
-      <div className="content-heading">
-        <TitlePoint 
-          $display="block"
-          titleTag="h4"
-          titleText={'Color System'}
-          pointer="underline"
-          $fontSize={28}
-        />
-        <ul className="bullet-lists">
-          <li className="desc circle">사용하는 색상의 일관성을 유지하기 위해 정의</li>
-          <li className="desc circle">파일 경로 : /src/assets/style/variables.ts</li>
-        </ul>
-      </div>
+      <TitleHeading 
+        $display="block"
+        titleTag="h4"
+        titleText={headData.title} 
+        pointer="underline"
+        $fontSize={28}
+        desc={headData.desc}
+      />
       <div className="section-wrap">
-        {
-          colorsData.map((item, idx) => (
-            <div className="section-item" key={idx}>
-              <TitlePoint 
-                $display="block"
-                titleTag="h5"
-                titleText={item.title}
-                pointer="circle"
-                $fontSize={20}
-              />
-              <p className="desc">사용 코드 : {item.id}.<span className="color">key</span></p>
-              {
-                item.desc?.map((descItem, descIdx) => (
-                  <p key={descIdx} className="desc">{descItem}</p>
-                ))
-              }
-              <ColorChip data={item.lists} keyValue={item.id}/>
-            </div>
-          ))
-        }
+        {bodyData.map((item, idx) => (
+          <div className="section-item" key={idx}>
+            <TitlePoint 
+              $display="block"
+              titleTag="h5"
+              titleText={item.title}
+              pointer="circle"
+              $fontSize={20}
+            />
+            <p className="desc">사용 코드 : {item.id}.<span className="color">key</span></p>
+            {item.desc?.map((descItem, descIdx) => (
+              <p key={descIdx} className="desc">{descItem}</p>
+            ))}
+            <ColorChip data={item.lists} keyValue={item.id}/>
+          </div>
+        ))}
       </div>
     </StyleWrap>
   )

@@ -3,20 +3,20 @@ import { useGuideLocation } from "hooks/guide/useGuideHook";
 import styled from "styled-components";
 import { formatText } from "utils/character";
 
-interface GuideHeadingPropsType {
+interface GuidePageHeadingPropsType {
   children?: React.ReactNode;
 }
-export const GuideHeading = ({children}:GuideHeadingPropsType) => {
+export const GuidePageHeading = ({children}:GuidePageHeadingPropsType) => {
   const {locationData, guideData} = useGuideLocation();
   return (
     <StyleWrap className="header-wrap">
       <div className="header-inner">
         <div className="headding">
           <h2 className="name-tag">{formatText(locationData?.path ?? 'category')}</h2>
-          <h3 className="title">
+          <p className="tit">
             <span>{guideData?.title}</span>
             <span className="color">{formatText(guideData?.id ?? 'guide')}</span>
-          </h3>
+          </p>
         </div>
         {children}
       </div>
@@ -25,7 +25,7 @@ export const GuideHeading = ({children}:GuideHeadingPropsType) => {
 }
 const StyleWrap = styled.div`
   box-shadow:${bgShadow.base};
-  .title {
+  .tit {
     margin-top:20px;
     font-size:24px;
   }

@@ -1,12 +1,15 @@
+import ImgArrow from 'assets/images/svg/arrow.svg';
 import { bgOpacity, bgShadow, colors, textColor } from "assets/style/variables";
 import { breakpointsData } from "components/pages/guide/data/designData";
+import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";
 import styled from "styled-components";
 import { copyClipboard } from "utils/common";
-import ImgArrow from 'assets/images/svg/arrow.svg';
 
 
 export const BreakpointsPage = () => {
+  const {headData, bodyData} = breakpointsData;
+
   const handleClickCopy = async (e:string) => {
     const copySuccess = await copyClipboard(e);
     // 👇 popup 컴포넌트 완료 후 교체
@@ -17,12 +20,13 @@ export const BreakpointsPage = () => {
   return (
     <StyleWrap>
       <div className="content-heading">
-        <TitlePoint 
+        <TitleHeading 
           $display="block"
           titleTag="h4"
-          titleText={'Breakpoint System'}
+          titleText={headData.title} 
           pointer="underline"
           $fontSize={28}
+          desc={headData.desc}
         />
         <ul className="bullet-lists">
           <li className="desc circle">디바이스 환경에 따라 일관된 레이아웃을 제공하기 위해 정의</li>
@@ -31,7 +35,7 @@ export const BreakpointsPage = () => {
       </div>
       <div className="section-wrap">
         {
-          breakpointsData.map((item, idx) =>(
+          bodyData.map((item, idx) =>(
             <div className="section-item" key={idx}>
               <TitlePoint 
                 $display="block"

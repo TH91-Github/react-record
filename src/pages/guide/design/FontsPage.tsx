@@ -1,34 +1,31 @@
 import { colors } from "assets/style/variables";
 import InputText from "components/common/InputText";
+import { fontsData } from "components/pages/guide/data/designData";
+import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";
 import { useState } from "react";
 import styled from "styled-components";
 
-const DEFAULT_TEXT = 'Pretendard 굵기 미리보기입니다.';
+const DEFAULT_FONT_TEXT = 'Pretendard 굵기 미리보기입니다.';
 export const FontsPage = () => {
-  const fontWeights = [100, 200, 300, 400, 500, 600, 700, 800, 900];
-  const [fontValue, setFontValue] = useState(DEFAULT_TEXT);
+  const {headData, bodyData} = fontsData;
+  const [fontValue, setFontValue] = useState(DEFAULT_FONT_TEXT);
 
   const handleChange = (val:string) =>{
-    
-    setFontValue(val ? val : DEFAULT_TEXT);
+    setFontValue(val ? val : DEFAULT_FONT_TEXT);
   }
 
   return (
     <StyleWrap className="font-guide">
       <div className="content-heading">
-        <TitlePoint 
+        <TitleHeading 
           $display="block"
           titleTag="h4"
-          titleText={'Typography System'}
+          titleText={headData.title} 
           pointer="underline"
           $fontSize={28}
+          desc={headData.desc}
         />
-        <ul className="bullet-lists">
-          <li className="desc circle">사용하는 글꼴 스타일을 쉽게 확인하고 사용하기 위해</li>
-          <li className="desc circle">Pretendard 프리텐다드 사용: PretendardVariable</li>
-          <li className="desc circle">default weight : <span className="color">500</span></li>
-        </ul>
       </div>
       <div className="section-wrap">
         <div className="section-item">
@@ -44,13 +41,13 @@ export const FontsPage = () => {
             <InputText 
               id="font-input"
               changeEvent={handleChange} 
-              placeholder={DEFAULT_TEXT}
+              placeholder={DEFAULT_FONT_TEXT}
               styleOpt={{$defaultLine:true}}
             />
           </div>
           <div className="weight-preview">
             <ul>
-              {fontWeights.map((item, idx) =>(
+              {bodyData.map((item, idx) =>(
                 <li key={idx}>
                   <span className={`tit ${item === 500 ? 'color':''}`}>weight - {item}</span>
                   <FontWeight $weight={item}>{fontValue}</FontWeight>
