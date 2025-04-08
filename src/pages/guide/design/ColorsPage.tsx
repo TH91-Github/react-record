@@ -11,7 +11,7 @@ export const ColorsPage = () => {
     <StyleWrap>
       <TitleHeading 
         $display="block"
-        titleTag="h4"
+        titleTag="h3"
         titleText={headData.title} 
         pointer="underline"
         $fontSize={28}
@@ -22,7 +22,7 @@ export const ColorsPage = () => {
           <div className="section-item" key={idx}>
             <TitlePoint 
               $display="block"
-              titleTag="h5"
+              titleTag="h4"
               titleText={item.title}
               pointer="circle"
               $fontSize={20}
@@ -63,6 +63,6 @@ const StyleWrap = styled.div`
     }
   }
   .color-chip{
-    margin-top:20px;
+    margin-top:30px;
   }
 `;

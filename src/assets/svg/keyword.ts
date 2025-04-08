@@ -1,4 +1,4 @@
-
+// 📍 uiData.ts 가이드 목록 추가
 // 검색 키워드
 export const IconKeyword = [
   {
@@ -52,6 +52,11 @@ export const IconKeyword = [
   {
     code:'SvgRectangleStack',
     keyword:['박스 여러개', 'style','rectangle-stack', '모음']
+  },
+  // 브랜드 로고 svg
+  {
+    code:'SvgTistory',
+    keyword:['티스토리','TISTORY','스토리','story','Tattertools+history']
   }
 ]
 

@@ -14,11 +14,6 @@ export const guideStyle = `
     margin:0 auto;
     padding:30px;
   }
-  .content-heading{
-    .bullet-lists{
-      margin-top:20px;
-    }
-  }
   .section-wrap{
     margin-top:30px;
     border-top: 1px solid ${colors.lineBlack};
@@ -26,7 +21,10 @@ export const guideStyle = `
   .section-item {
     margin-top:30px;
     .desc{
-      margin-top:10px;
+      margin-top:15px;
+      & + .desc {
+        margin-top:8px;
+      }
     }
   }
 `;

@@ -1,3 +1,4 @@
+import { SvgPropsType } from "assets/svg/Common";
 import { ColorChipListsType } from "./ui";
 
 interface headDataType {
@@ -36,25 +37,22 @@ export interface FontDataType {  // Color Data Type
   bodyData: number[]
 }
 
-
 export interface IconDataType {  // Icon Data Type
   headData: headDataType,
   bodyData: (GuideBaseDataType & { 
     lists: {
       id: string;
       title: string;
+      category: string;
       desc?: string[];
       code: string;
+      fill?: boolean; // fill 컬러 변경
+      element?: React.FC<SvgPropsType>;
+      path?:string;
     }[]
   })[]
 }
 
-
-// export interface IconDataType extends GuideBaseDataType {
-//   lists: {
-//     id: string;
-//     title: string;
-//     desc?: string[];
-//     code: string;
-//   }[]
-// }
+export interface ButtonDataType {  // Color Data Type
+  headData: headDataType,
+}

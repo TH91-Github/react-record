@@ -3,12 +3,12 @@ import { SvgCube } from "assets/svg/Common";
 import { Search } from "components/modules/Search";
 import useToggle from "hooks/useToggle";
 import { useRecoilValue } from "recoil";
-import { stateColor } from "recoil/atoms";
+import { stateUserColor } from "recoil/atoms";
 import styled from "styled-components";
 import { GuideNav } from "./GuideNav";
 
 export const SideMenu = () => {
-  const pointColor = useRecoilValue(stateColor); 
+  const pointColor = useRecoilValue(stateUserColor); 
   const [isExtend, useExtend] = useToggle(false);
 
   return(

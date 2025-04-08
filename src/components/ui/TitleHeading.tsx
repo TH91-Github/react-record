@@ -3,7 +3,8 @@ import { TitlePoint } from "./TitlePoint";
 import { TitlePointPropsType } from "types/ui";
 
 interface TitleDescPropsType extends TitlePointPropsType{ 
-  desc?: string | string[],
+  desc?: string | string[];
+  customClass?: string;
 }
 
 export const TitleHeading = ({
@@ -12,10 +13,11 @@ export const TitleHeading = ({
   pointer,
   $fontSize,
   $activeColor,
-  desc
+  desc,
+  customClass
 }:TitleDescPropsType) => {
   return( 
-    <div className="content-heading">
+    <StyleWrap className={`${customClass ?? 'title'}-heading`}>
       <TitlePoint 
         $display="block"
         titleTag={titleTag}
@@ -33,10 +35,12 @@ export const TitleHeading = ({
       ) : (
         <p className="desc">{desc}</p>
       ))}
-    </div>
+    </StyleWrap>
   )
 }
 
 const StyleWrap = styled.div`
-
+  p, .bullet-lists{
+    margin-top:20px;
+  }
 `;

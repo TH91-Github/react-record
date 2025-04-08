@@ -17,21 +17,19 @@ export const FontsPage = () => {
 
   return (
     <StyleWrap className="font-guide">
-      <div className="content-heading">
-        <TitleHeading 
-          $display="block"
-          titleTag="h4"
-          titleText={headData.title} 
-          pointer="underline"
-          $fontSize={28}
-          desc={headData.desc}
-        />
-      </div>
+      <TitleHeading 
+        $display="block"
+        titleTag="h3"
+        titleText={headData.title} 
+        pointer="underline"
+        $fontSize={28}
+        desc={headData.desc}
+      />
       <div className="section-wrap">
         <div className="section-item">
           <TitlePoint 
             $display="block"
-            titleTag="h5"
+            titleTag="h4"
             titleText="Pretendard 굵기 미리보기"
             pointer="circle"
             $fontSize={20}

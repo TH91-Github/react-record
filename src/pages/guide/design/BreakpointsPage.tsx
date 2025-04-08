@@ -1,10 +1,10 @@
-import ImgArrow from 'assets/images/svg/arrow.svg';
 import { bgOpacity, bgShadow, colors, textColor } from "assets/style/variables";
 import { breakpointsData } from "components/pages/guide/data/designData";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";
 import styled from "styled-components";
 import { copyClipboard } from "utils/common";
+import ImgArrow from 'assets/images/svg/arrow.svg';
 
 
 export const BreakpointsPage = () => {
@@ -19,70 +19,60 @@ export const BreakpointsPage = () => {
   };
   return (
     <StyleWrap>
-      <div className="content-heading">
-        <TitleHeading 
-          $display="block"
-          titleTag="h4"
-          titleText={headData.title} 
-          pointer="underline"
-          $fontSize={28}
-          desc={headData.desc}
-        />
-        <ul className="bullet-lists">
-          <li className="desc circle">디바이스 환경에 따라 일관된 레이아웃을 제공하기 위해 정의</li>
-          <li className="desc circle">파일 경로 : /src/assets/style/variables.ts</li>
-        </ul>
-      </div>
+      <TitleHeading 
+        $display="block"
+        titleTag="h3"
+        titleText={headData.title} 
+        pointer="underline"
+        $fontSize={28}
+        desc={headData.desc}
+      />
       <div className="section-wrap">
-        {
-          bodyData.map((item, idx) =>(
-            <div className="section-item" key={idx}>
-              <TitlePoint 
-                $display="block"
-                titleTag="h5"
-                titleText={item.title}
-                pointer="circle"
-                $fontSize={20}
-              />
-              <p className="desc">사용 코드 : {item.id}.<span className="color">key</span></p>
-              <ul className="breakpoint-lists">
-                {
-                  item.lists.map((dataItem, dataIdx) => (
-                    <li key={dataIdx}>
-                      <div className="breakpoint-item">
-                        <div className="breakpoint-view">
-                          {item.id === 'breakpoints' ? (
-                            <ArrowText $arrowBg={ImgArrow} className="size">
-                              <span>{dataItem.code}</span>
+        {bodyData.map((item, idx) =>(
+          <div className="section-item" key={idx}>
+            <TitlePoint 
+              $display="block"
+              titleTag="h4"
+              titleText={item.title}
+              pointer="circle"
+              $fontSize={20}
+            />
+            <p className="desc">사용 코드 : {item.id}.<span className="color">key</span></p>
+            <ul className="breakpoint-lists">
+              {item.lists.map((dataItem, dataIdx) => (
+                <li key={dataIdx}>
+                  <div className="breakpoint-item">
+                    <div className="breakpoint-view">
+                      {item.id === 'breakpoints' ? (
+                        <ArrowText $arrowBg={ImgArrow} className="size">
+                          <span>{dataItem.code}</span>
+                        </ArrowText>
+                      ) : ( 
+                        <>
+                          {(dataItem.media && dataItem.media.min) && (
+                            <ArrowText $arrowBg={ImgArrow}className="min">
+                              <span>{dataItem.media.min}</span>
                             </ArrowText>
-                          ) : ( 
-                            <>
-                              {(dataItem.media && dataItem.media.min) && (
-                                <ArrowText $arrowBg={ImgArrow}className="min">
-                                  <span>{dataItem.media.min}</span>
-                                </ArrowText>
-                              )}
-                              {(dataItem.media && dataItem.media.max) && (
-                                <ArrowText $arrowBg={ImgArrow}className="max">
-                                  <span>{dataItem.media.max}</span>
-                                </ArrowText>
-                              )}
-                            </>
                           )}
-                        </div>
-                        <div className="breakpoint-info">
-                          <button className="btn-token" onClick={() => handleClickCopy(`${item.id}.${dataItem.title}`)}>
-                            <span className="tit">{dataItem.title}</span>
-                          </button>
-                        </div>
-                      </div>
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-          ))
-        }
+                          {(dataItem.media && dataItem.media.max) && (
+                            <ArrowText $arrowBg={ImgArrow}className="max">
+                              <span>{dataItem.media.max}</span>
+                            </ArrowText>
+                          )}
+                        </>
+                      )}
+                    </div>
+                    <div className="breakpoint-info">
+                      <button className="btn-token" onClick={() => handleClickCopy(`${item.id}.${dataItem.title}`)}>
+                        <span className="tit">{dataItem.title}</span>
+                      </button>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </StyleWrap>
   )
@@ -93,7 +83,7 @@ const StyleWrap = styled.div`
     display: flex;
     flex-wrap:wrap;
     gap:20px;
-    margin-top:20px;
+    margin-top:30px;
   }
   .breakpoint-item{
     overflow:hidden;
