@@ -31,6 +31,14 @@ export const GlobalStyles = createGlobalStyle`
     color: inherit;
     cursor: pointer;
   }
+  input:autofill,
+  input:autofill:active {
+    -webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    box-shadow: 0 0 0px 1000px #fff inset;
+    border:1px solid #dbdbdb;
+    transition: none;
+  }
   svg {
     width:100%;
     height:100%;
