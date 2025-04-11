@@ -53,6 +53,15 @@ export interface IconDataType {  // Icon Data Type
   })[]
 }
 
+export interface ButtonCaseType {
+  id: string;
+  title: string;
+  desc?: string[];
+}
 export interface ButtonDataType {  // Color Data Type
   headData: headDataType,
+  bodyData: (GuideBaseDataType & { 
+    category:string,
+    lists: ButtonCaseType[]
+  })[]
 }

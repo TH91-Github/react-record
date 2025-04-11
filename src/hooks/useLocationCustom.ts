@@ -1,6 +1,6 @@
+// 📍 location 기준 Hook
 import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
-// 📍 location 기준 Hook
 
 // 🔹 location path 데이터 비교
 export const useLocationCurrent = <T,>(

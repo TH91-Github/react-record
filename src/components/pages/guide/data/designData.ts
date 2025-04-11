@@ -48,9 +48,25 @@ export const colorsData : ColorChipDataType = {
           code:'#395acc',
         },
         {
+          id:'colors-navy',
+          title:'navy',
+          code:'#333A73',
+        },
+        {
           id:'colors-darkNavy',
           title:'darkNavy',
           code:'#03053a',
+        },
+        {
+          id:'color-gray',
+          title:'gray',
+          code:'#898a8d'
+        },
+        {
+          id:'color-disabled',
+          title:'disabled',
+          code:'#e7ebee',
+          readable:true,
         },
         {
           id:'colors-lineBlack',

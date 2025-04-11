@@ -39,9 +39,12 @@ export const colors = {
   black:'#050b21',
   mSlateBlue:'#6a67e5',  // medium -> m
   blue:'#395acc',
-  darkNavy:"#03053a",
-  lineBlack:"#111619",
-  lineColor: "#dbdbdb",
+  navy: '#333A73',
+  darkNavy:'#03053a',
+  gray:'#898a8d',
+  disabled:'#e7ebee',
+  lineBlack:'#111619',
+  lineColor: '#dbdbdb',
 }
 export const textColor = {
   title:'#353844',

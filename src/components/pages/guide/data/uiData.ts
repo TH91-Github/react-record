@@ -153,17 +153,130 @@ export const iconData : IconDataType = {
   ]
 }
 
-
-
 export const buttonData : ButtonDataType = {
   headData : {
     title:'Button System',
     desc:[
       '공통적으로 사용하는 버튼 리스트',
       '목적에 따라 버튼 스타일 제공',
-      'button 컴포넌트 사용 ❌, <span className="color">class</span>로 제어',
+      'button 컴포넌트 사용 ❌, <span class="color">class</span>로 제어',
+      '파일 경로 : /src/assets/style/ui/buttonStyle.ts',
+      '최소 사이즈 44px x 44px',
+      '<span class="color">필수 구조</span> : button > span'
     ]
   },
+  bodyData:[
+    {
+      id:'button-base',
+      title:'기본 .btn 클래스와 유형별',
+      desc:['hover, focus 기본 옵션','추가 디테일 수정은 사용 컴포넌트 내에서 진행'],
+      category:'base',
+      lists:[
+        {
+          id:'button-btn',
+          title:'btn',
+        },
+        {
+          id:'button-btn-disabled',
+          title:'btn disabled',
+        },
+        {
+          id:'button-btn-ellipsis',
+          title:'btn ellipsis',
+        },
+        {
+          id:'button-btn-full',
+          title:'btn full',
+        },
+        {
+          id:'button-btn-',
+          title:'btn skeleton-item',
+        },
+      ]
+    },
+    {
+      id:'button-primary',
+      title:'btn-primary',
+      desc:['시각적 우선 순위 버튼','배경색이 있는 버튼'],
+      category:'base',
+      lists:[
+        {
+          id:'button-btn',
+          title:'btn btn-primary',
+        },
+        {
+          id:'button-btn-disabled',
+          title:'btn btn-primary disabled',
+        },
+        {
+          id:'button-btn-ellipsis',
+          title:'btn btn-primary ellipsis',
+        },
+        {
+          id:'button-btn-full',
+          title:'btn btn-primary full',
+        },
+        {
+          id:'button-btn-',
+          title:'btn btn-primary skeleton-item',
+        },
+      ]
+    },
+    {
+      id:'button-line',
+      title:'btn-line',
+      desc:['기본과 다른 border 색상 차이', 'hover & focus 시 배경색'],
+      category:'base',
+      lists:[
+        {
+          id:'button-btn',
+          title:'btn btn-line',
+        },
+        {
+          id:'button-btn-disabled',
+          title:'btn btn-line disabled',
+        },
+        {
+          id:'button-btn-ellipsis',
+          title:'btn btn-line ellipsis',
+        },
+        {
+          id:'button-btn-full',
+          title:'btn btn-line full',
+        },
+        {
+          id:'button-btn-',
+          title:'btn btn-line skeleton-item',
+        },
+      ]
+    },
+    {
+      id:'button-gray',
+      title:'btn-gray',
+      desc:['Gray 배경색 버튼','primary 반대 의미 기능 사용'],
+      category:'base',
+      lists:[
+        {
+          id:'button-btn',
+          title:'btn btn-gray',
+        },
+        {
+          id:'button-btn-disabled',
+          title:'btn btn-gray disabled',
+        },
+        {
+          id:'button-btn-ellipsis',
+          title:'btn btn-gray ellipsis',
+        },
+        {
+          id:'button-btn-full',
+          title:'btn btn-gray full',
+        },
+        {
+          id:'button-btn-',
+          title:'btn btn-gray skeleton-item',
+        },
+      ]
+    }
+  ]
 }
-
-

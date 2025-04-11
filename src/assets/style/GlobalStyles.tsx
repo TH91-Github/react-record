@@ -2,6 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 import { commonStyle } from './commonStyle';
 import { rootStyle } from './rootStyle';
 import { textColor } from './variables';
+import { buttonStyle } from './ui/buttonStyle';
+import { skeletonStyle } from './ui/skeletonStyle';
 
 // const headerHeight = useRecoilValue(stateHeaderHeight);
 export const GlobalStyles = createGlobalStyle`
@@ -34,6 +36,8 @@ export const GlobalStyles = createGlobalStyle`
     height:100%;
   }
   ${commonStyle}
+  ${buttonStyle}
+  ${skeletonStyle}
   :root {
     ${rootStyle.transition}
   }
