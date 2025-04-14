@@ -14,7 +14,6 @@ export const useLocationCurrent = <T,>(
     const targetId = pathArr[index];
     const currentIdx = list.findIndex((item) => item[idKey] === targetId);
     const currentItem = currentIdx !== -1 ? list[currentIdx] : undefined;
-
     return {locationIdx:currentIdx, locationItem:currentItem, locationPath:pathArr}; // idx, obj, path
   }, [location.pathname, list, idKey, index]);
 };

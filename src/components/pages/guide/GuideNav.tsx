@@ -9,8 +9,8 @@ import { GUIDE_LIST } from "routes/pages/guide/GuideRouter";
 import styled from "styled-components";
 
 interface NavItemType extends TreeItemType {
-  path: string;
   id: string;
+  path?: string;
   element?: React.ReactElement;
   children?: NavItemType[];
 }
@@ -36,13 +36,15 @@ export const GuideNav = () =>{
       <nav>
         <Accordion data={GUIDE_LIST} activeItems={[locationIdx]} accOpt={{openIcon:'arrow'}}>
           {(item) => ({
-            heading: (
-              <>
+            heading: {
+              accTit:item.title,
+              jsx:(<>
                 <span className="icon">{iconTit[item.id]}</span>
                 <span className="tit">{item.title}</span>
-              </>
-            ),
-            accTit:item.title,
+                { item.children && <span className="length">{item.children?.length}</span> }
+              </>),
+              tag: item?.children ? 'button':'span'
+            },
             content: (
               item.children ? (
                 <div className="nav-depth">
@@ -50,7 +52,7 @@ export const GuideNav = () =>{
                     {(childrenItem) => ({
                       content: (
                         <>
-                          <NavLink to={`${item.path}/${childrenItem.path}`} className="link" title={`${childrenItem.title} 보기`}>
+                          <NavLink to={`${item.path}/${childrenItem?.path || ''}`} className="link" title={`${childrenItem.title} 보기`}>
                             <span>{childrenItem.title}</span>
                           </NavLink>
                         </>
@@ -85,12 +87,16 @@ const StyleWrap = styled.div`
     .tit{
       font-weight:500;
     }
-  }
-  .acc-content {
-  
-  }
-  .nav-depth{
-   
+    .length {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      width:20px;
+      height:20px;
+      border:1px solid ${colors.lineColor};
+      border-radius:50%;
+      font-size:12px;
+    }
   }
   .tree-lists.custom {
     .depth-item{

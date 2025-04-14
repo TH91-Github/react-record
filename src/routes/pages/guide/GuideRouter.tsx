@@ -81,17 +81,26 @@ export const GUIDE_LIST = [
       },
     ],
   },
-  {
-    id:'assets', 
-    path: "assets",
-    title:'리소스',
-    element: <AssetsPage />,
-  },
+  // {
+  //   id:'assets', 
+  //   path: "assets",
+  //   title:'리소스',
+  //   element: <AssetsPage />,
+  // },
   {
     id:'components',
     path: "components",
     title:'컴포넌트',
     element: <ComponentsPage />,
+    children:[
+      {
+        id:'components-index',
+        index:true,
+        path:'', // index 사용해도 path:'' 값 유지
+        title:'유형별 컴포넌트',
+        element: <ComponentsPage />
+      },
+    ]
   },
   {
     id:'hooks',

@@ -15,7 +15,9 @@ export const GuidePageHeading = ({children}:GuidePageHeadingPropsType) => {
           <h2 className="name-tag">{formatText(locationData?.path ?? 'category')}</h2>
           <p className="tit">
             <span>{guideData?.title}</span>
-            <span className="color">{formatText(guideData?.id ?? 'guide')}</span>
+            {
+              !(guideData?.id)?.includes('-index') && <span className="color">{formatText(guideData?.id ?? 'guide')}</span>
+            }
           </p>
         </div>
         {children}

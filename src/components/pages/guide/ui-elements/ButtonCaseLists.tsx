@@ -47,12 +47,11 @@ const StyleWrap = styled.div`
     gap:20px;
     & > li {
       &.ellipsis-type{
-        width:80px;
+        width:100px;
       }
       &.full-type{
         width:200px;
       }
-      
     }
   }
 `;

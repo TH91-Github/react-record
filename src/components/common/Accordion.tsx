@@ -1,6 +1,11 @@
 import { useState, memo, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
+interface AccdionItemTitlePropsType {
+  accTit:string;
+  jsx: React.ReactNode;
+  tag: 'button' | 'span';
+}
 interface AccordionProps<T> {
   data: T[];
   mode?: "single" | "multiple"; // 하나만 열기 or 각 open
@@ -10,15 +15,13 @@ interface AccordionProps<T> {
     openIcon:'arrow'
   }
   children: (item: T) => {
-    heading: React.ReactNode;
-    accTit: string;
+    heading: AccdionItemTitlePropsType;
     content: React.ReactNode | null;
   };
 }
 // 아코디언 item type
 interface AccordionItemPropsType {
-  heading: React.ReactNode;
-  accTit: string;
+  heading: AccdionItemTitlePropsType;
   content: React.ReactNode | null;
   isActive:boolean;
   onChange: () => void;
@@ -49,21 +52,18 @@ export const Accordion = <T,>({
     <StyleWrap className={`accordion-wrap ${className ? className :''} ${accOpt?.openIcon ==='arrow' ? 'acc-arrow': ''}`}>
       { data.length > 0 ? (
         <ul>
-          {
-            data.map((accItem, accIdx) => {
-              const { heading, accTit, content } = children(accItem);
-              return (
-                <MemoAccordionItem
-                  key={accIdx}
-                  isActive={isActives.includes(accIdx)}
-                  onChange={() => handleChange(accIdx)}
-                  accTit={accTit}
-                  heading={heading}
-                  content={content}
-                />
-              );
-            })
-          }
+          {data.map((accItem, accIdx) => {
+            const { heading, content } = children(accItem);
+            return (
+              <MemoAccordionItem
+                key={accIdx}
+                isActive={isActives.includes(accIdx)}
+                onChange={() => handleChange(accIdx)}
+                heading={heading}
+                content={content}
+              />
+            );
+          })}
         </ul>
         ) : <div className="acc-empty">목록이 없습니다.</div>
       }
@@ -72,7 +72,6 @@ export const Accordion = <T,>({
 };
 
 const AccordionItem = ({
-  accTit,
   heading,
   content,
   isActive,
@@ -86,24 +85,24 @@ const AccordionItem = ({
   return (
     <li className={`acc-item ${isActive? 'open':''}`}>
       <div className="acc-head">
-        {content ? ( 
+        {heading.tag === 'button' ? ( 
           <button 
             type="button" 
             className="acc-btn"
             onClick={handleClick}
-            title={accTit}
+            title={heading.accTit}
           >
-            {heading}
+            {heading.jsx}
             <span className="blind">{isActive ? '닫기': '열기'}</span>
           </button>
         ) : (
-          <span className="acc-tit">{accTit}</span>
+          <span className="acc-tit">{heading.jsx}</span>
         )}
       </div>
       { content && (
-          <div className={`acc-content`}>
-            {content}
-          </div>
+        <div className={`acc-content`}>
+          {content}
+        </div>
       )}
     </li>
   );

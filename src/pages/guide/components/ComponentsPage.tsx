@@ -1,10 +1,13 @@
-import styled from "styled-components"
+import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
+import styled from "styled-components";
 
 
 export const ComponentsPage = () => {
+
   return (
     <StyleWrap>
-      ComponentsPage
+      <GuidePageHeading />
+      
     </StyleWrap>
   )
 }
