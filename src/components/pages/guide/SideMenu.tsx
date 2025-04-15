@@ -21,7 +21,7 @@ export const SideMenu = () => {
           </h2>
         </div>
         <div className="nav-item">
-          <Search icon={{size:20}} placeholder={'검색 기능 작업 진행 중...'}/>
+          <Search isBtn={false} placeholder={'검색 기능 작업 진행 중...'} $line="none"/>
         </div>
         <div className="nav-item">
           <h3 className="title">Menu</h3>
@@ -68,6 +68,17 @@ const StyleWrap = styled.div`
   .nav-item {
     padding:15px 30px;
     border-top:1px solid #dbdbdb;
+    .search {
+      .icon{
+        width:20px;
+        height:20px;
+      }
+      .input-item{
+        input {
+          height:30px;
+        }
+      }
+    }
     .title{
       font-size:18px;
     }

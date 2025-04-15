@@ -1,18 +1,18 @@
-import { AssetsPage } from "pages/guide/assets/AssetsPage";
 import { ComponentsPage } from "pages/guide/components/ComponentsPage";
+import { ComponentsView } from "pages/guide/components/ComponentsView";
 import { BreakpointsPage } from "pages/guide/design/BreakpointsPage";
+import { ColorsPage } from "pages/guide/design/ColorsPage";
 import { DesignPage } from "pages/guide/design/DesignPage";
-import { IconPage } from "pages/guide/ui-elements/IconPage";
+import { FontsPage } from "pages/guide/design/FontsPage";
 import { HooksPage } from "pages/guide/hooks/HooksPage";
 import { PreferencesPage } from "pages/guide/preferences/PreferencesPage";
 import { DirectoryStructurePage } from "pages/guide/principles/DirectoryStructurePage";
 import { NamingConventionsPage } from "pages/guide/principles/NamingConventionsPage";
 import { PrinciplesPage } from "pages/guide/principles/PrinciplesPage";
-import { UtilsPage } from "pages/guide/utils/UtilsPage";
-import { FontsPage } from "pages/guide/design/FontsPage";
-import { UIElementsPage } from "pages/guide/ui-elements/UIElementsPage";
-import { ColorsPage } from "pages/guide/design/ColorsPage";
 import { ButtonPage } from "pages/guide/ui-elements/ButtonPage";
+import { IconPage } from "pages/guide/ui-elements/IconPage";
+import { UIElementsPage } from "pages/guide/ui-elements/UIElementsPage";
+import { UtilsPage } from "pages/guide/utils/UtilsPage";
 
 export const GUIDE_LIST = [
   {
@@ -94,11 +94,10 @@ export const GUIDE_LIST = [
     element: <ComponentsPage />,
     children:[
       {
-        id:'components-index',
-        index:true,
-        path:'', // index 사용해도 path:'' 값 유지
+        id:'view',
+        path:'view/:id',
         title:'유형별 컴포넌트',
-        element: <ComponentsPage />
+        element: <ComponentsView />,
       },
     ]
   },

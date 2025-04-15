@@ -13,6 +13,9 @@ export const PrinciplesPage = () => {
 const StyleWrap = styled.div`
   .header-wrap{
     box-shadow:${bgShadow.base};
+    .header-inner{
+      padding:30px;
+    }
     .title {
       margin-top:20px;
       & > span {

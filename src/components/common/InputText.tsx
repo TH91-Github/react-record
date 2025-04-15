@@ -3,8 +3,8 @@ import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from "
 import styled from "styled-components"
 
 interface InputStylePropsType {
-  $maxWidth?: number;
-  $defaultLine?:boolean; // default line 유무
+  $maxWidth?: number | string;
+  $defaultLine?: 'line' | 'line-bottom' | 'line-left' | 'none'; // default line 유무
   $lineColor?:string;
 }
 interface InputPropsType {
@@ -35,7 +35,7 @@ interface InputTextRefType {
 
 export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
   {
-    name, id, className, title, placeholder, initVal, disabled, inputError, focusColor, isError, styleOpt,
+    name, id, className, title, placeholder, initVal, disabled, inputError, focusColor, isError, styleOpt={},
     keyEnter, changeEvent, focusEvent, blurEvent, removeEvent
   }: InputPropsType, ref ) {
 
@@ -43,6 +43,8 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
   const [val, setVal] = useState<string>(initVal ?? "");
   const propsTimeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const {$maxWidth = 'unset', $defaultLine = 'line', $lineColor=colors.lineColor} = styleOpt;
+
 
   const handleFocusIn = useCallback(() => {
     setIsFocus(true);
@@ -103,7 +105,7 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
         type="text"
         id={id}
         name={name}
-        className={`input ${className ? className : ''} ${styleOpt?.$defaultLine ? 'line':''}`}
+        className={`input ${className ? className : ''} ${$defaultLine !== 'none' ? $defaultLine : ''}`}
         value={val}
         onFocus={handleFocusIn}
         onBlur={handleFocusOut}
@@ -138,11 +140,11 @@ const StyleWrap = styled.div<InputStylePropsType>`
   width:100%;
   ${props => props.$maxWidth && `max-width: ${props.$maxWidth}px;`}
   font-size:16px;
-  min-height:20px;
   line-height:1;
   .input {
     display:block;
     width:100%;
+    height:40px;
     padding:5px 10px;
     border:1px solid transparent;
     border-radius:5px;
@@ -156,6 +158,9 @@ const StyleWrap = styled.div<InputStylePropsType>`
     &.line {
       border-color:${colors.lineColor};
     }
+    $.line-bottom{ 
+      border-bottom-color:${colors.lineColor};
+    }
   }
   .placeholder {
     position:absolute;
@@ -164,6 +169,7 @@ const StyleWrap = styled.div<InputStylePropsType>`
     font-size:inherit;
     line-height:1;
     transform: translateY(-50%);
+    color:${textColor.subText};
     pointer-events:none;
   }
   .remove{

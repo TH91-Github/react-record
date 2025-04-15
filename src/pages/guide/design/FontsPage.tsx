@@ -40,7 +40,6 @@ export const FontsPage = () => {
               id="font-input"
               changeEvent={handleChange} 
               placeholder={DEFAULT_FONT_TEXT}
-              styleOpt={{$defaultLine:true}}
             />
           </div>
           <div className="weight-preview">

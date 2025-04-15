@@ -1,4 +1,6 @@
 
-export const componentsData = {
- 
-}
+export const componentsData = [
+  {
+    title:''
+  }
+]

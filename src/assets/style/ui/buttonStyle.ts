@@ -4,8 +4,8 @@ export const buttonStyle = `
 .btn { 
   display:inline-block;
   position:relative;
-  min-width:44px;
-  min-height:44px;
+  width:40px;
+  height:40px;
   padding:5px 10px;
   border-radius:5px;
   border:1px solid ${colors.lineColor};

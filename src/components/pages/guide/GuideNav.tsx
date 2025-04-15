@@ -3,14 +3,14 @@ import { SvgBook, SvgCode, SvgDesign, SvgFolder, SvgPuzzle, SvgRectangleStack, S
 import { Accordion } from "components/common/Accordion";
 import { MemoTreeLists, TreeItemType } from "components/ui/TreeLists";
 import { useLocationCurrent } from "hooks/useLocationCustom";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import { GUIDE_LIST } from "routes/pages/guide/GuideRouter";
 import styled from "styled-components";
 
 interface NavItemType extends TreeItemType {
   id: string;
-  path?: string;
+  path: string;
   element?: React.ReactElement;
   children?: NavItemType[];
 }
@@ -31,6 +31,10 @@ export const GuideNav = () =>{
     };
   },[]);
 
+  const guidePath = useCallback((itemPath:string, childrenPath:string) => {
+    const routesCheck = childrenPath.indexOf('/:id');
+    return `${itemPath}${routesCheck === -1 ? `/${childrenPath}`: ''}`;
+  },[]);
   return (
     <StyleWrap className="nav">
       <nav>
@@ -52,7 +56,7 @@ export const GuideNav = () =>{
                     {(childrenItem) => ({
                       content: (
                         <>
-                          <NavLink to={`${item.path}/${childrenItem?.path || ''}`} className="link" title={`${childrenItem.title} 보기`}>
+                          <NavLink to={guidePath(item.path, childrenItem.path)} className="link" title={`${childrenItem.title} 보기`}>
                             <span>{childrenItem.title}</span>
                           </NavLink>
                         </>
