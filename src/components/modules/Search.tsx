@@ -42,21 +42,12 @@ const StyleWrap = styled.div<StyleWrapType>`
     flex-shrink: 0;
     display:inline-block;
     position:relative;
-    width:30px;
-    height:30px;
   }
   .input-item {
     flex:1;
   }
   .btn {
-    .icon {
-      position: absbolute;
-      top:50%;
-      left:50%;
-      transform: translate(-50%, -50%);
-      & > svg {
-        stroke:#fff;
-      }
-    }
+    width:40px;
+    height:40px;
   }
 `;
