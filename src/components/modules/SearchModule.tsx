@@ -8,14 +8,14 @@ interface SearchPropsType {
   placeholder?:string;
   $line?: 'line' | 'line-bottom' | 'line-left' | 'none';
 }
-export const Search = ({
+export const SearchModule = ({
   isBtn = true,
   placeholder = '',
   $line = 'line',
 }:SearchPropsType) => {
   
   return (
-    <StyleWrap className="search">
+    <StyleWrap className={`search ${isBtn ? 'search-btn': ''}`}>
       {!isBtn && <i className="icon"><SvgSearch /></i>}
       <InputText 
         id="search"
@@ -37,17 +37,29 @@ interface StyleWrapType {
 const StyleWrap = styled.div<StyleWrapType>`
   display: flex;
   align-items: center;
-  gap:10px;
   .icon{
     flex-shrink: 0;
     display:inline-block;
     position:relative;
   }
   .input-item {
-    flex:1;
+    flex-grow:1;
+  }
+  .search-btn {
+    flex-shrink: 0;
   }
   .btn {
     width:40px;
     height:40px;
+  }
+  &.search-btn {
+    .input {
+      border-top-right-radius:0;
+      border-bottom-right-radius:0;
+    }
+    .btn  {
+      border-top-left-radius:0;
+      border-bottom-left-radius:0;
+    }
   }
 `;

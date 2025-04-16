@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const ComponentsView = () => {
+
+export const ComponentsViewPage = () => {
 
   return (
     <StyleWrap>

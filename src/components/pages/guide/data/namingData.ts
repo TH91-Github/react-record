@@ -314,6 +314,42 @@ export const namingData = [
     ], 
   },
   {
+    id:'naming-styled',
+    title:'Style 규칙 (style)',
+    desc:[
+      'CSS 작성 순서',
+      '태그 및 스타일에 대한 설명',
+      'Styled-components 네이밍 및 가이드',
+    ],
+    section: [
+      {
+        sectionTit: "CSS 작성 순서",
+        lists: [
+          {
+            tit: "스타일 작성 순서 기준",
+            desc: "코드를 읽기 쉽고 일관되게 유지하기 위해 CSS 속성은 기능에 따라 순서를 정해 작성",
+            codeLists: ["overflow",'display','position','크기(width, height)','여백(margin,padding)','테두리(border)','배경(background)','폰트(font)','기타']
+          }
+        ]
+      },
+      {
+        sectionTit: "Styled-components",
+        lists: [
+          {
+            tit: "StyleWrap 네이밍",
+            desc: "컴포넌트 내 최상위 태그는 StyleWrap 로 네이밍 통일",
+            codeLists: ["const StyleWrap => styled.tag`"]
+          },
+          {
+            tit: "공통 스타일",
+            desc: "GlobalStyles에 작성 또는 공통 부모내 공통으로 작성 시 부모 컴포넌트에 작성",
+            codeLists: []
+          }
+        ]
+      },
+    ]
+  },
+  {
     id:'naming-variable',
     title:'변수 규칙 (Variable)',
     desc:[
@@ -331,6 +367,28 @@ export const namingData = [
       "이벤트, 커스텀, 동작 등 함수에 대한 네이밍",
     ],
     section: [
+      {
+        sectionTit: "네이밍 스타일 가이드",
+        lists: [
+          {
+            tit: "동작을 나타내는 동사 사용",
+            desc: "get, set, fetch, update, remove, clear 등을 활용하여 함수의 역할을 명확하게 표현합니다.",
+            codeLists: [
+              "function getUserData() {...}",
+              "function updateProfile() {...}",
+              "function clearCache() {...}"
+            ]
+          },
+          {
+            tit: "불린 값 반환 함수는 is 또는 has 접두어 사용",
+            desc: "불린 값을 반환하는 함수는 is 또는 has 접두어를 사용하여 명확하게 구분합니다.",
+            codeLists: [
+              "function isUserLoggedIn() {...}",
+              "function hasPermission() {...}"
+            ]
+          }
+        ]
+      },
       {
         sectionTit: "React 내장 함수는 화살표 함수로 선언",
         lists: [
@@ -383,36 +441,7 @@ export const namingData = [
           }
         ]
       },
-      {
-        sectionTit: "네이밍 스타일 가이드",
-        lists: [
-          {
-            tit: "동작을 나타내는 동사 사용",
-            desc: "get, set, fetch, update, remove, clear 등을 활용하여 함수의 역할을 명확하게 표현합니다.",
-            codeLists: [
-              "function getUserData() {...}",
-              "function updateProfile() {...}",
-              "function clearCache() {...}"
-            ]
-          },
-          {
-            tit: "불린 값 반환 함수는 is 또는 has 접두어 사용",
-            desc: "불린 값을 반환하는 함수는 is 또는 has 접두어를 사용하여 명확하게 구분합니다.",
-            codeLists: [
-              "function isUserLoggedIn() {...}",
-              "function hasPermission() {...}"
-            ]
-          }
-        ]
-      }
     ]
-  },
-  {
-    id:'naming-method',
-    title:'메서드 규칙 (Method)',
-    desc:[
-      '메서드명',
-    ],
   },
   {
     id:'naming-props',

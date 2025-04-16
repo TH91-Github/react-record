@@ -1,6 +1,6 @@
 import { bgColor, colors, media } from "assets/style/variables";
 import { SvgCube } from "assets/svg/Common";
-import { Search } from "components/modules/Search";
+import { SearchModule } from "components/modules/SearchModule";
 import useToggle from "hooks/useToggle";
 import { useRecoilValue } from "recoil";
 import { stateUserColor } from "recoil/atoms";
@@ -21,7 +21,7 @@ export const SideMenu = () => {
           </h2>
         </div>
         <div className="nav-item">
-          <Search isBtn={false} placeholder={'검색 기능 작업 진행 중...'} $line="none"/>
+          <SearchModule isBtn={false} placeholder={'검색 기능 작업 진행 중...'} $line="none"/>
         </div>
         <div className="nav-item">
           <h3 className="title">Menu</h3>

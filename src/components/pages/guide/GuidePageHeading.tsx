@@ -20,6 +20,8 @@ export const GuidePageHeading = ({children}:GuidePageHeadingPropsType) => {
 }
 const StyleWrap = styled.div`
   .header-inner{
-    padding: 30px 30px 0; 
+    max-width:1140px;
+    margin:0 auto;
+    padding: 30px 30px 0;
   }  
 `;
