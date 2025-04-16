@@ -420,6 +420,28 @@ export const namingData = [
     desc:[
       'props',
     ],
+    section:[
+      {
+        sectionTit: "객체 및 배열 데이터",
+        lists: [
+          {
+            tit: "data로 통일",
+            desc: "userData, listsData처럼 중복된 명칭 대신 data로 명확하게 표현합니다.",
+            codeLists: ["data"]
+          }
+        ]
+      },
+      {
+        sectionTit: "Props 이벤트 핸들러 함수",
+        lists: [
+          {
+            tit: "접미어(Event) 사용",
+            desc: "이벤트 핸들러 함수는 handle 접두어를 사용하고, 이벤트 객체는 의미에 따라 접미어로 Event를 붙여 명확하게 구분합니다.",
+            codeLists: ["changeEvent, clickEvent"]
+          }
+        ]
+      },
+    ]
   },
   {
     id:'naming-type',

@@ -1,5 +1,5 @@
 import { ComponentsPage } from "pages/guide/components/ComponentsPage";
-import { ComponentsView } from "pages/guide/components/ComponentsView";
+import { ComponentsViewPage } from "pages/guide/components/ComponentsViewPage";
 import { BreakpointsPage } from "pages/guide/design/BreakpointsPage";
 import { ColorsPage } from "pages/guide/design/ColorsPage";
 import { DesignPage } from "pages/guide/design/DesignPage";
@@ -24,7 +24,7 @@ export const GUIDE_LIST = [
       {
         id:'naming-conventions',
         path: "naming-conventions",
-        title:'네이밍 규칙',
+        title:'네이밍과 작성 가이드',
         element: <NamingConventionsPage />
       },
       {
@@ -97,7 +97,7 @@ export const GUIDE_LIST = [
         id:'view',
         path:'view/:id',
         title:'유형별 컴포넌트',
-        element: <ComponentsView />,
+        element: <ComponentsViewPage />,
       },
     ]
   },
