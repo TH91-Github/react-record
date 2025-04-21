@@ -6,6 +6,7 @@ interface InputStylePropsType {
   $maxWidth?: number | string;
   $defaultLine?: 'line' | 'line-bottom' | 'line-left' | 'none'; // default line 유무
   $lineColor?:string;
+  $focusColor?:string;
 }
 interface InputPropsType {
   name?: string;
@@ -16,7 +17,6 @@ interface InputPropsType {
   initVal?: string;
   disabled?: boolean;
   inputError?: boolean;
-  focusColor?: string;
   isError?:boolean;
   styleOpt?:InputStylePropsType;
   keyEnter?: () => void;
@@ -35,7 +35,7 @@ interface InputTextRefType {
 
 export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
   {
-    name, id, className, title, placeholder, initVal, disabled, inputError, focusColor, isError, styleOpt={},
+    name, id, className, title, placeholder, initVal, disabled, inputError, isError, styleOpt={},
     keyEnter, changeEvent, focusEvent, blurEvent, removeEvent
   }: InputPropsType, ref ) {
 
@@ -43,8 +43,12 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
   const [val, setVal] = useState<string>(initVal ?? "");
   const propsTimeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const {$maxWidth = 'unset', $defaultLine = 'line', $lineColor=colors.lineColor} = styleOpt;
-
+  const {
+    $maxWidth, 
+    $defaultLine = 'line', 
+    $lineColor = colors.lineColor,
+    $focusColor = colors.mSlateBlue 
+  } = styleOpt;
 
   const handleFocusIn = useCallback(() => {
     setIsFocus(true);
@@ -97,8 +101,9 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
   return( 
     <StyleWrap
       className={`input-item${inputError ? ' error' : ''}${isFocus ? ' isFocus' : '' } ${isError ? 'error' : ''}` }
-      $maxWidth={styleOpt?.$maxWidth ? styleOpt.$maxWidth : undefined} 
-      $lineColor={focusColor === undefined ? colors.blue: focusColor}
+      $maxWidth={$maxWidth ? $maxWidth : undefined} 
+      $lineColor={$lineColor}
+      $focusColor={$focusColor}
     >
       <input
         ref={inputRef}
@@ -180,7 +185,7 @@ const StyleWrap = styled.div<InputStylePropsType>`
     
   &.isFocus {
     .input {
-      border-color: ${({$lineColor}) => $lineColor};
+      border-color: ${({$focusColor}) => $focusColor};
     }
   }
 `;

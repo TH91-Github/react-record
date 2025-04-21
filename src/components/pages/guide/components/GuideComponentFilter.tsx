@@ -1,24 +1,31 @@
 import { TabBtns } from "components/common/TabBtns";
 import { SearchModule } from "components/modules/SearchModule";
+import { useCallback } from "react";
 import styled from "styled-components";
 
-interface GuideComponentSearchPropsType<T extends { category: string }> {
+interface GuideComponentFilterPropsType<T extends { category: string, keyword:string }> {
   data: T[];
   changeEvent?: ({idx,val}:{idx:number, val:string}) => void;
 }
-export const GuideComponentSearch = <T extends { category: string }>({
+export const GuideComponentFilter = <T extends { category: string, keyword:string }>({
   data, changeEvent
-}: GuideComponentSearchPropsType<T>) => {
-    const tabFilter = [...new Set(data.map(item => item.category))]
+}: GuideComponentFilterPropsType<T>) => {
+  const tabFilter = [...new Set(data.map(item => item.category))]
 
+  // 검색 결과
+  const onComfirm = useCallback(()=>{
+
+  },[])
   return (
     <StyleWrap>
       <TabBtns data={tabFilter} changeEvent={changeEvent} />
-      <SearchModule placeholder="컴포넌트를 검색해보세요"/>
+      <SearchModule 
+        data={data}
+        placeholder="컴포넌트를 검색해보세요"
+        onComfirm={onComfirm}
+      />
     </StyleWrap>
   )
-   
-
 }
 //  {/* 검색 기능을 여기서 */}
 //       {/* detail 페이지 :id */}

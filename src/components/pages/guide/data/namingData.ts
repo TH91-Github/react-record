@@ -107,6 +107,8 @@ export const namingData = [
       'formatText → 특정 규칙에 맞춰 재구성, 새로운 형태,',
       'token → 고유 token, import 가능한 코드',
       'code → 코드 관련',
+      'confirm → 확인, 확정',
+      'cancel → 취소', 
       '...'
     ],
   },

@@ -1,5 +1,5 @@
 import { bgShadow } from "assets/style/variables";
-import { GuideComponentSearch } from "components/pages/guide/components/GuideComponentSearch";
+import { GuideComponentFilter } from "components/pages/guide/components/GuideComponentFilter";
 import { componentsData } from "components/pages/guide/data/componentsData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
 import { TitleHeading } from "components/ui/TitleHeading";
@@ -16,7 +16,7 @@ export const ComponentsPage = () => {
 
   const filterLists = useMemo(() => {
     return !filter ? componentsData : componentsData.filter(item => item.category === filter)
-  }, [filter, componentsData]);
+  }, [filter]);
 
   console.log(filterLists)
   return (
@@ -29,23 +29,21 @@ export const ComponentsPage = () => {
           titleText={'Components System'} 
           pointer="underline"
           $fontSize={28}
-          desc={['팝업, 검색, 리스트 등등 컴포넌트 모음']}
+          desc={['팝업, 검색, 리스트 등 컴포넌트 모음']}
         />
         <div className="section-wrap">
-          <GuideComponentSearch 
+          <GuideComponentFilter 
             data={componentsData}
             changeEvent={selectUpdate}
           />
           <div className="componetns-lists">
             {filterLists.length > 0 ?(
               <ul>
-                {
-                filterLists.map((item, idx) => (
+                { filterLists.map((item, idx) => (
                   <li key={idx}>
                     {item.title}
                   </li>
-                ))
-                }
+                ))}
               </ul>
             ) : (
               <div className="empty-wrap">
