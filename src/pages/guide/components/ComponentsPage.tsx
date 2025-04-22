@@ -36,7 +36,7 @@ export const ComponentsPage = () => {
             data={componentsData}
             changeEvent={selectUpdate}
           />
-          {/* <div className="componetns-lists">
+          <div className="componetns-lists">
             {filterLists.length > 0 ?(
               <ul>
                 { filterLists.map((item, idx) => (
@@ -50,7 +50,7 @@ export const ComponentsPage = () => {
                 <p className="text">일치하는 정보를 가져오지 못 했습니다. 🥹</p>
               </div>
             )}
-          </div> */}
+          </div>
           <div>
             <Outlet />
           </div>

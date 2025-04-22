@@ -11,21 +11,20 @@ interface GuideComponentFilterPropsType {
 export const GuideComponentFilter = ({
   data, changeEvent
 }: GuideComponentFilterPropsType ) => {
-  // const tabFilter = [...new Set(data.map(item => item.category))]
+  const tabFilter = [...new Set(data.map(item => item.category))]
 
-  console.log(data)
   // 검색 결과
   const onComfirm = useCallback(()=>{
 
   },[])
   return (
     <StyleWrap>
-      {/* <TabBtns data={tabFilter} changeEvent={changeEvent} /> */}
-      {/* <SearchModule 
+      <TabBtns data={tabFilter} changeEvent={changeEvent} />
+      <SearchModule 
         data={data}
         placeholder="컴포넌트를 검색해보세요"
         onComfirm={onComfirm}
-      /> */}
+      />
     </StyleWrap>
   )
 }

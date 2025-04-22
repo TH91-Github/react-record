@@ -1,10 +1,12 @@
+import { colors } from "assets/style/variables";
 import styled from "styled-components";
 
 interface TextHighlightPropsType {
   text:string; // 전체 텍스트 
   keyword:string; // 일치하는 텍스트
+  $activeColor?: string; // 일치하는 텍스트 표시 색상
 }
-export const TextHighlight = ({text, keyword}: TextHighlightPropsType) => {
+export const TextHighlight = ({text, keyword, $activeColor}: TextHighlightPropsType) => {
   const loweredText = text.toLowerCase();
   const loweredKeyword = keyword.toLowerCase();
   const index = loweredText.indexOf(loweredKeyword);
@@ -20,13 +22,19 @@ export const TextHighlight = ({text, keyword}: TextHighlightPropsType) => {
   return (
     <>
       <span>{beforeText}</span>
-      <StyleHighlight>{match}</StyleHighlight>
-      {afterText}
+      <StyleHighlight $activeColor={$activeColor ?? colors.yellow}>{match}</StyleHighlight>
+      <span>{afterText}</span>
     </>
   )
 }
 
-const StyleHighlight = styled.span`
-  background-color: yellow;
+interface StyleHighlightType {
+  $activeColor:string
+}
+
+const StyleHighlight = styled.span<StyleHighlightType>`
+  padding:1px;
+  border-radius:5px;
+  background: ${({$activeColor}) => $activeColor};
 `;
 

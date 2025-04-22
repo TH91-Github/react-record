@@ -26,7 +26,7 @@ interface InputPropsType {
   blurEvent?: (e:React.FocusEvent<HTMLInputElement>) => void;
 }
 
-interface InputTextRefType {
+export interface InputTextRefType {
   refInputEvent: () => HTMLInputElement | null;
   refFocusEvent: () => void;
   refInitVal: (e:string) => void;
@@ -72,7 +72,7 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
     }
     propsTimeRef.current = setTimeout(() =>{
       changeEvent && changeEvent(value)
-    },500)
+    }, 300)
   },[changeEvent]);
 
   const handleValRemove = () => { // 입력 초기화
@@ -94,10 +94,11 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
     refInputEvent: () => { // input 반환
       return inputRef.current
     },
-    refFocusEvent: () => { // 초기 데이터
+    refFocusEvent: () => { 
       inputRef.current?.focus()
     },
     refInitVal: (value) => { // value 변경
+      console.log('input' + value)
       setVal(value);
     },
     refResetVal: () => { // value 초기화
@@ -133,6 +134,7 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
         )
       }
       {
+        false && 
         <button
           type="button"
           className={`remove${val.length > 0 ? ' on':''}`}

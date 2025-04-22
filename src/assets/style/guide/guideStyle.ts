@@ -9,7 +9,6 @@ export const guideStyle = `
     padding:30px 30px 0;
   }
   .content-wrap{
-    overflow:hidden;
     max-width:${breakpoints.tablet}px;
     margin:0 auto;
     padding:30px;

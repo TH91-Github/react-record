@@ -40,7 +40,7 @@ export const GuidePage = () => {
 
 const StyleWrap = styled.div`
   position:relative;
-  min-width:${breakpoints.tablet};
+  min-width:${breakpoints.tablet}px;
   .guide-content {
     position:relative;
     width: 100%;

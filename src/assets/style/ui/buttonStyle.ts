@@ -26,12 +26,6 @@ export const buttonStyle = `
     border-color:${colors.darkNavy};
     color:${colors.darkNavy};
   }
-  &.ellipsis {
-    width:100%;
-    white-space: nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
   &.full {
     width:100%;
   }

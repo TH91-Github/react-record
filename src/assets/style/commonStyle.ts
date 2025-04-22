@@ -105,7 +105,12 @@ export const commonStyle = `
       }
     }
   }
-
+  .ellipsis {
+    width:100%;
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
   ${media.mo}{
     .pc-br{
       display:none;
