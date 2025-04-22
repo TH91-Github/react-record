@@ -1,5 +1,7 @@
+import { ComponentsDataType } from "types/guide";
 
-export const componentsData = [
+// 🌟 타입 추가
+export const componentsData: ComponentsDataType[] =[
   {
     id:'popup',
     title:'Popup',
@@ -14,7 +16,7 @@ export const componentsData = [
     desc:'캐러셀, 슬라이드 컴포넌트',
     category:'Carousel', 
     update:'2025-04-16',
-    keyword:['Carousel', '슬라이드', 'swiper', '캐러셀']
+    keyword:['Tabxcv xxcv', 'Carousel', '슬라이드', 'swiper', '캐러셀']
   },
   {
     id:'tab-btns',
@@ -22,6 +24,6 @@ export const componentsData = [
     desc:'Tab 버튼 컴포넌트',
     category:'Tab', 
     update:'2025-04-16',
-    keyword:['Tab', 'Tabs', 'Tab Button', '탭 버튼', 'Tab Head' ,'탭 헤더']
+    keyword:['Carousel dasdasd', 'Tab', 'Tabs', 'Tab Button', '탭 버튼', 'Tab Head' ,'탭 헤더']
   },
 ]

@@ -65,3 +65,12 @@ export interface ButtonDataType {  // Color Data Type
     lists: ButtonCaseType[]
   })[]
 }
+
+export interface ComponentsDataType {
+  id:string;
+  title: string;
+  desc: string;
+  category: string;
+  update: string;
+  keyword: string[];
+}

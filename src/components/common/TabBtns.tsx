@@ -19,8 +19,10 @@ export const TabBtns = <T,>({
   const handleTabClick = (val:string, idx:number) =>{
     setIsActive(idx)
     changeEvent && changeEvent({idx,val})
+    console.log('ㅇㅇㅇ')
   }
-
+  console.log('tab')
+  
   return (
     <StyleWrap className="tab-btns">
       <ul>

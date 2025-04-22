@@ -10,7 +10,6 @@ export const GuidePage = () => {
   
   // ✅ 최소 사이즈에 대한 안내
   const handleResize = useCallback(() => {
-    console.log(window.innerWidth)
     if(window.innerWidth < breakpoints.tablet) {
       // 팝업 안내
     }

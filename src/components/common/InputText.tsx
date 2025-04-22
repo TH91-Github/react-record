@@ -1,5 +1,5 @@
 import { colors, textColor } from "assets/style/variables";
-import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import styled from "styled-components"
 
 interface InputStylePropsType {
@@ -82,6 +82,13 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
       inputRef.current.focus();
     }
   }
+  useEffect(()=>{
+    return () => {
+      if (propsTimeRef.current) {
+        clearTimeout(propsTimeRef.current);
+      }
+    }
+  },[])
 
   useImperativeHandle(ref, () => ({ // ref로 시작작
     refInputEvent: () => { // input 반환
