@@ -10,15 +10,15 @@ import styled from "styled-components";
 export const ComponentsPage = () => {
   const [filter, setFilter] = useState('');
   
-  const selectUpdate = (selected:{idx:number, val:string}) => {
-    setFilter(selected.idx === -1 ? '':selected.val)
+  const selectUpdate = (selected:string) => {
+    // -1 : All , 그 외 value
+    setFilter(selected === 'All' ? '': selected)
   }
 
   const filterLists = useMemo(() => {
     return !filter ? componentsData : componentsData.filter(item => item.category === filter)
   }, [filter]);
 
-  console.log(filterLists)
   return (
     <StyleWrap>
       <GuidePageHeading />

@@ -19,7 +19,7 @@ interface SearchModulePropsType<T extends EssentialType> {
   placeholder?:string;
   $line?: 'line' | 'line-bottom' | 'line-left' | 'none';
   onPreview? : boolean;
-  onComfirm?: () => void;
+  onComfirm?: (val:string) => void;
 }
 export const SearchModule = <T extends EssentialType>({
   data = [],
@@ -33,6 +33,7 @@ export const SearchModule = <T extends EssentialType>({
   const isMouseDownInside = useRef(false);
   const [resultVal, setResultVal] = useState('');
   const [isPreview , setIsPreview] = useState(onPreview ?? false);
+  const [errorMessage, setErrorMessage] = useState('')
   const inputRef = useRef<InputTextRefType>(null);
 
   const inputFocus = () => { 
@@ -40,7 +41,6 @@ export const SearchModule = <T extends EssentialType>({
   }
   const inputChange = useCallback((val: string) => {
     setResultVal(val);
-    console.log('change')
   }, []);
 
   const handleMouseDown = (e: PointerEvent) => { // 다른 영역 클릭 시시
@@ -70,29 +70,56 @@ export const SearchModule = <T extends EssentialType>({
     return matches;
   }, [data, resultVal]);
 
-  const onKeyword = (id:string, keyVal:string) => { // 자동완성 클릭
+  const onKeyword = (keyVal:string) => { // 자동완성 클릭
     setResultVal(keyVal);
     setIsPreview(false);
-    if(!inputRef.current || !inputRef.current) return 
+    if(!inputRef.current) return 
     inputRef.current.refInitVal(keyVal);
   }
 
-  const handleClick = () => { // 검색 
-    setIsPreview(false); 
-    onComfirm && onComfirm(); // 🌟 완료 후 전달
+  const handleEnter = () => {
+    handleClick();
   }
+  const handleClick = () => {
+    let keyword = resultVal.trim();
+  
+    if (keyword.length < 2) {
+      setErrorMessage('검색어를 2자 이상 입력해주세요.');
+      return;
+    }
+  
+    // 자동완성 목록이 있는 경우 첫 번째 키워드로 대체
+    if (filteredData.length > 0) {
+      keyword = filteredData[0].keyword;
+      setResultVal(keyword);
+      inputRef.current?.refInitVal(keyword);
+    }
+  
+    setIsPreview(false);
+    onComfirm?.(keyword);
+  };
+  
 
-  useEffect(() => {
+  useEffect(() => { // 컴포넌트 벗어나서 클릭 시 자동완성 닫기
     if (isPreview) {
       document.addEventListener("pointerdown", handleMouseDown);
     } else {
       document.removeEventListener("pointerdown", handleMouseDown);
     }
-
     return () => {
       document.removeEventListener("pointerdown", handleMouseDown);
     };
   }, [isPreview]);
+
+  useEffect(() => {
+    if (errorMessage) {
+      const timer = setTimeout(() => {
+        setErrorMessage('');
+      }, 3000); // 3초 후 메시지 제거
+  
+      return () => clearTimeout(timer); // 컴포넌트 언마운트 시 클리어
+    }
+  }, [errorMessage]);
 
   return (
     <StyleWrap 
@@ -106,19 +133,24 @@ export const SearchModule = <T extends EssentialType>({
         placeholder={placeholder}
         styleOpt={ { $defaultLine:$line, $focusColor:colors.darkNavy} }
         focusEvent={inputFocus}
+        keyEnter={handleEnter}
         changeEvent={inputChange}
       />
       {
-        (isPreview && resultVal.length > 2) && (
+        errorMessage && <p className="error">{errorMessage}</p>
+      }
+      {
+        (isPreview && resultVal.length > 1)&& (
           filteredData.length > 0 ?
           <PreviewText 
             data={filteredData}  
             matcheVal={resultVal} 
             onKeyword={onKeyword}
-          /> :
-          <div className="empyt-wrap">
-            <p>일치하는 검색 값이 없습니다.</p>
-          </div>
+          /> : (
+            <div className="empyt-wrap">
+              <p>일치하는 검색 값이 없습니다.</p>
+            </div>
+          )
         )
       }
       {isBtn && (
@@ -181,5 +213,11 @@ const StyleWrap = styled.div<StyleWrapType>`
     }
     
   }
-  
+  .error {
+    position:absolute;
+    top:100%;
+    padding:10px;
+    font-size:14px;
+    color:${colors.red};
+  }
 `;

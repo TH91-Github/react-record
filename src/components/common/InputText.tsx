@@ -16,7 +16,6 @@ interface InputPropsType {
   placeholder?: string;
   initVal?: string;
   disabled?: boolean;
-  inputError?: boolean;
   isError?:boolean;
   styleOpt?:InputStylePropsType;
   keyEnter?: () => void;
@@ -28,6 +27,7 @@ interface InputPropsType {
 
 export interface InputTextRefType {
   refInputEvent: () => HTMLInputElement | null;
+  refInputValue: () => string;
   refFocusEvent: () => void;
   refInitVal: (e:string) => void;
   refResetVal: () => void;
@@ -35,7 +35,7 @@ export interface InputTextRefType {
 
 export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
   {
-    name, id, className, title, placeholder, initVal, disabled, inputError, isError, styleOpt={},
+    name, id, className, title, placeholder, initVal, disabled, isError, styleOpt={},
     keyEnter, changeEvent, focusEvent, blurEvent, removeEvent
   }: InputPropsType, ref ) {
 
@@ -94,11 +94,13 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
     refInputEvent: () => { // input 반환
       return inputRef.current
     },
+    refInputValue: () => { // value
+      return val
+    },
     refFocusEvent: () => { 
       inputRef.current?.focus()
     },
     refInitVal: (value) => { // value 변경
-      console.log('input' + value)
       setVal(value);
     },
     refResetVal: () => { // value 초기화
@@ -108,7 +110,7 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
   
   return( 
     <StyleWrap
-      className={`input-item${inputError ? ' error' : ''}${isFocus ? ' isFocus' : '' } ${isError ? 'error' : ''}` }
+      className={`input-item${isFocus ? ' isFocus' : '' }${isError ? ' error' : ''}` }
       $maxWidth={$maxWidth ? $maxWidth : undefined} 
       $lineColor={$lineColor}
       $focusColor={$focusColor}

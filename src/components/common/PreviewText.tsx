@@ -6,13 +6,13 @@ import { KeywordBaseType } from "types/common";
 interface PreviewTextPropsType {
   data: KeywordBaseType[];
   matcheVal:string;
-  onKeyword: (id:string, keyVal:string) => void
+  onKeyword: (keyVal:string) => void
 }
 
 export const PreviewText = ({data, matcheVal, onKeyword}: PreviewTextPropsType) => {
 
-  const handleKeywordClick = (id:string, keyVal:string) => {
-    onKeyword && onKeyword(id, keyVal); // id와 자동완성 text
+  const handleKeywordClick = (keyVal:string) => {
+    onKeyword && onKeyword(keyVal); // id와 자동완성 text
   }
   return (
     <StyleWrap className="preview-text">
@@ -22,7 +22,7 @@ export const PreviewText = ({data, matcheVal, onKeyword}: PreviewTextPropsType) 
             <button 
               type="button" 
               className=" ellipsis"
-              onClick={() => handleKeywordClick(item.id, item.keyword)}
+              onClick={() => handleKeywordClick(item.keyword)}
             >
               <TextHighlight 
                 text={item.keyword} 

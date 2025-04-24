@@ -1,25 +1,35 @@
 import { colors } from "assets/style/variables";
-import { useState } from "react";
-import styled from "styled-components"
+import { useEffect, useState } from "react";
+import styled from "styled-components";
 
 interface TabBtnsPropsType {
   isAll? : boolean;
   lang?: 'ko'|'en';
   data: string[];
-  changeEvent?: ({idx,val}:{idx:number, val:string}) => void;
+  activeTab?:string | undefined;
+  changeEvent?: (val: string) => void;
 }
-export const TabBtns = <T,>({
+export const TabBtns = ({
   isAll = true,
   lang = 'en',
   data,
+  activeTab,
   changeEvent
 }:TabBtnsPropsType) => {
   const [isActive, setIsActive] = useState(isAll ? -1 : 0);
 
   const handleTabClick = (val:string, idx:number) =>{
     setIsActive(idx)
-    changeEvent && changeEvent({idx,val})
+    changeEvent && changeEvent(val)
   }
+  useEffect(() => {
+    console.log(activeTab)
+    if(activeTab ){
+      const activeNum = data.indexOf(activeTab)
+      activeNum > 0 && setIsActive(activeNum)
+    }
+
+  },[activeTab])
   return (
     <StyleWrap className="tab-btns">
       <ul>
@@ -42,7 +52,6 @@ export const TabBtns = <T,>({
           </li>
         ))}
       </ul>
-
     </StyleWrap>
   )
 }
