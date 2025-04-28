@@ -19,7 +19,7 @@ export const componentsData: ComponentsDataType[] =[
     keyword:['Carousel', '슬라이드', 'swiper', '캐러셀']
   },
   {
-    id:'tab',
+    id:'tab button',
     title:'Tab Button',
     desc:'Tab 버튼 컴포넌트',
     category:'Tab', 

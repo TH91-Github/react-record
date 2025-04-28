@@ -1,5 +1,6 @@
 import { bgShadow } from "assets/style/variables";
-import { GuideComponentFilter } from "components/pages/guide/components/GuideComponentFilter";
+import { ComponentsLists } from "components/pages/guide/components/ComponentsLists";
+import { ComponentFilter } from "components/pages/guide/components/ComponentFilter";
 import { componentsData } from "components/pages/guide/data/componentsData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
 import { TitleHeading } from "components/ui/TitleHeading";
@@ -32,25 +33,11 @@ export const ComponentsPage = () => {
           desc={['팝업, 검색, 리스트 등 컴포넌트 모음']}
         />
         <div className="section-wrap">
-          <GuideComponentFilter 
+          <ComponentFilter 
             data={componentsData}
             changeEvent={selectUpdate}
           />
-          <div className="componetns-lists">
-            {filterLists.length > 0 ?(
-              <ul>
-                { filterLists.map((item, idx) => (
-                  <li key={idx}>
-                    {item.title}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <div className="empty-wrap">
-                <p className="text">일치하는 정보를 가져오지 못 했습니다. 🥹</p>
-              </div>
-            )}
-          </div>
+          <ComponentsLists data={filterLists} />
           <div>
             <Outlet />
           </div>

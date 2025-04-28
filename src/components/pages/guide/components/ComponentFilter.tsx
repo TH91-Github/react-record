@@ -4,13 +4,13 @@ import { useCallback, useState } from "react";
 import styled from "styled-components";
 import { ComponentsDataType } from "types/guide";
 
-interface GuideComponentFilterPropsType {
+interface ComponentFilterPropsType {
   data: ComponentsDataType[]; 
   changeEvent?: (val:string) => void;
 }
-export const GuideComponentFilter = ({
+export const ComponentFilter = ({
   data, changeEvent
-}: GuideComponentFilterPropsType ) => {
+}: ComponentFilterPropsType ) => {
   const [activeTab, setActiveTab] = useState('');
   const tabFilter = [...new Set(data.map(item => item.category))]
   // 검색 결과

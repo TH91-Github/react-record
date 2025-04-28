@@ -23,12 +23,10 @@ export const TabBtns = ({
     changeEvent && changeEvent(val)
   }
   useEffect(() => {
-    console.log(activeTab)
-    if(activeTab ){
+    if(activeTab){
       const activeNum = data.indexOf(activeTab)
       activeNum > 0 && setIsActive(activeNum)
     }
-
   },[activeTab])
   return (
     <StyleWrap className="tab-btns">
