@@ -16,9 +16,13 @@ export const HeaderNav = () => {
         {
           navLists.map((navItem, navIdx) => (
             <li key={'nav' + navIdx}>
-              <NavLink to={navItem.path ?? '/'} className="nav-item">
+              {/* 임시 - guide main 만들기전 기본 페이지 */}
+              <NavLink to={'/guide/principles/naming-conventions'} className="nav-item">
                 <span>{navItem.title}</span>
               </NavLink>
+              {/* <NavLink to={navItem.path ?? '/'} className="nav-item">
+                <span>{navItem.title}</span>
+              </NavLink> */}
             </li>
           ))
         }

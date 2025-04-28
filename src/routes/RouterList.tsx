@@ -7,7 +7,8 @@ export const routerList = [
   { // Main
     index: true,
     id: "Main",
-    element: <MainPage />
+    element: <GuidePage /> // 임시
+    // element: <MainPage />
   },
   {
     id:'ComponentGuide',

@@ -9,7 +9,8 @@ export const HeaderLayout = () => {
     <StyleWrap id="header" className={`header ${true ? 'full-layout': ''}`}>
       <div className="header-inner">
         <Logo />
-        <HeaderNav />
+        {/* 임시 - 가이드 완료 후 재정비 */}
+        {/* <HeaderNav /> */}
       </div>
     </StyleWrap>
   )
