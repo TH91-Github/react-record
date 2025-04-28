@@ -41,8 +41,9 @@ export const IconPage = () => {
               ))}
               <ul className="icon-lists">
                 {item.lists.map((iconItem, iconIdx) => {
-                  const Icon = iconItem?.element ?? null;
+                  const Icon = iconItem?.svgElement ?? null;
                   const ImgSvg = iconItem?.path ?? null;
+                  const CssIcon = iconItem?.classElement ?? null;
                   return (
                     <li key={iconIdx}>
                       <button 
@@ -55,6 +56,8 @@ export const IconPage = () => {
                           {Icon && <Icon />}
                           {/* svg 이미지 */}
                           {ImgSvg && <img src={ImgSvg} />}
+                          {/* css 아이콘 */}
+                          {CssIcon && CssIcon}
                         </span>
                       </button>
                       <p className="tit">{iconItem.title}</p>
@@ -105,6 +108,7 @@ const StyleWrap = styled.div`
     background:#fff;
     transition: border-color var(--transition);
     .icon{
+      flex-shrink: 0;
       display:block;
       position:relative;
       width:35px;
@@ -119,5 +123,11 @@ const StyleWrap = styled.div`
     margin-top:5px;
     font-size:12px;
     transition: color var(--transition);
+  }
+  .css-icon{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
   }
 `;

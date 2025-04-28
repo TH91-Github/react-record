@@ -4,6 +4,7 @@ import { rootStyle } from './rootStyle';
 import { textColor } from './variables';
 import { buttonStyle } from './ui/buttonStyle';
 import { skeletonStyle } from './ui/skeletonStyle';
+import { iconStyle } from './ui/iconStyle';
 
 // const headerHeight = useRecoilValue(stateHeaderHeight);
 export const GlobalStyles = createGlobalStyle`
@@ -44,6 +45,7 @@ export const GlobalStyles = createGlobalStyle`
     height:100%;
   }
   ${commonStyle}
+  ${iconStyle}
   ${buttonStyle}
   ${skeletonStyle}
   :root {

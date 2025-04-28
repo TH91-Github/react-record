@@ -23,7 +23,7 @@ export const iconData : IconDataType = {
           category: 'Common',
           desc:['검색', 'magnifying-glass', 'search'],
           code: 'SvgSearch',
-          element: SvgSearch,
+          svgElement: SvgSearch,
         },
         {
           id:'svg-jsx-search',
@@ -32,7 +32,7 @@ export const iconData : IconDataType = {
           desc:['코드', 'code-bracket', 'code'],
           code: 'SvgCode',
           fill:true,
-          element: SvgCode,
+          svgElement: SvgCode,
         },
         {
           id:'svg-jsx-search',
@@ -40,7 +40,7 @@ export const iconData : IconDataType = {
           category: 'Common',
           desc:['arrow','< >','chevron','화살표','방향'],
           code: 'SvgArrow',
-          element: SvgArrow,
+          svgElement: SvgArrow,
         },
         {
           id:'svg-jsx-search',
@@ -49,7 +49,7 @@ export const iconData : IconDataType = {
           desc:['큐브', 'cube-transparent', 'cube'],
           code: 'SvgCube',
           fill:true,
-          element: SvgCube,
+          svgElement: SvgCube,
         },
         {
           id:'svg-jsx-search',
@@ -57,7 +57,7 @@ export const iconData : IconDataType = {
           category: 'Common',
           desc:['book','규칙','책','open'],
           code: 'SvgBook',
-          element: SvgBook,
+          svgElement: SvgBook,
         },
         {
           id:'svg-jsx-search',
@@ -65,7 +65,7 @@ export const iconData : IconDataType = {
           category: 'Common',
           desc:[ '클립보드','clipboard-document-list'],
           code: 'SvgClipboard',
-          element: SvgClipboard,
+          svgElement: SvgClipboard,
         },
         {
           id:'svg-jsx-search',
@@ -73,7 +73,7 @@ export const iconData : IconDataType = {
           category: 'Common',
           desc:['폴더', 'folder', '파일'],
           code: 'SvgFolder',
-          element: SvgFolder,
+          svgElement: SvgFolder,
         },
         {
           id:'svg-jsx-search',
@@ -82,7 +82,7 @@ export const iconData : IconDataType = {
           desc:['컴포넌트','cube','box'],
           code: 'SvgComponent',
           fill: true,
-          element: SvgComponent,
+          svgElement: SvgComponent,
         },
         {
           id:'svg-jsx-search',
@@ -90,7 +90,7 @@ export const iconData : IconDataType = {
           category: 'Common',
           desc:['컴포넌트','square','stack'],
           code: 'SvgSquareStack',
-          element: SvgSquareStack,
+          svgElement: SvgSquareStack,
         },
         {
           id:'svg-jsx-search',
@@ -98,7 +98,7 @@ export const iconData : IconDataType = {
           category: 'Common',
           desc:['퍼즐','puzzle-piece','도구'],
           code: 'SvgPuzzle',
-          element: SvgPuzzle,
+          svgElement: SvgPuzzle,
         },
         {
           id:'svg-jsx-search',
@@ -106,7 +106,7 @@ export const iconData : IconDataType = {
           category: 'Common',
           desc:['세팅', '수정','편집','preferences','환경설정'],
           code: 'SvgSetting',
-          element: SvgSetting,
+          svgElement: SvgSetting,
         },
         {
           id:'svg-jsx-search',
@@ -114,7 +114,7 @@ export const iconData : IconDataType = {
           category: 'Common',
           desc:['디자인','Design','color','font','breakpoints'],
           code: 'SvgDesign',
-          element: SvgDesign,
+          svgElement: SvgDesign,
         },
         {
           id:'svg-jsx-search',
@@ -122,7 +122,7 @@ export const iconData : IconDataType = {
           category: 'Common',
           desc:['박스 여러개', 'style','rectangle-stack', '모음'],
           code: 'SvgRectangleStack',
-          element: SvgRectangleStack,
+          svgElement: SvgRectangleStack,
         },
         {
           id:'svg-jsx-tistory',
@@ -131,7 +131,7 @@ export const iconData : IconDataType = {
           desc:['티스토리','TISTORY','스토리','story','Tattertools+history'],
           code:'SvgTistory',
           fill:true,
-          element: SvgTistory,
+          svgElement: SvgTistory,
         }
       ]
     },
@@ -147,6 +147,21 @@ export const iconData : IconDataType = {
           desc:['이미지','svg file','svg 이미지','화살표','arrow'],
           code:`import ImgArrow from 'assets/images/svg/arrow.svg'`,
           path:ImgArrow,
+        }
+      ]
+    },
+    {
+      id:'css-icon',
+      title:'css로 만들어진 Icon',
+      desc:['파일 경로 : /src/assets/style/ui/iconStyle.', `사용 방법: class 추가 사용용`],
+      lists:[
+        {
+          id:'close-btn',
+          title:'닫기 X',
+          category:'css',
+          desc:['닫기', 'close', '닫기 X','arrow-closed', 'X 아이콘'],
+          code:`close-btn`,
+          classElement:(<span className="close-btn css-icon"><span>닫기</span></span>),
         }
       ]
     }
