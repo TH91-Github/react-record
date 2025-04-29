@@ -38,6 +38,7 @@ export const ComponentFilter = ({
       />
       <SearchModule 
         data={data}
+        id="components"
         placeholder="컴포넌트를 검색해보세요"
         onComfirm={onComfirm}
       />
@@ -48,7 +49,6 @@ const StyleWrap = styled.div`
   display:flex;
   justify-content: space-between;
   gap:20px;
-  margin-top:30px;
   .tab-btns {
     flex-grow:1;
   }

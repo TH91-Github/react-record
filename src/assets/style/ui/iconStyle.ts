@@ -1,6 +1,5 @@
 import { colors } from "../variables";
 
-
 export const iconStyle = `
   .close-btn {
     overflow:hidden;
@@ -11,7 +10,6 @@ export const iconStyle = `
     width:25px;
     height:25px;
     text-indent:-9999px;
-    transition: transform var(--transition);
     &::before, &::after {
       position:absolute;
       top: 50%;
@@ -20,6 +18,7 @@ export const iconStyle = `
       height: 100%;
       border-radius: 3px;
       background: ${colors.black};
+      transition: transform var(--transition);
       transform: translate(-50%, -50%) rotate(-45deg);
       content:"";
     }
@@ -27,7 +26,12 @@ export const iconStyle = `
       transform: translate(-50%, -50%) rotate(-135deg);
     }
     &:hover, &:focus {
-      transform: rotate(180deg);
+      &::before{
+        transform: translate(-50%, -50%) rotate(135deg);
+      }
+      &::after{
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
     }
   }
 `;

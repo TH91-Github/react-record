@@ -15,6 +15,7 @@ interface EssentialType { // 필수 타입
 
 interface SearchModulePropsType<T extends EssentialType> {
   data?: T[] // 검색 목록
+  id: string;
   isBtn?: boolean; // 버튼 유무 버튼 false 시  icon on
   placeholder?:string;
   $line?: 'line' | 'line-bottom' | 'line-left' | 'none';
@@ -23,6 +24,7 @@ interface SearchModulePropsType<T extends EssentialType> {
 }
 export const SearchModule = <T extends EssentialType>({
   data = [],
+  id,
   isBtn = true,
   placeholder = '',
   $line = 'line',
@@ -129,7 +131,7 @@ export const SearchModule = <T extends EssentialType>({
       {!isBtn && <i className="icon"><SvgSearch /></i>}
       <InputText 
         ref={inputRef}
-        id="search"
+        id={`${id}-search`}
         placeholder={placeholder}
         styleOpt={ { $defaultLine:$line, $focusColor:colors.darkNavy} }
         focusEvent={inputFocus}

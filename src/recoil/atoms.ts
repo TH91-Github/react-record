@@ -15,7 +15,13 @@ export const stateHeaderHeight = atom({
   default: 55,     
 });
 
-// 필터 상태 예시
+// focus 회귀용
+export const prevFocus = atom<HTMLElement | null>({
+  key: 'prevFocus',
+  default: null,
+});
+
+// TEST - 필터 상태 예시
 export const filterState = atom({
   key: 'filterState',
   default: '',

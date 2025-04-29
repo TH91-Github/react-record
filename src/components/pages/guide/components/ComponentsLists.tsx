@@ -1,14 +1,20 @@
-import { bgColor, colors, textColor } from "assets/style/variables"
+import { bgColor, bgShadow, colors, textColor } from "assets/style/variables"
+import { useNavigate } from "react-router-dom"
+import { useSetRecoilState } from "recoil"
+import { prevFocus } from "recoil/atoms"
 import styled from "styled-components"
 import { ComponentsDataType } from "types/guide"
-import { PreviewBox } from "./PreviewBox"
-
 interface ComponentsListsPropsType {
   data: ComponentsDataType[]
 }
-
 export const ComponentsLists = ({data} : ComponentsListsPropsType) => {
-  console.log(data)
+  const navigate = useNavigate();
+  const setPrevFocus = useSetRecoilState(prevFocus);
+
+  const handleMove = (id: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
+    setPrevFocus(e.currentTarget);  // 클릭한 버튼 저장
+    navigate(`view/${id}`);
+  };
 
   return(
     <StlyeWrap className="componetns-lists">
@@ -16,14 +22,17 @@ export const ComponentsLists = ({data} : ComponentsListsPropsType) => {
         <ul>
           { data.map((item, idx) => (
             <li key={idx} className="item">
-              <div className="item-preview">
+              <button
+                type="button"
+                className="item-preview"
+                title={`${item.title} 자세히 보기`}
+                onClick={handleMove(item.id)}
+              >
                 <span className="tag">{item.category}</span>
                 <p className="tit">{item.title}</p>
-                <div className="preivew">
-                  <PreviewBox id={item.id}/>
-                </div>
+                <p className="desc">{item.desc}</p>
                 <p className="update">업데이트 : <span>{item.update}</span></p>
-              </div>
+              </button>
             </li>
           ))}
         </ul>
@@ -53,12 +62,20 @@ const StlyeWrap = styled.div`
     color: ${colors.mSlateBlue};
   }
   .item-preview{
+    display: block;
     position:relative;
+    width:100%;
     padding:10px;
     border-radius:5px;
     background:${bgColor.sideWite};
+    box-shadow: ${bgShadow.base};
+    text-align:left;
     .tit{
       margin-top: 10px;
+    }
+    .desc {
+      margin-top:10px;
+      font-size:14px;
     }
   }
   .preivew{ 

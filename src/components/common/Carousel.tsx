@@ -81,58 +81,48 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
         {...option}
         className={customClass}
       >
-        {
-          React.Children.toArray(children).map((childEl, index) => (
-            <SwiperSlide key={index} className="carousel-item">
-              {childEl}
-            </SwiperSlide>
-          ))
-        }
+        {React.Children.toArray(children).map((childEl, index) => (
+          <SwiperSlide key={index} className="carousel-item">
+            {childEl}
+          </SwiperSlide>
+        ))}
       </Swiper>
-      {
-        option.pagination && (
-          <div ref={paginationRef} className="carousel-pagination">
-          </div>
-        )
-      }
-      {
-        (option.navigation || option.autoplay) && (
-          <div className="carousel-btns">
-            {
-              option.navigation && (
-                <>
-                  <button 
-                    ref={prevBtnRef}
-                    type="button"
-                    className="btn-prev">
-                    <span className="icon">{'<'}</span>
-                    <span className="blind">이전</span>
-                  </button>
-                  <button 
-                    ref={nextBtnRef}
-                    type="button"
-                    className="btn-next">
-                    <span className="icon">{'>'}</span>
-                    <span className="blind">다음</span>
-                  </button>
-                </>
-              )
-            }
-            {
-              option.autoplay && (
-                <div className="autoplay-btn">
-                  <button
-                    type="button"
-                    className={`btn ${isPlaying?'stop':'play'}`}
-                    onClick={handleAutoPlay}>
-                      <span>{isPlaying? '정지' : '재생'}</span>
-                  </button>
-                </div>
-              )  
-            }
-          </div>
-        )
-      }
+      {option.pagination && (
+        <div ref={paginationRef} className="carousel-pagination">
+        </div>
+      )}
+      {(option.navigation || option.autoplay) && (
+        <div className="carousel-btns">
+          {option.navigation && (
+            <>
+              <button 
+                ref={prevBtnRef}
+                type="button"
+                className="btn-prev">
+                <span className="icon">{'<'}</span>
+                <span className="blind">이전</span>
+              </button>
+              <button 
+                ref={nextBtnRef}
+                type="button"
+                className="btn-next">
+                <span className="icon">{'>'}</span>
+                <span className="blind">다음</span>
+              </button>
+            </>
+          )}
+          {option.autoplay && (
+            <div className="autoplay-btn">
+              <button
+                type="button"
+                className={`btn ${isPlaying?'stop':'play'}`}
+                onClick={handleAutoPlay}>
+                  <span>{isPlaying? '정지' : '재생'}</span>
+              </button>
+            </div>
+          )}
+        </div>
+      )}
     </StyleWrap>
   );
 });

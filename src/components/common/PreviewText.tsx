@@ -3,12 +3,12 @@ import { TextHighlight } from "./TextHighlight";
 import { bgColor, colors } from "assets/style/variables";
 import { KeywordBaseType } from "types/common";
 
+// 검색 자동 완성 목록
 interface PreviewTextPropsType {
   data: KeywordBaseType[];
   matcheVal:string;
   onKeyword: (keyVal:string) => void
 }
-
 export const PreviewText = ({data, matcheVal, onKeyword}: PreviewTextPropsType) => {
 
   const handleKeywordClick = (keyVal:string) => {
@@ -39,6 +39,7 @@ export const PreviewText = ({data, matcheVal, onKeyword}: PreviewTextPropsType) 
 const StyleWrap = styled.div`
   overflow: hidden;
   position:absolute;
+  z-index:5;
   top:calc(100% + 5px);
   left:0;
   width:100%;

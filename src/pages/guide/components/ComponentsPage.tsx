@@ -1,16 +1,37 @@
 import { bgShadow } from "assets/style/variables";
-import { ComponentsLists } from "components/pages/guide/components/ComponentsLists";
 import { ComponentFilter } from "components/pages/guide/components/ComponentFilter";
+import { ComponentsLists } from "components/pages/guide/components/ComponentsLists";
 import { componentsData } from "components/pages/guide/data/componentsData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
 import { TitleHeading } from "components/ui/TitleHeading";
-import { useMemo, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { Outlet, useNavigate, useNavigationType, useParams } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { prevFocus } from "recoil/atoms";
 import styled from "styled-components";
 
 export const ComponentsPage = () => {
   const [filter, setFilter] = useState('');
+  const [detailsAni, setDetailsAni] = useState<boolean | null>(null);
+  const navigationType = useNavigationType();
+  const { id } = useParams<{ id?: string }>();
+  const navigate = useNavigate();
+  const [isClosing, setIsClosing] = useState(false);
+  const [prevFocusEl, setPrevFocus] = useRecoilState(prevFocus);
   
+  useEffect(() => {
+    if(id){ // 상세페이지 접근
+      if (navigationType === 'POP') { // POP : 바로 URL 접근 및 새로고침 시
+        setDetailsAni(false);
+      } else { // PUSH : 리스트에서 상세페이지
+        console.log('일반')
+        setDetailsAni(true);
+      }
+    }else{ // components lists
+      setDetailsAni(true);
+    }
+  }, [id, navigationType]);
+
   const selectUpdate = (selected:string) => {
     // -1 : All , 그 외 value
     setFilter(selected === 'All' ? '': selected)
@@ -19,6 +40,23 @@ export const ComponentsPage = () => {
   const filterLists = useMemo(() => {
     return !filter ? componentsData : componentsData.filter(item => item.category === filter)
   }, [filter]);
+
+  const handleClosedClick = () => {
+    if (isClosing) return;
+    setIsClosing(true); 
+
+    setTimeout(() => {
+      navigate('/guide/components');
+      if (prevFocusEl) {
+        prevFocusEl.focus();
+      }
+      setPrevFocus(null);
+      setIsClosing(false);
+    }, 300);
+  }
+  useEffect(() => {
+    return () => setIsClosing(false);
+  }, []);
 
   return (
     <StyleWrap>
@@ -33,21 +71,62 @@ export const ComponentsPage = () => {
           desc={['팝업, 검색, 리스트 등 컴포넌트 모음']}
         />
         <div className="section-wrap">
-          <ComponentFilter 
-            data={componentsData}
-            changeEvent={selectUpdate}
-          />
-          <ComponentsLists data={filterLists} />
-          <div>
-            <Outlet />
+          <div 
+            className={`section-item ${id ? 'hidden':''}`}
+          >
+            <ComponentFilter 
+              data={componentsData}
+              changeEvent={selectUpdate}
+            />
+            <ComponentsLists data={filterLists} />
           </div>
+          {
+            id && (
+              <div className={`section-item view-wrap ${detailsAni? 'ani':''}`}>
+                <Outlet context={{ id, detailsAni }}/>
+                <button 
+                  className="close-btn"
+                  onClick={handleClosedClick}
+                >
+                  <span>닫기</span>
+                </button>
+              </div>
+            )
+          }
         </div>
       </div>    
+      
     </StyleWrap>
   )
 }
 
 const StyleWrap = styled.div`
+  .section-wrap{
+    position:relative;
+  }
+  .section-item{
+    &:not(.view-wrap){
+      transition: opacity var(--transition);
+    }
+    &.hidden {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      user-select: none;
+      pointer-events:none;
+      
+      opacity:0;
+    }
+    &.view-wrap{
+      position:relative;
+      z-index:2;
+      min-height:500px;
+    }
+    &.ani {
+
+    }
+  }
   .componetns-lists{
     margin-top:20px;
     & > ul {

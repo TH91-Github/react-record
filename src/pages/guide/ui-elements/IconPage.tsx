@@ -109,7 +109,9 @@ const StyleWrap = styled.div`
     transition: border-color var(--transition);
     .icon{
       flex-shrink: 0;
-      display:block;
+      display:flex;
+      justify-content:center;
+      align-items:center;
       position:relative;
       width:35px;
       height:35px;
@@ -125,9 +127,6 @@ const StyleWrap = styled.div`
     transition: color var(--transition);
   }
   .css-icon{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
+    position:relative;
   }
 `;

@@ -1,10 +1,17 @@
+import { useOutletContext } from "react-router-dom";
 import styled from "styled-components";
 
-
+interface ContextPropsType { 
+  id: string
+  detailsAni: boolean | null
+}
 export const ComponentsViewPage = () => {
-
+  const {id, detailsAni } = useOutletContext<ContextPropsType>();
+  if(detailsAni === null) return null
+  console.log(id)
   return (
     <StyleWrap>
+      
       {/* 컨텐츠 */}
     
       {/* 검색 기능을 여기서 */}

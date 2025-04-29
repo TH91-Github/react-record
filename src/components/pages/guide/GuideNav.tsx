@@ -56,7 +56,7 @@ export const GuideNav = () =>{
                     {(childrenItem) => ({
                       content: (
                         <>
-                          <NavLink to={guidePath(item.path, childrenItem.path)} className="link" title={`${childrenItem.title} 보기`}>
+                          <NavLink to={`/guide/${guidePath(item.path, childrenItem.path)}`} className="link" title={`${childrenItem.title} 보기`}>
                             <span>{childrenItem.title}</span>
                           </NavLink>
                         </>

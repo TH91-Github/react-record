@@ -21,7 +21,12 @@ export const SideMenu = () => {
           </h2>
         </div>
         <div className="nav-item">
-          <SearchModule isBtn={false} placeholder={'검색 기능 작업 진행 중...'} $line="none"/>
+          <SearchModule 
+            id="nav"
+            isBtn={false} 
+            placeholder={'검색 기능 작업 진행 중...'} 
+            $line="none"
+          />
         </div>
         <div className="nav-item">
           <h3 className="title">Menu</h3>
