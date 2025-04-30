@@ -1,12 +1,12 @@
 import { colors } from "assets/style/variables";
-import { SvgBook, SvgCode, SvgDesign, SvgFolder, SvgPuzzle, SvgRectangleStack, SvgSetting, SvgSquareStack } from "assets/svg/Common";
 import { Accordion } from "components/common/Accordion";
 import { MemoTreeLists, TreeItemType } from "components/ui/TreeLists";
 import { useLocationCurrent } from "hooks/useLocationCustom";
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import { GUIDE_LIST } from "routes/pages/guide/GuideRouter";
 import styled from "styled-components";
+import { GuideMenuIcon } from "./GuideMenuIcon";
 
 interface NavItemType extends TreeItemType {
   id: string;
@@ -17,19 +17,6 @@ interface NavItemType extends TreeItemType {
 
 export const GuideNav = () =>{
   const {locationIdx} = useLocationCurrent(GUIDE_LIST, 'id', 1);
-
-  const iconTit:{[key:string] : React.ReactNode} = useMemo(() =>{ 
-    return {
-      principles: <SvgBook/>, // 규칙
-      design: <SvgDesign />, 
-      ui: <SvgRectangleStack />, 
-      assets: <SvgFolder/>,
-      components: <SvgSquareStack/>,
-      hooks: <SvgCode/>,
-      utils: <SvgPuzzle/>,
-      preferences: <SvgSetting />,
-    };
-  },[]);
 
   const guidePath = useCallback((itemPath:string, childrenPath:string) => {
     const routesCheck = childrenPath.indexOf('/:id');
@@ -43,7 +30,7 @@ export const GuideNav = () =>{
             heading: {
               accTit:item.title,
               jsx:(<>
-                <span className="icon">{iconTit[item.id]}</span>
+                <GuideMenuIcon id={item.id} />
                 <span className="tit">{item.title}</span>
                 { item.children && <span className="length">{item.children?.length}</span> }
               </>),

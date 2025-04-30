@@ -1,4 +1,4 @@
-import { bgShadow } from "assets/style/variables";
+import { bgShadow, breakpoints } from "assets/style/variables";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
@@ -15,6 +15,8 @@ const StyleWrap = styled.div`
     box-shadow:${bgShadow.base};
     .header-inner{
       padding:30px;
+      max-width:${breakpoints.tablet}px;
+      margin:0 auto;
     }
     .title {
       margin-top:20px;

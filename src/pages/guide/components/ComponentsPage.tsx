@@ -11,11 +11,11 @@ import { prevFocus } from "recoil/atoms";
 import styled from "styled-components";
 
 export const ComponentsPage = () => {
+  const navigate = useNavigate();
   const [filter, setFilter] = useState('');
   const [detailsAni, setDetailsAni] = useState<boolean | null>(null);
   const navigationType = useNavigationType();
   const { id } = useParams<{ id?: string }>();
-  const navigate = useNavigate();
   const [isClosing, setIsClosing] = useState(false);
   const [prevFocusEl, setPrevFocus] = useRecoilState(prevFocus);
   

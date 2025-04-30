@@ -7,8 +7,7 @@ export const Logo = () => {
   return (
     <StyleWrap className="logo">
       <h1 className="blind">Blog - T.H</h1>
-      {/* 경로 임시 */}
-      <NavLink to="/guide/principles/naming-conventions">
+      <NavLink to="/">
         <div className="logo-wrap" aria-hidden="true">
           {<span className="logo-cube">
             {

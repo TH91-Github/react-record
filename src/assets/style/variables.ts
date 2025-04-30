@@ -52,6 +52,12 @@ export const textColor = {
   desc:'#495057',
   subText:'#8d9095',
 }
+
+export const textShadow ={
+  base:'rgb(127, 127, 127,1) 0.7px 1px 1px',
+  bgBlack:'rgb(45, 45, 45, 1) 0px 1px 10px',
+}
+
 export const bgColor = {
   sideWite:'#F1F3F5',
 }
@@ -62,9 +68,27 @@ export const bgShadow = {
   base: 'rgba(17,19,32,0.2) 1px 1px 6px;',
 }
 
-export const textShadow ={
-  base:'rgb(127, 127, 127,1) 0.7px 1px 1px',
-  bgBlack:'rgb(45, 45, 45, 1) 0px 1px 10px',
+export const bgTranslucence = {
+  baseLight:`
+    background: transparent;
+    box-shadow:inset 0px 0px 1px 0px rgba(255,255,255,.3), 0px 0px 3px 0px rgba(0,0,0,.1), 0px 0px 3px 0px rgba(0,0,0,.1);
+    backdrop-filter: blur(3px);
+  `,
+  baseDark:`
+    background: transparent;
+    box-shadow:inset 0px 0px 1px 0px rgba(127,127,127,.3), 0px 0px 3px 0px rgba(255,255,255,.1), 0px 0px 3px 0px rgba(255,255,255,.1);
+    backdrop-filter: blur(3px);
+  `,
+  leftLight:`
+    background: transparent;
+    box-shadow:inset 1px 1px 1px 0px rgba(255,255,255,.5), 3px 3px 10px 0px rgba(0,0,0,.1), 2px 2px 3px 0px rgba(0,0,0,.1);
+    backdrop-filter: blur(3px);
+  `,
+  leftDark:`
+    background: transparent;
+    box-shadow:inset 1px 1px 1px 0px rgba(127,127,127,.5), 3px 3px 5px 0px rgba(255,255,255,.1), 2px 2px 3px 0px rgba(255,255,255,.1);
+    backdrop-filter: blur(3px);
+  `
 }
 
 
