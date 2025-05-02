@@ -14,7 +14,7 @@ export const GuideAbout = () => {
     if(depthPath){
       console.log(depthPath)
       console.log(depthPath.indexOf('/:id'))
-      let checkDepth = depthPath.indexOf(':id') > 0 ? '/': depthPath;
+      let checkDepth = depthPath.indexOf(':id') > 0 ? '': depthPath;
       console.log(checkDepth)
       navigate(`guide/${path}/${checkDepth}`);
     }

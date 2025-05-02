@@ -115,13 +115,13 @@ const StyleWrap = styled.div`
       width:100%;
       user-select: none;
       pointer-events:none;
-      
       opacity:0;
     }
     &.view-wrap{
       position:relative;
       z-index:2;
       min-height:500px;
+      background:#fff;
     }
     &.ani {
 

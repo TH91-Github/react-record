@@ -1,7 +1,7 @@
 import Carousel from "components/common/Carousel"
 import { Popup } from "components/common/Popup"
 import styled from "styled-components"
-
+// ❌ 현재 사용하지 않음. 잠시 대기
 type PreviewMapType = {
   [key: string]: React.ReactNode
 }
