@@ -6,6 +6,7 @@ import { useRecoilValue } from "recoil";
 import { stateUserColor } from "recoil/atoms";
 import styled from "styled-components";
 import { GuideNav } from "./GuideNav";
+import { NavLink } from "react-router-dom";
 
 export const SideMenu = () => {
   const pointColor = useRecoilValue(stateUserColor); 
@@ -16,8 +17,10 @@ export const SideMenu = () => {
       <div className="nav-inner">
         <div className="nav-heading">
           <h2 className="title">
-            <span className="svg"><SvgCube fill={pointColor} /></span>
-            <span>전체 가이드</span>
+            <NavLink to="/">
+              <span className="svg"><SvgCube $fill={pointColor} /></span>
+              <span>가이드</span>
+            </NavLink>
           </h2>
         </div>
         <div className="nav-item">
@@ -67,10 +70,13 @@ const StyleWrap = styled.div`
       height:24px;
     }
     .title {
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight:600;
+      display:inline-block;
+      & > a { 
+        display:flex;
+        align-items:center;
+        gap:10px;
+        font-weight:600;
+      }
     }  
   }
   .nav-item {

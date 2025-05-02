@@ -1,6 +1,11 @@
 import { colors, textColor } from "../variables";
 
 export const buttonStyle = `
+button {
+  &[disabled]{ 
+    cursor:default;
+  }
+}
 .btn { 
   display:inline-block;
   position:relative;
