@@ -8,7 +8,6 @@ export function formatText (text:string, capital:boolean = true) {
       : textItem.charAt(0).toLowerCase() + textItem.slice(1)
   )).join(' ');
 }
-// word.charAt(0).toUpperCase() + word.slice(1)
 
 // 🔹 value 일부 비공개 
 export function partialUndisclosed(

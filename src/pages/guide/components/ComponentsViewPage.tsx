@@ -3,6 +3,7 @@ import { TitleHeading } from "components/ui/TitleHeading";
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import styled from "styled-components";
+import { formatText } from "utils/character";
 
 interface ContextPropsType { 
   id: string
@@ -28,7 +29,7 @@ export const ComponentsViewPage = () => {
         <TitleHeading
           $display="block"
           titleTag="h4"
-          titleText={id} 
+          titleText={formatText(id)} 
           pointer="circle"
           $fontSize={28}
         />
