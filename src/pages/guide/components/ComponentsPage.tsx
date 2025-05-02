@@ -1,6 +1,6 @@
 import { bgShadow } from "assets/style/variables";
-import { ComponentFilter } from "components/pages/guide/components/ComponentFilter";
-import { ComponentsLists } from "components/pages/guide/components/ComponentsLists";
+import { ComponentFilter } from "components/pages/guide/component/ComponentFilter";
+import { ComponentsLists } from "components/pages/guide/component/ComponentsLists";
 import { componentsData } from "components/pages/guide/data/componentsData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
 import { TitleHeading } from "components/ui/TitleHeading";
