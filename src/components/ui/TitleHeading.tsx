@@ -18,7 +18,7 @@ export const TitleHeading = ({
   customClass
 }:TitleDescPropsType) => {
   return( 
-    <StyleWrap className={`${customClass ?? 'title'}-heading`}>
+    <StyleWrap className={`${customClass ?? 'title-heading'}`}>
       <TitlePoint 
         $display="block"
         titleTag={titleTag}

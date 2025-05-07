@@ -43,7 +43,7 @@ export const ComponentsPage = () => {
 
   const handleClosedClick = () => {
     if (isClosing) return;
-    setIsClosing(true); 
+    setIsClosing(true); // 중복 클릭 방지
 
     setTimeout(() => {
       navigate('/guide/components');
@@ -52,7 +52,7 @@ export const ComponentsPage = () => {
       }
       setPrevFocus(null);
       setIsClosing(false);
-    }, 300);
+    }, 400); // .3s fade-out 끝난 후
   }
   useEffect(() => {
     return () => setIsClosing(false);
@@ -71,31 +71,26 @@ export const ComponentsPage = () => {
           desc={['팝업, 검색, 리스트 등 컴포넌트 모음']}
         />
         <div className="section-wrap">
-          <div 
-            className={`section-item ${id ? 'hidden':''}`}
-          >
+          <div className={`section-item ${id ? 'hidden':''}`}>
             <ComponentFilter 
               data={componentsData}
               changeEvent={selectUpdate}
             />
             <ComponentsLists data={filterLists} />
           </div>
-          {
-            id && (
-              <div className={`section-item view-wrap ${detailsAni? 'ani':''}`}>
-                <Outlet context={{ id, detailsAni }}/>
-                <button 
-                  className="close-btn"
-                  onClick={handleClosedClick}
-                >
-                  <span>닫기</span>
-                </button>
-              </div>
-            )
-          }
+          { id && (
+            <div className={`section-item view-wrap ${detailsAni? 'ani':''} ${isClosing?'fade-out':''}`}>
+              <Outlet context={{ id, detailsAni }}/>
+              <button 
+                className="close-btn fade-up"
+                onClick={handleClosedClick}
+              >
+                <span>닫기</span>
+              </button>
+            </div>
+          )}
         </div>
-      </div>    
-      
+      </div>
     </StyleWrap>
   )
 }

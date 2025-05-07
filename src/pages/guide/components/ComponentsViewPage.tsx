@@ -11,7 +11,7 @@ interface ContextPropsType {
 }
 export const ComponentsViewPage = () => {
   const {id, detailsAni } = useOutletContext<ContextPropsType>();
-  const [notCheck,setNotCheck] = useState(false);
+  const [notCheck ,setNotCheck] = useState(false);
   
   const onNotFound= () => { // 경로 오류 및 일치하는 컴포넌트가 없는 경우
     setNotCheck(true)
@@ -31,6 +31,7 @@ export const ComponentsViewPage = () => {
           titleTag="h4"
           titleText={formatText(id)} 
           pointer="circle"
+          customClass={'fade-up'}
           $fontSize={28}
         />
       )}

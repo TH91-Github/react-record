@@ -66,9 +66,11 @@ const StlyeWrap = styled.div`
     position:relative;
     width:100%;
     padding:10px;
+    border:1px solid transparent;
     border-radius:5px;
     background:${bgColor.sideWite};
     box-shadow: ${bgShadow.base};
+    transition: border-color var(--transition), background-color var(--transition);
     text-align:left;
     .tit{
       margin-top: 10px;
@@ -76,6 +78,10 @@ const StlyeWrap = styled.div`
     .desc {
       margin-top:10px;
       font-size:14px;
+    }
+    &:hover, &:focus{
+      border-color:${colors.mSlateBlue};
+      background-color:#fff;
     }
   }
   .preivew{ 

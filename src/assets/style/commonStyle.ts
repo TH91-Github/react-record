@@ -93,7 +93,7 @@ export const commonStyle = `
     }
   }
   .fade-up {
-    animation: fadeUpAni .4s ease both;
+    animation: fadeUpAni .3s ease both;
     @keyframes fadeUpAni {
       from {
         opacity:0;
@@ -102,6 +102,19 @@ export const commonStyle = `
        to {
         opacity:1;
         transform: translateY(0px);
+      }
+    }
+  }
+  .fade-out{
+    animation: fadeOutAni .3s ease both;
+    @keyframes fadeOutAni {
+      from {
+        opacity:1;
+        transform: translateY(0px);
+      }
+       to {
+        opacity:0;
+        transform: translateY(-10px);
       }
     }
   }

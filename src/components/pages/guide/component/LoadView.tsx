@@ -8,10 +8,12 @@ interface LoadViewPropsType {
 }
 
 export const LoadView = ({id, onNotFound}:LoadViewPropsType) => {
+  // ✅ 일치하는 컴포넌트 로드 
   const componentLoad: { [key: string]: React.ReactNode } = useMemo(() => ({
     popup: <PopupViewPage />,
   }), []);
 
+  // 일치하지 않는 경우 NotView 컴포넌트 
   const resultComponent = componentLoad[id] || <NotViewComponent />;
 
   useEffect(() => {

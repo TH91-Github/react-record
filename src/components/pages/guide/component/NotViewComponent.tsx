@@ -2,7 +2,6 @@ import { SvgArrow } from "assets/svg/Common";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components"
 
-
 export const NotViewComponent = () => {
   return(
     <StlyeWrap>
