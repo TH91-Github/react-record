@@ -22,17 +22,17 @@ export const TextHighlight = ({text, keyword, $activeColor}: TextHighlightPropsT
   return (
     <>
       <span>{beforeText}</span>
-      <StyleHighlight $activeColor={$activeColor ?? colors.yellow}>{match}</StyleHighlight>
+      <StyleTextHighlight $activeColor={$activeColor ?? colors.yellow}>{match}</StyleTextHighlight>
       <span>{afterText}</span>
     </>
   )
 }
 
-interface StyleHighlightType {
+interface StyleTextHighlightType {
   $activeColor:string
 }
 
-const StyleHighlight = styled.span<StyleHighlightType>`
+const StyleTextHighlight = styled.span<StyleTextHighlightType>`
   padding:1px;
   border-radius:5px;
   background: ${({$activeColor}) => $activeColor};

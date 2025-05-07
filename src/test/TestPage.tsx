@@ -1,15 +1,22 @@
 // ✅ TestPage.jsx -> Parent Component
-import DOMPurify, { Config } from 'dompurify';
-import { useMemo } from 'react';
 
+import { CodeHighlight } from "components/common/CodeHighlight"
 export const TestPage = () => {
+  const codeTest = `
+    function Test() {
+      console.log('Test)
+    }
+  `;
 
   return(
     <div className="test-wrap">
-      <div className="input-test">
-        <input type="text" />
-        <input type="password" />
-      </div>
+      <CodeHighlight 
+        code={`
+          function Test() {
+            console.log('Test)
+          }
+        `}
+      />
     </div>
   )
 }
