@@ -5,19 +5,14 @@ import { componentsData } from "components/pages/guide/data/componentsData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { useEffect, useMemo, useState } from "react";
-import { Outlet, useNavigate, useNavigationType, useParams } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { prevFocus } from "recoil/atoms";
+import { Outlet, useNavigationType, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 export const ComponentsPage = () => {
-  const navigate = useNavigate();
   const [filter, setFilter] = useState('');
   const [detailsAni, setDetailsAni] = useState<boolean | null>(null);
   const navigationType = useNavigationType();
   const { id } = useParams<{ id?: string }>();
-  const [isClosing, setIsClosing] = useState(false);
-  const [prevFocusEl, setPrevFocus] = useRecoilState(prevFocus);
   
   useEffect(() => {
     if(id){ // 상세페이지 접근
@@ -41,23 +36,6 @@ export const ComponentsPage = () => {
     return !filter ? componentsData : componentsData.filter(item => item.category === filter)
   }, [filter]);
 
-  const handleClosedClick = () => {
-    if (isClosing) return;
-    setIsClosing(true); // 중복 클릭 방지
-
-    setTimeout(() => {
-      navigate('/guide/components');
-      if (prevFocusEl) {
-        prevFocusEl.focus();
-      }
-      setPrevFocus(null);
-      setIsClosing(false);
-    }, 400); // .3s fade-out 끝난 후
-  }
-  useEffect(() => {
-    return () => setIsClosing(false);
-  }, []);
-
   return (
     <StyleWrap>
       <GuidePageHeading />
@@ -79,14 +57,8 @@ export const ComponentsPage = () => {
             <ComponentsLists data={filterLists} />
           </div>
           { id && (
-            <div className={`section-item view-wrap ${detailsAni? 'ani':''} ${isClosing?'fade-out':''}`}>
+            <div className="section-item view-wrap">
               <Outlet context={{ id, detailsAni }}/>
-              <button 
-                className="close-btn fade-up"
-                onClick={handleClosedClick}
-              >
-                <span>닫기</span>
-              </button>
             </div>
           )}
         </div>
