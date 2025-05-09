@@ -1,13 +1,12 @@
 import styled from "styled-components"
 
-export const PopupViewPage = () => {
-  return (
-    <StlyeWrap className="view-popup">
+export const CarouselViewPage = () => {
+  return(
+    <StyleWrap className="view-carousel">
       <p>현재 컴포넌트 설명 및 예시 코드 작성 중에 있습니다...🙇‍♂️</p>
-    </StlyeWrap>
+    </StyleWrap>
   )
 }
-
-const StlyeWrap = styled.div`
+const StyleWrap = styled.div`
 
 `;

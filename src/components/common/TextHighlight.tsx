@@ -22,7 +22,7 @@ export const TextHighlight = ({text, keyword, $activeColor}: TextHighlightPropsT
   return (
     <>
       <span>{beforeText}</span>
-      <StyleTextHighlight $activeColor={$activeColor ?? colors.yellow}>{match}</StyleTextHighlight>
+        <StyleTextHighlight $activeColor={$activeColor ?? colors.yellow}>{match}</StyleTextHighlight>
       <span>{afterText}</span>
     </>
   )

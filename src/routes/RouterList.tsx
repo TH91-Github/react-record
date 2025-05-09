@@ -1,4 +1,3 @@
-import { MainPage } from "pages/main/MainPage";
 import { GuidePage } from "pages/guide/GuidePage";
 import { TestPage } from "test/TestPage";
 import { GUIDE_LIST } from "./pages/guide/GuideRouter";

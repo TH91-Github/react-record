@@ -1,7 +1,6 @@
 import { bgOpacity, breakpoints } from "assets/style/variables";
 import { Logo } from "components/ui/Logo";
 import styled from "styled-components";
-import { HeaderNav } from "./HeaderNav";
 
 export const HeaderLayout = () => {
   // full-layout : full(1920) 사이즈 page일 경우에 사용. 

@@ -27,7 +27,7 @@ export const TabBtns = ({
       const activeNum = data.indexOf(activeTab)
       activeNum > 0 && setIsActive(activeNum)
     }
-  },[activeTab])
+  },[activeTab, data])
   return (
     <StyleWrap className="tab-btns">
       <ul>

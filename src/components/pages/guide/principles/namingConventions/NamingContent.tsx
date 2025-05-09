@@ -1,4 +1,4 @@
-import { colors, textColor } from "assets/style/variables";
+import { colors } from "assets/style/variables";
 import { SvgTistory } from "assets/svg/BrandLogo";
 import { TitlePoint } from "components/ui/TitlePoint";
 import { useMemo } from "react";
