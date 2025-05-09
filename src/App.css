@@ -24,3 +24,33 @@
     padding:5px;
   }
 }
+
+.test-wrap .hljs{
+  padding:10px;
+}
+/* CodeHighlight.css */
+.code-container {
+  display: flex;
+  overflow: hidden;
+}
+
+.line-numbers {
+  display: flex;
+  flex-direction: column;
+  padding:10px;
+  user-select: none;
+  background-color: #282c34;
+  color: #636d83;
+  border-right: 1px solid #3e4451;
+}
+
+.line-number {
+  
+}
+
+.code-block {
+  flex: 1;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+}
