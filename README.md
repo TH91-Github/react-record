@@ -13,7 +13,7 @@
 - highlight.js : 코드 블록에 구문 강조를 적용과 컴포넌트의 코드 예시를 시각적으로 보여줄 때 사용
 
 ### 🔗 vercel & storybook
-- <a href="https://main-th-blog.vercel.app/resume" target="_blank" rel="noopener noreferrer">vercel</a>
+- <a href="https://react-record.vercel.app/" target="_blank" rel="noopener noreferrer">vercel</a>
 - <a href="https://67b575143e293979dd6fe1aa-pwutklgrsm.chromatic.com/" target="_blank" rel="noopener noreferrer">⚠️(작성 전 샘플 상태)storybook</a>
 
 ### Tech Stacks
