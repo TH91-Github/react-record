@@ -60,6 +60,7 @@ export const textShadow ={
 
 export const bgColor = {
   sideWite:'#F1F3F5',
+
 }
 export const bgOpacity = { 
   white: `rgba(255,255,255,.7)`,
@@ -88,6 +89,13 @@ export const bgTranslucence = {
     background: transparent;
     box-shadow:inset 1px 1px 1px 0px rgba(127,127,127,.5), 3px 3px 5px 0px rgba(255,255,255,.1), 2px 2px 3px 0px rgba(255,255,255,.1);
     backdrop-filter: blur(3px);
+  `,
+  blur:`
+    border-width: 1px;
+    border-color: rgba(229, 231, 235, 0.2);
+    border-style: solid;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 5px 10px rgba(0 0 0,0.2);
   `
 }
 
