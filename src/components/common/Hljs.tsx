@@ -8,7 +8,7 @@ import { colors } from 'assets/style/variables';
 
 interface HljsPropsType {
   language?: string;
-  code?: string;
+  code: string;
   isLineNumber?: boolean;
   badgeLang?:boolean;
   isCopied?:boolean;
