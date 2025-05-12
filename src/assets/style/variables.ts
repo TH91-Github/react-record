@@ -37,6 +37,7 @@ export const colors = {
   green: '#0C9463',
   yellow: '#FFB000',
   black:'#050b21',
+  nightSky: '#282c34',
   mSlateBlue:'#6a67e5',  // medium -> m
   blue:'#395acc',
   navy: '#333A73',

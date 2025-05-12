@@ -6,7 +6,6 @@ export function isMobileSizeChk():boolean{
   const mediaQuery = `(max-width: ${breakpoints.mo - 1}px)`; 
   return window.matchMedia(mediaQuery).matches;
 }
-
 // 🔹 복사, 카피 async/await 
 export async function copyClipboard (copyText: string):Promise<boolean> { 
   try {

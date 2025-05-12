@@ -1,16 +1,17 @@
 // ✅ TestPage.jsx -> Parent Component
 
-import { CodeHighlight } from "components/common/CodeHighlight";
+import { Hljs } from "components/common/Hljs";
 export const TestPage = () => {
   return(
     <div className="test-wrap">
-      <CodeHighlight 
+      <Hljs 
         code={`
           function Test() {
-            console.log('Test)
+            console.log('Test')
           }
         `}
       />
+      <textarea name="" id="" className="textarea-test"></textarea>
     </div>
   )
 }
