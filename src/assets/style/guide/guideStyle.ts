@@ -19,7 +19,7 @@ export const guideStyle = `
   }
   .section-item {
     margin-top:30px;
-    .desc{
+    & > .desc{
       margin-top:15px;
       & + .desc {
         margin-top:8px;

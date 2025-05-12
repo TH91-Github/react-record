@@ -63,23 +63,19 @@ export const Hljs = ({
         </code>
       </pre>
       <div className="hljs-toolbar">
-        {
-          badgeLang && (
-            <span className="badge-language">
-              {language}
-            </span>
-          )
-        }
-        {
-          isCopied && (
-            <button 
-              type="button" 
-              className="copy-button"
-              onClick={handleCopyClick}>
-                <span>{copied ? '복사 완료' : '복사'}</span>
-            </button> 
-          )
-        }
+        { badgeLang && (
+          <span className="badge-language">
+            {language}
+          </span>
+        )}
+        { isCopied && (
+          <button 
+            type="button" 
+            className="copy-button"
+            onClick={handleCopyClick}>
+              <span>{copied ? '복사 완료' : '복사'}</span>
+          </button> 
+        ) }
       </div>
     </StyleWrap>
   );

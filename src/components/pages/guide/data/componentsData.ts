@@ -3,12 +3,12 @@ import { ComponentsDataType } from "types/guide";
 // 🌟 타입 추가 
 export const componentsData: ComponentsDataType[] =[
   {
-    id:'popup',
-    title:'Popup',
-    desc:'공통 팝업 컴포넌트',
-    category:'Popup', 
+    id:'modal',
+    title:'Modal',
+    desc:'공통 모달 컴포넌트',
+    category:'Modal', 
     update:'2025-04-16',
-    keyword:['popup','팝업','레이어','레이어 팝업']
+    keyword:['Modal','Modal','딤드','알럿','alert', '모달']
   },
   {
     id:'carousel',

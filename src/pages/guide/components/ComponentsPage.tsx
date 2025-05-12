@@ -90,9 +90,6 @@ const StyleWrap = styled.div`
       min-height:500px;
       background:#fff;
     }
-    &.ani {
-
-    }
   }
   .componetns-lists{
     margin-top:20px;

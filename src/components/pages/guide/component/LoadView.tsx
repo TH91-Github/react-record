@@ -1,4 +1,4 @@
-import { PopupViewPage } from "pages/guide/components/view/PopupViewPage";
+import { ModalViewPage } from "pages/guide/components/view/ModalViewPage";
 import { useEffect, useMemo } from "react";
 import { NotViewComponent } from "./NotViewComponent";
 import { TabButtonViewPage } from "pages/guide/components/view/TabButtonViewPage";
@@ -12,7 +12,7 @@ interface LoadViewPropsType {
 export const LoadView = ({id, onNotFound}:LoadViewPropsType) => {
   // ✅ 일치하는 컴포넌트 로드 
   const componentLoad: { [key: string]: React.ReactNode } = useMemo(() => ({
-    popup: <PopupViewPage />,
+    modal: <ModalViewPage />,
     carousel: <CarouselViewPage />,
     'tab-button': <TabButtonViewPage />,
   }), []);

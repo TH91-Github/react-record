@@ -109,6 +109,7 @@ export const namingData = [
       'code → 코드 관련',
       'confirm → 확인, 확정',
       'cancel → 취소', 
+      'close → 닫기', 
       '...'
     ],
   },

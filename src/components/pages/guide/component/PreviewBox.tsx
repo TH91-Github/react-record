@@ -1,12 +1,12 @@
 import Carousel from "components/common/Carousel"
-import { Popup } from "components/common/Popup"
+import { Modal } from "components/common/Modal"
 import styled from "styled-components"
 // ❌ 현재 사용하지 않음. 잠시 대기
 type PreviewMapType = {
   [key: string]: React.ReactNode
 }
 const previewMap : PreviewMapType= {
-  // popup: <Popup />,
+  // popup: <Modal />,
 }
 
 export const PreviewBox = ({id}:{id:string}) => {
