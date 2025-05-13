@@ -1,10 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import DOMPurify from 'dompurify';
+import { colors } from 'assets/style/variables';
 import hljs from "highlight.js";
 import 'highlight.js/styles/atom-one-dark.css';
-import { copyClipboard } from 'utils/common';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { colors } from 'assets/style/variables';
+import { copyClipboard, escapeSanitizedHtml } from 'utils/common';
 
 interface HljsPropsType {
   language?: string;
@@ -21,6 +20,7 @@ export const Hljs = ({
   isCopied = true
 }: HljsPropsType) => {
   const codeRef = useRef<HTMLElement>(null!);
+
   const [copied, setCopied] = useState(false);
 
   // line number
@@ -41,9 +41,10 @@ export const Hljs = ({
 
   useEffect(() => {
     if (codeRef.current) {
-      const sanitizedCode = DOMPurify.sanitize(code);
-      codeRef.current.textContent = sanitizedCode;
-      codeRef.current.dataset.highlighted = ''; // 데이터 속성 초기화
+      // HTML 태그 이스케이프 + XSS 방지 DOMPurify.sanitize
+      const sanitizedCode = escapeSanitizedHtml(code);
+      codeRef.current.innerHTML = sanitizedCode;
+      codeRef.current.dataset.highlighted = ''; // highlight.js 초기화
       hljs.highlightElement(codeRef.current);
     }
   }, [code, language]);

@@ -2,19 +2,27 @@ import { colors } from "assets/style/variables";
 import { Hljs } from "components/common/Hljs";
 import { Modal } from "components/common/Modal";
 import { TabBtns } from "components/common/TabBtns";
+import { viewCode } from "components/pages/guide/data/componentsData";
 import { useState } from "react";
 import styled from "styled-components"
 
 export const ModalViewPage = () => {
-  const [isPop, setIsPop] = useState(false);
-  const [isPop2, setIsPop2] = useState(false);
+  const [demo, setDemo] = useState({
+    case1:false,
+    case2:false,
+    caseSub2:false,
+  });
   const [tabVal, setTabVal] = useState(0);
-  const tabData = ['JSX','CSS']
+  const tabData = viewCode.modal.map(item => item.title);
+  
   const handlePopupClick = () => {
-    setIsPop(prev => !prev)
+    setDemo(prev => ({...prev, case1:!prev.case1}))
   }
   const handlePopupClick2 = () => {
-    setIsPop2(prev => !prev)
+    setDemo(prev => ({...prev, case2:!prev.case2}))
+  }
+  const handlePopupClick3 = () => {
+    setDemo(prev => ({...prev, caseSub2:!prev.caseSub2}))
   }
 
   const changeEvent = (val:string) => {
@@ -39,7 +47,7 @@ export const ModalViewPage = () => {
               onClick={handlePopupClick}>
               <span>모달 데모</span>
             </button>
-            { isPop && (
+            { demo.case1 && (
               <Modal onClose={handlePopupClick}>
                 <p className="tit">Madal Test</p>
               </Modal>
@@ -50,21 +58,21 @@ export const ModalViewPage = () => {
               type="button"
               className="btn"
               title="modal Demo 보기"
-              onClick={handlePopupClick}>
+              onClick={handlePopupClick2}>
               <span>중첩 모달 데모</span>
             </button>
-            { isPop && (
-              <Modal onClose={handlePopupClick} isUnder={isPop2}>
+            { demo.case2 && (
+              <Modal onClose={handlePopupClick2} isUnder={demo.caseSub2}>
                 <p className="tit">Madal Test2</p>
                  <button
                   type="button"
                   className="btn"
                   title="modal Demo 보기"
-                  onClick={handlePopupClick2}>
+                  onClick={handlePopupClick3}>
                   <span>중첩 모달 데모</span>
                 </button>
-                { isPop2 && (
-                  <Modal onClose={handlePopupClick2} isDimmed={false}>
+                { demo.caseSub2 && (
+                  <Modal onClose={handlePopupClick3} isDimmed={false}>
                     <p className="tit">Madal Test2</p>
                   </Modal>
                 )}
@@ -81,10 +89,9 @@ export const ModalViewPage = () => {
             data={tabData} 
             changeEvent={changeEvent} 
           />
-          <Hljs code={
-            tabVal === 0 ? `JSX`:'.css{position:relative}'
-          }
-            language={tabVal === 0 ? `javascript`:'css'}
+          <Hljs 
+            code={viewCode.modal[tabVal].code}
+            language={viewCode.modal[tabVal].lang}
           />
         </div>
       </div>
