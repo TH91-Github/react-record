@@ -3,6 +3,7 @@ import { Hljs } from "components/common/Hljs";
 import { Modal } from "components/common/Modal";
 import { TabBtns } from "components/common/TabBtns";
 import { viewCode } from "components/pages/guide/data/componentsData";
+import { ExternalLink } from "components/ui/ExternalLink";
 import { useState } from "react";
 import styled from "styled-components"
 
@@ -33,7 +34,12 @@ export const ModalViewPage = () => {
     <StlyeWrap className="view-wrap popup">
       <p className="desc">Modal 컴포넌트입니다.</p>
       <ul className="bullet-lists">
-        <li className="circle">github: -</li>
+        <li className="circle">
+          <ExternalLink 
+            href="https://github.com/TH91-Github/react-record/blob/main/src/components/common/Modal.tsx"
+            titleText="github"
+          />
+        </li>
         <li className="circle">storybook: -</li>
       </ul>
       <div className="view-item">
@@ -63,14 +69,16 @@ export const ModalViewPage = () => {
             </button>
             { demo.case2 && (
               <Modal onClose={handlePopupClick2} isUnder={demo.caseSub2}>
-                <p className="tit">Madal Test2</p>
-                 <button
-                  type="button"
-                  className="btn"
-                  title="modal Demo 보기"
-                  onClick={handlePopupClick3}>
-                  <span>중첩 모달 데모</span>
-                </button>
+                <StyleDemoModal2>
+                  <p className="tit">Madal Test2</p>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    title="modal Demo 보기"
+                    onClick={handlePopupClick3}>
+                    <span>모달 2-2</span>
+                  </button>
+                </StyleDemoModal2>
                 { demo.caseSub2 && (
                   <Modal onClose={handlePopupClick3} isDimmed={false}>
                     <p className="tit">Madal Test2</p>
@@ -121,6 +129,12 @@ const StlyeWrap = styled.div`
     margin-top:20px;
   }
   .hljs-wrap{
+    margin-top:10px;
+  }
+`;
+
+const StyleDemoModal2 = styled.div`
+  .btn{
     margin-top:10px;
   }
 `;

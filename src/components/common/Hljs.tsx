@@ -20,34 +20,32 @@ export const Hljs = ({
   isCopied = true
 }: HljsPropsType) => {
   const codeRef = useRef<HTMLElement>(null!);
-
   const [copied, setCopied] = useState(false);
 
   // line number
   const lineNumbers = useMemo(() => (
-    code.split('\n').map((_, index) => index + 1)
+    code.split('\n').map((_, idx) => idx + 1)
   ),[code]);
 
   // copied
   const handleCopyClick = async () => {
     const copySuccess = await copyClipboard(code);
-    if(copySuccess) {
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1500);
-    }else{
-      console.log('복사 실패')
-    }
+    if (!copySuccess) return;
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
   };
+
+  // HTML 태그 이스케이프 + XSS 방지 DOMPurify.sanitize
+  const sanitizedCode = useMemo(() => escapeSanitizedHtml(code), [code]);
+  const languageClass = useMemo(() => `language-${language}`, [language]);
 
   useEffect(() => {
     if (codeRef.current) {
-      // HTML 태그 이스케이프 + XSS 방지 DOMPurify.sanitize
-      const sanitizedCode = escapeSanitizedHtml(code);
       codeRef.current.innerHTML = sanitizedCode;
       codeRef.current.dataset.highlighted = ''; // highlight.js 초기화
       hljs.highlightElement(codeRef.current);
     }
-  }, [code, language]);
+  }, [sanitizedCode, language]);
 
   return (
     <StyleWrap className="hljs-wrap">
@@ -59,9 +57,7 @@ export const Hljs = ({
         </div>
       )}
       <pre className="hljs-pre">
-        <code ref={codeRef} className={`language-${language}`}>
-          {code}
-        </code>
+        <code ref={codeRef} className={languageClass} />
       </pre>
       <div className="hljs-toolbar">
         { badgeLang && (
@@ -112,6 +108,10 @@ background:${colors.nightSky};
     );
     content:'';
   }
+  .number{
+    font-size:14px;
+    line-height:22px;
+  }
 }
 .hljs-pre {
   flex: 1;
@@ -119,6 +119,7 @@ background:${colors.nightSky};
 }
 .hljs-pre .hljs{ 
   padding:10px;
+  line-height:22px;
 }
 .hljs-toolbar{
   display:flex;
