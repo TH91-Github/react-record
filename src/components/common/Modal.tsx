@@ -1,4 +1,5 @@
 import { bgShadow, media } from "assets/style/variables";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components"
 
@@ -18,17 +19,26 @@ export const Modal = ({
   children,
   onClose
 }:ModalPropsType) => {
+  const [isClosing, setIsClosing] = useState(false);
   const handleCloseClick = () => {
-    onClose();
+    if (isClosing) return;
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 200);
   }
+  useEffect(() => {
+    return () => setIsClosing(false);
+  }, []);
+  
   return (
     createPortal(
       <StyleWrap 
-        className={`modal-wrap ${isUnder ? 'under':''}`}
+        className={`modal-wrap ${isClosing?'modal-close':''}`}
         $width={$width}
         $align={$align}
       >
-        <div className="modal-inner">
+        <div className={`modal-inner ${isUnder ? 'under':''}`}>
           <div className="modal-cont">
             {children}
           </div>
@@ -59,19 +69,6 @@ const StyleWrap = styled.div<StyleWrapProps>`
   width:100svw;
   height:100svh;
   text-align: ${({$align}) => $align};
-  .dimmed {
-    position: absolute;
-    z-index:101;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: rgba(0,0,0,0.5);
-    &.overlapping {
-      opacity:0;
-      background:none;
-    }
-  }
   .modal-inner{
     position:absolute;
     z-index:102;
@@ -85,21 +82,41 @@ const StyleWrap = styled.div<StyleWrapProps>`
     background: #fff;
     box-shadow:${bgShadow.base};
     transform: translate(-50%, -50%);
+    animation: fadeUpAni .3s .1s ease both;
     .close-btn {
       top:10px;
       right:10px;
     }
-  }
-  &.under {
-    .modal-inner{
-      z-index:90;
+    &.under {
+      animation: fadeDownAni .3s ease both;
     }
   }
-
+  &.modal-close{
+    pointer-events: none;
+    .modal-inner{
+      animation: fadeDownAni .2s ease both;
+    }
+    .dimmed {
+      animation: fadeOutAni .2s ease both;
+    }
+  }
+  .dimmed {
+    position: absolute;
+    z-index:101;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.5);
+    &.overlapping {
+      opacity:0;
+      background:none;
+    }
+    animation: fadeInAni .3s ease both;
+  }
 ${media.mo}{
   .modal-inner{
     width:90%;
   }
 }
-
 `;

@@ -44,7 +44,7 @@ export const ComponentsViewPage = () => {
   }, [notCheck, id]);
   if(detailsAni === null) return null
   return (
-    <StyleWrap className={`${detailsAni ? 'fade-up':''} ${isClosing? 'fade-out':''}`}>
+    <StyleWrap className={`${detailsAni ? 'fade-up':''} ${isClosing? 'fade-down':''}`}>
       {!notCheck && (
         <TitleHeading
           $display="block"
