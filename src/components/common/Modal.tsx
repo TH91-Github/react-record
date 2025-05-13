@@ -40,9 +40,7 @@ export const Modal = ({
             <span>닫기</span>
           </button>
         </div>
-        {
-          isDimmed &&  <div className="dimmed" onClick={handleCloseClick}></div>
-        }
+        <div className={`dimmed ${!isDimmed ? 'overlapping': ''}`} onClick={handleCloseClick}></div>
       </StyleWrap>,
       document.body
     )
@@ -69,6 +67,10 @@ const StyleWrap = styled.div<StyleWrapProps>`
     width:100%;
     height:100%;
     background: rgba(0,0,0,0.5);
+    &.overlapping {
+      opacity:0;
+      background:none;
+    }
   }
   .modal-inner{
     position:absolute;
@@ -76,6 +78,7 @@ const StyleWrap = styled.div<StyleWrapProps>`
     top:50%;
     left:50%;
     width:${({$width}) => $width}px;
+    min-height:100px;
     max-width:80%;
     padding:30px;
     border-radius:5px;
