@@ -21,11 +21,11 @@ export const Modal = ({
   onClose
 }:ModalPropsType) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
+  const prevFocusRef = useRef<HTMLElement>(document.activeElement as HTMLElement);
   const [isClosing, setIsClosing] = useState(false);
   const { lockScroll, unlockScroll } = useBodyScrolLock();
-  const prevFocusRef = useRef<HTMLElement>(document.activeElement as HTMLElement);
 
-  const handleCloseClick = () => {
+  const handleCloseClick = useCallback(() => {
     if (isClosing) return;
     setIsClosing(true);
     setTimeout(() => {
@@ -33,7 +33,7 @@ export const Modal = ({
       prevFocusRef.current?.focus();
       if(isDimmed) unlockScroll();
     }, 200);
-  }
+  },[isClosing, isDimmed, onClose, unlockScroll]);
 
   useEffect(() => {
     if(modalRef.current){
@@ -41,7 +41,7 @@ export const Modal = ({
     }
     if(isDimmed) lockScroll(); // scroll lock, 중첩 모달 시 실행 x
     return () => setIsClosing(false);
-  }, [lockScroll]);
+  }, [isDimmed, lockScroll]);
   
   // 포커스 이탈 방지
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -67,7 +67,10 @@ export const Modal = ({
         firstFocus.focus();
       }
     }
-  },[]);
+    if (e.key === 'Escape') {
+      handleCloseClick();
+    }
+  },[handleCloseClick]);
   
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);

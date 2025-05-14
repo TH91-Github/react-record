@@ -1,22 +1,17 @@
 import { colors } from "assets/style/variables";
-import { Hljs } from "components/common/Hljs";
 import { Modal } from "components/common/Modal";
-import { TabBtns } from "components/common/TabBtns";
 import { modalData } from "components/pages/guide/data/componentsData";
+import { ViewCode } from "components/pages/guide/ViewCode";
 import { ViewInfo } from "components/pages/guide/ViewInfo";
-import { ExternalLink } from "components/ui/ExternalLink";
 import { useState } from "react";
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const ModalViewPage = () => {
-  const {code} = modalData;
   const [demo, setDemo] = useState({
     case1:false,
     case2:false,
     caseSub2:false,
   });
-  const [tabVal, setTabVal] = useState(0);
-  const tabData = code.map(item => item.title);
   
   const handleModalClick = () => {
     setDemo(prev => ({...prev, case1:!prev.case1}))
@@ -28,10 +23,6 @@ export const ModalViewPage = () => {
     setDemo(prev => ({...prev, caseSub2:!prev.caseSub2}))
   }
 
-  const changeEvent = (val:string) => {
-    const valIndex = tabData.indexOf(val);
-    setTabVal(valIndex >= 0 ? valIndex : 0);
-  }
   return (
     <StlyeWrap className="view-wrap modal">
       <div className="view-item">
@@ -85,18 +76,7 @@ export const ModalViewPage = () => {
         </div>
       </div>
       <div className="view-item">
-        <p className="tit">Code 확인하기</p>
-        <div className="code-wrap">
-          <TabBtns
-            isAll={false}
-            data={tabData} 
-            changeEvent={changeEvent} 
-          />
-          <Hljs 
-            code={code[tabVal].code}
-            language={code[tabVal].lang}
-          />
-        </div>
+        <ViewCode data={modalData} />
       </div>
     </StlyeWrap>
   )
@@ -121,12 +101,6 @@ const StlyeWrap = styled.div`
     flex-wrap: wrap;
     gap:20px;
     margin-top:20px;
-  }
-  .code-wrap {
-    margin-top:20px;
-  }
-  .hljs-wrap{
-    margin-top:10px;
   }
 `;
 

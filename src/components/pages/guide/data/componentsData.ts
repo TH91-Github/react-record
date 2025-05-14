@@ -87,14 +87,19 @@ export const modalData : ComponentsInfoType = {
       children,
       onClose
     }:ModalPropsType) => {
-    
-    // ⚙️ 포커스 이동 & 이탈 방지, 스크롤 lock
-    // ...
+    ...
+    const { lockScroll, unlockScroll } = useBodyScrolLock(); // 스크롤 lock
+
+    // 포커스 이탈 방지
+    const handleKeyDown = useCallback((e: KeyboardEvent) => {
+      ...
+    }
 
     // 닫기
     const handleCloseClick = () => {
-      onClose();
+      ...
     }
+    
     return (
         createPortal(
           <div className="modal-wrap">
