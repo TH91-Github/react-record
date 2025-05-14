@@ -1,4 +1,5 @@
 import { bgShadow, media } from "assets/style/variables";
+import { useBodyScrolLock } from "hooks/common";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components"
@@ -20,14 +21,18 @@ export const Modal = ({
   onClose
 }:ModalPropsType) => {
   const [isClosing, setIsClosing] = useState(false);
+  const { lockScroll, unlockScroll } = useBodyScrolLock();
+
   const handleCloseClick = () => {
     if (isClosing) return;
     setIsClosing(true);
     setTimeout(() => {
       onClose();
+      unlockScroll();
     }, 200);
   }
   useEffect(() => {
+    lockScroll(); // scroll lock
     return () => setIsClosing(false);
   }, []);
   
