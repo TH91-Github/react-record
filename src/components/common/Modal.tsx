@@ -1,6 +1,6 @@
 import { bgShadow, media } from "assets/style/variables";
 import { useBodyScrolLock } from "hooks/common";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components"
 
@@ -20,22 +20,62 @@ export const Modal = ({
   children,
   onClose
 }:ModalPropsType) => {
+  const modalRef = useRef<HTMLDivElement | null>(null);
   const [isClosing, setIsClosing] = useState(false);
   const { lockScroll, unlockScroll } = useBodyScrolLock();
+  const prevFocusRef = useRef<HTMLElement>(document.activeElement as HTMLElement);
 
   const handleCloseClick = () => {
     if (isClosing) return;
     setIsClosing(true);
     setTimeout(() => {
       onClose();
-      unlockScroll();
+      prevFocusRef.current?.focus();
+      if(isDimmed) unlockScroll();
     }, 200);
   }
+
   useEffect(() => {
-    lockScroll(); // scroll lock
+    if(modalRef.current){
+      modalRef.current.focus();
+    }
+    if(isDimmed) lockScroll(); // scroll lock, 중첩 모달 시 실행 x
     return () => setIsClosing(false);
-  }, []);
+  }, [lockScroll]);
   
+  // 포커스 이탈 방지
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Tab' && modalRef.current) {
+      const focusableElements: HTMLElement[] = [
+        modalRef.current, // modal-inner tabindex 0
+        ...modalRef.current.querySelectorAll<HTMLElement>(
+          'a[href], area[href], input:not([disabled]), select:not([disabled]), ' +
+          'textarea:not([disabled]), button:not([disabled]), iframe, object, embed, ' +
+          '[tabindex]:not([tabindex="-1"]), [contenteditable]'
+        ),
+      ];
+      const firstFocus = focusableElements[0];
+      const lastFocus = focusableElements[focusableElements.length - 1];
+      if (focusableElements.length === 0) return;
+
+      // 처음과 마지막에서 탭, 역 탭 진행 시
+      if (e.shiftKey && document.activeElement === firstFocus) {
+        e.preventDefault();
+        lastFocus.focus();
+      } else if (!e.shiftKey && document.activeElement === lastFocus) { 
+        e.preventDefault();
+        firstFocus.focus();
+      }
+    }
+  },[]);
+  
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  },[handleKeyDown]);
+
   return (
     createPortal(
       <StyleWrap 
@@ -43,7 +83,11 @@ export const Modal = ({
         $width={$width}
         $align={$align}
       >
-        <div className={`modal-inner ${isUnder ? 'under':''}`}>
+        <div 
+          className={`modal-inner ${isUnder ? 'under':''}`}
+          tabIndex={0}
+          ref={modalRef}
+        >
           <div className="modal-cont">
             {children}
           </div>

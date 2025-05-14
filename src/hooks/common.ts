@@ -3,6 +3,19 @@ import { useCallback, useEffect, useRef } from "react";
 
 const BODY = document.body;
 
+// 🔹 포커스 저장 및 회귀
+export const useRestoreFocus = () => {
+  const previousFocus = useRef<HTMLElement | null>(null);
+  const beforeFocus = () => {
+    previousFocus.current = document.activeElement as HTMLElement;
+  };
+  const resetFocus = () => {
+    previousFocus.current?.focus();
+  };
+  return { beforeFocus, resetFocus };
+};
+
+// 🔹 스크롤 잠금
 export const useBodyScrolLock = () =>{
   const scrollYRef = useRef(0);
   const isLockedRef = useRef(false);
@@ -36,7 +49,7 @@ export const useBodyScrolLock = () =>{
     document.addEventListener('touchmove', preventTouchMove, { passive: false });
 
     isLockedRef.current = true;
-  }, []);
+  }, [preventTouchMove]);
 
   const unlockScroll = useCallback(() => {
     if (!isLockedRef.current) return;

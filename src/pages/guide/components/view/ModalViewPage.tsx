@@ -2,19 +2,21 @@ import { colors } from "assets/style/variables";
 import { Hljs } from "components/common/Hljs";
 import { Modal } from "components/common/Modal";
 import { TabBtns } from "components/common/TabBtns";
-import { viewCode } from "components/pages/guide/data/componentsData";
+import { modalData } from "components/pages/guide/data/componentsData";
+import { ViewInfo } from "components/pages/guide/ViewInfo";
 import { ExternalLink } from "components/ui/ExternalLink";
 import { useState } from "react";
 import styled from "styled-components"
 
 export const ModalViewPage = () => {
+  const {code} = modalData;
   const [demo, setDemo] = useState({
     case1:false,
     case2:false,
     caseSub2:false,
   });
   const [tabVal, setTabVal] = useState(0);
-  const tabData = viewCode.modal.map(item => item.title);
+  const tabData = code.map(item => item.title);
   
   const handleModalClick = () => {
     setDemo(prev => ({...prev, case1:!prev.case1}))
@@ -32,17 +34,9 @@ export const ModalViewPage = () => {
   }
   return (
     <StlyeWrap className="view-wrap modal">
-      <p className="desc">Modal 컴포넌트입니다.</p>
-      <p className="desc">가로 크기, 정렬, 자동 닫기, 모달 중첩, 포커스 이동 및 이탈 방지, 자동 닫기 기능이 포함되어 있습니다.</p>
-      <ul className="bullet-lists">
-        <li className="circle">
-          <ExternalLink 
-            href="https://github.com/TH91-Github/react-record/blob/main/src/components/common/Modal.tsx"
-            titleText="github"
-          />
-        </li>
-        <li className="circle">storybook: -</li>
-      </ul>
+      <div className="view-item">
+        <ViewInfo data={modalData} />
+      </div>
       <div className="view-item">
         <p className="tit">Modal 데모</p>
         <div className="example-lists">
@@ -99,8 +93,8 @@ export const ModalViewPage = () => {
             changeEvent={changeEvent} 
           />
           <Hljs 
-            code={viewCode.modal[tabVal].code}
-            language={viewCode.modal[tabVal].lang}
+            code={code[tabVal].code}
+            language={code[tabVal].lang}
           />
         </div>
       </div>
@@ -109,21 +103,17 @@ export const ModalViewPage = () => {
 }
 
 const StlyeWrap = styled.div`
-  & > .desc {
-    margin-top:8px;
-    &:first-child {
-      margin-top:0;
-    }
-  }
-  & > .bullet-lists {
-    margin-top:10px;
-  }
   .view-item{
     margin-top:30px;
     padding-top:30px;
     border-top:1px solid ${colors.lineColor};
     .tit{ 
       font-size: 18px;
+    }
+    &:first-child{
+      margin-top:0;
+      padding-top:0;
+      border-top:none;
     }
   }
   .example-lists{

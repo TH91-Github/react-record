@@ -1,4 +1,4 @@
-import { ComponentsDataType } from "types/guide";
+import { ComponentsDataType, ComponentsInfoType } from "types/guide";
 
 export const componentsData: ComponentsDataType[] =[
   {
@@ -28,11 +28,34 @@ export const componentsData: ComponentsDataType[] =[
 ]
 
 // 컴포넌트 code 
-export const viewCode = {
-  modal:[
+export const modalData : ComponentsInfoType = {
+  info:{
+    id:'modal-info',
+    title:'Modal 컴포넌트',
+    desc:'가로 크기, 정렬, 자동 닫기, 모달 중첩, 포커스 이동 및 이탈 방지 기능이 포함되어 있습니다.'
+  },
+  hook:[
+    {
+      id:'modal-hook-1',
+      title:'useBodyScrolLock()',
+    }
+  ],
+  link:[
+    {
+      id:'modal-github',
+      title:'github',
+      link:'https://github.com/TH91-Github/react-record/blob/main/src/components/common/Modal.tsx'
+    },
+    {
+      id:'modal-storybook',
+      title:'storybook',
+      link:null
+    }
+  ],
+  code:[
     {
       id:'code-use',
-      title:'사용 예제',
+      title:'사용',
       lang:'typescript',
       code:
     `
@@ -53,7 +76,7 @@ export const viewCode = {
       $width?: number,
       $align?: 'center' | 'left' | 'right';
       children?:React.ReactNode;
-      onClose: () => void; // ✅ 닫기 필수
+      onClose: () => void; // ✅ 필수
     }
 
     export const Modal = ({
@@ -64,6 +87,11 @@ export const viewCode = {
       children,
       onClose
     }:ModalPropsType) => {
+    
+    // ⚙️ 포커스 이동 & 이탈 방지, 스크롤 lock
+    // ...
+
+    // 닫기
     const handleCloseClick = () => {
       onClose();
     }
@@ -95,7 +123,7 @@ export const viewCode = {
       left:0;
       width:100svw;
       height:100svh;
-      text-align: center;
+      text-align: \${({$align}) => $align};
     }
 
     .modal-inner{

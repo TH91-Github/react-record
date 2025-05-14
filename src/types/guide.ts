@@ -75,3 +75,26 @@ export interface ComponentsDataType {
   update: string;
   keyword: string[];
 }
+
+export interface ComponentsInfoType {
+  info:{
+    id: string;
+    title: string;
+    desc: string;
+  },
+  hook:{
+    id:string;
+    title:string;
+  }[],
+  link:{
+    id: string;
+    title: string;
+    link: string | null;
+  }[],
+  code: {
+    id: string;
+    title: string;
+    lang: string;
+    code: string;
+  }[]
+}
