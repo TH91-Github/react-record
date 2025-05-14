@@ -99,40 +99,28 @@ export const commonStyle = `
     animation: fadeDownAni .3s ease both;
   }
   @keyframes fadeInAni {
-    from {
-      opacity:0;
-    }
-      to {
-      opacity:1;
-    }
+    from {  opacity:0; }
+    to { opacity:1; }
   }
   @keyframes fadeOutAni {
-    from {
-      opacity:1;
-    }
-      to {
-      opacity:0;
-    }
+    from { opacity:1; }
+    to {  opacity:0; }
   }
   @keyframes fadeUpAni {
-    from {
-      opacity:0;
-      transform: translateY(10px);
-    }
-      to {
-      opacity:1;
-      transform: translateY(0px);
-    }
+    from { opacity:0; transform: translateY(10px); }
+    to { opacity:1; transform: translateY(0px); }
   }
   @keyframes fadeDownAni {
-    from {
-      opacity:1;
-      transform: translateY(0px);
-    }
-      to {
-      opacity:0;
-      transform: translateY(10px);
-    }
+    from { opacity:1; transform: translateY(0); }
+    to { opacity:0; transform: translateY(10px); }
+  }
+  @keyframes fadeUpCenterAni { // -50%, -50% 정렬 기준
+    from { opacity:0; transform: translate(-50%, calc(-50% + 10px)); }
+    to { opacity:1; transform: translate(-50%, -50%); }
+  }
+  @keyframes fadeDownCenterAni { // -50%, -50% 정렬 기준
+    from { opacity:1; transform: translate(-50%, -50%); }
+    to { opacity:0; transform: translate(-50%, calc(-50% + 10px)); }
   }
   .ellipsis {
     width:100%;

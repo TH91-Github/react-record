@@ -16,13 +16,13 @@ export const ModalViewPage = () => {
   const [tabVal, setTabVal] = useState(0);
   const tabData = viewCode.modal.map(item => item.title);
   
-  const handlePopupClick = () => {
+  const handleModalClick = () => {
     setDemo(prev => ({...prev, case1:!prev.case1}))
   }
-  const handlePopupClick2 = () => {
+  const handleModalClick2 = () => {
     setDemo(prev => ({...prev, case2:!prev.case2}))
   }
-  const handlePopupClick3 = () => {
+  const handleModalClick3 = () => {
     setDemo(prev => ({...prev, caseSub2:!prev.caseSub2}))
   }
 
@@ -31,8 +31,9 @@ export const ModalViewPage = () => {
     setTabVal(valIndex >= 0 ? valIndex : 0);
   }
   return (
-    <StlyeWrap className="view-wrap popup">
+    <StlyeWrap className="view-wrap modal">
       <p className="desc">Modal 컴포넌트입니다.</p>
+      <p className="desc">가로 크기, 정렬, 자동 닫기, 모달 중첩, 포커스 이동 및 이탈 방지, 자동 닫기 기능이 포함되어 있습니다.</p>
       <ul className="bullet-lists">
         <li className="circle">
           <ExternalLink 
@@ -50,11 +51,11 @@ export const ModalViewPage = () => {
               type="button"
               className="btn"
               title="modal Demo 보기"
-              onClick={handlePopupClick}>
+              onClick={handleModalClick}>
               <span>모달 데모</span>
             </button>
             { demo.case1 && (
-              <Modal onClose={handlePopupClick}>
+              <Modal onClose={handleModalClick}>
                 <p className="tit">Madal Test</p>
               </Modal>
             )}
@@ -64,23 +65,23 @@ export const ModalViewPage = () => {
               type="button"
               className="btn"
               title="modal Demo 보기"
-              onClick={handlePopupClick2}>
+              onClick={handleModalClick2}>
               <span>중첩 모달 데모</span>
             </button>
             { demo.case2 && (
-              <Modal onClose={handlePopupClick2} isUnder={demo.caseSub2}>
+              <Modal onClose={handleModalClick2} isUnder={demo.caseSub2}>
                 <StyleDemoModal2>
                   <p className="tit">Madal Test2</p>
                   <button
                     type="button"
                     className="btn btn-primary"
                     title="modal Demo 보기"
-                    onClick={handlePopupClick3}>
+                    onClick={handleModalClick3}>
                     <span>모달 2-2</span>
                   </button>
                 </StyleDemoModal2>
                 { demo.caseSub2 && (
-                  <Modal onClose={handlePopupClick3} isDimmed={false}>
+                  <Modal onClose={handleModalClick3} isDimmed={false}>
                     <p className="tit">Madal Test2</p>
                   </Modal>
                 )}
@@ -108,6 +109,12 @@ export const ModalViewPage = () => {
 }
 
 const StlyeWrap = styled.div`
+  & > .desc {
+    margin-top:8px;
+    &:first-child {
+      margin-top:0;
+    }
+  }
   & > .bullet-lists {
     margin-top:10px;
   }

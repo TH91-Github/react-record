@@ -82,19 +82,19 @@ const StyleWrap = styled.div<StyleWrapProps>`
     background: #fff;
     box-shadow:${bgShadow.base};
     transform: translate(-50%, -50%);
-    animation: fadeUpAni .3s .1s ease both;
+    animation: fadeUpCenterAni .3s .1s ease both;
     .close-btn {
       top:10px;
       right:10px;
     }
     &.under {
-      animation: fadeDownAni .3s ease both;
+      animation: fadeDownCenterAni .3s ease both;
     }
   }
   &.modal-close{
     pointer-events: none;
     .modal-inner{
-      animation: fadeDownAni .2s ease both;
+      animation: fadeDownCenterAni .2s ease both;
     }
     .dimmed {
       animation: fadeOutAni .2s ease both;

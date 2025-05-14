@@ -103,7 +103,7 @@ export const viewCode = {
       z-index:102;
       top:50%;
       left:50%;
-      width: \${({$width}) => \$width}px;
+      width: \${({ $width }) => $width}px;
       max-width:80%;
       padding:30px;
       border-radius:5px;
