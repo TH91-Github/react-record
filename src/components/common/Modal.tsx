@@ -1,4 +1,4 @@
-import { bgShadow, media } from "assets/style/variables";
+import { bgShadow, colors, media } from "assets/style/variables";
 import { useBodyScrolLock } from "hooks/common";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -6,8 +6,9 @@ import styled from "styled-components"
 
 interface ModalPropsType {
   isDimmed?: boolean; // dimmed on/off EX: 2중 모달 시 
-  isUnder?: boolean, // 2중 모달일 경우 딤드보다 아래로
-  $width?: number,
+  isUnder?: boolean; // 2중 모달일 경우 딤드보다 아래로
+  autoCloseSecond?: number; // 자동 닫기 시간초 
+  $width?: number;
   $align?: 'center' | 'left' | 'right';
   children?:React.ReactNode;
   onClose: () => void;
@@ -15,6 +16,7 @@ interface ModalPropsType {
 export const Modal = ({
   isDimmed = true,
   isUnder,
+  autoCloseSecond,
   $width = 250,
   $align = 'center',
   children,
@@ -24,16 +26,34 @@ export const Modal = ({
   const prevFocusRef = useRef<HTMLElement>(document.activeElement as HTMLElement);
   const [isClosing, setIsClosing] = useState(false);
   const { lockScroll, unlockScroll } = useBodyScrolLock();
-
+  const autoCloseS = autoCloseSecond ? (autoCloseSecond < 2000 ? 2000 : autoCloseSecond) : 0;
+  const autoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+ 
   const handleCloseClick = useCallback(() => {
     if (isClosing) return;
     setIsClosing(true);
+    if (autoTimerRef.current) { 
+      clearTimeout(autoTimerRef.current);
+    }
     setTimeout(() => {
       onClose();
       prevFocusRef.current?.focus();
       if(isDimmed) unlockScroll();
     }, 200);
   },[isClosing, isDimmed, onClose, unlockScroll]);
+
+  useEffect(() => { // 자동 닫기
+    if (autoCloseS > 0) {
+      autoTimerRef.current = setTimeout(() => {
+        handleCloseClick();
+      }, autoCloseS);
+    }
+    return () => {
+      if (autoTimerRef.current) {
+        clearTimeout(autoTimerRef.current);
+      }
+    };
+  }, [autoCloseS, handleCloseClick]);
 
   useEffect(() => {
     if(modalRef.current){
@@ -85,6 +105,7 @@ export const Modal = ({
         className={`modal-wrap ${isClosing?'modal-close':''}`}
         $width={$width}
         $align={$align}
+        $autoTime={autoCloseS}
       >
         <div 
           className={`modal-inner ${isUnder ? 'under':''}`}
@@ -101,6 +122,9 @@ export const Modal = ({
           >
             <span>닫기</span>
           </button>
+          {
+            autoCloseSecond && <span className="timer-bar"></span>
+          }
         </div>
         <div className={`dimmed ${!isDimmed ? 'overlapping': ''}`} onClick={handleCloseClick}></div>
       </StyleWrap>,
@@ -112,6 +136,7 @@ export const Modal = ({
 interface StyleWrapProps {
   $width:number;
   $align:string;
+  $autoTime:number;
 }
 const StyleWrap = styled.div<StyleWrapProps>`
   position:fixed;
@@ -122,6 +147,7 @@ const StyleWrap = styled.div<StyleWrapProps>`
   height:100svh;
   text-align: ${({$align}) => $align};
   .modal-inner{
+    overflow:hidden;
     position:absolute;
     z-index:102;
     top:50%;
@@ -151,6 +177,15 @@ const StyleWrap = styled.div<StyleWrapProps>`
     .dimmed {
       animation: fadeOutAni .2s ease both;
     }
+  }
+  .timer-bar{
+    display:block;
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:2px;
+    background:${colors.mSlateBlue};
   }
   .dimmed {
     position: absolute;
