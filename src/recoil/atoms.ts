@@ -15,8 +15,17 @@ export const stateHeaderHeight = atom({
   default: 55,     
 });
 
+// alert 팝업 전역용
+export const stateAlert = atom({
+  key: 'alertModal',
+  default: {
+    isActive: false,
+    message:'메시지를 입력하세요.'
+  },
+});
+
 // focus 회귀용
-export const prevFocus = atom<HTMLElement | null>({
+export const statePrevFocus = atom<HTMLElement | null>({
   key: 'prevFocus',
   default: null,
 });

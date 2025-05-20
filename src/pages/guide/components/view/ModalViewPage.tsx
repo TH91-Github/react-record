@@ -91,7 +91,7 @@ export const ModalViewPage = () => {
                 autoCloseSecond={3000}
                 onClose={() => handleModalClick('case3')}
               >
-                <p className="tit">Madal Test</p>
+                <p className="tit">Madal 3초 후 닫기</p>
               </Modal>
             )}
           </div>

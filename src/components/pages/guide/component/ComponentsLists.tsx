@@ -1,7 +1,7 @@
 import { bgColor, bgShadow, colors, textColor } from "assets/style/variables"
 import { useNavigate } from "react-router-dom"
 import { useSetRecoilState } from "recoil"
-import { prevFocus } from "recoil/atoms"
+import { statePrevFocus } from "recoil/atoms"
 import styled from "styled-components"
 import { ComponentsDataType } from "types/guide"
 interface ComponentsListsPropsType {
@@ -9,7 +9,7 @@ interface ComponentsListsPropsType {
 }
 export const ComponentsLists = ({data} : ComponentsListsPropsType) => {
   const navigate = useNavigate();
-  const setPrevFocus = useSetRecoilState(prevFocus);
+  const setPrevFocus = useSetRecoilState(statePrevFocus);
 
   const handleMove = (id: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
     setPrevFocus(e.currentTarget);  // 클릭한 버튼 저장

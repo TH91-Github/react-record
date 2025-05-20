@@ -3,7 +3,7 @@ import { TitleHeading } from "components/ui/TitleHeading";
 import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { prevFocus } from "recoil/atoms";
+import { statePrevFocus } from "recoil/atoms";
 import styled from "styled-components";
 import { formatText } from "utils/character";
 
@@ -16,7 +16,7 @@ export const ComponentsViewPage = () => {
   const {id, detailsAni } = useOutletContext<ContextPropsType>();
   const [notCheck ,setNotCheck] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [prevFocusEl, setPrevFocus] = useRecoilState(prevFocus);
+  const [prevFocusEl, setPrevFocus] = useRecoilState(statePrevFocus);
 
   const onNotFound= () => { // 경로 오류 및 일치하는 컴포넌트가 없는 경우
     setNotCheck(true)

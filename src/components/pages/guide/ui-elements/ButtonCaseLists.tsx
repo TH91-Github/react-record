@@ -19,22 +19,20 @@ export const ButtonCaseLists = ({data, category}:ButtonCaseListsPropsType) =>{
   return (
     <StyleWrap className="button-lists">
       <ul>
-        {
-          data.map((item,idx) => (
-            <li 
-              key={idx} 
-              className={`${(item.title.includes('full')?'full-type':'')} ${(item.title.includes('ellipsis')?'ellipsis-type':'')}`}>
-              <button 
-                type="button" 
-                className={item.title}
-                title={`${item.title} 복사하기`}
-                onClick={() => handleClickCopy(item.title)}
-              >
-                <span>{item.title}</span>
-              </button>
-            </li>
-          ))
-        }
+        {data.map((item,idx) => (
+          <li 
+            key={idx} 
+            className={`${(item.title.includes('full')?'full-type':'')} ${(item.title.includes('ellipsis')?'ellipsis-type':'')}`}>
+            <button 
+              type="button" 
+              className={item.title}
+              title={`${item.title} 복사하기`}
+              onClick={() => handleClickCopy(item.title)}
+            >
+              <span>{item.title}</span>
+            </button>
+          </li>
+        ))}
       </ul>
     </StyleWrap>
   )

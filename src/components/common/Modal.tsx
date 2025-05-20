@@ -105,7 +105,7 @@ export const Modal = ({
         className={`modal-wrap ${isClosing?'modal-close':''}`}
         $width={$width}
         $align={$align}
-        $autoTime={autoCloseS}
+        $autoTime={(autoCloseS / 1000)}
       >
         <div 
           className={`modal-inner ${isUnder ? 'under':''}`}
@@ -186,6 +186,12 @@ const StyleWrap = styled.div<StyleWrapProps>`
     width:100%;
     height:2px;
     background:${colors.mSlateBlue};
+    animation: timerbarAni ${({$autoTime})=> $autoTime}s linear both;
+    transform-origin: left center;
+  }
+  @keyframes timerbarAni {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
   }
   .dimmed {
     position: absolute;

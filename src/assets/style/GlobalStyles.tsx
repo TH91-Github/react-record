@@ -6,7 +6,6 @@ import { buttonStyle } from './ui/buttonStyle';
 import { skeletonStyle } from './ui/skeletonStyle';
 import { iconStyle } from './ui/iconStyle';
 
-// const headerHeight = useRecoilValue(stateHeaderHeight);
 export const GlobalStyles = createGlobalStyle`
   body {
     font-size:16px;
