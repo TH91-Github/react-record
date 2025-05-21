@@ -1,19 +1,13 @@
-import { bgColor, bgShadow, colors, textColor } from "assets/style/variables"
-import { useNavigate } from "react-router-dom"
-import { useSetRecoilState } from "recoil"
-import { statePrevFocus } from "recoil/atoms"
-import styled from "styled-components"
-import { ComponentsDataType } from "types/guide"
+import { bgColor, bgShadow, colors, textColor } from "assets/style/variables";
+import styled from "styled-components";
+import { ComponentsDataType } from "types/guide";
 interface ComponentsListsPropsType {
-  data: ComponentsDataType[]
+  data: ComponentsDataType[];
+  clickEvent: ({id,target}:{id:string, target:HTMLElement}) => void;
 }
-export const ComponentsLists = ({data} : ComponentsListsPropsType) => {
-  const navigate = useNavigate();
-  const setPrevFocus = useSetRecoilState(statePrevFocus);
-
-  const handleMove = (id: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
-    setPrevFocus(e.currentTarget);  // 클릭한 버튼 저장
-    navigate(`view/${id}`);
+export const ComponentsLists = ({data, clickEvent} : ComponentsListsPropsType) => {
+  const handleMoveClick = (id: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
+    clickEvent({id, target: e.currentTarget});
   };
 
   return(
@@ -26,7 +20,8 @@ export const ComponentsLists = ({data} : ComponentsListsPropsType) => {
                 type="button"
                 className="item-preview"
                 title={`${item.title} 자세히 보기`}
-                onClick={handleMove(item.id)}
+                onClick={handleMoveClick(item.id)}
+                data-id={item.id}
               >
                 <span className="tag">{item.category}</span>
                 <p className="tit">{item.title}</p>

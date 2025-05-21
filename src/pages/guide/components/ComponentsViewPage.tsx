@@ -16,7 +16,6 @@ export const ComponentsViewPage = () => {
   const {id, detailsAni } = useOutletContext<ContextPropsType>();
   const [notCheck ,setNotCheck] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [prevFocusEl, setPrevFocus] = useRecoilState(statePrevFocus);
 
   const onNotFound= () => { // 경로 오류 및 일치하는 컴포넌트가 없는 경우
     setNotCheck(true)
@@ -27,10 +26,6 @@ export const ComponentsViewPage = () => {
     setIsClosing(true);
     setTimeout(() => {
       navigate('/guide/components');
-      if (prevFocusEl) {
-        prevFocusEl.focus();
-      }
-      setPrevFocus(null);
     }, 400);
   }
   useEffect(() => {
@@ -69,10 +64,15 @@ export const ComponentsViewPage = () => {
 
 const StyleWrap = styled.div`
   position:relative;
+  padding:30px;
   .title-heading{
     padding-right:30px;
   }
   .view-cont{
     margin-top:30px;
+  }
+  .close-btn {
+  top:30px;
+  right:30px;
   }
 `;
