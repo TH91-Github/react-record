@@ -27,7 +27,7 @@ export const componentsData: ComponentsDataType[] =[
   },
 ]
 
-// 컴포넌트 code 
+// 모달 code 
 export const modalData : ComponentsInfoType = {
   info:{
     id:'modal-info',
@@ -76,7 +76,7 @@ export const modalData : ComponentsInfoType = {
       $width?: number,
       $align?: 'center' | 'left' | 'right';
       children?:React.ReactNode;
-      onClose: () => void; // ✅ 필수
+      onClose: () => void;
     }
 
     export const Modal = ({
@@ -164,6 +164,58 @@ export const modalData : ComponentsInfoType = {
       height:100%;
       background: rgba(0,0,0,0.5);
     }
+    `
+    }
+  ]
+}
+
+// 캐러셀 code
+export const carouselData : ComponentsInfoType = {
+  info:{
+    id:'carousel-info',
+    title:'carousel 컴포넌트',
+    desc:'Swiper.js 기반 컴포넌트, swiper 옵션과 사용자 맞춤 추가 옵션을 사용하고 있습니다.'
+  },
+  hook:[
+  ],
+  link:[
+    {
+      id:'carousel-github',
+      title:'github',
+      link:'https://github.com/TH91-Github/react-record/blob/main/src/components/common/Carousel.tsx'
+    },
+    {
+      id:'modal-storybook',
+      title:'storybook',
+      link:null
+    }
+  ],
+  code:[
+    {
+      id:'code-use',
+      title:'사용',
+      lang:'typescript',
+      code:
+    `
+    <Carousel>
+      {data.map((item,idx))=><div key={idx}>{item}</div>}
+    </Carousel>
+    `,
+    },
+    {
+      id:'code-tsx',
+      title:'TSX',
+      lang:'typescript',
+      code:
+    `
+    `
+    },
+    {
+      id:'code-css',
+      title:'CSS',
+      lang:'css',
+      code:
+    `
     `
     }
   ]

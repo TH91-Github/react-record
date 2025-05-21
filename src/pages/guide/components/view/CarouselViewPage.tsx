@@ -1,13 +1,119 @@
-import styled from "styled-components"
+import { colors } from "assets/style/variables";
+import Carousel from "components/common/Carousel";
+import { carouselData } from "components/pages/guide/data/componentsData";
+import { ViewCode } from "components/pages/guide/ViewCode";
+import { ViewInfo } from "components/pages/guide/ViewInfo";
+import styled from "styled-components";
+import { SwiperProps } from "swiper/react";
+
+interface CarouselDemoType {
+  tit: string;
+  txt: string[];
+  lists: string[];
+  opt?:SwiperProps
+};
 
 export const CarouselViewPage = () => {
+  const demoData: CarouselDemoType[] = [
+    {
+      tit:'case-1',
+      txt:['기본으로 3개 보여주며 4개부터 캐러셀 정상 동작, 슬라이드 간 간격 10px'],
+      lists:['case1', 'case1', 'case1', 'case1'],
+    },
+    {
+      tit:'case-2',
+      txt:['slidesPerView: 4, loop:true, autoplay:true'],
+      lists:['case2', 'case2', 'case2', 'case2','case2', 'case2', 'case2', 'case2'],
+      opt:{
+        slidesPerView: 4,
+        loop:true,
+        autoplay:true
+      }
+    },
+    {
+      tit:'case-3',
+      txt:['slidesPerView: 1,'],
+      lists:['case3', 'case3', 'case3'],
+      opt:{
+        slidesPerView: 1,
+      }
+    },
+  ];
 
   return(
     <StyleWrap className="view-wrap carousel">
-      <p>현재 컴포넌트 설명 및 예시 코드 작성 중에 있습니다...🙇‍♂️</p>
+      <div className="view-item">
+        <ViewInfo data={carouselData} />
+      </div>
+      <div className="view-item">
+        <p className="tit">carousel 데모</p>
+        <div className="example-lists">
+          {
+            demoData.map((item, idx) => (
+              <div className={`example-item item-${idx}`} key={idx}>
+                <p className="tit">{item.tit}</p>
+                {
+                  item.txt.map((txtItem, txtcIdx)=>(
+                    <p className="txt" key={txtcIdx}>
+                      {txtItem}
+                    </p>
+                  )) 
+                }
+                <div className="demo-box">
+                  <Carousel
+                    carouselOpt={item.opt}
+                  >
+                    {item.lists.map((listItem, listIdx) => (
+                      <div className="demo-slide" key={listIdx}>
+                        <span>{listItem+'-'+(listIdx+1)}</span>
+                      </div>
+                    ))}
+                  </Carousel>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div className="view-item">
+        <ViewCode data={carouselData} />
+      </div>
     </StyleWrap>
   )
 }
 const StyleWrap = styled.div`
+  .view-item{
+    margin-top:30px;
+    padding-top:30px;
+    border-top:1px solid ${colors.lineColor};
+    .tit{ 
+      font-size: 18px;
+    }
+    &:first-child{
+      margin-top:0;
+      padding-top:0;
+      border-top:none;
+    }
+  }
+  .example-item {
+    margin-top:20px;
+    .tit{
 
+    }
+    .txt{
+      margin-top:10px;
+    }
+  }
+  .demo-box {
+    margin-top:10px;
+    padding:10px 0;
+    border:1px dotted ${colors.red};
+  }
+  .demo-slide{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:50px;
+    border:1px solid ${colors.mSlateBlue};
+  }
 `;

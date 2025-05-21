@@ -10,7 +10,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-size:16px;
     font-weight:500;
-    line-height:1.3;
+    line-height:1.5;
     color:${textColor.text};
   }
   img {

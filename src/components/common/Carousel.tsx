@@ -31,7 +31,7 @@ const DEFAULT_OPT: SwiperProps = {
 
 export default forwardRef<CarouselRefType, CarouselPropsType>(({
   children, 
-  customClass = 'carousel-wrap',
+  customClass = 'carousel',
   carouselOpt, 
   onCarousel, onChangeEvent
 }: CarouselPropsType, ref) => {
@@ -71,7 +71,7 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
   }));
 
   return(
-    <StyleWrap className={`${option.direction ==='vertical' ? 'vertical': ''}`}>
+    <StyleWrap className={`carousel-wrap ${option.direction ==='vertical' ? 'vertical': ''}`}>
       <Swiper
         ref={swiperRef}
         modules={[Navigation, Pagination, A11y, Autoplay, Virtual, Scrollbar, Mousewheel]}

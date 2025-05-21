@@ -23,14 +23,13 @@ const StyleWrap = styled.div`
       & > span {
         display:block;
         font-size:32px;
-        line-height:1.3;
+        line-height:40px;
       }
     }
     .desc {
       margin-top:20px;
       & > span{
         display:block;
-        line-height:1.5;
       }
     }
   }

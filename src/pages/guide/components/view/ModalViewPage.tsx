@@ -6,7 +6,7 @@ import { ViewInfo } from "components/pages/guide/ViewInfo";
 import { useState } from "react";
 import styled from "styled-components";
 
-interface DemoStateType {
+interface ModalDemoType {
   case1: boolean;
   case2: boolean;
   caseSub2: boolean;
@@ -14,14 +14,14 @@ interface DemoStateType {
 };
 
 export const ModalViewPage = () => {
-  const [demo, setDemo] = useState<DemoStateType>({
+  const [demo, setDemo] = useState<ModalDemoType>({
     case1:false,
     case2:false,
     caseSub2:false,
     case3:false,
   });
   
-  const handleModalClick = (key: keyof DemoStateType) => {
+  const handleModalClick = (key: keyof ModalDemoType) => {
     setDemo(prev => ({
       ...prev,
       [key]: !prev[key],
