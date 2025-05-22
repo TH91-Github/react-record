@@ -34,7 +34,7 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
   customClass = 'carousel',
   carouselOpt, 
   onCarousel, onChangeEvent
-}: CarouselPropsType, ref) => {
+}, ref) => {
   const swiperRef = useRef<SwiperRef | null>(null);
   const paginationRef = useRef<HTMLDivElement | null>(null);
   const prevBtnRef = useRef<HTMLButtonElement | null>(null);
@@ -56,6 +56,20 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
     onChangeEvent && onChangeEvent();
   }
 
+  const handleInit = (swiper:SwiperClass) => {
+    // pagination
+    if (swiper.params.pagination && typeof swiper.params.pagination === 'object') {
+      swiper.params.pagination.el = paginationRef.current;
+      swiper.params.pagination.clickable = (option.pagination && typeof option.pagination !== 'boolean' && option.pagination.clickable) ?? true;
+    }
+
+    // NavigationOptions 타입인 경우에만 
+    if (swiper.params.navigation && typeof swiper.params.navigation === "object") {
+      swiper.params.navigation.prevEl = prevBtnRef.current || undefined;
+      swiper.params.navigation.nextEl = nextBtnRef.current || undefined;
+    }
+  }
+  
   const handleOnSwiper = (e:SwiperClass) => {
     onCarousel && onCarousel();
   }
@@ -77,8 +91,10 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
         modules={[Navigation, Pagination, A11y, Autoplay, Virtual, Scrollbar, Mousewheel]}
         virtual={option.virtual ? { slides: React.Children.toArray(children) } : undefined}
         onSlideChange={handleChange}
+        onBeforeInit={handleInit}
         onSwiper={handleOnSwiper}
         {...option}
+        navigation={false} // navigation 예외
         className={customClass}
       >
         {React.Children.toArray(children).map((childEl, index) => (
