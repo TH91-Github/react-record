@@ -1,17 +1,18 @@
 // ✅ TestPage.jsx -> Parent Component
 
-import { Hljs } from "components/common/Hljs";
+import Carousel from "components/common/Carousel";
 export const TestPage = () => {
   return(
     <div className="test-wrap">
-      <Hljs 
-        code={`
-          function Test() {
-            console.log('Test')
-          }
-        `}
-      />
-      <textarea name="" id="" className="textarea-test"></textarea>
+      <Carousel carouselOpt={{navigation:true, pagination:true}}>
+        {
+          new Array(8).fill('').map((_, idx) => (
+            <div key={idx}>
+              {idx}
+            </div>
+          ))
+        }
+      </Carousel>
     </div>
   )
 }

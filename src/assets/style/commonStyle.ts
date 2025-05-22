@@ -17,6 +17,13 @@ export const commonStyle = `
   .color{
     color:${colors.mSlateBlue};
   }
+  .highlight{
+    padding:2px 5px;
+    border-radius:5px;
+    background:${bgColor.sideWite};
+    font-size:14px;
+    color:${colors.mSlateBlue};
+  }
   .blind{
     position:absolute;
     top:-9999px;

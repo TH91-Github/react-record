@@ -1,8 +1,8 @@
 import { textColor } from "assets/style/variables";
 import { ExternalLink } from "components/ui/ExternalLink";
-import styled from "styled-components"
+import { InnerHTML } from "components/ui/InnerHTML";
+import styled from "styled-components";
 import { ComponentsInfoType } from "types/guide";
-import { sanitizeHtml } from "utils/common";
 
 interface ViewInfoPropsType {
   data: ComponentsInfoType
@@ -13,7 +13,7 @@ export const ViewInfo = ({data}:ViewInfoPropsType) => {
     <StyleWrap className="info-box">
       <div className="info-item">
         <p className="tit">{info.title}</p>
-        <p className="desc" dangerouslySetInnerHTML={{__html:sanitizeHtml(info.desc)}} />
+        <InnerHTML tag="p" data={info.desc} customClass="desc" />
       </div>
       { hook.length > 0 && (
         <div className="info-item">

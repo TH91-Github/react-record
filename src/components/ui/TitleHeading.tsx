@@ -1,7 +1,7 @@
-import styled from "styled-components"
-import { TitlePoint } from "./TitlePoint";
+import styled from "styled-components";
 import { TitlePointPropsType } from "types/ui";
-import { sanitizeHtml } from "utils/common";
+import { InnerHTML } from "./InnerHTML";
+import { TitlePoint } from "./TitlePoint";
 
 interface TitleDescPropsType extends TitlePointPropsType{ 
   desc?: string | string[];
@@ -30,7 +30,9 @@ export const TitleHeading = ({
       {desc && (Array.isArray(desc) ? (
         <ul className="bullet-lists">
           {desc.map((item, index) => (
-            <li key={index} className="desc circle" ><span dangerouslySetInnerHTML={{__html:sanitizeHtml(item)}} /></li>
+            <li key={index} className="desc circle" >
+              <InnerHTML tag="span" data={item} />
+            </li>
           ))}
         </ul>
       ) : (

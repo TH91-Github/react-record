@@ -197,8 +197,14 @@ export const carouselData : ComponentsInfoType = {
       lang:'typescript',
       code:
     `
-    <Carousel>
-      {data.map((item,idx))=><div key={idx}>{item}</div>}
+    <Carousel
+      carouselOpt={{
+        옵션:true
+      }}
+    >
+      {data.map((slideItem,idx))=> (
+        <div key={idx}>{slideItem}</div> 
+      )}
     </Carousel>
     `,
     },

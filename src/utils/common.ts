@@ -26,5 +26,9 @@ export function escapeSanitizedHtml(str: string) {
 };
 // 🔹 안전하게 문자열 HTML 구조 처리 / Hook (memo) 필요 시 -> useSanitizeHtml 사용 
 export function sanitizeHtml(dataHTML: string, options?: Config) {
-  return DOMPurify.sanitize(dataHTML, options);
+  const html = dataHTML.replace(/className=/g, 'class=');
+  return DOMPurify.sanitize(html, {
+    ...options,
+    ALLOWED_ATTR: ['id', 'class', ...(options?.ALLOWED_ATTR || [])],
+  });
 }
