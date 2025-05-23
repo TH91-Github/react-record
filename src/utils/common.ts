@@ -6,6 +6,17 @@ export function isMobileSizeChk():boolean{
   const mediaQuery = `(max-width: ${breakpoints.mo - 1}px)`; 
   return window.matchMedia(mediaQuery).matches;
 }
+
+// 🔹 className 조건 처리
+export const cn = (...classNames: (string | false | undefined)[]) => {
+  const classSet = new Set(
+    classNames.flatMap((className) =>
+      typeof className === 'string' ? className.split(' ') : []
+    )
+  );
+  return [...classSet].join(' ');
+};
+
 // 🔹 복사, 카피 async/await 
 export async function copyClipboard (copyText: string):Promise<boolean> { 
   try {
