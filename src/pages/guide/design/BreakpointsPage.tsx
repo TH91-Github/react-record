@@ -5,17 +5,21 @@ import { TitlePoint } from "components/ui/TitlePoint";
 import styled from "styled-components";
 import { copyClipboard } from "utils/common";
 import ImgArrow from 'assets/images/svg/arrow.svg';
+import { stateAlert } from "recoil/atoms";
+import { useSetRecoilState } from "recoil";
 
 
 export const BreakpointsPage = () => {
   const {headData, bodyData} = breakpointsData;
+   const setAlert = useSetRecoilState(stateAlert);
 
   const handleClickCopy = async (e:string) => {
     const copySuccess = await copyClipboard(e);
-    // 👇 popup 컴포넌트 완료 후 교체
-    copySuccess 
-      ? console.log('성공') 
-      : console.log('실패') 
+    setAlert({
+      isActive: true,
+      title: e,
+      desc: copySuccess ? `복사를 성공했어요.`:'복사를 실패했어요.. 😢' ,
+    });
   };
   return (
     <StyleWrap>

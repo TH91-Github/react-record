@@ -3,11 +3,13 @@ import { useBodyScrolLock } from "hooks/common";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components"
+import { cn } from "utils/common";
 
 interface ModalPropsType {
   isDimmed?: boolean; // dimmed on/off EX: 2중 모달 시 
   isUnder?: boolean; // 2중 모달일 경우 딤드보다 아래로
   autoCloseSecond?: number; // 자동 닫기 시간초 
+  customClass?:string,
   $width?: number;
   $align?: 'center' | 'left' | 'right';
   children?:React.ReactNode;
@@ -17,7 +19,8 @@ export const Modal = ({
   isDimmed = true,
   isUnder,
   autoCloseSecond,
-  $width = 250,
+  customClass = 'modal',
+  $width = 300,
   $align = 'center',
   children,
   onClose
@@ -102,7 +105,11 @@ export const Modal = ({
   return (
     createPortal(
       <StyleWrap 
-        className={`modal-wrap ${isClosing?'modal-close':''}`}
+        className={cn(
+          'modal-wrap', 
+          customClass,
+          isClosing && 'modal-close',
+        )}
         $width={$width}
         $align={$align}
         $autoTime={(autoCloseS / 1000)}
@@ -146,29 +153,6 @@ const StyleWrap = styled.div<StyleWrapProps>`
   width:100svw;
   height:100svh;
   text-align: ${({$align}) => $align};
-  .modal-inner{
-    overflow:hidden;
-    position:absolute;
-    z-index:102;
-    top:50%;
-    left:50%;
-    width:${({$width}) => $width}px;
-    min-height:100px;
-    max-width:80%;
-    padding:30px;
-    border-radius:5px;
-    background: #fff;
-    box-shadow:${bgShadow.base};
-    transform: translate(-50%, -50%);
-    animation: fadeUpCenterAni .3s .1s ease both;
-    .close-btn {
-      top:10px;
-      right:10px;
-    }
-    &.under {
-      animation: fadeDownCenterAni .3s ease both;
-    }
-  }
   &.modal-close{
     pointer-events: none;
     .modal-inner{
@@ -177,6 +161,35 @@ const StyleWrap = styled.div<StyleWrapProps>`
     .dimmed {
       animation: fadeOutAni .2s ease both;
     }
+  }
+  .modal-inner{
+    overflow:hidden;
+    display:flex;
+    flex-direction: column;
+    position:absolute;
+    z-index:102;
+    top:50%;
+    left:50%;
+    width:${({$width}) => $width}px;
+    min-height:50px;
+    max-width:80%;
+    padding:30px;
+    border-radius:5px;
+    background: #fff;
+    box-shadow:${bgShadow.base};
+    transform: translate(-50%, -50%);
+    animation: fadeUpCenterAni .3s .1s ease both;
+    &.under {
+      animation: fadeDownCenterAni .3s ease both;
+    }
+  }
+  .modal-cont{
+    flex-grow:1;
+    position:relative;
+  }
+  .close-btn {
+    top:10px;
+    right:10px;
   }
   .timer-bar{
     display:block;

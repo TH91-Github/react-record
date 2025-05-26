@@ -13,7 +13,6 @@ export const InnerHTML = ({
   customClass = '',
   $display,
 }:InnerHTMLPropsType) => {
-  console.log(sanitizeHtml(data))
   return (
     <StyleWrap
        as={tag}

@@ -1,3 +1,5 @@
+import { useSetRecoilState } from "recoil";
+import { stateAlert } from "recoil/atoms";
 import styled from "styled-components";
 import { ButtonCaseType } from "types/guide";
 import { copyClipboard } from "utils/common";
@@ -7,13 +9,15 @@ interface ButtonCaseListsPropsType {
   category: string;
 }
 export const ButtonCaseLists = ({data, category}:ButtonCaseListsPropsType) =>{
+  const setAlert = useSetRecoilState(stateAlert);
 
   const handleClickCopy = async (e:string) => {
     const copySuccess = await copyClipboard(e);
-    // 👇 popup 컴포넌트 완료 후 교체
-    copySuccess 
-      ? console.log('성공') 
-      : console.log('실패') 
+    setAlert({
+      isActive: true,
+      title: e,
+      desc: copySuccess ? `복사를 성공했어요.`:'복사를 실패했어요.. 😢' ,
+    });
   };
   
   return (

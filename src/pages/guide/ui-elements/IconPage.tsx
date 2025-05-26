@@ -2,18 +2,22 @@ import { colors } from "assets/style/variables";
 import { iconData } from "components/pages/guide/data/uiData";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";
+import { useSetRecoilState } from "recoil";
+import { stateAlert } from "recoil/atoms";
 import styled from "styled-components";
 import { copyClipboard } from "utils/common";
 
 export const IconPage = () => {
   const {headData, bodyData} = iconData;
+   const setAlert = useSetRecoilState(stateAlert);
 
   const handleClickCopy = async (e:string) => {
     const copySuccess = await copyClipboard(e);
-    // 👇 popup 컴포넌트 완료 후 교체
-    copySuccess 
-      ? console.log('성공') 
-      : console.log('실패') 
+    setAlert({
+      isActive: true,
+      title: e,
+      desc: copySuccess ? `복사를 성공했어요.`:'복사를 실패했어요.. 😢' ,
+    });
   };
   return(
     <StyleWrap>

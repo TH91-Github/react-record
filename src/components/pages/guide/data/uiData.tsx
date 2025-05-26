@@ -14,7 +14,7 @@ export const iconData : IconDataType = {
   bodyData:[
     {
       id:'svg-jsx',
-      title:'svg 코드를 JSX 컴포넌트 형식으로 사용',
+      title:'svg 코드를 컴포넌트로 사용',
       desc:['파일 경로 : /src/assets/svg/', '사용 방법 : import { SvgName } from "assets/svg/Common"'],
       lists:[
         {

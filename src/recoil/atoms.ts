@@ -1,5 +1,6 @@
 import { colors } from 'assets/style/variables';
 import { atom } from 'recoil';
+import { AlertState } from 'types/recoil';
 
 //  📍recoil - UI 관련 값 사용
 
@@ -16,11 +17,14 @@ export const stateHeaderHeight = atom({
 });
 
 // alert 팝업 전역용
-export const stateAlert = atom({
+export const stateAlert = atom<AlertState>({
   key: 'alertModal',
   default: {
     isActive: false,
-    message:'메시지를 입력하세요.'
+    title:'타이틀 입력',
+    desc:'메시지를 입력하세요.',
+    autoCloseSecond: 0,
+    onClose: undefined,
   },
 });
 
