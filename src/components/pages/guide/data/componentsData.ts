@@ -197,11 +197,7 @@ export const carouselData : ComponentsInfoType = {
       lang:'typescript',
       code:
     `
-    <Carousel
-      carouselOpt={{
-        옵션:true
-      }}
-    >
+    <Carousel carouselOpt={{ 옵션:true}}>
       {data.map((slideItem,idx))=> (
         <div key={idx}>{slideItem}</div> 
       )}
@@ -214,6 +210,129 @@ export const carouselData : ComponentsInfoType = {
       lang:'typescript',
       code:
     `
+    interface CarouselPropsType {
+      children: React.ReactNode,
+      customClass?: string,
+      carouselOpt?: SwiperProps,
+      onCarousel?: () => void,
+      onChangeEvent?: () => void,
+    }
+    interface CarouselRefType {
+      getCarouselElement: () => SwiperRef | null,
+      carouselSlideTo: (e:number) => void,
+      carouselUpdate: () => void,
+    }
+
+    const DEFAULT_OPT: SwiperProps = {
+      slidesPerView: 3,
+      spaceBetween: 10,
+      observer:true,
+      observeParents:true,
+      virtual:false,
+    };
+
+    export default forwardRef<CarouselRefType, CarouselPropsType>(({
+      children, 
+      customClass = 'carousel',
+      carouselOpt, 
+      onCarousel, onChangeEvent
+    }, ref) => {
+      const swiperRef = useRef<SwiperRef | null>(null);
+      const paginationRef = useRef<HTMLDivElement | null>(null);
+      const prevBtnRef = useRef<HTMLButtonElement | null>(null);
+      const nextBtnRef = useRef<HTMLButtonElement | null>(null);
+      const [isPlaying, setIsPlaying] = useState(true); 
+      const option = useMemo(() => ({ ...DEFAULT_OPT, ...carouselOpt }), [carouselOpt]);
+
+      const handleAutoPlay = useCallback(() => {
+        ...
+      }, [isPlaying]);
+
+      const handleChange = (e:SwiperClass) => {
+        ...
+      }
+
+      const handleInit = (swiper:SwiperClass) => {
+        ...
+      }
+      
+      const handleOnSwiper = (e:SwiperClass) => {
+        ...
+      }
+
+      useImperativeHandle(ref, () => ({
+        getCarouselElement: () => swiperRef.current,
+        carouselSlideTo: (idx) =>{
+          swiperRef.current?.swiper.slideTo(idx)
+        },
+        carouselUpdate:()=>{
+          swiperRef.current?.swiper.update();
+        }
+      }));
+
+      return(
+        <StyleWrap 
+          className={cn('carousel-wrap', option.direction ==='vertical'&& 'vertical')}
+        >
+          <div className="carousel-inner">
+            <Swiper
+              ref={swiperRef}
+              modules={[Navigation, Pagination, A11y, Autoplay, Virtual, Scrollbar, Mousewheel]}
+              virtual={option.virtual ? { slides: React.Children.toArray(children) } : undefined}
+              onSwiper={handleOnSwiper}
+              onBeforeInit={handleInit}
+              onSlideChange={handleChange}
+              {...option}
+              pagination={false} // pagination 예외 onBeforeInit 재할당
+              navigation={false} // navigation 예외 onBeforeInit 재할당
+              className={customClass}
+            >
+              {React.Children.toArray(children).map((childEl, index) => (
+                <SwiperSlide key={index} className="carousel-item">
+                  {childEl}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            {(option.navigation || option.autoplay) && (
+              <div className="carousel-btns">
+                {option.navigation && (
+                  <>
+                    <button 
+                      ref={prevBtnRef}
+                      type="button"
+                      className="btn-prev">
+                      <span className="icon"><SvgArrow $fill={colors.mSlateBlue}/></span>
+                      <span className="blind">이전</span>
+                    </button>
+                    <button 
+                      ref={nextBtnRef}
+                      type="button"
+                      className="btn-next">
+                      <span className="icon"><SvgArrow $fill={colors.mSlateBlue}/></span>
+                      <span className="blind">다음</span>
+                    </button>
+                  </>
+                )}
+                {option.autoplay && (
+                  <div className="autoplay-btn">
+                    <button
+                      type="button"
+                      className={\`btn \${isPlaying?'stop':'play'}\`}
+                      onClick={handleAutoPlay}>
+                        <span>{isPlaying? '정지' : '재생'}</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+          {option.pagination && (
+            <div ref={paginationRef} className="carousel-pagination">
+            </div>
+          )}
+        </StyleWrap>
+      );
+    });
     `
     },
     {
@@ -222,6 +341,78 @@ export const carouselData : ComponentsInfoType = {
       lang:'css',
       code:
     `
+    overflow:hidden;
+    position:relative;
+    .carousel-inner{
+      position:relative;
+    }
+    &.vertical {
+      height:100%;
+      .swiper{ 
+        height:100%;
+      }
+    }
+    .carousel-pagination {
+      display:flex;
+      justify-content:center;
+      gap:5px;
+      position:relative;
+      width:100%;
+      margin-top:15px;
+      &.swiper-pagination-progressbar{
+        .swiper-pagination-progressbar-fill{
+          background:\${colors.mSlateBlue};
+        }
+      }
+      .swiper-pagination-bullet {
+        margin:0;
+        background:\${colors.gray};
+        opacity:0.7;
+      }
+      .swiper-pagination-bullet-active {
+        background: \${colors.mSlateBlue};
+        opacity:1;
+      }
+    }
+    
+    .carousel-btns{
+      position:absolute;
+      top:50%;
+      left:0;
+      width:100%;
+      & > button {
+        display:block;
+        position:absolute;
+        z-index:1;
+        top:50%;
+        width:30px;
+        height:30px;
+        transform: translateY(-50%);
+      }
+      .btn-prev {
+        left:0;
+        svg{
+          transition: stroke var(--transition)
+        }
+      }
+      .btn-next{
+        right:0;
+        .icon{
+          transform:scaleX(-1);
+        }
+      }
+      .swiper-button-lock {
+        display:none;
+      }
+      .swiper-button-disabled{
+        svg {
+          stroke: \${colors.gray};
+        }
+      }
+      .icon{
+        display:block;
+      }
+    }
     `
     }
   ]

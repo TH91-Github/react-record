@@ -18,25 +18,41 @@ export const CarouselViewPage = () => {
   const demoData: CarouselDemoType[] = [
     {
       tit:'case-1',
-      txt:'기본으로 3개 보여주며 4개부터 캐러셀 정상 동작, 슬라이드 간 간격 10px',
+      txt:'옵션 - x : 기본으로 3개 보여주며 4개부터 캐러셀 동작',
       lists:['case1', 'case1', 'case1', 'case1'],
     },
     {
       tit:'case-2',
-      txt:`캐러셀 설정 - <span className="highlight">slidesPerView</span>: 4, <span className="highlight">loop</span>:true, <span className="highlight">autoplay</span>:true`,
+      txt:`옵션 - <span className="highlight">slidesPerView</span>: 4, <span className="highlight">loop</span>:true, <span className="highlight">autoplay</span>:{delay: 2000}`,
       lists:['case2', 'case2', 'case2', 'case2','case2', 'case2', 'case2', 'case2'],
       opt:{
         slidesPerView: 4,
         loop:true,
-        autoplay:true
+        autoplay: {
+          delay: 2000,
+        }
       }
     },
     {
       tit:'case-3',
-      txt:'slidesPerView: 1,',
+      txt:'<span className="highlight">slidesPerView</span>: 1, <span className="highlight">pagination</span>: true,',
       lists:['case3', 'case3', 'case3'],
       opt:{
         slidesPerView: 1,
+        pagination:true,
+      }
+    },
+    {
+      tit:'case-4',
+      txt:`<span className="highlight">slidesPerView</span>: 1, <span className="highlight">pagination</span>:{clickable:true, type:'progressbar'}, <span className="highlight">navigation</span>: true,`,
+      lists:['case3', 'case3', 'case3'],
+      opt:{
+        slidesPerView: 1,
+        pagination:{
+          clickable:true,
+          type:'progressbar'
+        },
+        navigation:true, 
       }
     },
   ];
@@ -56,7 +72,7 @@ export const CarouselViewPage = () => {
                 <InnerHTML tag="p" data={item.txt}/>
                 <div className="demo-box">
                   <Carousel
-                    
+                    carouselOpt={item.opt}
                   >
                     {item.lists.map((listItem, listIdx) => (
                       <div className="demo-slide" key={listIdx}>

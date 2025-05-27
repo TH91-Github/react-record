@@ -18,6 +18,7 @@ export const ColorChip = ({data, keyValue}:ColorChipPropsType) => {
       isActive: true,
       title: e,
       desc: copySuccess ? `복사를 성공했어요.`:'복사를 실패했어요.. 😢' ,
+      autoCloseSecond:2000,
     });
   };
 

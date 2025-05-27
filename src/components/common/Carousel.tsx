@@ -7,6 +7,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/virtual';
 import styled from 'styled-components';
+import { cn } from 'utils/common';
+import { colors } from 'assets/style/variables';
+import { SvgArrow } from 'assets/svg/Common';
 
 interface CarouselPropsType {
   children: React.ReactNode,
@@ -60,7 +63,13 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
     // pagination
     if (swiper.params.pagination && typeof swiper.params.pagination === 'object') {
       swiper.params.pagination.el = paginationRef.current;
-      swiper.params.pagination.clickable = (option.pagination && typeof option.pagination !== 'boolean' && option.pagination.clickable) ?? true;
+
+      if(option.pagination && typeof option.pagination !== 'boolean'){
+        swiper.params.pagination.clickable = option.pagination.clickable;
+        swiper.params.pagination.type = option.pagination.type;
+      }else if(option.pagination && typeof option.pagination === 'boolean'){
+        swiper.params.pagination.clickable = true
+      }
     }
 
     // NavigationOptions 타입인 경우에만 
@@ -85,58 +94,63 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
   }));
 
   return(
-    <StyleWrap className={`carousel-wrap ${option.direction ==='vertical' ? 'vertical': ''}`}>
-      <Swiper
-        ref={swiperRef}
-        modules={[Navigation, Pagination, A11y, Autoplay, Virtual, Scrollbar, Mousewheel]}
-        virtual={option.virtual ? { slides: React.Children.toArray(children) } : undefined}
-        onSlideChange={handleChange}
-        onBeforeInit={handleInit}
-        onSwiper={handleOnSwiper}
-        {...option}
-        navigation={false} // navigation 예외
-        className={customClass}
-      >
-        {React.Children.toArray(children).map((childEl, index) => (
-          <SwiperSlide key={index} className="carousel-item">
-            {childEl}
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <StyleWrap 
+      className={cn('carousel-wrap', option.direction ==='vertical'&& 'vertical')}
+    >
+      <div className="carousel-inner">
+        <Swiper
+          ref={swiperRef}
+          modules={[Navigation, Pagination, A11y, Autoplay, Virtual, Scrollbar, Mousewheel]}
+          virtual={option.virtual ? { slides: React.Children.toArray(children) } : undefined}
+          onSwiper={handleOnSwiper}
+          onBeforeInit={handleInit}
+          onSlideChange={handleChange}
+          {...option}
+          pagination={false} // pagination 예외 onBeforeInit 재할당
+          navigation={false} // navigation 예외 onBeforeInit 재할당
+          className={customClass}
+        >
+          {React.Children.toArray(children).map((childEl, index) => (
+            <SwiperSlide key={index} className="carousel-item">
+              {childEl}
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        {(option.navigation || option.autoplay) && (
+          <div className="carousel-btns">
+            {option.navigation && (
+              <>
+                <button 
+                  ref={prevBtnRef}
+                  type="button"
+                  className="btn-prev">
+                  <span className="icon"><SvgArrow $fill={colors.mSlateBlue}/></span>
+                  <span className="blind">이전</span>
+                </button>
+                <button 
+                  ref={nextBtnRef}
+                  type="button"
+                  className="btn-next">
+                  <span className="icon"><SvgArrow $fill={colors.mSlateBlue}/></span>
+                  <span className="blind">다음</span>
+                </button>
+              </>
+            )}
+            {option.autoplay && (
+              <div className="autoplay-btn">
+                <button
+                  type="button"
+                  className={`btn ${isPlaying?'stop':'play'}`}
+                  onClick={handleAutoPlay}>
+                    <span>{isPlaying? '정지' : '재생'}</span>
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
       {option.pagination && (
         <div ref={paginationRef} className="carousel-pagination">
-        </div>
-      )}
-      {(option.navigation || option.autoplay) && (
-        <div className="carousel-btns">
-          {option.navigation && (
-            <>
-              <button 
-                ref={prevBtnRef}
-                type="button"
-                className="btn-prev">
-                <span className="icon">{'<'}</span>
-                <span className="blind">이전</span>
-              </button>
-              <button 
-                ref={nextBtnRef}
-                type="button"
-                className="btn-next">
-                <span className="icon">{'>'}</span>
-                <span className="blind">다음</span>
-              </button>
-            </>
-          )}
-          {option.autoplay && (
-            <div className="autoplay-btn">
-              <button
-                type="button"
-                className={`btn ${isPlaying?'stop':'play'}`}
-                onClick={handleAutoPlay}>
-                  <span>{isPlaying? '정지' : '재생'}</span>
-              </button>
-            </div>
-          )}
         </div>
       )}
     </StyleWrap>
@@ -144,11 +158,76 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
 });
 
 const StyleWrap = styled.div`
+  overflow:hidden;
   position:relative;
+  .carousel-inner{
+    position:relative;
+  }
   &.vertical {
     height:100%;
     .swiper{ 
       height:100%;
+    }
+  }
+  .carousel-pagination {
+    display:flex;
+    justify-content:center;
+    gap:5px;
+    position:relative;
+    width:100%;
+    margin-top:15px;
+    &.swiper-pagination-progressbar{
+      .swiper-pagination-progressbar-fill{
+        background:${colors.mSlateBlue};
+      }
+    }
+    .swiper-pagination-bullet {
+      margin:0;
+      background:${colors.gray};
+      opacity:0.7;
+    }
+    .swiper-pagination-bullet-active {
+      background: ${colors.mSlateBlue};
+      opacity:1;
+    }
+  }
+
+  .carousel-btns{
+    position:absolute;
+    top:50%;
+    left:0;
+    width:100%;
+    & > button {
+      display:block;
+      position:absolute;
+      z-index:1;
+      top:50%;
+      width:30px;
+      height:30px;
+      transform: translateY(-50%);
+    }
+    .btn-prev {
+      left:0;
+      svg{
+        transition: stroke var(--transition)
+      }
+    }
+    .btn-next{
+      right:0;
+      .icon{
+        transform:scaleX(-1);
+      }
+    }
+    .swiper-button-lock {
+      display:none;
+    }
+    .swiper-button-disabled{
+      svg {
+        stroke: ${colors.gray};
+      }
+    }
+    .icon{
+      display:block;
     }
   }
 `;
