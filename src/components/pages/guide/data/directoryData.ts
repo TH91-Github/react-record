@@ -30,6 +30,12 @@ export const directoryData  = [
             desc:'글로벌 스타일, 스타일변수(Variable)',
           },
           {
+            id:'assets-icons',
+            title:'/icons',
+            type:'folder',
+            desc:'react-icons에서 개별 import 후 export로 관리',
+          },
+          {
             id:'assets-svg',
             title:'/svg',
             type:'folder',

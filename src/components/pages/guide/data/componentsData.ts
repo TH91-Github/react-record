@@ -210,19 +210,6 @@ export const carouselData : ComponentsInfoType = {
       lang:'typescript',
       code:
     `
-    interface CarouselPropsType {
-      children: React.ReactNode,
-      customClass?: string,
-      carouselOpt?: SwiperProps,
-      onCarousel?: () => void,
-      onChangeEvent?: () => void,
-    }
-    interface CarouselRefType {
-      getCarouselElement: () => SwiperRef | null,
-      carouselSlideTo: (e:number) => void,
-      carouselUpdate: () => void,
-    }
-
     const DEFAULT_OPT: SwiperProps = {
       slidesPerView: 3,
       spaceBetween: 10,

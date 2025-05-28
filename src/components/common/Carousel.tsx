@@ -193,10 +193,7 @@ const StyleWrap = styled.div`
   }
 
   .carousel-btns{
-    position:absolute;
-    top:50%;
-    left:0;
-    width:100%;
+
     & > button {
       display:block;
       position:absolute;

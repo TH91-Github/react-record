@@ -40,6 +40,20 @@ export function sanitizeHtml(dataHTML: string, options?: Config) {
   const html = dataHTML.replace(/className=/g, 'class=');
   return DOMPurify.sanitize(html, {
     ...options,
-    ALLOWED_ATTR: ['id', 'class', ...(options?.ALLOWED_ATTR || [])],
+    ALLOWED_TAGS: ['a', 'span', 'div', 'p', 'br', 'strong', 'em', ...(options?.ALLOWED_TAGS || [])],
+    ALLOWED_ATTR: [
+      'id', 
+      'class',
+      'href',
+      'target',
+      'rel',
+      ...(options?.ALLOWED_ATTR || [])
+    ],
+    // 추가 보안 설정
+    ALLOWED_URI_REGEXP: /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp):|[^a-z]|[a-z+.-]+(?:[^a-z+.:]|$))/i,
+    SANITIZE_DOM: true,
+    SAFE_FOR_TEMPLATES: true,
+    FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onfocus', 'onmouseenter', 'onmouseleave'],
+    ALLOW_DATA_ATTR: false,
   });
 }

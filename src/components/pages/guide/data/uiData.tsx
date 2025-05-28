@@ -11,7 +11,20 @@ export const iconData : IconDataType = {
       '사용 목적에 따라 SVG(JSX컴포넌트) 또는 이미지(file) 형태로 사용'
     ]
   },
+  // href="https://react-icons.github.io/react-icons/" target="_blank" rel="noopener noreferrer"
   bodyData:[
+    {
+      id:'react-icons',
+      title:'React-icons 라이브러리',
+      desc:[
+        '파일 경로 : /src/assets/icons/icons.ts', 
+        '사용 방법 : 아이콘은 react-icons에서 개별 import한 후, icons/index.js처럼 한 곳에서 export로 관리', 
+        '<a href="https://react-icons.github.io/react-icons/" target="_blank" rel="noopener noreferrer" title="데모 사이트">🔗 URL</a>'
+      ],
+      lists:[
+        
+      ]
+    },
     {
       id:'svg-jsx',
       title:'svg 코드를 컴포넌트로 사용',

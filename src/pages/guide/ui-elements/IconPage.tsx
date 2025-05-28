@@ -1,5 +1,6 @@
 import { colors } from "assets/style/variables";
 import { iconData } from "components/pages/guide/data/uiData";
+import { InnerHTML } from "components/ui/InnerHTML";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";
 import { useSetRecoilState } from "recoil";
@@ -42,7 +43,13 @@ export const IconPage = () => {
                 $fontSize={20}
               />
               {item.desc?.map((descItem, descIdx) => (
-                <p key={descIdx} className="desc">{descItem}</p>
+                <InnerHTML 
+                  tag="p" 
+                  data={descItem}
+                  customClass="desc" 
+                  $display="block"
+                  key={descIdx}
+                />
               ))}
               <ul className="icon-lists">
                 {item.lists.map((iconItem, iconIdx) => {
@@ -60,7 +67,7 @@ export const IconPage = () => {
                           {/* svg 컴포넌트 */}
                           {Icon && <Icon />}
                           {/* svg 이미지 */}
-                          {ImgSvg && <img src={ImgSvg} />}
+                          {ImgSvg && <img src={ImgSvg} alt={iconItem.title} />}
                           {/* css 아이콘 */}
                           {CssIcon && CssIcon}
                         </span>
