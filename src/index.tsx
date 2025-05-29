@@ -4,7 +4,7 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
 import { router } from 'routes/Router';
 import { Provider } from 'react-redux';
-import { store } from './reducers/store';
+import { store } from './redux/store';
 import RecoilStore from 'recoil/recoilStore';
 import './index.css';
 
