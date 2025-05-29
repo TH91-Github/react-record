@@ -17,9 +17,9 @@ export const HeaderNav = () => {
           navLists.map((navItem, navIdx) => (
             <li key={'nav' + navIdx}>
               {/* 임시 - guide main 만들기전 기본 페이지 */}
-              <NavLink to={'/guide/principles/naming-conventions'} className="nav-item">
+              {/* <NavLink to={'/guide/principles/naming-conventions'} className="nav-item">
                 <span>{navItem.title}</span>
-              </NavLink>
+              </NavLink> */}
               {/* <NavLink to={navItem.path ?? '/'} className="nav-item">
                 <span>{navItem.title}</span>
               </NavLink> */}
@@ -31,6 +31,7 @@ export const HeaderNav = () => {
   )
 }
 const StyleWrap = styled.nav`
+  flex-grow:1;
   & > ul {
     display:flex;
     align-items:center;

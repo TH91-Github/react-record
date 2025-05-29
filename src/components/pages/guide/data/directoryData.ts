@@ -47,7 +47,13 @@ export const directoryData  = [
             id:'components-common',
             title:'/common',
             type:'folder',
-            desc:'기능 요소가 있는 공통 컴포넌트',
+            desc:'공통으로 자주 사용되는 컴포넌트 모음',
+          },
+          {
+            id:'components-features',
+            title:'/features',
+            type:'folder',
+            desc:'도메인 개념이 있으며 독립적 페이지나 흐름 구성 가능, 로직 + UI + 상태 관리 포함 가능',
           },
           {
             id:'components-layout',
@@ -59,7 +65,7 @@ export const directoryData  = [
             id:'components-modules',
             title:'/modules',
             type:'folder',
-            desc:'재사용 가능하고 2개 이상의 컴포넌트 결합된 컴포넌트',
+            desc:'공통으로 자주 재사용하고 2개 이상의 컴포넌트 결합된 컴포넌트',
           },
           {
             id:'components-pages',
@@ -72,7 +78,13 @@ export const directoryData  = [
             title:'/ui',
             type:'folder',
             desc:'UI 컴포넌트 기능은 크게 없는 단순한 UI 컴포넌트, 스타일 컴포넌트',
-          }
+          },
+          {
+            id:'components-widgets',
+            title:'/widgets',
+            type:'folder',
+            desc:'독립적 사용 가능하지만 보조 기능 느낌, 간단한 UI 조작 + 약간의 로직 정도',
+          },
         ]
       },
       {

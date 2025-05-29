@@ -1,6 +1,8 @@
 import { bgOpacity, breakpoints } from "assets/style/variables";
 import { Logo } from "components/ui/Logo";
 import styled from "styled-components";
+import { UtilNav } from "./UtilNav";
+import { HeaderNav } from "./HeaderNav";
 
 export const HeaderLayout = () => {
   // full-layout : full(1920) 사이즈 page일 경우에 사용. 
@@ -8,8 +10,8 @@ export const HeaderLayout = () => {
     <StyleWrap id="header" className={`header ${true ? 'full-layout': ''}`}>
       <div className="header-inner">
         <Logo />
-        {/* 임시 - 가이드 완료 후 재정비 */}
-        {/* <HeaderNav /> */}
+        <HeaderNav />
+        <UtilNav />
       </div>
     </StyleWrap>
   )
