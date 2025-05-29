@@ -30,7 +30,7 @@ export const iconData : IconDataType = {
           category: 'icon',
           desc:['유저','user',''],
           code: 'IconUser',
-          iconElement: IconUser,
+          // iconElement: IconUser,
         },
         {
           id:'icon-logout',
@@ -38,7 +38,7 @@ export const iconData : IconDataType = {
           category: 'icons',
           desc:['로그아웃','logout'],
           code: 'IconLogout',
-          iconElement: IconLogout,
+          // iconElement: IconLogout,
         },
         {
           id:'icon-user',
@@ -46,7 +46,7 @@ export const iconData : IconDataType = {
           category: 'icon',
           desc:['북마크','즐겨찾기','Bookmark'],
           code: 'IconBookmark',
-          iconElement: IconBookmark,
+          // iconElement: IconBookmark,
         },
       ]
     },
