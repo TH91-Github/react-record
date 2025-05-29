@@ -39,10 +39,6 @@ export const GlobalStyles = createGlobalStyle`
     border:1px solid #dbdbdb;
     transition: none;
   }
-  svg {
-    width:100%;
-    height:100%;
-  }
   ${commonStyle}
   ${iconStyle}
   ${buttonStyle}

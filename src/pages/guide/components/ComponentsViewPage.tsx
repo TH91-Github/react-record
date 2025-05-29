@@ -53,7 +53,7 @@ export const ComponentsViewPage = () => {
         <LoadView id={id} onNotFound={onNotFound}/>
       </div>
       <button 
-        className="close-btn"
+        className="icon-close"
         onClick={handleClosedClick}
       >
         <span>닫기</span>
@@ -71,7 +71,7 @@ const StyleWrap = styled.div`
   .view-cont{
     margin-top:30px;
   }
-  .close-btn {
+  .icon-close {
   top:30px;
   right:30px;
   }

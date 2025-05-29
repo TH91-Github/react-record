@@ -47,6 +47,7 @@ export interface IconDataType {  // Icon Data Type
       desc?: string[];
       code: string;
       fill?: boolean; // fill 컬러 변경
+      iconElement?:React.FC;
       svgElement?: React.FC<SvgPropsType>;
       classElement?: React.ReactNode;
       path?:string;

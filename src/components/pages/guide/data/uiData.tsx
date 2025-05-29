@@ -2,6 +2,7 @@ import { SvgTistory } from "assets/svg/BrandLogo";
 import { SvgArrow, SvgBook, SvgClipboard, SvgCode, SvgComponent, SvgCube, SvgDesign, SvgFolder, SvgPuzzle, SvgRectangleStack, SvgSearch, SvgSetting, SvgSquareStack } from "assets/svg/Common";
 import { ButtonDataType, IconDataType } from "types/guide";
 import ImgArrow from 'assets/images/svg/arrow.svg';
+import { IconBookmark, IconLogout, IconUser } from "assets/svg/icons";
 
 export const iconData : IconDataType = {
   headData:{
@@ -11,24 +12,52 @@ export const iconData : IconDataType = {
       '사용 목적에 따라 SVG(JSX컴포넌트) 또는 이미지(file) 형태로 사용'
     ]
   },
-  // href="https://react-icons.github.io/react-icons/" target="_blank" rel="noopener noreferrer"
   bodyData:[
     {
       id:'react-icons',
       title:'React-icons 라이브러리',
       desc:[
-        '파일 경로 : /src/assets/icons/icons.ts', 
+        '파일 경로 : /src/assets/svg/icons.ts', 
         '사용 방법 : 아이콘은 react-icons에서 개별 import한 후, icons/index.js처럼 한 곳에서 export로 관리', 
-        '<a href="https://react-icons.github.io/react-icons/" target="_blank" rel="noopener noreferrer" title="데모 사이트">🔗 URL</a>'
+        '네이밍 : react-icons 라이브러리 아이콘 네이밍은 IconName 사용',
+        '<a href="https://react-icons.github.io/react-icons/" target="_blank" rel="noopener noreferrer" title="데모 사이트">🔗 React-icons URL</a>',
+        '<a href="https://github.com/react-icons/react-icons" target="_blank" rel="noopener noreferrer" title="공식 github">🔗 github</a>',
       ],
       lists:[
-        
+        {
+          id:'icon-user',
+          title:'user',
+          category: 'icon',
+          desc:['유저','user',''],
+          code: 'IconUser',
+          iconElement: IconUser,
+        },
+        {
+          id:'icon-logout',
+          title:'logout',
+          category: 'icons',
+          desc:['로그아웃','logout'],
+          code: 'IconLogout',
+          iconElement: IconLogout,
+        },
+        {
+          id:'icon-user',
+          title:'bookmark',
+          category: 'icon',
+          desc:['북마크','즐겨찾기','Bookmark'],
+          code: 'IconBookmark',
+          iconElement: IconBookmark,
+        },
       ]
     },
     {
       id:'svg-jsx',
       title:'svg 코드를 컴포넌트로 사용',
-      desc:['파일 경로 : /src/assets/svg/', '사용 방법 : import { SvgName } from "assets/svg/Common"'],
+      desc:[
+        '파일 경로 : /src/assets/svg/', 
+        '사용 방법 : import { SvgName } from "assets/svg/Common"',
+        '네이밍 : svg 직접 등록하는 경우 SvgName 사용'
+      ],
       lists:[
         {
           id:'svg-jsx-search',
@@ -150,11 +179,15 @@ export const iconData : IconDataType = {
     },
     {
       id:'svg-img',
-      title:'svg 확장자로 img와 동일하게 사용 및 관리',
-      desc:['파일 경로 : /src/assets/images/svg/', `사용 방법: import 별칭 from 'assets/images/svg/파일이름.svg'`],
+      title:'svg 확장자로 img와 동일하게 사용',
+      desc:[
+        '파일 경로 : /src/assets/images/svg/', 
+        `사용 방법: import 별칭 from 'assets/images/svg/파일이름.svg'`,
+        '네이밍 : .svg 확장자로 된 svg 아이콘은 ImgName 사용'
+      ],
       lists:[
         {
-          id:'svg-jsx-tistory',
+          id:'svg-img-arrow',
           title:'Arrow',
           category:'images',
           desc:['이미지','svg file','svg 이미지','화살표','arrow'],
@@ -165,16 +198,20 @@ export const iconData : IconDataType = {
     },
     {
       id:'css-icon',
-      title:'css로 만들어진 Icon',
-      desc:['파일 경로 : /src/assets/style/ui/iconStyle.', `사용 방법: class 추가 사용용`],
+      title:'css Icon',
+      desc:[
+        '파일 경로 : /src/assets/style/ui/iconStyle.', 
+        `사용 방법: class 추가 사용`,
+        '네이밍 : css를 사용하여 만들어진 아이콘 icon-name 사용'
+      ],
       lists:[
         {
-          id:'close-btn',
+          id:'icon-close',
           title:'닫기 X',
           category:'css',
           desc:['닫기', 'close', '닫기 X','arrow-closed', 'X 아이콘'],
-          code:`close-btn`,
-          classElement:(<span className="close-btn css-icon"><span>닫기</span></span>),
+          code:`icon-close`,
+          classElement:(<span className="icon-close"><span>닫기</span></span>),
         }
       ]
     }

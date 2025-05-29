@@ -53,7 +53,8 @@ export const IconPage = () => {
               ))}
               <ul className="icon-lists">
                 {item.lists.map((iconItem, iconIdx) => {
-                  const Icon = iconItem?.svgElement ?? null;
+                  const Icon = iconItem?.iconElement ?? null;
+                  const SvgIcon = iconItem?.svgElement ?? null;
                   const ImgSvg = iconItem?.path ?? null;
                   const CssIcon = iconItem?.classElement ?? null;
                   return (
@@ -61,11 +62,13 @@ export const IconPage = () => {
                       <button 
                         type="button"
                         className="icon-btn"
-                        title={`${Icon ? iconItem.title : `import ${iconItem.title}`} 복사하기`}
-                        onClick={() => handleClickCopy(`${Icon ? `<${iconItem.code} />`: iconItem.code}`)}>
+                        title={`${iconItem.title} 복사하기`}
+                        onClick={() => handleClickCopy(`${iconItem.code}`)}>
                         <span className="icon">
-                          {/* svg 컴포넌트 */}
+                          {/* react-icon 라이브러리 icon */}
                           {Icon && <Icon />}
+                          {/* svg 컴포넌트 */}
+                          {SvgIcon && <SvgIcon />}
                           {/* svg 이미지 */}
                           {ImgSvg && <img src={ImgSvg} alt={iconItem.title} />}
                           {/* css 아이콘 */}
@@ -138,7 +141,7 @@ const StyleWrap = styled.div`
     font-size:12px;
     transition: color var(--transition);
   }
-  .css-icon{
+  .icon-close {
     position:relative;
   }
 `;

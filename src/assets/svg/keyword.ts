@@ -2,6 +2,19 @@
 // 검색 키워드
 export const IconKeyword = [
   {
+    code:'IconUser',
+    keyword:['유저', '로그인', 'user']
+  },
+  {
+    code:'IconLogout',
+    keyword:['유저', '로그아웃', 'logout']
+  },
+  {
+    code:'IconBookmark',
+    keyword:['북마크', 'Bookmark', '즐겨찾기']
+  },
+  // svg common
+  {
     code:'SvgSearch',
     keyword:['검색', 'magnifying-glass', 'search'],
   },

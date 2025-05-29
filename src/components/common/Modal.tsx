@@ -124,7 +124,7 @@ export const Modal = ({
           </div>
           <button 
             type="button" 
-            className="close-btn"
+            className="icon-close"
             onClick={handleCloseClick}
           >
             <span>닫기</span>
@@ -187,7 +187,7 @@ const StyleWrap = styled.div<StyleWrapProps>`
     flex-grow:1;
     position:relative;
   }
-  .close-btn {
+  .icon-close {
     top:10px;
     right:10px;
   }

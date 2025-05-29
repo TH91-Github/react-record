@@ -143,7 +143,7 @@ export const modalData : ComponentsInfoType = {
       background: #fff;
       box-shadow: rgba(17,19,32,0.2) 1px 1px 6px;
       transform: translate(-50%, -50%);
-      .close-btn {
+      .icon-close {
         top:10px;
         right:10px;
       }

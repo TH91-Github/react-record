@@ -1,7 +1,7 @@
 import { colors } from "../variables";
 
 export const iconStyle = `
-  .close-btn {
+  .icon-close {
     overflow:hidden;
     display:inline-block;
     position:absolute;
