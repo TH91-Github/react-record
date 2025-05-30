@@ -1,16 +1,30 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { NavLink } from "react-router-dom";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { stateDevMode } from "recoil/atoms";
 import { routerList } from "routes/RouterList";
 import styled from "styled-components"
 
 // Header Nav 
+const managerViewSecret = JSON.parse(process.env.REACT_APP_MANAGER_VIEW || "[]");
 export const HeaderNav = () => {
+  const hostname = window.location.hostname;
+  const devCheck = useMemo(() => managerViewSecret.includes(hostname), [hostname]);
+  const setDevMode = useSetRecoilState(stateDevMode);
 
-  const navLists = useMemo(()=>{
-    return routerList.filter((routerItem) => routerItem.path);
-  },[])
+  const navLists = useMemo(() => {
+    return routerList.filter((routerItem) => {
+      if (!routerItem.path) return false;
+      if (!devCheck && routerItem.view === false) return false;
+      return true;
+    });
+  }, [devCheck]);
 
-  return (
+  useEffect(() => {
+    setDevMode(devCheck);
+  }, [devCheck, setDevMode]);
+  
+  return ( 
     <StyleWrap className="nav">
       <ul>
         {
@@ -20,9 +34,9 @@ export const HeaderNav = () => {
               {/* <NavLink to={'/guide/principles/naming-conventions'} className="nav-item">
                 <span>{navItem.title}</span>
               </NavLink> */}
-              {/* <NavLink to={navItem.path ?? '/'} className="nav-item">
+              <NavLink to={navItem.path ?? '/'} className="nav-item">
                 <span>{navItem.title}</span>
-              </NavLink> */}
+              </NavLink>
             </li>
           ))
         }

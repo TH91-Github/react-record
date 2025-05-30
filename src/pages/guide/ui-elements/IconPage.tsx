@@ -10,7 +10,7 @@ import { copyClipboard } from "utils/common";
 
 export const IconPage = () => {
   const {headData, bodyData} = iconData;
-   const setAlert = useSetRecoilState(stateAlert);
+  const setAlert = useSetRecoilState(stateAlert);
 
   const handleClickCopy = async (e:string) => {
     const copySuccess = await copyClipboard(e);

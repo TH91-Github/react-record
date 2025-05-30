@@ -13,6 +13,7 @@ export const routerList = [
     id:'ComponentGuide',
     path: "guide",
     title:'📔 가이드',
+    view: false, // 개발 & 관리자 노출 전용
     element: <GuidePage />,
     children: [
       ...GUIDE_LIST
@@ -22,6 +23,7 @@ export const routerList = [
     id:'Test',
     path:'test',
     title:'테스트',
+    view: false,
     element: <TestPage />
   }
 ];

@@ -1,6 +1,8 @@
 // ✅ TestPage.jsx -> Parent Component
+import { IconBookmark } from 'assets/svg/icons';
 import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { FaBookmark } from 'react-icons/fa6';
 import styled from 'styled-components';
 
 type ToastItem = {
@@ -38,7 +40,6 @@ export const TestPage = () => {
   };
   return (
     <StyleWrap>
-      
       <button onClick={addToast}>복사</button>
       {createPortal(
         <div className="toast-container">
