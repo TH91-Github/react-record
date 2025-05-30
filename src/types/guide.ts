@@ -1,5 +1,6 @@
 import { SvgPropsType } from "assets/svg/Common";
 import { ColorChipListsType } from "./ui";
+import { IconType } from "react-icons";
 
 interface headDataType {
   title:string,
@@ -47,7 +48,7 @@ export interface IconDataType {  // Icon Data Type
       desc?: string[];
       code: string;
       fill?: boolean; // fill 컬러 변경
-      // iconElement?:React.ReactNode;
+      iconElement?: IconType;
       svgElement?: React.FC<SvgPropsType>;
       classElement?: React.ReactNode;
       path?:string;

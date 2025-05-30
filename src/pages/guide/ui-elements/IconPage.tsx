@@ -53,7 +53,7 @@ export const IconPage = () => {
               ))}
               <ul className="icon-lists">
                 {item.lists.map((iconItem, iconIdx) => {
-                  // const Icon = iconItem?.iconElement ?? null;
+                  const Icon = iconItem?.iconElement ?? null;
                   const SvgIcon = iconItem?.svgElement ?? null;
                   const ImgSvg = iconItem?.path ?? null;
                   const CssIcon = iconItem?.classElement ?? null;
@@ -66,7 +66,7 @@ export const IconPage = () => {
                         onClick={() => handleClickCopy(`${iconItem.code}`)}>
                         <span className="icon">
                           {/* react-icon 라이브러리 icon */}
-                          {/* {Icon && <Icon />} */}
+                          {Icon && <Icon />}
                           {/* svg 컴포넌트 */}
                           {SvgIcon && <SvgIcon />}
                           {/* svg 이미지 */}
