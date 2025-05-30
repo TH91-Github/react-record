@@ -4,7 +4,7 @@ import { ComponentsLists } from "components/pages/guide/component/ComponentsList
 import { componentsData } from "components/pages/guide/data/componentsData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
 import { TitleHeading } from "components/ui/TitleHeading";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Outlet, useNavigate, useNavigationType, useParams } from "react-router-dom";
 import styled from "styled-components";
 

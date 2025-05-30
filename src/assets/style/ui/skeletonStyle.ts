@@ -1,4 +1,4 @@
-import { colors, textColor } from "../variables";
+import { textColor } from "../variables";
 
 
 export const skeletonStyle = `

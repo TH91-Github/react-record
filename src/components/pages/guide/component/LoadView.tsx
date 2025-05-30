@@ -3,6 +3,7 @@ import { useEffect, useMemo } from "react";
 import { NotViewComponent } from "./NotViewComponent";
 import { TabButtonViewPage } from "pages/guide/components/view/TabButtonViewPage";
 import { CarouselViewPage } from "pages/guide/components/view/CarouselViewPage";
+import { ToastViewPage } from "pages/guide/components/view/ToastViewPage";
 
 interface LoadViewPropsType {
   id: string;
@@ -13,6 +14,7 @@ export const LoadView = ({id, onNotFound}:LoadViewPropsType) => {
   // ✅ 일치하는 컴포넌트 로드 
   const componentLoad: { [key: string]: React.ReactNode } = useMemo(() => ({
     modal: <ModalViewPage />,
+    toast: <ToastViewPage />,
     carousel: <CarouselViewPage />,
     'tab-button': <TabButtonViewPage />,
   }), []);

@@ -1,6 +1,6 @@
 import { colors } from "assets/style/variables";
 import { Modal } from "components/common/Modal";
-import { modalData } from "components/pages/guide/data/componentsData";
+import { modalData } from "components/pages/guide/data/componentsInfo";
 import { ViewCode } from "components/pages/guide/ViewCode";
 import { ViewInfo } from "components/pages/guide/ViewInfo";
 import { useState } from "react";

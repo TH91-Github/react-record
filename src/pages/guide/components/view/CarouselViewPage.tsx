@@ -1,6 +1,6 @@
 import { colors } from "assets/style/variables";
 import Carousel from "components/common/Carousel";
-import { carouselData } from "components/pages/guide/data/componentsData";
+import { carouselData } from "components/pages/guide/data/componentsInfo";
 import { ViewCode } from "components/pages/guide/ViewCode";
 import { ViewInfo } from "components/pages/guide/ViewInfo";
 import { InnerHTML } from "components/ui/InnerHTML";

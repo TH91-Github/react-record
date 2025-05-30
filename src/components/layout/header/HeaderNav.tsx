@@ -1,9 +1,9 @@
 import { useEffect, useMemo } from "react";
 import { NavLink } from "react-router-dom";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { stateDevMode } from "recoil/atoms";
 import { routerList } from "routes/RouterList";
-import styled from "styled-components"
+import styled from "styled-components";
 
 // Header Nav 
 const managerViewSecret = JSON.parse(process.env.REACT_APP_MANAGER_VIEW || "[]");
