@@ -377,3 +377,28 @@ export const carouselData : ComponentsInfoType = {
     }
   ]
 }
+
+export const toastData : ComponentsInfoType = {
+  info:{
+    id:'toast-info',
+    title:'toast 컴포넌트',
+    desc:'화면 EX) 하단에 잠시 노출 후 사라지는 형태, 메시지를 전달하는 데 사용.'
+  },
+  hook:[
+  ],
+  link:[
+    {
+      id:'toast-github',
+      title:'github',
+      link:'-'
+    },
+  ],
+  code:[
+    {
+      id:'code-use',
+      title:'사용',
+      lang:'typescript',
+      code:``
+    },
+  ]
+}

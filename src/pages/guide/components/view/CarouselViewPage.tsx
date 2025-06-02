@@ -106,6 +106,9 @@ const StyleWrap = styled.div`
       border-top:none;
     }
   }
+  .example-lists{
+    margin-top:15px;
+  }
   .example-item {
     margin-top:20px;
     .tit{
