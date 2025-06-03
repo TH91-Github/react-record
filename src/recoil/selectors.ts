@@ -1,5 +1,5 @@
 import { selector } from 'recoil';
-import { filterState } from './atoms';
+import { filterState, stateToastID } from './atoms';
 
 // 필터링된 리스트 예시
 export const filteredListState = selector({
@@ -12,3 +12,15 @@ export const filteredListState = selector({
   },
 });
 
+
+export const selectorToastID = selector({
+  key: 'selectorToastID',
+  get: ({ get }) => {
+    const current = get(stateToastID);
+    return current;
+  },
+  set: ({ set, get }) => {
+    const current = get(stateToastID);
+    set(stateToastID, current + 1);
+  },
+});

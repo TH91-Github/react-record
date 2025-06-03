@@ -1,11 +1,11 @@
 
 import { GlobalStyles } from 'assets/style/GlobalStyles';
-import { HeaderLayout } from './components/layout/header/HeaderLayout';
 import { ContentLayout } from 'components/layout/ContentLayout';
-import { Outlet } from 'react-router-dom';
 import { FooterLayout } from 'components/layout/footer/FooterLayout';
-import { AlertModule } from 'components/modules/AlertModule';
+import { HighLayout } from 'components/layout/HighLayout';
+import { Outlet } from 'react-router-dom';
 import './App.css';
+import { HeaderLayout } from './components/layout/header/HeaderLayout';
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
         <Outlet />
       </ContentLayout>
       <FooterLayout />
-      <AlertModule />
+      <HighLayout />
     </div>
   );
 }

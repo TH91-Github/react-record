@@ -33,6 +33,12 @@ export const stateAlert = atom<AlertState>({
   },
 });
 
+// toast 
+export const stateToastID = atom({
+  key: 'toastId',
+  default: 0,
+});
+
 // focus 회귀용
 export const statePrevFocus = atom<HTMLElement | null>({
   key: 'prevFocus',

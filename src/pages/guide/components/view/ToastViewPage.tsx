@@ -1,11 +1,15 @@
 import { colors } from "assets/style/variables";
 import { toastData } from "components/pages/guide/data/componentsInfo";
 import { ViewInfo } from "components/pages/guide/ViewInfo";
+import { useToast } from "hooks/useToast";
 import styled from "styled-components";
 
 export const ToastViewPage = () => {
+  const { addToast } = useToast();
+
   const handleCase1Click = () =>{
     console.log('d')
+    addToast();
   }
 
   return(
