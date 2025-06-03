@@ -33,10 +33,24 @@ export const stateAlert = atom<AlertState>({
   },
 });
 
-// toast 
-export const stateToastID = atom({
-  key: 'toastId',
-  default: 0,
+export interface ToastItem {
+  id: number;
+  visible: boolean;
+  message?: string;
+  type?: 'success' | 'error';
+}
+
+export interface ToastState {
+  toasts: ToastItem[];
+  nextId: number;
+}
+
+export const toastState = atom<ToastState>({
+  key: 'toastState',
+  default: {
+    toasts: [],
+    nextId: 1,
+  },
 });
 
 // focus 회귀용

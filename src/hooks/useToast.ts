@@ -1,42 +1,73 @@
-// hooks/useToast.ts
-import { useRef, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { stateToastID } from 'recoil/atoms';
-
-export type ToastItem = {
-  id: number;
-  visible: boolean;
-};
+import { useRecoilState, useRecoilCallback } from 'recoil';
+import { ToastItem, toastState } from 'recoil/atoms';
 
 export const useToast = () => {
-  const [toasts, setToasts] = useState<ToastItem[]>([]);
-  const toastRef = useRef<ToastItem[]>([]);
-  const [id, setId] = useRecoilState(stateToastID);
+  const [{ toasts }] = useRecoilState(toastState);
 
-  const addToast = () => {
-    const nextId = id;
-    setId(id + 1);
+  const addToast = useRecoilCallback(
+    ({ set }) => 
+    (message: string = '복사 완료!', type: ToastItem['type'] = 'success') => {
+      set(toastState, (prev) => {
+        const newToast: ToastItem = {
+          id: prev.nextId,
+          visible: true,
+          message,
+          type,
+        };
 
-    const newToast: ToastItem = { id: nextId, visible: true };
-    toastRef.current = [...toastRef.current, newToast];
-    setToasts(toastRef.current);
+        const newState = {
+          toasts: [...prev.toasts, newToast],
+          nextId: prev.nextId + 1,
+        };
 
-    console.log(toastRef.current)
-    setTimeout(() => {
-      toastRef.current = toastRef.current.map((t) =>
-        t.id === nextId ? { ...t, visible: false } : t
-      );
-      console.log(toastRef.current)
-      setToasts([...toastRef.current]);
-      // setTimeout(() => {
-      //   toastRef.current = toastRef.current.filter((t) => t.id !== nextId);
-      //   setToasts([...toastRef.current]);
-      // }, 500);
-    }, 2000);
-  };
+        // 2초 후 숨기기
+        setTimeout(() => {
+          set(toastState, (current) => ({
+            ...current,
+            toasts: current.toasts.map((t) =>
+              t.id === newToast.id ? { ...t, visible: false } : t
+            ),
+          }));
+
+          // 0.5초 후 제거
+          setTimeout(() => {
+            set(toastState, (current) => ({
+              ...current,
+              toasts: current.toasts.filter((t) => t.id !== newToast.id),
+            }));
+          }, 500);
+        }, 2000);
+
+        return newState;
+      });
+    },
+    []
+  );
+
+  const removeToast = useRecoilCallback(
+    ({ set }) => (id: number) => {
+      set(toastState, (prev) => ({
+        ...prev,
+        toasts: prev.toasts.filter((t) => t.id !== id),
+      }));
+    },
+    []
+  );
+
+  const clearToasts = useRecoilCallback(
+    ({ set }) => () => {
+      set(toastState, (prev) => ({
+        ...prev,
+        toasts: [],
+      }));
+    },
+    []
+  );
 
   return {
     toasts,
     addToast,
+    removeToast,
+    clearToasts,
   };
-}
+};

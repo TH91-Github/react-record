@@ -9,7 +9,7 @@ export const ToastViewPage = () => {
 
   const handleCase1Click = () =>{
     console.log('d')
-    addToast();
+    addToast('복사가 완료되었습니다!')
   }
 
   return(
