@@ -14,7 +14,7 @@ export const Toast = () => {
           {message} (ID: {id})
         </div>
       ))} */}
-        <div className={`toast success show`}>
+        {/* <div className={`toast success show`}>
           <span>asdasdasdasd</span>
         </div>
         <div className={`toast success show`}>
@@ -22,7 +22,7 @@ export const Toast = () => {
         </div>
         <div className={`toast success show`}>
           <span>asdasdasdasd</span>
-        </div>
+        </div> */}
     </StyleWrap>,
     document.body
   );
