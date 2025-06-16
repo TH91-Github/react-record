@@ -29,6 +29,8 @@ const DEFAULT_OPT: SwiperProps = {
   spaceBetween: 10,
   observer:true,
   observeParents:true,
+  watchOverflow: true,
+  grabCursor: true,
   virtual:false,
 };
 
@@ -79,7 +81,19 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
     }
   }
   
+  const updateSwiperLockClass = useCallback((swiper: SwiperClass) => {
+  const wrapperEl = swiper.el; // swiper root elemen
+  console.log(wrapperEl)
+  if (swiper.isLocked) {
+    wrapperEl.classList.add('is-locked');
+    wrapperEl.classList.remove('is-unlocked');
+  } else {
+    wrapperEl.classList.remove('is-locked');
+    wrapperEl.classList.add('is-unlocked');
+  }
+}, []);
   const handleOnSwiper = (e:SwiperClass) => {
+     updateSwiperLockClass(e);
     onCarousel && onCarousel();
   }
 
@@ -167,12 +181,6 @@ const StyleWrap = styled.div`
     height:100%;
     .swiper{ 
       height:100%;
-    }
-  }
-  .carousel{
-    cursor: grab;
-    &.swiper-backface-hidden {
-      cursor:default;
     }
   }
   .carousel-pagination {
