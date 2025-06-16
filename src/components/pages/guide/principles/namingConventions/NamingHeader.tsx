@@ -31,7 +31,7 @@ export const NamingHeader = ({selectNaming, updateNaming}:NamingHeaderPropsType)
           <p className="desc">
             <span>"네이밍 때문에 고민하는 시간 줄이고 </span>
             <span>명확한 네이밍 규칙으로 가독성과 유지보수를 쉽게!</span>
-            <span>효율적인 협업을 위해, <span className="color">명명(命名)</span> 규칙 가이드를 공유하고자 만든</span>
+            <span>효율적인 협업을 위해, 규칙 가이드를 공유하고자 만든</span>
             <span>네이밍 규칙 확립 가이드입니다."</span>
           </p>
         </div>

@@ -7,25 +7,21 @@ export const modalData : ComponentsInfoType = {
     title:'Modal 컴포넌트',
     desc:'가로 크기, 정렬, 자동 닫기, 모달 중첩, 포커스 이동 및 이탈 방지 기능이 포함되어 있습니다.'
   },
-  hook:[
-    {
-      id:'modal-hook-1',
-      title:'useBodyScrolLock()',
-    }
-  ],
   link:[
     {
       id:'modal-github',
-      title:'github',
+      title:'모달 컴포넌트 github',
+      code:'<Modal />',
       link:'https://github.com/TH91-Github/react-record/blob/main/src/components/common/Modal.tsx'
     },
     {
-      id:'modal-storybook',
-      title:'storybook',
-      link:null
+      id:'modal-hook',
+      title:'모달 사용 Hook github',
+      code:'useBodyScrolLock',
+      link:'https://github.com/TH91-Github/react-record/blob/main/src/hooks/common.ts'
     }
   ],
-  code:[
+  codeData:[
     {
       id:'code-use',
       title:'사용',
@@ -149,21 +145,15 @@ export const carouselData : ComponentsInfoType = {
     title:'carousel 컴포넌트',
     desc:'Swiper.js 기반 컴포넌트, swiper 옵션과 사용자 맞춤 추가 옵션을 사용하고 있습니다.'
   },
-  hook:[
-  ],
   link:[
     {
       id:'carousel-github',
-      title:'github',
+      title:'carousel github',
+      code:'<Carousel />',
       link:'https://github.com/TH91-Github/react-record/blob/main/src/components/common/Carousel.tsx'
     },
-    {
-      id:'modal-storybook',
-      title:'storybook',
-      link:null
-    }
   ],
-  code:[
+  codeData:[
     {
       id:'code-use',
       title:'사용',
@@ -378,27 +368,194 @@ export const carouselData : ComponentsInfoType = {
   ]
 }
 
+// toast popup
 export const toastData : ComponentsInfoType = {
   info:{
     id:'toast-info',
     title:'toast 컴포넌트',
     desc:'화면 EX) 하단에 잠시 노출 후 사라지는 형태, 메시지를 전달하는 데 사용.'
   },
-  hook:[
-  ],
   link:[
     {
-      id:'toast-github',
-      title:'github',
-      link:'-'
+      id:'toast-component',
+      title:'컴포넌트 code',
+      code:'<Toast />',
+      link:'https://github.com/TH91-Github/react-record/blob/main/src/components/common/Toast.tsx'
+    },
+    {
+      id:'toast-hook',
+      title:'훅 code',
+      code:'useToast()',
+      link:'https://github.com/TH91-Github/react-record/blob/main/src/hooks/useToast.ts'
     },
   ],
-  code:[
+  codeData:[
     {
       id:'code-use',
       title:'사용',
       lang:'typescript',
-      code:``
+      code:
+    `
+    const { addToast } = useToast();
+    // 메시지 
+    addToast('메시지')
+    // 메시지 + 타입
+    addToast('메시지', 'sucess')
+    // 메시지 + 타입 + 유지 시간
+    addToast('메시지', 'sucess', 3000)
+    `,
     },
+    {
+      id:'code-tsx',
+      title:'TSX',
+      lang:'typescript',
+      code:
+    `
+    // ✅ hook 
+    export const useToast = () => {
+      const [{ toasts }] = useRecoilState(toastState);
+    
+      const addToast = useRecoilCallback(
+        ({ set }) => 
+        (message: string = 'success!', type?: 'base' |'success' | 'error', timer:number = 2000) => {
+          . . .
+        },
+        []
+      );
+    
+      const removeToast = useRecoilCallback(
+        ({ set }) => (id: number) => {
+          . . .
+        },
+        []
+      );
+    
+      const clearToasts = useRecoilCallback(
+        ({ set }) => () => {
+          . . .
+        },
+        []
+      );
+    
+      return {
+        toasts,
+        addToast,
+        removeToast,
+        clearToasts,
+      };
+    };
+
+    // ✅ component
+    export const Toast = () => {
+      const { toasts } = useToast();
+    
+      return createPortal(
+        <StyleWrap className="toast-container">
+          {toasts.map(({ id, visible, message, type }) => (
+            <div 
+              key={id} 
+              className={cn('toast', type, visible ? 'show' : 'hide')}
+            >
+              <span className="mgessage">
+                <span className="icon"><IconCheck /></span>
+                <span className="txt">{message}</span>
+              </span>
+            </div>
+          ))}
+        </StyleWrap>,
+        document.body
+      );
+    }
+    `
+    },
+    {
+      id:'code-css',
+      title:'CSS',
+      lang:'css',
+      code:
+    `
+    display:flex;
+      flex-direction: column;
+      gap:10px;
+      align-items:center;
+      position: fixed;
+      z-index: 9999;
+      bottom:0;
+      left: 50%;
+      padding-bottom:10px;
+      transform: translateX(-50%);
+      .toast {
+        overflow:hidden;
+        position:relative;
+        border-radius: 5px;
+        border-left:none;
+        background:#fff;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        animation: toastAniUp .3s ease;
+        &::before {
+          position:absolute;
+          top:0;
+          left:0;
+          width:5px;
+          height:100%;
+          border:1px solid \${colors.mSlateBlue};
+          background:\${colors.mSlateBlue};
+          content:'';
+        }
+        .mgessage {
+          display:flex;
+          align-items:center;
+          gap:5px;
+          padding: 8px 16px;
+          border:1px solid \${colors.lineColor};
+          border-left:none;
+          .icon {
+            display:flex;
+            align-items:center;
+            color: \${colors.mSlateBlue};
+          }
+          .txt {
+            font-size:14px;
+          }
+        }
+          
+        &.success{
+          &::before {
+            border-color: \${colors.green};
+            background:\${colors.green};
+          }
+          .icon { 
+            color: \${colors.green};
+          }
+        }
+        &.error{
+          &::before {
+            border-color: \${colors.red};
+            background:\${colors.red};
+          }
+          .icon { 
+            color: \${colors.red};
+          }
+        }
+        &.show {
+          opacity: 1;
+          animation: toastAniUp .3s ease;
+        }
+        &.hide {
+          opacity: 0;
+          transform: translateY(100%);
+        }
+      }
+      
+      @keyframes toastAniUp { 
+        from{
+          transform: translateY(100%);
+        }
+        to{
+          transform: translateY(0);
+        }
+      }
+    `
+    }
   ]
 }

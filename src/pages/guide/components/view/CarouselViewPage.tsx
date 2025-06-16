@@ -18,13 +18,18 @@ export const CarouselViewPage = () => {
   const demoData: CarouselDemoType[] = [
     {
       tit:'case-1',
-      txt:'옵션 - x : 기본으로 3개 보여주며 4개부터 캐러셀 동작',
-      lists:['case1', 'case1', 'case1', 'case1'],
+      txt:'리스트 3개, 옵션 - x : 기본으로 3개 보여주며 4개부터 캐러셀 동작',
+      lists:['case1', 'case1', 'case1'],
     },
     {
       tit:'case-2',
+      txt:'옵션 - x : 리스트 총 4 동작',
+      lists:['case2', 'case2', 'case2', 'case2'],
+    },
+    {
+      tit:'case-3',
       txt:`옵션 - <span className="highlight">slidesPerView</span>: 4, <span className="highlight">loop</span>:true, <span className="highlight">autoplay</span>:{delay: 2000}`,
-      lists:['case2', 'case2', 'case2', 'case2','case2', 'case2', 'case2', 'case2'],
+      lists:['case3', 'case3', 'case3', 'case3','case3', 'case3', 'case3', 'case3'],
       opt:{
         slidesPerView: 4,
         loop:true,
@@ -34,18 +39,18 @@ export const CarouselViewPage = () => {
       }
     },
     {
-      tit:'case-3',
+      tit:'case-4',
       txt:'<span className="highlight">slidesPerView</span>: 1, <span className="highlight">pagination</span>: true,',
-      lists:['case3', 'case3', 'case3'],
+      lists:['case4', 'case4', 'case4'],
       opt:{
         slidesPerView: 1,
         pagination:true,
       }
     },
     {
-      tit:'case-4',
+      tit:'case-5',
       txt:`<span className="highlight">slidesPerView</span>: 1, <span className="highlight">pagination</span>:{clickable:true, type:'progressbar'}, <span className="highlight">navigation</span>: true,`,
-      lists:['case3', 'case3', 'case3'],
+      lists:['case5', 'case5', 'case5'],
       opt:{
         slidesPerView: 1,
         pagination:{

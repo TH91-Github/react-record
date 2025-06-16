@@ -1,28 +1,26 @@
 import { colors } from "assets/style/variables";
+import { IconCheck } from "assets/svg/icons";
 import { useToast } from "hooks/useToast";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
+import { cn } from "utils/common";
 
 export const Toast = () => {
   const { toasts } = useToast();
-  console.log('Toast - ' + toasts)
 
   return createPortal(
     <StyleWrap className="toast-container">
-      {/* {toasts.map(({ id, visible, message, type }) => (
-        <div key={id} className={`toast ${type} ${visible ? 'show' : 'hide'}`}>
-          {message} (ID: {id})
+      {toasts.map(({ id, visible, message, type }) => (
+        <div 
+          key={id} 
+          className={cn('toast', type, visible ? 'show' : 'hide')}
+        >
+          <span className="mgessage">
+            <span className="icon"><IconCheck /></span>
+            <span className="txt">{message}</span>
+          </span>
         </div>
-      ))} */}
-        {/* <div className={`toast success show`}>
-          <span>asdasdasdasd</span>
-        </div>
-        <div className={`toast success show`}>
-          <span>asdasdasdasd</span>
-        </div>
-        <div className={`toast success show`}>
-          <span>asdasdasdasd</span>
-        </div> */}
+      ))}
     </StyleWrap>,
     document.body
   );
@@ -43,10 +41,10 @@ const StyleWrap = styled.div`
     overflow:hidden;
     position:relative;
     border-radius: 5px;
-    border:1px solid ${colors.lineColor};
     border-left:none;
     background:#fff;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    animation: toastAniUp .3s ease;
     &::before {
       position:absolute;
       top:0;
@@ -57,25 +55,51 @@ const StyleWrap = styled.div`
       background:${colors.mSlateBlue};
       content:'';
     }
-    & > span {
-      display:inline-block;
-      padding: 12px 16px;
+    .mgessage {
+      display:flex;
+      align-items:center;
+      gap:5px;
+      padding: 8px 16px;
+      border:1px solid ${colors.lineColor};
+      border-left:none;
+      .icon {
+        display:flex;
+        align-items:center;
+        color: ${colors.mSlateBlue};
+      }
+      .txt {
+        font-size:14px;
+      }
     }
+      
     &.success{
       &::before {
         border-color: ${colors.green};
         background:${colors.green};
       }
+      .icon { 
+        color: ${colors.green};
+      }
+    }
+    &.error{
+      &::before {
+        border-color: ${colors.red};
+        background:${colors.red};
+      }
+      .icon { 
+        color: ${colors.red};
+      }
     }
     &.show {
       opacity: 1;
-      animation: toastAni .3s ease;
+      animation: toastAniUp .3s ease;
     }
     &.hide {
       opacity: 0;
       transform: translateY(100%);
     }
   }
+  
   @keyframes toastAniUp { 
     from{
       transform: translateY(100%);

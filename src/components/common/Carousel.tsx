@@ -169,6 +169,12 @@ const StyleWrap = styled.div`
       height:100%;
     }
   }
+  .carousel{
+    cursor: grab;
+    &.swiper-backface-hidden {
+      cursor:default;
+    }
+  }
   .carousel-pagination {
     display:flex;
     justify-content:center;

@@ -2,7 +2,7 @@ import { SvgTistory } from "assets/svg/BrandLogo";
 import { SvgArrow, SvgBook, SvgClipboard, SvgCode, SvgComponent, SvgCube, SvgDesign, SvgFolder, SvgPuzzle, SvgRectangleStack, SvgSearch, SvgSetting, SvgSquareStack } from "assets/svg/Common";
 import { ButtonDataType, IconDataType } from "types/guide";
 import ImgArrow from 'assets/images/svg/arrow.svg';
-import { IconBookmark, IconLogout, IconUser } from "assets/svg/icons";
+import { IconBookmark, IconCheck, IconError, IconLogout, IconUser } from "assets/svg/icons";
 
 export const iconData : IconDataType = {
   headData:{
@@ -26,28 +26,45 @@ export const iconData : IconDataType = {
       lists:[
         {
           id:'icon-user',
-          title:'user',
+          title:'User',
           category: 'icon',
-          desc:['유저','user',''],
+          desc:['유저','user','FaUser'],
           code: 'IconUser',
           iconElement: IconUser,
         },
         {
           id:'icon-logout',
-          title:'logout',
+          title:'Logout',
           category: 'icons',
-          desc:['로그아웃','logout'],
+          desc:['로그아웃','logout','FiLogOut'],
           code: 'IconLogout',
           iconElement: IconLogout,
         },
         {
-          id:'icon-user',
-          title:'bookmark',
+          id:'icon-bookmark',
+          title:'Bookmark',
           category: 'icon',
-          desc:['북마크','즐겨찾기','Bookmark'],
+          desc:['북마크','즐겨찾기','FaBookmark'],
           code: 'IconBookmark',
           iconElement: IconBookmark,
         },
+        {
+          id:'icon-check',
+          title:'Check',
+          category: 'icon',
+          desc:['체크','check','FaCheck'],
+          code: 'IconCheck',
+          iconElement: IconCheck,
+        },
+        {
+          id:'icon-error',
+          title:'Error',
+          category: 'icon',
+          desc:['경고','에러','error','느낌표'],
+          code: 'IconError',
+          iconElement: IconError,
+        },
+        
       ]
     },
     {

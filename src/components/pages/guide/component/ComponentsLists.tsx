@@ -60,7 +60,8 @@ const StlyeWrap = styled.div`
     display: block;
     position:relative;
     width:100%;
-    padding:10px;
+    height:100%;
+    padding:10px 10px 34px 10px;
     border:1px solid transparent;
     border-radius:5px;
     background:${bgColor.sideWite};
@@ -83,7 +84,9 @@ const StlyeWrap = styled.div`
     margin-top:10px;
   }
   .update{
-    margin-top:10px;
+    position:absolute;
+    left:10px;
+    bottom:10px;
     font-size:12px;
     color:${textColor.subText};
   }

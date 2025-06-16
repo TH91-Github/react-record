@@ -1,5 +1,6 @@
 import { colors } from "assets/style/variables";
 import { toastData } from "components/pages/guide/data/componentsInfo";
+import { ViewCode } from "components/pages/guide/ViewCode";
 import { ViewInfo } from "components/pages/guide/ViewInfo";
 import { useToast } from "hooks/useToast";
 import styled from "styled-components";
@@ -7,9 +8,9 @@ import styled from "styled-components";
 export const ToastViewPage = () => {
   const { addToast } = useToast();
 
-  const handleCase1Click = () =>{
-    console.log('d')
-    addToast('복사가 완료되었습니다!')
+  const handleCaseClick = (message?:string, type?:'base' | 'success' | 'error', timer?:number) =>{
+
+    addToast(message, type, timer)
   }
 
   return(
@@ -24,12 +25,42 @@ export const ToastViewPage = () => {
             <button 
               type="button"
               className="btn"
-              onClick={handleCase1Click}
+              onClick={() => handleCaseClick()}
             >
-              <span>Toast - 1</span>
+              <span className="s-tit">Toast - 기본</span>
+            </button>
+          </div>
+          <div className="example-item">
+            <button 
+              type="button"
+              className="btn"
+              onClick={() => handleCaseClick('복사를 완료하였습니다.','success')}
+            >
+              <span className="s-tit">Toast - 성공</span>
+            </button>
+          </div>
+          <div className="example-item">
+            <button 
+              type="button"
+              className="btn"
+              onClick={() => handleCaseClick('오류 발생.','error')}
+            >
+              <span className="s-tit">Toast - 에러</span>
+            </button>
+          </div>
+          <div className="example-item">
+            <button 
+              type="button"
+              className="btn"
+              onClick={() => handleCaseClick('5초 후 닫기','base', 5000)}
+            >
+              <span className="s-tit">Toast - 닫기 시간 제어</span>
             </button>
           </div>
         </div>
+      </div>
+      <div className="view-item">
+        <ViewCode data={toastData} />
       </div>
     </StyleWrap>
   )

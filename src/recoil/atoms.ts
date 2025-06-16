@@ -36,8 +36,8 @@ export const stateAlert = atom<AlertState>({
 export interface ToastItem {
   id: number;
   visible: boolean;
-  message?: string;
-  type?: 'success' | 'error';
+  message: string;
+  type: 'base' | 'success' | 'error';
 }
 
 export interface ToastState {

@@ -6,13 +6,13 @@ export const useToast = () => {
 
   const addToast = useRecoilCallback(
     ({ set }) => 
-    (message: string = '복사 완료!', type: ToastItem['type'] = 'success') => {
+    (message: string = 'success!', type?: 'base' |'success' | 'error', timer:number = 2000) => {
       set(toastState, (prev) => {
         const newToast: ToastItem = {
           id: prev.nextId,
           visible: true,
           message,
-          type,
+          type: type || 'base',
         };
 
         const newState = {
@@ -20,7 +20,7 @@ export const useToast = () => {
           nextId: prev.nextId + 1,
         };
 
-        // 2초 후 숨기기
+        // 숨김
         setTimeout(() => {
           set(toastState, (current) => ({
             ...current,
@@ -28,15 +28,14 @@ export const useToast = () => {
               t.id === newToast.id ? { ...t, visible: false } : t
             ),
           }));
-
-          // 0.5초 후 제거
+          // 삭제
           setTimeout(() => {
             set(toastState, (current) => ({
               ...current,
               toasts: current.toasts.filter((t) => t.id !== newToast.id),
             }));
           }, 500);
-        }, 2000);
+        }, timer);
 
         return newState;
       });
@@ -48,7 +47,7 @@ export const useToast = () => {
     ({ set }) => (id: number) => {
       set(toastState, (prev) => ({
         ...prev,
-        toasts: prev.toasts.filter((t) => t.id !== id),
+        toasts: prev.toasts.filter((r) => r.id !== id),
       }));
     },
     []

@@ -30,7 +30,6 @@ export const ComponentsViewPage = () => {
     return () => setIsClosing(false);
   }, []);
 
-
   if(detailsAni === null) return null
 
   return (
@@ -67,7 +66,7 @@ const StyleWrap = styled.div`
     margin-top:30px;
   }
   .icon-close {
-  top:30px;
-  right:30px;
+    top:30px;
+    right:30px;
   }
 `;

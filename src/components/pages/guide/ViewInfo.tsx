@@ -8,35 +8,24 @@ interface ViewInfoPropsType {
   data: ComponentsInfoType
 }
 export const ViewInfo = ({data}:ViewInfoPropsType) => {
-  const {info, hook, link} = data;
+  const {info, link} = data;
   return(
     <StyleWrap className="info-box">
       <div className="info-item">
         <p className="tit">{info.title}</p>
         <InnerHTML tag="p" data={info.desc} customClass="desc" />
       </div>
-      { hook.length > 0 && (
-        <div className="info-item">
-          <p className="tit">사용한 Custom Hooks</p>
-          <ul className="code-lists">
-            { hook.map((hookItem, hookIdx) => (
-              <li key={hookIdx}>
-                <code>{hookItem.title}</code>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
       <div className="info-item">
         <ul className="bullet-lists">
           { link.map((linkItem, linkIdx) => (
             <li key={linkIdx} className="circle">
               { linkItem.link 
                 ? <ExternalLink 
-                  href={linkItem.link}
-                  titleText={linkItem.title}
-                />
-                :<span>{linkItem.title} : -</span>
+                    href={linkItem.link}
+                    alt={linkItem.title}
+                    titleText={linkItem.code}
+                  />
+                :<span>-</span> 
               }
             </li>
           ))}

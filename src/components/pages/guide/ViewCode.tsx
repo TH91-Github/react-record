@@ -8,9 +8,9 @@ interface ViewCodePropsType {
   data: ComponentsInfoType
 }
 export const ViewCode = ({data}:ViewCodePropsType) => {
-  const {code} = data;
+  const {codeData} = data;
   const [tabVal, setTabVal] = useState(0);
-  const tabData = code.map(item => item.title);
+  const tabData = codeData.map(item => item.title);
 
   const changeEvent = (val:string) => {
     const valIndex = tabData.indexOf(val);
@@ -27,8 +27,8 @@ export const ViewCode = ({data}:ViewCodePropsType) => {
           changeEvent={changeEvent} 
         />
         <Hljs 
-          code={code[tabVal].code}
-          language={code[tabVal].lang}
+          code={codeData[tabVal].code}
+          language={codeData[tabVal].lang}
         />
       </div>
     </StyleWrap>

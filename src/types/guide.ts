@@ -84,16 +84,13 @@ export interface ComponentsInfoType {
     title: string;
     desc: string;
   },
-  hook:{
-    id:string;
-    title:string;
-  }[],
   link:{
     id: string;
     title: string;
+    code:string;
     link: string | null;
   }[],
-  code: {
+  codeData: {
     id: string;
     title: string;
     lang: string;

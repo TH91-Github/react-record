@@ -55,7 +55,7 @@ export const commonStyle = `
       &.circle {
         &::before{
           position:absolute;
-          top:8px;
+          top:9px;
           left:0;
           width:4px;
           height:4px;

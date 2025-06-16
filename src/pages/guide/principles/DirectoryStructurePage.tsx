@@ -8,9 +8,8 @@ export const DirectoryStructurePage = () => {
           <div className="heading">
             <h2 className="name-tag">Directory Structure</h2>
             <h3 className="title">
-              <span>파일이 뒤죽박죽? <span className="color">파일 정리</span>의 시작, </span>
               <span>체계적인 파일 정리로 보기 쉽게!</span>
-              <span><span className="color">폴더 구조</span>로 깔끔하게 해결하기!</span>
+              <span><span className="color">폴더 구조</span>를 만들어 효율적으로 이해</span>
             </h3>
             <p className="desc">
               <span>

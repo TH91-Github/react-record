@@ -3,19 +3,20 @@ import styled from "styled-components";
 
 type ExternalLinkPropsType = {
   href: string;
+  alt?:string;
   titleText: string;
   customClass?: string;
 };
 
 export const ExternalLink = ({
-   href, titleText, customClass 
+   href, alt, titleText, customClass 
 }: ExternalLinkPropsType) => {
   return (
     <StlyeWrap
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      title={`${titleText} 새 창`}
+      title={`${alt || titleText} 새 창`}
       className={customClass}
     >
       <span>{titleText}</span>
