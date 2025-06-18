@@ -62,7 +62,6 @@ export {
 
 
 // ✅ Tistory 
-
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -73,7 +72,7 @@ const firebaseConfig = {
 };
 
 // 앱 초기화
-const firebaseApp = initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig, 'Tistory');
 // 데이터베이스
 const firebaseDB = getFirestore(firebaseApp);
 const firebaseAuth = getAuth(firebaseApp); // 👈 추가
