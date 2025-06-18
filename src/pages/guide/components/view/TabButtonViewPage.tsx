@@ -31,6 +31,7 @@ export const TabButtonViewPage = () => {
         <p className="tit">TabBtns 데모</p>
         <div className="example-lists">
           <div className="example-item">
+            <p className="s-tit">기본 타입</p>
             <TabBtns 
               data={tabBtns} 
               changeEvent={(e) => handleTabOnChange(e, 1)}
@@ -39,6 +40,7 @@ export const TabButtonViewPage = () => {
             <p className="desc">기본 : data / changeEvent 함수</p>
           </div>
           <div className="example-item">
+            <p className="s-tit">활성화 표시 moving 타입</p>
             <TabBtns 
               data={tabBtns}
               isAll="en"
@@ -76,6 +78,10 @@ const StyleWrap = styled.div`
     margin-top:15px;
   }
   .example-item{
+    .s-tit {
+      margin-bottom:10px;
+      font-size:18px;
+    }
     &:first-child + .example-item{
       margin-top:15px;
       padding-top:15px;
