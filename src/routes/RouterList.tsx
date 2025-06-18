@@ -1,5 +1,5 @@
 import { GuidePage } from "pages/guide/GuidePage";
-import { TestPage } from "test/TestPage";
+import { TestWrap } from "test/TestWrap";
 import { GUIDE_LIST } from "./pages/guide/GuideRouter";
 
 export const routerList = [
@@ -24,6 +24,6 @@ export const routerList = [
     path:'test',
     title:'테스트',
     view: false,
-    element: <TestPage />
+    element: <TestWrap />
   }
 ];
