@@ -45,6 +45,7 @@ const StyleWrap = styled.div`
     padding-bottom:10px;
   }
   .desc{
+    font-size:14px;
     color:${textColor.subText};
   }
 `;

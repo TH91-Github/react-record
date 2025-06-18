@@ -475,86 +475,257 @@ export const toastData : ComponentsInfoType = {
       code:
     `
     display:flex;
-      flex-direction: column;
-      gap:10px;
-      align-items:center;
-      position: fixed;
-      z-index: 9999;
-      bottom:0;
-      left: 50%;
-      padding-bottom:10px;
-      transform: translateX(-50%);
-      .toast {
-        overflow:hidden;
-        position:relative;
-        border-radius: 5px;
+    flex-direction: column;
+    gap:10px;
+    align-items:center;
+    position: fixed;
+    z-index: 9999;
+    bottom:0;
+    left: 50%;
+    padding-bottom:10px;
+    transform: translateX(-50%);
+    .toast {
+      overflow:hidden;
+      position:relative;
+      border-radius: 5px;
+      border-left:none;
+      background:#fff;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      animation: toastAniUp .3s ease;
+      &::before {
+        position:absolute;
+        top:0;
+        left:0;
+        width:5px;
+        height:100%;
+        border:1px solid \${colors.mSlateBlue};
+        background:\${colors.mSlateBlue};
+        content:'';
+      }
+      .mgessage {
+        display:flex;
+        align-items:center;
+        gap:5px;
+        padding: 8px 16px;
+        border:1px solid \${colors.lineColor};
         border-left:none;
-        background:#fff;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        animation: toastAniUp .3s ease;
-        &::before {
-          position:absolute;
-          top:0;
-          left:0;
-          width:5px;
-          height:100%;
-          border:1px solid \${colors.mSlateBlue};
-          background:\${colors.mSlateBlue};
-          content:'';
-        }
-        .mgessage {
+        .icon {
           display:flex;
           align-items:center;
-          gap:5px;
-          padding: 8px 16px;
-          border:1px solid \${colors.lineColor};
-          border-left:none;
-          .icon {
-            display:flex;
-            align-items:center;
-            color: \${colors.mSlateBlue};
-          }
-          .txt {
-            font-size:14px;
-          }
+          color: \${colors.mSlateBlue};
         }
-          
-        &.success{
-          &::before {
-            border-color: \${colors.green};
-            background:\${colors.green};
-          }
-          .icon { 
-            color: \${colors.green};
-          }
-        }
-        &.error{
-          &::before {
-            border-color: \${colors.red};
-            background:\${colors.red};
-          }
-          .icon { 
-            color: \${colors.red};
-          }
-        }
-        &.show {
-          opacity: 1;
-          animation: toastAniUp .3s ease;
-        }
-        &.hide {
-          opacity: 0;
-          transform: translateY(100%);
+        .txt {
+          font-size:14px;
         }
       }
+        
+      &.success{
+        &::before {
+          border-color: \${colors.green};
+          background:\${colors.green};
+        }
+        .icon { 
+          color: \${colors.green};
+        }
+      }
+      &.error{
+        &::before {
+          border-color: \${colors.red};
+          background:\${colors.red};
+        }
+        .icon { 
+          color: \${colors.red};
+        }
+      }
+      &.show {
+        opacity: 1;
+        animation: toastAniUp .3s ease;
+      }
+      &.hide {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+    }
+    
+    @keyframes toastAniUp { 
+      from{
+        transform: translateY(100%);
+      }
+      to{
+        transform: translateY(0);
+      }
+    }
+    `
+    }
+  ]
+}
+
+
+// Tab Btn 
+export const tabBtnsData : ComponentsInfoType = {
+  info:{
+    id:'tabBtns-info',
+    title:'TAB Button 컴포넌트',
+    desc:'TAB 버튼 스타일'
+  },
+  link:[
+    {
+      id:'tabBtns-component',
+      title:'컴포넌트 code',
+      code:'<TabBtns />',
+      link:'https://github.com/TH91-Github/react-record/blob/main/src/components/common/TabBtns.tsx'
+    },
+  ],
+  codeData:[
+    {
+      id:'code-use',
+      title:'사용',
+      lang:'typescript',
+      code:`
+        <TabBtns 
+          data={tabBtns} 
+          changeEvent={(e) => handleTabOnChange(e, 1)}
+        />
+      `
+    },
+    {
+      id:'code-tsx',
+      title:'TSX',
+      lang:'typescript',
+      code:
+    `
+    export const TabBtns = ({
+      tabType = 'basics',
+      isAll = true,
+      data,
+      activeTab,
+      onBgColor,
+      changeEvent
+    }:TabBtnsPropsType) => {
+      const tabBtnWrap = useRef<HTMLDivElement>(null);
+      const [isActive, setIsActive] = useState(isAll ? -1 : 0);
+      const defaultVal = isAll === 'en' ? 'All' : '전체';
+      const [movingStyle, setMovingStyle] = useState(
+        tabType === 'moving' 
+          ? { left: 0, width: 0, height: 0 } 
+          : { left: 5, width: 16, height: 16 }
+      );
+      const updateMovingStyle = (targetElement?: HTMLElement) => {
+        ...
+      };
+      const handleTabClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>, val:string, idx:number) =>{
+        ...
+      }
+      useEffect(() => { // 초기 선택 값 전달
+        ...
+      }, []);
+      useEffect(() => { // 초기 선택 Tab 
+        ...
+      },[activeTab, data])
+      useEffect(() => {
+        ...
+      }, [tabType, isActive, data, isAll]);
+      return (
+        <StyleWrap 
+          ref={tabBtnWrap}
+          className={cn('tab-btn-wrap', tabType)}
+          $left={movingStyle.left}
+          $width={movingStyle.width}
+          $height={movingStyle.height}
+          $onBgColor={onBgColor || colors.mSlateBlue}
+        >
+          <ul>
+            {isAll && (
+              <li className={cn('tab', isActive === -1 && 'active')}>
+                <button type="button" onClick={(e) => handleTabClick(e, defaultVal, -1)}>
+                  <span>{defaultVal}</span>
+                </button>
+              </li>
+            )}
+            {data.map((item, idx) => (
+              <li key={idx} className={cn('tab', isActive === idx && 'active')}>
+                <button
+                  type="button"
+                  onClick={(e) => handleTabClick(e, item, idx)}>
+                    <span>{item}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </StyleWrap>
+      )
+    }
       
-      @keyframes toastAniUp { 
-        from{
-          transform: translateY(100%);
+
+    `
+    },
+    {
+      id:'code-css',
+      title:'CSS',
+      lang:'css',
+      code:
+    `
+    position:relative;
+    & > ul {
+      display:flex;
+      gap:5px;
+    }
+    .tab {
+      & > button {
+        min-width:40px;
+        height:40px;
+        padding:5px 10px;
+        border:1px solid transparent;
+        border-radius: 5px;
+      }
+    }
+    &.basics{
+      .tab {
+        & > button {
+          min-width:40px;
+          height:40px;
+          padding:5px 10px;
+          border:1px solid transparent;
+          border-radius: 5px;
+          transition: border-color var(--transition), background-color var(--transition), color var(--transition);
         }
-        to{
-          transform: translateY(0);
+        &.active {
+          & > button {
+            background:\${({$onBgColor}) => $onBgColor};
+            color: #fff;
+          }
         }
       }
+    }
+    &.moving {
+      &:before {
+        position:absolute;
+        top:50%;
+        left:0;
+        min-width:40px;
+        min-height:20px;
+        width:\${({$width}) => $width}px;
+        height:\${({$height}) => $height}px;
+        border-radius:4px;
+        background: \${({$onBgColor}) => $onBgColor};
+        transition: transform var(--transition);
+        transform:translate(\${({$left}) => $left}px, -50%);
+        box-shadow: rgba(127,127,127, 0.1) 0.7px 2px 2px;
+        content:'';
+      }
+      .tab {
+        & > button {
+          position:relative;
+          z-index:2;
+        }
+        &.active {
+          & > button {
+            transition: color var(--transition);
+            color: #fff;
+          }
+        }
+      }
+    }
     `
     }
   ]

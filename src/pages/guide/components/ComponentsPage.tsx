@@ -38,7 +38,7 @@ export const ComponentsPage = () => {
   }, [id, navigationType, returnFocusID]);
 
   const selectUpdate = (selected:string) => { // -1 : All , 그 외 value
-    setFilter(selected === 'All' ? '': selected)
+    setFilter((selected === '전체') || (selected === 'All') ? '': selected)
   }
   const viewUpdate = ({id, target}: {id: string, target: HTMLElement}) => {
     setReturnFocusID(id); // 클릭한 아이템 ID 저장
