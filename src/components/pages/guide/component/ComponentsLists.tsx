@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { ComponentsDataType } from "types/guide";
 interface ComponentsListsPropsType {
   data: ComponentsDataType[];
-  clickEvent: ({id,target}:{id:string, target:HTMLElement}) => void;
+  clickEvent: (pathID:string) => void;
 }
 export const ComponentsLists = ({data, clickEvent} : ComponentsListsPropsType) => {
-  const handleMoveClick = (id: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
-    clickEvent({id, target: e.currentTarget});
+  const handleMoveClick = (pathID: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
+    clickEvent(pathID);
   };
 
   return(

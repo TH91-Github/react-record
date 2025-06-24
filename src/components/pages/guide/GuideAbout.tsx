@@ -8,14 +8,9 @@ import { useNavigate } from "react-router-dom";
 export const GuideAbout = () => {
   const navigate = useNavigate();
 
-  console.log(GUIDE_LIST)
-
   const handleLinkClick = (path:string, depthPath:string | undefined) => {
     if(depthPath){
-      console.log(depthPath)
-      console.log(depthPath.indexOf('/:id'))
       let checkDepth = depthPath.indexOf(':id') > 0 ? '': depthPath;
-      console.log(checkDepth)
       navigate(`guide/${path}/${checkDepth}`);
     }
   }

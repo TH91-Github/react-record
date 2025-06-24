@@ -1,6 +1,8 @@
 import { colors, textColor } from "assets/style/variables";
+import { IconCloseCircle } from "assets/svg/icons";
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import styled from "styled-components"
+import { cn } from "utils/common";
 
 interface InputStylePropsType {
   $maxWidth?: number | string;
@@ -11,6 +13,7 @@ interface InputStylePropsType {
 interface InputPropsType {
   name?: string;
   id: string;
+  type?: 'text' | 'password';
   className?: string;
   title?: string;
   placeholder?: string;
@@ -33,11 +36,10 @@ export interface InputTextRefType {
   refResetVal: () => void;
 }
 
-export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
-  {
-    name, id, className, title, placeholder, initVal, disabled, isError, styleOpt={},
-    keyEnter, changeEvent, focusEvent, blurEvent, removeEvent
-  }: InputPropsType, ref ) {
+export const InputText = forwardRef<InputTextRefType, InputPropsType>(function InputText({
+  name, id, type, className, title, placeholder, initVal, disabled, isError, styleOpt={},
+  keyEnter, changeEvent, focusEvent, blurEvent, removeEvent
+}: InputPropsType, ref ) {
 
   const [isFocus, setIsFocus] = useState<boolean>(initVal ? true : false);
   const [val, setVal] = useState<string>(initVal ?? "");
@@ -90,7 +92,7 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
     }
   },[])
 
-  useImperativeHandle(ref, () => ({ // ref로 시작작
+  useImperativeHandle(ref, () => ({ // ref로 시작
     refInputEvent: () => { // input 반환
       return inputRef.current
     },
@@ -115,40 +117,40 @@ export default(forwardRef<InputTextRefType, InputPropsType>( function InputText(
       $lineColor={$lineColor}
       $focusColor={$focusColor}
     >
-      <input
-        ref={inputRef}
-        type="text"
-        id={id}
-        name={name}
-        className={`input ${className ? className : ''} ${$defaultLine !== 'none' ? $defaultLine : ''}`}
-        value={val}
-        onFocus={handleFocusIn}
-        onBlur={handleFocusOut}
-        onKeyUp={handleKeyUp}
-        onChange={handleOnChange}
-        autoComplete="off"
-        title={placeholder ? placeholder : (title ?? '입력 해주세요')}
-        disabled={disabled}
-      />
-      {
-        (placeholder && val.length === 0) && (
-          <span className="placeholder">{ placeholder }</span>
-        )
-      }
-      {
-        false && 
+      <label>
+        <input
+          ref={inputRef}
+          type={type ?? 'text'}
+          id={id}
+          name={name}
+          className={`input ${className ? className : ''} ${$defaultLine !== 'none' ? $defaultLine : ''}`}
+          value={val}
+          onFocus={handleFocusIn}
+          onBlur={handleFocusOut}
+          onKeyUp={handleKeyUp}
+          onChange={handleOnChange}
+          autoComplete="off"
+          title={placeholder ? placeholder : (title ?? '입력 해주세요')}
+          disabled={disabled}
+        />
+      </label>
+      {(placeholder && val.length === 0) && (
+        <span className="placeholder">{ placeholder }</span>
+      )}
+      {val.length > 0 && ( 
         <button
           type="button"
-          className={`remove${val.length > 0 ? ' on':''}`}
+          className={cn('remove', val.length > 0 && 'on')}
           onClick={handleValRemove}>
           <span className="blind">
             입력 삭제
           </span>
+          <IconCloseCircle />
         </button>
-      }
+      )}
     </StyleWrap>
   )
-}));
+});
 
 const StyleWrap = styled.div<InputStylePropsType>`
   display:block;
@@ -174,8 +176,11 @@ const StyleWrap = styled.div<InputStylePropsType>`
     &.line {
       border-color:${colors.lineColor};
     }
-    $.line-bottom{ 
-      border-bottom-color:${colors.lineColor};
+    &.line-bottom{
+      outline:0;
+      border-radius:0;
+      border:none;
+      border-bottom:1px solid ${colors.lineColor};
     }
   }
   .placeholder {
@@ -188,15 +193,21 @@ const StyleWrap = styled.div<InputStylePropsType>`
     color:${textColor.subText};
     pointer-events:none;
   }
-  .remove{
+  .remove {
+    display:flex;
+    justify-content:center;
+    align-imtes:center;
     position:absolute;
-    top:-999px;
-    left:-999px;
+    top:50%;
+    right:10px;
+    transform: translateY(-50%);
   }
-    
   &.isFocus {
     .input {
       border-color: ${({$focusColor}) => $focusColor};
+      &.line-bottom{ 
+        border-bottom: 1px solid ${({$focusColor}) => $focusColor};
+      }
     }
   }
 `;

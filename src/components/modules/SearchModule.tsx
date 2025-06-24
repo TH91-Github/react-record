@@ -1,7 +1,7 @@
 
 import { colors } from "assets/style/variables";
 import { SvgSearch } from "assets/svg/Common";
-import InputText, { InputTextRefType } from "components/common/InputText";
+import { InputText, InputTextRefType } from "components/common/InputText";
 import { PreviewText } from "components/common/PreviewText";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
@@ -43,6 +43,9 @@ export const SearchModule = <T extends EssentialType>({
   }
   const inputChange = useCallback((val: string) => {
     setResultVal(val);
+    if (val.length >= 2) {
+      setIsPreview(true);
+    }
   }, []);
 
   const handleMouseDown = (e: PointerEvent) => { // 다른 영역 클릭 시시
@@ -53,7 +56,6 @@ export const SearchModule = <T extends EssentialType>({
       setIsPreview(false);
     }
   };
-
   const filteredData = useMemo(() => {
     if (resultVal.length < 2) return []; // 2글자 이상부터
     const loweredVal = resultVal.toLowerCase();
@@ -68,7 +70,6 @@ export const SearchModule = <T extends EssentialType>({
         }
       });
     });
-    setIsPreview(true);
     return matches;
   }, [data, resultVal]);
 

@@ -1,6 +1,7 @@
 import { GuidePage } from "pages/guide/GuidePage";
 import { TestWrap } from "test/TestWrap";
 import { GUIDE_LIST } from "./pages/guide/GuideRouter";
+import { MemberPage } from "pages/member/MemberPage";
 
 export const routerList = [
   { // Main
@@ -25,5 +26,11 @@ export const routerList = [
     title:'테스트',
     view: false,
     element: <TestWrap />
+  },
+  {
+    id: "Member",
+    path: "member",
+    view: false,
+    element: <MemberPage />,
   }
 ];

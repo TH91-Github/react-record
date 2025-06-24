@@ -1,5 +1,5 @@
 import { colors } from "assets/style/variables";
-import InputText from "components/common/InputText";
+import { InputText } from "components/common/InputText";
 import { fontsData } from "components/pages/guide/data/designData";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";

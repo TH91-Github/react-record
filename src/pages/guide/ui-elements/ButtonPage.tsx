@@ -32,8 +32,7 @@ export const ButtonPage = () => {
                 <p key={descIdx} className="desc">{descItem}</p>
               ))}
               <ButtonCaseLists 
-                data={item.lists} 
-                category={item.category}
+                data={item.lists}
               />
             </div> 
           ))
