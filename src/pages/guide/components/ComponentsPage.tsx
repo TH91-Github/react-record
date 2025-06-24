@@ -40,9 +40,9 @@ export const ComponentsPage = () => {
   const selectUpdate = (selected:string) => { // -1 : All , 그 외 value
     setFilter((selected === '전체') || (selected === 'All') ? '': selected)
   }
-  const viewUpdate = ({id, target}: {id: string, target: HTMLElement}) => {
-    setReturnFocusID(id); // 클릭한 아이템 ID 저장
-    navigate(`view/${id}`);
+  const viewUpdate = (pathID:string) => {
+    setReturnFocusID(pathID); // 클릭한 아이템 ID 저장
+    navigate(`view/${pathID}`);
   }
 
   const filterLists = useMemo(() => {

@@ -1,4 +1,5 @@
 import { bgOpacity, bgShadow, colors, textShadow } from "assets/style/variables";
+import { useToast } from "hooks/useToast";
 import { useSetRecoilState } from "recoil";
 import { stateAlert } from "recoil/atoms";
 import styled from "styled-components";
@@ -10,16 +11,14 @@ interface ColorChipPropsType {
   keyValue?: string;
 }
 export const ColorChip = ({data, keyValue}:ColorChipPropsType) => {
-  const setAlert = useSetRecoilState(stateAlert);
+  const { addToast } = useToast();
 
   const handleClickCopy = async (e:string) => {
     const copySuccess = await copyClipboard(e);
-    setAlert({
-      isActive: true,
-      title: e,
-      desc: copySuccess ? `복사를 성공했어요.`:'복사를 실패했어요.. 😢' ,
-      autoCloseSecond:2000,
-    });
+    addToast(
+      copySuccess ? '복사를 성공했어요.' : '복사를 실패했어요.. 😢',
+      copySuccess ? 'base' : 'error'
+    )
   };
 
   return (
