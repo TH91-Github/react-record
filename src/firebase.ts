@@ -75,5 +75,6 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig, 'Tistory');
 // 데이터베이스
 const firebaseDB = getFirestore(firebaseApp);
-const firebaseAuth = getAuth(firebaseApp); // 👈 추가
-export { firebaseApp, firebaseDB, firebaseAuth };
+const firebaseAuth = getAuth(firebaseApp); 
+const fireProvider = new GoogleAuthProvider(); // 👈 추가
+export { firebaseApp, firebaseDB, firebaseAuth, fireProvider};

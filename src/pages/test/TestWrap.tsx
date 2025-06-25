@@ -20,4 +20,7 @@ const StyleWrap = styled.div`
     border:1px solid #dbdbdb;
   }
 
+  .btn{ 
+    margin-top:20px;  
+  }
 `;

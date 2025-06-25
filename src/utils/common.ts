@@ -57,3 +57,22 @@ export function sanitizeHtml(dataHTML: string, options?: Config) {
     ALLOW_DATA_ATTR: false,
   });
 }
+
+// 랜덤 값 (최대 값, 이름지정_랜덤 값)
+export const randomNum = (_max:number, name?:string) :string => { 
+  let newId = Math.floor(Math.random() * Number(_max + 1))
+  let timeDate = new Date().getTime().toString(); // 시간 값으로 변경 
+  return `${name ===undefined ? 'random': name}-${newId}-${timeDate}`;
+} 
+
+// (비교리스트, 지정id값) 리스트 내 id 비교 중복 값 없는 id 지정
+export function randomIdChk (listId:any[], name:string) { 
+  const idName = name ?? "random"
+  let uniqueId = '';
+  for(let idNum = 0 ; idNum < 1; idNum++){
+    let createId = { id : randomNum(9999, idName)}
+    listId.findIndex((idItem) => idItem.id === createId.id) >= 0 && idNum--;
+    uniqueId = createId.id;
+  }
+  return uniqueId;
+}

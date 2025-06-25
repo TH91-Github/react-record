@@ -1,7 +1,20 @@
 import { colors, textColor, textShadow } from "assets/style/variables";
 import { InputItemModule } from "components/modules/InputItemModule";
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import styled from "styled-components"
+import { EmailForm } from "./EmailForm";
+import { PasswordForm1 } from "./PasswordForm1";
+import { PasswordForm2 } from "./PasswordForm2";
+import { SimpleIDForm } from "./SimpleIDForm";
+import { NickNameForm } from "./NickNameForm";
+import { randomIdChk } from "utils/common";
+
+// input 조건 체크
+interface InputStateType { 
+  id: string, 
+  name: string,
+  check:boolean
+}
 
 interface SignUpPropsType {
   authChange: () => void
@@ -9,38 +22,78 @@ interface SignUpPropsType {
 
 export const SignUp = ({authChange}:SignUpPropsType) =>{ 
   const refList = useRef<HTMLInputElement[]>([]);
+  const [validation, setValidation] = useState<InputStateType[]>([])
   
+  const handleChangeClick = () => { // 로그인 바로가기.
+    authChange();
+  }
+  const inputUpdate = useCallback((el: HTMLInputElement) => {
+    if (!refList.current.some(item => item === el)) {
+      refList.current.push(el);
+      const inputState: InputStateType = {
+        id: randomIdChk(refList.current, 'input'),
+        name: el.getAttribute('name') ?? '',
+        check: essentialChk(el)
+      }
+      setValidation(prev => [
+        ...prev,
+        inputState
+      ])
+    }
+  }, []);
+
+  const essentialChk = (checkTag:HTMLInputElement):boolean =>{
+    const essentialName = ['loginID'];
+    const name = checkTag.getAttribute('name') 
+    return name && essentialName.includes(name) ? true : false
+  }
+
+  const validationUpdate = useCallback(() => {
+    
+    // name:string|null, state:boolean
+    // const checkUpdate = {check : state }
+    // setValidation(prev => prev.map((item) => 
+    //   item.name === name ? {...item, ...checkUpdate } : item
+    // ))
+  }, []);
+
   const handleSubmit = useCallback( async(e: React.FormEvent) => {
     e.preventDefault()
   },[])
 
-  const handleChangeClick = () => { // 로그인 바로가기.
-    authChange();
-  }
+
+
+  // 회원가입 시 emails로 ID
+  // 간편 아이디 체크도 추가
+  // await setDoc(doc(fireDB, 'emails', email), { createdAt: serverTimestamp() });
   return(
     <StyleWrap>
       <h2 className="title">회원가입</h2>
       <div className="form-wrap">
         <form className="form" onSubmit={(e) => handleSubmit(e)}>
+          {/* 이메일 */}
           <div className="form-item">
-            <InputItemModule 
-              id="signup-email" 
-              title="이메일"
+            <EmailForm 
+              inputUpdate={inputUpdate}
+              validationUpdate={validationUpdate}
             />
           </div>
           {/* 간편 아이디 */}
-
+          <div className="form-item">
+            <SimpleIDForm />
+          </div>
           {/* 닉네임 */}
-
+          <div className="form-item">
+            <NickNameForm />
+          </div>
           {/* 비밀번호  */}
           <div className="form-item">
-            <InputItemModule 
-              id="signup-pw" 
-              title="비밀번호"
-              type="password"
-            />
+            <PasswordForm1 />
           </div>
           {/* 비밀번호 확인 */}
+          <div className="form-item">
+            <PasswordForm2 />
+          </div>
           <div className="btn-article">
             <button type="submit" className="btn btn-submit full">
               <span>확인</span>
@@ -71,7 +124,7 @@ const StyleWrap = styled.div`
   .form-wrap{
     position:relative;
     margin-top:20px;
-    padding-top:50px;
+    padding-top:20px;
     &::before{
       position:absolute;
       top:0;
@@ -89,7 +142,6 @@ const StyleWrap = styled.div`
       to { transform: translateX(-50%) scaleX(1); }
     }
   }
-
   .btn-article{
     margin-top:30px;
   }
@@ -112,14 +164,15 @@ const StyleWrap = styled.div`
     .auth-btn {
       position:relative;
       padding-bottom:3px;
-      color:${textColor.text};
+      font-weight:500;
+      color:${colors.mSlateBlue};
       &::after{
         position:absolute;
         left:0;
         bottom:0;
         width:100%;
         height:2px;
-        background: ${colors.blue};
+        background: ${colors.mSlateBlue};
         transition: transform var(--transition);
         transform: scaleX(0);
         transform-origin:left center;

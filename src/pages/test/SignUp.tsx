@@ -1,8 +1,8 @@
-import { useState, ChangeEvent, FormEvent } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { firebaseAuth } from '../firebase';
+import { ChangeEvent, FormEvent, useState } from "react";
+import { firebaseAuth } from "../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export const Tistory = () => {
+export const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,15 +19,15 @@ export const Tistory = () => {
     e.preventDefault();
     try {
       const result = await createUserWithEmailAndPassword(firebaseAuth, email, password);
-      console.log(result);
+      console.log("성공"+ result);
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div className="Tistory">
-      {/*  */}
+    <div>
+      <h2>회원가입</h2>
       <form onSubmit={onSubmit}>
         <input
           name="email"
@@ -43,8 +43,10 @@ export const Tistory = () => {
           value={password}
           onChange={onChange}
         />
-        <input type="submit" value="회원가입" />
+        <button type="submit">
+          회원가입
+        </button>
       </form>
     </div>
-  );
-};
+  )
+}

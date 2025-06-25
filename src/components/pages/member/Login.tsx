@@ -2,6 +2,8 @@ import { colors, textColor, textShadow } from "assets/style/variables";
 import { InputItemModule, InputItemModuleRefType } from "components/modules/InputItemModule";
 import { useCallback, useRef } from "react";
 import styled from "styled-components";
+import { LoginIDForm } from "./LoginIDForm";
+import { LoginPWForm } from "./LoginPWForm";
 
 interface LoginPropsType {
   authChange: () => void
@@ -23,21 +25,8 @@ export const Login = ({authChange}:LoginPropsType) =>{
       <h2 className="title">로그인</h2>
       <div className="form-wrap">
         <form className="form" onSubmit={(e) => handleSubmit(e)}>
-          <div className="form-item">
-            <InputItemModule 
-              id="login-id" 
-              title="아이디 or 이메일"
-            />
-          </div>
-          <div className="form-item">
-            <span className="input-item">
-              <InputItemModule 
-                id="login-pw" 
-                type="password"
-                title="비밀번호"
-              />
-            </span>
-          </div>
+          <LoginIDForm />
+          <LoginPWForm />
           <div className="btn-article">
             <button type="submit" className="btn btn-submit full">
               <span>로그인</span>
@@ -68,7 +57,7 @@ const StyleWrap = styled.div`
   .form-wrap{
     position:relative;
     margin-top:20px;
-    padding-top:50px;
+    padding-top:20px;
     &::before{
       position:absolute;
       top:0;
@@ -84,12 +73,6 @@ const StyleWrap = styled.div`
     @keyframes formLineAni {
       from{ transform: translateX(-50%) scaleX(0);}
       to { transform: translateX(-50%) scaleX(1); }
-    }
-  }
-  .form-item{
-    margin-top:20px;
-    &:first-child{
-      margin-top: 0;
     }
   }
   .btn-article{
@@ -114,14 +97,15 @@ const StyleWrap = styled.div`
     .auth-btn {
       position:relative;
       padding-bottom:3px;
-      color:${textColor.text};
+      font-weight:500;
+      color:${colors.blue};
       &::after{
         position:absolute;
         left:0;
         bottom:0;
         width:100%;
         height:2px;
-        background: ${colors.mSlateBlue};
+        background: ${colors.blue};
         transition: transform var(--transition);
         transform: scaleX(0);
         transform-origin:left center;

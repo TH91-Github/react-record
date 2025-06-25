@@ -29,7 +29,7 @@ interface InputPropsType {
 }
 
 export interface InputTextRefType {
-  refInputEvent: () => HTMLInputElement | null;
+  refInputEl: () => HTMLInputElement | null;
   refInputValue: () => string;
   refFocusEvent: () => void;
   refInitVal: (e:string) => void;
@@ -93,7 +93,7 @@ export const InputText = forwardRef<InputTextRefType, InputPropsType>(function I
   },[])
 
   useImperativeHandle(ref, () => ({ // ref로 시작
-    refInputEvent: () => { // input 반환
+    refInputEl: () => { // input 반환
       return inputRef.current
     },
     refInputValue: () => { // value
@@ -112,7 +112,7 @@ export const InputText = forwardRef<InputTextRefType, InputPropsType>(function I
   
   return( 
     <StyleWrap
-      className={`input-item${isFocus ? ' isFocus' : '' }${isError ? ' error' : ''}` }
+      className={cn('input-item', isFocus && 'isFocus', isError && 'isError')}
       $maxWidth={$maxWidth ? $maxWidth : undefined} 
       $lineColor={$lineColor}
       $focusColor={$focusColor}
@@ -208,6 +208,11 @@ const StyleWrap = styled.div<InputStylePropsType>`
       &.line-bottom{ 
         border-bottom: 1px solid ${({$focusColor}) => $focusColor};
       }
+    }
+  }
+  &.isError {
+    .input{
+      color:${colors.red};
     }
   }
 `;
