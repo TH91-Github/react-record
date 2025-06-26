@@ -168,203 +168,13 @@ export const carouselData : ComponentsInfoType = {
     `,
     },
     {
-      id:'code-tsx',
-      title:'TSX',
+      id:'code-url',
+      title:'TSX & CSS',
       lang:'typescript',
       code:
     `
-    const DEFAULT_OPT: SwiperProps = {
-      slidesPerView: 3,
-      spaceBetween: 10,
-      observer:true,
-      observeParents:true,
-      virtual:false,
-    };
-
-    export default forwardRef<CarouselRefType, CarouselPropsType>(({
-      children, 
-      customClass = 'carousel',
-      carouselOpt, 
-      onCarousel, onChangeEvent
-    }, ref) => {
-      const swiperRef = useRef<SwiperRef | null>(null);
-      const paginationRef = useRef<HTMLDivElement | null>(null);
-      const prevBtnRef = useRef<HTMLButtonElement | null>(null);
-      const nextBtnRef = useRef<HTMLButtonElement | null>(null);
-      const [isPlaying, setIsPlaying] = useState(true); 
-      const option = useMemo(() => ({ ...DEFAULT_OPT, ...carouselOpt }), [carouselOpt]);
-
-      const handleAutoPlay = useCallback(() => {
-        ...
-      }, [isPlaying]);
-
-      const handleChange = (e:SwiperClass) => {
-        ...
-      }
-
-      const handleInit = (swiper:SwiperClass) => {
-        ...
-      }
-      
-      const handleOnSwiper = (e:SwiperClass) => {
-        ...
-      }
-
-      useImperativeHandle(ref, () => ({
-        getCarouselElement: () => swiperRef.current,
-        carouselSlideTo: (idx) =>{
-          swiperRef.current?.swiper.slideTo(idx)
-        },
-        carouselUpdate:()=>{
-          swiperRef.current?.swiper.update();
-        }
-      }));
-
-      return(
-        <StyleWrap 
-          className={cn('carousel-wrap', option.direction ==='vertical'&& 'vertical')}
-        >
-          <div className="carousel-inner">
-            <Swiper
-              ref={swiperRef}
-              modules={[Navigation, Pagination, A11y, Autoplay, Virtual, Scrollbar, Mousewheel]}
-              virtual={option.virtual ? { slides: React.Children.toArray(children) } : undefined}
-              onSwiper={handleOnSwiper}
-              onBeforeInit={handleInit}
-              onSlideChange={handleChange}
-              {...option}
-              pagination={false} // pagination 예외 onBeforeInit 재할당
-              navigation={false} // navigation 예외 onBeforeInit 재할당
-              className={customClass}
-            >
-              {React.Children.toArray(children).map((childEl, index) => (
-                <SwiperSlide key={index} className="carousel-item">
-                  {childEl}
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            {(option.navigation || option.autoplay) && (
-              <div className="carousel-btns">
-                {option.navigation && (
-                  <>
-                    <button 
-                      ref={prevBtnRef}
-                      type="button"
-                      className="btn-prev">
-                      <span className="icon"><SvgArrow $fill={colors.mSlateBlue}/></span>
-                      <span className="blind">이전</span>
-                    </button>
-                    <button 
-                      ref={nextBtnRef}
-                      type="button"
-                      className="btn-next">
-                      <span className="icon"><SvgArrow $fill={colors.mSlateBlue}/></span>
-                      <span className="blind">다음</span>
-                    </button>
-                  </>
-                )}
-                {option.autoplay && (
-                  <div className="autoplay-btn">
-                    <button
-                      type="button"
-                      className={\`btn \${isPlaying?'stop':'play'}\`}
-                      onClick={handleAutoPlay}>
-                        <span>{isPlaying? '정지' : '재생'}</span>
-                    </button>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-          {option.pagination && (
-            <div ref={paginationRef} className="carousel-pagination">
-            </div>
-          )}
-        </StyleWrap>
-      );
-    });
     `
     },
-    {
-      id:'code-css',
-      title:'CSS',
-      lang:'css',
-      code:
-    `
-    overflow:hidden;
-    position:relative;
-    .carousel-inner{
-      position:relative;
-    }
-    &.vertical {
-      height:100%;
-      .swiper{ 
-        height:100%;
-      }
-    }
-    .carousel-pagination {
-      display:flex;
-      justify-content:center;
-      gap:5px;
-      position:relative;
-      width:100%;
-      margin-top:15px;
-      &.swiper-pagination-progressbar{
-        .swiper-pagination-progressbar-fill{
-          background:\${colors.mSlateBlue};
-        }
-      }
-      .swiper-pagination-bullet {
-        margin:0;
-        background:\${colors.gray};
-        opacity:0.7;
-      }
-      .swiper-pagination-bullet-active {
-        background: \${colors.mSlateBlue};
-        opacity:1;
-      }
-    }
-    
-    .carousel-btns{
-      position:absolute;
-      top:50%;
-      left:0;
-      width:100%;
-      & > button {
-        display:block;
-        position:absolute;
-        z-index:1;
-        top:50%;
-        width:30px;
-        height:30px;
-        transform: translateY(-50%);
-      }
-      .btn-prev {
-        left:0;
-        svg{
-          transition: stroke var(--transition)
-        }
-      }
-      .btn-next{
-        right:0;
-        .icon{
-          transform:scaleX(-1);
-        }
-      }
-      .swiper-button-lock {
-        display:none;
-      }
-      .swiper-button-disabled{
-        svg {
-          stroke: \${colors.gray};
-        }
-      }
-      .icon{
-        display:block;
-      }
-    }
-    `
-    }
   ]
 }
 
@@ -379,7 +189,7 @@ export const toastData : ComponentsInfoType = {
     {
       id:'toast-component',
       title:'컴포넌트 code',
-      code:'<Toast />',
+      code:'github - <Toast />',
       link:'https://github.com/TH91-Github/react-record/blob/main/src/components/common/Toast.tsx'
     },
     {
@@ -406,157 +216,11 @@ export const toastData : ComponentsInfoType = {
     `,
     },
     {
-      id:'code-tsx',
-      title:'TSX',
-      lang:'typescript',
-      code:
-    `
-    // ✅ hook 
-    export const useToast = () => {
-      const [{ toasts }] = useRecoilState(toastState);
-    
-      const addToast = useRecoilCallback(
-        ({ set }) => 
-        (message: string = 'success!', type?: 'base' |'success' | 'error', timer:number = 2000) => {
-          . . .
-        },
-        []
-      );
-    
-      const removeToast = useRecoilCallback(
-        ({ set }) => (id: number) => {
-          . . .
-        },
-        []
-      );
-    
-      const clearToasts = useRecoilCallback(
-        ({ set }) => () => {
-          . . .
-        },
-        []
-      );
-    
-      return {
-        toasts,
-        addToast,
-        removeToast,
-        clearToasts,
-      };
-    };
-
-    // ✅ component
-    export const Toast = () => {
-      const { toasts } = useToast();
-    
-      return createPortal(
-        <StyleWrap className="toast-container">
-          {toasts.map(({ id, visible, message, type }) => (
-            <div 
-              key={id} 
-              className={cn('toast', type, visible ? 'show' : 'hide')}
-            >
-              <span className="mgessage">
-                <span className="icon"><IconCheck /></span>
-                <span className="txt">{message}</span>
-              </span>
-            </div>
-          ))}
-        </StyleWrap>,
-        document.body
-      );
-    }
-    `
+      id:'code-url',
+      title:'TSX & CSS',
+      lang:'html',
+      code:`https://github.com/TH91-Github/react-record/blob/main/src/components/common/Toast.tsx`
     },
-    {
-      id:'code-css',
-      title:'CSS',
-      lang:'css',
-      code:
-    `
-    display:flex;
-    flex-direction: column;
-    gap:10px;
-    align-items:center;
-    position: fixed;
-    z-index: 9999;
-    bottom:0;
-    left: 50%;
-    padding-bottom:10px;
-    transform: translateX(-50%);
-    .toast {
-      overflow:hidden;
-      position:relative;
-      border-radius: 5px;
-      border-left:none;
-      background:#fff;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      animation: toastAniUp .3s ease;
-      &::before {
-        position:absolute;
-        top:0;
-        left:0;
-        width:5px;
-        height:100%;
-        border:1px solid \${colors.mSlateBlue};
-        background:\${colors.mSlateBlue};
-        content:'';
-      }
-      .mgessage {
-        display:flex;
-        align-items:center;
-        gap:5px;
-        padding: 8px 16px;
-        border:1px solid \${colors.lineColor};
-        border-left:none;
-        .icon {
-          display:flex;
-          align-items:center;
-          color: \${colors.mSlateBlue};
-        }
-        .txt {
-          font-size:14px;
-        }
-      }
-        
-      &.success{
-        &::before {
-          border-color: \${colors.green};
-          background:\${colors.green};
-        }
-        .icon { 
-          color: \${colors.green};
-        }
-      }
-      &.error{
-        &::before {
-          border-color: \${colors.red};
-          background:\${colors.red};
-        }
-        .icon { 
-          color: \${colors.red};
-        }
-      }
-      &.show {
-        opacity: 1;
-        animation: toastAniUp .3s ease;
-      }
-      &.hide {
-        opacity: 0;
-        transform: translateY(100%);
-      }
-    }
-    
-    @keyframes toastAniUp { 
-      from{
-        transform: translateY(100%);
-      }
-      to{
-        transform: translateY(0);
-      }
-    }
-    `
-    }
   ]
 }
 
@@ -572,7 +236,7 @@ export const tabBtnsData : ComponentsInfoType = {
     {
       id:'tabBtns-component',
       title:'컴포넌트 code',
-      code:'<TabBtns />',
+      code:'github - <TabBtns />',
       link:'https://github.com/TH91-Github/react-record/blob/main/src/components/common/TabBtns.tsx'
     },
   ],
@@ -589,144 +253,13 @@ export const tabBtnsData : ComponentsInfoType = {
       `
     },
     {
-      id:'code-tsx',
-      title:'TSX',
-      lang:'typescript',
+      id:'code-url',
+      title:'TSX & CSS',
+      lang:'html',
       code:
     `
-    export const TabBtns = ({
-      tabType = 'basics',
-      isAll = true,
-      data,
-      activeTab,
-      onBgColor,
-      changeEvent
-    }:TabBtnsPropsType) => {
-      const tabBtnWrap = useRef<HTMLDivElement>(null);
-      const [isActive, setIsActive] = useState(isAll ? -1 : 0);
-      const defaultVal = isAll === 'en' ? 'All' : '전체';
-      const [movingStyle, setMovingStyle] = useState(
-        tabType === 'moving' 
-          ? { left: 0, width: 0, height: 0 } 
-          : { left: 5, width: 16, height: 16 }
-      );
-      const updateMovingStyle = (targetElement?: HTMLElement) => {
-        ...
-      };
-      const handleTabClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>, val:string, idx:number) =>{
-        ...
-      }
-      useEffect(() => { // 초기 선택 값 전달
-        ...
-      }, []);
-      useEffect(() => { // 초기 선택 Tab 
-        ...
-      },[activeTab, data])
-      useEffect(() => {
-        ...
-      }, [tabType, isActive, data, isAll]);
-      return (
-        <StyleWrap 
-          ref={tabBtnWrap}
-          className={cn('tab-btn-wrap', tabType)}
-          $left={movingStyle.left}
-          $width={movingStyle.width}
-          $height={movingStyle.height}
-          $onBgColor={onBgColor || colors.mSlateBlue}
-        >
-          <ul>
-            {isAll && (
-              <li className={cn('tab', isActive === -1 && 'active')}>
-                <button type="button" onClick={(e) => handleTabClick(e, defaultVal, -1)}>
-                  <span>{defaultVal}</span>
-                </button>
-              </li>
-            )}
-            {data.map((item, idx) => (
-              <li key={idx} className={cn('tab', isActive === idx && 'active')}>
-                <button
-                  type="button"
-                  onClick={(e) => handleTabClick(e, item, idx)}>
-                    <span>{item}</span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        </StyleWrap>
-      )
-    }
-      
-
+      https://github.com/TH91-Github/react-record/blob/main/src/components/common/TabBtns.tsx
     `
     },
-    {
-      id:'code-css',
-      title:'CSS',
-      lang:'css',
-      code:
-    `
-    position:relative;
-    & > ul {
-      display:flex;
-      gap:5px;
-    }
-    .tab {
-      & > button {
-        min-width:40px;
-        height:40px;
-        padding:5px 10px;
-        border:1px solid transparent;
-        border-radius: 5px;
-      }
-    }
-    &.basics{
-      .tab {
-        & > button {
-          min-width:40px;
-          height:40px;
-          padding:5px 10px;
-          border:1px solid transparent;
-          border-radius: 5px;
-          transition: border-color var(--transition), background-color var(--transition), color var(--transition);
-        }
-        &.active {
-          & > button {
-            background:\${({$onBgColor}) => $onBgColor};
-            color: #fff;
-          }
-        }
-      }
-    }
-    &.moving {
-      &:before {
-        position:absolute;
-        top:50%;
-        left:0;
-        min-width:40px;
-        min-height:20px;
-        width:\${({$width}) => $width}px;
-        height:\${({$height}) => $height}px;
-        border-radius:4px;
-        background: \${({$onBgColor}) => $onBgColor};
-        transition: transform var(--transition);
-        transform:translate(\${({$left}) => $left}px, -50%);
-        box-shadow: rgba(127,127,127, 0.1) 0.7px 2px 2px;
-        content:'';
-      }
-      .tab {
-        & > button {
-          position:relative;
-          z-index:2;
-        }
-        &.active {
-          & > button {
-            transition: color var(--transition);
-            color: #fff;
-          }
-        }
-      }
-    }
-    `
-    }
   ]
 }
