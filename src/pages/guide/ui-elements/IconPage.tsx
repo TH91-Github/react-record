@@ -4,8 +4,6 @@ import { InnerHTML } from "components/ui/InnerHTML";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";
 import { useToast } from "hooks/useToast";
-import { useSetRecoilState } from "recoil";
-import { stateAlert } from "recoil/atoms";
 import styled from "styled-components";
 import { copyClipboard } from "utils/common";
 

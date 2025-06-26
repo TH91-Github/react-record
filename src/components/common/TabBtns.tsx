@@ -1,5 +1,5 @@
 import { colors } from "assets/style/variables";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import styled from "styled-components";
 import { cn } from "utils/common";
 
@@ -21,15 +21,19 @@ export const TabBtns = ({
 }:TabBtnsPropsType) => {
   const tabBtnWrap = useRef<HTMLDivElement>(null);
   const [isActive, setIsActive] = useState(isAll ? -1 : 0);
-  const defaultVal = isAll === 'en' ? 'All' : '전체';
+  const [isInitialized, setIsInitialized] = useState(false);
+  const defaultVal = useMemo(() => (
+    isAll === 'en' ? 'All' : '전체'
+  ), [isAll]);
   const [movingStyle, setMovingStyle] = useState(
     tabType === 'moving' 
       ? { left: 0, width: 0, height: 0 } 
       : { left: 5, width: 16, height: 16 }
   );
 
-   const updateMovingStyle = (targetEl?: HTMLElement) => {
+  const updateMovingStyle = useCallback((targetEl?: HTMLElement) => {
     if (tabType !== 'moving' || !tabBtnWrap.current) return;
+    
     let targetBtn: Element | null = null;
     if (targetEl) {
       targetBtn = targetEl;
@@ -53,32 +57,40 @@ export const TabBtns = ({
         height: Math.round(height),
       });
     }
-  };
+  }, [tabType, isActive, isAll]);
 
-  const handleTabClick = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>, val:string, idx:number) =>{
+  const handleTabClick = useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>, val: string, idx: number) => {
     if (tabType === 'moving') {
       updateMovingStyle(e.currentTarget);
     }
-    setIsActive(idx)
-    changeEvent && changeEvent(val)
-  }
+    setIsActive(idx);
+    changeEvent && changeEvent(val);
+  }, [tabType, updateMovingStyle, changeEvent]);
 
-  useEffect(() => { // 초기 선택 값 전달
-    if (!activeTab && isAll && changeEvent) {
+  // 초기 선택 Tab 설정 (activeTab이 있는 경우 우선 처리)
+  useEffect(() => {
+    if (activeTab && data.length > 0) {
+      const activeNum = data.indexOf(activeTab);
+      if (activeNum >= 0) {
+        setIsActive(activeNum);
+        setIsInitialized(true);
+        return;
+      }
+    }
+    
+    // activeTab이 없고 초기화되지 않은 경우에만 기본값 설정
+    if (!activeTab && !isInitialized && isAll && changeEvent) {
       setIsActive(-1);
       changeEvent(defaultVal);
+      setIsInitialized(true);
+    } else if (!activeTab && !isInitialized) {
+      setIsInitialized(true);
     }
-  }, []);
+  }, [activeTab, data, isAll, changeEvent, defaultVal, isInitialized]);
 
-  useEffect(() => { // 초기 선택 Tab 
-    if(activeTab){
-      const activeNum = data.indexOf(activeTab)
-      activeNum > 0 && setIsActive(activeNum)
-    }
-  },[activeTab, data])
-
+  // moving 스타일
   useEffect(() => {
-    if (tabType === 'moving' && tabBtnWrap.current) {
+    if (tabType === 'moving' && tabBtnWrap.current && isInitialized) {
       // requestAnimationFrame을 사용하여 렌더링 완료 후 실행
       const updateStyle = () => {
         requestAnimationFrame(() => {
@@ -88,7 +100,10 @@ export const TabBtns = ({
       
       updateStyle();
     }
-  }, [tabType, isActive, data, isAll]);
+  }, [tabType, updateMovingStyle, isInitialized]);
+
+
+
   return (
     <StyleWrap 
       ref={tabBtnWrap}

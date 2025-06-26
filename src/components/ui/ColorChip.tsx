@@ -1,7 +1,5 @@
 import { bgOpacity, bgShadow, colors, textShadow } from "assets/style/variables";
 import { useToast } from "hooks/useToast";
-import { useSetRecoilState } from "recoil";
-import { stateAlert } from "recoil/atoms";
 import styled from "styled-components";
 import { ColorChipListsType } from "types/ui";
 import { copyClipboard } from "utils/common";

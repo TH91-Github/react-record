@@ -1,13 +1,11 @@
+import ImgArrow from 'assets/images/svg/arrow.svg';
 import { bgOpacity, bgShadow, colors, textColor } from "assets/style/variables";
 import { breakpointsData } from "components/pages/guide/data/designData";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";
+import { useToast } from "hooks/useToast";
 import styled from "styled-components";
 import { copyClipboard } from "utils/common";
-import ImgArrow from 'assets/images/svg/arrow.svg';
-import { stateAlert } from "recoil/atoms";
-import { useSetRecoilState } from "recoil";
-import { useToast } from "hooks/useToast";
 
 
 export const BreakpointsPage = () => {

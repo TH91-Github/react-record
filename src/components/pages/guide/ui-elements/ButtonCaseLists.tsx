@@ -1,6 +1,4 @@
 import { useToast } from "hooks/useToast";
-import { useSetRecoilState } from "recoil";
-import { stateAlert } from "recoil/atoms";
 import styled from "styled-components";
 import { ButtonCaseType } from "types/guide";
 import { copyClipboard } from "utils/common";
