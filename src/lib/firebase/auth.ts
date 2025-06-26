@@ -14,6 +14,8 @@ export const saveEmail = async(email:string):Promise<void> => {
 
 // 필드 내 일치하는 값 조회
 export const checkEmailDuplicate = async(email:string):Promise<boolean> => {
+  console.log('asdasdasd54asd564as56d4as56d4a56sd456')
+  console.log(email)
   const docRef = doc(fireDB, users, 'userData', 'emails', email);
   const snap = await getDoc(docRef);
   return snap.exists();

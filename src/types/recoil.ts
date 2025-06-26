@@ -5,3 +5,14 @@ export interface AlertState {
   autoCloseSecond?: number;
   onClose?: () => void;
 };
+export interface ToastItem {
+  id: number;
+  visible: boolean;
+  message: string;
+  type: 'base' | 'success' | 'error';
+}
+
+export interface ToastState {
+  toasts: ToastItem[];
+  nextId: number;
+}

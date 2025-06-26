@@ -3,7 +3,7 @@ import { SvgCube } from "assets/svg/Common";
 import { SearchModule } from "components/modules/SearchModule";
 import useToggle from "hooks/useToggle";
 import { useRecoilValue } from "recoil";
-import { stateUserColor } from "recoil/atoms";
+import { stateUserColor } from "recoil/userAtoms";
 import styled from "styled-components";
 import { GuideNav } from "./GuideNav";
 import { NavLink } from "react-router-dom";

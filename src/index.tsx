@@ -6,23 +6,28 @@ import { router } from 'routes/Router';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import RecoilStore from 'recoil/recoilStore';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './index.css';
 
 const rootElement = document.getElementById('root');
+const queryClient = new QueryClient();
+
 if (rootElement) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <React.StrictMode>
-      <Provider store={store}>
-        <RecoilStore>
-          <RouterProvider 
-            router={router} 
-            future={{ 
-              v7_startTransition: true,
-            }}
-          />
-        </RecoilStore>
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <RecoilStore>
+            <RouterProvider 
+              router={router} 
+              future={{ 
+                v7_startTransition: true,
+              }}
+            />
+          </RecoilStore>
+        </Provider>
+      </QueryClientProvider>
     </React.StrictMode>
   );
 } else {

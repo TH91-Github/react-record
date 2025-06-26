@@ -1,13 +1,12 @@
 import { colors, textColor, textShadow } from "assets/style/variables";
-import { InputItemModule } from "components/modules/InputItemModule";
 import { useCallback, useRef, useState } from "react";
-import styled from "styled-components"
+import styled from "styled-components";
+import { randomIdChk } from "utils/common";
 import { EmailForm } from "./EmailForm";
+import { NickNameForm } from "./NickNameForm";
 import { PasswordForm1 } from "./PasswordForm1";
 import { PasswordForm2 } from "./PasswordForm2";
 import { SimpleIDForm } from "./SimpleIDForm";
-import { NickNameForm } from "./NickNameForm";
-import { randomIdChk } from "utils/common";
 
 // input 조건 체크
 interface InputStateType { 

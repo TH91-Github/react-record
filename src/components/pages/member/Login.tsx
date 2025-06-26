@@ -1,5 +1,5 @@
 import { colors, textColor, textShadow } from "assets/style/variables";
-import { InputItemModule, InputItemModuleRefType } from "components/modules/InputItemModule";
+import { InputItemModuleRefType } from "components/modules/InputItemModule";
 import { useCallback, useRef } from "react";
 import styled from "styled-components";
 import { LoginIDForm } from "./LoginIDForm";

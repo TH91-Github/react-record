@@ -2,16 +2,16 @@ import { colors } from "assets/style/variables";
 import { Modal } from "components/common/Modal";
 import { InnerHTML } from "components/ui/InnerHTML";
 import { useRecoilState } from "recoil";
-import { stateAlert } from "recoil/atoms";
+import { stateAlert } from "recoil/componentsAtoms";
 import styled from "styled-components";
 
 
 export const AlertModule = () => {
   const [alertState, setAlertState] = useRecoilState(stateAlert);
-   const onClose = () => {
-
+  
+  const onClose = () => {
+    if(!alertState) return
     if(alertState.onClose) alertState.onClose()
-    
     // 초기화
     setAlertState({ 
       isActive: false,

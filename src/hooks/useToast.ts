@@ -1,5 +1,6 @@
 import { useRecoilState, useRecoilCallback } from 'recoil';
-import { ToastItem, toastState } from 'recoil/atoms';
+import { toastState } from 'recoil/componentsAtoms';
+import { ToastItem } from 'types/recoil';
 
 export const useToast = () => {
   const [{ toasts }] = useRecoilState(toastState);
