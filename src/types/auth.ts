@@ -5,15 +5,14 @@ export interface UserDataType { // 🔹 DB 유저 정보
   loginID: string; // 간편 ID
   nickName: string; // 이름 or 닉네임
   password: string; // 임의 비번 암호화 - 잠금 암호 걸때 사용
-  permission:{
-    blockTime: number; // 사용 제한 기간  timestamp
-    state: boolean; // 승인/비승인
-  };
   rank: 'basic' | 'admin'; // 회원등급
+  signupTime: string; // 계정 생성 시간
   theme: {
     color:string; // 색상 저장
     mode: 'dark' | 'light';
   };
+  permission:boolean;
+  profile: string;
   uid: string;
 }
 
@@ -29,3 +28,4 @@ export interface UserStoreType {
   user: null | UserDataType,
   loginTime: number,
 }
+

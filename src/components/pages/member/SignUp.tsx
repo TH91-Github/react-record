@@ -1,22 +1,23 @@
 import { colors, textColor, textShadow } from "assets/style/variables";
 import { useCallback, useRef, useState } from "react";
 import styled from "styled-components";
-import { randomIdChk } from "utils/common";
 import { EmailForm } from "./EmailForm";
-import { NickNameForm } from "./NickNameForm";
-import { PasswordForm1 } from "./PasswordForm1";
-import { PasswordForm2 } from "./PasswordForm2";
 import { SimpleIDForm } from "./SimpleIDForm";
-
-// input 조건 체크
-interface InputStateType { 
-  id: string, 
-  name: string,
-  check:boolean
-}
+import { randomIdChk, randomNum } from "utils/common";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { UserDataType } from "types/auth";
 
 interface SignUpPropsType {
   authChange: () => void
+}
+
+interface InputStateType {
+  id: string,
+  check:boolean
+}
+export interface RefInputType {
+  refPush: (tag:HTMLInputElement) => void;
+  validationUpdate: (inputID:string, state:boolean) => void;
 }
 
 export const SignUp = ({authChange}:SignUpPropsType) =>{ 
@@ -26,44 +27,95 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
   const handleChangeClick = () => { // 로그인 바로가기.
     authChange();
   }
-  const inputUpdate = useCallback((el: HTMLInputElement) => {
-    if (!refList.current.some(item => item === el)) {
-      refList.current.push(el);
+
+  // ref push - input
+  const refListCheck = useCallback((tag: HTMLInputElement) => {
+    if (!refList.current.some(item => item === tag)) {
+      refList.current.push(tag);
+      console.log(tag)
       const inputState: InputStateType = {
-        id: randomIdChk(refList.current, 'input'),
-        name: el.getAttribute('name') ?? '',
-        check: essentialChk(el)
+        id: tag.getAttribute('id') || '',
+        check: essentialChk(tag)
       }
+      console.log(inputState)
       setValidation(prev => [
         ...prev,
         inputState
       ])
     }
   }, []);
-
+  // 필수가 아닌 요소 true 반환
   const essentialChk = (checkTag:HTMLInputElement):boolean =>{
-    const essentialName = ['loginID'];
-    const name = checkTag.getAttribute('name') 
-    return name && essentialName.includes(name) ? true : false
+    const essentialName = ['signup-simpleid'];
+    const tagID = checkTag.getAttribute('id') 
+    return tagID && essentialName.includes(tagID) ? true : false
   }
-
-  const validationUpdate = useCallback(() => {
-    
-    // name:string|null, state:boolean
-    // const checkUpdate = {check : state }
-    // setValidation(prev => prev.map((item) => 
-    //   item.name === name ? {...item, ...checkUpdate } : item
-    // ))
+  // 각 input 유효성 검사 체크 업데이트: 통과-true, 실패-false
+  const inputValidationUpdate = useCallback((inputID:string, state:boolean) => {
+    const checkUpdate = {check : state }
+    setValidation(prev => prev.map((item) => 
+      item.id === inputID ? {...item, ...checkUpdate } : item
+    ))
   }, []);
 
-  const handleSubmit = useCallback( async(e: React.FormEvent) => {
+  // alert message
+  const messageCase = (messageCheck: string) => {
+    const messages: { [key: string]: string } = {
+      signupEmail: "이메일",
+      signupID: "간편 아이디",
+      nickName: "닉네임",
+      password: "비밀번호",
+      passwordCheck: "비밀번호 재입력"
+    };
+    return messages[messageCheck] || "입력";
+  }
+
+  const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault()
-  },[])
+    const hasChecked = validation.find(item=>!item.check);
+    if(hasChecked){
+      let message = messageCase(hasChecked.id);
+      let focusInput = refList.current.find(refItem => refItem.getAttribute('id') === hasChecked.id)
+      console.log(`❌ ${message}을 다시 확인해주세요.`)
+      focusInput?.focus();
+    }else{
+      // 유효성 검사 통과 시 
+      // handleSignup();
+    }
+  },[validation])
 
 
+  const handleSignup = async () => {
+    const resultData : UserDataType = {
+      id:'',
+      email: refList.current[0].value,
+      loginID:refList.current[1].value || '',
+      nickName:refList.current[2].value,
+      password:refList.current[3].value,
+      signupTime:new Date().getTime().toString(),
+      rank:'basic',
+      theme:{
+        color:'',
+        mode:'light'
+      },
+      permission:false,
+      profile:'-',
+      uid: '',
+    }
+    try {
+      // 계정 관리 Authentication 등록
+      // const userCredential = await createUserWithEmailAndPassword(auth, resultData.email, resultData.password);
+      // resultData.uid = userCredential.user.uid ? userCredential.user.uid : '';
+      // resultData.password = randomNum(9999, 'secret-login');
+      // 📍 firebase에 user 정보 저장
+      // await userPushDataDoc(resultData);
+      // 완료 레이어 팝업 -> member 이동
+      // navigate('/member');
+    } catch (error) {
+      console.log(error) // 에러 안내 팝업 
+    }
+  };
 
-  // 회원가입 시 emails로 ID
-  // 간편 아이디 체크도 추가
   // await setDoc(doc(fireDB, 'emails', email), { createdAt: serverTimestamp() });
   return(
     <StyleWrap>
@@ -73,25 +125,34 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
           {/* 이메일 */}
           <div className="form-item">
             <EmailForm 
-              inputUpdate={inputUpdate}
-              validationUpdate={validationUpdate}
+              refPush={refListCheck}
+              validationUpdate={inputValidationUpdate}
             />
           </div>
           {/* 간편 아이디 */}
           <div className="form-item">
-            <SimpleIDForm />
+            <SimpleIDForm 
+              refPush={refListCheck}
+              validationUpdate={inputValidationUpdate}
+            />
           </div>
           {/* 닉네임 */}
           <div className="form-item">
-            <NickNameForm />
+            {/* <NickNameForm 
+              validationUpdate={validationUpdate}
+            /> */}
           </div>
           {/* 비밀번호  */}
           <div className="form-item">
-            <PasswordForm1 />
+            {/* <PasswordForm1 
+              validationUpdate={validationUpdate}
+            /> */}
           </div>
           {/* 비밀번호 확인 */}
           <div className="form-item">
-            <PasswordForm2 />
+            {/* <PasswordForm2 
+              validationUpdate={validationUpdate}
+            /> */}
           </div>
           <div className="btn-article">
             <button type="submit" className="btn btn-submit full">

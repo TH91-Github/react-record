@@ -10,11 +10,11 @@ interface InputItemModulePropsType {
   type?: 'text' | 'password'
   title?:string
   essential?: boolean
-  isError?: boolean,
+  isError?: boolean
   barStyle?:boolean // 앞쪽 bar 형태 style
-  focusColor?: string,
-  focusEvent?: () => void,
-  blurEvent?: (e:React.FocusEvent<HTMLInputElement>) => void,
+  focusColor?: string
+  focusEvent?: () => void
+  blurEvent?: (e:React.FocusEvent<HTMLInputElement>) => void
 }
 
 export interface InputItemModuleRefType {

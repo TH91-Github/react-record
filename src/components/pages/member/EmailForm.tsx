@@ -1,25 +1,22 @@
 import { colors, textColor } from "assets/style/variables";
 import { InputItemModule, InputItemModuleRefType } from "components/modules/InputItemModule";
 import { checkEmailDuplicate } from "lib/firebase/auth";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { stateDuplicateEmail } from "recoil/userAtoms";
 import styled from "styled-components";
 import { cn } from "utils/common";
 import { isInvalidEmail } from "utils/regex";
+import { RefInputType } from "./SignUp";
 
 // 🔹 email 유효성 체크 포함
-interface EmailFormPropsType { 
-  inputUpdate: (el:HTMLInputElement) => void;
-  validationUpdate: () => void;
-}
-export const EmailForm = ({
-  inputUpdate,
-  validationUpdate
-}:EmailFormPropsType) => {
-  const emailRef = useRef<InputItemModuleRefType>(null); 
+const inputID = 'signupEmail';
+export const EmailForm = ({ refPush, validationUpdate }:RefInputType) => {
+  const intRef = useRef<InputItemModuleRefType>(null); 
   const [isErrorMessage, setIsErrorMessage] = useState('');
   const [duplicateEmail, setDuplicateEmail] = useRecoilState(stateDuplicateEmail);
+  
+  console.log('email component')
   // 도메인 체크 
   const domainChkMessage = useCallback((emailValue:string) => {
     const validDomains = ['naver.com', 'nate.com', 'daum.net'];
@@ -35,48 +32,60 @@ export const EmailForm = ({
     return '';
   },[]);
 
+  // focus IN - error 초기화, validationUpdate 필수 요건 false
   const handleFocus = () => {
-    console.log('in')
-    validationUpdate();
-    setIsErrorMessage(''); // 초기화
+    setIsErrorMessage(''); // error 초기화
   }
-  const handleBlur = useCallback(async(e: React.ChangeEvent<HTMLInputElement>)=> {
-    if(!emailRef.current) return
-    const emailVal : string = e.target.value.trim();
-    console.log(duplicateEmail.includes(emailVal))
-    // 유효성 검사
+  const disapproval = (message:string) => {
+    setIsErrorMessage(message);
+    validationUpdate(inputID, false);
+  }
+
+  const handleBlur = useCallback(async (e: React.FocusEvent<HTMLInputElement>) => {
+    const emailVal = e.target.value.trim();
     if (emailVal.length === 0) return;
+
     const isInvalid = isInvalidEmail(emailVal);
     const isEmailExists = domainChkMessage(emailVal);
-
-    if(isInvalid){
-      // 이메일 유효성 체크
-      setIsErrorMessage('유효하지 않은 이메일 형식이에요. 🤔')
-    }else if(isEmailExists.length > 0){
-      // 이메일 허용 주소 체크 
-      setIsErrorMessage(isEmailExists)
-    }else if(duplicateEmail.includes(emailVal)){ // store 중복 메일 2번 이상부터 체크
-      setIsErrorMessage('이미 가입한 이메일이에요. 🥹');
-    }else{
-      // firebase 중복 검사
-      const isDuplicate = await checkEmailDuplicate(emailVal);
-      if(isDuplicate){
-        // store 중복 email 추가
-        setDuplicateEmail(prev =>
-          prev.includes(emailVal) ? prev : [...prev, emailVal]
-        );
-        setIsErrorMessage('이미 가입한 이메일이에요. 🥹')
-      }else{
-        console.log('아이디 만드셈') // 유효성 완료
-      }
+    if (isInvalid) {
+      disapproval('유효하지 않은 이메일 형식이에요. 🤔')
+      return;
     }
-  },[domainChkMessage, duplicateEmail, setDuplicateEmail]);
+    if (isEmailExists.length > 0) {
+      disapproval(isEmailExists)
+      return;
+    }
+    if (duplicateEmail.includes(emailVal)) {
+      setIsErrorMessage('이미 가입한 이메일이에요. 🥹');
+      return;
+    }
+    const isDuplicate = await checkEmailDuplicate(emailVal);
+    if (isDuplicate) {
+      setDuplicateEmail(prev =>
+        prev.includes(emailVal) ? prev : [...prev, emailVal]
+      );
+      disapproval('이미 가입한 이메일이에요. 🥹');
+      return;
+    }
+
+    setIsErrorMessage('');
+    validationUpdate(inputID, true);
+    console.log('아이디 만드셈');
+  }, [domainChkMessage, duplicateEmail, setDuplicateEmail, validationUpdate]);
+
+   // input - ref
+  useEffect(() => {
+    if (intRef.current && refPush) {
+      const inputElement = intRef.current.refModuleEl();
+      inputElement && refPush(inputElement);
+    }
+  }, [intRef, refPush]);
 
   return (
     <StyleWrap className={cn('form-item', isErrorMessage && 'error')}>
       <InputItemModule 
-        ref={emailRef}
-        id="signup-email" 
+        ref={intRef}
+        id={inputID} 
         title="이메일"
         essential={true}
         barStyle={true}
@@ -91,7 +100,8 @@ export const EmailForm = ({
       </div>
     </StyleWrap>
   )
-}
+};
+
 const StyleWrap = styled.div`
   .description {
     margin-top:5px;
