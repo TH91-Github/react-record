@@ -1,6 +1,6 @@
 import { colors, textColor } from "assets/style/variables";
 import { InputItemModule, InputItemModuleRefType } from "components/modules/InputItemModule";
-import { checkEmailDuplicate } from "lib/firebase/auth";
+import { checkIDDuplicate } from "lib/firebase/auth";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { stateDuplicateEmail } from "recoil/userAtoms";
@@ -10,9 +10,9 @@ import { isInvalidEmail } from "utils/regex";
 import { RefInputType } from "./SignUp";
 
 // 🔹 email 유효성 체크 포함
-const inputID = 'signupEmail';
+const inputID = 'email';
 export const EmailForm = ({ refPush, validationUpdate }:RefInputType) => {
-  const intRef = useRef<InputItemModuleRefType>(null); 
+  const inputRef = useRef<InputItemModuleRefType>(null); 
   const [isErrorMessage, setIsErrorMessage] = useState('');
   const [duplicateEmail, setDuplicateEmail] = useRecoilState(stateDuplicateEmail);
   
@@ -42,11 +42,14 @@ export const EmailForm = ({ refPush, validationUpdate }:RefInputType) => {
   }
 
   const handleBlur = useCallback(async (e: React.FocusEvent<HTMLInputElement>) => {
-    const emailVal = e.target.value.trim();
-    if (emailVal.length === 0) return;
-
-    const isInvalid = isInvalidEmail(emailVal);
-    const isEmailExists = domainChkMessage(emailVal);
+    const inputVal = e.target.value.trim();
+    if (e.target.value.length > 0 && inputVal.length === 0) {
+      disapproval('띄어쓰기 공백을 확인해주세요. 🤔')
+      return;
+    };
+    if(inputVal.length === 0) return 
+    const isInvalid = isInvalidEmail(inputVal);
+    const isEmailExists = domainChkMessage(inputVal);
     if (isInvalid) {
       disapproval('유효하지 않은 이메일 형식이에요. 🤔')
       return;
@@ -55,36 +58,35 @@ export const EmailForm = ({ refPush, validationUpdate }:RefInputType) => {
       disapproval(isEmailExists)
       return;
     }
-    if (duplicateEmail.includes(emailVal)) {
+    if (duplicateEmail.includes(inputVal)) {
       setIsErrorMessage('이미 가입한 이메일이에요. 🥹');
       return;
     }
-    const isDuplicate = await checkEmailDuplicate(emailVal);
+    const isDuplicate = await checkIDDuplicate(inputVal, 'emails');
     if (isDuplicate) {
       setDuplicateEmail(prev =>
-        prev.includes(emailVal) ? prev : [...prev, emailVal]
+        prev.includes(inputVal) ? prev : [...prev, inputVal]
       );
       disapproval('이미 가입한 이메일이에요. 🥹');
       return;
     }
-
+    // 아이디 유효성 체크 완료
     setIsErrorMessage('');
     validationUpdate(inputID, true);
-    console.log('아이디 만드셈');
   }, [domainChkMessage, duplicateEmail, setDuplicateEmail, validationUpdate]);
 
-   // input - ref
+  // input - ref
   useEffect(() => {
-    if (intRef.current && refPush) {
-      const inputElement = intRef.current.refModuleEl();
+    if (inputRef.current && refPush) {
+      const inputElement = inputRef.current.refModuleEl();
       inputElement && refPush(inputElement);
     }
-  }, [intRef, refPush]);
+  }, [inputRef, refPush]);
 
   return (
     <StyleWrap className={cn('form-item', isErrorMessage && 'error')}>
       <InputItemModule 
-        ref={intRef}
+        ref={inputRef}
         id={inputID} 
         title="이메일"
         essential={true}

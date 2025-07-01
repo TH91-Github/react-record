@@ -19,6 +19,7 @@ interface InputItemModulePropsType {
 
 export interface InputItemModuleRefType {
   refModuleEl: () => HTMLInputElement | null;
+  refModuleValue: () => string;
 }
 
 export const InputItemModule = forwardRef<InputItemModuleRefType, InputItemModulePropsType>(function InputItemModule({
@@ -52,6 +53,9 @@ export const InputItemModule = forwardRef<InputItemModuleRefType, InputItemModul
   useImperativeHandle(ref, () => ({
     refModuleEl: () => { // input 반환
       return inputRef.current?.refInputEl() ?? null
+    },
+    refModuleValue: () => { // input 반환
+      return inputRef.current?.refInputValue() ?? 'null'
     },
   }));
     

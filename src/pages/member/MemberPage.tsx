@@ -1,4 +1,4 @@
-import { bgTranslucence } from "assets/style/variables";
+import { bgTranslucence, media } from "assets/style/variables";
 import { Login } from "components/pages/member/Login";
 import { SignUp } from "components/pages/member/SignUp";
 import { useState } from "react";
@@ -39,10 +39,18 @@ const StyleWrap = styled.div<StyleWrapPropsType>`
   height: calc(100svh - ${({$headerHeight}) => $headerHeight}px);
   .member-inner{
     width:100%;
-    max-width:450px;
+    max-width:500px;
     margin:0 auto;
     padding:30px;
     border-radius:10px;
     ${bgTranslucence.baseLight};
+  }
+  ${media.mo}{
+    display:block;
+    height:auto;
+    padding:30px 15px;
+    .member-inner{
+      min-height: calc(100svh - ${({$headerHeight}) => $headerHeight}px - 60px);
+    }
   }
 `;

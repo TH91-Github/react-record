@@ -1,11 +1,16 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { colors, textColor, textShadow } from "assets/style/variables";
 import { useCallback, useRef, useState } from "react";
-import styled from "styled-components";
+import { UserDataType } from "types/auth";
 import { EmailForm } from "./EmailForm";
 import { SimpleIDForm } from "./SimpleIDForm";
-import { randomIdChk, randomNum } from "utils/common";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { UserDataType } from "types/auth";
+import { NickNameForm } from "./NickNameForm";
+import { PasswordForm } from "./PasswordForm";
+import styled from "styled-components";
+import { auth, fireDB } from "../../../firebase";
+import { randomNum } from "utils/common";
+import { userPushDataDoc } from "lib/firebase/auth";
+import { writeBatch } from "firebase/firestore";
 
 interface SignUpPropsType {
   authChange: () => void
@@ -29,7 +34,7 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
   }
 
   // ref push - input
-  const refListCheck = useCallback((tag: HTMLInputElement) => {
+  const refListPush = useCallback((tag: HTMLInputElement) => {
     if (!refList.current.some(item => item === tag)) {
       refList.current.push(tag);
       console.log(tag)
@@ -46,18 +51,24 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
   }, []);
   // 필수가 아닌 요소 true 반환
   const essentialChk = (checkTag:HTMLInputElement):boolean =>{
-    const essentialName = ['signup-simpleid'];
+    const essentialName = ['simpleID']; // 필수 아닌 요소 ID 입력
     const tagID = checkTag.getAttribute('id') 
     return tagID && essentialName.includes(tagID) ? true : false
   }
   // 각 input 유효성 검사 체크 업데이트: 통과-true, 실패-false
   const inputValidationUpdate = useCallback((inputID:string, state:boolean) => {
-    const checkUpdate = {check : state }
-    setValidation(prev => prev.map((item) => 
-      item.id === inputID ? {...item, ...checkUpdate } : item
-    ))
-  }, []);
+    setValidation(prev => {
+      const updated = prev.map(item => {
+        if (item.id !== inputID) return item;
+        if (item.check === state) return item;
+        return { ...item, check: state };
+      });
 
+      // 상태 변경이 없으면 기존
+      const isChanged = prev.some((item, i) => item.check !== updated[i].check);
+      return isChanged ? updated : prev;
+    });
+  }, []);
   // alert message
   const messageCase = (messageCheck: string) => {
     const messages: { [key: string]: string } = {
@@ -80,7 +91,7 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
       focusInput?.focus();
     }else{
       // 유효성 검사 통과 시 
-      // handleSignup();
+      handleSignup();
     }
   },[validation])
 
@@ -88,10 +99,10 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
   const handleSignup = async () => {
     const resultData : UserDataType = {
       id:'',
-      email: refList.current[0].value,
-      loginID:refList.current[1].value || '',
-      nickName:refList.current[2].value,
-      password:refList.current[3].value,
+      email: refList.current[0]?.value,
+      simpleID:refList.current[1]?.value || '',
+      nickName:refList.current[2]?.value,
+      password:refList.current[3]?.value,
       signupTime:new Date().getTime().toString(),
       rank:'basic',
       theme:{
@@ -102,13 +113,18 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
       profile:'-',
       uid: '',
     }
+    console.log(resultData)
     try {
       // 계정 관리 Authentication 등록
-      // const userCredential = await createUserWithEmailAndPassword(auth, resultData.email, resultData.password);
-      // resultData.uid = userCredential.user.uid ? userCredential.user.uid : '';
-      // resultData.password = randomNum(9999, 'secret-login');
+      const userCredential = await createUserWithEmailAndPassword(auth, resultData.email, resultData.password);
+      resultData.uid = userCredential.user.uid;
+      resultData.password = randomNum(9999, "secret-login");
+
+      await userPushDataDoc(resultData); // ⬅️ 깔끔하게 분리됨
+
       // 📍 firebase에 user 정보 저장
-      // await userPushDataDoc(resultData);
+
+     
       // 완료 레이어 팝업 -> member 이동
       // navigate('/member');
     } catch (error) {
@@ -125,34 +141,30 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
           {/* 이메일 */}
           <div className="form-item">
             <EmailForm 
-              refPush={refListCheck}
+              refPush={refListPush}
               validationUpdate={inputValidationUpdate}
             />
           </div>
           {/* 간편 아이디 */}
           <div className="form-item">
             <SimpleIDForm 
-              refPush={refListCheck}
+              refPush={refListPush}
               validationUpdate={inputValidationUpdate}
             />
           </div>
           {/* 닉네임 */}
           <div className="form-item">
-            {/* <NickNameForm 
-              validationUpdate={validationUpdate}
-            /> */}
+            <NickNameForm 
+              refPush={refListPush}
+              validationUpdate={inputValidationUpdate}
+            />
           </div>
           {/* 비밀번호  */}
           <div className="form-item">
-            {/* <PasswordForm1 
-              validationUpdate={validationUpdate}
-            /> */}
-          </div>
-          {/* 비밀번호 확인 */}
-          <div className="form-item">
-            {/* <PasswordForm2 
-              validationUpdate={validationUpdate}
-            /> */}
+            <PasswordForm 
+              refPush={refListPush}
+              validationUpdate={inputValidationUpdate}
+            />
           </div>
           <div className="btn-article">
             <button type="submit" className="btn btn-submit full">

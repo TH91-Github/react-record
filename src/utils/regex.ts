@@ -1,11 +1,11 @@
-// 특수문자 & 띄어쓰기 감지
+// 특수문자
 export function specialCharactersSpacesCheck(text: string): boolean {
   // const regex = /^[^\s\p{P}]+$/u;
   const regex = /^[a-zA-Z가-힣0-9\s]+$/;
   return !regex.test(text);
 }
 
-// 스페이스 바 감지
+// 띄어쓰기 스페이스 바 감지
 export function spacesCheck(text: string): boolean {
   const regex = /\s/;
   return regex.test(text);
