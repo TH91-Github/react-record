@@ -1,5 +1,5 @@
 // 특수문자
-export function specialCharactersSpacesCheck(text: string): boolean {
+export function hasSpecialCharacters(text: string): boolean {
   // const regex = /^[^\s\p{P}]+$/u;
   const regex = /^[a-zA-Z가-힣0-9\s]+$/;
   return !regex.test(text);

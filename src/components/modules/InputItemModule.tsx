@@ -20,6 +20,7 @@ interface InputItemModulePropsType {
 export interface InputItemModuleRefType {
   refModuleEl: () => HTMLInputElement | null;
   refModuleValue: () => string;
+  refModuleResetVal: () => void;
 }
 
 export const InputItemModule = forwardRef<InputItemModuleRefType, InputItemModulePropsType>(function InputItemModule({
@@ -55,8 +56,11 @@ export const InputItemModule = forwardRef<InputItemModuleRefType, InputItemModul
       return inputRef.current?.refInputEl() ?? null
     },
     refModuleValue: () => { // input 반환
-      return inputRef.current?.refInputValue() ?? 'null'
+      return inputRef.current?.refInputValue() ?? ''
     },
+    refModuleResetVal: () => { // value 초기화
+      inputRef.current?.refResetVal();
+    }
   }));
     
   return (

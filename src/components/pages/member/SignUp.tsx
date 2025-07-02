@@ -72,8 +72,8 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
   // alert message
   const messageCase = (messageCheck: string) => {
     const messages: { [key: string]: string } = {
-      signupEmail: "이메일",
-      signupID: "간편 아이디",
+      email: "이메일",
+      simpleID: "간편 아이디",
       nickName: "닉네임",
       password: "비밀번호",
       passwordCheck: "비밀번호 재입력"
@@ -87,6 +87,7 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
     if(hasChecked){
       let message = messageCase(hasChecked.id);
       let focusInput = refList.current.find(refItem => refItem.getAttribute('id') === hasChecked.id)
+      console.log(focusInput)
       console.log(`❌ ${message}을 다시 확인해주세요.`)
       focusInput?.focus();
     }else{
@@ -114,22 +115,22 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
       uid: '',
     }
     console.log(resultData)
-    try {
-      // 계정 관리 Authentication 등록
-      const userCredential = await createUserWithEmailAndPassword(auth, resultData.email, resultData.password);
-      resultData.uid = userCredential.user.uid;
-      resultData.password = randomNum(9999, "secret-login");
+    // try {
+    //   // 계정 관리 Authentication 등록
+    //   const userCredential = await createUserWithEmailAndPassword(auth, resultData.email, resultData.password);
+    //   resultData.uid = userCredential.user.uid;
+    //   resultData.password = randomNum(9999, "secret-login");
 
-      await userPushDataDoc(resultData); // ⬅️ 깔끔하게 분리됨
+    //   await userPushDataDoc(resultData); // ⬅️ 깔끔하게 분리됨
 
-      // 📍 firebase에 user 정보 저장
+    //   // 📍 firebase에 user 정보 저장
 
      
-      // 완료 레이어 팝업 -> member 이동
-      // navigate('/member');
-    } catch (error) {
-      console.log(error) // 에러 안내 팝업 
-    }
+    //   // 완료 레이어 팝업 -> member 이동
+    //   // navigate('/member');
+    // } catch (error) {
+    //   console.log(error) // 에러 안내 팝업 
+    // }
   };
 
   // await setDoc(doc(fireDB, 'emails', email), { createdAt: serverTimestamp() });

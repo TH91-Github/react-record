@@ -1,9 +1,9 @@
 // 🔹user 회원가입, 로그인, 조회 계정 관련
-import { arrayRemove, arrayUnion, collection, doc, getDoc, serverTimestamp, setDoc, updateDoc, writeBatch } from 'firebase/firestore';
-import { fireDB } from '../../firebase';
+import { arrayUnion, collection, doc, getDoc, serverTimestamp, updateDoc, writeBatch } from 'firebase/firestore';
 import { UserDataType, UserDeleteType } from 'types/auth';
+import { fireDB } from '../../firebase';
 
-const users = process.env.REACT_APP_USER || 'users';
+const users ='users';
 
 // 🔹 user 신규가입
 export const userPushDataDoc = async(userData:UserDataType) => {

@@ -4,78 +4,71 @@ import { InputItemModule, InputItemModuleRefType } from "components/modules/Inpu
 import { colors, textColor } from "assets/style/variables";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "utils/common";
-import { spacesCheck, specialCharactersSpacesCheck } from "utils/regex";
+import { spacesCheck, hasSpecialCharacters } from "utils/regex";
 
 // 🔹 간편 ID 유효성 체크 포함
-const inputID1 = 'pwID1';
-const inputID2 = 'pwID2';
+const inputID1 = 'password';
+const inputID2 = 'passwordCheck';
 export const PasswordForm = ({ refPush, validationUpdate }:RefInputType) => {
-  const inputRef1 = useRef<InputItemModuleRefType>(null); 
-  const inputRef2 = useRef<InputItemModuleRefType>(null); 
-  const [isErrorMessage, setIsErrorMessage] = useState({
-    pwID1:'',
-    pwID2:''
+  const inputRef1 = useRef<InputItemModuleRefType>(null);
+  const inputRef2 = useRef<InputItemModuleRefType>(null);
+
+  const [errorMessages, setErrorMessages] = useState<Record<string, string>>({
+    [inputID1]: '',
+    [inputID2]: '',
   });
 
-  // 비밀번호
-  const handleFocusPW = (inputID:string) => {
-    disapproval(inputID,'')
-  }
+  const disapproval = useCallback((inputID: string, message: string, isValid = false) => {
+    setErrorMessages(prev => ({ ...prev, [inputID]: message }));
+    validationUpdate(inputID, isValid);
+  }, [validationUpdate]);
 
-  const disapproval = (inputID:string, message:string) => {
-    setIsErrorMessage(prev => (
-      {...prev,  [inputID]: message}
-    ));
-    validationUpdate(inputID, false);
-  }
+  const validatePassword = (val: string) => {
+    if (val.length < 6 || val.length > 20) return '6~20자로 입력해주세요..!';
+    if (hasSpecialCharacters(val) || spacesCheck(val)) return '비밀번호를 다시 확인해주세요 😯';
+    return '';
+  };
 
   // 비밀번호
   const handleBlurPw1 = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
-    const inputVal = e.target.value;
+    const val = e.target.value;
+    if (!val) return;
 
-    if(inputVal.length ===0){ 
-      return 
-    }
-    if(inputVal.length < 6 || inputVal.length > 20){ // 6~20자
-      disapproval(inputID1, '6~20자로 입력해주세요..!')
-      return
-    }
-    if(specialCharactersSpacesCheck(inputVal) || spacesCheck(inputVal)){ // 특수문자 체크 && 띄어쓰기
-      disapproval(inputID1, '비밀번호를 다시 확인해주세요 😯')
-      return
+    const validationMsg = validatePassword(val);
+    if (validationMsg) {
+      disapproval(inputID1, validationMsg);
+      return;
     }
 
-    const inputVal2 = inputRef2.current?.refModuleValue() || '';
-    if(inputVal2.length > 0 && inputVal !== inputVal2){
-      
-      
+    const confirmVal = inputRef2.current?.refModuleValue() || '';
+    if (confirmVal && val !== confirmVal) {
+      disapproval(inputID2, '비밀번호가 일치하지 않아요...❌');
+    } else {
+      disapproval(inputID2, '');
     }
-    disapproval(inputID1,'')
-    validationUpdate(inputID1, true);
-  },[])
+
+    disapproval(inputID1, '', true);
+  }, [disapproval]);
 
   // 비밀번호 확인
   const handleBlurPw2 = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
-    const inputVal2 = e.target.value
-    if (e.target.value.length > 0 && inputVal2.length === 0) {
-      disapproval(inputID2, '띄어쓰기 공백을 확인해주세요. 🤔')
-      return;
-    };
-    if(inputVal2.length === 0) return 
+    const val = e.target.value;
+    if (!val) return;
 
-    if(inputVal2.length < 6 || inputVal2.length > 20){
-      disapproval(inputID2, '6~20자로 입력해주세요..!')
-      return
+    const validationMsg = validatePassword(val);
+    if (validationMsg) {
+      disapproval(inputID2, validationMsg);
+      return;
     }
-    
-    const inputVal1 = inputRef1.current?.refModuleValue() || '';
-    if((inputVal1 !== inputVal2) || (inputVal1.length !== inputVal2.length)){
+
+    const pwVal = inputRef1.current?.refModuleValue() || '';
+    if (pwVal !== val) {
       disapproval(inputID2, '비밀번호가 일치하지 않아요...❌');
-      return
+      return;
     }
-    disapproval(inputID2, '');
-    validationUpdate(inputID2, true);
-  },[])
+
+    disapproval(inputID2, '', true);
+  }, [disapproval]);
 
   useEffect(() => {
     if (inputRef1.current && inputRef2.current && refPush) {
@@ -88,24 +81,24 @@ export const PasswordForm = ({ refPush, validationUpdate }:RefInputType) => {
   
   return (
     <StyleWrap >
-      <div className={cn('form-item', isErrorMessage.pwID1 && 'error')}>
-        <InputItemModule 
+      <div className={cn('form-item', errorMessages[inputID1] && 'error')}>
+        <InputItemModule
           ref={inputRef1}
-          id={inputID1} 
+          id={inputID1}
           title="비밀번호"
           type="password"
-          essential={true}
-          barStyle={true}
+          essential
+          barStyle
           focusColor={colors.blue}
-          focusEvent={() => handleFocusPW(inputID1)}
+          focusEvent={() => disapproval(inputID1, '')}
           blurEvent={handleBlurPw1}
         />
         <div className="description">
           <p className="txt">
-            {isErrorMessage.pwID1 ? isErrorMessage.pwID1 : '6~20자의 영문 대/소문자, 숫자, 특수문자(띄어쓰기 제외)를 사용해주세요.'}</p>
+            {errorMessages[inputID1] || '6~20자의 영문 대/소문자, 숫자, 특수문자(띄어쓰기 제외)를 사용해주세요.'}</p>
         </div>
       </div>
-      <div className={cn('form-item', isErrorMessage.pwID2 && 'error')}>
+       <div className={cn('form-item', errorMessages[inputID2] && 'error')}>
         <InputItemModule 
           ref={inputRef2}
           id={inputID2} 
@@ -114,12 +107,13 @@ export const PasswordForm = ({ refPush, validationUpdate }:RefInputType) => {
           essential={true}
           barStyle={true}
           focusColor={colors.blue}
-          focusEvent={() => handleFocusPW(inputID2)}
+          focusEvent={() => disapproval(inputID2, '')}
           blurEvent={handleBlurPw2}
         />
         <div className="description">
           <p className="txt">
-            {isErrorMessage.pwID2 ? isErrorMessage.pwID2 : '비밀번호를 다시 입력해주세요.'}</p>
+            {errorMessages[inputID2] || '비밀번호를 다시 입력해주세요.'}
+          </p>
         </div>
       </div>
       
