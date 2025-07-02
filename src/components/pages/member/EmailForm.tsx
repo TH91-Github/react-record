@@ -1,9 +1,7 @@
 import { colors, textColor } from "assets/style/variables";
 import { InputItemModule, InputItemModuleRefType } from "components/modules/InputItemModule";
-import { checkIDDuplicate } from "lib/firebase/auth";
+import { checkDocDuplicate } from "lib/firebase/auth";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useRecoilState } from "recoil";
-import { stateDuplicateEmail } from "recoil/userAtoms";
 import styled from "styled-components";
 import { cn } from "utils/common";
 import { isInvalidEmail } from "utils/regex";
@@ -14,7 +12,7 @@ const inputID = 'email';
 export const EmailForm = ({ refPush, validationUpdate }:RefInputType) => {
   const inputRef = useRef<InputItemModuleRefType>(null);
   const [errorMessage, setErrorMessage] = useState('');
-  const [duplicateEmail, setDuplicateEmail] = useRecoilState(stateDuplicateEmail);
+  const [duplicateID, setDuplicateID] = useState<string[]>([]); 
 
   const disapproval = useCallback((message: string, isValid = false) => {
     setErrorMessage(message);
@@ -56,20 +54,20 @@ export const EmailForm = ({ refPush, validationUpdate }:RefInputType) => {
       return;
     }
 
-    if (duplicateEmail.includes(val)) {
+    if (duplicateID.includes(val)) {
       disapproval('이미 가입한 이메일이에요. 🥹');
       return;
     }
 
-    const isDuplicate = await checkIDDuplicate(val, 'emails');
+    const isDuplicate = await checkDocDuplicate('emails', val);
     if (isDuplicate) {
-      setDuplicateEmail(prev => prev.includes(val) ? prev : [...prev, val]);
+      setDuplicateID(prev => prev.includes(val) ? prev : [...prev, val]);
       disapproval('이미 가입한 이메일이에요. 🥹');
       return;
     }
 
     disapproval ('', true);
-  }, [ disapproval, domainChkMessage, duplicateEmail, setDuplicateEmail ]);
+  }, [ disapproval, domainChkMessage, duplicateID, setDuplicateID ]);
 
   // input - ref
   useEffect(() => {

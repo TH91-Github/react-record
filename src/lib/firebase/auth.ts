@@ -9,10 +9,9 @@ const users ='users';
 export const userPushDataDoc = async(userData:UserDataType) => {
   const batch = writeBatch(fireDB);
 
-   // userLists 저장
+  // userLists 저장
   const userCollection = collection(fireDB, "users", "userData", "userLists");
-  const newUserDoc = doc(userCollection);
-  userData.id = newUserDoc.id;
+  const newUserDoc = doc(userCollection, userData.uid);
   batch.set(newUserDoc, userData);
 
   // 이메일 저장
@@ -78,7 +77,7 @@ export const userDeleteDataBatch = async (userData: UserDeleteType) => {
 };
 
 // 🔹 하위 컬렉션 > 필드 내 일치하는 값 조회 : 체크 문서 네임 / 하위 컬렉션
-export const checkIDDuplicate = async(checkDoc:string, colName:string):Promise<boolean> => {
+export const checkDocDuplicate = async(colName:string, checkDoc:string,):Promise<boolean> => {
   // 빈 값 처리
   if (!checkDoc?.trim() || !colName?.trim()) return false;
   const docRef = doc(fireDB, users, 'userData', colName, checkDoc);

@@ -21,7 +21,7 @@ export const NickNameForm = ({ refPush, validationUpdate }:RefInputType) => {
     const rawVal = e.target.value;
     const val = rawVal.trim();
 
-    if (rawVal.length > 0 && val.length === 0 || spacesCheck(val)) {
+    if ((rawVal.length > 0 && val.length === 0) || spacesCheck(val)) {
       disapproval('띄어쓰기 공백을 확인해주세요. 🤔');
       return;
     }

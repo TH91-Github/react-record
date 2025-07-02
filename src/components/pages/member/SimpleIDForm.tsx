@@ -1,20 +1,18 @@
 import { colors, textColor } from "assets/style/variables";
 import { InputItemModule, InputItemModuleRefType } from "components/modules/InputItemModule";
+import { checkDocDuplicate } from "lib/firebase/auth";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useRecoilState } from "recoil";
-import { stateDuplicateSimpleID } from "recoil/userAtoms";
 import styled from "styled-components";
-import { RefInputType } from "./SignUp";
-import { enNumberCheck } from "utils/regex";
 import { cn } from "utils/common";
-import { checkIDDuplicate } from "lib/firebase/auth";
+import { enNumberCheck } from "utils/regex";
+import { RefInputType } from "./SignUp";
 
 // 🔹 간편 ID 유효성 체크 포함
 const inputID = 'simpleID';
 export const SimpleIDForm = ({ refPush, validationUpdate }:RefInputType) => {
   const inputRef = useRef<InputItemModuleRefType>(null);
   const [errorMessage, setErrorMessage] = useState('');
-  const [duplicateSimpleID, setDuplicateSimpleID] = useRecoilState(stateDuplicateSimpleID);
+  const [duplicateID, setDuplicateID] = useState<string[]>([]); 
 
   const disapproval = useCallback((message: string, isValid: boolean) => {
     setErrorMessage(message);
@@ -44,20 +42,20 @@ export const SimpleIDForm = ({ refPush, validationUpdate }:RefInputType) => {
       return;
     }
 
-    if (duplicateSimpleID.includes(val)) {
+    if (duplicateID.includes(val)) {
       disapproval('이미 가입한 ID가 있어요.. 🥹', false);
       return;
     }
 
-    const isDuplicate = await checkIDDuplicate(val, 'simpleID');
+    const isDuplicate = await checkDocDuplicate('simpleID', val);
     if (isDuplicate) {
-      setDuplicateSimpleID(prev => prev.includes(val) ? prev : [...prev, val]);
+      setDuplicateID(prev => prev.includes(val) ? prev : [...prev, val]);
       disapproval ('이미 가입한 ID가 있어요.. 🥹', false);
       return;
     }
 
     disapproval('', true);
-  }, [ disapproval, duplicateSimpleID, setDuplicateSimpleID ]);
+  }, [ disapproval, duplicateID, setDuplicateID]);
 
   useEffect(() => {
     if (inputRef.current && refPush) {

@@ -1,16 +1,16 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { colors, textColor, textShadow } from "assets/style/variables";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useToast } from "hooks/useToast";
+import { userPushDataDoc } from "lib/firebase/auth";
 import { useCallback, useRef, useState } from "react";
+import styled from "styled-components";
 import { UserDataType } from "types/auth";
+import { randomNum } from "utils/common";
+import { auth } from "../../../firebase";
 import { EmailForm } from "./EmailForm";
-import { SimpleIDForm } from "./SimpleIDForm";
 import { NickNameForm } from "./NickNameForm";
 import { PasswordForm } from "./PasswordForm";
-import styled from "styled-components";
-import { auth, fireDB } from "../../../firebase";
-import { randomNum } from "utils/common";
-import { userPushDataDoc } from "lib/firebase/auth";
-import { writeBatch } from "firebase/firestore";
+import { SimpleIDForm } from "./SimpleIDForm";
 
 interface SignUpPropsType {
   authChange: () => void
@@ -26,6 +26,7 @@ export interface RefInputType {
 }
 
 export const SignUp = ({authChange}:SignUpPropsType) =>{ 
+  const { addToast } = useToast();
   const refList = useRef<HTMLInputElement[]>([]);
   const [validation, setValidation] = useState<InputStateType[]>([])
   
@@ -81,23 +82,7 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
     return messages[messageCheck] || "입력";
   }
 
-  const handleSubmit = useCallback((e: React.FormEvent) => {
-    e.preventDefault()
-    const hasChecked = validation.find(item=>!item.check);
-    if(hasChecked){
-      let message = messageCase(hasChecked.id);
-      let focusInput = refList.current.find(refItem => refItem.getAttribute('id') === hasChecked.id)
-      console.log(focusInput)
-      console.log(`❌ ${message}을 다시 확인해주세요.`)
-      focusInput?.focus();
-    }else{
-      // 유효성 검사 통과 시 
-      handleSignup();
-    }
-  },[validation])
-
-
-  const handleSignup = async () => {
+  const handleSignup = useCallback(async () => {
     const resultData : UserDataType = {
       id:'',
       email: refList.current[0]?.value,
@@ -114,26 +99,35 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
       profile:'-',
       uid: '',
     }
-    console.log(resultData)
-    // try {
-    //   // 계정 관리 Authentication 등록
-    //   const userCredential = await createUserWithEmailAndPassword(auth, resultData.email, resultData.password);
-    //   resultData.uid = userCredential.user.uid;
-    //   resultData.password = randomNum(9999, "secret-login");
+    try {
+      // 계정 관리 Authentication 등록
+      const userCredential = await createUserWithEmailAndPassword(auth, resultData.email, resultData.password);
+      resultData.id = userCredential.user.uid;
+      resultData.uid = userCredential.user.uid;
+      resultData.password = randomNum(9999, "secret-login");
+      await userPushDataDoc(resultData);
+      // 완료 레이어 팝업 -> member 이동
+      authChange();
+    } catch (error) {
+      console.log(error) // 에러 안내 팝업 
+    }
+  },[authChange]);
 
-    //   await userPushDataDoc(resultData); // ⬅️ 깔끔하게 분리됨
+  const handleSubmit = useCallback((e: React.FormEvent) => {
+    e.preventDefault()
+    const hasChecked = validation.find(item=>!item.check);
+    if(hasChecked){
+      let message = messageCase(hasChecked.id);
+      let focusInput = refList.current.find(refItem => refItem.getAttribute('id') === hasChecked.id)
+       addToast(`${message}을 다시 확인해주세요.`,'error')
+      focusInput?.focus();
+    }else{
+      // 유효성 검사 통과 시 
+      handleSignup();
+    }
+  },[validation, addToast, handleSignup])
 
-    //   // 📍 firebase에 user 정보 저장
 
-     
-    //   // 완료 레이어 팝업 -> member 이동
-    //   // navigate('/member');
-    // } catch (error) {
-    //   console.log(error) // 에러 안내 팝업 
-    // }
-  };
-
-  // await setDoc(doc(fireDB, 'emails', email), { createdAt: serverTimestamp() });
   return(
     <StyleWrap>
       <h2 className="title">회원가입</h2>

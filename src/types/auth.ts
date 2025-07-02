@@ -11,9 +11,9 @@ export interface UserDataType { // 🔹 DB 유저 정보
     color:string; // 색상 저장
     mode: 'dark' | 'light';
   };
-  permission:boolean;
-  profile: string;
-  uid: string;
+  permission:boolean; // 계정 승인 / 비승인
+  profile: string; // 이미지 예정
+  uid: string; // 고유 uid - firebase
 }
 
 export interface UserDeleteType {

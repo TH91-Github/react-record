@@ -112,6 +112,7 @@ export const toastData : ComponentsInfoType = {
         addToast('메시지', 'sucess')
         // 메시지 + 타입 + 유지 시간
         addToast('메시지', 'sucess', 3000)
+        // base, sucess, error
       `,
     },
     {

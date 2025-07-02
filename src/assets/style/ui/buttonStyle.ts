@@ -20,12 +20,16 @@ button {
     text-shadow:0px 1px 1px rgba(0,0,0,0.2);
   }
   .icon { 
-    position: absbolute;
+    position: absolute;
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
     width:25px;
     height:25px;
+    & > svg{
+      width:100%;
+      height:100%;
+    }
   }
   &:hover, &:focus {
     border-color:${colors.darkNavy};
