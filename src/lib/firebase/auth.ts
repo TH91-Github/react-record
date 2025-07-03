@@ -20,10 +20,11 @@ export const userPushDataDoc = async(userData:UserDataType) => {
     createdAt: serverTimestamp(),
   });
   
-  // 간편 ID 있는 경우 저장
+  // 간편 ID 있는 경우 저장 - 조회 후 email 가져오기 위해 이메일 저장
   if(userData.simpleID){
     const idDoc = doc(fireDB, "users", "userData", "simpleIDs", userData.simpleID);
     batch.set(idDoc, {
+      email:userData.email,
       createdAt: serverTimestamp(),
     });
   }
@@ -38,7 +39,7 @@ export const userPushDataDoc = async(userData:UserDataType) => {
   await batch.commit();
 }
 
-// user 삭제
+// 🔹 user 삭제
 export const userDeleteDataBatch = async (userData: UserDeleteType) => {
   const batch = writeBatch(fireDB);
 
@@ -76,13 +77,17 @@ export const userDeleteDataBatch = async (userData: UserDeleteType) => {
   await batch.commit();
 };
 
-// 🔹 하위 컬렉션 > 필드 내 일치하는 값 조회 : 체크 문서 네임 / 하위 컬렉션
-export const checkDocDuplicate = async(colName:string, checkDoc:string,):Promise<boolean> => {
+// 🔹 User > 하위 컬렉션 > 필드 내 일치하는 값 조회 : 체크 문서 네임 / 하위 컬렉션
+export const getUserColDoc = async(colName:string, checkDoc:string) => {
   // 빈 값 처리
   if (!checkDoc?.trim() || !colName?.trim()) return false;
   const docRef = doc(fireDB, users, 'userData', colName, checkDoc);
   const snap = await getDoc(docRef);
-  return snap.exists();
+  if(snap.exists()){
+    return snap.data();
+  }else{
+    return ''
+  }
 };
 
 

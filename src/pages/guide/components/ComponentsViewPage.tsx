@@ -3,7 +3,7 @@ import { TitleHeading } from "components/ui/TitleHeading";
 import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import styled from "styled-components";
-import { formatText } from "utils/character";
+import { formatText } from "utils/textUtils";
 
 interface ContextPropsType { 
   id: string

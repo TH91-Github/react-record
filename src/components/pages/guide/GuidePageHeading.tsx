@@ -1,6 +1,6 @@
 import { useGuideLocation } from "hooks/guide/useGuideHook";
 import styled from "styled-components";
-import { formatText } from "utils/character";
+import { formatText } from "utils/textUtils";
 
 interface GuidePageHeadingPropsType {
   children?: React.ReactNode;

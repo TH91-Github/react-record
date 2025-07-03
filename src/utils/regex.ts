@@ -20,11 +20,3 @@ export function enNumberCheck(text: string): boolean {
   return containsLetter && isAlphaNumeric;
 }
 
-// email 체크 : 한글 @ 포함 확인 / .포함 / id 4글자:{4,} .이후 2글자:{2,} 
-export function isInvalidEmail (email:string):boolean{
-  const regex = /^[A-Za-z0-9._%+-]{4,}@[A-Za-z0-9-]+\.[A-Za-z]{2,}$/;
-  return !regex.test(email)
-}
-
-
-

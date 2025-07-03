@@ -1,10 +1,10 @@
-import styled from "styled-components"
-import { RefInputType } from "./SignUp";
-import { InputItemModule, InputItemModuleRefType } from "components/modules/InputItemModule";
 import { colors, textColor } from "assets/style/variables";
+import { InputItemModule, InputItemModuleRefType } from "components/modules/InputItemModule";
 import { useCallback, useEffect, useRef, useState } from "react";
+import styled from "styled-components";
+import { validIDPW } from "utils/auth";
 import { cn } from "utils/common";
-import { spacesCheck, hasSpecialCharacters } from "utils/regex";
+import { RefInputType } from "./SignUp";
 
 // 🔹 간편 ID 유효성 체크 포함
 const inputID1 = 'password';
@@ -23,18 +23,12 @@ export const PasswordForm = ({ refPush, validationUpdate }:RefInputType) => {
     validationUpdate(inputID, isValid);
   }, [validationUpdate]);
 
-  const validatePassword = (val: string) => {
-    if (val.length < 6 || val.length > 20) return '6~20자로 입력해주세요..!';
-    if (hasSpecialCharacters(val) || spacesCheck(val)) return '비밀번호를 다시 확인해주세요 😯';
-    return '';
-  };
-
   // 비밀번호
   const handleBlurPw1 = useCallback((e: React.FocusEvent<HTMLInputElement>) => {
     const val = e.target.value;
     if (!val) return;
 
-    const validationMsg = validatePassword(val);
+    const validationMsg = validIDPW(val,'PW');
     if (validationMsg) {
       disapproval(inputID1, validationMsg);
       return;
@@ -55,7 +49,7 @@ export const PasswordForm = ({ refPush, validationUpdate }:RefInputType) => {
     const val = e.target.value;
     if (!val) return;
 
-    const validationMsg = validatePassword(val);
+    const validationMsg = validIDPW(val,'PW');;
     if (validationMsg) {
       disapproval(inputID2, validationMsg);
       return;

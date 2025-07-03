@@ -1,16 +1,16 @@
 import { colors, textColor, textShadow } from "assets/style/variables";
 import { IconGoogle } from "assets/svg/icons";
 import { InputItemModule, InputItemModuleRefType } from "components/modules/InputItemModule";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { getUserColDoc, userPushDataDoc } from "lib/firebase/auth";
 import { useCallback, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { auth, provider } from "../../../firebase";
-import { LoginIDForm } from "./LoginIDForm";
-import { LoginPWForm } from "./LoginPWForm";
-import { cn, randomNum } from "utils/common";
 import { UserDataType } from "types/auth";
-import { checkDocDuplicate, userPushDataDoc } from "lib/firebase/auth";
+import { isInvalidEmail, validIDPW } from "utils/auth";
+import { cn, randomNum } from "utils/common";
+import { auth, provider } from "../../../firebase";
+import { useToast } from "hooks/useToast";
 
 interface LoginPropsType {
   authChange: () => void
@@ -20,6 +20,7 @@ const inputID = 'loginID';
 const inputPW = 'loginPW';
 export const Login = ({authChange}:LoginPropsType) => { 
   const navigate = useNavigate();
+  const { addToast } = useToast();
   const inputIDRef = useRef<InputItemModuleRefType>(null);
   const inputPWRef = useRef<InputItemModuleRefType>(null);
   const [duplicateID, setDuplicateID] = useState<string[]>([]); 
@@ -30,64 +31,123 @@ export const Login = ({authChange}:LoginPropsType) => {
   
   console.log('login')
 
-  const handleFocus = useCallback((inputID: string, message: string) => {
-    setErrorMessages(prev => ({ ...prev, [inputID]: message }));
-  }, []);
-
-  const validationID = useCallback(async(idVal : string) => {
-    const colVal = idVal.includes('@') ? 'emails' : 'simpleIDs';
-
-    
-    
-    // const loginValue = await duplicateGetDoc('userData','users', key , idVal);
-    // email 인지 id 인지 판단 후 email일 경우 진행 
-    // id일경우 id 조회 후 email 가져오기
-    // return  (loginValue && idVal.length > 0) ? ( key === 'email' ? idVal : loginValue.email) : false
-  },[duplicateID])
-
- const handleSubmit = useCallback( async(e: React.FormEvent) => {
-    e.preventDefault()
-    if(!inputIDRef.current || !inputPWRef.current) return 
-    const valID= inputIDRef.current.refModuleValue();
-    const valPW = inputPWRef.current.refModuleValue();
-    validationID(valID)
-
-
-
-  },[])
-
   // 🔹 회원가입 바로가기
   const handleChangeClick = () => {
     authChange();
   }
 
+  const handleFocus = useCallback((inputID: string, message: string) => {
+    setErrorMessages(prev => ({ ...prev, [inputID]: message }));
+  }, []);
+
+  const disapproval = useCallback((inputID: string, message: string) => {
+    setErrorMessages(prev => ({ ...prev, [inputID]: message }));
+  }, []);
+
+
+  // email or 간편 ID 체크 후 중복 조회 및 간편 ID - email 가져오기
+  const validationID = useCallback(async(val : string) => {
+    const colVal = val.includes('@') ? 'emails' : 'simpleIDs';
+    let resultID = val;
+    if(colVal === 'emails'){ // email 유효성 체크
+      if (isInvalidEmail(val)) {
+        disapproval(inputID, '유효하지 않은 이메일 형식이에요. 🤔');
+        return;
+      }
+      return resultID
+    }else{ // 간편 ID 유효성 체크
+      console.log('간편 ID 입니다')
+      const IDCheck = validIDPW(val,'ID');
+      if (IDCheck) { // email & ID 유효성 체크
+        disapproval(inputID, IDCheck);
+        return
+      }
+      const isDuplicate = await getUserColDoc(colVal, val);
+      if(isDuplicate) resultID = isDuplicate.email
+      return resultID
+    }
+  },[disapproval])
+
+
+  // firebase 로그인 시도
+  const handleLogin = useCallback(async (loginID: string, loginPW: string) => {
+    console.log(loginID)
+    console.log('로그인 시도')
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, loginID, loginPW);
+      console.log(userCredential)
+      console.log('----------------------------')
+      if(userCredential.user){
+        const userData = await getUserColDoc('userLists',userCredential.user.uid);
+        console.log(userData)
+      }
+      // const userData = await getUserColDoc();
+      
+      // navigate('/');
+      // console.log('google login');
+    } catch (error) {
+      console.log(error)
+      // 토스 팝업
+    }
+    console.log('된거야 ?')
+  },[]);
+
+
+  // 🔹 완료 
+  const handleSubmit = useCallback(async(e: React.FormEvent) => {
+    e.preventDefault()
+    if(!inputIDRef.current || !inputPWRef.current) return 
+    const valID= inputIDRef.current.refModuleValue();
+    const valPW = inputPWRef.current.refModuleValue();
+    
+    const checkID = await validationID(valID);
+    const checkPW = validIDPW(valPW,'PW');
+
+    if(checkPW){ // 비밀번호 기본 유효성 체크 
+      disapproval(inputPW, checkPW);
+      return
+    }
+ 
+    if(checkID && valPW) {
+      handleLogin(checkID, valPW);
+    }
+  },[disapproval, handleLogin, validationID])
+
+
   // 🔹 구글 아이디 로그인 및 계정 등록
   const handleGoogleLogin = useCallback(async() => { 
     try {
       const googleData = await signInWithPopup(auth, provider);
-      const {email, displayName, uid} = googleData.user
-      if(!email || !displayName || !uid) return
-      const resultData : UserDataType = {
-        id:'',
-        email: email,
-        simpleID: '',
-        nickName: displayName,
-        password: randomNum(9999, 'google-login'),
-        signupTime:new Date().getTime().toString(),
-        rank:'basic',
-        theme:{
-          color:'',
-          mode:'light'
-        },
-        permission:false,
-        profile:'-',
-        uid: '',
+      const fireDBGoogle = await getUserColDoc('userLists', googleData.user.uid)
+
+      if(!fireDBGoogle){ // 구글 로그인 신규 회원 DB 저장
+        const {email, displayName, uid} = googleData.user;
+        if(!email || !displayName || !uid) return
+        const resultData : UserDataType = {
+          id:googleData.user.uid,
+          email: email,
+          simpleID: '',
+          nickName: displayName,
+          password: randomNum(9999, 'google-login'),
+          signupTime:new Date().getTime().toString(),
+          rank:'basic',
+          theme:{
+            color:'',
+            mode:'light'
+          },
+          permission:false,
+          profile:'-',
+          uid: googleData.user.uid,
+        }
+        await userPushDataDoc(resultData);
+      }else{
+        console.log('계정 정보 있음')
       }
-      // DB 저장
-      await userPushDataDoc(resultData);
       navigate('/');
-     } catch (error) {
-      console.log("구글 로그인 에러 😲", error);
+    } catch (error) {
+      console.error(error);
+      addToast('구글 로그인 에러 😲', 'error')
     }
   },[ navigate])
 
@@ -104,25 +164,22 @@ export const Login = ({authChange}:LoginPropsType) => {
               focusColor={colors.blue}
               focusEvent={() => handleFocus(inputID, '')}
             />
-            {
-              errorMessages[inputID] && (
-                <div className="description">
-                  <p className="txt">
-                    {errorMessages[inputID]} 
-                  </p>
-                </div>
-              )
-            }
-            
+            <div className="description">
+              { errorMessages[inputID] &&  <p className="txt">{errorMessages[inputID]}</p> }
+            </div>
           </div>
           <div className={cn('form-item', errorMessages[inputPW] && 'error')}>
             <InputItemModule 
               ref={inputPWRef}
               id={inputPW} 
               title="비밀번호"
+              type="password"
               focusColor={colors.blue}
               focusEvent={() => handleFocus(inputPW, '')}
             />
+            <div className="description">
+              { errorMessages[inputPW] &&  <p className="txt">{errorMessages[inputPW]}</p> }
+            </div>
           </div>
           <div className="btn-article">
             <button type="submit" className="btn btn-submit full">
@@ -153,6 +210,10 @@ export const Login = ({authChange}:LoginPropsType) => {
             </button>
           </li>
         </ul>
+      </div>
+      <div>
+        <br />
+        <button onClick={() => signOut(auth)} >로그아웃</button>
       </div>
     </StyleWrap>
   )
@@ -186,9 +247,13 @@ const StyleWrap = styled.div`
     }
   }
   .description {
+    position:relative;
     margin-top:5px;
     padding-left:10px;
+    height:15px;
     .txt {
+      position:absolute;
+      top:0;
       font-size:14px;
       font-weight:400;
       color:${textColor.subText};

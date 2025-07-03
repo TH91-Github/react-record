@@ -1,6 +1,6 @@
 import { colors, textColor } from "assets/style/variables";
 import { InputItemModule, InputItemModuleRefType } from "components/modules/InputItemModule";
-import { checkDocDuplicate } from "lib/firebase/auth";
+import { getUserColDoc } from "lib/firebase/auth";
 import { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { cn } from "utils/common";
@@ -47,7 +47,7 @@ export const SimpleIDForm = ({ refPush, validationUpdate }:RefInputType) => {
       return;
     }
 
-    const isDuplicate = await checkDocDuplicate('simpleID', val);
+    const isDuplicate = await getUserColDoc('simpleIDs', val);
     if (isDuplicate) {
       setDuplicateID(prev => prev.includes(val) ? prev : [...prev, val]);
       disapproval ('이미 가입한 ID가 있어요.. 🥹', false);

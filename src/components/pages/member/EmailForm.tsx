@@ -1,11 +1,11 @@
 import { colors, textColor } from "assets/style/variables";
 import { InputItemModule, InputItemModuleRefType } from "components/modules/InputItemModule";
-import { checkDocDuplicate } from "lib/firebase/auth";
+import { getUserColDoc } from "lib/firebase/auth";
 import { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { cn } from "utils/common";
-import { isInvalidEmail } from "utils/regex";
 import { RefInputType } from "./SignUp";
+import { domainChkMessage, isInvalidEmail } from "utils/auth";
 
 // 🔹 email 유효성 체크 포함
 const inputID = 'email';
@@ -18,19 +18,6 @@ export const EmailForm = ({ refPush, validationUpdate }:RefInputType) => {
     setErrorMessage(message);
     validationUpdate(inputID, isValid);
   }, [validationUpdate]);
-
-  const domainChkMessage  = useCallback((email: string) => {
-    const validDomains = ['naver.com', 'nate.com', 'daum.net'];
-    const domain = email.split('@')[1] ?? '';
-
-    if (domain === 'gmail.com') {
-      return '구글 로그인으로 가능해요! 😁';
-    }
-    if (domain && !validDomains.includes(domain)) {
-      return `${validDomains.join(', ')} 👈 이메일을 이용해주세요.. 😅`;
-    }
-    return '';
-  }, []);
 
   const handleBlur = useCallback(async (e: React.FocusEvent<HTMLInputElement>) => {
     const rawVal = e.target.value;
@@ -48,18 +35,20 @@ export const EmailForm = ({ refPush, validationUpdate }:RefInputType) => {
       return;
     }
 
-    const domainMsg = domainChkMessage (val);
+    // 유효 도메인 체크
+    const domainMsg = domainChkMessage(val);
     if (domainMsg) {
       disapproval(domainMsg);
       return;
     }
 
-    if (duplicateID.includes(val)) {
+    // 1회 체크 이후 동일 이메일 체크 시 
+    if (duplicateID.includes(val)) { 
       disapproval('이미 가입한 이메일이에요. 🥹');
       return;
     }
-
-    const isDuplicate = await checkDocDuplicate('emails', val);
+    // 최초 1회 db 체크
+    const isDuplicate = await getUserColDoc('emails', val);
     if (isDuplicate) {
       setDuplicateID(prev => prev.includes(val) ? prev : [...prev, val]);
       disapproval('이미 가입한 이메일이에요. 🥹');
