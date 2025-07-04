@@ -243,7 +243,7 @@ export const buttonData : ButtonDataType = {
       '목적에 따라 버튼 스타일 제공',
       'button 컴포넌트 사용 ❌, <span class="color">class</span>로 제어',
       '파일 경로 : /src/assets/style/ui/buttonStyle.ts',
-      '최소 사이즈 44px x 44px',
+      '최소 사이즈 40px x 40px',
       '<span class="color">필수 구조</span> : button > span'
     ]
   },
