@@ -26,24 +26,24 @@ export const GuideNav = () =>{
     <StyleWrap className="nav">
       <nav>
         <Accordion data={GUIDE_LIST} activeItems={[locationIdx]} accOpt={{openIcon:'arrow'}}>
-          {(item) => ({
+          {(accItem) => ({
             heading: {
-              accTit:item.title,
+              accTit:accItem.title,
               jsx:(<>
-                <GuideMenuIcon id={item.id} />
-                <span className="tit">{item.title}</span>
-                { item.children && <span className="length">{item.children?.length}</span> }
+                <GuideMenuIcon id={accItem.id} />
+                <span className="tit">{accItem.title}</span>
+                { accItem.children && <span className="length">{accItem.children?.length}</span> }
               </>),
-              tag: item?.children ? 'button':'span'
+              tag: accItem?.children ? 'button':'span'
             },
             content: (
-              item.children ? (
+              accItem.children ? (
                 <div className="nav-depth">
-                  <MemoTreeLists<NavItemType> data={item.children} firstStart={true}>
+                  <MemoTreeLists<NavItemType> data={accItem.children} firstStart={true}>
                     {(childrenItem) => ({
                       content: (
                         <>
-                          <NavLink to={`/guide/${guidePath(item.path, childrenItem.path)}`} className="link" title={`${childrenItem.title} 보기`}>
+                          <NavLink to={`/guide/${guidePath(accItem.path, childrenItem.path)}`} className="link" title={`${childrenItem.title} 보기`}>
                             <span>{childrenItem.title}</span>
                           </NavLink>
                         </>

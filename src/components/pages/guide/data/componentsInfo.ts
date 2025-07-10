@@ -124,7 +124,6 @@ export const toastData : ComponentsInfoType = {
   ]
 }
 
-
 // Tab Btn 
 export const tabBtnsData : ComponentsInfoType = {
   info:{
@@ -157,6 +156,51 @@ export const tabBtnsData : ComponentsInfoType = {
       title:'TSX & CSS',
       lang:'txt',
       code:`https://github.com/TH91-Github/react-record/blob/main/src/components/common/TabBtns.tsx`
+    },
+  ]
+}
+
+// accordion 
+export const accordionData : ComponentsInfoType = {
+  info:{
+    id:'accordion-info',
+    title:'Accordion Menu 컴포넌트',
+    desc:'아코디언 메뉴 스타일'
+  },
+  link:[
+    {
+      id:'tabBtns-component',
+      title:'컴포넌트 code',
+      code:'github - <Accordion />',
+      link:'https://github.com/TH91-Github/react-record/blob/main/src/components/common/Accordion.tsx'
+    },
+  ],
+  codeData:[
+    {
+      id:'code-use',
+      title:'사용',
+      lang:'typescript',
+      code:`
+        <Accordion data={data}>
+          {(accItem, accIdx) => ({ // accItem, accIdx를 활용하여 UI & 추가 커스텀 가능
+            heading: {
+              accTit:타이틀, // 버튼 타이틀
+              jsx:(<> // button 자식으로 들어가는 구조
+                <span class="tit">타이틀</span>
+              </>),
+            },
+            content: (
+              jsx 구조
+            )
+          })}
+        </Accordion>
+      `
+    },
+    {
+      id:'code-url',
+      title:'TSX & CSS',
+      lang:'txt',
+      code:`https://github.com/TH91-Github/react-record/blob/main/src/components/common/Accordion.tsx`
     },
   ]
 }

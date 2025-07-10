@@ -4,7 +4,7 @@ import styled from "styled-components";
 interface AccdionItemTitlePropsType {
   accTit:string;
   jsx: React.ReactNode;
-  tag: 'button' | 'span';
+  tag?: 'button' | 'span'; // button 또는 일반 span
 }
 interface AccordionProps<T> {
   data: T[];
@@ -14,7 +14,7 @@ interface AccordionProps<T> {
   accOpt?:{
     openIcon:'arrow'
   }
-  children: (item: T) => {
+  children: (accItem: T, accIdx:number) => {
     heading: AccdionItemTitlePropsType;
     content: React.ReactNode | null;
   };
@@ -53,7 +53,7 @@ export const Accordion = <T,>({
       { data.length > 0 ? (
         <ul>
           {data.map((accItem, accIdx) => {
-            const { heading, content } = children(accItem);
+            const { heading, content } = children(accItem, accIdx);
             return (
               <MemoAccordionItem
                 key={accIdx}
@@ -72,7 +72,11 @@ export const Accordion = <T,>({
 };
 
 const AccordionItem = ({
-  heading,
+  heading = {
+    accTit:'',
+    jsx:<></>,
+    tag:'button'
+  },
   content,
   isActive,
   onChange,

@@ -26,40 +26,40 @@ export const CarouselViewPage = () => {
       txt:'옵션 - x : 리스트 총 4 동작',
       lists:['case2', 'case2', 'case2', 'case2'],
     },
-    // {
-    //   tit:'case-3',
-    //   txt:`옵션 - <span className="highlight">slidesPerView</span>: 4, <span className="highlight">loop</span>:true, <span className="highlight">autoplay</span>:{delay: 2000}`,
-    //   lists:['case3', 'case3', 'case3', 'case3','case3', 'case3', 'case3', 'case3'],
-    //   opt:{
-    //     slidesPerView: 4,
-    //     loop:true,
-    //     autoplay: {
-    //       delay: 2000,
-    //     }
-    //   }
-    // },
-    // {
-    //   tit:'case-4',
-    //   txt:'<span className="highlight">slidesPerView</span>: 1, <span className="highlight">pagination</span>: true,',
-    //   lists:['case4', 'case4', 'case4'],
-    //   opt:{
-    //     slidesPerView: 1,
-    //     pagination:true,
-    //   }
-    // },
-    // {
-    //   tit:'case-5',
-    //   txt:`<span className="highlight">slidesPerView</span>: 1, <span className="highlight">pagination</span>:{clickable:true, type:'progressbar'}, <span className="highlight">navigation</span>: true,`,
-    //   lists:['case5', 'case5', 'case5'],
-    //   opt:{
-    //     slidesPerView: 1,
-    //     pagination:{
-    //       clickable:true,
-    //       type:'progressbar'
-    //     },
-    //     navigation:true, 
-    //   }
-    // },
+    {
+      tit:'case-3',
+      txt:`옵션 - <span className="highlight">slidesPerView</span>: 4, <span className="highlight">loop</span>:true, <span className="highlight">autoplay</span>:{delay: 2000}`,
+      lists:['case3', 'case3', 'case3', 'case3','case3', 'case3', 'case3', 'case3'],
+      opt:{
+        slidesPerView: 4,
+        loop:true,
+        autoplay: {
+          delay: 2000,
+        }
+      }
+    },
+    {
+      tit:'case-4',
+      txt:'<span className="highlight">slidesPerView</span>: 1, <span className="highlight">pagination</span>: true,',
+      lists:['case4', 'case4', 'case4'],
+      opt:{
+        slidesPerView: 1,
+        pagination:true,
+      }
+    },
+    {
+      tit:'case-5',
+      txt:`<span className="highlight">slidesPerView</span>: 1, <span className="highlight">pagination</span>:{clickable:true, type:'progressbar'}, <span className="highlight">navigation</span>: true,`,
+      lists:['case5', 'case5', 'case5'],
+      opt:{
+        slidesPerView: 1,
+        pagination:{
+          clickable:true,
+          type:'progressbar'
+        },
+        navigation:true, 
+      }
+    },
   ];
 
   return(
