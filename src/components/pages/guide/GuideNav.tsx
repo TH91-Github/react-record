@@ -17,18 +17,18 @@ interface NavItemType extends TreeItemType {
 
 export const GuideNav = () =>{
   const {locationIdx} = useLocationCurrent(GUIDE_LIST, 'id', 1);
-
+  console.log(locationIdx)
   const guidePath = useCallback((itemPath:string, childrenPath:string) => {
     const routesCheck = childrenPath.indexOf('/:id');
     return `${itemPath}${routesCheck === -1 ? `/${childrenPath}`: ''}`;
   },[]);
   return (
     <StyleWrap className="nav">
-      <nav>
-        <Accordion data={GUIDE_LIST} activeItems={[locationIdx]} accOpt={{openIcon:'arrow'}}>
+      {/* <nav>
+        <Accordion data={GUIDE_LIST} initActive={[locationIdx]} accOpt={{openIcon:'arrow'}}>
           {(accItem) => ({
             heading: {
-              accTit:accItem.title,
+              btnTit:accItem.title,
               jsx:(<>
                 <GuideMenuIcon id={accItem.id} />
                 <span className="tit">{accItem.title}</span>
@@ -56,7 +56,7 @@ export const GuideNav = () =>{
             ),
           })}
         </Accordion>
-      </nav>
+      </nav> */}
     </StyleWrap>
   )
 }

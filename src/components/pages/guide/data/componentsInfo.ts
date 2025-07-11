@@ -83,7 +83,7 @@ export const toastData : ComponentsInfoType = {
   info:{
     id:'toast-info',
     title:'toast 컴포넌트',
-    desc:'화면 EX) 하단에 잠시 노출 후 사라지는 형태, 메시지를 전달하는 데 사용.'
+    desc:'화면 EX) 하단에 잠시 노출 후 사라지는 형태, 메시지를 전달하는 데 사용하며 화면 하단 노출'
   },
   link:[
     {
@@ -165,7 +165,7 @@ export const accordionData : ComponentsInfoType = {
   info:{
     id:'accordion-info',
     title:'Accordion Menu 컴포넌트',
-    desc:'아코디언 메뉴 스타일'
+    desc:'아코디언 메뉴 기능, 사용 컴포넌트에서 스타일 사용'
   },
   link:[
     {
@@ -184,9 +184,9 @@ export const accordionData : ComponentsInfoType = {
         <Accordion data={data}>
           {(accItem, accIdx) => ({ // accItem, accIdx를 활용하여 UI & 추가 커스텀 가능
             heading: {
-              accTit:타이틀, // 버튼 타이틀
+              accTit:타이틀, // 버튼 속성 title
               jsx:(<> // button 자식으로 들어가는 구조
-                <span class="tit">타이틀</span>
+                <span className="tit">타이틀</span>
               </>),
             },
             content: (

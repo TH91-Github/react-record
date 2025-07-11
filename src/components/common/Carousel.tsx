@@ -83,7 +83,6 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
   
   const updateSwiperLockClass = useCallback((swiper: SwiperClass) => {
   const wrapperEl = swiper.el; // swiper root elemen
-  console.log(wrapperEl)
   if (swiper.isLocked) {
     wrapperEl.classList.add('is-locked');
     wrapperEl.classList.remove('is-unlocked');

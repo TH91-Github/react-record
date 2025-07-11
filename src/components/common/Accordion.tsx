@@ -1,8 +1,8 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-
+import { cn } from "utils/common";
 interface AccdionItemTitlePropsType {
-  accTit:string;
+  btnTit:string;
   jsx: React.ReactNode;
   tag?: 'button' | 'span'; // button 또는 일반 span
 }
@@ -10,33 +10,29 @@ interface AccordionProps<T> {
   data: T[];
   mode?: "single" | "multiple"; // 하나만 열기 or 각 open
   className?: string;
-  activeItems?: number[]; // 활성화 필요한 목록
+  initActive?: number[]; // 초기 활성화 필요한 목록
+  smoothAni?: boolean; // 부드럽게
   accOpt?:{
-    openIcon:'arrow'
+    openIcon?:'arrow';
   }
   children: (accItem: T, accIdx:number) => {
     heading: AccdionItemTitlePropsType;
-    content: React.ReactNode | null;
+    content?: React.ReactNode;
   };
-}
-// 아코디언 item type
-interface AccordionItemPropsType {
-  heading: AccdionItemTitlePropsType;
-  content: React.ReactNode | null;
-  isActive:boolean;
-  onChange: () => void;
 }
 
 export const Accordion = <T,>({
   data,
   mode = "multiple", 
   className,
-  activeItems = [],
-  accOpt,
+  initActive = [],
+  smoothAni = false,
+  accOpt = { openIcon: 'arrow'  },
   children,
 }: AccordionProps<T>) => {
-  const [isActives, setIsActives] = useState<number[]>([...activeItems]);
-
+  const [isActives, setIsActives] = useState<number[]>(
+    mode === 'single' ? (initActive.length > 0 ? [initActive[0]] : []) : [...initActive]
+  );
   const handleChange = useCallback((index: number) => {
     setIsActives(prevState => {
       const isIndexActive = prevState.includes(index);
@@ -49,7 +45,13 @@ export const Accordion = <T,>({
     });
   }, [setIsActives, mode]);
   return (
-    <StyleWrap className={`accordion-wrap ${className ? className :''} ${accOpt?.openIcon ==='arrow' ? 'acc-arrow': ''}`}>
+    <StyleWrap 
+      className={cn(
+        'accordion-wrap', 
+        className && className, 
+        accOpt.openIcon === 'arrow' && accOpt.openIcon, // head button 화살표
+        smoothAni && 'smooth'
+    )}>
       { data.length > 0 ? (
         <ul>
           {data.map((accItem, accIdx) => {
@@ -61,6 +63,7 @@ export const Accordion = <T,>({
                 onChange={() => handleChange(accIdx)}
                 heading={heading}
                 content={content}
+                smoothAni={smoothAni}
               />
             );
           })}
@@ -71,41 +74,98 @@ export const Accordion = <T,>({
   );
 };
 
+// 아코디언 item type
+interface AccordionItemPropsType {
+  heading: AccdionItemTitlePropsType;
+  content?: React.ReactNode;
+  isActive:boolean;
+  smoothAni?:boolean,
+  onChange: () => void;
+}
+
 const AccordionItem = ({
-  heading = {
-    accTit:'',
-    jsx:<></>,
-    tag:'button'
-  },
+  heading,
   content,
   isActive,
+  smoothAni,
   onChange,
 }: AccordionItemPropsType) => {
+  const {btnTit, jsx, tag = 'button'} = heading;
+  const contentRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
 
   const handleClick = useCallback(() => {
     onChange();
   }, [onChange]);
 
+  console.log(isActive)
+
+  useEffect(()=>{ // smoothAni 옵션
+    if(!smoothAni) return
+
+    const contentEl = contentRef.current;
+    const innerEl = innerRef.current;
+    if (!contentEl || !innerEl) return;
+
+    if(isActive){
+      const boxH = contentEl.offsetHeight
+      const contH = innerEl.offsetHeight;
+      const totalH = boxH + contH;
+
+      // contentEl.style.display = "block"; 
+      contentEl.style.height = totalH + 'px';
+      console.log(boxH)
+      console.log(contH)
+      console.log(totalH)
+
+    }else{
+      console.log('?')
+      const height = innerEl.offsetHeight;
+      contentEl.style.height = height + "px";
+      const _ = contentEl.offsetHeight; 
+      contentEl.style.height = "0px";
+
+      // const onTransitionEnd = () => {
+      //   if(!isActive){
+      //     contentEl.style.display = "none"; // 트랜지션 종료 후 숨김
+      //     contentEl.removeEventListener("transitionend", onTransitionEnd);
+      //   }
+      // };
+      // contentEl.addEventListener("transitionend", onTransitionEnd);
+    }
+  },[isActive,smoothAni])
+
   return (
     <li className={`acc-item ${isActive? 'open':''}`}>
       <div className="acc-head">
-        {heading.tag === 'button' ? ( 
+        {tag === 'button' ? ( 
           <button 
             type="button" 
             className="acc-btn"
             onClick={handleClick}
-            title={heading.accTit}
+            title={btnTit}
           >
-            {heading.jsx}
+            {jsx}
+            <span className="arrow-icon"></span>
             <span className="blind">{isActive ? '닫기': '열기'}</span>
           </button>
         ) : (
-          <span className="acc-tit">{heading.jsx}</span>
+          <>
+            <span className="acc-tit">{jsx}</span>
+          </>
         )}
       </div>
       { content && (
-        <div className={`acc-content`}>
-          {content}
+        <div 
+          ref={contentRef}
+          className="acc-content"
+        >
+          <div 
+            ref={innerRef}
+            className="acc-inner"
+          >
+            {content}
+          </div>
         </div>
       )}
     </li>
@@ -131,46 +191,75 @@ const StyleWrap = styled.div`
     display:none;
   }
   .acc-btn, .acc-tit {
+    position:relative;
     padding:10px 15px 10px 0;
     svg { 
       max-width:30px;
       max-height:30px;
     }
   }
-
-  &.acc-arrow {
-    .acc-btn{ 
+  .arrow-icon{
+    display:block;
+    position:absolute;
+    top:50%;
+    right:10px;
+    width:10px;
+    height:10px;
+    transform:translateY(-50%);
+    &::before, &::after{
+      position:absolute;
+      top:0;
+      right:6px;
+      width:100%; 
+      height:2px;
+      border-radius:30px; 
+      background:#000; 
+      transform:rotate(-135deg);
+      transition:transform .3s ease-in-out;
+      content:'';
+    }
+    &::after{
+      right:0;
+      transform:rotate(135deg);
+    }
+  }
+    
+  &.arrow {
+    .acc-btn{
       width:100%;
       padding-right:30px;
-      &::before, &::after{
-        position:absolute;
-        top:20px;
-        right:12px;
-        width:10px; 
-        height:2px;
-        border-radius:30px; 
-        background:#000; 
-        transform:rotate(-135deg);
-        transition:transform .3s ease-in-out;
-        content:'';
-      }
-      &::after{
-        right:6px;
-        transform:rotate(135deg);
-      }
+      text-align:left;
     }
     .open {
       .acc-btn{ 
-        &::before{
-          transform:rotate(-45deg);
-        }
-        &::after{
-          transform:rotate(45deg);
+        .arrow-icon{
+           &::before{
+            transform:rotate(-45deg);
+          }
+          &::after{
+            transform:rotate(45deg);
+          }
         }
       }
     }
   }
+  &.smooth{
+    .acc-content{
+      overflow:hidden;
+      position:relative;
+      height: 0;
+      transition: height 0.5s ease-in-out;
+    }
+    .acc-inner{
+      position:absolute;
+      top:0;
+      width:100%;
+    }
+  }
 `;
+
+
+
 
 /*
   ※ 참고 설명
