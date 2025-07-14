@@ -5,6 +5,7 @@ import { TabButtonViewPage } from "pages/guide/components/view/TabButtonViewPage
 import { CarouselViewPage } from "pages/guide/components/view/CarouselViewPage";
 import { ToastViewPage } from "pages/guide/components/view/ToastViewPage";
 import { AccordionViewPage } from "pages/guide/components/view/AccordionViewPage";
+import { InputTextViewPage } from "pages/guide/components/view/InputTextViewPage";
 
 interface LoadViewPropsType {
   id: string;
@@ -17,8 +18,9 @@ export const LoadView = ({id, onNotFound}:LoadViewPropsType) => {
     modal: <ModalViewPage />,
     toast: <ToastViewPage />,
     carousel: <CarouselViewPage />,
-    'tab-button': <TabButtonViewPage />,
+    tabButton: <TabButtonViewPage />,
     accordion: <AccordionViewPage />,
+    inputText: <InputTextViewPage />
   }), []);
 
   // 일치하지 않는 경우 NotView 컴포넌트 

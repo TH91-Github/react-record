@@ -72,9 +72,6 @@ export const AccordionViewPage = () => {
         {title:"타이틀2"},
         {title:"타이틀3", desc:'내용3'},
       ],
-      option:{
-        
-      }
     },
     
   ]

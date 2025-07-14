@@ -79,7 +79,7 @@ export const InputItemModule = forwardRef<InputItemModuleRefType, InputItemModul
         id={id}
         type={type}
         title={`${title} 입력해주세요.`}
-        isError={isError}
+        error={isError}
         focusEvent={() => handleFocus()}
         blurEvent={(e) => handleBlur(e)}
         styleOpt={{$defaultLine:'line-bottom', $focusColor:focusColor}}

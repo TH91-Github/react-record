@@ -112,7 +112,7 @@ export const colorsData : ColorChipDataType = {
     },
     {
       id:'textColor',
-      title:'글자에 사용하는 색상',
+      title:'글자에 사용하는 색상 (텍스트와 연관된 배경 포함)',
       lists:[
         {
           id:'textColor-title',

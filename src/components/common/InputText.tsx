@@ -19,7 +19,7 @@ interface InputPropsType {
   placeholder?: string;
   initVal?: string;
   disabled?: boolean;
-  isError?:boolean;
+  error?:boolean;
   styleOpt?:InputStylePropsType;
   keyEnter?: () => void;
   changeEvent?: (e: string) => void;
@@ -37,7 +37,7 @@ export interface InputTextRefType {
 }
 
 export const InputText = forwardRef<InputTextRefType, InputPropsType>(function InputText({
-  name, id, type, className, title, placeholder, initVal, disabled, isError, styleOpt={},
+  name, id, type, className, title, placeholder, initVal, disabled, error, styleOpt={},
   keyEnter, changeEvent, focusEvent, blurEvent, removeEvent
 }: InputPropsType, ref ) {
 
@@ -112,7 +112,9 @@ export const InputText = forwardRef<InputTextRefType, InputPropsType>(function I
   
   return( 
     <StyleWrap
-      className={cn('input-item', isFocus && 'isFocus', isError && 'isError')}
+      className={cn(
+        'input-item', isFocus && 'isFocus', error && 'error', disabled && 'disabled'
+      )}
       $maxWidth={$maxWidth ? $maxWidth : undefined} 
       $lineColor={$lineColor}
       $focusColor={$focusColor}
@@ -123,7 +125,9 @@ export const InputText = forwardRef<InputTextRefType, InputPropsType>(function I
           type={type ?? 'text'}
           id={id}
           name={name}
-          className={`input ${className ? className : ''} ${$defaultLine !== 'none' ? $defaultLine : ''}`}
+          className={cn(
+            'input', className && className, $defaultLine !== 'none' && $defaultLine
+          )}
           value={val}
           onFocus={handleFocusIn}
           onBlur={handleFocusOut}
@@ -137,7 +141,7 @@ export const InputText = forwardRef<InputTextRefType, InputPropsType>(function I
       {(placeholder && val.length === 0) && (
         <span className="placeholder">{ placeholder }</span>
       )}
-      {val.length > 0 && ( 
+      {(val.length > 0 && !disabled) && ( 
         <button
           type="button"
           className={cn('remove', val.length > 0 && 'on')}
@@ -170,6 +174,9 @@ const StyleWrap = styled.div<InputStylePropsType>`
     font-size:inherit;
     transition: border-color .3s;
     outline:0;
+    &:disabled {
+      border-color:${colors.lineColor};
+    }
     &:disabled + .placeholder{
       color:${textColor.subText};
     }
@@ -210,9 +217,17 @@ const StyleWrap = styled.div<InputStylePropsType>`
       }
     }
   }
-  &.isError {
+  &.disabled {
+    .input {
+      background:${colors.disabled};
+      border-color:${colors.lineColor};
+      color:${textColor.desc};
+    }
+  }
+  &.error {
     .input{
       color:${colors.red};
+      border-color:${colors.red};
     }
   }
 `;

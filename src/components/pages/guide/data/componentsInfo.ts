@@ -169,7 +169,7 @@ export const accordionData : ComponentsInfoType = {
   },
   link:[
     {
-      id:'tabBtns-component',
+      id:'accordion-component',
       title:'컴포넌트 code',
       code:'github - <Accordion />',
       link:'https://github.com/TH91-Github/react-record/blob/main/src/components/common/Accordion.tsx'
@@ -181,7 +181,10 @@ export const accordionData : ComponentsInfoType = {
       title:'사용',
       lang:'typescript',
       code:`
-        <Accordion data={data}>
+        <Accordion 
+          data={data}
+          ... 그 외 이벤트 및 속성 github
+        >
           {(accItem, accIdx) => ({ // accItem, accIdx를 활용하여 UI & 추가 커스텀 가능
             heading: {
               accTit:타이틀, // 버튼 속성 title
@@ -201,6 +204,53 @@ export const accordionData : ComponentsInfoType = {
       title:'TSX & CSS',
       lang:'txt',
       code:`https://github.com/TH91-Github/react-record/blob/main/src/components/common/Accordion.tsx`
+    },
+  ]
+}
+
+// inputText 
+export const inputTextData : ComponentsInfoType = {
+  info:{
+    id:'input-info',
+    title:'Input Text, Password',
+    desc:'input 컴포넌트, 초기 값, 포커스, 클릭 등 제어'
+  },
+  link:[
+    {
+      id:'input-component',
+      title:'컴포넌트 code',
+      code:'github - <InputText />',
+      link:'https://github.com/TH91-Github/react-record/blob/main/src/components/common/InputText.tsx'
+    },
+  ],
+  codeData:[
+    {
+      id:'code-use',
+      title:'사용',
+      lang:'typescript',
+      code:`
+        <InputText 
+          id="guide-input"
+          disabled={boolean}
+          initVal={string}
+          error={boolean}
+          placeholder={string}
+          styleOpt={
+            { 
+              $defaultLine:'line' | 'line-bottom' | 'line-left' | 'none',
+              $focusColor:string,
+              $lineColor:string,
+            }
+          }
+          ... 그 외 이벤트 및 속성 github
+        />
+      `
+    },
+    {
+      id:'code-url',
+      title:'TSX & CSS',
+      lang:'txt',
+      code:`https://github.com/TH91-Github/react-record/blob/main/src/components/common/InputText.tsx`
     },
   ]
 }
