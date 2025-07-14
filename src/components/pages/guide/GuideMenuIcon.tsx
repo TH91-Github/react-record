@@ -2,7 +2,6 @@ import { SvgBook, SvgCode, SvgDesign, SvgFolder, SvgPuzzle, SvgRectangleStack, S
 import { useMemo } from "react";
 
 export const GuideMenuIcon = ({id}:{id:string}) => {
-
   const iconTit:{[key:string] : React.ReactNode} = useMemo(() =>{ 
       return {
         principles: <SvgBook />, // 규칙

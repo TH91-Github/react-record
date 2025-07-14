@@ -22,7 +22,7 @@ export const GuideAbout = () => {
             <h3 className="title"><span className="color">Guide</span> System</h3>
             <p className="desc">
               총 <span className="color">{GUIDE_LIST.length}</span>개 카테고리로 <br />
-              가이드를 확인할 수 있어요!
+              구성되어 있어요!
             </p>
           </span>
         </div>

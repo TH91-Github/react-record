@@ -34,6 +34,7 @@ export const GuideNav = () =>{
                 <span className="tit">{accItem.title}</span>
                 { accItem.children && <span className="length">{accItem.children?.length}</span> }
               </>),
+              tag: accItem?.children ? 'button':'span'
             },
             content: (
               accItem.children ? (
@@ -69,6 +70,7 @@ const StyleWrap = styled.div`
     display:flex;
     align-items:center;
     gap:10px;
+    height:40px;
     .icon{
       display:block;
       width:20px;

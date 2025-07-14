@@ -96,9 +96,9 @@ const AccordionItem = ({
   const contentRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
   const animationTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const closeSpeed = 0.5;
+  const CLOSE_SPEED = 0.5;
+  const CLOSE_DELAY = CLOSE_SPEED * 1000 + 1000;
 
-  console.log(content)
   const handleClick = useCallback(() => {
     onChange();
   }, [onChange]);
@@ -112,14 +112,12 @@ const AccordionItem = ({
     contentEl.style.display = 'block';
 
     if(isActive){
-      const contH = innerEl.offsetHeight;
-      const totalH = contH;
+      const totalH = innerEl.offsetHeight;
       contentEl.style.height = totalH + 'px';
 
     }else{
       const height = innerEl.offsetHeight;
       contentEl.style.height = height + "px";
-      const _ = contentEl.offsetHeight; 
       contentEl.style.height = "0px";
 
       if (animationTimer.current) {
@@ -127,9 +125,28 @@ const AccordionItem = ({
       }
       animationTimer.current = setTimeout(() =>{
         contentEl.style.display = 'none';
-      }, (closeSpeed * 1000 + 1000))
+      }, (CLOSE_DELAY))
     }
   },[isActive, smoothAni])
+
+  const renderHeading = () => {
+    if (content) {
+      return (
+        <button 
+          type="button" 
+          className="acc-btn"
+          onClick={handleClick}
+          title={btnTit}
+        >
+          {jsx}
+          <span className="arrow-icon"></span>
+          <span className="blind">{isActive ? '닫기' : '열기'}</span>
+        </button>
+      );
+    }
+    return <span className="acc-tit">{jsx}</span>;
+  };
+
 
   return (
     <StyleItem 
@@ -140,25 +157,10 @@ const AccordionItem = ({
         smoothAni && 'smooth'
       )}
       $isIcon={accOpt.openIcon ? true : false}
-      $sepped={closeSpeed}
+      $sepped={CLOSE_SPEED}
     >
       <div className="acc-head">
-        {content ? ( 
-          <button 
-            type="button" 
-            className="acc-btn"
-            onClick={handleClick}
-            title={btnTit}
-          >
-            {jsx}
-            <span className="arrow-icon"></span>
-            <span className="blind">{isActive ? '닫기': '열기'}</span>
-          </button>
-        ) : (
-          <>
-            <span className="acc-tit">{jsx}</span>
-          </>
-        )}
+        {renderHeading()}
       </div>
       { content && (
         <div 
