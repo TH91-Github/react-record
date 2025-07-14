@@ -4,7 +4,6 @@ import { cn } from "utils/common";
 interface AccdionItemTitlePropsType {
   btnTit:string;
   jsx: React.ReactNode;
-  tag?: 'button' | 'span'; // button 또는 일반 span
 }
 interface AccordionProps<T> {
   data: T[];
@@ -27,7 +26,7 @@ export const Accordion = <T,>({
   className,
   initActive = [],
   smoothAni = false,
-  accOpt = { openIcon: 'arrow'  },
+  accOpt = { openIcon: 'arrow' },
   children,
 }: AccordionProps<T>) => {
   const [isActives, setIsActives] = useState<number[]>(
@@ -45,12 +44,10 @@ export const Accordion = <T,>({
     });
   }, [setIsActives, mode]);
   return (
-    <StyleWrap 
+    <div 
       className={cn(
         'accordion-wrap', 
         className && className, 
-        accOpt.openIcon === 'arrow' && accOpt.openIcon, // head button 화살표
-        smoothAni && 'smooth'
     )}>
       { data.length > 0 ? (
         <ul>
@@ -64,13 +61,14 @@ export const Accordion = <T,>({
                 heading={heading}
                 content={content}
                 smoothAni={smoothAni}
+                accOpt={accOpt}
               />
             );
           })}
         </ul>
         ) : <div className="acc-empty">목록이 없습니다.</div>
       }
-    </StyleWrap>
+    </div>
   );
 };
 
@@ -80,6 +78,9 @@ interface AccordionItemPropsType {
   content?: React.ReactNode;
   isActive:boolean;
   smoothAni?:boolean,
+  accOpt: {
+    openIcon?: 'arrow';
+  };
   onChange: () => void;
 }
 
@@ -87,18 +88,20 @@ const AccordionItem = ({
   heading,
   content,
   isActive,
+  accOpt,
   smoothAni,
   onChange,
 }: AccordionItemPropsType) => {
-  const {btnTit, jsx, tag = 'button'} = heading;
+  const {btnTit, jsx} = heading;
   const contentRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
+  const animationTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const closeSpeed = 0.5;
 
+  console.log(content)
   const handleClick = useCallback(() => {
     onChange();
   }, [onChange]);
-
-  console.log(isActive)
 
   useEffect(()=>{ // smoothAni 옵션
     if(!smoothAni) return
@@ -106,39 +109,41 @@ const AccordionItem = ({
     const contentEl = contentRef.current;
     const innerEl = innerRef.current;
     if (!contentEl || !innerEl) return;
+    contentEl.style.display = 'block';
 
     if(isActive){
-      const boxH = contentEl.offsetHeight
       const contH = innerEl.offsetHeight;
-      const totalH = boxH + contH;
-
-      // contentEl.style.display = "block"; 
+      const totalH = contH;
       contentEl.style.height = totalH + 'px';
-      console.log(boxH)
-      console.log(contH)
-      console.log(totalH)
 
     }else{
-      console.log('?')
       const height = innerEl.offsetHeight;
       contentEl.style.height = height + "px";
       const _ = contentEl.offsetHeight; 
       contentEl.style.height = "0px";
 
-      // const onTransitionEnd = () => {
-      //   if(!isActive){
-      //     contentEl.style.display = "none"; // 트랜지션 종료 후 숨김
-      //     contentEl.removeEventListener("transitionend", onTransitionEnd);
-      //   }
-      // };
-      // contentEl.addEventListener("transitionend", onTransitionEnd);
+      if (animationTimer.current) {
+        clearTimeout(animationTimer.current);
+      }
+      animationTimer.current = setTimeout(() =>{
+        contentEl.style.display = 'none';
+      }, (closeSpeed * 1000 + 1000))
     }
-  },[isActive,smoothAni])
+  },[isActive, smoothAni])
 
   return (
-    <li className={`acc-item ${isActive? 'open':''}`}>
+    <StyleItem 
+      className={cn(
+        'acc-item',
+        isActive && 'open',
+        content !== null && accOpt.openIcon, // head button 화살표
+        smoothAni && 'smooth'
+      )}
+      $isIcon={accOpt.openIcon ? true : false}
+      $sepped={closeSpeed}
+    >
       <div className="acc-head">
-        {tag === 'button' ? ( 
+        {content ? ( 
           <button 
             type="button" 
             className="acc-btn"
@@ -168,7 +173,7 @@ const AccordionItem = ({
           </div>
         </div>
       )}
-    </li>
+    </StyleItem>
   );
 };
 
@@ -178,59 +183,41 @@ const MemoAccordionItem = memo(AccordionItem, (prevProps, nextProps) => {
   )
 });
 
-const StyleWrap = styled.div`
-  .acc-item{
-    position:relative;
-    &.open{
-      .acc-content{
-        display:block;
-      }
-    }
-  }
-  .acc-content{
-    display:none;
+interface StyleItemType {
+  $isIcon:boolean;
+  $sepped: number;
+}
+const StyleItem = styled.li<StyleItemType>`
+  position:relative;
+  .acc-btn{
+    width:100%;
+    text-align:left;
   }
   .acc-btn, .acc-tit {
+    display:inline-block;
     position:relative;
     padding:10px 15px 10px 0;
+    line-height:1;
     svg { 
       max-width:30px;
       max-height:30px;
     }
   }
-  .arrow-icon{
-    display:block;
-    position:absolute;
-    top:50%;
-    right:10px;
-    width:10px;
-    height:10px;
-    transform:translateY(-50%);
-    &::before, &::after{
-      position:absolute;
-      top:0;
-      right:6px;
-      width:100%; 
-      height:2px;
-      border-radius:30px; 
-      background:#000; 
-      transform:rotate(-135deg);
-      transition:transform .3s ease-in-out;
-      content:'';
+  ${({$isIcon}) => $isIcon && `
+    .acc-tit {
+      padding:10px;
     }
-    &::after{
-      right:0;
-      transform:rotate(135deg);
+  `}
+  &.open{
+    .acc-content{
+      display:block !important;
     }
   }
-    
-  &.arrow {
+  &.arrow{
     .acc-btn{
-      width:100%;
       padding-right:30px;
-      text-align:left;
     }
-    .open {
+    &.open {
       .acc-btn{ 
         .arrow-icon{
            &::before{
@@ -242,13 +229,43 @@ const StyleWrap = styled.div`
         }
       }
     }
+    .arrow-icon{
+      display:block;
+      position:absolute;
+      top:50%;
+      right:10px;
+      width:10px;
+      height:10px;
+      transform:translateY(-50%);
+      &::before, &::after{
+        position:absolute;
+        top:0;
+        right:6px;
+        width:100%; 
+        height:2px;
+        border-radius:30px; 
+        background:#000; 
+        transform:rotate(-135deg);
+        transition:transform .3s ease-in-out;
+        content:'';
+      }
+      &::after{
+        right:0;
+        transform:rotate(135deg);
+      }
+    }
   }
-  &.smooth{
+  &:not(.smooth) {
+    .acc-content{
+      display:none;
+    }
+  }
+  &.smooth {
     .acc-content{
       overflow:hidden;
       position:relative;
       height: 0;
-      transition: height 0.5s ease-in-out;
+      transition: height ${({$sepped}) => $sepped}s ease-in-out;
     }
     .acc-inner{
       position:absolute;
@@ -256,9 +273,8 @@ const StyleWrap = styled.div`
       width:100%;
     }
   }
+  
 `;
-
-
 
 
 /*

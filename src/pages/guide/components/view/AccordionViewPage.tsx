@@ -9,7 +9,7 @@ type AccordionMode = 'single' | 'multiple';
 interface DemoItemType {
   tit: string;
   txt: string;
-  lists: { title: string; desc: string }[];
+  lists: { title: string; desc?: string }[];
   option?: {
     mode?: AccordionMode;
     initActive?: number[];
@@ -19,63 +19,63 @@ interface DemoItemType {
 
 export const AccordionViewPage = () => {
   const demoData:DemoItemType[] = [
-    // {
-    //   tit:'case-1',
-    //   txt:'기본 옵션 여러개 확인',
-    //   lists:[
-    //     {title:"case1",desc:'내용1'},
-    //     {title:"case2",desc:'내용2'},
-    //     {title:"case3",desc:'내용3'},
-    //   ],
-    // },
-    // {
-    //   tit:'case-2',
-    //   txt:'하나만 확인 가능',
-    //   lists:[
-    //     {title:"case2",desc:'내용1'},
-    //     {title:"case2",desc:'내용2'},
-    //     {title:"case2",desc:'내용3'},
-    //   ],
-    //   option:{
-    //     mode: 'single'
-    //   }
-    // },
-    // {
-    //   tit:'case-3',
-    //   txt:'초기 원하는 순서 활성화 : initActive:number[] - initActive[2,3] / initActive[2]',
-    //   lists:[
-    //     {title:"case3",desc:'내용1'},
-    //     {title:"case3",desc:'내용2'},
-    //     {title:"case3",desc:'내용3'},
-    //   ],
-    //   option:{
-    //     initActive:[2]
-    //   }
-    // },
+    {
+      tit:'case-1',
+      txt:'기본 옵션 여러개 확인',
+      lists:[
+        {title:"case1",desc:'내용1'},
+        {title:"case2",desc:'내용2'},
+        {title:"case3",desc:'내용3'},
+      ],
+    },
+    {
+      tit:'case-2',
+      txt:'하나만 확인 가능',
+      lists:[
+        {title:"case2",desc:'내용1'},
+        {title:"case2",desc:'내용2'},
+        {title:"case2",desc:'내용3'},
+      ],
+      option:{
+        mode: 'single'
+      }
+    },
+    {
+      tit:'case-3',
+      txt:'초기 원하는 순서 활성화 index 2번 활성 : EX: initActive:number[] - initActive[2,3] / initActive[2]',
+      lists:[
+        {title:"case3",desc:'내용1'},
+        {title:"case3",desc:'내용2'},
+        {title:"case3",desc:'내용3'},
+      ],
+      option:{
+        initActive:[2]
+      }
+    },
     {
       tit:'case-4',
       txt:'부드럽게 on/off',
       lists:[
-        {title:"타이틀1",desc:'내용1 ㅣㅏㅁ넝;ㅣㅏㅁ넝 ;ㅣㅏㅓㅁㄴㅇ;ㅏㅣ ㅓㅁ;닝 ㅓ;ㅏㅣㅁ넝 ;ㅏㅣ먼ㅇ ;ㅏㅣㅓㅁㄴ;ㅇ'},
-        // {title:"타이틀2",desc:'내용2'},
-        // {title:"타이틀3",desc:'내용3'},
+        {title:"타이틀1",desc:'부드럽게 on/off 내용'},
+        {title:"타이틀2",desc:'내용2'},
+        {title:"타이틀3",desc:'내용3'},
       ],
       option:{
         smoothAni:true
       }
     },
-    // {
-    //   tit:'case-5',
-    //   txt:'타이틀만 있고 하위가 없는 경우 타이틀 button 대신 span으로',
-    //   lists:[
-    //     {title:"타이틀1",desc:'내용1'},
-    //     {title:"타이틀2",desc:'내용2'},
-    //     {title:"타이틀3",desc:'내용3'},
-    //   ],
-    //   option:{
+    {
+      tit:'case-5',
+      txt:'타이틀만 있고 하위가 없는 경우 타이틀 button 대신 span으로',
+      lists:[
+        {title:"타이틀1"},
+        {title:"타이틀2"},
+        {title:"타이틀3", desc:'내용3'},
+      ],
+      option:{
         
-    //   }
-    // },
+      }
+    },
     
   ]
   return(
@@ -94,6 +94,7 @@ export const AccordionViewPage = () => {
                 <Accordion 
                   data={demoItem.lists} 
                   mode={demoItem.option?.mode ?? 'multiple'}
+                  initActive={demoItem.option?.initActive ?? undefined}
                   smoothAni={demoItem.option?.smoothAni}
                 >
                   {(accItem, accIdx) => ({ // accItem, accIdx를 활용하여 UI & 추가 커스텀 가능
@@ -103,20 +104,13 @@ export const AccordionViewPage = () => {
                         <span className="tit">{accItem.title} - {accIdx+1}</span>
                       </>),
                     },
-                    content: (
-                      <div>
-                        <p>{accItem.desc}</p>
-                        <p>{accItem.desc}</p>
-                        <p>{accItem.desc}</p>
-                        <p>{accItem.desc}</p>
-                        <p>{accItem.desc}</p>
-                        <p>{accItem.desc}</p>
-                        <p>{accItem.desc}</p>
-                        <p>{accItem.desc}</p>
-                        <p>{accItem.desc}</p>
-                        <p>{accItem.desc}</p>
-                      </div>
-                    )
+                    content: 
+                      accItem.desc ? (
+                        <div>
+                          <p>{accItem.desc}</p>
+                          <p>{accItem.desc}</p>
+                        </div>)
+                      : null
                   })}
                 </Accordion>
               </div>

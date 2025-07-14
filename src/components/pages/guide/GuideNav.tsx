@@ -24,7 +24,7 @@ export const GuideNav = () =>{
   },[]);
   return (
     <StyleWrap className="nav">
-      {/* <nav>
+      <nav>
         <Accordion data={GUIDE_LIST} initActive={[locationIdx]} accOpt={{openIcon:'arrow'}}>
           {(accItem) => ({
             heading: {
@@ -34,7 +34,6 @@ export const GuideNav = () =>{
                 <span className="tit">{accItem.title}</span>
                 { accItem.children && <span className="length">{accItem.children?.length}</span> }
               </>),
-              tag: accItem?.children ? 'button':'span'
             },
             content: (
               accItem.children ? (
@@ -56,7 +55,7 @@ export const GuideNav = () =>{
             ),
           })}
         </Accordion>
-      </nav> */}
+      </nav>
     </StyleWrap>
   )
 }
