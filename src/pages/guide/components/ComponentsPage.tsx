@@ -88,28 +88,12 @@ const StyleWrap = styled.div`
   .section-wrap{
     position:relative;
   }
-  .section-item{
+  .seciton-item{
     &.view-wrap{
       position:relative;
       z-index:2;
       min-height:500px;
       background:#fff;
-    }
-  }
-  .componetns-lists{
-    margin-top:20px;
-    & > ul {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .empty-wrap{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width:100%;
-      height:300px;
-      border-radius:10px;
-      box-shadow:${bgShadow.base};
     }
   }
 `;

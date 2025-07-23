@@ -40,6 +40,7 @@ export const ComponentsLists = ({data, clickEvent} : ComponentsListsPropsType) =
   )
 }
 const StlyeWrap = styled.div`
+  margin-top:20px;
   & > ul {
     display: flex;
     flex-wrap: wrap;
@@ -89,6 +90,15 @@ const StlyeWrap = styled.div`
     bottom:10px;
     font-size:12px;
     color:${textColor.subText};
+  }
+  .empty-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:300px;
+    border-radius:10px;
+    box-shadow:${bgShadow.base};
   }
 `;
 

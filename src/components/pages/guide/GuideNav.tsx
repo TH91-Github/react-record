@@ -17,7 +17,6 @@ interface NavItemType extends TreeItemType {
 
 export const GuideNav = () =>{
   const {locationIdx} = useLocationCurrent(GUIDE_LIST, 'id', 1);
-  console.log(locationIdx)
   const guidePath = useCallback((itemPath:string, childrenPath:string) => {
     const routesCheck = childrenPath.indexOf('/:id');
     return `${itemPath}${routesCheck === -1 ? `/${childrenPath}`: ''}`;
@@ -29,12 +28,19 @@ export const GuideNav = () =>{
           {(accItem) => ({
             heading: {
               btnTit:accItem.title,
-              jsx:(<>
-                <GuideMenuIcon id={accItem.id} />
-                <span className="tit">{accItem.title}</span>
-                { accItem.children && <span className="length">{accItem.children?.length}</span> }
-              </>),
-              tag: accItem?.children ? 'button':'span'
+              jsx:(
+                accItem.children 
+                  ? ( <>
+                      <GuideMenuIcon id={accItem.id} />
+                      <span className="tit">{accItem.title}</span>
+                      <span className="length">{accItem.children?.length}</span>
+                  </>) : (
+                    <NavLink to={`/guide/${accItem.path}`} className="acc-link" title={`${accItem.title} 보기`}>
+                      <GuideMenuIcon id={accItem.id} />
+                      <span className="tit">{accItem.title}</span>
+                    </NavLink>
+                  )
+              ),
             },
             content: (
               accItem.children ? (
@@ -42,11 +48,9 @@ export const GuideNav = () =>{
                   <MemoTreeLists<NavItemType> data={accItem.children} firstStart={true}>
                     {(childrenItem) => ({
                       content: (
-                        <>
-                          <NavLink to={`/guide/${guidePath(accItem.path, childrenItem.path)}`} className="link" title={`${childrenItem.title} 보기`}>
-                            <span>{childrenItem.title}</span>
-                          </NavLink>
-                        </>
+                        <NavLink to={`/guide/${guidePath(accItem.path, childrenItem.path)}`} className="link" title={`${childrenItem.title} 보기`}>
+                          <span>{childrenItem.title}</span>
+                        </NavLink>
                       ),
                       customClass:'depth-item'
                     })}
@@ -66,10 +70,14 @@ const StyleWrap = styled.div`
     margin-top:10px;
     border-top:1px solid ${colors.lineColor};
   }
-  .acc-btn, .acc-tit{
+  .acc-item .acc-tit{
+    padding-left:0;
+  }
+  .acc-btn, .acc-tit, .acc-link{
     display:flex;
     align-items:center;
     gap:10px;
+    width:100%;
     height:40px;
     .icon{
       display:block;

@@ -16,11 +16,9 @@ export const ComponentFilter = ({
   // 검색 결과
   const onComfirm = useCallback((val: string) => {
     const loweredVal = val.toLowerCase();
-    console.log(loweredVal)
     const result = data.find((item) =>
       item.keyword.some((keyVal) => keyVal.toLowerCase() === loweredVal)
     );
-    console.log(result)
     if (result && changeEvent) {
       setActiveTab(result.category)
       changeEvent(result.category)

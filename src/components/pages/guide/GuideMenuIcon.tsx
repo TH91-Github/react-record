@@ -11,7 +11,7 @@ export const GuideMenuIcon = ({id}:{id:string}) => {
         components: <SvgSquareStack />,
         hooks: <SvgCode />,
         utils: <SvgPuzzle />,
-        preferences: <SvgSetting />,
+        settings: <SvgSetting />,
       };
     },[]);
   return(

@@ -5,10 +5,10 @@ import { ColorsPage } from "pages/guide/design/ColorsPage";
 import { DesignPage } from "pages/guide/design/DesignPage";
 import { FontsPage } from "pages/guide/design/FontsPage";
 import { HooksPage } from "pages/guide/hooks/HooksPage";
-import { PreferencesPage } from "pages/guide/preferences/PreferencesPage";
 import { DirectoryStructurePage } from "pages/guide/principles/DirectoryStructurePage";
 import { NamingConventionsPage } from "pages/guide/principles/NamingConventionsPage";
 import { PrinciplesPage } from "pages/guide/principles/PrinciplesPage";
+import { SettingsPage } from "pages/guide/settings/SettingsPage";
 import { ButtonPage } from "pages/guide/ui-elements/ButtonPage";
 import { IconPage } from "pages/guide/ui-elements/IconPage";
 import { UIElementsPage } from "pages/guide/ui-elements/UIElementsPage";
@@ -114,10 +114,10 @@ export const GUIDE_LIST = [
     element: <UtilsPage />,
   },
   {
-    id:'preferences',
-    path: "preferences",
+    id:'settings',
+    path: "settings",
     title:'환경설정',
-    element: <PreferencesPage />,
+    element: <SettingsPage />,
   },
 ];
 

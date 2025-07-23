@@ -38,12 +38,10 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
   const refListPush = useCallback((tag: HTMLInputElement) => {
     if (!refList.current.some(item => item === tag)) {
       refList.current.push(tag);
-      console.log(tag)
       const inputState: InputStateType = {
         id: tag.getAttribute('id') || '',
         check: essentialChk(tag)
       }
-      console.log(inputState)
       setValidation(prev => [
         ...prev,
         inputState

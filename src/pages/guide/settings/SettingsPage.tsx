@@ -2,15 +2,16 @@ import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
 import { TitleHeading } from "components/ui/TitleHeading";
 import styled from "styled-components";
 
-export const HooksPage = () => {
+
+export const SettingsPage = () => {
   return (
-    <StyleWrap className="hook">
+    <StyleWrap className="settings">
       <GuidePageHeading />
       <div className="content-wrap">
         <TitleHeading
           $display="block"
           titleTag="h3"
-          titleText={'Hook System'} 
+          titleText={'Settings'} 
           pointer="underline"
           $fontSize={28}
           desc={['준비 중']}
