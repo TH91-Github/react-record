@@ -6,7 +6,7 @@ interface ComponentsListsPropsType {
   clickEvent: (pathID:string) => void;
 }
 export const ComponentsLists = ({data, clickEvent} : ComponentsListsPropsType) => {
-  const handleMoveClick = (pathID: string) => (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMoveClick = (pathID: string) => () => {
     clickEvent(pathID);
   };
 

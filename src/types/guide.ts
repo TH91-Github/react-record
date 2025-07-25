@@ -97,3 +97,11 @@ export interface ComponentsInfoType {
     code: string;
   }[]
 }
+
+export interface HooksDataType {
+  id:string;
+  title: string;
+  desc: string;
+  update: string;
+  keyword: string[];
+}

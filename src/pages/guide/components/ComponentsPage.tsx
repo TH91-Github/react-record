@@ -4,6 +4,7 @@ import { ComponentsLists } from "components/pages/guide/component/ComponentsList
 import { componentsData } from "components/pages/guide/data/componentsData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
 import { TitleHeading } from "components/ui/TitleHeading";
+import { useRestoreFocus } from "hooks/common";
 import { useEffect, useMemo, useState } from "react";
 import { Outlet, useNavigate, useNavigationType, useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -11,13 +12,16 @@ import styled from "styled-components";
 export const ComponentsPage = () => {
   const navigate = useNavigate();
   const navigationType = useNavigationType();
+  const {beforeFocus, resetFocus} = useRestoreFocus();
   const { id } = useParams<{ id?: string }>();
   const [filter, setFilter] = useState('');
   const [detailsAni, setDetailsAni] = useState<boolean | null>(null);
   const [returnFocusID, setReturnFocusID] = useState<string | null>(null);
 
+  // ⭐ 포커스 진행해야함
+  // 직접 접근과 리스트에서 접근 시 animation 차이
   useEffect(() => {
-    if(id){ // 상세페이지 접근
+    if(id){ 
       if (navigationType === 'POP') { // POP : 바로 URL 접근 및 새로고침 시
         setDetailsAni(false);
       } else { // PUSH : 리스트에서 상세페이지
@@ -25,23 +29,22 @@ export const ComponentsPage = () => {
       }
     }else{ // components lists
       setDetailsAni(true);
-      
-      if(returnFocusID) {
-        setTimeout(() => {
-          const buttonElement = document.querySelector(`button[data-id="${returnFocusID}"]`);
-          if(buttonElement) {
-            (buttonElement as HTMLElement).focus();
-          }
-        }, 50);
-      }
     }
-  }, [id, navigationType, returnFocusID]);
+  }, [id, navigationType]);
 
   const selectUpdate = (selected:string) => { // -1 : All , 그 외 value
     setFilter((selected === '전체') || (selected === 'All') ? '': selected)
   }
   const viewUpdate = (pathID:string) => {
+    console.log('뷰')
     setReturnFocusID(pathID); // 클릭한 아이템 ID 저장
+
+    const el = document.querySelector(`button[data-id="${pathID}"]`);
+    if (el instanceof HTMLElement) {
+      console.log(el)
+      beforeFocus(el);
+    }
+    
     navigate(`view/${pathID}`);
   }
 

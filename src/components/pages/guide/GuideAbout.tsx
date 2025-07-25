@@ -327,7 +327,7 @@ const StyleWrap = styled.div`
         }
       }
     }
-    &.preferences{
+    &.settings{
       top:calc(100% + 50px);
       left:50%;
       background:#fff;

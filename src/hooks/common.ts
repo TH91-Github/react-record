@@ -4,14 +4,39 @@ import { useCallback, useEffect, useRef } from "react";
 const BODY = document.body;
 
 // 🔹 포커스 저장 및 회귀
-export const useRestoreFocus = () => {
-  const previousFocus = useRef<HTMLElement | null>(null);
-  const beforeFocus = () => {
-    previousFocus.current = document.activeElement as HTMLElement;
+export const useRestoreFocus = (): {
+  beforeFocus: (target?: HTMLElement | string) => void;
+  resetFocus: () => void;
+} => {
+  const focusTarget = useRef<HTMLElement | string | null>(null);
+  const beforeFocus = (target?: HTMLElement | string) => {
+    if (target) {
+      focusTarget.current = target;
+    } else {
+      const active = document.activeElement;
+      if (active instanceof HTMLElement) {
+        focusTarget.current = active;
+      }
+    }
+    console.log('오케이 접수')
+    console.log(focusTarget)
   };
   const resetFocus = () => {
-    previousFocus.current?.focus();
+    requestAnimationFrame(() => {
+      console.log('가냐')
+      console.log(focusTarget)
+      if (focusTarget.current instanceof HTMLElement) {
+        focusTarget.current.focus();
+      } else if (typeof focusTarget.current === 'string') {
+        const el = document.querySelector(focusTarget.current);
+        if (el instanceof HTMLElement) {
+          el.focus();
+          console.log(el)
+        }
+      }
+    });
   };
+
   return { beforeFocus, resetFocus };
 };
 

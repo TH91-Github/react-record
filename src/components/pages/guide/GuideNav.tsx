@@ -30,11 +30,13 @@ export const GuideNav = () =>{
               btnTit:accItem.title,
               jsx:(
                 accItem.children 
-                  ? ( <>
+                  ? ( 
+                    <>
                       <GuideMenuIcon id={accItem.id} />
                       <span className="tit">{accItem.title}</span>
                       <span className="length">{accItem.children?.length}</span>
-                  </>) : (
+                    </>
+                  ) : (
                     <NavLink to={`/guide/${accItem.path}`} className="acc-link" title={`${accItem.title} 보기`}>
                       <GuideMenuIcon id={accItem.id} />
                       <span className="tit">{accItem.title}</span>
