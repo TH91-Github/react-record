@@ -177,6 +177,7 @@ const StyleWrap = styled.div`
     position:relative;
   }
   &.vertical {
+    overflow-y:auto;
     height:100%;
     .swiper{ 
       height:100%;
