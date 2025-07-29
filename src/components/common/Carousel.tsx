@@ -175,9 +175,9 @@ const StyleWrap = styled.div`
   position:relative;
   .carousel-inner{
     position:relative;
+    height:100%;
   }
   &.vertical {
-    overflow-y:auto;
     height:100%;
     .swiper{ 
       height:100%;
