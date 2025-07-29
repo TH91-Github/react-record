@@ -16,10 +16,23 @@ export const ComponentsPage = () => {
   const { id } = useParams<{ id?: string }>();
   const [filter, setFilter] = useState('');
   const [detailsAni, setDetailsAni] = useState<boolean | null>(null);
-  const [returnFocusID, setReturnFocusID] = useState<string | null>(null);
 
-  // ⭐ 포커스 진행해야함
-  // 직접 접근과 리스트에서 접근 시 animation 차이
+  const handleFilterChange = (selected:string) => { // -1 : All , 그 외 value
+    const isAll = selected === '전체' || selected === 'All';
+    setFilter(isAll ? '' : selected);
+  }
+  const handleComponentClick = (pathID:string) => {
+    beforeFocus(pathID);
+    navigate(`view/${pathID}`);
+  }
+
+  const filterLists = useMemo(() => {
+    return filter
+      ? componentsData.filter(item => item.category === filter)
+      : componentsData;
+  }, [filter]);
+
+  // 직접 URL접근과 리스트에서 접근 시 animation 차이
   useEffect(() => {
     if(id){ 
       if (navigationType === 'POP') { // POP : 바로 URL 접근 및 새로고침 시
@@ -32,58 +45,43 @@ export const ComponentsPage = () => {
     }
   }, [id, navigationType]);
 
-  const selectUpdate = (selected:string) => { // -1 : All , 그 외 value
-    setFilter((selected === '전체') || (selected === 'All') ? '': selected)
-  }
-  const viewUpdate = (pathID:string) => {
-    console.log('뷰')
-    setReturnFocusID(pathID); // 클릭한 아이템 ID 저장
-
-    const el = document.querySelector(`button[data-id="${pathID}"]`);
-    if (el instanceof HTMLElement) {
-      console.log(el)
-      beforeFocus(el);
+  // 포커스 회귀가 필요한 경우 
+  useEffect(()=> {
+    if(!id){ 
+      resetFocus();
     }
-    
-    navigate(`view/${pathID}`);
+  },[id, resetFocus])
+  
+  if (id) {
+    return <Outlet context={{ id, detailsAni }} />;
   }
-
-  const filterLists = useMemo(() => {
-    return !filter ? componentsData : componentsData.filter(item => item.category === filter)
-  }, [filter]);
 
   return (
-    <>
-      { !id ? (
-        <StyleWrap>
-          <GuidePageHeading />
-          <div className="content-wrap">
-            <TitleHeading
-              $display="block"
-              titleTag="h3"
-              titleText={'Components System'} 
-              pointer="underline"
-              $fontSize={28}
-              desc={['팝업, 검색, 리스트 등 컴포넌트 모음']}
+    <StyleWrap>
+      <GuidePageHeading />
+      <div className="content-wrap">
+        <TitleHeading
+          $display="block"
+          titleTag="h3"
+          titleText="Components System"
+          pointer="underline"
+          $fontSize={28}
+          desc={['팝업, 검색, 리스트 등 컴포넌트 모음']}
+        />
+        <div className="section-wrap">
+          <div className="section-item">
+            <ComponentFilter
+              data={componentsData}
+              changeEvent={handleFilterChange}
             />
-            <div className="section-wrap">
-              <div className="section-item">
-                <ComponentFilter 
-                  data={componentsData}
-                  changeEvent={selectUpdate}
-                />
-                <ComponentsLists 
-                  data={filterLists}
-                  clickEvent={viewUpdate}
-                />
-              </div>
-            </div>
+            <ComponentsLists
+              data={filterLists}
+              clickEvent={handleComponentClick}
+            />
           </div>
-        </StyleWrap>
-      ) : (
-        <Outlet context={{ id, detailsAni }}/>
-      )}
-    </>
+        </div>
+      </div>
+    </StyleWrap>
   )
 }
 

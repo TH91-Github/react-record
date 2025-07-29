@@ -3,40 +3,53 @@ import { useCallback, useEffect, useRef } from "react";
 
 const BODY = document.body;
 
-// 🔹 포커스 저장 및 회귀
+// 🔹 포커스 저장 및 회귀 : data-id 활용하여 포커스 회귀
 export const useRestoreFocus = (): {
-  beforeFocus: (target?: HTMLElement | string) => void;
+  beforeFocus: (target?: HTMLElement | string, targetTag?: string) => void;
   resetFocus: () => void;
 } => {
-  const focusTarget = useRef<HTMLElement | string | null>(null);
-  const beforeFocus = (target?: HTMLElement | string) => {
-    if (target) {
-      focusTarget.current = target;
-    } else {
+  const focusTarget = useRef<string | null>(null);
+
+  const targetFind = useCallback((element:HTMLElement, tag:string) => {
+    const dataID = element.getAttribute('data-id');
+    dataID 
+      ? focusTarget.current = `${tag}[data-id="${dataID}"]`
+      : focusTarget.current = null;
+  },[]);
+  // focus 회귀 전 저장
+  const beforeFocus = useCallback((target?: HTMLElement | string, targetTag: string= 'button') => {
+    if (typeof target === 'string') { // id값만 있는 경우
+      focusTarget.current = `${targetTag}[data-id="${target}"]`;
+    }else if(target instanceof HTMLElement){
+      // HTMLElement인 경우 data-id 속성 추출
+      targetFind(target,targetTag);
+    }else{
+      // 현재 기준 activeElement 선택
       const active = document.activeElement;
-      if (active instanceof HTMLElement) {
-        focusTarget.current = active;
+      if(active instanceof HTMLElement){
+        targetFind(active,targetTag);
       }
     }
-    console.log('오케이 접수')
-    console.log(focusTarget)
-  };
-  const resetFocus = () => {
+  }, [targetFind]);
+
+  // focus 회귀 하기
+  const resetFocus = useCallback(() => {
+    const selectFind = focusTarget.current;
+    if (!selectFind) return;
+
     requestAnimationFrame(() => {
-      console.log('가냐')
-      console.log(focusTarget)
-      if (focusTarget.current instanceof HTMLElement) {
-        focusTarget.current.focus();
-      } else if (typeof focusTarget.current === 'string') {
-        const el = document.querySelector(focusTarget.current);
-        if (el instanceof HTMLElement) {
-          el.focus();
-          console.log(el)
-        }
+      const focusEl = document.querySelector(selectFind);
+      
+      if (focusEl instanceof HTMLElement) {
+        focusEl.focus();
+        setTimeout(() => {
+          focusTarget.current = null;
+        }, 200);
+      } else {
+        focusTarget.current = null;
       }
     });
-  };
-
+  }, []);
   return { beforeFocus, resetFocus };
 };
 
