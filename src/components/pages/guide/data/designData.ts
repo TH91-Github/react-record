@@ -130,7 +130,7 @@ export const colorsData : ColorChipDataType = {
           id:'textColor-desc',
           title:'desc',
           desc:['설명 글에 사용되는 색상','desc 클래스 적용 색상'],
-          code:'#42464d',
+          code:'#495057',
         },
         {
           id:'textColor-subText',

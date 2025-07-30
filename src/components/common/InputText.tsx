@@ -167,7 +167,7 @@ const StyleWrap = styled.div<InputStylePropsType>`
     display:block;
     width:100%;
     height:40px;
-    padding:5px 10px;
+    padding:5px 30px 5px 10px;
     border:1px solid transparent;
     border-radius:5px;
     background:transparent;

@@ -38,6 +38,7 @@ export const ComponentFilter = ({
         data={data}
         id="components"
         placeholder="컴포넌트를 검색해보세요"
+        styleOpt={{$maxWidth:'300px'}}
         onComfirm={onComfirm}
       />
     </StyleWrap>
@@ -50,4 +51,5 @@ const StyleWrap = styled.div`
   .tab-btns {
     flex-grow:1;
   }
+
 `;

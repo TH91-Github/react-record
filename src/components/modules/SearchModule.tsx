@@ -12,14 +12,18 @@ interface EssentialType { // 필수 타입
   id:string;
   keyword:string[];
 }
+interface StyleOptPropsType {
+  $line?: 'line' | 'line-bottom' | 'line-left' | 'none';
+  $maxWidth?: string | number;
+}
 
 interface SearchModulePropsType<T extends EssentialType> {
-  data?: T[] // 검색 목록
+  data?: T[] // 검색 목록 - EssentialType 필수 속성
   id: string;
   isBtn?: boolean; // 버튼 유무 버튼 false 시  icon on
   placeholder?:string;
-  $line?: 'line' | 'line-bottom' | 'line-left' | 'none';
-  onPreview? : boolean;
+  styleOpt?:StyleOptPropsType;
+  onPreview? : boolean; // 일치하는 검색어 미리보기
   onComfirm?: (val:string) => void;
 }
 export const SearchModule = <T extends EssentialType>({
@@ -27,7 +31,7 @@ export const SearchModule = <T extends EssentialType>({
   id,
   isBtn = true,
   placeholder = '',
-  $line = 'line',
+  styleOpt={},
   onPreview = true,
   onComfirm,
 }:SearchModulePropsType<T>) => {
@@ -37,6 +41,11 @@ export const SearchModule = <T extends EssentialType>({
   const [isPreview , setIsPreview] = useState(onPreview ?? false);
   const [errorMessage, setErrorMessage] = useState('')
   const inputRef = useRef<InputTextRefType>(null);
+
+  const {
+    $line = 'line',
+    $maxWidth,
+  } = styleOpt;
 
   const inputFocus = () => { 
     setIsPreview(prev => !prev);
@@ -128,6 +137,7 @@ export const SearchModule = <T extends EssentialType>({
     <StyleWrap 
       ref={SearchModuleRef}
       className={`search ${isBtn ? 'search-btn': ''}`}
+      $maxWidth={typeof $maxWidth === 'number' ? `${$maxWidth}px`: $maxWidth}
     >
       {!isBtn && <i className="icon"><SvgSearch /></i>}
       <InputText 
@@ -169,13 +179,16 @@ export const SearchModule = <T extends EssentialType>({
 }
 
 interface StyleWrapType {
-  $iconSize? : number,
+  $iconSize?: number,
+  $maxWidth:string | undefined
 }
 
 const StyleWrap = styled.div<StyleWrapType>`
   display: flex;
   align-items: center;
   position:relative;
+  width:100%;
+  max-width:${({$maxWidth})=> $maxWidth || '100%'};
   .icon{
     flex-shrink: 0;
     display:inline-block;
@@ -193,6 +206,7 @@ const StyleWrap = styled.div<StyleWrapType>`
   }
   .empyt-wrap{
     position:absolute;
+    z-index:10;
     top: calc(100% + 5px);
     left:0;
     width:100%;

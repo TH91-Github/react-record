@@ -1,4 +1,3 @@
-import { bgShadow } from "assets/style/variables";
 import { ComponentFilter } from "components/pages/guide/component/ComponentFilter";
 import { ComponentsLists } from "components/pages/guide/component/ComponentsLists";
 import { componentsData } from "components/pages/guide/data/componentsData";
@@ -74,6 +73,8 @@ export const ComponentsPage = () => {
               data={componentsData}
               changeEvent={handleFilterChange}
             />
+          </div>
+          <div className="section-item">
             <ComponentsLists
               data={filterLists}
               clickEvent={handleComponentClick}

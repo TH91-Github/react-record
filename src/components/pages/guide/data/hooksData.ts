@@ -1,11 +1,12 @@
 import { HooksDataType } from "types/guide";
 
-export const componentsData: HooksDataType[] =[
+export const hooksData: HooksDataType[] =[
   {
-    id:'modal',
-    title:'Modal',
-    desc:'공통 모달 컴포넌트',
-    update:'2025-05-29',
-    keyword:['Modal','딤드','알럿','alert', '모달']
+    id:'hook',
+    title:'hook 준비 중',
+    desc:'공통 hook 준비',
+    update:'2025-07-30',
+    link:'',
+    keyword:['공통','hook','준비']
   },
 ]

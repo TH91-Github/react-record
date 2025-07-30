@@ -28,7 +28,7 @@ export const SideMenu = () => {
             id="nav"
             isBtn={false} 
             placeholder={'검색 기능 작업 진행 중...'} 
-            $line="none"
+            styleOpt={{$line:"none"}}
           />
         </div>
         <div className="nav-item">

@@ -116,7 +116,10 @@ export const TabBtns = ({
       <ul>
         {isAll && (
           <li className={cn('tab', isActive === -1 && 'active')}>
-            <button type="button" onClick={(e) => handleTabClick(e, defaultVal, -1)}>
+            <button 
+              type="button" 
+              onClick={(e) => handleTabClick(e, defaultVal, -1)}
+            >
               <span>{defaultVal}</span>
             </button>
           </li>

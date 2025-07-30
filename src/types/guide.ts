@@ -103,5 +103,6 @@ export interface HooksDataType {
   title: string;
   desc: string;
   update: string;
+  link:string;
   keyword: string[];
 }
