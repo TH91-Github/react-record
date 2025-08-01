@@ -1,12 +1,13 @@
-import { HooksDataType } from "types/guide";
+import { GuideFilterDataType } from "types/guide";
 
-export const hooksData: HooksDataType[] =[
+export const hooksData: GuideFilterDataType[] =[
   {
     id:'hook',
     title:'hook 준비 중',
     desc:'공통 hook 준비',
-    update:'2025-07-30',
+    category:'Overlay', 
     link:'',
+    update:'2025-07-30',
     keyword:['공통','hook','준비']
   },
 ]

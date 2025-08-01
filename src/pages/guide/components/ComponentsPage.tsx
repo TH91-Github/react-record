@@ -1,10 +1,9 @@
-import { ComponentFilter } from "components/pages/guide/component/ComponentFilter";
-import { ComponentsLists } from "components/pages/guide/component/ComponentsLists";
 import { componentsData } from "components/pages/guide/data/componentsData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
+import { TabSearchLists } from "components/pages/guide/TabSearchLists";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { useRestoreFocus } from "hooks/common";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useNavigate, useNavigationType, useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -13,23 +12,12 @@ export const ComponentsPage = () => {
   const navigationType = useNavigationType();
   const {beforeFocus, resetFocus} = useRestoreFocus();
   const { id } = useParams<{ id?: string }>();
-  const [filter, setFilter] = useState('');
   const [detailsAni, setDetailsAni] = useState<boolean | null>(null);
 
-  const handleFilterChange = (selected:string) => { // -1 : All , 그 외 value
-    const isAll = selected === '전체' || selected === 'All';
-    setFilter(isAll ? '' : selected);
-  }
-  const handleComponentClick = (pathID:string) => {
+  const handleItemClick = (pathID:string) => {
     beforeFocus(pathID);
     navigate(`view/${pathID}`);
   }
-
-  const filterLists = useMemo(() => {
-    return filter
-      ? componentsData.filter(item => item.category === filter)
-      : componentsData;
-  }, [filter]);
 
   // 직접 URL접근과 리스트에서 접근 시 animation 차이
   useEffect(() => {
@@ -69,15 +57,10 @@ export const ComponentsPage = () => {
         />
         <div className="section-wrap">
           <div className="section-item">
-            <ComponentFilter
+            <TabSearchLists 
               data={componentsData}
-              changeEvent={handleFilterChange}
-            />
-          </div>
-          <div className="section-item">
-            <ComponentsLists
-              data={filterLists}
-              clickEvent={handleComponentClick}
+              searchPlaceholder={'컴포넌트를 검색해주세요.'}
+              clickEvent={handleItemClick}
             />
           </div>
         </div>

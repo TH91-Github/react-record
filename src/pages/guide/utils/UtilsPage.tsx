@@ -1,9 +1,15 @@
+import { utilsData } from "components/pages/guide/data/utilsData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
+import { TabSearchLists } from "components/pages/guide/TabSearchLists";
 import { TitleHeading } from "components/ui/TitleHeading";
 import styled from "styled-components";
 
 
 export const UtilsPage = () => {
+
+  const handleItemClick = (ID:string) => {
+
+  }
   return (
     <StyleWrap>
       <GuidePageHeading />
@@ -18,9 +24,14 @@ export const UtilsPage = () => {
         />
         <div className="section-wrap">
           <div className="section-item">
-            준비 중입니다.
+            <TabSearchLists 
+              data={utilsData}
+              searchPlaceholder={'Hook 검색해주세요.'}
+              clickEvent={handleItemClick}
+            />
           </div>
         </div>
+        
       </div>
     </StyleWrap>
   )

@@ -1,13 +1,13 @@
-import { ComponentsDataType } from "types/guide";
-
-export const componentsData: ComponentsDataType[] =[
+import { GuideFilterDataType } from "types/guide";
+export const componentsData: GuideFilterDataType[] =[
   {
     id:'modal',
     title:'Modal',
     desc:'공통 모달 컴포넌트',
     category:'Overlay', 
     update:'2025-05-29',
-    keyword:['Modal','딤드','알럿','alert', '모달']
+    keyword:['Modal','딤드','알럿','alert', '모달'],
+    link:''
   },
   {
     id:'carousel',
@@ -15,7 +15,8 @@ export const componentsData: ComponentsDataType[] =[
     desc:'캐러셀, 슬라이드 컴포넌트',
     category:'Carousel', 
     update:'2025-06-16',
-    keyword:['Carousel', '슬라이드', 'swiper', '캐러셀']
+    keyword:['Carousel', '슬라이드', 'swiper', '캐러셀'],
+    link:''
   },
   {
     id:'toast',
@@ -23,7 +24,8 @@ export const componentsData: ComponentsDataType[] =[
     desc:'메시지를 보여주는 팝업 형태 UI',
     category:'Overlay', 
     update:'2025-06-16',
-    keyword:['Toast','간단 팝업', '팝업', '토스트', '오버레이']
+    keyword:['Toast','간단 팝업', '팝업', '토스트', '오버레이'],
+    link:''
   },
   {
     id:'tabButton',
@@ -31,7 +33,8 @@ export const componentsData: ComponentsDataType[] =[
     desc:'Tab 버튼 컴포넌트',
     category:'Tab', 
     update:'2025-06-26',
-    keyword:['Tab button', 'Tab', 'dasdasd', 'Tabs', 'Tab Button', '탭 버튼', 'Tab Head' ,'탭 헤더']
+    keyword:['Tab button', 'Tab', 'dasdasd', 'Tabs', 'Tab Button', '탭 버튼', 'Tab Head' ,'탭 헤더'],
+    link:''
   },
   {
     id:'accordion',
@@ -39,7 +42,8 @@ export const componentsData: ComponentsDataType[] =[
     desc:'아코디언 메뉴 컴포넌트',
     category:'Accordion', 
     update:'2025-07-10',
-    keyword:['Accordion Menu', '아코디언', '리스트메뉴', '메뉴 숨기기 UI', '버튼 메뉴']
+    keyword:['Accordion Menu', '아코디언', '리스트메뉴', '메뉴 숨기기 UI', '버튼 메뉴'],
+    link:''
   },
   {
     id:'inputText',
@@ -47,7 +51,8 @@ export const componentsData: ComponentsDataType[] =[
     desc:'인풋 컴포넌트',
     category:'Input', 
     update:'2025-07-18',
-    keyword:['Input', '입력', '인풋', '텍스트 입력', '비밀번호 입력']
+    keyword:['Input', '입력', '인풋', '텍스트 입력', '비밀번호 입력'],
+    link:''
   },
 ]
 

@@ -69,13 +69,14 @@ export interface ButtonDataType {  // Color Data Type
   })[]
 }
 
-export interface ComponentsDataType {
+export interface GuideFilterDataType { // 공통 데이터 타입
   id:string;
   title: string;
   desc: string;
   category: string;
   update: string;
   keyword: string[];
+  link: string;
 }
 
 export interface ComponentsInfoType {
@@ -96,13 +97,4 @@ export interface ComponentsInfoType {
     lang: string;
     code: string;
   }[]
-}
-
-export interface HooksDataType {
-  id:string;
-  title: string;
-  desc: string;
-  update: string;
-  link:string;
-  keyword: string[];
 }

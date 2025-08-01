@@ -1,18 +1,22 @@
-import { bgColor, bgShadow, colors, textColor } from "assets/style/variables";
+import { bgShadow } from "assets/style/variables";
 import { BadgeItemUI } from "components/ui/BadgeItemUI";
-import styled from "styled-components";
-import { ComponentsDataType } from "types/guide";
-interface ComponentsListsPropsType {
-  data: ComponentsDataType[];
-  clickEvent: (pathID:string) => void;
+import styled from "styled-components"
+import { GuideFilterDataType } from "types/guide";
+
+interface FilterListsPropsType {
+  data: GuideFilterDataType[];
+  clickEvent: (ID:string) => void;
 }
-export const ComponentsLists = ({data, clickEvent} : ComponentsListsPropsType) => {
-  const handleMoveClick = (pathID: string) => () => {
+export const FilterLists = ({
+  data,
+  clickEvent
+}:FilterListsPropsType) => {
+  const handleItemClick = (pathID: string) => () => {
     clickEvent(pathID);
   };
 
-  return(
-    <StlyeWrap className="componetns-lists">
+  return (
+    <StyleWrap>
       {data.length > 0 ?(
         <ul>
           { data.map((item, idx) => (
@@ -21,7 +25,7 @@ export const ComponentsLists = ({data, clickEvent} : ComponentsListsPropsType) =
                 type="button"
                 className="item-btn"
                 title={`${item.title} 자세히 보기`}
-                onClick={handleMoveClick(item.id)}
+                onClick={handleItemClick(item.id)}
                 data-id={item.id}
               >
                 <BadgeItemUI
@@ -40,10 +44,10 @@ export const ComponentsLists = ({data, clickEvent} : ComponentsListsPropsType) =
           <p className="text">일치하는 정보를 가져오지 못 했습니다. 🥹</p>
         </div>
       )}
-    </StlyeWrap>
+    </StyleWrap>
   )
 }
-const StlyeWrap = styled.div`
+const StyleWrap = styled.div`
   margin-top:20px;
   & > ul {
     display: flex;
@@ -72,4 +76,3 @@ const StlyeWrap = styled.div`
     box-shadow:${bgShadow.base};
   }
 `;
-
