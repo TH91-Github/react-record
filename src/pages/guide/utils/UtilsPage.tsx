@@ -1,14 +1,21 @@
+import { Modal } from "components/common/Modal";
 import { utilsData } from "components/pages/guide/data/utilsData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
 import { TabSearchLists } from "components/pages/guide/TabSearchLists";
 import { TitleHeading } from "components/ui/TitleHeading";
+import { useState } from "react";
 import styled from "styled-components";
-
+import { GuideFilterDataType } from "types/guide";
 
 export const UtilsPage = () => {
+  const [selectData, setSelectData] = useState<GuideFilterDataType | null>(null); 
+  const handleItemClick = (ID: string) =>{
+    const findItem = utilsData.find(item => item.id === ID)
+    setSelectData(findItem || null)
+  }
 
-  const handleItemClick = (ID:string) => {
-
+  const handleModalClose = () => {
+    setSelectData(null);
   }
   return (
     <StyleWrap>
@@ -31,7 +38,11 @@ export const UtilsPage = () => {
             />
           </div>
         </div>
-        
+        {selectData && (
+          <Modal onClose={() => handleModalClose()}>
+            <p className="tit">Utils TEST</p>
+          </Modal>
+        )}
       </div>
     </StyleWrap>
   )

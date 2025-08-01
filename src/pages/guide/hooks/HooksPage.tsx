@@ -1,15 +1,22 @@
+import { Modal } from "components/common/Modal";
 import { hooksData } from "components/pages/guide/data/hooksData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
 import { TabSearchLists } from "components/pages/guide/TabSearchLists";
 import { TitleHeading } from "components/ui/TitleHeading";
+import { useState } from "react";
 import styled from "styled-components";
+import { GuideFilterDataType } from "types/guide";
 
 export const HooksPage = () => {
-
+  const [selectData, setSelectData] = useState<GuideFilterDataType | null>(null); 
   const handleItemClick = (ID: string) =>{
-    console.log(ID)
+    const findItem = hooksData.find(item => item.id === ID)
+    setSelectData(findItem || null)
   }
 
+  const handleModalClose = () => {
+    setSelectData(null);
+  }
   return (
     <StyleWrap className="hook">
       <GuidePageHeading />
@@ -32,6 +39,11 @@ export const HooksPage = () => {
           </div>
         </div>
       </div>
+      {selectData && (
+        <Modal onClose={() => handleModalClose()}>
+          <p className="tit">Hooks TEST</p>
+        </Modal>
+      )}
     </StyleWrap>
   )
 }
