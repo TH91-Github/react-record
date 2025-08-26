@@ -23,7 +23,6 @@ export const Login = ({authChange}:LoginPropsType) => {
   const { addToast } = useToast();
   const inputIDRef = useRef<InputItemModuleRefType>(null);
   const inputPWRef = useRef<InputItemModuleRefType>(null);
-  const [duplicateID, setDuplicateID] = useState<string[]>([]); 
    const [errorMessages, setErrorMessages] = useState<Record<string, string>>({
       [inputID]: '',
       [inputPW]: '',
@@ -67,30 +66,20 @@ export const Login = ({authChange}:LoginPropsType) => {
       return resultID
     }
   },[disapproval])
-
-
+  
   // firebase 로그인 시도
   const handleLogin = useCallback(async (loginID: string, loginPW: string) => {
-    console.log(loginID)
     console.log('로그인 시도')
-
     try {
       const userCredential = await signInWithEmailAndPassword(auth, loginID, loginPW);
-      console.log(userCredential)
-      console.log('----------------------------')
       if(userCredential.user){
         const userData = await getUserColDoc('userLists',userCredential.user.uid);
         console.log(userData)
       }
-      // const userData = await getUserColDoc();
-      
-      // navigate('/');
-      // console.log('google login');
+      navigate('/');
     } catch (error) {
-      console.log(error)
-      // 토스 팝업
+      addToast('로그인에 실패했어요', 'error')
     }
-    console.log('된거야 ?')
   },[]);
 
 

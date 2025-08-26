@@ -8,7 +8,7 @@ import { cn } from "utils/common";
 interface ModalPropsType {
   isDimmed?: boolean; // dimmed on/off EX: 2중 모달 시 
   isUnder?: boolean; // 2중 모달일 경우 딤드보다 아래로
-  autoCloseSecond?: number; // 자동 닫기 시간초 
+  autoCloseSecond?: number; // 자동 닫기 시간초 1000 단위
   customClass?:string,
   $width?: number;
   $align?: 'center' | 'left' | 'right';

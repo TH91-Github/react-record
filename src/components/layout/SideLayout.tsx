@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { useRecoilValue } from "recoil";
-import { stateHeaderHeight } from "recoil/atoms";
+import { stateHeaderHeight } from "recoilStore/atoms";
 import styled from "styled-components"
 
 // 사이드 레이아웃

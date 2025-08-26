@@ -3,7 +3,7 @@ import { Login } from "components/pages/member/Login";
 import { SignUp } from "components/pages/member/SignUp";
 import { useState } from "react";
 import { useRecoilValue } from "recoil";
-import { stateHeaderHeight } from "recoil/atoms";
+import { stateHeaderHeight } from "recoilStore/atoms";
 import styled from "styled-components"
 
 export const MemberPage = () => {

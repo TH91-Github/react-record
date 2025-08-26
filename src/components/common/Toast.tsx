@@ -1,13 +1,13 @@
 import { colors } from "assets/style/variables";
 import { IconCheck } from "assets/svg/icons";
-import { useToast } from "hooks/useToast";
+import { useToastList } from "hooks/useToastList";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 import { cn } from "utils/common";
 
 // 🔹 Toast 
 export const Toast = () => {
-  const { toasts } = useToast();
+  const toasts = useToastList();
 
   return createPortal(
     <StyleWrap className="toast-container">

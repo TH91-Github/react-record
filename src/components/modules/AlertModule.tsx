@@ -2,7 +2,7 @@ import { colors } from "assets/style/variables";
 import { Modal } from "components/common/Modal";
 import { InnerHTML } from "components/ui/InnerHTML";
 import { useRecoilState } from "recoil";
-import { stateAlert } from "recoil/componentsAtoms";
+import { stateAlert } from "recoilStore/componentsAtoms";
 import styled from "styled-components";
 
 

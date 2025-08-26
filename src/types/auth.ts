@@ -30,7 +30,7 @@ export interface UserStateCheckType { // 🔹 DB 비승인 정보 disapproval
 }
 
 export interface UserStoreType {
-  isLoggedIn: boolean,
+  isLogin: boolean,
   user: null | UserDataType,
   loginTime: number,
 }

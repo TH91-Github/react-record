@@ -4,8 +4,8 @@ import reportWebVitals from './reportWebVitals';
 import { RouterProvider } from 'react-router-dom';
 import { router } from 'routes/Router';
 import { Provider } from 'react-redux';
-import { store } from './redux/store';
-import RecoilStore from 'recoil/recoilStore';
+import { store } from 'reduxStore/store';
+import RecoilStore from 'recoilStore/recoilStore';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './index.css';
 

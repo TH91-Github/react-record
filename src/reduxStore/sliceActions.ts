@@ -18,7 +18,7 @@ export const testSlice = createSlice({
 
 // 📍 Login user 정보 
 const userStoreState: UserStoreType = {
-  isLoggedIn: false,
+  isLogin: false,
   user: null,
   loginTime: 0,
 };
@@ -36,7 +36,8 @@ export const userLoginSlice = createSlice({
       };
     },
     actionUserLogout() {
-      return { ...userStoreState };
+      const test = userStoreState;
+      return {isLogin:false,user:null,loginTime:0 };
     },
   },
 });
