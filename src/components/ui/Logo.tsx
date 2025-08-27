@@ -2,7 +2,6 @@ import { colors, media } from "assets/style/variables";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components"
 
-
 export const Logo = () => {
   return (
     <StyleWrap className="logo">

@@ -2,13 +2,15 @@ import { Modal } from "components/common/Modal";
 import { onAuthStateChanged, signOut, User } from "firebase/auth";
 import { getUserColDoc } from "lib/firebase/auth";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { actionUserLogin, actionUserLogout, RootState } from "reduxStore/store";
 import styled from "styled-components";
 import { auth } from "../../../firebase";
-import { useDispatch } from 'react-redux';
-import { actionUserLogout } from "reduxStore/store";
 
-const loginChkKey = "th-logoutTime"; // 로컬 스토리지와 쿠키에 사용될 key 
+// 기능 분리 및 재구성 필요
+const LOCALSTORAGE_KEY = "th-logoutTime"; // 로컬 스토리지와 쿠키에 사용될 key 
 export const LoginStatusCheck = () => {
+  const {isLoading} = useSelector((state : RootState) => state.storeUserLogin);
   const dispatch = useDispatch();
   const expireType:string = 'minutes';// 분으로 설정 minutes, hours 그 외  day
   const cutTime = 40; // 만료 시간
@@ -17,28 +19,40 @@ export const LoginStatusCheck = () => {
   const autoCloseTimeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoCloseSecond = 4000;
 
-  // dispatch(actionUserLogin(userLoginData));
-
   // clearTime
   const clearAllTimeouts = useCallback(() => {
     if (extensionTimeRef.current) clearTimeout(extensionTimeRef.current);
     if (autoCloseTimeRef.current) clearTimeout(autoCloseTimeRef.current);
   }, []);
+
+  // ✅ 로그인 초기화 dispatch
+  const userLoginInit = useCallback(() => { 
+    dispatch(actionUserLogout());
+    localStorage.removeItem(`${LOCALSTORAGE_KEY}accessToken`);
+    localStorage.removeItem(`${LOCALSTORAGE_KEY}expirationTime`);
+    // 쿠키 초기화 - 만료
+    document.cookie = `${LOCALSTORAGE_KEY}accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
+    setExtensionPop(false);
+  },[dispatch])
+
+  // ✅ 로그아웃
+  const handleLogOut = useCallback(async()=>{
+    await signOut(auth);
+    userLoginInit(); // 상태 초기화
+    clearAllTimeouts();
+  },[userLoginInit, clearAllTimeouts])
+
+  
   const handleConfirmation = async() => {
     clearAllTimeouts();
     setExtensionPop(false);
     const user = auth.currentUser;
     if (user) {
       const newToken = await user.getIdToken(true);  // 토큰 갱신
-      loginSave(newToken);
-      console.log('로그인 연장')
+      loginTokenSave(newToken);
     }
   }
-  const handleCancel = async() => {
-    clearAllTimeouts();
-    setExtensionPop(false)
-    await signOut(auth); // 로그아웃
-  }
+
   // 📍 쿠키 추가 - 토큰, 만료 지정
   const setCookie = (key: string, token: string) => {
     const cookieDate = new Date();
@@ -67,36 +81,27 @@ export const LoginStatusCheck = () => {
     extensionTimeRef.current = setTimeout(() => {
       setExtensionPop(true);
     }, remainingTime - autoCloseSecond + 500); // 자동 닫기(로그아웃) 팝업 시간 뺀 시간
-  },[]);
+  },[clearAllTimeouts]);
   
-  // ✅ 로그인 초기화 dispatch
-  const userLoginInit = useCallback(() => { 
-    dispatch(actionUserLogout());
-    localStorage.removeItem(`${loginChkKey}accessToken`);
-    localStorage.removeItem(`${loginChkKey}expirationTime`);
-    // 쿠키 초기화 - 만료
-    document.cookie = `${loginChkKey}accessToken=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
-    setExtensionPop(false);
-  },[])
   
-  // fireDB 체크 및 store 업데이트
+  // ✅ fireDB 체크 및 store 업데이트
   const loginUpdate = useCallback(async(userId: string) => {
     try { 
       const userData = await getUserColDoc('userLists', userId);
-              console.log(userData)
-      // const userData = await duplicateGetDoc('userData','users', 'email' ,userId);
-      // dispatch(actionUserLogin({ loginState: true, user: userData, isLoading:false }));
+      if(userData){
+        dispatch(actionUserLogin({ user: userData }));
+      }else{ // 유저 정보가 없다면 로그아웃 
+        handleLogOut()
+      }
     }catch(error){
       // firebase store에 등록된 정보가 없다면 초기화
       console.log('해당 로그인 정보가 없습니다.');
       await signOut(auth);
     }
-  },[]);
-
-
+  },[dispatch, handleLogOut]);
   
-  // ✅ 로그인 관련 저장
-  const loginSave = useCallback((token: string) =>{
+  // ✅ 로컬스토리지 쿠키 관련 저장
+  const loginTokenSave = useCallback((token: string) =>{
     const accessTime = new Date().getTime();
     let resultExpire;
 
@@ -110,61 +115,54 @@ export const LoginStatusCheck = () => {
       default: // 기본 일 단위
         resultExpire = accessTime + (cutTime * 24 * 60 * 60 * 1000);
     }
-    localStorage.setItem(`${loginChkKey}accessToken`, token);
-    localStorage.setItem(`${loginChkKey}expirationTime`, resultExpire.toString());
-    setCookie(`${loginChkKey}accessToken`, token);
+    localStorage.setItem(`${LOCALSTORAGE_KEY}accessToken`, token);
+    localStorage.setItem(`${LOCALSTORAGE_KEY}expirationTime`, resultExpire.toString());
+    setCookie(`${LOCALSTORAGE_KEY}accessToken`, token);
     loginExtensionChk(resultExpire - accessTime);
   },[loginExtensionChk]);
-
-  // ✅ 로그아웃
-  const handleLogOut = useCallback(async()=>{
-    await signOut(auth);
-    userLoginInit(); // 상태 초기화
-  },[userLoginInit])
   
-  // 로그인 체크
+  // ✅ 로그인 체크
   const loginStatus = useCallback(async(user: User | null) => {
-    console.log(user)
+    if(isLoading) return
     if (user) {
-      const accessToken = localStorage.getItem(`${loginChkKey}accessToken`);
-      const expirationTime = localStorage.getItem(`${loginChkKey}expirationTime`);
-      const storedAccessToken = getCookie(`${loginChkKey}accessToken`); // 쿠키에서 토큰 가져오기
+      const accessToken = localStorage.getItem(`${LOCALSTORAGE_KEY}accessToken`);
+      const expirationTime = localStorage.getItem(`${LOCALSTORAGE_KEY}expirationTime`);
+      const storedAccessToken = getCookie(`${LOCALSTORAGE_KEY}accessToken`); // 쿠키에서 토큰 가져오기
       const currentAccessTime = new Date().getTime();
 
-      if (accessToken && expirationTime) { // 로그인 유지 체크
-        if (currentAccessTime < parseFloat(expirationTime)) { // 시간 내 + 토큰 비교
-          if(storedAccessToken && storedAccessToken === accessToken){ // 로그인 업데이트
-            loginUpdate(user.email || '');
+      // 로그인 유지 체크
+      if (accessToken && expirationTime) { 
+        // 시간 내 + 토큰 비교
+        if (currentAccessTime < parseFloat(expirationTime)) { 
+          // 재접속 : 로그인 업데이트
+          if(storedAccessToken && storedAccessToken === accessToken){ 
+            loginUpdate(user.uid);
             // 새로고침, 재접속 후 남은 시간 팝업 노출
             loginExtensionChk(parseFloat(expirationTime) - currentAccessTime); 
-            console.log('재접속')
-          }else{
-            console.log('재접속 후 로그아웃')
+          }else{ // 재접속 후 토큰 만료 및 토큰이 다를 경우 로그아웃
             handleLogOut();
           }
         }else{ // 시간이 오버된 경우 로그아웃 
-          console.log('만료')
           handleLogOut();
         }
       }else{ // 값이 없다면 추가 - 로그인 시도
-        console.log('로그인 시도')
         const userToken = await user.getIdToken(); // 새로운 토큰 가져오기
-        loginSave(userToken);
+        loginTokenSave(userToken);
+        loginUpdate(user.uid);
       }
     }else { // 로그아웃
-      console.log('로그아웃')
       handleLogOut();
     }
-  },[handleLogOut]);
+  },[isLoading, loginTokenSave,loginUpdate, loginExtensionChk,handleLogOut]);
 
   // ✅ 로그인 / 로그아웃 onAuthStateChanged
   useEffect(()=>{
     const cleanupAuth = onAuthStateChanged(auth, loginStatus);
-    // clean up
-    return () => {
+    return () => {  // clean up
       cleanupAuth();
+      clearAllTimeouts();
     }
-  },[])
+  },[loginStatus, clearAllTimeouts])
 
   return <>
      {
@@ -173,7 +171,7 @@ export const LoginStatusCheck = () => {
         <Modal
           $width={320}
           autoCloseSecond={autoCloseSecond}
-          onClose={handleCancel}
+          onClose={handleLogOut}
         >
           <StyleWrap className="extension">
             <p className="tit">
@@ -191,7 +189,7 @@ export const LoginStatusCheck = () => {
               <button 
                 type="button" 
                 className="btn btn-gray"
-                onClick={handleCancel}
+                onClick={handleLogOut}
               >
                 <span>취소</span>
               </button>

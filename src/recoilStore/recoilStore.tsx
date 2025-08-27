@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { RecoilRoot } from 'recoil';
 
+// 🔹 내부 store - local data recoil
 interface RecoilStorePropsType {
   children: ReactNode;
 }

@@ -7,36 +7,42 @@ const users ='users';
 
 // 🔹 user 신규가입
 export const userPushDataDoc = async(userData:UserDataType) => {
-  const batch = writeBatch(fireDB);
+  try {
+    const batch = writeBatch(fireDB);
 
-  // userLists 저장
-  const userCollection = collection(fireDB, "users", "userData", "userLists");
-  const newUserDoc = doc(userCollection, userData.uid);
-  batch.set(newUserDoc, userData);
+    console.log(userData)
+    // userLists 저장
+    const userCollection = collection(fireDB, "users", "userData", "userLists");
+    const newUserDoc = doc(userCollection, userData.uid);
+    batch.set(newUserDoc, userData);
 
-  // 이메일 저장
-  const emailDoc = doc(fireDB, "users", "userData", "emails", userData.email);
-  batch.set(emailDoc, {
-    createdAt: serverTimestamp(),
-  });
-  
-  // 간편 ID 있는 경우 저장 - 조회 후 email 가져오기 위해 이메일 저장
-  if(userData.simpleID){
-    const idDoc = doc(fireDB, "users", "userData", "simpleIDs", userData.simpleID);
-    batch.set(idDoc, {
-      email:userData.email,
+    // 이메일 저장
+    const emailDoc = doc(fireDB, "users", "userData", "emails", userData.email);
+    batch.set(emailDoc, {
       createdAt: serverTimestamp(),
     });
-  }
 
-  // 여러가지 DB 대기 승인대기 
-  const stateDoc = doc(fireDB, "users", "userStateCheck");
-  batch.update(stateDoc, {
-    disapproval: arrayUnion({ ...userData }),
-  });
-  
-  // 최종 반영
-  await batch.commit();
+    // 간편 ID 있는 경우
+    if(userData.simpleID){
+      const idDoc = doc(fireDB, "users", "userData", "simpleIDs", userData.simpleID);
+      batch.set(idDoc, {
+        email:userData.email,
+        createdAt: serverTimestamp(),
+      });
+    }
+
+    // 승인대기 목록 추가
+    const stateDoc = doc(fireDB, "users", "userStateCheck");
+    batch.set(stateDoc, {
+      disapproval: arrayUnion({ ...userData }),
+    }, { merge: true });
+
+    await batch.commit();
+    // console.log('Firestore 저장 완료 ✅');
+  } catch (error) {
+    // console.error('Firestore 저장 실패 ❌', error);
+    throw error;
+  }
 }
 
 // 🔹 user 삭제
@@ -72,21 +78,20 @@ export const userDeleteDataBatch = async (userData: UserDeleteType) => {
       disapproval: updatedDisapprovalList,
     });
   }
-
   // 일괄 커밋
   await batch.commit();
 };
 
 // 🔹 User > 하위 컬렉션 > 필드 내 일치하는 값 조회 : 체크 문서 네임 / 하위 컬렉션
-export const getUserColDoc = async(colName:string, checkDoc:string) => {
+export const getUserColDoc = async(colName:string, checkDoc:string) :Promise<null | UserDataType>=> {
   // 빈 값 처리
-  if (!checkDoc?.trim() || !colName?.trim()) return false;
+  if (!checkDoc?.trim() || !colName?.trim()) return null;
   const docRef = doc(fireDB, users, 'userData', colName, checkDoc);
   const snap = await getDoc(docRef);
   if(snap.exists()){
-    return snap.data();
+    return snap.data() as UserDataType;
   }else{
-    return ''
+    return null
   }
 };
 

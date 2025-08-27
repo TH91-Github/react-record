@@ -11,36 +11,39 @@ import { isInvalidEmail, validIDPW } from "utils/auth";
 import { cn, randomNum } from "utils/common";
 import { auth, provider } from "../../../firebase";
 import { useToast } from "hooks/useToast";
+import { useDispatch, useSelector } from "react-redux";
+import { actionUserCreate, RootState } from "reduxStore/store";
+import { Loading } from "components/common/Loading";
 
 interface LoginPropsType {
   authChange: () => void
 }
 
-const inputID = 'loginID';
-const inputPW = 'loginPW';
-export const Login = ({authChange}:LoginPropsType) => { 
+const INPUTID = 'loginID';
+const INPUTPW = 'loginPW';
+export const Login = ({ authChange }:LoginPropsType) => { 
+  const {isLoading} = useSelector((state : RootState) => state.storeUserLogin);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { addToast } = useToast();
   const inputIDRef = useRef<InputItemModuleRefType>(null);
   const inputPWRef = useRef<InputItemModuleRefType>(null);
    const [errorMessages, setErrorMessages] = useState<Record<string, string>>({
-      [inputID]: '',
-      [inputPW]: '',
+      [INPUTID]: '',
+      [INPUTPW]: '',
     });
   
-  console.log('login')
-
   // 🔹 회원가입 바로가기
   const handleChangeClick = () => {
     authChange();
   }
 
-  const handleFocus = useCallback((inputID: string, message: string) => {
-    setErrorMessages(prev => ({ ...prev, [inputID]: message }));
+  const handleFocus = useCallback((ID: string, message: string) => {
+    setErrorMessages(prev => ({ ...prev, [ID]: message }));
   }, []);
 
-  const disapproval = useCallback((inputID: string, message: string) => {
-    setErrorMessages(prev => ({ ...prev, [inputID]: message }));
+  const disapproval = useCallback((ID: string, message: string) => {
+    setErrorMessages(prev => ({ ...prev, [ID]: message }));
   }, []);
 
 
@@ -50,15 +53,15 @@ export const Login = ({authChange}:LoginPropsType) => {
     let resultID = val;
     if(colVal === 'emails'){ // email 유효성 체크
       if (isInvalidEmail(val)) {
-        disapproval(inputID, '유효하지 않은 이메일 형식이에요. 🤔');
+        disapproval(INPUTID, '유효하지 않은 이메일 형식이에요. 🤔');
         return;
       }
       return resultID
     }else{ // 간편 ID 유효성 체크
-      console.log('간편 ID 입니다')
+      // console.log('간편 ID 입니다')
       const IDCheck = validIDPW(val,'ID');
       if (IDCheck) { // email & ID 유효성 체크
-        disapproval(inputID, IDCheck);
+        disapproval(INPUTID, IDCheck);
         return
       }
       const isDuplicate = await getUserColDoc(colVal, val);
@@ -69,18 +72,16 @@ export const Login = ({authChange}:LoginPropsType) => {
   
   // firebase 로그인 시도
   const handleLogin = useCallback(async (loginID: string, loginPW: string) => {
-    console.log('로그인 시도')
+    dispatch(actionUserCreate({ isLoading: true }));
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, loginID, loginPW);
-      if(userCredential.user){
-        const userData = await getUserColDoc('userLists',userCredential.user.uid);
-        console.log(userData)
-      }
+      await signInWithEmailAndPassword(auth, loginID, loginPW);
+      // 로그인 정보 입력은 LoginStatusCheck.tsx 진행
       navigate('/');
     } catch (error) {
       addToast('로그인에 실패했어요', 'error')
     }
-  },[]);
+    dispatch(actionUserCreate({ isLoading: false }));
+  },[addToast, navigate]);
 
 
   // 🔹 완료 
@@ -94,7 +95,7 @@ export const Login = ({authChange}:LoginPropsType) => {
     const checkPW = validIDPW(valPW,'PW');
 
     if(checkPW){ // 비밀번호 기본 유효성 체크 
-      disapproval(inputPW, checkPW);
+      disapproval(INPUTPW, checkPW);
       return
     }
  
@@ -103,10 +104,11 @@ export const Login = ({authChange}:LoginPropsType) => {
     }
   },[disapproval, handleLogin, validationID])
 
-
   // 🔹 구글 아이디 로그인 및 계정 등록
   const handleGoogleLogin = useCallback(async() => { 
     try {
+      dispatch(actionUserCreate({ isLoading: true }));
+
       const googleData = await signInWithPopup(auth, provider);
       const fireDBGoogle = await getUserColDoc('userLists', googleData.user.uid)
 
@@ -130,44 +132,45 @@ export const Login = ({authChange}:LoginPropsType) => {
           uid: googleData.user.uid,
         }
         await userPushDataDoc(resultData);
+        // console.log('구글 계정 생성')
       }else{
-        console.log('계정 정보 있음')
+        // console.log('계정 정보 있음')
       }
+      dispatch(actionUserCreate({ isLoading: false }));
       navigate('/');
     } catch (error) {
-      console.error(error);
       addToast('구글 로그인 에러 😲', 'error')
     }
-  },[ navigate])
+  },[addToast, navigate])
 
   return(
     <StyleWrap>
       <h2 className="title">로그인</h2>
       <div className="form-wrap">
         <form className="form" onSubmit={(e) => handleSubmit(e)}>
-          <div className={cn('form-item', errorMessages[inputID] && 'error')}>
+          <div className={cn('form-item', errorMessages[INPUTID] && 'error')}>
             <InputItemModule 
               ref={inputIDRef}
-              id={inputID} 
+              id={INPUTID} 
               title="아이디 or 이메일"
               focusColor={colors.blue}
-              focusEvent={() => handleFocus(inputID, '')}
+              focusEvent={() => handleFocus(INPUTID, '')}
             />
             <div className="description">
-              { errorMessages[inputID] &&  <p className="txt">{errorMessages[inputID]}</p> }
+              { errorMessages[INPUTID] &&  <p className="txt">{errorMessages[INPUTID]}</p> }
             </div>
           </div>
-          <div className={cn('form-item', errorMessages[inputPW] && 'error')}>
+          <div className={cn('form-item', errorMessages[INPUTPW] && 'error')}>
             <InputItemModule 
               ref={inputPWRef}
-              id={inputPW} 
+              id={INPUTPW} 
               title="비밀번호"
               type="password"
               focusColor={colors.blue}
-              focusEvent={() => handleFocus(inputPW, '')}
+              focusEvent={() => handleFocus(INPUTPW, '')}
             />
             <div className="description">
-              { errorMessages[inputPW] &&  <p className="txt">{errorMessages[inputPW]}</p> }
+              { errorMessages[INPUTPW] &&  <p className="txt">{errorMessages[INPUTPW]}</p> }
             </div>
           </div>
           <div className="btn-article">
@@ -200,15 +203,15 @@ export const Login = ({authChange}:LoginPropsType) => {
           </li>
         </ul>
       </div>
-      <div>
-        <br />
-        <button onClick={() => signOut(auth)} >로그아웃</button>
-      </div>
+      {
+        isLoading && <Loading dimmed={true} mode="body"/>
+      }
     </StyleWrap>
   )
 }
 
 const StyleWrap = styled.div`
+position:relative;
   .title{ 
     font-size:32px;
     text-align:center;

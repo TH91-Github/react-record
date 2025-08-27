@@ -7,8 +7,8 @@ export const iconStyle = `
     position:absolute;
     top:0px;
     right:0px;
-    width:25px;
-    height:25px;
+    width:20px;
+    height:20px;
     text-indent:-9999px;
     &::before, &::after {
       position:absolute;
