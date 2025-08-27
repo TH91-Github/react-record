@@ -2,16 +2,25 @@ import { bgTranslucence, media } from "assets/style/variables";
 import { Login } from "components/pages/member/Login";
 import { SignUp } from "components/pages/member/SignUp";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { stateHeaderHeight } from "recoilStore/atoms";
-import styled from "styled-components"
+import { RootState } from "reduxStore/store";
+import styled from "styled-components";
 
 export const MemberPage = () => {
+  const {isLogin, user} = useSelector((state : RootState) => state.storeUserLogin);
   const headerHeight = useRecoilValue(stateHeaderHeight);
   const [signType, setSignType] = useState(false);
 
   const authChange = () => {
     setSignType(prev => !prev)
+  }
+
+  // 로그인 되어 있으면 즉시 "/"로 리다이렉트
+  if (isLogin) {
+    return <Navigate to="/" replace />;
   }
   return (
     <StyleWrap $headerHeight={headerHeight}> 

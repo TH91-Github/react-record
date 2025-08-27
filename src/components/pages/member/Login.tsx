@@ -1,19 +1,19 @@
 import { colors, textColor, textShadow } from "assets/style/variables";
 import { IconGoogle } from "assets/svg/icons";
+import { Loading } from "components/common/Loading";
 import { InputItemModule, InputItemModuleRefType } from "components/modules/InputItemModule";
-import { signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { useToast } from "hooks/useToast";
 import { getUserColDoc, userPushDataDoc } from "lib/firebase/auth";
 import { useCallback, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { actionUserCreate, RootState } from "reduxStore/store";
 import styled from "styled-components";
 import { UserDataType } from "types/auth";
 import { isInvalidEmail, validIDPW } from "utils/auth";
 import { cn, randomNum } from "utils/common";
 import { auth, provider } from "../../../firebase";
-import { useToast } from "hooks/useToast";
-import { useDispatch, useSelector } from "react-redux";
-import { actionUserCreate, RootState } from "reduxStore/store";
-import { Loading } from "components/common/Loading";
 
 interface LoginPropsType {
   authChange: () => void
@@ -81,7 +81,7 @@ export const Login = ({ authChange }:LoginPropsType) => {
       addToast('로그인에 실패했어요', 'error')
     }
     dispatch(actionUserCreate({ isLoading: false }));
-  },[addToast, navigate]);
+  },[dispatch, addToast, navigate]);
 
 
   // 🔹 완료 
@@ -141,7 +141,7 @@ export const Login = ({ authChange }:LoginPropsType) => {
     } catch (error) {
       addToast('구글 로그인 에러 😲', 'error')
     }
-  },[addToast, navigate])
+  },[dispatch, addToast, navigate])
 
   return(
     <StyleWrap>

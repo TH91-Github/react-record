@@ -11,6 +11,8 @@ import { EmailForm } from "./EmailForm";
 import { NickNameForm } from "./NickNameForm";
 import { PasswordForm } from "./PasswordForm";
 import { SimpleIDForm } from "./SimpleIDForm";
+import { Loading } from "components/common/Loading";
+import { Modal } from "components/common/Modal";
 
 interface SignUpPropsType {
   authChange: () => void
@@ -25,12 +27,18 @@ export interface RefInputType {
   validationUpdate: (inputID:string, state:boolean) => void;
 }
 
-export const SignUp = ({authChange}:SignUpPropsType) =>{ 
+export const SignUp = ({authChange}:SignUpPropsType) =>{
   const { addToast } = useToast();
   const refList = useRef<HTMLInputElement[]>([]);
-  const [validation, setValidation] = useState<InputStateType[]>([])
+  const [alertMessage, setAlertMessage] = useState({
+    isAlert:false,
+    success:false,
+    message:''
+  })
+  const [signUpLoading, setSignUpLoading] = useState(false);
+  const [validation, setValidation] = useState<InputStateType[]>([]);
   
-  const handleChangeClick = () => { // 로그인 바로가기.
+  const handleChangeClick = () => { // 로그인 바로가기
     authChange();
   }
 
@@ -41,21 +49,20 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
       const inputState: InputStateType = {
         id: tag.getAttribute('id') || '',
         check: essentialChk(tag)
-      }
-      setValidation(prev => [
-        ...prev,
-        inputState
-      ])
+      };
+      setValidation(prev => [...prev, inputState]);
     }
   }, []);
+
   // 필수가 아닌 요소 true 반환
-  const essentialChk = (checkTag:HTMLInputElement):boolean =>{
+  const essentialChk = (checkTag: HTMLInputElement): boolean => {
     const essentialName = ['simpleID']; // 필수 아닌 요소 ID 입력
-    const tagID = checkTag.getAttribute('id') 
-    return tagID && essentialName.includes(tagID) ? true : false
-  }
+    const tagID = checkTag.getAttribute('id');
+    return tagID && essentialName.includes(tagID) ? true : false;
+  };
+
   // 각 input 유효성 검사 체크 업데이트: 통과-true, 실패-false
-  const inputValidationUpdate = useCallback((inputID:string, state:boolean) => {
+  const inputValidationUpdate = useCallback((inputID: string, state: boolean) => {
     setValidation(prev => {
       const updated = prev.map(item => {
         if (item.id !== inputID) return item;
@@ -63,11 +70,11 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
         return { ...item, check: state };
       });
 
-      // 상태 변경이 없으면 기존
       const isChanged = prev.some((item, i) => item.check !== updated[i].check);
       return isChanged ? updated : prev;
     });
   }, []);
+  
   // alert message
   const messageCase = (messageCheck: string) => {
     const messages: { [key: string]: string } = {
@@ -78,7 +85,7 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
       passwordCheck: "비밀번호 재입력"
     };
     return messages[messageCheck] || "입력";
-  }
+  };
 
   const handleSignup = useCallback(async () => {
     const resultData : UserDataType = {
@@ -105,27 +112,47 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
       resultData.password = randomNum(9999, "secret-login");
       await userPushDataDoc(resultData);
       // 완료 레이어 팝업 -> member 이동
-      authChange();
+      setAlertMessage({
+        isAlert:true,
+        success:true,
+        message:'회원가입 완료 😁'
+      })
     } catch (error) {
-      console.log(error) // 에러 안내 팝업 
+      setAlertMessage({
+        isAlert:true,
+        success:false,
+        message:'회원 가입에 실패했어요🥲'
+      })
     }
+    setSignUpLoading(false);
   },[authChange]);
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
-    e.preventDefault()
-    const hasChecked = validation.find(item=>!item.check);
-    if(hasChecked){
-      let message = messageCase(hasChecked.id);
-      let focusInput = refList.current.find(refItem => refItem.getAttribute('id') === hasChecked.id)
-       addToast(`${message}을 다시 확인해주세요.`,'error')
+    e.preventDefault();
+    if (signUpLoading) return; // 중복 실행 방지
+
+    const hasChecked = validation.find(item => !item.check);
+    if (hasChecked) {
+      const message = messageCase(hasChecked.id);
+      const focusInput = refList.current.find(refItem => refItem.getAttribute('id') === hasChecked.id);
+      addToast(`${message}을 다시 확인해주세요.`, 'error');
       focusInput?.focus();
-    }else{
-      // 유효성 검사 통과 시 
+    } else {
+      setSignUpLoading(true);
       handleSignup();
     }
-  },[validation, addToast, handleSignup])
+  }, [validation, addToast, handleSignup, signUpLoading]);
 
-
+  const handlePopupClick = () => {
+    if(alertMessage.success){
+      authChange();
+    }
+    setAlertMessage({
+      isAlert:false,
+      success:false,
+      message:''
+    })
+  }
   return(
     <StyleWrap>
       <h2 className="title">회원가입</h2>
@@ -176,6 +203,26 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
         </button>
         <span>바로 가기</span>
       </div>
+      {
+        signUpLoading && <Loading dimmed={true} mode="body"/>
+      }
+      {
+        (alertMessage.isAlert)  && 
+        <Modal onClose={handlePopupClick}>
+          <ModalInner>
+            <p className="tit">{alertMessage.message}</p>
+            <div>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={handlePopupClick}
+              >
+                <span>확인</span>
+              </button>
+            </div>
+          </ModalInner>          
+        </Modal>
+      }
     </StyleWrap>
   )
 }
@@ -250,4 +297,8 @@ const StyleWrap = styled.div`
       }
     }
   }
+`;
+
+const ModalInner = styled.div`
+
 `;

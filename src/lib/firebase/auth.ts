@@ -10,7 +10,6 @@ export const userPushDataDoc = async(userData:UserDataType) => {
   try {
     const batch = writeBatch(fireDB);
 
-    console.log(userData)
     // userLists 저장
     const userCollection = collection(fireDB, "users", "userData", "userLists");
     const newUserDoc = doc(userCollection, userData.uid);
