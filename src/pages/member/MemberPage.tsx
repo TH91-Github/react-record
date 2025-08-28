@@ -10,7 +10,7 @@ import { RootState } from "reduxStore/store";
 import styled from "styled-components";
 
 export const MemberPage = () => {
-  const {isLogin, user} = useSelector((state : RootState) => state.storeUserLogin);
+  const {isLogin} = useSelector((state : RootState) => state.storeUserLogin);
   const headerHeight = useRecoilValue(stateHeaderHeight);
   const [signType, setSignType] = useState(false);
 

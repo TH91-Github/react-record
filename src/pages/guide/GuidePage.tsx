@@ -2,7 +2,7 @@ import { guideStyle } from "assets/style/guide/guideStyle";
 import { breakpoints } from "assets/style/variables";
 import { SideLayout } from "components/layout/SideLayout";
 import { GuideAbout } from "components/pages/guide/GuideAbout";
-import { SideMenu } from "components/pages/guide/SideMenu";
+import { GuideSideMenu } from "components/pages/guide/GuideSideMenu";
 import { useCallback, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
@@ -28,11 +28,11 @@ export const GuidePage = () => {
   return (
     <StyleWrap className="guide">
       {/* side */}
-      <SideLayout>
-        <SideMenu />
+      <SideLayout $sideWidth={300}>
+        <GuideSideMenu />
       </SideLayout>
       {/* content */}
-      <div className="guide-content">
+      <div className="guide-inner">
         {
           showGuide ? <GuideAbout /> : <Outlet />
         }
@@ -44,7 +44,7 @@ export const GuidePage = () => {
 const StyleWrap = styled.div`
   position:relative;
   min-width:${breakpoints.tablet}px;
-  .guide-content {
+  .guide-inner {
     position:relative;
     width: 100%;
     padding-left:300px;

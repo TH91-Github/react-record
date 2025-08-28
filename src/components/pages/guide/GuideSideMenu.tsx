@@ -8,7 +8,7 @@ import styled from "styled-components";
 import { GuideNav } from "./GuideNav";
 import { NavLink } from "react-router-dom";
 
-export const SideMenu = () => {
+export const GuideSideMenu = () => {
   const pointColor = useRecoilValue(stateUserColor); 
   const [isExtend, useExtend] = useToggle(false);
 
