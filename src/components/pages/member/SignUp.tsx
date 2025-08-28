@@ -125,7 +125,7 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
       })
     }
     setSignUpLoading(false);
-  },[authChange]);
+  },[]);
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();

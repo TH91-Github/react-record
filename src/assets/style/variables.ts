@@ -1,3 +1,5 @@
+import { css } from "styled-components"
+
 /*
 onlyPc: 1140 ~
 pc: 768 ~ 
@@ -100,7 +102,16 @@ export const bgTranslucence = {
   `
 }
 
+// EX) ${transitionStyle(["background-color", "color"])}; 사용
+export const transitionStyle = (
+  attributeName: string[],
+  time: number = 0.3,
+  easing: string = "ease"
+) => css`
+  transition: ${attributeName.map(attr => `${attr} ${time}s ${easing}`).join(', ')};
+`;
 
+// ${ellipsisStyle(2,20)}
 export const ellipsisStyle = (lineClamp:number, fontSize:number) => {
   const lineHeight = fontSize ? fontSize : 20 ;
   const lineNum = lineClamp ?? 1;

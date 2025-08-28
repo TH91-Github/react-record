@@ -3,8 +3,11 @@ import { Logo } from "components/ui/Logo";
 import styled from "styled-components";
 import { UtilNav } from "./UtilNav";
 import { HeaderNav } from "./HeaderNav";
+import usePageTitle from "hooks/useDocTitle";
 
 export const HeaderLayout = () => {
+  usePageTitle(); // title 변경
+  
   // full-layout : full(1920) 사이즈 page일 경우에 사용. 
   return (
     <StyleWrap id="header" className={`header ${true ? 'full-layout': ''}`}>
