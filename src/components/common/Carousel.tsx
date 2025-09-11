@@ -1,6 +1,6 @@
 import React, { forwardRef, useCallback, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Swiper, SwiperSlide, SwiperClass, SwiperProps, SwiperRef } from 'swiper/react';
-import { A11y, Autoplay, Mousewheel, Navigation, Pagination, Scrollbar, Virtual } from 'swiper/modules';
+import { A11y, Autoplay, Mousewheel, Navigation, Pagination, Scrollbar, EffectCreative, Virtual, EffectCards } from 'swiper/modules';
 import "swiper/css";
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -46,6 +46,13 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
   const nextBtnRef = useRef<HTMLButtonElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(true); 
   const option = useMemo(() => ({ ...DEFAULT_OPT, ...carouselOpt }), [carouselOpt]);
+  const modules = useMemo(() => {
+    //기본 모듈
+    const baseModules = [Navigation, Pagination, A11y, Autoplay, Virtual, Scrollbar, Mousewheel];
+    if (option.effect === 'cards') baseModules.push(EffectCards);
+    if (option.effect === 'creative') baseModules.push(EffectCreative);
+    return baseModules;
+  }, [option.effect]);
 
   const handleAutoPlay = useCallback(() => {
     if (!swiperRef.current) return;
@@ -113,7 +120,7 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
       <div className="carousel-inner">
         <Swiper
           ref={swiperRef}
-          modules={[Navigation, Pagination, A11y, Autoplay, Virtual, Scrollbar, Mousewheel]}
+          modules={modules}
           virtual={option.virtual ? { slides: React.Children.toArray(children) } : undefined}
           onSwiper={handleOnSwiper}
           onBeforeInit={handleInit}

@@ -1,8 +1,7 @@
-import { SvgTistory } from "assets/svg/BrandLogo";
-import { SvgArrow, SvgBook, SvgClipboard, SvgCode, SvgComponent, SvgCube, SvgDesign, SvgFolder, SvgPuzzle, SvgRectangleStack, SvgSearch, SvgSetting, SvgSquareStack } from "assets/svg/Common";
-import { ButtonDataType, IconDataType } from "types/guide";
 import ImgArrow from 'assets/images/svg/arrow.svg';
-import { IconBookmark, IconCheck, IconError, IconLogout, IconUser } from "assets/svg/icons";
+import { reactIconsData } from "assets/svg/data/iconsData";
+import { svgCodeData } from "assets/svg/data/svgCodeData";
+import { ButtonDataType, IconDataType } from "types/guide";
 
 export const iconData : IconDataType = {
   headData:{
@@ -24,47 +23,7 @@ export const iconData : IconDataType = {
         '<a href="https://github.com/react-icons/react-icons" target="_blank" rel="noopener noreferrer" title="공식 github">🔗 github</a>',
       ],
       lists:[
-        {
-          id:'icon-user',
-          title:'User',
-          category: 'icon',
-          desc:['유저','user','FaUser'],
-          code: 'IconUser',
-          iconElement: IconUser,
-        },
-        {
-          id:'icon-logout',
-          title:'Logout',
-          category: 'icons',
-          desc:['로그아웃','logout','FiLogOut'],
-          code: 'IconLogout',
-          iconElement: IconLogout,
-        },
-        {
-          id:'icon-bookmark',
-          title:'Bookmark',
-          category: 'icon',
-          desc:['북마크','즐겨찾기','FaBookmark'],
-          code: 'IconBookmark',
-          iconElement: IconBookmark,
-        },
-        {
-          id:'icon-check',
-          title:'Check',
-          category: 'icon',
-          desc:['체크','check','FaCheck'],
-          code: 'IconCheck',
-          iconElement: IconCheck,
-        },
-        {
-          id:'icon-error',
-          title:'Error',
-          category: 'icon',
-          desc:['경고','에러','error','느낌표'],
-          code: 'IconError',
-          iconElement: IconError,
-        },
-        
+        ...reactIconsData
       ]
     },
     {
@@ -76,122 +35,7 @@ export const iconData : IconDataType = {
         '네이밍 : svg 직접 등록하는 경우 SvgName 사용'
       ],
       lists:[
-        {
-          id:'svg-jsx-search',
-          title:'Search',
-          category: 'Common',
-          desc:['검색', 'magnifying-glass', 'search'],
-          code: 'SvgSearch',
-          svgElement: SvgSearch,
-        },
-        {
-          id:'svg-jsx-search',
-          title:'Code',
-          category: 'Common',
-          desc:['코드', 'code-bracket', 'code'],
-          code: 'SvgCode',
-          fill:true,
-          svgElement: SvgCode,
-        },
-        {
-          id:'svg-jsx-search',
-          title:'Arrow',
-          category: 'Common',
-          desc:['arrow','< >','chevron','화살표','방향'],
-          code: 'SvgArrow',
-          svgElement: SvgArrow,
-        },
-        {
-          id:'svg-jsx-search',
-          title:'Cube',
-          category: 'Common',
-          desc:['큐브', 'cube-transparent', 'cube'],
-          code: 'SvgCube',
-          fill:true,
-          svgElement: SvgCube,
-        },
-        {
-          id:'svg-jsx-search',
-          title:'Book',
-          category: 'Common',
-          desc:['book','규칙','책','open'],
-          code: 'SvgBook',
-          svgElement: SvgBook,
-        },
-        {
-          id:'svg-jsx-search',
-          title:'Clipboard',
-          category: 'Common',
-          desc:[ '클립보드','clipboard-document-list'],
-          code: 'SvgClipboard',
-          svgElement: SvgClipboard,
-        },
-        {
-          id:'svg-jsx-search',
-          title:'Folder',
-          category: 'Common',
-          desc:['폴더', 'folder', '파일'],
-          code: 'SvgFolder',
-          svgElement: SvgFolder,
-        },
-        {
-          id:'svg-jsx-search',
-          title:'Component',
-          category: 'Common',
-          desc:['컴포넌트','cube','box'],
-          code: 'SvgComponent',
-          fill: true,
-          svgElement: SvgComponent,
-        },
-        {
-          id:'svg-jsx-search',
-          title:'SquareStack',
-          category: 'Common',
-          desc:['컴포넌트','square','stack'],
-          code: 'SvgSquareStack',
-          svgElement: SvgSquareStack,
-        },
-        {
-          id:'svg-jsx-search',
-          title:'Puzzle',
-          category: 'Common',
-          desc:['퍼즐','puzzle-piece','도구'],
-          code: 'SvgPuzzle',
-          svgElement: SvgPuzzle,
-        },
-        {
-          id:'svg-jsx-search',
-          title:'Setting',
-          category: 'Common',
-          desc:['세팅', '수정','편집','preferences','환경설정'],
-          code: 'SvgSetting',
-          svgElement: SvgSetting,
-        },
-        {
-          id:'svg-jsx-search',
-          title:'Design',
-          category: 'Common',
-          desc:['디자인','Design','color','font','breakpoints'],
-          code: 'SvgDesign',
-          svgElement: SvgDesign,
-        },
-        {
-          id:'svg-jsx-search',
-          title:'RectangleStack',
-          category: 'Common',
-          desc:['박스 여러개', 'style','rectangle-stack', '모음'],
-          code: 'SvgRectangleStack',
-          svgElement: SvgRectangleStack,
-        },
-        {
-          id:'svg-jsx-tistory',
-          title:'티스토리',
-          category:'BrandLogo',
-          desc:['티스토리','TISTORY','스토리','story','Tattertools+history'],
-          code:'SvgTistory',
-          fill:true,
-          svgElement: SvgTistory,
-        }
+        ...svgCodeData
       ]
     },
     {

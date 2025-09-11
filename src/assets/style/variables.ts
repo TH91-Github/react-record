@@ -101,13 +101,12 @@ export const bgTranslucence = {
     box-shadow: 0 5px 10px rgba(0 0 0,0.2);
   `
 }
-
 // EX) ${transitionStyle(["background-color", "color"])}; 사용
 export const transitionStyle = (
   attributeName: string[],
   time: number = 0.3,
   easing: string = "ease"
-) => css`
+) => `
   transition: ${attributeName.map(attr => `${attr} ${time}s ${easing}`).join(', ')};
 `;
 

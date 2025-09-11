@@ -1,6 +1,13 @@
-import { colors } from "../variables";
+import { colors, transitionStyle } from "../variables";
 
 export const iconStyle = `
+  .icon {
+    & > svg { 
+      width:100%;
+      height:100%;
+      ${transitionStyle(['stroke', 'fill'])};
+    }
+  }
   .icon-close {
     overflow:hidden;
     display:inline-block;

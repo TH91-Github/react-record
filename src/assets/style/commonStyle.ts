@@ -31,7 +31,7 @@ export const commonStyle = `
     font-size:1px;
     opacity:0;
   }
-  .m-br{
+  .m-br, m-only{
     display:none;
   }
   .name-tag {
@@ -136,10 +136,10 @@ export const commonStyle = `
     text-overflow:ellipsis;
   }
   ${media.mo}{
-    .pc-br{
+    .pc-br, pc-only{
       display:none;
     }
-    .m-br{
+    .m-br, m-only{
       display:block;
     }
   }

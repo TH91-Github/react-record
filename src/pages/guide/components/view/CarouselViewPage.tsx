@@ -6,12 +6,14 @@ import { ViewInfo } from "components/pages/guide/ViewInfo";
 import { InnerHTML } from "components/ui/InnerHTML";
 import styled from "styled-components";
 import { SwiperProps } from "swiper/react";
+import { cn } from "utils/common";
 
 interface CarouselDemoType {
   tit: string;
   txt: string;
   lists: string[];
-  opt?:SwiperProps
+  opt?:SwiperProps;
+  customClass?: string;
 };
 
 export const CarouselViewPage = () => {
@@ -60,6 +62,33 @@ export const CarouselViewPage = () => {
         navigation:true, 
       }
     },
+    {
+      tit:'case-6',
+      txt:'effect - creative',
+      lists:['case2', 'case2', 'case2', 'case2','case2', 'case2'],
+      customClass:'effect-creative',
+      opt:{
+        centeredSlides: true, 
+        loop:true,
+        effect:'creative',
+        creativeEffect:{
+          prev: {
+            translate: [0, 0, 120],
+            scale: 1.5,
+            opacity: 0,
+            origin: 'center',
+            shadow: true,
+          },
+          next: {
+            translate: [0, -20, -120],
+            scale: 0.6,
+            opacity: 0.4,
+            origin: 'center',
+            shadow: true,
+          },
+        }
+      }
+    },
   ];
 
   return(
@@ -75,7 +104,7 @@ export const CarouselViewPage = () => {
               <div className={`example-item item-${idx}`} key={idx}>
                 <p className="tit">{item.tit}</p>
                 <InnerHTML tag="p" data={item.txt}/>
-                <div className="demo-box">
+                <div className={cn('demo-box',item?.customClass && 'demo-creative')}>
                   <Carousel
                     carouselOpt={item.opt}
                   >
@@ -134,5 +163,15 @@ const StyleWrap = styled.div`
     justify-content:center;
     min-height:50px;
     border:1px solid ${colors.mSlateBlue};
+    background:#fff;
+  }
+  .demo-creative{
+    .swiper-slide{
+     width:500px;
+    }
+    .swiper {
+      padding:30px;
+    }
+
   }
 `;
