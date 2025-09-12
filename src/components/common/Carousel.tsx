@@ -1,6 +1,6 @@
 import React, { forwardRef, useCallback, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Swiper, SwiperSlide, SwiperClass, SwiperProps, SwiperRef } from 'swiper/react';
-import { A11y, Autoplay, Mousewheel, Navigation, Pagination, Scrollbar, EffectCreative, Virtual, EffectCards } from 'swiper/modules';
+import { A11y, Autoplay, Mousewheel, Navigation, Pagination, Scrollbar, EffectCreative, Virtual, EffectCards, FreeMode } from 'swiper/modules';
 import "swiper/css";
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -14,6 +14,7 @@ import { SvgArrow } from 'assets/svg/Common';
 interface CarouselPropsType {
   children: React.ReactNode,
   customClass?: string,
+  customClassSlide?:string,
   carouselOpt?: SwiperProps,
   onCarousel?: () => void,
   onChangeEvent?: () => void,
@@ -25,18 +26,17 @@ interface CarouselRefType {
 }
 
 const DEFAULT_OPT: SwiperProps = {
-  slidesPerView: 3,
   spaceBetween: 10,
   observer:true,
   observeParents:true,
   watchOverflow: true,
-  grabCursor: true,
   virtual:false,
 };
 
 export default forwardRef<CarouselRefType, CarouselPropsType>(({
   children, 
   customClass = 'carousel',
+  customClassSlide,
   carouselOpt, 
   onCarousel, onChangeEvent
 }, ref) => {
@@ -48,7 +48,7 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
   const option = useMemo(() => ({ ...DEFAULT_OPT, ...carouselOpt }), [carouselOpt]);
   const modules = useMemo(() => {
     //기본 모듈
-    const baseModules = [Navigation, Pagination, A11y, Autoplay, Virtual, Scrollbar, Mousewheel];
+    const baseModules = [Navigation, Pagination, A11y, Autoplay, Virtual, FreeMode, Scrollbar, Mousewheel];
     if (option.effect === 'cards') baseModules.push(EffectCards);
     if (option.effect === 'creative') baseModules.push(EffectCreative);
     return baseModules;
@@ -112,10 +112,13 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
       swiperRef.current?.swiper.update();
     }
   }));
-
   return(
     <StyleWrap 
-      className={cn('carousel-wrap', option.direction ==='vertical'&& 'vertical')}
+      className={cn(
+        'carousel-wrap', 
+        option.direction ==='vertical'&& 'vertical', 
+        React.Children.toArray(children).length < 2 && 'not-swiper'
+      )}
     >
       <div className="carousel-inner">
         <Swiper
@@ -131,7 +134,7 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
           className={customClass}
         >
           {React.Children.toArray(children).map((childEl, index) => (
-            <SwiperSlide key={index} className="carousel-item">
+            <SwiperSlide key={index} className={cn('carousel-item', customClassSlide)}>
               {childEl}
             </SwiperSlide>
           ))}
@@ -180,15 +183,18 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
 const StyleWrap = styled.div`
   overflow:hidden;
   position:relative;
+  width:100%;
   .carousel-inner{
     position:relative;
-    height:100%;
   }
   &.vertical {
     height:100%;
-    .swiper{ 
+    .carousel-inner, .swiper{ 
       height:100%;
     }
+  }
+  .swiper-wrapper{
+    transform-style:initial;
   }
   .carousel-pagination {
     display:flex;
@@ -214,7 +220,6 @@ const StyleWrap = styled.div`
   }
 
   .carousel-btns{
-
     & > button {
       display:block;
       position:absolute;

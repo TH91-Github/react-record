@@ -32,10 +32,11 @@ export const GuideSideMenu = () => {
           />
         </div>
         <div className="nav-item">
-          <h3 className="title">Menu</h3>
+          <p className="title">목록</p>
           <GuideNav />
         </div>
         {
+          // mo
           false &&  <div className="extend-btn">
           <button
             type="button"
@@ -44,7 +45,6 @@ export const GuideSideMenu = () => {
           </button>
         </div>
         }
-       
       </div>
     </StyleWrap>
   )

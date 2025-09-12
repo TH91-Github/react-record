@@ -20,12 +20,12 @@ export const CarouselViewPage = () => {
   const demoData: CarouselDemoType[] = [
     {
       tit:'case-1',
-      txt:'리스트 3개, 옵션 - x : 기본으로 3개 보여주며 4개부터 캐러셀 동작',
-      lists:['case1', 'case1', 'case1'],
+      txt:'리스트 3개, 옵션 - x : 기본으로 view - 1 ',
+      lists:['case1'],
     },
     {
       tit:'case-2',
-      txt:'옵션 - x : 리스트 총 4 동작',
+      txt:'옵션 - x : 리스트 총 2개부터 carousel 동작',
       lists:['case2', 'case2', 'case2', 'case2'],
     },
     {
@@ -167,7 +167,7 @@ const StyleWrap = styled.div`
   }
   .demo-creative{
     .swiper-slide{
-     width:500px;
+      width:500px;
     }
     .swiper {
       padding:30px;
