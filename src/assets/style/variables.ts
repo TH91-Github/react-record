@@ -110,6 +110,40 @@ export const transitionStyle = (
   transition: ${attributeName.map(attr => `${attr} ${time}s ${easing}`).join(', ')};
 `;
 
+export const scrollBar = (direction: 'x' | 'y' = 'y', activeColor = colors.lineColor, baseColor = colors.disabled) => css`
+  &::-webkit-scrollbar {
+    ${direction === 'x'
+      ? `
+        height: 5px;
+        bottom: 0;
+        left: 0; right: 0;
+        transform-origin: bottom;
+        transform: translateY(100%);
+      `
+      : `
+        width: 5px;
+        right: 0;
+        top: 0; bottom: 0;
+        transform-origin: right;
+        transform: translateX(100%);
+      `}
+    background-color: ${baseColor};
+    position: absolute;
+    transition: transform 0.3s ease;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${activeColor};
+    border-radius: 4px;
+    cursor: grap;
+    transition: background-color 0.3s ease;
+  }
+
+  &:hover::-webkit-scrollbar {
+    transform: translate(0, 0);
+  }
+`;
+
 // ${ellipsisStyle(2,20)}
 export const ellipsisStyle = (lineClamp:number, fontSize:number) => {
   const lineHeight = fontSize ? fontSize : 20 ;
