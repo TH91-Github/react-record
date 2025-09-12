@@ -1,4 +1,4 @@
-import { IconFolderAdd, IconBookmark, IconCheck, IconError, IconLogout, IconUser, IconPlus } from "../icons";
+import { IconFolderAdd, IconBookmark, IconCheck, IconError, IconLogout, IconUser, IconPlus, IconChat, IconMapPoint, IconHome } from "../icons";
 
 // 🔹 React icon 라이브러리 icons.ts
 export const reactIconsData = [
@@ -57,5 +57,29 @@ export const reactIconsData = [
     desc:['+','plus','플러스','더하기'],
     code: 'IconPlus',
     iconElement: IconPlus,
+  },
+  {
+    id:'icon-chat',
+    title:'Chat',
+    category: 'icon',
+    desc:['chat','대화','말풍선','입력'],
+    code: 'IconChat',
+    iconElement: IconChat,
+  },
+  {
+    id:'icon-map-point',
+    title:'Map Point',
+    category: 'icon',
+    desc:['맵','지도','point','pointer','포인트','지도표시'],
+    code: 'IconMapPoint',
+    iconElement: IconMapPoint,
+  },
+  {
+    id:'icon-home',
+    title:'Home',
+    category: 'icon',
+    desc:['홈','집','건물','home','house'],
+    code: 'IconHome',
+    iconElement: IconHome,
   },
 ]

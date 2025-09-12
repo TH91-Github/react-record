@@ -112,6 +112,7 @@ export const transitionStyle = (
 
 export const scrollBar = (direction: 'x' | 'y' = 'y', activeColor = colors.lineColor, baseColor = colors.disabled) => css`
   &::-webkit-scrollbar {
+    position: absolute;
     ${direction === 'x'
       ? `
         height: 5px;
