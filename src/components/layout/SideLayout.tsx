@@ -1,7 +1,12 @@
-import { ReactNode } from "react";
+import { bgColor, colors, media, transitionStyle } from "assets/style/variables";
+import { IconArrowRight } from "assets/svg/icons";
+import useToggle from "hooks/useToggle";
+import { ReactNode, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { stateHeaderHeight } from "recoilStore/atoms";
-import styled from "styled-components"
+import styled from "styled-components";
+import { cn } from "utils/common";
 
 // 사이드 레이아웃
 interface SideLayoutPropsType {
@@ -17,17 +22,42 @@ export const SideLayout = ({
   $sideHeight, // height 지정 없는 경우 header 제외 높이
   children 
 }:SideLayoutPropsType) => {
+  const location = useLocation();
   const headerHeight = useRecoilValue(stateHeaderHeight);
+  const [isMoOpen, useisMoOpen] = useToggle(false);
+
+  useEffect(()=>{
+    if(isMoOpen){
+      useisMoOpen();
+      console.log('ㅇㅇ')
+    }
+  },[location])
+
+  const handleMoOpen = () => {
+    useisMoOpen();
+  }
   return (
     <StyleWrap 
       $position={$position}
       $width={$sideWidth}
       $headerHeight={ ($sideHeight ?? headerHeight) ?? 0}
-      className="side-layout"
+      className={cn('side-layout', isMoOpen && 'open')}
     >
       <aside> 
         {children}
       </aside>
+      <button 
+        type="button"
+        className="btn-mo"
+        onClick={handleMoOpen}
+      >
+        {
+          isMoOpen
+            ? <span className="icon-close"></span>
+            : <span className="icon"><IconArrowRight /></span>
+        }
+        <span className="blind">{isMoOpen ? '닫기': '열기'}</span>
+      </button>
     </StyleWrap>
   )
 }
@@ -45,4 +75,68 @@ const StyleWrap = styled.div<StyleWrapPropsType>`
   width:100%;
   max-width:${({$width}) => $width}px;
   height: calc(100svh -  ${({$headerHeight}) => $headerHeight}px);
+  border-right:1px solid ${colors.lineColor};
+  background:${bgColor.sideWite};
+  ${transitionStyle(['transform'])}
+  .btn-mo{
+    display:none;
+  }
+  ${media.mo}{
+    position:fixed;
+    top:${({$headerHeight}) => $headerHeight}px;
+    left:0;
+    max-width:100%; 
+    height: calc(100svh - ${({$headerHeight}) => $headerHeight}px);
+    transform:translateX(calc((100% - 10px) * -1));
+    &.open{
+      transform:translateX(0);
+      .btn-mo{
+        top:15px;
+        left:auto;
+        right:15px;
+        width:30px;
+        height:30px;
+        border-radius:0;
+        border:none;
+        transform:translate(0);
+        &::before{
+          display:none;
+        }
+        .icon-close{
+          top:50%;
+          left:50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+    .btn-mo{
+      display:block;
+      position:absolute;
+      top:50%;
+      right:-30px;
+      width:60px;
+      height:60px;
+      border:1px solid ${colors.lineColor};
+      border-radius:50%;
+      background:${bgColor.sideWite};
+      transform: translateY(-50%);
+      &::before{
+        position:absolute;
+        top:-2px;
+        left:0px;
+        width:50%;
+        height:calc(100% + 4px);
+        background:${bgColor.sideWite};
+        content:'';
+      }
+      .icon{
+        position:absolute;
+        top:50%;
+        left:calc(50% + 10px);
+        width:15px;
+        height:15px;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
 `;

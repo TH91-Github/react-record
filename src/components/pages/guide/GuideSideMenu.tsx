@@ -10,10 +10,9 @@ import { NavLink } from "react-router-dom";
 
 export const GuideSideMenu = () => {
   const pointColor = useRecoilValue(stateUserColor); 
-  const [isExtend, useExtend] = useToggle(false);
 
   return(
-    <StyleWrap className={`nav-wrap ${isExtend ? 'extend': ''}`}>
+    <StyleWrap className="nav-wrap">
       <div className="nav-inner">
         <div className="nav-heading">
           <h2 className="title">
@@ -23,28 +22,18 @@ export const GuideSideMenu = () => {
             </NavLink>
           </h2>
         </div>
-        <div className="nav-item">
+        {/* <div className="nav-item">
           <SearchModule 
             id="nav"
             isBtn={false} 
             placeholder={'검색 기능 작업 진행 중...'} 
             styleOpt={{$line:"none"}}
           />
-        </div>
+        </div> */}
         <div className="nav-item">
           <p className="title">목록</p>
           <GuideNav />
         </div>
-        {
-          // mo
-          false &&  <div className="extend-btn">
-          <button
-            type="button"
-            onClick={useExtend}>
-            <span>{isExtend ? '펼치기' : '접기' }</span>
-          </button>
-        </div>
-        }
       </div>
     </StyleWrap>
   )
@@ -57,8 +46,6 @@ const StyleWrap = styled.div`
   left:0;
   width:100%;
   height:100%;
-  border-right:1px solid ${colors.lineColor};
-  background:${bgColor.sideWite};
   .nav-inner{
   }
   .nav-heading{
@@ -100,12 +87,12 @@ const StyleWrap = styled.div`
   .search {
     gap:5px;
   }
-  .extend-btn {
-    position:absolute;
-    top:30px;
-    right:30px;
-  }
   ${media.mo}{
-
+    .nav-heading{
+      padding:20px 15px;
+    }
+    .nav-item{
+      padding:15px;
+    }
   }
 `;

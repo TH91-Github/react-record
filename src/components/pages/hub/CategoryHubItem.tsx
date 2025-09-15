@@ -56,6 +56,9 @@ const StyleWrap = styled.div`
     gap:20px;
     margin-top:10px;
     padding:0 10px;
+    & > span { 
+      display:block;
+    }
   }
   .icon {
     position:relative;

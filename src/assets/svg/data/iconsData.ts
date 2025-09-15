@@ -1,4 +1,4 @@
-import { IconFolderAdd, IconBookmark, IconCheck, IconError, IconLogout, IconUser, IconPlus, IconChat, IconMapPoint, IconHome } from "../icons";
+import { IconFolderAdd, IconBookmark, IconCheck, IconError, IconLogout, IconUser, IconPlus, IconChat, IconMapPoint, IconHome, IconArrowRight } from "../icons";
 
 // 🔹 React icon 라이브러리 icons.ts
 export const reactIconsData = [
@@ -81,5 +81,13 @@ export const reactIconsData = [
     desc:['홈','집','건물','home','house'],
     code: 'IconHome',
     iconElement: IconHome,
+  },
+  {
+    id:'icon-arrow-right',
+    title:'Arrow Right',
+    category: 'icon',
+    desc:['arrow', '화살표', '방향', '오른쪽', '에로우', '방향키'],
+    code: 'IconArrowRight',
+    iconElement: IconArrowRight,
   },
 ]

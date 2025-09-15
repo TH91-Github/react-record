@@ -13,4 +13,5 @@ export { FaPlus as IconPlus } from "react-icons/fa6"; // + 플러스
 export { BsChatDots as IconChat } from "react-icons/bs"; // 말풍선 chat
 export { GrMap as IconMapPoint } from "react-icons/gr"; // 지도 포인트
 export { IoHomeOutline  as IconHome } from "react-icons/io5"; // home 홈 집
+export { FaArrowRight   as IconArrowRight } from "react-icons/fa"; // 오른쪽 화살표
 
