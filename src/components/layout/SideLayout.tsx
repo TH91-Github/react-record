@@ -87,7 +87,7 @@ const StyleWrap = styled.div<StyleWrapPropsType>`
     left:0;
     max-width:100%; 
     height: calc(100svh - ${({$headerHeight}) => $headerHeight}px);
-    transform:translateX(calc((100% - 10px) * -1));
+    transform:translateX(calc((100% - 5px) * -1));
     &.open{
       transform:translateX(0);
       .btn-mo{
@@ -106,6 +106,8 @@ const StyleWrap = styled.div<StyleWrapPropsType>`
           top:50%;
           left:50%;
           transform: translate(-50%, -50%);
+          opacity:1;
+          ${transitionStyle(['opacity'])}
         }
       }
     }
@@ -113,9 +115,9 @@ const StyleWrap = styled.div<StyleWrapPropsType>`
       display:block;
       position:absolute;
       top:50%;
-      right:-30px;
-      width:60px;
-      height:60px;
+      right:-20px;
+      width:40px;
+      height:40px;
       border:1px solid ${colors.lineColor};
       border-radius:50%;
       background:${bgColor.sideWite};
@@ -129,10 +131,13 @@ const StyleWrap = styled.div<StyleWrapPropsType>`
         background:${bgColor.sideWite};
         content:'';
       }
+      .icon-close{
+        opacity:0;
+      }
       .icon{
         position:absolute;
         top:50%;
-        left:calc(50% + 10px);
+        left:calc(50% + 5px);
         width:15px;
         height:15px;
         transform: translate(-50%, -50%);

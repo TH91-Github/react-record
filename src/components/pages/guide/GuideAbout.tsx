@@ -1,4 +1,4 @@
-import { bgTranslucence, breakpoints, colors } from "assets/style/variables";
+import { bgTranslucence, breakpoints, colors, media } from "assets/style/variables";
 import { GUIDE_LIST } from "routes/pages/guide/GuideRouter";
 import styled from "styled-components";
 import { GuideMenuIcon } from "./GuideMenuIcon";
@@ -11,7 +11,7 @@ export const GuideAbout = () => {
   const handleLinkClick = (path:string, depthPath:string | undefined) => {
     if(depthPath){
       let checkDepth = depthPath.indexOf(':id') > 0 ? '': depthPath;
-      navigate(`guide/${path}/${checkDepth}`);
+      navigate(`/guide/${path}/${checkDepth}`);
     }
   }
   return (
@@ -154,208 +154,13 @@ const StyleWrap = styled.div`
   }
   .design-box{
     position:relative;
-    z-index:2;
-    width:250px;
-    height:250px;
-    border-radius:5px;
-    ${bgTranslucence.baseLight};
-    .box-item{
-      display:block;
-      position:absolute;
-      width: 100px;
-      height: 100px;
-      background: linear-gradient(to bottom right, #9fa8ff, #6c73ff);
-      transform: rotate(45deg) scaleX(1.1) scaleY(0.6);
-      border-radius: 6px;
-      opacity: 0.5;
-      &:nth-child(1) {
-        top: 0;
-        left: 0;
-      }
-      &:nth-child(2) {
-        top: 10px;
-        left: 0;
-        opacity: 0.7;
-      }
-      &:nth-child(3) {
-        top: 20px;
-        left: 0;
-        opacity: 1;
-      }
-    }
-      
-  }
-  .square-box{
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:200px;
-    height:200px;
-    transform: translate(-50%, -50%) rotateX(-60deg);
-  }
-  .square-item{ 
-    display:block;
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:100px;
-    height:100px;
-    border-radius:5px;
-    background: linear-gradient(to bottom right, #9fa8ff, #6a67e5);
-    opacity:.9;
-    &:nth-child(1){ 
-      transform: translate(-50%, calc(-50% + 50px)) rotate(45deg);
-      animation: squareAin-1 2s .5s ease-in-out both;
-    }
-    &:nth-child(2){ 
-      transform: translate(-50%, -50%) rotate(45deg);
-      animation: squareAin-2 2s .5s ease-in-out both;
-    }
-    &:nth-child(3){ 
-      transform: translate(-50%, calc(-50% - 50px)) rotate(45deg);
-      animation: squareAin-3 2s .5s ease-in-out both;
-    }
-  }
-  @keyframes squareAin-1 {
-    from { opacity:0; transform: translate(-50%, calc(-50%)) rotate(45deg); }
-    to { opacity:1; transform: translate(-50%, calc(-50% + 50px)) rotate(45deg); }
-  }
-    @keyframes squareAin-2 {
-    from { opacity:0; transform: translate(-50%, calc(-50%)) rotate(45deg); }
-    to { opacity:1; transform: translate(-50%, calc(-50%)) rotate(45deg); }
-  }
-    @keyframes squareAin-3 {
-    from { opacity:0; transform: translate(-50%, calc(-50%)) rotate(45deg); }
-    to { opacity:1; transform: translate(-50%, calc(-50% - 50px)) rotate(45deg); }
-  }
-  .link-box {
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:250px;
-    height:250px;
-    transform: translate(-50%, -50%);
-  }
-  .link-item{
-    position:absolute;
-    &.principles{
-      top:-20px;
-      right:calc(100% + 50px);
-      .link-btn {
-        &::before{
-          top:50%;
-          left:100%;
-        }
-        &::after{
-          left:calc(100% + 48px);
-          transform:translate(-50px, -50%);
-          animation: left-1-Ani 5s 1s linear infinite both;
-        }
-      }
-    }
-    &.design{
-      top:100px;
-      right:calc(100% + 80px);
-      .link-btn {
-        &::before{
-          top:50%;
-          left:100%;
-          width:78px;
-        }
-        &::after{
-        left:calc(100% + 78px);
-        animation: left-2-Ani 5s 1.3s linear infinite both;
-        }
-      }
-    }
-    &.ui {
-      top:220px;
-      right:calc(100% + 50px);
-      .link-btn {
-        &::before{
-          top:10%;
-          left:100%;
-        }
-        &::after{
-          top:10%;
-          left:calc(100% + 48px);
-          animation: left-1-Ani 5s 1.7s linear infinite both;
-        }
-      }
-    }
-    &.components{
-      top:-20px;
-      left: calc(100% + 50px);
-      .link-btn {
-        &::before{
-          top:50%;
-          right:100%;
-        }
-        &::after{
-          right:calc(100% + 48px);
-          animation: right-1-Ani 5s 1.5s linear infinite both;
-        }
-      }
-    }
-    &.hooks {
-      top:100px;
-      left: calc(100% + 80px);
-      .link-btn {
-        &::before{
-          top:50%;
-          right:100%;
-          width:80px;
-        }
-          &::after{
-          right:calc(100% + 78px);
-          animation: right-2-Ani 5s 1.6s linear infinite both;
-        }
-      }
-    }
-    &.utils{
-      top:220px;
-      left: calc(100% + 50px);
-      .link-btn {
-        &::before{
-          top:10%;
-          right:100%;
-        }
-        &::after{
-          top:10%;
-          right:calc(100% + 48px);
-          animation: right-1-Ani 5s 1.2s linear infinite both;
-        }
-      }
-    }
-    &.settings{
-      top:calc(100% + 50px);
-      left:50%;
-      background:#fff;
-      transform: translateX(-50%);
-      .link-btn {
-        &::before{
-          top:auto;
-          bottom:100%;
-          width:1px;
-          height:50px;
-          border-top:0;
-          border-right:1px dashed ${colors.lineColor};
-        }
-        &::after{
-          top:auto;
-          left:50%;
-          margin-left:1px;
-          bottom:calc(100% + 45px);
-          animation: top-Ani 5s 1.4s linear infinite both;
-        }
-      }
-    }
   }
   .link-btn{
     display:flex;
     flex-direction: column;
     align-items:center;
     gap:5px;
+    position:relative;
     padding:10px;
     border:1px dashed ${colors.lineColor};
     border-radius:5px;
@@ -453,5 +258,280 @@ const StyleWrap = styled.div`
     20% { transform:translate(-50%, 50px);}
     90% { transform:translate(-50%, -1px);}
     100% { transform:translate(-50%, -1px) scale(0);}
+  }
+  ${media.tabletPc}{
+    .design-box{
+      z-index:2;
+      width:250px;
+      height:250px;
+      border-radius:5px;
+      ${bgTranslucence.baseLight};
+      .box-item{
+        display:block;
+        position:absolute;
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(to bottom right, #9fa8ff, #6c73ff);
+        transform: rotate(45deg) scaleX(1.1) scaleY(0.6);
+        border-radius: 6px;
+        opacity: 0.5;
+        &:nth-child(1) {
+          top: 0;
+          left: 0;
+        }
+        &:nth-child(2) {
+          top: 10px;
+          left: 0;
+          opacity: 0.7;
+        }
+        &:nth-child(3) {
+          top: 20px;
+          left: 0;
+          opacity: 1;
+        }
+      }
+      .square-box{
+        display:block;
+        position:absolute;
+        top:50%;
+        left:50%;
+        width:200px;
+        transform: translate(-50%, -50%) rotateX(-60deg);
+      }
+      .square-item{ 
+        display:block;
+        position:absolute;
+        top:50%;
+        left:50%;
+        width:100px;
+        height:100px;
+        border-radius:5px;
+        background: linear-gradient(to bottom right, #9fa8ff, #6a67e5);
+        opacity:.9;
+        &:nth-child(1){ 
+          transform: translate(-50%, calc(-50% + 50px)) rotate(45deg);
+          animation: squareAin-1 2s .5s ease-in-out both;
+        }
+        &:nth-child(2){ 
+          transform: translate(-50%, -50%) rotate(45deg);
+          animation: squareAin-2 2s .5s ease-in-out both;
+        }
+        &:nth-child(3){ 
+          transform: translate(-50%, calc(-50% - 50px)) rotate(45deg);
+          animation: squareAin-3 2s .5s ease-in-out both;
+        }
+      }
+      @keyframes squareAin-1 {
+        from { opacity:0; transform: translate(-50%, -50%) rotate(45deg); }
+        to { opacity:1; transform: translate(-50%, calc(-50% + 50px)) rotate(45deg); }
+      }
+        @keyframes squareAin-2 {
+        from { opacity:0; transform: translate(-50%, -50%) rotate(45deg); }
+        to { opacity:1; transform: translate(-50%, -50%) rotate(45deg); }
+      }
+        @keyframes squareAin-3 {
+        from { opacity:0; transform: translate(-50%, -50%) rotate(45deg); }
+        to { opacity:1; transform: translate(-50%, calc(-50% - 50px)) rotate(45deg); }
+      }
+    }
+    .link-box {
+      position:absolute;
+      top:50%;
+      left:50%;
+      width:250px;
+      height:250px;
+      transform: translate(-50%, -50%);
+    }
+    .link-item{
+      position:absolute;
+      &.principles{
+        top:-20px;
+        right:calc(100% + 50px);
+        .link-btn {
+          &::before{
+            top:50%;
+            left:100%;
+          }
+          &::after{
+            left:calc(100% + 48px);
+            transform:translate(-50px, -50%);
+            animation: left-1-Ani 5s 1s linear infinite both;
+          }
+        }
+      }
+      &.design{
+        top:100px;
+        right:calc(100% + 80px);
+        .link-btn {
+          &::before{
+            top:50%;
+            left:100%;
+            width:78px;
+          }
+          &::after{
+          left:calc(100% + 78px);
+          animation: left-2-Ani 5s 1.3s linear infinite both;
+          }
+        }
+      }
+      &.ui {
+        top:220px;
+        right:calc(100% + 50px);
+        .link-btn {
+          &::before{
+            top:10%;
+            left:100%;
+          }
+          &::after{
+            top:10%;
+            left:calc(100% + 48px);
+            animation: left-1-Ani 5s 1.7s linear infinite both;
+          }
+        }
+      }
+      &.components{
+        top:-20px;
+        left: calc(100% + 50px);
+        .link-btn {
+          &::before{
+            top:50%;
+            right:100%;
+          }
+          &::after{
+            right:calc(100% + 48px);
+            animation: right-1-Ani 5s 1.5s linear infinite both;
+          }
+        }
+      }
+      &.hooks {
+        top:100px;
+        left: calc(100% + 80px);
+        .link-btn {
+          &::before{
+            top:50%;
+            right:100%;
+            width:80px;
+          }
+            &::after{
+            right:calc(100% + 78px);
+            animation: right-2-Ani 5s 1.6s linear infinite both;
+          }
+        }
+      }
+      &.utils{
+        top:220px;
+        left: calc(100% + 50px);
+        .link-btn {
+          &::before{
+            top:10%;
+            right:100%;
+          }
+          &::after{
+            top:10%;
+            right:calc(100% + 48px);
+            animation: right-1-Ani 5s 1.2s linear infinite both;
+          }
+        }
+      }
+      &.settings{
+        top:calc(100% + 50px);
+        left:50%;
+        background:#fff;
+        transform: translateX(-50%);
+        .link-btn {
+          &::before{
+            top:auto;
+            bottom:100%;
+            width:1px;
+            height:50px;
+            border-top:0;
+            border-right:1px dashed ${colors.lineColor};
+          }
+          &::after{
+            top:auto;
+            left:50%;
+            margin-left:1px;
+            bottom:calc(100% + 45px);
+            animation: top-Ani 5s 1.4s linear infinite both;
+          }
+        }
+      }
+    }
+  }
+  ${media.tablet}{
+    .about-inner{
+      padding: 60px 20px;
+    }
+    .about-header{
+      .title{ 
+        font-size:38px;
+      }
+      .desc{ 
+        margin-top:15px;
+        font-size:16px;
+        line-height:22px;
+      }
+    }
+    .about-content{
+      padding:80px 60px;
+    }
+    .design-box{
+      width:150px;
+      height:150px;
+      .square-box{
+        width:120px;
+      }
+      .square-item{
+        width:80px;
+        height:80px;
+      }
+      @keyframes squareAin-1 {
+        from { opacity:0; transform: translate(-50%, -50%) rotate(45deg); }
+        to { opacity:1; transform: translate(-50%, calc(-50% + 40px)) rotate(45deg); }
+      }
+      @keyframes squareAin-3 {
+        from { opacity:0; transform: translate(-50%, -50%) rotate(45deg); }
+        to { opacity:1; transform: translate(-50%, calc(-50% - 40px)) rotate(45deg); }
+      }
+    }
+    .link-box{
+      width:180px;
+      height:180px;
+    }
+    
+  }
+
+  ${media.mo}{
+    .about-inner {
+      padding:40px 15px;
+    }
+    .about-header{
+      .title{ 
+        font-size:32px;
+      }
+      .desc{ 
+        margin-top:10px;
+        font-size:14px;
+        line-height:20px;
+      }
+    }
+    .about-content{
+      display:block;
+      padding:50px 0;
+    }
+    .design-box{
+      display:none;
+    }
+    .link-lists{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .link-item{
+      width: calc((100% - 20px) / 3);
+    }
+    .link-btn{
+      width:100%;
+    }
   }
 `;

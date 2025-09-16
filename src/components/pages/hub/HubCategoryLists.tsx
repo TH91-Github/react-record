@@ -23,6 +23,7 @@ const carouselOpt = {
     },
   }
 }
+// // 🔹 전체, 참여 중, 즐겨찾기 리스트
 export const HubCategoryLists = ({data}:HubCategoryListsType) =>{
   const getRepeatedArray = <T,>(arr: T[], minLength: number): T[] => {
     if (arr.length === 0) return [];
@@ -93,9 +94,7 @@ const StyleWrap = styled.div`
     overflow:visible;
   }
   .swiper-slide{
-    &-prev {
-      pointer-events:none;
-    }
+    pointer-events:none;
     &-next {
       .category-hub{
         transform: translateY(-15px) scale(0.9);
@@ -111,11 +110,13 @@ const StyleWrap = styled.div`
       }
     }
     &:not(&-prev):not(&-active):not(&-next) {
-      pointer-events:none;
       .category-hub{
         transform: translateY(-50px) scale(0.7);
         opacity: 0;
       }
+    }
+    &-active{
+      pointer-events:initial;
     }
   }
   .empty{

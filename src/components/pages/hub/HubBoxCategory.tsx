@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { HubCategoryLists } from "./HubCategoryLists";
 import { hubBaseData } from "./data/hubData";
 
+// 🔹 방만들기 + 리스트  
 export const HubBoxCategory = () => {
   return (
     <StyleWrap>

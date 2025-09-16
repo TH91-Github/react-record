@@ -23,7 +23,7 @@ export const media = {
   // 1140 ~ 1439
   smailPc : `@media screen and (min-width:${breakpoints.tablet}px) and (max-width:${breakpoints.pc-1}px)`,
   // 768 ~
-  tabletPc: `@media screen and (min-width:${breakpoints.mo}px})`,
+  tabletPc: `@media screen and (min-width:${breakpoints.mo}px)`,
   // 768 ~ 1139
   tablet: `@media screen and (min-width:${breakpoints.mo}px) and (max-width:${breakpoints.tablet-1}px)`,
   // ~ 1139

@@ -1,5 +1,5 @@
 import { guideStyle } from "assets/style/guide/guideStyle";
-import { breakpoints } from "assets/style/variables";
+import { breakpoints, media } from "assets/style/variables";
 import { SideLayout } from "components/layout/SideLayout";
 import { GuideAbout } from "components/pages/guide/GuideAbout";
 import { GuideSideMenu } from "components/pages/guide/GuideSideMenu";
@@ -42,12 +42,17 @@ export const GuidePage = () => {
 }
 
 const StyleWrap = styled.div`
+  ${guideStyle}
   position:relative;
-  min-width:${breakpoints.tablet}px;
   .guide-inner {
     position:relative;
     width: 100%;
     padding-left:300px;
   }
-  ${guideStyle}
+  ${media.mo}{
+    .guide-inner {
+      padding:0;
+    }
+  }
+
 `;

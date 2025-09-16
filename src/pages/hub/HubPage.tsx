@@ -9,9 +9,7 @@ const SIDESIZE = 200;
 export const HubPage = () => {
   return( 
     <StyleWrap $sideWidth={SIDESIZE} className="hub">
-      <SideLayout $sideWidth={SIDESIZE}>
-        <HubSideMenu />
-      </SideLayout>
+      <HubSideMenu $sideWidth={SIDESIZE}/>
       <div className="hub-inner">
         <div className="hub-heading">
           <h3 className="title">환영합니다! </h3>
