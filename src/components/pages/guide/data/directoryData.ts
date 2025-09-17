@@ -97,7 +97,7 @@ export const directoryData  = [
         id:'pages',
         title:'/pages',
         type:'folder',
-        descList:'router에 설정된 page 컴포넌트 파일을 관리하고 파일명 마지막에는 Page를 붙인다.',
+        desc:'router에 설정된 page 컴포넌트 파일을 관리하고 파일명 마지막에는 Page를 붙인다.',
       },
       {
         id:'recoil',
