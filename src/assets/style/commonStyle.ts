@@ -129,18 +129,17 @@ export const commonStyle = `
     from { opacity:1; transform: translate(-50%, -50%); }
     to { opacity:0; transform: translate(-50%, calc(-50% + 10px)); }
   }
-  .ellipsis {
-    width:100%;
-    white-space: nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
   ${media.mo}{
     .pc-br, pc-only{
       display:none;
     }
     .m-br, m-only{
       display:block;
+    }
+    .name-tag {
+      padding:3px 5px;
+      font-size:11px;
+      font-weight:300;
     }
   }
 `;

@@ -1,4 +1,4 @@
-import { colors } from "assets/style/variables";
+import { colors, media } from "assets/style/variables";
 import styled from "styled-components"
 import { TitlePointPropsType } from "types/ui";
 
@@ -78,5 +78,9 @@ const StyleWrap = styled.div<StyleWrapPropsType>`
         content:'';
       }
     }
+  }
+  
+  ${media.mo}{
+    
   }
 `;

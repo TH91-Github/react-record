@@ -1,10 +1,16 @@
 import { atom } from 'recoil';
+import { isMobileSizeChk } from 'utils/common';
 
 //  📍recoil - UI 관련 값 사용
 // 작업 환경 및 관리자 모드
 export const stateDevMode= atom({
   key: 'dev mode',  
   default: false,     
+});
+
+export const stateIsMobile = atom({
+  key: 'mobile check',
+  default: isMobileSizeChk() ? true : false,
 });
 
 // header 높이

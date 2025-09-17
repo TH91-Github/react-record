@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { TitlePointPropsType } from "types/ui";
 import { InnerHTML } from "./InnerHTML";
 import { TitlePoint } from "./TitlePoint";
+import { media } from "assets/style/variables";
 
 interface TitleDescPropsType extends TitlePointPropsType{ 
   desc?: string | string[];
@@ -45,5 +46,12 @@ export const TitleHeading = ({
 const StyleWrap = styled.div`
   p, .bullet-lists{
     margin-top:20px;
+  }
+  ${media.mo}{
+    .bullet-lists{
+      .desc {
+        font-size:14px;
+      }
+    }
   }
 `;

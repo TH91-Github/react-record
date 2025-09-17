@@ -1,5 +1,4 @@
 import { useGuideLocation } from "hooks/guide/useGuideHook";
-import styled from "styled-components";
 import { formatText } from "utils/textUtils";
 
 interface GuidePageHeadingPropsType {
@@ -8,20 +7,13 @@ interface GuidePageHeadingPropsType {
 export const GuidePageHeading = ({children}:GuidePageHeadingPropsType) => {
   const {locationData} = useGuideLocation();
   return (
-    <StyleWrap className="header-wrap">
+    <div className="guide-header">
       <div className="header-inner">
         <div className="headding">
           <h2 className="name-tag">{formatText(locationData?.path ?? 'category')}</h2>
         </div>
         {children}
       </div>
-    </StyleWrap>
+    </div>
   ) 
 }
-const StyleWrap = styled.div`
-  .header-inner{
-    max-width:1140px;
-    margin:0 auto;
-    padding: 30px 30px 0;
-  }  
-`;

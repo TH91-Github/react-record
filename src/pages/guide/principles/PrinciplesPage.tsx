@@ -1,4 +1,4 @@
-import { bgShadow, breakpoints } from "assets/style/variables";
+import { bgShadow, breakpoints, media } from "assets/style/variables";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
@@ -11,13 +11,13 @@ export const PrinciplesPage = () => {
 }
 
 const StyleWrap = styled.div`
-  .header-wrap{
+  .principles-header {
     box-shadow:${bgShadow.base};
-    .header-inner{
-      padding:30px;
-      max-width:${breakpoints.tablet}px;
-      margin:0 auto;
-    }
+  }
+  .principles-inner{
+    padding:30px;
+    max-width:${breakpoints.tablet}px;
+    margin:0 auto;
     .title {
       margin-top:20px;
       & > span {
@@ -33,5 +33,26 @@ const StyleWrap = styled.div`
       }
     }
   }
-  
+  ${media.mo} {
+    .principles-inner{
+      padding:30px 20px;
+      .heading{
+        text-align:center;
+      }
+      .title {
+        margin-top:15px;
+        & > span {
+          font-size:24px;
+          line-height:32px;
+        }
+      }
+      .desc {
+        margin-top:15px;
+        & > span{
+          display:block;
+          font-size:14px;
+        }
+      }
+    }
+  }
 `;

@@ -4,12 +4,15 @@ import { breakpointsData } from "components/pages/guide/data/designData";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";
 import { useToast } from "hooks/useToast";
+import { useRecoilValue } from 'recoil';
+import { stateIsMobile } from 'recoilStore/atoms';
 import styled from "styled-components";
 import { copyClipboard } from "utils/common";
 
 
 export const BreakpointsPage = () => {
   const {headData, bodyData} = breakpointsData;
+  const isMobile = useRecoilValue(stateIsMobile);
   const { addToast } = useToast();
 
   const handleClickCopy = async (e:string) => {
@@ -26,7 +29,7 @@ export const BreakpointsPage = () => {
         titleTag="h3"
         titleText={headData.title} 
         pointer="underline"
-        $fontSize={28}
+        $fontSize={!isMobile? 28 : 20}
         desc={headData.desc}
       />
       <div className="section-wrap">

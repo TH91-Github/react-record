@@ -3,8 +3,8 @@ import { DirectoryContent } from "components/pages/guide/principles/directoryStr
 export const DirectoryStructurePage = () => {
   return (
     <div className="directory-structure">
-      <div className="header-wrap">
-        <div className="header-inner">
+      <div className="principles-header">
+        <div className="principles-inner">
           <div className="heading">
             <h2 className="name-tag">Directory Structure</h2>
             <h3 className="title">

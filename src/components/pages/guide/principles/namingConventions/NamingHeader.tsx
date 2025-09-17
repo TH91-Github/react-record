@@ -1,4 +1,4 @@
-import { colors } from "assets/style/variables";
+import { colors, ellipsisStyle, media } from "assets/style/variables";
 import Carousel from "components/common/Carousel";
 import { useFixedData } from "hooks/useDataProcessing";
 import styled from "styled-components";
@@ -19,8 +19,8 @@ export const NamingHeader = ({selectNaming, updateNaming}:NamingHeaderPropsType)
     updateNaming(selectNaming === id ? null : id);
   }
   return(
-    <StyleWrap className="header-wrap">
-      <div className="header-inner">
+    <StyleWrap className="principles-header">
+      <div className="principles-inner">
         <div className="heading">
           <h2 className="name-tag">Naming Conventions</h2>
           <h3 className="title">
@@ -37,18 +37,39 @@ export const NamingHeader = ({selectNaming, updateNaming}:NamingHeaderPropsType)
         </div>
         <div className="category-lists">
           {namingCategory ? (
-            <Carousel carouselOpt={{direction:'vertical', slidesPerView:'auto', spaceBetween:15, mousewheel:true}} >
+            <Carousel 
+              carouselOpt={{
+              direction: 'vertical',
+              slidesPerView: 'auto',
+              spaceBetween: 15,
+              mousewheel: true,
+              breakpoints: {
+                0: {
+                  direction: 'horizontal',
+                  slidesPerView: 'auto',
+                  spaceBetween: 10,
+                  mousewheel: false,
+                },
+                768: {
+                  direction: 'vertical',
+                  slidesPerView: 'auto',
+                  spaceBetween: 15,
+                  mousewheel: true,
+                },
+              },
+            }}
+            >
               { namingCategory.map((namingItem,idx) => (
-                  <div 
-                    className={`category-item ${selectNaming === namingItem.id? 'selected': ''} `}
-                    key={idx}>
-                    <button 
-                      type="button" 
-                      className="category-btn"
-                      onClick={() => handleClick(namingItem.id)}>
-                        <span>{namingItem.title}</span>
-                      </button>
-                  </div>
+                <div 
+                  className={`category-item ${selectNaming === namingItem.id? 'selected': ''} `}
+                  key={idx}>
+                  <button 
+                    type="button" 
+                    className="category-btn"
+                    onClick={() => handleClick(namingItem.id)}>
+                      <span>{namingItem.title}</span>
+                    </button>
+                </div>
               ))}
             </Carousel >
           ) : (
@@ -62,7 +83,7 @@ export const NamingHeader = ({selectNaming, updateNaming}:NamingHeaderPropsType)
   )
 }
 const StyleWrap = styled.div`
-  .header-inner{
+  .principles-inner{
     display:flex;
     position:relative;
     width:100%:
@@ -105,5 +126,31 @@ const StyleWrap = styled.div`
   .error-item{
     padding:30px;
     text-align:center;
+  }
+
+  ${media.mo} {
+    .principles-inner{
+      display:block;
+    }
+    .heading{
+      width:100%;
+    }
+    .category-lists{
+      position:relative;
+      width:100%;
+      margin-top:20px;
+      padding:0;
+    }
+    .swiper-slide{
+      width:auto;
+    }
+    .category-btn{
+      display:inline-block;
+      width:auto;
+      padding:8px 10px;
+      & > span {
+        ${ellipsisStyle(1,14)};
+      }
+    }
   }
 `;

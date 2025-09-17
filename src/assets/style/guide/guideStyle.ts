@@ -1,8 +1,8 @@
-import { breakpoints, colors } from "../variables";
+import { breakpoints, colors, media } from "../variables";
 
 // 특정 요소 공통 style  
 export const guideStyle = `
-  .hadeer-inner{
+  .header-inner{
     overflow:hidden;
     max-width:${breakpoints.tablet}px;
     margin:0 auto;
@@ -24,6 +24,14 @@ export const guideStyle = `
       & + .desc {
         margin-top:8px;
       }
+    }
+  }
+  ${media.mo}{
+    .header-inner{
+      padding:30px 20px 0;
+    }
+    .content-wrap{
+      padding:30px 20px;
     }
   }
 `;

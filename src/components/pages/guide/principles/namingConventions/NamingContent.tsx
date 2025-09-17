@@ -1,7 +1,9 @@
-import { colors } from "assets/style/variables";
+import { colors, media } from "assets/style/variables";
 import { SvgTistory } from "assets/svg/BrandLogo";
 import { TitlePoint } from "components/ui/TitlePoint";
 import { useMemo } from "react";
+import { useRecoilValue } from "recoil";
+import { stateIsMobile } from "recoilStore/atoms";
 import styled from "styled-components";
 import { namingConventionsData as baseData, namingData } from "../../data/namingData";
 
@@ -9,6 +11,7 @@ interface NamingContentPropsType {
   selectNaming: null | string;
 }
 export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
+  const isMobile = useRecoilValue(stateIsMobile);
 
   const selectNamingData = useMemo(()=> {
     return namingData.find(namingItem => namingItem.id === selectNaming) || null;
@@ -26,7 +29,7 @@ export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
             titleTag="h4"
             titleText={baseData.title}
             pointer="underline"
-            $fontSize={28}
+            $fontSize={!isMobile? 28 : 20}
           />
           { baseData.url && (
             <a href={baseData.url} target="_blank" rel="noopener noreferrer" className="icon-link" title="티스토리 글 보러가기">
@@ -61,39 +64,40 @@ export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
           ))}
         </ul>
       </div>
-        { selectNamingData && (
-          <div key={selectNaming} className={`naming-select fade-up`} >
-            <div  className="select-heading">
-              <TitlePoint 
-                titleText={selectNamingData.title} 
-                pointer="underline"
-                $fontSize={28}
-              />
-              <ul className="desc-lists bullet-lists">
-                {selectNamingData.desc.map((descItem, descIdx) => (
-                  <li key={descIdx} className="desc circle">{descItem}</li>
-                ))}
-              </ul>
-              {
-                selectNamingData.section?.map((sectionItem, sectionItemIdx)=>(
-                  <div className="section" key={sectionItemIdx}>
-                    <TitlePoint 
-                      titleText={sectionItem.sectionTit}
-                      pointer="circle" 
-                      $fontSize={20}
-                    />
-                    { sectionItem.lists.map((listsItem, listsItemIdx) => (
-                      <div key={listsItemIdx} className="section-item">
-                        <p className="s-tit">{`${(listsItemIdx+1)}. ${listsItem.tit}`}</p>
-                        <p className="desc">{listsItem.desc}</p>
-                      </div>
-                    ))}
-                  </div>
-                ))
-              }
-            </div>
+      {/* 캐러셀 - 네이밍 카테고리 클릭 시 */}
+      { selectNamingData && (
+        <div key={selectNaming} className={`naming-select fade-up`} >
+          <div  className="select-heading">
+            <TitlePoint 
+              titleText={selectNamingData.title} 
+              pointer="underline"
+              $fontSize={!isMobile? 28 : 20}
+            />
+            <ul className="desc-lists bullet-lists">
+              {selectNamingData.desc.map((descItem, descIdx) => (
+                <li key={descIdx} className="desc circle">{descItem}</li>
+              ))}
+            </ul>
+            {
+              selectNamingData.section?.map((sectionItem, sectionItemIdx)=>(
+                <div className="section" key={sectionItemIdx}>
+                  <TitlePoint 
+                    titleText={sectionItem.sectionTit}
+                    pointer="circle" 
+                    $fontSize={20}
+                  />
+                  { sectionItem.lists.map((listsItem, listsItemIdx) => (
+                    <div key={listsItemIdx} className="section-item">
+                      <p className="s-tit">{`${(listsItemIdx+1)}. ${listsItem.tit}`}</p>
+                      <p className="desc">{listsItem.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              ))
+            }
           </div>
-        )}
+        </div>
+      )}
     </StyleWrap>
   )
 }
@@ -172,6 +176,52 @@ const StyleWrap = styled.div`
         margin-top:5px;
         font-size:14px;
         font-weight:400;
+      }
+    }
+  }
+  ${media.mo}{
+    .icon-link{
+      margin-top:15px;
+    }
+    .base-lists{
+      & > li {
+        width:100%;
+        & > .tit{
+          font-size:18px;
+          & > span { 
+            font-size:14px;
+          }
+        }
+      }
+      .bullet-lists{
+        margin-top: 15px;
+        .desc {
+          font-size:14px;
+        }
+      }
+    }
+    .examples-box{
+      gap:5px;
+      line-height:14px;
+      .tit {
+        font-size:14px;
+      }
+      .code-lists{
+        code{
+          font-size:12px;
+        }
+      }
+    }
+    .naming-select{
+      .desc-lists{
+        margin-top: 15px;
+      }
+      .section{
+        margin-top:15px;
+        padding-top:15px;
+      }
+      .section-item{
+        padding-left:10px;
       }
     }
   }

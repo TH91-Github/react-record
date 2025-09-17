@@ -229,36 +229,7 @@ const StyleWrap = styled.div`
     font-size:14px;
     color:#fff;
   }
-  @keyframes left-1-Ani {
-    0%{ transform:translate(-60px, -50%);}
-    20% {transform:translate(-50px, -50%);}
-    90% {transform:translate(1px, -50%);}
-    100%{transform:translate(1px, -50%) scale(0);}
-  }
-  @keyframes left-2-Ani {
-    0%{ transform:translate(-90px, -50%); }
-    20% { transform:translate(-80px, -50%); }
-    90% { transform:translate(1px, -50%);}
-    100% { transform:translate(1px, -50%) scale(0);}
-  }
-  @keyframes right-1-Ani {
-    0%{  transform:translate(60px, -50%);}
-    20% { transform:translate(50px, -50%);}
-    90% { transform:translate(-1px, -50%);}
-    100% { transform:translate(-1px, -50%) scale(0);}
-  }
-  @keyframes right-2-Ani {
-    0%{  transform:translate(90px, -50%); }
-    20% {transform:translate(80px, -50%); }
-    90% {transform:translate(-1px, -50%);}
-    100% {transform:translate(-1px, -50%) scale(0);}
-  }
-  @keyframes top-Ani {
-    0%{ transform:translate(-50%, 60px); }
-    20% { transform:translate(-50%, 50px);}
-    90% { transform:translate(-50%, -1px);}
-    100% { transform:translate(-50%, -1px) scale(0);}
-  }
+  
   ${media.tabletPc}{
     .design-box{
       z-index:2;
@@ -334,6 +305,9 @@ const StyleWrap = styled.div`
         to { opacity:1; transform: translate(-50%, calc(-50% - 50px)) rotate(45deg); }
       }
     }
+    .link-item{
+      position:absolute;
+    }
     .link-box {
       position:absolute;
       top:50%;
@@ -342,8 +316,9 @@ const StyleWrap = styled.div`
       height:250px;
       transform: translate(-50%, -50%);
     }
+  }
+  ${media.pc}{
     .link-item{
-      position:absolute;
       &.principles{
         top:-20px;
         right:calc(100% + 50px);
@@ -457,6 +432,36 @@ const StyleWrap = styled.div`
         }
       }
     }
+    @keyframes left-1-Ani {
+      0%{ transform:translate(-60px, -50%);}
+      20% {transform:translate(-50px, -50%);}
+      90% {transform:translate(1px, -50%);}
+      100%{transform:translate(1px, -50%) scale(0);}
+    }
+    @keyframes left-2-Ani {
+      0%{ transform:translate(-90px, -50%); }
+      20% { transform:translate(-80px, -50%); }
+      90% { transform:translate(1px, -50%);}
+      100% { transform:translate(1px, -50%) scale(0);}
+    }
+    @keyframes right-1-Ani {
+      0%{  transform:translate(60px, -50%);}
+      20% { transform:translate(50px, -50%);}
+      90% { transform:translate(-1px, -50%);}
+      100% { transform:translate(-1px, -50%) scale(0);}
+    }
+    @keyframes right-2-Ani {
+      0%{  transform:translate(90px, -50%); }
+      20% {transform:translate(80px, -50%); }
+      90% {transform:translate(-1px, -50%);}
+      100% {transform:translate(-1px, -50%) scale(0);}
+    }
+    @keyframes top-Ani {
+      0%{ transform:translate(-50%, 60px); }
+      20% { transform:translate(-50%, 50px);}
+      90% { transform:translate(-50%, -1px);}
+      100% { transform:translate(-50%, -1px) scale(0);}
+    }
   }
   ${media.tablet}{
     .about-inner{
@@ -495,17 +500,173 @@ const StyleWrap = styled.div`
       }
     }
     .link-box{
-      width:180px;
-      height:180px;
+      width:150px;
+      height:150px;
     }
-    
-  }
 
+    .link-item{
+      &.principles{
+        top:-10px;
+        right:calc(100% + 30px);
+        .link-btn {
+          &::before{
+            top:50%;
+            left:100%;
+            width:40px;
+          }
+          &::after{
+            left:calc(100% + 35px);
+            transform:translate(0, -50%);
+            animation: left-1-Ani 5s 1s linear infinite both;
+          }
+        }
+      }
+      &.design{
+        top:55px;
+        right:calc(100% + 80px);
+        .link-btn {
+          &::before{
+            top:50%;
+            left:100%;
+            width:80px;
+          }
+          &::after{
+          left:calc(100% + 80px);
+          animation: left-2-Ani 5s 1.3s linear infinite both;
+          }
+        }
+      }
+      &.ui {
+        top:130px;
+        right:calc(100% + 30px);
+        .link-btn {
+          &::before{
+            top:20%;
+            left:100%;
+            width:40px;
+          }
+          &::after{
+            top:20%;
+            left:calc(100% + 35px);
+            animation: left-1-Ani 5s 1.7s linear infinite both;
+          }
+        }
+      }
+      &.components{
+        top:-10px;
+        left: calc(100% + 30px);
+        .link-btn {
+          &::before{
+            top:50%;
+            right:100%;
+            width:40px;
+          }
+          &::after{
+            right:calc(100% + 35px);
+            animation: right-1-Ani 5s 1.5s linear infinite both;
+          }
+        }
+      }
+      &.hooks {
+        top:55px;
+        left: calc(100% + 80px);
+        .link-btn {
+          &::before{
+            top:50%;
+            right:100%;
+            width:80px;
+          }
+            &::after{
+            right:calc(100% + 80px);
+            animation: right-2-Ani 5s 1.6s linear infinite both;
+          }
+        }
+      }
+
+      &.utils{
+        top:130px;
+        left: calc(100% + 30px);
+        .link-btn {
+          &::before{
+            top:10%;
+            right:100%;
+          }
+          &::after{
+            top:10%;
+            right:calc(100% + 35px);
+            animation: right-1-Ani 5s 1.2s linear infinite both;
+          }
+        }
+      }
+      &.settings{
+        top:calc(100% + 50px);
+        left:50%;
+        background:#fff;
+        transform: translateX(-50%);
+        .link-btn {
+          &::before{
+            top:auto;
+            bottom:100%;
+            width:1px;
+            height:50px;
+            border-top:0;
+            border-right:1px dashed ${colors.lineColor};
+          }
+          &::after{
+            top:auto;
+            left:50%;
+            margin-left:1px;
+            bottom:calc(100% + 45px);
+            animation: top-Ani 5s 1.4s linear infinite both;
+          }
+        }
+      }
+    }
+    .link-btn{
+      padding:5px;
+      .icon {
+        width:20px;
+        height:20px;
+      }
+    }
+    @keyframes left-1-Ani {
+      0%{ transform:translate(-50px, -50%);}
+      20% {transform:translate(-40px, -50%);}
+      90% {transform:translate(1px, -50%);}
+      100%{transform:translate(1px, -50%) scale(0);}
+    }
+    @keyframes left-2-Ani {
+      0%{ transform:translate(-90px, -50%); }
+      20% { transform:translate(-80px, -50%); }
+      90% { transform:translate(5px, -50%);}
+      100% { transform:translate(5px, -50%) scale(0);}
+    }
+    @keyframes right-1-Ani {
+      0%{  transform:translate(50px, -50%);}
+      20% { transform:translate(40px, -50%);}
+      90% { transform:translate(-1px, -50%);}
+      100% { transform:translate(-1px, -50%) scale(0);}
+    }
+    @keyframes right-2-Ani {
+      0%{  transform:translate(90px, -50%); }
+      20% {transform:translate(80px, -50%); }
+      90% {transform:translate(-1px, -50%);}
+      100% {transform:translate(-1px, -50%) scale(0);}
+    }
+    @keyframes top-Ani {
+      0%{ transform:translate(-50%, 60px); }
+      20% { transform:translate(-50%, 50px);}
+      90% { transform:translate(-50%, -1px);}
+      100% { transform:translate(-50%, -1px) scale(0);}
+    }
+  }
+  
   ${media.mo}{
     .about-inner {
-      padding:40px 15px;
+      padding:30px 20px;
     }
     .about-header{
+      margin-top:10px;
       .title{ 
         font-size:32px;
       }

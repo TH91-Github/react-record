@@ -163,10 +163,16 @@ export const breakpointsData : BreakpointsDataType = {
           code:'1920',
         },
         {
-          id:'breakpoints-pc',
-          title:'pc',
+          id:'breakpoints-largePc',
+          title:'largePc',
           desc:['Desktop 기준 사이즈','노트북 및 데스크탑에 최적화'],
           code:'1440',
+        },
+        {
+          id:'breakpoints-pc',
+          title:'pc',
+          desc:['일반적인 노트북 및 중형 데스크탑 기준 사이즈','1440보다 작은 해상도 환경에 최적화'],
+          code:'1140',
         },
         {
           id:'breakpoints-tablet',
@@ -201,11 +207,20 @@ export const breakpointsData : BreakpointsDataType = {
           },
         },
         {
+          id:'media-largePc',
+          title:'largePc',
+          desc:['pc만 사용 ','@media screen and (min-width:1440px)'],
+          media:{
+            min: 1440,
+            max: null
+          },
+        },
+        {
           id:'media-pc',
           title:'pc',
           desc:['데스크탑 시작 ','@media screen and (min-width:1440px)'],
           media:{
-            min: 1440,
+            min: 1140,
             max: null
           },
         },
