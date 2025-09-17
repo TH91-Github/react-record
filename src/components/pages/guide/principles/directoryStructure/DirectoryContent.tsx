@@ -49,7 +49,6 @@ const StyleWrap = styled.div`
   }
   .directory-heading{
     display:flex;
-    align-items:center;
     gap:10px;
     .desc{
       font-size:14px;

@@ -1,5 +1,6 @@
 import { memo } from "react";
 import styled from "styled-components"
+import { cn } from "utils/common";
 
 export interface TreeItemType {
   title: string;
@@ -27,9 +28,10 @@ export const TreeLists = <T extends TreeItemType>({
 
   return(
     <StyleWrap
-      className={`tree-lists ${depth === 0 ? "default" : `depth-${depth}`} ${children ? "custom" : ""} ${
-        firstStart ? "first" : ""
-      }`}
+      className={cn(
+        'tree-lists', depth === 0 ? 'default':`depth-${depth}`,
+        children && 'custom', firstStart && 'first'
+      )}
       $styleGap={$styleGap}
     >
       {data.map((item, idx) => {
@@ -43,7 +45,7 @@ export const TreeLists = <T extends TreeItemType>({
         if (children) {
           const { content, customClass } = children(item, childrenContent);
           return (
-            <li key={idx} className={`tree-item ${customClass ? customClass : ""}`}>
+            <li key={idx} className={cn('tree-item',customClass && customClass, !childrenContent && 'last-child' )}>
               {content}
             </li>
           );
@@ -59,6 +61,8 @@ export const TreeLists = <T extends TreeItemType>({
     </StyleWrap>
   )
 }
+
+// ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 두번째 tree-item - 위치가 20이 아니라 더 늘려야함
 
 // memo로 감싸는 경우 제네릭 타입을 유지하기 위해서는 as 키워드를 사용해 명시적으로 타입 지정.
 export const MemoTreeLists = memo(TreeLists) as <T extends TreeItemType>(
@@ -96,7 +100,7 @@ const StyleWrap = styled.ul<StyleWrapPropsType>`
       }
       &:last-child {
         &::before {
-          height:50%;
+          height:20px;
           content:''
         }
       }
