@@ -9,10 +9,9 @@ export const ToastViewPage = () => {
   const { addToast } = useToast();
 
   const handleCaseClick = (message?:string, type?:'base' | 'success' | 'error', timer?:number) =>{
-
     addToast(message, type, timer)
   }
-
+  console.log('components')
   return(
     <StyleWrap className="view-wrap tab-button">
       <div className="view-item">

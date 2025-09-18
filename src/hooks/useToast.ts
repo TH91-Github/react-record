@@ -1,4 +1,4 @@
-import { useRecoilCallback } from 'recoil';
+import { useRecoilCallback, useRecoilValue } from 'recoil';
 import { toastState } from 'recoilStore/componentsAtoms';
 import { ToastItem } from 'types/recoil';
 
@@ -60,6 +60,11 @@ export const useToast = () => {
     },
     []
   );
-
   return { addToast, removeToast, clearToasts };
+};
+
+// 🔹 recoil 구독 부모 리렌더링 방지(생성, 애니메이션, 삭제 시)
+export const useToastList = () => {
+  const { toasts } = useRecoilValue(toastState);
+  return toasts;
 };

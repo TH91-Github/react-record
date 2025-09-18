@@ -1,12 +1,12 @@
 import { colors } from "assets/style/variables";
 import { IconCheck } from "assets/svg/icons";
-import { useToastList } from "hooks/useToastList";
+import { useToastList } from "hooks/useToast";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 import { cn } from "utils/common";
 
 // 🔹 Toast 
-export const Toast = () => {
+export const Toasts = () => {
   const toasts = useToastList();
 
   return createPortal(

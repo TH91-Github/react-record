@@ -1,5 +1,5 @@
 import { ResizeHandle } from "components/common/ResizeHandle"
-import { Toast } from "components/common/Toast"
+import { Toasts } from "components/common/Toasts"
 import { LoginStatusCheck } from "components/features/auth/LoginStatusCheck"
 import { AlertModule } from "components/modules/AlertModule"
 
@@ -10,7 +10,7 @@ export const HighLayout = () => {
     <>
       <ResizeHandle />
       <AlertModule />
-      <Toast />
+      <Toasts />
       <LoginStatusCheck />
     </>
   )
