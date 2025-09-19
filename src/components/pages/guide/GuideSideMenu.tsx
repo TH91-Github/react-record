@@ -1,12 +1,10 @@
-import { bgColor, colors, media } from "assets/style/variables";
+import { media } from "assets/style/variables";
 import { SvgCube } from "assets/svg/Common";
-import { SearchModule } from "components/modules/SearchModule";
-import useToggle from "hooks/useToggle";
+import { NavLink } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { stateUserColor } from "recoilStore/userAtoms";
 import styled from "styled-components";
 import { GuideNav } from "./GuideNav";
-import { NavLink } from "react-router-dom";
 
 export const GuideSideMenu = () => {
   const pointColor = useRecoilValue(stateUserColor); 

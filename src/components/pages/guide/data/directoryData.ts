@@ -53,13 +53,13 @@ export const directoryData  = [
             id:'components-features',
             title:'/features',
             type:'folder',
-            desc:'도메인 개념이 있으며 독립적 페이지나 흐름 구성 가능, 로직 + UI + 상태 관리 포함 가능',
+            desc:'독립적 구성 기능, 로직 + UI + 상태 관리 등',
           },
           {
             id:'components-layout',
             title:'/layout',
             type:'folder',
-            desc:'header, content, footer, 전체를 감싸는 레이아웃 컴포넌트',
+            desc:'header, content, footer 전체를 감싸는 레이아웃 컴포넌트',
           },
           {
             id:'components-modules',
@@ -161,6 +161,12 @@ export const directoryData  = [
         type:'folder',
         desc:'유틸리티 함수 - 반복, 로직 재활용 가능한 함수',
         children:[
+          {
+            id:'utils-auth',
+            title:'/auth',
+            type:'ts',
+            desc:'사용자 인증 권한 설정',
+          },
           {
             id:'utils-common',
             title:'/common',

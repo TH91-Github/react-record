@@ -24,7 +24,7 @@ export const NamingHeader = ({selectNaming, updateNaming}:NamingHeaderPropsType)
         <div className="heading">
           <h2 className="name-tag">Naming Conventions</h2>
           <h3 className="title">
-            <span>네이밍 규칙 + 작성 가이드</span>
+            <span>네이밍 규칙 & 작성 가이드</span>
             <span>코드의 명확성과 일관성을 위해</span>
             <span><span className="color">규칙</span> 가이드로 통일하기</span>
           </h3>

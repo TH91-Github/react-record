@@ -7,6 +7,7 @@ import { RootState } from "reduxStore/store";
 import styled from "styled-components"
 import { signOut } from "firebase/auth";
 import { Modal } from "components/common/Modal";
+import { media } from "assets/style/variables";
 
 // 로그인 on/off
 export const UserMenu = () => {
@@ -37,7 +38,7 @@ export const UserMenu = () => {
       {!isLogin
         ?
         <div className="login">
-          <NavLink to={'/member'} title="로그인하기">
+          <NavLink to={'/member'} title="로그인하기" className="btn-login">
             <IconUser />
           </NavLink>
         </div>
@@ -98,10 +99,26 @@ export const UserMenu = () => {
   )
 }
 const StyleWrap = styled.div`
+  .login{
+    display:flex;
+    align-items:center;
+    .btn-login{
+      display:inline-block;
+      width:20px;
+      height:20px;
+      & > svg { 
+        width:100%;
+        height:100%;
+      }
+    }
+  }
   .user{
     display:flex;
     align-items:center;
     gap:5px;
+    .tit{
+      line-height:1;
+    }
   }
   .btn-logout{
     position:relative;
@@ -111,6 +128,9 @@ const StyleWrap = styled.div`
       width:100%;
       height:100%;
     }
+  }
+  ${media.mo}{
+
   }
 `;
 

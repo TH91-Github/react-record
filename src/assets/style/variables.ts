@@ -68,7 +68,7 @@ export const bgColor = {
 
 }
 export const bgOpacity = { 
-  white: `rgba(255,255,255,.7)`,
+  white: `rgba(255,255,255,.8)`,
 }
 export const bgShadow = {
   base: 'rgba(17,19,32,0.2) 1px 1px 6px;',

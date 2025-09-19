@@ -24,17 +24,16 @@ export const SideLayout = ({
 }:SideLayoutPropsType) => {
   const location = useLocation();
   const headerHeight = useRecoilValue(stateHeaderHeight);
-  const [isMoOpen, useisMoOpen] = useToggle(false);
+  const [isMoOpen, setIsMoOpen] = useToggle(false);
 
   useEffect(()=>{
     if(isMoOpen){
-      useisMoOpen();
-      console.log('ㅇㅇ')
+      setIsMoOpen();
     }
   },[location])
 
   const handleMoOpen = () => {
-    useisMoOpen();
+    setIsMoOpen();
   }
   return (
     <StyleWrap 
