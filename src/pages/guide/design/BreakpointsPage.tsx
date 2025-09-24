@@ -1,5 +1,5 @@
 import ImgArrow from 'assets/images/svg/arrow.svg';
-import { bgOpacity, bgShadow, colors, textColor } from "assets/style/variables";
+import { bgOpacity, bgShadow, colors, media, textColor } from "assets/style/variables";
 import { breakpointsData } from "components/pages/guide/data/designData";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";
@@ -89,11 +89,15 @@ const StyleWrap = styled.div`
     flex-wrap:wrap;
     gap:20px;
     margin-top:30px;
+    & > li {
+      position:relative;
+      width:150px;
+    }
   }
   .breakpoint-item{
     overflow:hidden;
     position:relative;
-    width:150px;
+    width:100%;
     border-radius:5px;
     box-shadow:${bgShadow.base};
     .breakpoint-view{
@@ -122,6 +126,14 @@ const StyleWrap = styled.div`
       transition: border-color var(--transition);
       &:hover, &:focus {
         border-color: ${colors.lineBlack};
+      }
+    }
+  }
+  ${media.mo}{
+    .breakpoint-lists {
+      gap:10px;
+      & > li {
+        width:calc((100% - 10px)/2);
       }
     }
   }

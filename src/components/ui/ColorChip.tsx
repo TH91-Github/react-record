@@ -1,4 +1,4 @@
-import { bgOpacity, bgShadow, colors, textShadow } from "assets/style/variables";
+import { bgOpacity, bgShadow, colors, media, textShadow } from "assets/style/variables";
 import { useToast } from "hooks/useToast";
 import styled from "styled-components";
 import { ColorChipListsType } from "types/ui";
@@ -55,6 +55,17 @@ const StyleWrap = styled.div`
     display: flex;
     flex-wrap:wrap;
     gap:20px;
+    & > li {
+      width:150px;
+    }
+  }
+  ${media.mo}{
+    & > ul {
+      gap:10px;
+      & > li {
+        width:calc((100% - 10px) / 2);
+      }
+    }
   }
 `;
 
@@ -65,7 +76,7 @@ type ColorChipItemType = {
 const ColorChipItem = styled.div<ColorChipItemType>`
   overflow:hidden;
   position:relative;
-  width:150px;
+  width:100%;
   border-radius:5px;
   box-shadow:${bgShadow.base};
   .color-bg{

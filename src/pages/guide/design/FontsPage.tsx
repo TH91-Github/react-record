@@ -1,4 +1,4 @@
-import { colors } from "assets/style/variables";
+import { colors, media } from "assets/style/variables";
 import { InputText } from "components/common/InputText";
 import { fontsData } from "components/pages/guide/data/designData";
 import { TitleHeading } from "components/ui/TitleHeading";
@@ -38,7 +38,7 @@ export const FontsPage = () => {
             $fontSize={20}
           />
           <div className="text-change">
-            <p className="tit">확인하고 싶은 글자 <br />미리보기 </p>
+            <p className="tit">확인하고 싶은 글자 <br className="pc-br"/>미리보기 </p>
             <InputText 
               id="font-input"
               changeEvent={handleChange} 
@@ -90,6 +90,32 @@ const StyleWrap = styled.div`
         .tit {
           color:${colors.mSlateBlue};
         }
+      }
+    }
+  }
+  ${media.mo}{
+    .text-change{
+      flex-direction: column;
+      align-items:flex-start;
+      margin-top:20px;
+      .tit{
+        width:100%;
+      }
+      .input-item{
+        height:auto;
+      }
+    }
+    .weight-preview{
+      ul > li {
+        flex-direction: column;
+        align-items:flex-start;
+        gap:5px;
+        & > span {
+          display:block;
+        }
+      }
+      .tit{
+        font-size:14px;
       }
     }
   }

@@ -1,4 +1,4 @@
-import { colors } from "assets/style/variables";
+import { colors, ellipsisStyle, media } from "assets/style/variables";
 import { iconData } from "components/pages/guide/data/uiData";
 import { InnerHTML } from "components/ui/InnerHTML";
 import { TitleHeading } from "components/ui/TitleHeading";
@@ -104,6 +104,10 @@ const StyleWrap = styled.div`
           color:${colors.mSlateBlue};
         }
       }
+      .tit {
+        width:100%;
+        ${ellipsisStyle(1,18)}
+      }
     }
   }
   .icon-btn {
@@ -140,5 +144,16 @@ const StyleWrap = styled.div`
   }
   .icon-close {
     position:relative;
+  }
+  ${media.mo}{
+    .icon-lists {
+      gap:10px;
+      & > li {
+        width:60px;
+        .tit{
+          text-align:center;
+        }
+      }
+    }
   }
 `;
