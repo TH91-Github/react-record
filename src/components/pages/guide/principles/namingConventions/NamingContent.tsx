@@ -110,6 +110,9 @@ const StyleWrap = styled.div`
       position:absolute;
       top:0;
       opacity:0;
+      .base-heading, .base-lists{
+        display:none;
+      }
     }
   }
   .icon-link{
