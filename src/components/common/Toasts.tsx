@@ -64,8 +64,9 @@ const StyleWrap = styled.div`
       border:1px solid ${colors.lineColor};
       border-left:none;
       .icon {
-        display:flex;
-        align-items:center;
+        display:inline-block;
+        width:16px;
+        height:16px;
         color: ${colors.mSlateBlue};
       }
       .txt {
