@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { TextHighlight } from "./TextHighlight";
-import { bgColor, colors } from "assets/style/variables";
+import { bgColor, colors, ellipsisStyle } from "assets/style/variables";
 import { KeywordBaseType } from "types/common";
 
 // 🔹 검색 자동 완성 목록
@@ -15,14 +15,14 @@ export const PreviewText = ({data, matcheVal, onKeyword}: PreviewTextPropsType) 
   }
   if(matcheVal.length < 2) return null
   return (
-    <StyleWrap className="preview-wrap">
+    <StyleWrap className="preview-text">
       { data.length > 0 ? (
         <ul>
           {data.map((item, index) => (
             <li className="preview-item" key={index}>
               <button 
-                type="button" 
-                className=" ellipsis"
+                type="button"
+                className="ellipsis"
                 onClick={() => handleKeywordClick(item.keyword)}
               >
                 <TextHighlight 
@@ -66,7 +66,6 @@ transform: translateX(-50%);
     }
   }
 }
-
 .empyt-wrap{
   padding: 10px;
   font-size:14px;

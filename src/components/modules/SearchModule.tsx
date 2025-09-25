@@ -118,7 +118,6 @@ export const SearchModule = <T extends EssentialType>({
       const timer = setTimeout(() => {
         setErrorMessage('');
       }, 3000); // 3초 후 메시지 제거
-  
       return () => clearTimeout(timer); // 컴포넌트 언마운트 시 클리어
     }
   }, [errorMessage]);

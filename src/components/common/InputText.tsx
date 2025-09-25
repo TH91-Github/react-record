@@ -74,7 +74,7 @@ export const InputText = forwardRef<InputTextRefType, InputPropsType>(function I
     }
     propsTimeRef.current = setTimeout(() =>{
       changeEvent && changeEvent(value)
-    }, 300)
+    }, 100)
   },[changeEvent]);
 
   const handleValRemove = () => { // 입력 초기화

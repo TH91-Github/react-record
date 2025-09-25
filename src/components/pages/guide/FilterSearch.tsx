@@ -70,7 +70,7 @@ ${media.mo}{
   }
   .md-search{ 
     padding:0 20px;
-    .preview-wrap{
+    .preview-text{
       width:calc(100% - 40px);
     }
   }

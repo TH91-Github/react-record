@@ -34,6 +34,12 @@ h1, h2, h3, h4, h5, h6, .title {
 .m-br, m-only{
   display:none;
 }
+.ellipsis {
+  width:100%;
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
 .name-tag {
   display:inline-block;
   border-radius:5px;
