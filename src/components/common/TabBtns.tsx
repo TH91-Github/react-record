@@ -1,4 +1,4 @@
-import { colors } from "assets/style/variables";
+import { colors, media } from "assets/style/variables";
 import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import styled from "styled-components";
 import { cn } from "utils/common";
@@ -102,8 +102,6 @@ export const TabBtns = ({
     }
   }, [tabType, updateMovingStyle, isInitialized]);
 
-
-
   return (
     <StyleWrap 
       ref={tabBtnWrap}
@@ -159,6 +157,7 @@ const StyleWrap = styled.div<StyleWrapType>`
       padding:5px 10px;
       border:1px solid transparent;
       border-radius: 5px;
+      white-space: nowrap;
     }
   }
   &.basics{
@@ -206,6 +205,13 @@ const StyleWrap = styled.div<StyleWrapType>`
           color: #fff;
         }
       }
+    }
+  }
+  ${media.mo}{
+    overflow-x:auto;
+    padding-bottom:5px;
+    & > ul {
+      width: max-content;
     }
   }
 `;

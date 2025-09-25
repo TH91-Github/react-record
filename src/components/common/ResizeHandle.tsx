@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import { stateIsMobile } from "recoilStore/atoms";
 import { isMobileSizeChk } from "utils/common";
 
-// 🔹 common resize 
+// 🔹 공통 resize 함수
 export const ResizeHandle = () => {
   const [_viewport, setViewport] = useRecoilState(stateIsMobile);
 

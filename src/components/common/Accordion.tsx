@@ -147,7 +147,6 @@ const AccordionItem = ({
     return <span className="acc-tit">{jsx}</span>;
   };
 
-
   return (
     <StyleItem 
       className={cn(
@@ -190,94 +189,92 @@ interface StyleItemType {
   $sepped: number;
 }
 const StyleItem = styled.li<StyleItemType>`
+position:relative;
+.acc-btn{
+  width:100%;
+  text-align:left;
+}
+.acc-btn, .acc-tit {
+  display:inline-block;
   position:relative;
+  padding:10px 15px 10px 0;
+  line-height:1;
+  svg { 
+    max-width:30px;
+    max-height:30px;
+  }
+}
+${({$isIcon}) => $isIcon && `
+  .acc-tit {
+    padding:10px;
+  }
+`}
+&.open{
+  .acc-content{
+    display:block !important;
+  }
+}
+&.arrow{
   .acc-btn{
-    width:100%;
-    text-align:left;
+    padding-right:30px;
   }
-  .acc-btn, .acc-tit {
-    display:inline-block;
-    position:relative;
-    padding:10px 15px 10px 0;
-    line-height:1;
-    svg { 
-      max-width:30px;
-      max-height:30px;
-    }
-  }
-  ${({$isIcon}) => $isIcon && `
-    .acc-tit {
-      padding:10px;
-    }
-  `}
-  &.open{
-    .acc-content{
-      display:block !important;
-    }
-  }
-  &.arrow{
-    .acc-btn{
-      padding-right:30px;
-    }
-    &.open {
-      .acc-btn{ 
-        .arrow-icon{
-           &::before{
-            transform:rotate(-45deg);
-          }
-          &::after{
-            transform:rotate(45deg);
-          }
+  &.open {
+    .acc-btn{ 
+      .arrow-icon{
+          &::before{
+          transform:rotate(-45deg);
+        }
+        &::after{
+          transform:rotate(45deg);
         }
       }
     }
-    .arrow-icon{
-      display:block;
-      position:absolute;
-      top:50%;
-      right:10px;
-      width:10px;
-      height:10px;
-      transform:translateY(-50%);
-      &::before, &::after{
-        position:absolute;
-        top:0;
-        right:6px;
-        width:100%; 
-        height:2px;
-        border-radius:30px; 
-        background:#000; 
-        transform:rotate(-135deg);
-        transition:transform .3s ease-in-out;
-        content:'';
-      }
-      &::after{
-        right:0;
-        transform:rotate(135deg);
-      }
-    }
   }
-  &:not(.smooth) {
-    .acc-content{
-      display:none;
-    }
-  }
-  &.smooth {
-    .acc-content{
-      overflow:hidden;
-      position:relative;
-      height: 0;
-      transition: height ${({$sepped}) => $sepped}s ease-in-out;
-    }
-    .acc-inner{
+  .arrow-icon{
+    display:block;
+    position:absolute;
+    top:50%;
+    right:10px;
+    width:10px;
+    height:10px;
+    transform:translateY(-50%);
+    &::before, &::after{
       position:absolute;
       top:0;
-      width:100%;
+      right:6px;
+      width:100%; 
+      height:2px;
+      border-radius:30px; 
+      background:#000; 
+      transform:rotate(-135deg);
+      transition:transform .3s ease-in-out;
+      content:'';
+    }
+    &::after{
+      right:0;
+      transform:rotate(135deg);
     }
   }
-  
+}
+&:not(.smooth) {
+  .acc-content{
+    display:none;
+  }
+}
+&.smooth {
+  .acc-content{
+    overflow:hidden;
+    position:relative;
+    height: 0;
+    transition: height ${({$sepped}) => $sepped}s ease-in-out;
+  }
+  .acc-inner{
+    position:absolute;
+    top:0;
+    width:100%;
+  }
+}
 `;
-
 
 /*
   ※ 참고 설명

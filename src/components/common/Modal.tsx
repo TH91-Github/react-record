@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components"
 import { cn } from "utils/common";
-
+// 🔹 모달, 팝업 
 interface ModalPropsType {
   isDimmed?: boolean; // dimmed on/off EX: 2중 모달 시 
   isUnder?: boolean; // 2중 모달일 경우 딤드보다 아래로
@@ -146,80 +146,80 @@ interface StyleWrapProps {
   $autoTime:number;
 }
 const StyleWrap = styled.div<StyleWrapProps>`
-  position:fixed;
-  z-index:100;
-  top:0;
-  left:0;
-  width:100svw;
-  height:100svh;
-  text-align: ${({$align}) => $align};
-  &.modal-close{
-    pointer-events: none;
-    .modal-inner{
-      animation: fadeDownCenterAni .2s ease both;
-    }
-    .dimmed {
-      animation: fadeOutAni .2s ease both;
-    }
-  }
+position:fixed;
+z-index:100;
+top:0;
+left:0;
+width:100svw;
+height:100svh;
+text-align: ${({$align}) => $align};
+&.modal-close{
+  pointer-events: none;
   .modal-inner{
-    overflow:hidden;
-    display:flex;
-    flex-direction: column;
-    position:absolute;
-    z-index:102;
-    top:50%;
-    left:50%;
-    width:${({$width}) => $width}px;
-    min-height:50px;
-    max-width:80%;
-    padding:30px;
-    border-radius:5px;
-    background: #fff;
-    box-shadow:${bgShadow.base};
-    transform: translate(-50%, -50%);
-    animation: fadeUpCenterAni .3s .1s ease both;
-    &.under {
-      animation: fadeDownCenterAni .3s ease both;
-    }
-  }
-  .modal-cont{
-    flex-grow:1;
-    position:relative;
-  }
-  .icon-close {
-    top:10px;
-    right:10px;
-  }
-  .timer-bar{
-    display:block;
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:2px;
-    background:${colors.mSlateBlue};
-    animation: timerbarAni ${({$autoTime})=> $autoTime}s linear both;
-    transform-origin: left center;
-  }
-  @keyframes timerbarAni {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
+    animation: fadeDownCenterAni .2s ease both;
   }
   .dimmed {
-    position: absolute;
-    z-index:101;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background: rgba(0,0,0,0.5);
-    &.overlapping {
-      opacity:0;
-      background:none;
-    }
-    animation: fadeInAni .3s ease both;
+    animation: fadeOutAni .2s ease both;
   }
+}
+.modal-inner{
+  overflow:hidden;
+  display:flex;
+  flex-direction: column;
+  position:absolute;
+  z-index:102;
+  top:50%;
+  left:50%;
+  width:${({$width}) => $width}px;
+  min-height:50px;
+  max-width:80%;
+  padding:30px;
+  border-radius:5px;
+  background: #fff;
+  box-shadow:${bgShadow.base};
+  transform: translate(-50%, -50%);
+  animation: fadeUpCenterAni .3s .1s ease both;
+  &.under {
+    animation: fadeDownCenterAni .3s ease both;
+  }
+}
+.modal-cont{
+  flex-grow:1;
+  position:relative;
+}
+.icon-close {
+  top:10px;
+  right:10px;
+}
+.timer-bar{
+  display:block;
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:2px;
+  background:${colors.mSlateBlue};
+  animation: timerbarAni ${({$autoTime})=> $autoTime}s linear both;
+  transform-origin: left center;
+}
+@keyframes timerbarAni {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.dimmed {
+  position: absolute;
+  z-index:101;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.5);
+  &.overlapping {
+    opacity:0;
+    background:none;
+  }
+  animation: fadeInAni .3s ease both;
+}
 ${media.mo}{
   .modal-inner{
     width:90%;

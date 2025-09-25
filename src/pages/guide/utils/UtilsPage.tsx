@@ -20,7 +20,7 @@ export const UtilsPage = () => {
   return (
     <StyleWrap>
       <GuidePageHeading />
-      <div className="content-wrap">
+      <div className="content-wrap full">
         <TitleHeading
           $display="block"
           titleTag="h3"

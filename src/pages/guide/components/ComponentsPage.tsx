@@ -5,10 +5,13 @@ import { TitleHeading } from "components/ui/TitleHeading";
 import { useRestoreFocus } from "hooks/common";
 import { useEffect, useState } from "react";
 import { Outlet, useNavigate, useNavigationType, useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { stateIsMobile } from "recoilStore/atoms";
 import styled from "styled-components";
 
 export const ComponentsPage = () => {
   const navigate = useNavigate();
+  const isMobile = useRecoilValue(stateIsMobile);
   const navigationType = useNavigationType();
   const {beforeFocus, resetFocus} = useRestoreFocus();
   const { id } = useParams<{ id?: string }>();
@@ -44,15 +47,15 @@ export const ComponentsPage = () => {
   }
 
   return (
-    <StyleWrap>
+    <StyleWrap className="component-page">
       <GuidePageHeading />
-      <div className="content-wrap">
+      <div className="content-wrap full">
         <TitleHeading
           $display="block"
           titleTag="h3"
           titleText="Components System"
           pointer="underline"
-          $fontSize={28}
+          $fontSize={isMobile? 24 : 28}
           desc={['팝업, 검색, 리스트 등 컴포넌트 모음']}
         />
         <div className="section-wrap">
@@ -70,15 +73,18 @@ export const ComponentsPage = () => {
 }
 
 const StyleWrap = styled.div`
-  .section-wrap{
+.title-heading{
+  padding:0 30px;
+}
+.section-wrap{
+  position:relative;
+}
+.seciton-item{
+  &.view-wrap{
     position:relative;
+    z-index:2;
+    min-height:500px;
+    background:#fff;
   }
-  .seciton-item{
-    &.view-wrap{
-      position:relative;
-      z-index:2;
-      min-height:500px;
-      background:#fff;
-    }
-  }
+}
 `;

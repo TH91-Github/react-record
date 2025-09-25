@@ -31,7 +31,7 @@ export const TabSearchLists = ({
     clickEvent(ID)
   }
   return(
-    <StyleWrap>
+    <div>
       <FilterSearch 
         data={data}
         searchPlaceholder={searchPlaceholder || undefined}
@@ -41,9 +41,6 @@ export const TabSearchLists = ({
         data={filterLists}
         clickEvent={handleItemClick}
       />
-    </StyleWrap>
+    </div>
   )
 }
-const StyleWrap = styled.div`
-
-`;

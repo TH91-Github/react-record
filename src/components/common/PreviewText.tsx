@@ -3,7 +3,7 @@ import { TextHighlight } from "./TextHighlight";
 import { bgColor, colors } from "assets/style/variables";
 import { KeywordBaseType } from "types/common";
 
-// 검색 자동 완성 목록
+// 🔹 검색 자동 완성 목록
 interface PreviewTextPropsType {
   data: KeywordBaseType[];
   matcheVal:string;
@@ -37,25 +37,25 @@ export const PreviewText = ({data, matcheVal, onKeyword}: PreviewTextPropsType) 
 }
 
 const StyleWrap = styled.div`
-  overflow: hidden;
-  position:absolute;
-  z-index:5;
-  top:calc(100% + 5px);
-  left:0;
-  width:100%;
-  border-radius:5px;
-  background-color: #fff;
-  border: 1px solid ${colors.lineColor};
-  max-height: 300px;
-  .preview-item {
-    button {
-      padding: 10px;
-      font-size:14px;
-      transition: background-color var(--transition);
-      text-align: left;
-      &:hover, &:focus { 
-        background:${bgColor.sideWite};
-      }
+overflow: hidden;
+position:absolute;
+z-index:5;
+top:calc(100% + 5px);
+left:0;
+width:100%;
+border-radius:5px;
+background-color: #fff;
+border: 1px solid ${colors.lineColor};
+max-height: 300px;
+.preview-item {
+  button {
+    padding: 10px;
+    font-size:14px;
+    transition: background-color var(--transition);
+    text-align: left;
+    &:hover, &:focus { 
+      background:${bgColor.sideWite};
     }
   }
+}
 `;

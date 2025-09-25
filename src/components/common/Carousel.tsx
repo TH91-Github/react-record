@@ -181,76 +181,75 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
 });
 
 const StyleWrap = styled.div`
-  overflow:hidden;
+overflow:hidden;
+position:relative;
+width:100%;
+.carousel-inner{
+  position:relative;
+}
+&.vertical {
+  height:100%;
+  .carousel-inner, .swiper{ 
+    height:100%;
+  }
+}
+.swiper-wrapper{
+  transform-style:initial;
+}
+.carousel-pagination {
+  display:flex;
+  justify-content:center;
+  gap:5px;
   position:relative;
   width:100%;
-  .carousel-inner{
-    position:relative;
-  }
-  &.vertical {
-    height:100%;
-    .carousel-inner, .swiper{ 
-      height:100%;
+  margin-top:15px;
+  &.swiper-pagination-progressbar{
+    .swiper-pagination-progressbar-fill{
+      background:${colors.mSlateBlue};
     }
   }
-  .swiper-wrapper{
-    transform-style:initial;
+  .swiper-pagination-bullet {
+    margin:0;
+    background:${colors.gray};
+    opacity:0.7;
   }
-  .carousel-pagination {
-    display:flex;
-    justify-content:center;
-    gap:5px;
-    position:relative;
-    width:100%;
-    margin-top:15px;
-    &.swiper-pagination-progressbar{
-      .swiper-pagination-progressbar-fill{
-        background:${colors.mSlateBlue};
-      }
-    }
-    .swiper-pagination-bullet {
-      margin:0;
-      background:${colors.gray};
-      opacity:0.7;
-    }
-    .swiper-pagination-bullet-active {
-      background: ${colors.mSlateBlue};
-      opacity:1;
+  .swiper-pagination-bullet-active {
+    background: ${colors.mSlateBlue};
+    opacity:1;
+  }
+}
+.carousel-btns{
+  & > button {
+    display:block;
+    position:absolute;
+    z-index:1;
+    top:50%;
+    width:30px;
+    height:30px;
+    transform: translateY(-50%);
+  }
+  .btn-prev {
+    left:0;
+    svg{
+      transition: stroke var(--transition)
     }
   }
-
-  .carousel-btns{
-    & > button {
-      display:block;
-      position:absolute;
-      z-index:1;
-      top:50%;
-      width:30px;
-      height:30px;
-      transform: translateY(-50%);
-    }
-    .btn-prev {
-      left:0;
-      svg{
-        transition: stroke var(--transition)
-      }
-    }
-    .btn-next{
-      right:0;
-      .icon{
-        transform:scaleX(-1);
-      }
-    }
-    .swiper-button-lock {
-      display:none;
-    }
-    .swiper-button-disabled{
-      svg {
-        stroke: ${colors.gray};
-      }
-    }
+  .btn-next{
+    right:0;
     .icon{
-      display:block;
+      transform:scaleX(-1);
     }
   }
+  .swiper-button-lock {
+    display:none;
+  }
+  .swiper-button-disabled{
+    svg {
+      stroke: ${colors.gray};
+    }
+  }
+  .icon{
+    display:block;
+  }
+}
 `;

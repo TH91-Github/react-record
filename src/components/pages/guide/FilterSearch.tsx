@@ -1,6 +1,9 @@
+import { media } from "assets/style/variables";
 import { TabBtns } from "components/common/TabBtns";
 import { SearchModule } from "components/modules/SearchModule";
 import { useCallback, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { stateIsMobile } from "recoilStore/atoms";
 import styled from "styled-components"
 import { GuideFilterDataType } from "types/guide";
 
@@ -13,7 +16,7 @@ export const FilterSearch = ({
   data, searchPlaceholder,
   changeEvent, 
 }:FilterSearchPropsType) =>{
-
+  const isMobile = useRecoilValue(stateIsMobile);
   const [activeTab, setActiveTab] = useState('');
   const tabFilter = [...new Set(data.map((item:any) => item.category))]
 
@@ -33,7 +36,7 @@ export const FilterSearch = ({
     }, [data, changeEvent]);
 
   return (
-    <StyleWrap>
+    <StyleWrap className="md-filter-search">
       <TabBtns 
         data={tabFilter} 
         activeTab={activeTab || undefined}
@@ -43,7 +46,7 @@ export const FilterSearch = ({
         data={data}
         id="components"
         placeholder={searchPlaceholder || '검색해보세요'}
-        styleOpt={{$maxWidth:'300px'}}
+        styleOpt={{$maxWidth:isMobile ? '100%': '300px'}}
         onComfirm={onComfirm}
       />
     </StyleWrap>
@@ -55,5 +58,17 @@ const StyleWrap = styled.div`
   gap:20px;
   .tab-btns {
     flex-grow:1;
+  }
+  ${media.tabletMo}{
+    flex-direction: column-reverse;
+    gap:15px;
+  }
+  ${media.mo}{
+    .tab-btn-wrap{
+      padding:0 20px 3px;
+    }
+    .md-search{ 
+      padding:0 20px;
+    }
   }
 `;

@@ -4,11 +4,14 @@ import { InnerHTML } from "components/ui/InnerHTML";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";
 import { useToast } from "hooks/useToast";
+import { useRecoilValue } from "recoil";
+import { stateIsMobile } from "recoilStore/atoms";
 import styled from "styled-components";
 import { copyClipboard } from "utils/common";
 
 export const IconPage = () => {
   const {headData, bodyData} = iconData;
+  const isMobile = useRecoilValue(stateIsMobile);
   const { addToast } = useToast();
 
   const handleClickCopy = async (e:string) => {
@@ -25,7 +28,7 @@ export const IconPage = () => {
         titleTag="h3"
         titleText={headData.title} 
         pointer="underline"
-        $fontSize={28}
+        $fontSize={isMobile ? 24 : 28}
         desc={headData.desc}
       />
       <div className="section-wrap">

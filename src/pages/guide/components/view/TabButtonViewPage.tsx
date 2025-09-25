@@ -1,3 +1,4 @@
+import { guideComponentView } from "assets/style/guide/guideComponentView";
 import { colors } from "assets/style/variables";
 import { TabBtns } from "components/common/TabBtns";
 import { tabBtnsData } from "components/pages/guide/data/componentsInfo";
@@ -59,39 +60,12 @@ export const TabButtonViewPage = () => {
   )
 }
 const StyleWrap = styled.div`
-  .view-item{
-    margin-top:30px;
-    padding-top:30px;
-    border-top:1px solid ${colors.lineColor};
-    .tit{ 
-      font-size: 18px;
-    }
-    &:first-child{
-      margin-top:0;
-      padding-top:0;
-      border-top:none;
+${guideComponentView}
+.example-item{
+  .desc {
+    & > span {
+      color: ${colors.mSlateBlue};
     }
   }
-  .example-lists {
-    display:flex;
-    flex-direction: column;
-    margin-top:15px;
-  }
-  .example-item{
-    .s-tit {
-      margin-bottom:10px;
-      font-size:18px;
-    }
-    &:first-child + .example-item{
-      margin-top:15px;
-      padding-top:15px;
-      border-top:1px solid ${colors.lineColor};
-    }
-    .desc {
-      margin-top:10px;
-      & > span {
-        color: ${colors.mSlateBlue};
-      }
-    }
-  }
+}
 `;

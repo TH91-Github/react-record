@@ -1,3 +1,4 @@
+import { guideComponentView } from "assets/style/guide/guideComponentView";
 import { colors } from "assets/style/variables";
 import { Modal } from "components/common/Modal";
 import { modalData } from "components/pages/guide/data/componentsInfo";
@@ -35,7 +36,7 @@ export const ModalViewPage = () => {
       </div>
       <div className="view-item">
         <p className="tit">Modal 데모</p>
-        <div className="example-lists">
+        <div className="example-lists flex">
           <div className="example-item">
             <button
               type="button"
@@ -105,29 +106,11 @@ export const ModalViewPage = () => {
 }
 
 const StlyeWrap = styled.div`
-  .view-item{
-    margin-top:30px;
-    padding-top:30px;
-    border-top:1px solid ${colors.lineColor};
-    .tit{ 
-      font-size: 18px;
-    }
-    &:first-child{
-      margin-top:0;
-      padding-top:0;
-      border-top:none;
-    }
-  }
-  .example-lists{
-    display:flex;
-    flex-wrap: wrap;
-    gap:20px;
-    margin-top:20px;
-  }
+  ${guideComponentView}
 `;
 
 const StyleDemoModal2 = styled.div`
-  .btn{
-    margin-top:10px;
-  }
+.btn{
+  margin-top:10px;
+}
 `;

@@ -49,6 +49,7 @@ const StyleWrap = styled.div`
   }
   ${media.mo}{
     .bullet-lists{
+      margin-top:15px;
       .desc {
         font-size:14px;
       }

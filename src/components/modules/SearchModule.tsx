@@ -136,7 +136,7 @@ export const SearchModule = <T extends EssentialType>({
   return (
     <StyleWrap 
       ref={SearchModuleRef}
-      className={`search ${isBtn ? 'search-btn': ''}`}
+      className={`md-search ${isBtn ? 'search-btn': ''}`}
       $maxWidth={typeof $maxWidth === 'number' ? `${$maxWidth}px`: $maxWidth}
     >
       {!isBtn && <i className="icon"><SvgSearch /></i>}

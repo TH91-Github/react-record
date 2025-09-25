@@ -1,3 +1,4 @@
+import { media } from "assets/style/variables";
 import { Hljs } from "components/common/Hljs";
 import { TabBtns } from "components/common/TabBtns";
 import { useState } from "react";
@@ -16,7 +17,6 @@ export const ViewCode = ({data}:ViewCodePropsType) => {
     const valIndex = tabData.indexOf(val);
     setTabVal(valIndex >= 0 ? valIndex : 0);
   }
-
   return(
     <StyleWrap>
       <p className="tit">코드 미리보기</p>
@@ -35,10 +35,10 @@ export const ViewCode = ({data}:ViewCodePropsType) => {
   )
 }
 const StyleWrap = styled.div`
-  .code-wrap {
-    margin-top:20px;
-  }
-  .hljs-wrap{
-    margin-top:10px;
-  }
+.code-wrap {
+  margin-top:20px;
+}
+.hljs-wrap{
+  margin-top:10px;
+}
 `;

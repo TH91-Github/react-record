@@ -157,77 +157,77 @@ export const InputText = forwardRef<InputTextRefType, InputPropsType>(function I
 });
 
 const StyleWrap = styled.div<InputStylePropsType>`
+display:block;
+position:relative;
+width:100%;
+${props => props.$maxWidth && `max-width: ${props.$maxWidth}px;`}
+font-size:16px;
+line-height:1;
+.input {
   display:block;
-  position:relative;
   width:100%;
-  ${props => props.$maxWidth && `max-width: ${props.$maxWidth}px;`}
-  font-size:16px;
-  line-height:1;
-  .input {
-    display:block;
-    width:100%;
-    height:40px;
-    padding:5px 30px 5px 10px;
-    border:1px solid transparent;
-    border-radius:5px;
-    background:transparent;
-    font-size:inherit;
-    transition: border-color .3s;
-    outline:0;
-    &:disabled {
-      border-color:${colors.lineColor};
-    }
-    &:disabled + .placeholder{
-      color:${textColor.subText};
-    }
-    &.line {
-      border-color:${colors.lineColor};
-    }
-    &.line-bottom{
-      outline:0;
-      border-radius:0;
-      border:none;
-      border-bottom:1px solid ${colors.lineColor};
-    }
+  height:40px;
+  padding:5px 30px 5px 10px;
+  border:1px solid transparent;
+  border-radius:5px;
+  background:transparent;
+  font-size:inherit;
+  transition: border-color .3s;
+  outline:0;
+  &:disabled {
+    border-color:${colors.lineColor};
   }
-  .placeholder {
-    position:absolute;
-    top:50%;
-    left:10px;
-    font-size:inherit;
-    line-height:1;
-    transform: translateY(-50%);
+  &:disabled + .placeholder{
     color:${textColor.subText};
-    pointer-events:none;
   }
-  .remove {
-    display:flex;
-    justify-content:center;
-    align-imtes:center;
-    position:absolute;
-    top:50%;
-    right:10px;
-    transform: translateY(-50%);
+  &.line {
+    border-color:${colors.lineColor};
   }
-  &.isFocus {
-    .input {
-      border-color: ${({$focusColor}) => $focusColor};
-      &.line-bottom{ 
-        border-bottom: 1px solid ${({$focusColor}) => $focusColor};
-      }
+  &.line-bottom{
+    outline:0;
+    border-radius:0;
+    border:none;
+    border-bottom:1px solid ${colors.lineColor};
+  }
+}
+.placeholder {
+  position:absolute;
+  top:50%;
+  left:10px;
+  font-size:inherit;
+  line-height:1;
+  transform: translateY(-50%);
+  color:${textColor.subText};
+  pointer-events:none;
+}
+.remove {
+  display:flex;
+  justify-content:center;
+  align-imtes:center;
+  position:absolute;
+  top:50%;
+  right:10px;
+  transform: translateY(-50%);
+}
+&.isFocus {
+  .input {
+    border-color: ${({$focusColor}) => $focusColor};
+    &.line-bottom{ 
+      border-bottom: 1px solid ${({$focusColor}) => $focusColor};
     }
   }
-  &.disabled {
-    .input {
-      background:${colors.disabled};
-      border-color:${colors.lineColor};
-      color:${textColor.desc};
-    }
+}
+&.disabled {
+  .input {
+    background:${colors.disabled};
+    border-color:${colors.lineColor};
+    color:${textColor.desc};
   }
-  &.error {
-    .input{
-      color:${colors.red};
-      border-color:${colors.red};
-    }
+}
+&.error {
+  .input{
+    color:${colors.red};
+    border-color:${colors.red};
   }
+}
 `;

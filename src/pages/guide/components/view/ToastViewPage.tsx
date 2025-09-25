@@ -1,3 +1,4 @@
+import { guideComponentView } from "assets/style/guide/guideComponentView";
 import { colors } from "assets/style/variables";
 import { toastData } from "components/pages/guide/data/componentsInfo";
 import { ViewCode } from "components/pages/guide/ViewCode";
@@ -18,7 +19,7 @@ export const ToastViewPage = () => {
       </div>
       <div className="view-item">
         <p className="tit">Toast 데모</p>
-        <div className="example-lists">
+        <div className="example-lists flex">
           <div className="example-item">
             <button 
               type="button"
@@ -64,25 +65,5 @@ export const ToastViewPage = () => {
   )
 }
 const StyleWrap = styled.div`
-  .view-item{
-    margin-top:30px;
-    padding-top:30px;
-    border-top:1px solid ${colors.lineColor};
-    .tit{ 
-      font-size: 18px;
-    }
-    &:first-child{
-      margin-top:0;
-      padding-top:0;
-      border-top:none;
-    }
-  }
-  .example-lists{
-    display:flex;
-    gap:10px;
-    margin-top:15px;
-  }
-  .example-item {
-    
-  }
+${guideComponentView}
 `;

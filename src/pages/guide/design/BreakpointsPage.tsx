@@ -29,7 +29,7 @@ export const BreakpointsPage = () => {
         titleTag="h3"
         titleText={headData.title} 
         pointer="underline"
-        $fontSize={!isMobile? 28 : 20}
+        $fontSize={isMobile? 24 : 28}
         desc={headData.desc}
       />
       <div className="section-wrap">

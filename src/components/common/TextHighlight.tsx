@@ -33,8 +33,8 @@ interface StyleTextHighlightType {
 }
 
 const StyleTextHighlight = styled.span<StyleTextHighlightType>`
-  padding:1px;
-  border-radius:5px;
-  background: ${({$activeColor}) => $activeColor};
+padding:1px;
+border-radius:5px;
+background: ${({$activeColor}) => $activeColor};
 `;
 

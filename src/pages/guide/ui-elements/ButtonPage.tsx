@@ -2,9 +2,12 @@ import { buttonData } from "components/pages/guide/data/uiData";
 import { ButtonCaseLists } from "components/pages/guide/ui-elements/ButtonCaseLists";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { TitlePoint } from "components/ui/TitlePoint";
+import { useRecoilValue } from "recoil";
+import { stateIsMobile } from "recoilStore/atoms";
 import styled from "styled-components";
 
 export const ButtonPage = () => {
+  const isMobile = useRecoilValue(stateIsMobile);
   const {headData, bodyData} = buttonData;
 
   return(
@@ -14,7 +17,7 @@ export const ButtonPage = () => {
         titleTag="h3"
         titleText={headData.title} 
         pointer="underline"
-        $fontSize={28}
+        $fontSize={isMobile ? 24 : 28}
         desc={headData.desc}
       />
       <div className="section-wrap">
@@ -38,7 +41,7 @@ export const ButtonPage = () => {
           ))
         }
       </div>
-    </StyleWrap>  
+    </StyleWrap>
   )
 }
 

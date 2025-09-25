@@ -1,4 +1,4 @@
-import { colors } from 'assets/style/variables';
+import { colors, media } from 'assets/style/variables';
 import hljs from "highlight.js";
 import 'highlight.js/styles/atom-one-dark.css';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -115,7 +115,9 @@ background:${colors.nightSky};
 }
 .hljs-pre {
   flex: 1;
+  overflow-x:auto;
   margin:0;
+  padding:0 10px;
 }
 .hljs-pre .hljs{ 
   padding:10px;
@@ -137,5 +139,8 @@ background:${colors.nightSky};
     line-height:20px;
     color:#fff;
   }
+}
+${media.mo}{
+  
 }
 `;

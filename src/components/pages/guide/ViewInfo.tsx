@@ -1,4 +1,4 @@
-import { textColor } from "assets/style/variables";
+import { media, textColor } from "assets/style/variables";
 import { ExternalLink } from "components/ui/ExternalLink";
 import { InnerHTML } from "components/ui/InnerHTML";
 import styled from "styled-components";
@@ -41,11 +41,17 @@ const StyleWrap = styled.div`
       margin-top:0;
     }
   }
-  .tit {
-    padding-bottom:10px;
-  }
   .desc{
+    padding-top:10px;
     font-size:14px;
     color:${textColor.subText};
+  }
+  ${media.mo}{
+    .info-item {
+      margin-top:15px;
+      &:first-child{
+        margin-top:0;
+      }
+    }
   }
 `;

@@ -20,7 +20,7 @@ export const HooksPage = () => {
   return (
     <StyleWrap className="hook">
       <GuidePageHeading />
-      <div className="content-wrap">
+      <div className="content-wrap full">
         <TitleHeading
           $display="block"
           titleTag="h3"

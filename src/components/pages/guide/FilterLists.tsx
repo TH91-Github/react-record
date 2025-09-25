@@ -1,4 +1,4 @@
-import { bgShadow } from "assets/style/variables";
+import { bgShadow, media } from "assets/style/variables";
 import { BadgeItemUI } from "components/ui/BadgeItemUI";
 import styled from "styled-components"
 import { GuideFilterDataType } from "types/guide";
@@ -16,7 +16,7 @@ export const FilterLists = ({
   };
 
   return (
-    <StyleWrap>
+    <StyleWrap className="filter-lists">
       {data.length > 0 ?(
         <ul>
           { data.map((item, idx) => (
@@ -74,5 +74,21 @@ const StyleWrap = styled.div`
     height:300px;
     border-radius:10px;
     box-shadow:${bgShadow.base};
+  }
+  ${media.tabletMo}{
+    & > ul {
+      gap:20px;
+      & > li {
+        width: calc((100% - 40px) / 3);
+      }
+    }
+  }
+  ${media.mo}{
+     & > ul {
+      gap:20px;
+      & > li {
+        width: calc((100% - 20px) / 2);
+      }
+    }
   }
 `;

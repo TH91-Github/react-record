@@ -1,3 +1,4 @@
+import { guideComponentView } from "assets/style/guide/guideComponentView";
 import { colors } from "assets/style/variables";
 import { Accordion } from "components/common/Accordion";
 import { accordionData } from "components/pages/guide/data/componentsInfo";
@@ -123,61 +124,26 @@ export const AccordionViewPage = () => {
   )
 }
 const StyleWrap = styled.div`
-  .view-item{
-    margin-top:30px;
-    padding-top:30px;
-    border-top:1px solid ${colors.lineColor};
-    .tit{ 
-      font-size: 18px;
-    }
-    &:first-child{
-      margin-top:0;
-      padding-top:0;
-      border-top:none;
-    }
-  }
-  .example-lists {
+${guideComponentView}
+.accordion-wrap{
+  & > ul {
     display:flex;
-    flex-direction: column;
-    margin-top:15px;
+    flex-direction:column;
+    gap:5px;
+  } 
+}
+.acc-item{
+  border-radius:5px;
+  border:1px solid ${colors.lineColor};
+  &.open {
+    border-color:${colors.mSlateBlue};
   }
-  .example-item{
-    .s-tit {
-      margin-bottom:10px;
-      font-size:18px;
-    }
-    &:first-child ~ .example-item{
-      margin-top:20px;
-      padding-top:15px;
-      border-top:1px solid ${colors.lineColor};
-    }
-    .desc {
-      margin-top:10px;
-      & > span {
-        color: ${colors.mSlateBlue};
-      }
-    }
-  }
-  .accordion-wrap{
-    margin-top:10px;
-    & > ul {
-      display:flex;
-      flex-direction:column;
-      gap:5px;
-    } 
-  }
-  .acc-item{
-    border-radius:5px;
-    border:1px solid ${colors.lineColor};
-    &.open {
-      border-color:${colors.mSlateBlue};
-    }
-    .acc-btn{
-      padding:10px;
-    } 
-  }
-  .acc-inner{
+  .acc-btn{
     padding:10px;
-    border-top:1px solid ${colors.lineColor};
-  }
+  } 
+}
+.acc-inner{
+  padding:10px;
+  border-top:1px solid ${colors.lineColor};
+}
 `;

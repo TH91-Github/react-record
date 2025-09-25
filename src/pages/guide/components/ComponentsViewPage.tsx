@@ -1,7 +1,10 @@
+import { media } from "assets/style/variables";
 import { LoadView } from "components/pages/guide/component/LoadView";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { useEffect, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { stateIsMobile } from "recoilStore/atoms";
 import styled from "styled-components";
 import { formatText } from "utils/textUtils";
 
@@ -11,6 +14,7 @@ interface ContextPropsType {
 }
 export const ComponentsViewPage = () => {
   const navigate = useNavigate();
+  const isMobile = useRecoilValue(stateIsMobile);
   const {id, detailsAni } = useOutletContext<ContextPropsType>();
   const [notCheck ,setNotCheck] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -40,7 +44,7 @@ export const ComponentsViewPage = () => {
           titleTag="h4"
           titleText={formatText(id)} 
           pointer="circle"
-          $fontSize={28}
+          $fontSize={isMobile ? 24 : 28}
         />
       )}
       <div className="view-cont">
@@ -57,16 +61,22 @@ export const ComponentsViewPage = () => {
 }
 
 const StyleWrap = styled.div`
-  position:relative;
-  padding:30px;
-  .title-heading{
-    padding-right:30px;
-  }
+position:relative;
+padding:30px;
+.title-heading{
+  padding-right:30px;
+}
+.view-cont{
+  margin-top:30px;
+}
+.icon-close {
+  top:30px;
+  right:30px;
+}
+${media.mo}{
+  padding:20px;
   .view-cont{
-    margin-top:30px;
+    margin-top:20px;
   }
-  .icon-close {
-    top:30px;
-    right:30px;
-  }
+}
 `;

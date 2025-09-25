@@ -65,7 +65,7 @@ export const InputItemModule = forwardRef<InputItemModuleRefType, InputItemModul
     
   return (
     <StyleWrap 
-      className={cn('input-item', inputState.isFocus && 'focus-in', barStyle && 'bar')}
+      className={cn('md-input-item', inputState.isFocus && 'focus-in', barStyle && 'bar')}
       $focusColor={focusColor ?? colors.mSlateBlue}
     >
       {title && (
