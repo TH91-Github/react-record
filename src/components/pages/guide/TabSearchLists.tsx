@@ -31,7 +31,7 @@ export const TabSearchLists = ({
     clickEvent(ID)
   }
   return(
-    <div>
+    <>
       <FilterSearch 
         data={data}
         searchPlaceholder={searchPlaceholder || undefined}
@@ -41,6 +41,6 @@ export const TabSearchLists = ({
         data={filterLists}
         clickEvent={handleItemClick}
       />
-    </div>
+    </>
   )
 }

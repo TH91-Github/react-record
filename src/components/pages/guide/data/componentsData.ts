@@ -33,7 +33,7 @@ export const componentsData: GuideFilterDataType[] =[
     desc:'Tab 버튼 컴포넌트',
     category:'Tab', 
     update:'2025-06-26',
-    keyword:['Tab button', 'Tab', 'dasdasd', 'Tabs', 'Tab Button', '탭 버튼', 'Tab Head' ,'탭 헤더'],
+    keyword:['Tab button', 'Tab', 'Tabs', 'Tab Button', '탭 버튼', 'Tab Head' ,'탭 헤더'],
     link:''
   },
   {

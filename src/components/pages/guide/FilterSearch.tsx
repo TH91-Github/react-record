@@ -56,6 +56,7 @@ const StyleWrap = styled.div`
 display:flex;
 justify-content: space-between;
 gap:20px;
+position:relative;
 .tab-btns {
   flex-grow:1;
 }
@@ -69,6 +70,9 @@ ${media.mo}{
   }
   .md-search{ 
     padding:0 20px;
+    .preview-wrap{
+      width:calc(100% - 40px);
+    }
   }
 }
 `;

@@ -41,7 +41,6 @@ export const SearchModule = <T extends EssentialType>({
   const [isPreview , setIsPreview] = useState(onPreview ?? false);
   const [errorMessage, setErrorMessage] = useState('')
   const inputRef = useRef<InputTextRefType>(null);
-
   const {
     $line = 'line',
     $maxWidth,
@@ -56,8 +55,7 @@ export const SearchModule = <T extends EssentialType>({
       setIsPreview(true);
     }
   }, []);
-
-  const handleMouseDown = (e: PointerEvent) => { // 다른 영역 클릭 시시
+  const handleMouseDown = (e: PointerEvent) => { // 다른 영역 클릭 시
     if (SearchModuleRef.current?.contains(e.target as Node)) {
       isMouseDownInside.current = true;
     } else {
@@ -81,37 +79,30 @@ export const SearchModule = <T extends EssentialType>({
     });
     return matches;
   }, [data, resultVal]);
-
   const onKeyword = (keyVal:string) => { // 자동완성 클릭
     setResultVal(keyVal);
     setIsPreview(false);
     if(!inputRef.current) return 
     inputRef.current.refInitVal(keyVal);
   }
-
   const handleEnter = () => {
     handleClick();
   }
   const handleClick = () => {
     let keyword = resultVal.trim();
-  
     if (keyword.length < 2) {
       setErrorMessage('검색어를 2자 이상 입력해주세요.');
       return;
     }
-  
     // 자동완성 목록이 있는 경우 첫 번째 키워드로 대체
     if (filteredData.length > 0) {
       keyword = filteredData[0].keyword;
       setResultVal(keyword);
       inputRef.current?.refInitVal(keyword);
     }
-  
     setIsPreview(false);
     onComfirm?.(keyword);
   };
-  
-
   useEffect(() => { // 컴포넌트 벗어나서 클릭 시 자동완성 닫기
     if (isPreview) {
       document.addEventListener("pointerdown", handleMouseDown);
@@ -122,7 +113,6 @@ export const SearchModule = <T extends EssentialType>({
       document.removeEventListener("pointerdown", handleMouseDown);
     };
   }, [isPreview]);
-
   useEffect(() => {
     if (errorMessage) {
       const timer = setTimeout(() => {
@@ -152,19 +142,12 @@ export const SearchModule = <T extends EssentialType>({
       {
         errorMessage && <p className="error">{errorMessage}</p>
       }
-      {
-        (isPreview && resultVal.length > 1)&& (
-          filteredData.length > 0 ?
-          <PreviewText 
-            data={filteredData}  
-            matcheVal={resultVal} 
-            onKeyword={onKeyword}
-          /> : (
-            <div className="empyt-wrap">
-              <p>일치하는 검색 값이 없습니다.</p>
-            </div>
-          )
-        )
+      { isPreview && 
+        <PreviewText 
+          data={filteredData}  
+          matcheVal={resultVal} 
+          onKeyword={onKeyword}
+        />
       }
       {isBtn && (
         <button 
@@ -204,31 +187,15 @@ max-width:${({$maxWidth})=> $maxWidth || '100%'};
   width:40px;
   height:40px;
 }
-.empyt-wrap{
-  position:absolute;
-  z-index:10;
-  top: calc(100% + 5px);
-  left:0;
-  width:100%;
-  padding:10px;
-  border-radius:5px;
-  border:1px solid ${colors.lineColor};
-  background:#fff; 
-  font-size:14px;
-}
 &.search-btn {
   .input {
     border-top-right-radius:0;
     border-bottom-right-radius:0;
   }
-  .empyt-wrap{
-    
-  }
   .btn  {
     border-top-left-radius:0;
     border-bottom-left-radius:0;
   }
-  
 }
 .error {
   position:absolute;
