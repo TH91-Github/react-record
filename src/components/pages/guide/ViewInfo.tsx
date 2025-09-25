@@ -35,23 +35,23 @@ export const ViewInfo = ({data}:ViewInfoPropsType) => {
   )
 }
 const StyleWrap = styled.div`
+.info-item {
+  margin-top:20px;
+  &:first-child{
+    margin-top:0;
+  }
+}
+.desc{
+  padding-top:10px;
+  font-size:14px;
+  color:${textColor.subText};
+}
+${media.mo}{
   .info-item {
-    margin-top:20px;
+    margin-top:15px;
     &:first-child{
       margin-top:0;
     }
   }
-  .desc{
-    padding-top:10px;
-    font-size:14px;
-    color:${textColor.subText};
-  }
-  ${media.mo}{
-    .info-item {
-      margin-top:15px;
-      &:first-child{
-        margin-top:0;
-      }
-    }
-  }
+}
 `;

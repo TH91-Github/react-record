@@ -91,49 +91,49 @@ interface StyleWrapType {
   $focusColor:string
 }
 const StyleWrap = styled.div<StyleWrapType>`
-  position:relative;
-  margin-top:25px;
-  font-size: 16px;
-  .tit {
+position:relative;
+margin-top:25px;
+font-size: 16px;
+.tit {
+  position:absolute;
+  top:50%;
+  left:10px;
+  font-size:1em;
+  color:${textColor.title};
+  transform: translateY(-50%);
+  transition: transform var(--transition), font-size var(--transition), color var(--transition);
+  & > sup {
+    position:absolute;
+    top:-2px;
+    right:-10px;
+    font-size:0.8571428571429em;
+    color: ${colors.red};
+  }
+}
+&.focus-in {
+  font-size:14px;
+  .tit{ 
+    transform: translate(-10px, -35px);
+    color:${({$focusColor}) => $focusColor};
+  }
+}
+&.bar {
+  padding-left:0px;
+  &::before {
     position:absolute;
     top:50%;
-    left:10px;
-    font-size:1em;
-    color:${textColor.title};
+    left:0;
+    width:4px;
+    height:70%;
+    border-radius:3px;
+    background:${({$focusColor}) => $focusColor};
     transform: translateY(-50%);
-    transition: transform var(--transition), font-size var(--transition), color var(--transition);
-    & > sup {
-      position:absolute;
-      top:-2px;
-      right:-10px;
-      font-size:0.8571428571429em;
-      color: ${colors.red};
-    }
+    content:'';
   }
-  &.focus-in {
-    font-size:14px;
+  &.focus-in {   
     .tit{ 
-      transform: translate(-10px, -35px);
-      color:${({$focusColor}) => $focusColor};
+      transform: translate(0px, -160%);
     }
   }
-  &.bar {
-    padding-left:0px;
-    &::before {
-      position:absolute;
-      top:50%;
-      left:0;
-      width:4px;
-      height:70%;
-      border-radius:3px;
-      background:${({$focusColor}) => $focusColor};
-      transform: translateY(-50%);
-      content:'';
-    }
-    &.focus-in {   
-      .tit{ 
-        transform: translate(0px, -160%);
-      }
-    }
-  }
+}
 `;

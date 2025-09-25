@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import { stateAlert } from "recoilStore/componentsAtoms";
 import styled from "styled-components";
 
-
+// 🔹 alert 모듈
 export const AlertModule = () => {
   const [alertState, setAlertState] = useRecoilState(stateAlert);
   
@@ -28,7 +28,7 @@ export const AlertModule = () => {
         alertState.autoCloseSecond > 0 && {
         autoCloseSecond: alertState.autoCloseSecond,
       })}
-      customClass="alert"
+      customClass="md-alert"
       onClose={onClose}
     >
       <StyleMessage>
@@ -44,13 +44,13 @@ export const AlertModule = () => {
 }
 
 const StyleMessage = styled.div`
-  .tit {
-    font-size:22px;
-    & > span { 
-      color:${colors.mSlateBlue};
-    }
-    & + .desc {
-      margin-top:10px;
-    }
+.tit {
+  font-size:22px;
+  & > span { 
+    color:${colors.mSlateBlue};
   }
+  & + .desc {
+    margin-top:10px;
+  }
+}
 `;

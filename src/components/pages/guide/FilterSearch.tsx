@@ -53,22 +53,22 @@ export const FilterSearch = ({
   )
 }
 const StyleWrap = styled.div`
-  display:flex;
-  justify-content: space-between;
-  gap:20px;
-  .tab-btns {
-    flex-grow:1;
+display:flex;
+justify-content: space-between;
+gap:20px;
+.tab-btns {
+  flex-grow:1;
+}
+${media.tabletMo}{
+  flex-direction: column-reverse;
+  gap:15px;
+}
+${media.mo}{
+  .tab-btn-wrap{
+    padding:0 20px 3px;
   }
-  ${media.tabletMo}{
-    flex-direction: column-reverse;
-    gap:15px;
+  .md-search{ 
+    padding:0 20px;
   }
-  ${media.mo}{
-    .tab-btn-wrap{
-      padding:0 20px 3px;
-    }
-    .md-search{ 
-      padding:0 20px;
-    }
-  }
+}
 `;

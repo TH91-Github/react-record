@@ -24,24 +24,24 @@ export const NotViewComponent = () => {
 }
 
 const StlyeWrap = styled.div`
-  .title {
-    font-size:24px;
-    & + .txt {
-      margin-top: 20px;
-    }
+.title {
+  font-size:24px;
+  & + .txt {
+    margin-top: 20px;
   }
-  .txt { 
-    margin-top:10px;
+}
+.txt { 
+  margin-top:10px;
+}
+.back-link {
+  display:flex;
+  align-items:center;
+  gap:5px;
+  margin-top:10px;
+  .icon{
+    display:inline-block;
+    width:25px;
+    height:25px;
   }
-  .back-link {
-    display:flex;
-    align-items:center;
-    gap:5px;
-    margin-top:10px;
-    .icon{
-      display:inline-block;
-      width:25px;
-      height:25px;
-    }
-  }
+}
 `;

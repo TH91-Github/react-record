@@ -89,74 +89,74 @@ export const IconPage = () => {
 }
 
 const StyleWrap = styled.div`
-  .icon-lists {
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    margin-top:30px;
-    & > li {
-      display:flex;
-      flex-direction: column;
-      align-items: center;
-      width:90px;
-      &:hover{
-        .icon-btn, .icon{
-          border-color:${colors.mSlateBlue};
-        }
-        .tit {
-          color:${colors.mSlateBlue};
-        }
-      }
-      .tit {
-        width:100%;
-        ${ellipsisStyle(1,18)}
-      }
-    }
-  }
-  .icon-btn {
+.icon-lists {
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  margin-top:30px;
+  & > li {
     display:flex;
     flex-direction: column;
+    align-items: center;
+    width:90px;
+    &:hover{
+      .icon-btn, .icon{
+        border-color:${colors.mSlateBlue};
+      }
+      .tit {
+        color:${colors.mSlateBlue};
+      }
+    }
+    .tit {
+      width:100%;
+      ${ellipsisStyle(1,18)}
+    }
+  }
+}
+.icon-btn {
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  width:50px;
+  height:50px;
+  padding:10px 5px;
+  border-radius:10px;
+  border:1px solid ${colors.lineColor};
+  background:#fff;
+  transition: border-color var(--transition);
+  .icon{
+    flex-shrink: 0;
+    display:flex;
     justify-content:center;
     align-items:center;
     position:relative;
-    width:50px;
-    height:50px;
-    padding:10px 5px;
-    border-radius:10px;
-    border:1px solid ${colors.lineColor};
-    background:#fff;
+    width:35px;
+    height:35px;
+    padding:5px;
+    border-radius:50%;
+    border:1px solid transparent;
     transition: border-color var(--transition);
-    .icon{
-      flex-shrink: 0;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
-      width:35px;
-      height:35px;
-      padding:5px;
-      border-radius:50%;
-      border:1px solid transparent;
-      transition: border-color var(--transition);
-    }
   }
-  .tit {
-    margin-top:5px;
-    font-size:12px;
-    transition: color var(--transition);
-  }
-  .icon-close {
-    position:relative;
-  }
-  ${media.mo}{
-    .icon-lists {
-      gap:10px;
-      & > li {
-        width:60px;
-        .tit{
-          text-align:center;
-        }
+}
+.tit {
+  margin-top:5px;
+  font-size:12px;
+  transition: color var(--transition);
+}
+.icon-close {
+  position:relative;
+}
+${media.mo}{
+  .icon-lists {
+    gap:10px;
+    & > li {
+      width:60px;
+      .tit{
+        text-align:center;
       }
     }
   }
+}
 `;

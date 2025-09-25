@@ -38,59 +38,59 @@ export const GuideSideMenu = () => {
 }
 
 const StyleWrap = styled.div`
-  overflow-y:auto;
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  .nav-inner{
+overflow-y:auto;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+.nav-inner{
+}
+.nav-heading{
+  padding:20px 30px;
+  .svg {
+    display:inline-block;
+    position:relative;
+    width:24px;
+    height:24px;
   }
-  .nav-heading{
-    padding:20px 30px;
-    .svg {
-      display:inline-block;
-      position:relative;
-      width:24px;
-      height:24px;
+  .title {
+    display:inline-block;
+    & > a { 
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:600;
     }
-    .title {
-      display:inline-block;
-      & > a { 
-        display:flex;
-        align-items:center;
-        gap:10px;
-        font-weight:600;
-      }
-    }  
-  }
-  .nav-item {
-    padding:15px 30px;
-    border-top:1px solid #dbdbdb;
-    .search {
-      .icon{
-        width:20px;
-        height:20px;
-      }
-      .input-item{
-        input {
-          height:30px;
-        }
-      }
-    }
-    .title{
-      font-size:18px;
-    }
-  }
+  }  
+}
+.nav-item {
+  padding:15px 30px;
+  border-top:1px solid #dbdbdb;
   .search {
-    gap:5px;
-  }
-  ${media.mo}{
-    .nav-heading{
-      padding:20px 15px;
+    .icon{
+      width:20px;
+      height:20px;
     }
-    .nav-item{
-      padding:15px;
+    .input-item{
+      input {
+        height:30px;
+      }
     }
   }
+  .title{
+    font-size:18px;
+  }
+}
+.search {
+  gap:5px;
+}
+${media.mo}{
+  .nav-heading{
+    padding:20px 15px;
+  }
+  .nav-item{
+    padding:15px;
+  }
+}
 `;

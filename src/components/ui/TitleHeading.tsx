@@ -44,15 +44,15 @@ export const TitleHeading = ({
 }
 
 const StyleWrap = styled.div`
-  p, .bullet-lists{
-    margin-top:20px;
-  }
-  ${media.mo}{
-    .bullet-lists{
-      margin-top:15px;
-      .desc {
-        font-size:14px;
-      }
+p, .bullet-lists{
+  margin-top:20px;
+}
+${media.mo}{
+  .bullet-lists{
+    margin-top:15px;
+    .desc {
+      font-size:14px;
     }
   }
+}
 `;

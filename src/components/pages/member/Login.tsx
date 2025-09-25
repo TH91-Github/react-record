@@ -212,109 +212,109 @@ export const Login = ({ authChange }:LoginPropsType) => {
 
 const StyleWrap = styled.div`
 position:relative;
-  .title{ 
-    font-size:32px;
-    text-align:center;
-    text-shadow:${textShadow.base};
+.title{ 
+  font-size:32px;
+  text-align:center;
+  text-shadow:${textShadow.base};
+}
+.form-wrap{
+  position:relative;
+  margin-top:20px;
+  padding-top:20px;
+  &::before{
+    position:absolute;
+    top:0;
+    left:50%;
+    width:50%;
+    height:2px;
+    border-radius:2px;
+    background:${colors.mSlateBlue};
+    transform: translateX(-50%) scaleX(1);
+    animation: formLineAni 1s .3s ease both;
+    content:'';
   }
-  .form-wrap{
+  @keyframes formLineAni {
+    from{ transform: translateX(-50%) scaleX(0);}
+    to { transform: translateX(-50%) scaleX(1); }
+  }
+}
+.description {
+  position:relative;
+  margin-top:5px;
+  padding-left:10px;
+  height:15px;
+  .txt {
+    position:absolute;
+    top:0;
+    font-size:14px;
+    font-weight:400;
+    color:${textColor.subText};
+  }
+}
+.form-item.error{ 
+  .description{
+    .txt{
+      color: ${colors.red};
+    }
+  }
+}
+.btn-article{
+  margin-top:30px;
+}
+.btn-submit{
+  border:1px solid ${colors.mSlateBlue};
+  &:hover, &:focus {
+    background:${colors.mSlateBlue};
+    color:#fff;
+  }
+}
+.auth-switch{
+  display:flex;
+  gap:5px;
+  align-items:center;
+  margin-top:20px;
+  & > span {
+    font-size:14px;
+    color:${textColor.subText};
+  }
+  .auth-btn {
     position:relative;
-    margin-top:20px;
-    padding-top:20px;
-    &::before{
+    padding-bottom:3px;
+    font-weight:500;
+    color:${colors.blue};
+    &::after{
       position:absolute;
-      top:0;
-      left:50%;
-      width:50%;
+      left:0;
+      bottom:0;
+      width:100%;
       height:2px;
-      border-radius:2px;
-      background:${colors.mSlateBlue};
-      transform: translateX(-50%) scaleX(1);
-      animation: formLineAni 1s .3s ease both;
+      background: ${colors.blue};
+      transition: transform var(--transition);
+      transform: scaleX(0);
+      transform-origin:left center;
       content:'';
     }
-    @keyframes formLineAni {
-      from{ transform: translateX(-50%) scaleX(0);}
-      to { transform: translateX(-50%) scaleX(1); }
-    }
-  }
-  .description {
-    position:relative;
-    margin-top:5px;
-    padding-left:10px;
-    height:15px;
-    .txt {
-      position:absolute;
-      top:0;
-      font-size:14px;
-      font-weight:400;
-      color:${textColor.subText};
-    }
-  }
-  .form-item.error{ 
-    .description{
-      .txt{
-        color: ${colors.red};
-      }
-    }
-  }
-  .btn-article{
-    margin-top:30px;
-  }
-  .btn-submit{
-    border:1px solid ${colors.mSlateBlue};
     &:hover, &:focus {
-      background:${colors.mSlateBlue};
-      color:#fff;
-    }
-  }
-  .auth-switch{
-    display:flex;
-    gap:5px;
-    align-items:center;
-    margin-top:20px;
-    & > span {
-      font-size:14px;
-      color:${textColor.subText};
-    }
-    .auth-btn {
-      position:relative;
-      padding-bottom:3px;
-      font-weight:500;
-      color:${colors.blue};
       &::after{
-        position:absolute;
-        left:0;
-        bottom:0;
-        width:100%;
-        height:2px;
-        background: ${colors.blue};
-        transition: transform var(--transition);
-        transform: scaleX(0);
-        transform-origin:left center;
-        content:'';
-      }
-      &:hover, &:focus {
-        &::after{
-          transform: scaleX(1);
-        }
+        transform: scaleX(1);
       }
     }
   }
-  .sns-wrap{
-    margin-top:20px;
-    text-align:center;
-    & > ul { 
-      display: flex;
-      justify-content:center;
-      gap: 10px;
-      margin-top:10px;
-    }
-    .btn {
-      border-radius:50%;
-      &:hover, &:focus{
-        border-color:${colors.mSlateBlue};
-      }
+}
+.sns-wrap{
+  margin-top:20px;
+  text-align:center;
+  & > ul { 
+    display: flex;
+    justify-content:center;
+    gap: 10px;
+    margin-top:10px;
+  }
+  .btn {
+    border-radius:50%;
+    &:hover, &:focus{
+      border-color:${colors.mSlateBlue};
     }
   }
+}
 `;

@@ -36,21 +36,21 @@ type StyleWrapType = {
   $sideWidth : number
 }
 const StyleWrap = styled.div<StyleWrapType>`
-  .hub-inner {
-    position:relative;
-    width: 100%;
-    padding-left: ${({$sideWidth}) => $sideWidth}px;
+.hub-inner {
+  position:relative;
+  width: 100%;
+  padding-left: ${({$sideWidth}) => $sideWidth}px;
+}
+.hub-heading{
+  padding:30px;
+  background:${colors.blue};
+  .title{
+    font-size:20px;
+    color:#fff;
   }
-  .hub-heading{
-    padding:30px;
-    background:${colors.blue};
-    .title{
-      font-size:20px;
-      color:#fff;
-    }
-    .desc{
-      margin-top:10px;
-      color:#fff;
-    }
+  .desc{
+    margin-top:10px;
+    color:#fff;
   }
+}
 `;

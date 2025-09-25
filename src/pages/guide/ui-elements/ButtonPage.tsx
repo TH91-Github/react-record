@@ -46,7 +46,7 @@ export const ButtonPage = () => {
 }
 
 const StyleWrap = styled.div`
-  .button-lists {
-    margin-top:30px;
-  }
+.button-lists {
+  margin-top:30px;
+}
 `;

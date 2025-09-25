@@ -39,37 +39,37 @@ export const DirectoryContent = () => {
 }
 
 const StyleWrap = styled.div`
+.content-heading {
+  .desc{
+    margin-top:15px;
+  }
+}
+.directory-tree{
+  margin-top:20px;
+}
+.directory-heading{
+  display:flex;
+  gap:10px;
+  .desc{
+    font-size:14px;
+  }
+}
+.tree-lists{
+  &.default{
+    & > .tree-item {
+      margin-top:10px;
+      &:first-child{
+        margin-top:0;
+      }
+    }
+  }
+}
+${media.mo}{
   .content-heading {
     .desc{
       margin-top:15px;
-    }
-  }
-  .directory-tree{
-    margin-top:20px;
-  }
-  .directory-heading{
-    display:flex;
-    gap:10px;
-    .desc{
       font-size:14px;
     }
   }
-  .tree-lists{
-    &.default{
-      & > .tree-item {
-        margin-top:10px;
-        &:first-child{
-          margin-top:0;
-        }
-      }
-    }
-  }
-  ${media.mo}{
-    .content-heading {
-      .desc{
-        margin-top:15px;
-        font-size:14px;
-      }
-    }
-  }
+}
 `;

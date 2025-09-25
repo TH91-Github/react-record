@@ -46,62 +46,62 @@ export const UtilNav = ({isMoOpen, moreClickEvnet}:UtilNavPropsType) => {
 }
 
 const StyleWrap = styled.div`
-  .util-inner{
-    display:flex;
-  }
-  .btn-more {
-    display:block;
-    overflow:hidden;
-    position:relative;
-    width:25px;
-    height:25px;
-    &.open{
-      .circle-1 {
-        top:50%;
-        width:3px;
-        height:100%;
-        border-radius:3px;
-        transform: translate(-50%,-50%) rotate(-45deg);
-      }
-      .circle-2 {
-        transform: translate(200px, -50%);
-        opacity:0;
-      }
-      .circle-3 {
-        top:50%;
-        width:3px;
-        height:100%;
-        border-radius:3px;
-        transform: translate(-50%,-50%) rotate(-135deg);
-      }
-    }
-  }
-  .more-icon {
-    display:block;
-    position:absolute;
-    left:50%;
-    width:5px;
-    height:5px;
-    border-radius:50%;
-    background:${colors.black};
-    transition: all .3s;
-    &.circle-1 {
-      top:0;
-      transform: translateX(-50%);
-    }
-    &.circle-2 {
+.util-inner{
+  display:flex;
+}
+.btn-more {
+  display:block;
+  overflow:hidden;
+  position:relative;
+  width:25px;
+  height:25px;
+  &.open{
+    .circle-1 {
       top:50%;
-      transform: translate(-50%, -50%);
+      width:3px;
+      height:100%;
+      border-radius:3px;
+      transform: translate(-50%,-50%) rotate(-45deg);
     }
-    &.circle-3 {
-      bottom:0;
-      transform: translateX(-50%);
+    .circle-2 {
+      transform: translate(200px, -50%);
+      opacity:0;
+    }
+    .circle-3 {
+      top:50%;
+      width:3px;
+      height:100%;
+      border-radius:3px;
+      transform: translate(-50%,-50%) rotate(-135deg);
     }
   }
-  ${media.mo}{
-    .util-inner{
-      align-items:center;
-      gap:10px;
-    }
+}
+.more-icon {
+  display:block;
+  position:absolute;
+  left:50%;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:${colors.black};
+  transition: all .3s;
+  &.circle-1 {
+    top:0;
+    transform: translateX(-50%);
   }
+  &.circle-2 {
+    top:50%;
+    transform: translate(-50%, -50%);
+  }
+  &.circle-3 {
+    bottom:0;
+    transform: translateX(-50%);
+  }
+}
+${media.mo}{
+  .util-inner{
+    align-items:center;
+    gap:10px;
+  }
+}
 `;

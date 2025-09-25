@@ -60,50 +60,50 @@ type StyleWrapType = {
   $headerHeight:number
 }
 const StyleWrap = styled.nav<StyleWrapType>`
-  flex-grow:1;
-  margin-left:50px;
+flex-grow:1;
+margin-left:50px;
+& > ul {
+  display:flex;
+  align-items:center;
+}
+.nav-link{
+  display:inline-block;
+  padding:8px 15px;
+  font-size:15px;
+  font-weight:600;
+}
+${media.mo}{
+  display:none;
+  position:absolute;
+  top:${({$headerHeight}) => $headerHeight}px;
+  left:0;
+  width:100%;
+  height: calc(100svh - ${({$headerHeight}) => $headerHeight}px);
+  margin:0;
+  border-top:1px solid ${colors.mSlateBlue};
+  background:#fff;
   & > ul {
-    display:flex;
-    align-items:center;
+    display:block;
   }
-  .nav-link{
-    display:inline-block;
-    padding:8px 15px;
-    font-size:15px;
-    font-weight:600;
+  &.open {
+    display:block;
+    animation: gnbOpenAni .3s both;
+    @keyframes gnbOpenAni{
+      0%{opacity:0;}
+      100%{opacity:1;}
+    }
   }
-  ${media.mo}{
-    display:none;
-    position:absolute;
-    top:${({$headerHeight}) => $headerHeight}px;
-    left:0;
-    width:100%;
-    height: calc(100svh - ${({$headerHeight}) => $headerHeight}px);
-    margin:0;
-    border-top:1px solid ${colors.mSlateBlue};
-    background:#fff;
-    & > ul {
-      display:block;
-    }
-    &.open {
-      display:block;
-      animation: gnbOpenAni .3s both;
-      @keyframes gnbOpenAni{
-        0%{opacity:0;}
-        100%{opacity:1;}
-      }
-    }
-    
+  
 
-    .nav-link{
-      display:block;
-      padding:20px 15px;
-      border-bottom:1px solid ${colors.lineColor};
-      transition: color var(--transition), border-color var(--transition);
-      &.active {
-        border-color:${colors.mSlateBlue};
-        color:${colors.mSlateBlue};
-      }
+  .nav-link{
+    display:block;
+    padding:20px 15px;
+    border-bottom:1px solid ${colors.lineColor};
+    transition: color var(--transition), border-color var(--transition);
+    &.active {
+      border-color:${colors.mSlateBlue};
+      color:${colors.mSlateBlue};
     }
   }
+}
 `;

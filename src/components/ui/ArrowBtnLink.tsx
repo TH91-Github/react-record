@@ -32,91 +32,91 @@ type StyleArrowBtnLinkType = {
   $bgColor: string,
 }
 const StyleArrowBtnLink = styled.span<StyleArrowBtnLinkType>`
-  display:inline-block;
-  .btn-link-arrow{
-    display:block;
-    overflow:hidden;
-    position:relative;
-    padding:8px 15px;
-    border-radius:5px;
-    transition: ${transitionStyle(["background-color", "padding-right", "color"])};
-    border:1px solid ${({$bgColor}) => $bgColor};
-    font-size:14px;
-    text-align:left;
+display:inline-block;
+.btn-link-arrow{
+  display:block;
+  overflow:hidden;
+  position:relative;
+  padding:8px 15px;
+  border-radius:5px;
+  transition: ${transitionStyle(["background-color", "padding-right", "color"])};
+  border:1px solid ${({$bgColor}) => $bgColor};
+  font-size:14px;
+  text-align:left;
+  &::before{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    transition:${transitionStyle(["transform"])};
+    background:${({$bgColor}) => $bgColor};
+    content:'';
+  }
+  &:hover, &:focus {
+    background:#fff;
+    padding-right:30px;
+    color:${({$bgColor}) => $bgColor};
     &::before{
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      transition:${transitionStyle(["transform"])};
-      background:${({$bgColor}) => $bgColor};
-      content:'';
-    }
-    &:hover, &:focus {
-      background:#fff;
-      padding-right:30px;
-      color:${({$bgColor}) => $bgColor};
-      &::before{
-        transform:translateX(101%);
-      }
-      .txt{
-        color:${({$bgColor}) => $bgColor};
-      }
-      .arrow {
-        display:block;
-      }
+      transform:translateX(101%);
     }
     .txt{
-      position:relative;
-      transition:$ ${transitionStyle(["color"])};
-      color:#fff;
-    } 
+      color:${({$bgColor}) => $bgColor};
+    }
+    .arrow {
+      display:block;
+    }
   }
-  .arrow {
-    display:none;
+  .txt{
+    position:relative;
+    transition:$ ${transitionStyle(["color"])};
+    color:#fff;
+  } 
+}
+.arrow {
+  display:none;
+  position:absolute;
+  top:50%;
+  width:13px;
+  height:13px;
+  transform:translateY(-50%);
+  opacity:0;
+  & > svg{
     position:absolute;
     top:50%;
-    width:13px;
-    height:13px;
     transform:translateY(-50%);
-    opacity:0;
-    & > svg{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
+  }
+  &:nth-child(2){
+    right:15px;
+    animation: arrow1Ani 1s linear infinite both;
+  }
+  &:nth-child(3){
+    right:10px;
+    animation: arrow1Ani 1s .2s linear infinite both;
+  }
+  &:nth-child(4){
+    right:5px;
+    animation: arrow1Ani 1s .4s linear infinite both;
+  }
+  
+  @keyframes arrow1Ani {
+    0%, 100%{
+      opacity:0;
     }
-    &:nth-child(2){
-      right:15px;
-      animation: arrow1Ani 1s linear infinite both;
-    }
-    &:nth-child(3){
-      right:10px;
-      animation: arrow1Ani 1s .2s linear infinite both;
-    }
-    &:nth-child(4){
-      right:5px;
-      animation: arrow1Ani 1s .4s linear infinite both;
-    }
-    
-    @keyframes arrow1Ani {
-      0%, 100%{
-        opacity:0;
-      }
-      50%{
-        opacity:1;
-      }
+    50%{
+      opacity:1;
     }
   }
-  &.none{
-    .btn-link-arrow{
-    background:transparent;
-      &::before{
-        display:none;
-      }
-      .txt {
-        color:${({$bgColor})=>$bgColor};
-      }
+}
+&.none{
+  .btn-link-arrow{
+  background:transparent;
+    &::before{
+      display:none;
+    }
+    .txt {
+      color:${({$bgColor})=>$bgColor};
     }
   }
+}
 `;

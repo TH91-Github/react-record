@@ -41,25 +41,25 @@ interface StyleWrapPropsType {
   $headerHeight: number,
 }
 const StyleWrap = styled.div<StyleWrapPropsType>`
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
+width:100%;
+height: calc(100svh - ${({$headerHeight}) => $headerHeight}px);
+.member-inner{
   width:100%;
-  height: calc(100svh - ${({$headerHeight}) => $headerHeight}px);
+  max-width:500px;
+  margin:0 auto;
+  padding:30px;
+  border-radius:10px;
+  ${bgTranslucence.baseLight};
+}
+${media.mo}{
+  display:block;
+  height:auto;
+  padding:30px 15px;
   .member-inner{
-    width:100%;
-    max-width:500px;
-    margin:0 auto;
-    padding:30px;
-    border-radius:10px;
-    ${bgTranslucence.baseLight};
+    min-height: calc(100svh - ${({$headerHeight}) => $headerHeight}px - 60px);
   }
-  ${media.mo}{
-    display:block;
-    height:auto;
-    padding:30px 15px;
-    .member-inner{
-      min-height: calc(100svh - ${({$headerHeight}) => $headerHeight}px - 60px);
-    }
-  }
+}
 `;

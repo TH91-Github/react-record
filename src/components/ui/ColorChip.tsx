@@ -51,22 +51,22 @@ export const ColorChip = ({data, keyValue}:ColorChipPropsType) => {
   )
 }
 const StyleWrap = styled.div`
+& > ul {
+  display: flex;
+  flex-wrap:wrap;
+  gap:20px;
+  & > li {
+    width:150px;
+  }
+}
+${media.mo}{
   & > ul {
-    display: flex;
-    flex-wrap:wrap;
-    gap:20px;
+    gap:10px;
     & > li {
-      width:150px;
+      width:calc((100% - 10px) / 2);
     }
   }
-  ${media.mo}{
-    & > ul {
-      gap:10px;
-      & > li {
-        width:calc((100% - 10px) / 2);
-      }
-    }
-  }
+}
 `;
 
 type ColorChipItemType = {
@@ -74,71 +74,71 @@ type ColorChipItemType = {
   $isReadable?:boolean;
 }
 const ColorChipItem = styled.div<ColorChipItemType>`
-  overflow:hidden;
+overflow:hidden;
+position:relative;
+width:100%;
+border-radius:5px;
+box-shadow:${bgShadow.base};
+.color-bg{
   position:relative;
-  width:100%;
+  height:70px;
+  background:${({$bgColor}) => $bgColor};
+}
+.btn-hex{
+  position:absolute;
+  top:50%;
+  left:50%;
+  padding:5px;
   border-radius:5px;
-  box-shadow:${bgShadow.base};
-  .color-bg{
+  outline:0;
+  transform: translate(-50%, -50%);
+  transition: background var(--transition);
+  .tit{
+    font-size:14px;
+    text-shadow:${textShadow.bgBlack};
+    color:#fff;
+    transition: color var(--transition), text-shadow var(--transition);
+  }
+  &:hover, &:focus{
+    background:${bgOpacity.white};
+    .tit {
+      text-shadow:unset;
+      color: ${props => props.$isReadable ? colors.black : props.$bgColor};
+    }
+  }
+}
+.color-info {
+  .btn-token{
+    display:block;
     position:relative;
-    height:70px;
-    background:${({$bgColor}) => $bgColor};
-  }
-  .btn-hex{
-    position:absolute;
-    top:50%;
-    left:50%;
-    padding:5px;
-    border-radius:5px;
+    width:100%;
+    padding:10px 10px;
+    border: 2px solid #fff;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    background:#fff;
+    transition: border-color var(--transition);
+    text-align:left;
     outline:0;
-    transform: translate(-50%, -50%);
-    transition: background var(--transition);
-    .tit{
-      font-size:14px;
-      text-shadow:${textShadow.bgBlack};
-      color:#fff;
-      transition: color var(--transition), text-shadow var(--transition);
-    }
-    &:hover, &:focus{
-      background:${bgOpacity.white};
-      .tit {
-        text-shadow:unset;
-        color: ${props => props.$isReadable ? colors.black : props.$bgColor};
-      }
-    }
-  }
-  .color-info {
-    .btn-token{
-      display:block;
-      position:relative;
-      width:100%;
-      padding:10px 10px;
-      border: 2px solid #fff;
-      border-bottom-left-radius:5px;
-      border-bottom-right-radius:5px;
-      background:#fff;
-      transition: border-color var(--transition);
-      text-align:left;
-      outline:0;
-      &:focus {
-        border-color: ${props => props.$isReadable ? colors.black : props.$bgColor};
-      }
-    }
-    .tit{
-      display:inline-block;
-      white-space:nowrap; 
-      overflow:hidden; 
-      text-overflow:ellipsis; 
-      line-height:1;
-    }
-  }
-  &:hover{ 
-    .btn-token {
+    &:focus {
       border-color: ${props => props.$isReadable ? colors.black : props.$bgColor};
     }
   }
-  .tooltip, .desc-box{
-    position:absolute;
-    top:0;
+  .tit{
+    display:inline-block;
+    white-space:nowrap; 
+    overflow:hidden; 
+    text-overflow:ellipsis; 
+    line-height:1;
   }
+}
+&:hover{ 
+  .btn-token {
+    border-color: ${props => props.$isReadable ? colors.black : props.$bgColor};
+  }
+}
+.tooltip, .desc-box{
+  position:absolute;
+  top:0;
+}
 `;

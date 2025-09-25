@@ -40,17 +40,17 @@ export const ButtonCaseLists = ({data}:ButtonCaseListsPropsType) =>{
 }
 
 const StyleWrap = styled.div`
-  ul { 
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    & > li {
-      &.ellipsis-type{
-        width:100px;
-      }
-      &.full-type{
-        width:200px;
-      }
+ul { 
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  & > li {
+    &.ellipsis-type{
+      width:100px;
+    }
+    &.full-type{
+      width:200px;
     }
   }
+}
 `;

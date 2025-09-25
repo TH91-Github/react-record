@@ -103,129 +103,129 @@ export const NamingContent = ({selectNaming}:NamingContentPropsType) => {
 }
 
 const StyleWrap = styled.div`
-  .naming-base{
-    transition: opacity var(--transition);
-    &.hide {
-      visibility:hidden;
-      position:absolute;
-      top:0;
-      opacity:0;
-      .base-heading, .base-lists{
-        display:none;
+.naming-base{
+  transition: opacity var(--transition);
+  &.hide {
+    visibility:hidden;
+    position:absolute;
+    top:0;
+    opacity:0;
+    .base-heading, .base-lists{
+      display:none;
+    }
+  }
+}
+.icon-link{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  margin-top:20px;
+  .icon{
+    display:block;
+    width:15px;
+    height:15px;
+  }
+  .txt { 
+    font-size:14px;
+  }
+}
+.base-lists{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+  & > li {
+    width:calc((100% - 10px) / 2);
+    padding:20px;
+    border-radius:10px;
+    border:1px solid ${colors.lineColor};
+    & > .tit{
+      font-size:20px;
+      & > span { 
+        font-size:16px;
       }
     }
   }
-  .icon-link{
-    display:inline-flex;
-    align-items:center;
-    gap:5px;
-    margin-top:20px;
-    .icon{
-      display:block;
-      width:15px;
-      height:15px;
+  .bullet-lists{
+    margin-top: 20px;
+    .desc {
+      position:relative;
+      font-weight:400;
     }
-    .txt { 
+  }
+}
+.examples-box{
+  display:flex;
+  align-content: flex-start;
+  gap:10px;
+  margin-top:15px;
+  .tit {
+    flex-shrink: 0;
+  }
+}
+.naming-select{
+  .desc-lists{
+    margin-top: 20px;
+  }
+  .section{
+    margin-top:30px;
+    padding-top:30px;
+    border-top:1px solid ${colors.lineColor};
+  }
+  .section-item{
+    margin-top:15px;
+    padding-left:20px;
+    .desc{
+      margin-top:5px;
       font-size:14px;
+      font-weight:400;
     }
+  }
+}
+${media.mo}{
+  .icon-link{
+    margin-top:15px;
   }
   .base-lists{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:20px;
     & > li {
-      width:calc((100% - 10px) / 2);
-      padding:20px;
-      border-radius:10px;
-      border:1px solid ${colors.lineColor};
+      width:100%;
       & > .tit{
-        font-size:20px;
+        font-size:18px;
         & > span { 
-          font-size:16px;
-        }
-      }
-    }
-    .bullet-lists{
-      margin-top: 20px;
-      .desc {
-        position:relative;
-        font-weight:400;
-      }
-    }
-  }
-  .examples-box{
-    display:flex;
-    align-content: flex-start;
-    gap:10px;
-    margin-top:15px;
-    .tit {
-      flex-shrink: 0;
-    }
-  }
-  .naming-select{
-    .desc-lists{
-      margin-top: 20px;
-    }
-    .section{
-      margin-top:30px;
-      padding-top:30px;
-      border-top:1px solid ${colors.lineColor};
-    }
-    .section-item{
-      margin-top:15px;
-      padding-left:20px;
-      .desc{
-        margin-top:5px;
-        font-size:14px;
-        font-weight:400;
-      }
-    }
-  }
-  ${media.mo}{
-    .icon-link{
-      margin-top:15px;
-    }
-    .base-lists{
-      & > li {
-        width:100%;
-        & > .tit{
-          font-size:18px;
-          & > span { 
-            font-size:14px;
-          }
-        }
-      }
-      .bullet-lists{
-        margin-top: 15px;
-        .desc {
           font-size:14px;
         }
       }
     }
-    .examples-box{
-      gap:5px;
-      line-height:14px;
-      .tit {
+    .bullet-lists{
+      margin-top: 15px;
+      .desc {
         font-size:14px;
-      }
-      .code-lists{
-        code{
-          font-size:12px;
-        }
-      }
-    }
-    .naming-select{
-      .desc-lists{
-        margin-top: 15px;
-      }
-      .section{
-        margin-top:15px;
-        padding-top:15px;
-      }
-      .section-item{
-        padding-left:10px;
       }
     }
   }
+  .examples-box{
+    gap:5px;
+    line-height:14px;
+    .tit {
+      font-size:14px;
+    }
+    .code-lists{
+      code{
+        font-size:12px;
+      }
+    }
+  }
+  .naming-select{
+    .desc-lists{
+      margin-top: 15px;
+    }
+    .section{
+      margin-top:15px;
+      padding-top:15px;
+    }
+    .section-item{
+      padding-left:10px;
+    }
+  }
+}
 `;

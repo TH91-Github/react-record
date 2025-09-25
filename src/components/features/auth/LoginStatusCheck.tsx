@@ -202,12 +202,12 @@ export const LoginStatusCheck = () => {
 }
 
 const StyleWrap = styled.div`
-  padding-top:10px;
-  .btn-article{
-    display:flex;
-    justify-content: center;
-    align-items:center;
-    gap:10px;
-    margin-top:20px;
-  }
+padding-top:10px;
+.btn-article{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  gap:10px;
+  margin-top:20px;
+}
 `;

@@ -15,7 +15,7 @@ export const LoginPWForm = () => {
   }
 
   return (
-    <StyleWrap className="form-item">
+    <div className="form-item">
       <InputItemModule 
         ref={loginPWRef}
         id="login-pw" 
@@ -25,9 +25,6 @@ export const LoginPWForm = () => {
         focusEvent={handleFocus}
         blurEvent={handleBlur}
       />
-  </StyleWrap>
+  </div>
   )
 }
-const StyleWrap = styled.div`
-  
-`;

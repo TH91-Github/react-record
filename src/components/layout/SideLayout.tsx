@@ -68,79 +68,79 @@ interface StyleWrapPropsType {
 }
 
 const StyleWrap = styled.div<StyleWrapPropsType>`
-  position:${({$position}) => $position};
+position:${({$position}) => $position};
+top:${({$headerHeight}) => $headerHeight}px;
+z-index:10;
+width:100%;
+max-width:${({$width}) => $width}px;
+height: calc(100svh -  ${({$headerHeight}) => $headerHeight}px);
+border-right:1px solid ${colors.lineColor};
+background:${bgColor.sideWite};
+${transitionStyle(['transform'])}
+.btn-mo{
+  display:none;
+}
+${media.mo}{
+  position:fixed;
   top:${({$headerHeight}) => $headerHeight}px;
-  z-index:10;
-  width:100%;
-  max-width:${({$width}) => $width}px;
-  height: calc(100svh -  ${({$headerHeight}) => $headerHeight}px);
-  border-right:1px solid ${colors.lineColor};
-  background:${bgColor.sideWite};
-  ${transitionStyle(['transform'])}
-  .btn-mo{
-    display:none;
-  }
-  ${media.mo}{
-    position:fixed;
-    top:${({$headerHeight}) => $headerHeight}px;
-    left:0;
-    max-width:100%; 
-    height: calc(100svh - ${({$headerHeight}) => $headerHeight}px);
-    transform:translateX(calc((100% - 5px) * -1));
-    &.open{
-      transform:translateX(0);
-      .btn-mo{
-        top:15px;
-        left:auto;
-        right:15px;
-        width:30px;
-        height:30px;
-        border-radius:0;
-        border:none;
-        transform:translate(0);
-        &::before{
-          display:none;
-        }
-        .icon-close{
-          top:50%;
-          left:50%;
-          transform: translate(-50%, -50%);
-          opacity:1;
-          ${transitionStyle(['opacity'])}
-        }
-      }
-    }
+  left:0;
+  max-width:100%; 
+  height: calc(100svh - ${({$headerHeight}) => $headerHeight}px);
+  transform:translateX(calc((100% - 5px) * -1));
+  &.open{
+    transform:translateX(0);
     .btn-mo{
-      display:block;
-      position:absolute;
-      top:50%;
-      right:-20px;
-      width:40px;
-      height:40px;
-      border:1px solid ${colors.lineColor};
-      border-radius:50%;
-      background:${bgColor.sideWite};
-      transform: translateY(-50%);
+      top:15px;
+      left:auto;
+      right:15px;
+      width:30px;
+      height:30px;
+      border-radius:0;
+      border:none;
+      transform:translate(0);
       &::before{
-        position:absolute;
-        top:-2px;
-        left:0px;
-        width:50%;
-        height:calc(100% + 4px);
-        background:${bgColor.sideWite};
-        content:'';
+        display:none;
       }
       .icon-close{
-        opacity:0;
-      }
-      .icon{
-        position:absolute;
         top:50%;
-        left:calc(50% + 5px);
-        width:15px;
-        height:15px;
+        left:50%;
         transform: translate(-50%, -50%);
+        opacity:1;
+        ${transitionStyle(['opacity'])}
       }
     }
   }
+  .btn-mo{
+    display:block;
+    position:absolute;
+    top:50%;
+    right:-20px;
+    width:40px;
+    height:40px;
+    border:1px solid ${colors.lineColor};
+    border-radius:50%;
+    background:${bgColor.sideWite};
+    transform: translateY(-50%);
+    &::before{
+      position:absolute;
+      top:-2px;
+      left:0px;
+      width:50%;
+      height:calc(100% + 4px);
+      background:${bgColor.sideWite};
+      content:'';
+    }
+    .icon-close{
+      opacity:0;
+    }
+    .icon{
+      position:absolute;
+      top:50%;
+      left:calc(50% + 5px);
+      width:15px;
+      height:15px;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
 `;

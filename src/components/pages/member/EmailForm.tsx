@@ -89,20 +89,20 @@ export const EmailForm = ({ refPush, validationUpdate }:RefInputType) => {
 };
 
 const StyleWrap = styled.div`
-  .description {
-    margin-top:5px;
-    padding-left:10px;
-    .txt {
-      font-size:14px;
-      font-weight:400;
-      color:${textColor.subText};
+.description {
+  margin-top:5px;
+  padding-left:10px;
+  .txt {
+    font-size:14px;
+    font-weight:400;
+    color:${textColor.subText};
+  }
+}
+&.error{ 
+  .description{
+    .txt{
+      color: ${colors.red};
     }
   }
-  &.error{ 
-    .description{
-      .txt{
-        color: ${colors.red};
-      }
-    }
-  }
+}
 `;

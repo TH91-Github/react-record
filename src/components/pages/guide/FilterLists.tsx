@@ -48,47 +48,47 @@ export const FilterLists = ({
   )
 }
 const StyleWrap = styled.div`
-  margin-top:20px;
+margin-top:20px;
+& > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap:20px;
+  & > li {
+    width: calc((100% - 60px) / 4);
+  }
+}
+.item-btn{
+  display: block;
+  position:relative;
+  width:100%;
+  height:100%;
+}
+.preivew{ 
+  margin-top:10px;
+}
+.empty-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  height:300px;
+  border-radius:10px;
+  box-shadow:${bgShadow.base};
+}
+${media.tabletMo}{
   & > ul {
-    display: flex;
-    flex-wrap: wrap;
     gap:20px;
     & > li {
-      width: calc((100% - 60px) / 4);
+      width: calc((100% - 40px) / 3);
     }
   }
-  .item-btn{
-    display: block;
-    position:relative;
-    width:100%;
-    height:100%;
-  }
-  .preivew{ 
-    margin-top:10px;
-  }
-  .empty-wrap{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width:100%;
-    height:300px;
-    border-radius:10px;
-    box-shadow:${bgShadow.base};
-  }
-  ${media.tabletMo}{
+}
+${media.mo}{
     & > ul {
-      gap:20px;
-      & > li {
-        width: calc((100% - 40px) / 3);
-      }
+    gap:20px;
+    & > li {
+      width: calc((100% - 20px) / 2);
     }
   }
-  ${media.mo}{
-     & > ul {
-      gap:20px;
-      & > li {
-        width: calc((100% - 20px) / 2);
-      }
-    }
-  }
+}
 `;

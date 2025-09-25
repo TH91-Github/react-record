@@ -39,34 +39,34 @@ export const HeaderLayout = () => {
 }
 
 const StyleWrap = styled.header`
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:20;
+position:fixed;
+top:0;
+left:0;
+z-index:20;
+width:100%;
+background:${bgOpacity.white};
+box-shadow: rgba(17,19,32,0.2) 0px -1px 6px;
+.header-inner{
+  display:flex;
+  align-items: center;
+  position:relative;
   width:100%;
-  background:${bgOpacity.white};
-  box-shadow: rgba(17,19,32,0.2) 0px -1px 6px;
+  max-width:${breakpoints.pc}px;
+  height:55px;
+  margin:0 auto;
+  padding:0 30px;
+}
+&.full-layout {
   .header-inner{
-    display:flex;
-    align-items: center;
-    position:relative;
-    width:100%;
-    max-width:${breakpoints.pc}px;
-    height:55px;
-    margin:0 auto;
-    padding:0 30px;
+    max-width:${breakpoints.maxPc}px;
   }
-  &.full-layout {
-    .header-inner{
-      max-width:${breakpoints.maxPc}px;
-    }
-  }
+}
 
-  ${media.mo}{
-    .header-inner{
-      justify-content: space-between;
-      padding:0 15px;
-    }
+${media.mo}{
+  .header-inner{
+    justify-content: space-between;
+    padding:0 15px;
   }
+}
 `;
 

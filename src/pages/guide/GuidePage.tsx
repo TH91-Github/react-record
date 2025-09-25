@@ -42,17 +42,17 @@ export const GuidePage = () => {
 }
 
 const StyleWrap = styled.div`
-  ${guideStyle}
+${guideStyle}
+position:relative;
+.guide-inner {
   position:relative;
+  width: 100%;
+  padding-left:300px;
+}
+${media.mo}{
   .guide-inner {
-    position:relative;
-    width: 100%;
-    padding-left:300px;
+    padding:0;
   }
-  ${media.mo}{
-    .guide-inner {
-      padding:0;
-    }
-  }
+}
 
 `;

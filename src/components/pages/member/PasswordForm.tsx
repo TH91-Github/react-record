@@ -116,20 +116,20 @@ export const PasswordForm = ({ refPush, validationUpdate }:RefInputType) => {
 }
 
 const StyleWrap = styled.div`
-  .description {
-    margin-top:5px;
-    padding-left:10px;
-    .txt {
-      font-size:14px;
-      font-weight:400;
-      color:${textColor.subText};
+.description {
+  margin-top:5px;
+  padding-left:10px;
+  .txt {
+    font-size:14px;
+    font-weight:400;
+    color:${textColor.subText};
+  }
+}
+.form-item.error{ 
+  .description{
+    .txt{
+      color: ${colors.red};
     }
   }
-  .form-item.error{ 
-    .description{
-      .txt{
-        color: ${colors.red};
-      }
-    }
-  }
+}
 `;

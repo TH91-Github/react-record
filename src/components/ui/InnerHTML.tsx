@@ -27,5 +27,5 @@ interface StyleWrapPropsType {
   $display: string,
 }
 const StyleWrap = styled.span<StyleWrapPropsType>`
-  display:${({$display}) => $display};
+display:${({$display}) => $display};
 `;

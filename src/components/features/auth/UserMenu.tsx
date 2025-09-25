@@ -99,29 +99,11 @@ export const UserMenu = () => {
   )
 }
 const StyleWrap = styled.div`
-  .login{
-    display:flex;
-    align-items:center;
-    .btn-login{
-      display:inline-block;
-      width:20px;
-      height:20px;
-      & > svg { 
-        width:100%;
-        height:100%;
-      }
-    }
-  }
-  .user{
-    display:flex;
-    align-items:center;
-    gap:5px;
-    .tit{
-      line-height:1;
-    }
-  }
-  .btn-logout{
-    position:relative;
+.login{
+  display:flex;
+  align-items:center;
+  .btn-login{
+    display:inline-block;
     width:20px;
     height:20px;
     & > svg { 
@@ -129,17 +111,35 @@ const StyleWrap = styled.div`
       height:100%;
     }
   }
-  ${media.mo}{
-
+}
+.user{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  .tit{
+    line-height:1;
   }
+}
+.btn-logout{
+  position:relative;
+  width:20px;
+  height:20px;
+  & > svg { 
+    width:100%;
+    height:100%;
+  }
+}
+${media.mo}{
+
+}
 `;
 
 const ModelInner = styled.div`
-  .btn-article{
-    display:flex;
-    justify-content: center;
-    align-items:center;
-    gap:10px;
-    margin-top:20px;
-  }
+.btn-article{
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  gap:10px;
+  margin-top:20px;
+}
 `;

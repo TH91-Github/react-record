@@ -49,18 +49,18 @@ export const HooksPage = () => {
 }
 
 const StyleWrap = styled.div`
-  .search-wrap{
-    display:flex;
-    justify-content: space-between;
+.search-wrap{
+  display:flex;
+  justify-content: space-between;
+}
+
+
+.hook-lists{
+  display: flex;
+  flex-wrap: wrap;
+  gap:20px;
+  & > li {
+    width: calc((100% - 60px) / 4);
   }
- 
-  
-  .hook-lists{
-    display: flex;
-    flex-wrap: wrap;
-    gap:20px;
-    & > li {
-      width: calc((100% - 60px) / 4);
-    }
-  }
+}
 `;

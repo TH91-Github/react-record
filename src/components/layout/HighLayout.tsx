@@ -5,7 +5,6 @@ import { AlertModule } from "components/modules/AlertModule"
 
 // 🔹 전역 layout
 export const HighLayout = () => {
-  console.log('High')
   return (
     <>
       <ResizeHandle />

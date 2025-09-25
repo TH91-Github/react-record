@@ -62,8 +62,6 @@ export const TreeLists = <T extends TreeItemType>({
   )
 }
 
-// ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 두번째 tree-item - 위치가 20이 아니라 더 늘려야함
-
 // memo로 감싸는 경우 제네릭 타입을 유지하기 위해서는 as 키워드를 사용해 명시적으로 타입 지정.
 export const MemoTreeLists = memo(TreeLists) as <T extends TreeItemType>(
   props: TreeListsPropsType<T>
@@ -73,37 +71,37 @@ interface StyleWrapPropsType {
   $styleGap?:number,
 }
 const StyleWrap = styled.ul<StyleWrapPropsType>`
-  &.first, [class*="depth-"] {
-    & > li {
-      position:relative;
-      padding: 10px 10px 10px ${({$styleGap}) => $styleGap || 30}px;
-      line-height:1.3;
+&.first, [class*="depth-"] {
+  & > li {
+    position:relative;
+    padding: 10px 10px 10px ${({$styleGap}) => $styleGap || 30}px;
+    line-height:1.3;
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      width: 1px;
+      height: 100%;
+      background: #000;
+      content: '';
+    }
+    &::after{
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      width: 10px;
+      height: 1px;
+      border-bottom-left-radius: 50%;
+      background: #000;
+      transform: translateY(-50%);
+      content: '';
+    }
+    &:last-child {
       &::before {
-        position: absolute;
-        top: 0;
-        left: 10px;
-        width: 1px;
-        height: 100%;
-        background: #000;
-        content: '';
-      }
-      &::after{
-        position: absolute;
-        top: 20px;
-        left: 10px;
-        width: 10px;
-        height: 1px;
-        border-bottom-left-radius: 50%;
-        background: #000;
-        transform: translateY(-50%);
-        content: '';
-      }
-      &:last-child {
-        &::before {
-          height:20px;
-          content:''
-        }
+        height:20px;
+        content:''
       }
     }
   }
+}
 `;  

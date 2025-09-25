@@ -62,63 +62,63 @@ export const FontsPage = () => {
 }
 
 const StyleWrap = styled.div`
-  .text-change{
+.text-change{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:30px;
+  .tit{
+    width:140px;
+    flex-shrink:0;
+  }
+  .input-item{
+    height:auto;
+  }
+}
+.weight-preview {
+  margin-top:30px;
+  li {
     display:flex;
-    align-items:center;
     gap:10px;
-    margin-top:30px;
+    align-items:center;
+    margin-top:10px;
+    font-size:18px;
+    &:first-child{
+      margin-top:0;
+    }
+    &.on {
+      .tit {
+        color:${colors.mSlateBlue};
+      }
+    }
+  }
+}
+${media.mo}{
+  .text-change{
+    flex-direction: column;
+    align-items:flex-start;
+    margin-top:20px;
     .tit{
-      width:140px;
-      flex-shrink:0;
+      width:100%;
     }
     .input-item{
       height:auto;
     }
   }
-  .weight-preview {
-    margin-top:30px;
-    li {
-      display:flex;
-      gap:10px;
-      align-items:center;
-      margin-top:10px;
-      font-size:18px;
-      &:first-child{
-        margin-top:0;
-      }
-      &.on {
-        .tit {
-          color:${colors.mSlateBlue};
-        }
-      }
-    }
-  }
-  ${media.mo}{
-    .text-change{
+  .weight-preview{
+    ul > li {
       flex-direction: column;
       align-items:flex-start;
-      margin-top:20px;
-      .tit{
-        width:100%;
-      }
-      .input-item{
-        height:auto;
+      gap:5px;
+      & > span {
+        display:block;
       }
     }
-    .weight-preview{
-      ul > li {
-        flex-direction: column;
-        align-items:flex-start;
-        gap:5px;
-        & > span {
-          display:block;
-        }
-      }
-      .tit{
-        font-size:14px;
-      }
+    .tit{
+      font-size:14px;
     }
   }
+}
 `;
 
 interface FontWeightType {

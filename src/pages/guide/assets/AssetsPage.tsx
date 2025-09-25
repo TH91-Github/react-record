@@ -8,7 +8,6 @@ export const AssetsPage = () => {
     </StyleWrap>
   )
 }
-
 const StyleWrap = styled.div`
 
 `;

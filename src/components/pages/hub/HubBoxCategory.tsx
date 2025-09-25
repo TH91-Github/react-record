@@ -33,60 +33,60 @@ export const HubBoxCategory = () => {
 }
 
 const StyleWrap = styled.div`
-  display:flex;
-  gap:15px;
-  position:relative;
+display:flex;
+gap:15px;
+position:relative;
+width:100%;
+&::before{
+  position:absolute;
+  z-index:-1;
+  top:0;
+  left:0;
   width:100%;
-  &::before{
-    position:absolute;
-    z-index:-1;
-    top:0;
-    left:0;
-    width:100%;
-    height:50%;
-    background:${colors.blue};
-    content:'';
+  height:50%;
+  background:${colors.blue};
+  content:'';
+}
+.cearte-box{
+  padding:30px 0 20px 30px;
+}
+.btn-cearte{
+  flex-shrink:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:200px;
+  height:180px;
+  border-radius:5px;
+  border:1px solid #fff;
+  background-color:#fff;
+  box-shadow:${bgShadow.base};
+  ${transitionStyle(["border-color"])};
+  .icon{
+    display:block;
+    width:40px;
+    height:40px;
   }
-  .cearte-box{
-    padding:30px 0 20px 30px;
+  &:hover{
+    border-color:${colors.blue};
+    color:${colors.blue};
   }
-  .btn-cearte{
-    flex-shrink:0;
+}
+.box-wrap{
+  overflow:hidden;
+  overflow-x:auto;
+  ${scrollBar('x')}
+  position:relative;
+  width: calc(100% - 200px);
+  padding:30px 0 20px 15px;
+  & > ul { 
     display:flex;
-    justify-content:center;
-    align-items:center;
-    width:200px;
-    height:180px;
-    border-radius:5px;
-    border:1px solid #fff;
-    background-color:#fff;
-    box-shadow:${bgShadow.base};
-    ${transitionStyle(["border-color"])};
-    .icon{
-      display:block;
-      width:40px;
-      height:40px;
-    }
-    &:hover{
-      border-color:${colors.blue};
-      color:${colors.blue};
-    }
+    gap:30px;
+    width: max-content;
   }
-  .box-wrap{
-    overflow:hidden;
-    overflow-x:auto;
-    ${scrollBar('x')}
-    position:relative;
-    width: calc(100% - 200px);
-    padding:30px 0 20px 15px;
-    & > ul { 
-      display:flex;
-      gap:30px;
-      width: max-content;
-    }
-  }
-  .box-item{
-    position:relative;
-    width:300px;
-  }
+}
+.box-item{
+  position:relative;
+  width:300px;
+}
 `;

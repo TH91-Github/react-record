@@ -65,58 +65,58 @@ export const HubSideMenu = ({$sideWidth} : HubSideMenuPropsType) => {
 }
 
 const StyleWrap = styled.div`
-  overflow-y:auto;
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  .nav-heading{
-    padding:20px 15px 20px 30px;
-    .svg {
-      display:inline-block;
-      position:relative;
-      width:24px;
-      height:24px;
-    }
-    .title {
-      display:inline-block;
-      & > a { 
-        display:flex;
-        align-items:center;
-        gap:10px;
-        font-weight:600;
-        color:${colors.blue};
-      }
-    }
-    .desc{
-      margin-top:5px;
-      font-size:14px;
-      color:${textColor.subText};
-    }
-  }
-  .nav-item{
-    padding:10px 0 20px;
-    .tit{
-      padding:10px 15px 10px 30px;
-      font-size:14px;
-      color:${textColor.subText};
-    }
-  }
-  .nav-lists{
-    margin-top:10px;
-  }
-  .nav-btn{
-    display:block;
+overflow-y:auto;
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+.nav-heading{
+  padding:20px 15px 20px 30px;
+  .svg {
+    display:inline-block;
     position:relative;
-    width:100%;
-    padding:10px 15px 10px 30px;
-    font-weight:500;
-    color:${textColor.text};
-    text-align:left;
-    &.active { 
-      color:#fff;
-      background-color:${colors.blue};
+    width:24px;
+    height:24px;
+  }
+  .title {
+    display:inline-block;
+    & > a { 
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:600;
+      color:${colors.blue};
     }
   }
+  .desc{
+    margin-top:5px;
+    font-size:14px;
+    color:${textColor.subText};
+  }
+}
+.nav-item{
+  padding:10px 0 20px;
+  .tit{
+    padding:10px 15px 10px 30px;
+    font-size:14px;
+    color:${textColor.subText};
+  }
+}
+.nav-lists{
+  margin-top:10px;
+}
+.nav-btn{
+  display:block;
+  position:relative;
+  width:100%;
+  padding:10px 15px 10px 30px;
+  font-weight:500;
+  color:${textColor.text};
+  text-align:left;
+  &.active { 
+    color:#fff;
+    background-color:${colors.blue};
+  }
+}
 `;

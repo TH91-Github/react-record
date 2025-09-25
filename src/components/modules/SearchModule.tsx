@@ -184,57 +184,57 @@ interface StyleWrapType {
 }
 
 const StyleWrap = styled.div<StyleWrapType>`
-  display: flex;
-  align-items: center;
+display: flex;
+align-items: center;
+position:relative;
+width:100%;
+max-width:${({$maxWidth})=> $maxWidth || '100%'};
+.icon{
+  flex-shrink: 0;
+  display:inline-block;
   position:relative;
+}
+.input-item {
+  flex-grow:1;
+}
+.search-btn {
+  flex-shrink: 0;
+}
+.btn {
+  width:40px;
+  height:40px;
+}
+.empyt-wrap{
+  position:absolute;
+  z-index:10;
+  top: calc(100% + 5px);
+  left:0;
   width:100%;
-  max-width:${({$maxWidth})=> $maxWidth || '100%'};
-  .icon{
-    flex-shrink: 0;
-    display:inline-block;
-    position:relative;
-  }
-  .input-item {
-    flex-grow:1;
-  }
-  .search-btn {
-    flex-shrink: 0;
-  }
-  .btn {
-    width:40px;
-    height:40px;
+  padding:10px;
+  border-radius:5px;
+  border:1px solid ${colors.lineColor};
+  background:#fff; 
+  font-size:14px;
+}
+&.search-btn {
+  .input {
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
   }
   .empyt-wrap{
-    position:absolute;
-    z-index:10;
-    top: calc(100% + 5px);
-    left:0;
-    width:100%;
-    padding:10px;
-    border-radius:5px;
-    border:1px solid ${colors.lineColor};
-    background:#fff; 
-    font-size:14px;
-  }
-  &.search-btn {
-    .input {
-      border-top-right-radius:0;
-      border-bottom-right-radius:0;
-    }
-    .empyt-wrap{
-      
-    }
-    .btn  {
-      border-top-left-radius:0;
-      border-bottom-left-radius:0;
-    }
     
   }
-  .error {
-    position:absolute;
-    top:100%;
-    padding:10px;
-    font-size:14px;
-    color:${colors.red};
+  .btn  {
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
   }
+  
+}
+.error {
+  position:absolute;
+  top:100%;
+  padding:10px;
+  font-size:14px;
+  color:${colors.red};
+}
 `;

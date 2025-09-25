@@ -83,74 +83,74 @@ export const NamingHeader = ({selectNaming, updateNaming}:NamingHeaderPropsType)
   )
 }
 const StyleWrap = styled.div`
+.principles-inner{
+  display:flex;
+  position:relative;
+  width:100%:
+}
+.heading{
+  width:55%;
+}
+.category-lists{
+  position:absolute;
+  top: 0;
+  right:0;
+  width:45%;
+  height:100%;
+  padding:30px;
+}
+.carousel-item{
+  height:auto;
+}
+.category-item{
+  &.selected {
+    .category-btn{
+      border-color:${colors.mSlateBlue};
+      background:${colors.mSlateBlue};
+      color:#fff;
+    }
+  }
+}
+.category-btn{
+  width:100%;
+  padding:10px 20px;
+  border-radius:10px;
+  border:1px solid ${colors.lineColor};
+  text-align:left;
+  transition: border-color var(--transition), background var(--transition), color var(--transition);
+  &:hover, &:focus {
+    color:${colors.mSlateBlue};
+    border-color:${colors.mSlateBlue};
+  }
+}
+.error-item{
+  padding:30px;
+  text-align:center;
+}
+
+${media.mo} {
   .principles-inner{
-    display:flex;
-    position:relative;
-    width:100%:
+    display:block;
   }
   .heading{
-    width:55%;
+    width:100%;
   }
   .category-lists{
-    position:absolute;
-    top: 0;
-    right:0;
-    width:45%;
-    height:100%;
-    padding:30px;
+    position:relative;
+    width:100%;
+    margin-top:20px;
+    padding:0;
   }
-  .carousel-item{
-    height:auto;
-  }
-  .category-item{
-    &.selected {
-      .category-btn{
-        border-color:${colors.mSlateBlue};
-        background:${colors.mSlateBlue};
-        color:#fff;
-      }
-    }
+  .swiper-slide{
+    width:auto;
   }
   .category-btn{
-    width:100%;
-    padding:10px 20px;
-    border-radius:10px;
-    border:1px solid ${colors.lineColor};
-    text-align:left;
-    transition: border-color var(--transition), background var(--transition), color var(--transition);
-    &:hover, &:focus {
-      color:${colors.mSlateBlue};
-      border-color:${colors.mSlateBlue};
+    display:inline-block;
+    width:auto;
+    padding:8px 10px;
+    & > span {
+      ${ellipsisStyle(1,14)};
     }
   }
-  .error-item{
-    padding:30px;
-    text-align:center;
-  }
-
-  ${media.mo} {
-    .principles-inner{
-      display:block;
-    }
-    .heading{
-      width:100%;
-    }
-    .category-lists{
-      position:relative;
-      width:100%;
-      margin-top:20px;
-      padding:0;
-    }
-    .swiper-slide{
-      width:auto;
-    }
-    .category-btn{
-      display:inline-block;
-      width:auto;
-      padding:8px 10px;
-      & > span {
-        ${ellipsisStyle(1,14)};
-      }
-    }
-  }
+}
 `;

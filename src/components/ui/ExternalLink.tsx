@@ -25,25 +25,25 @@ export const ExternalLink = ({
 };
 
 const StlyeWrap = styled.a`
-  display:inline-block;
-  position:relative;
-  padding-bottom:1px;
+display:inline-block;
+position:relative;
+padding-bottom:1px;
+&::after{
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:2px;
+  border-radius:5px;
+  background:${colors.mSlateBlue};
+  transform-origin:left;
+  transform: scaleX(0);
+  transition: transform var(--transition);
+  content:'';
+}
+&:hover, &:focus{ 
   &::after{
-    position:absolute;
-    left:0;
-    bottom:0;
-    width:100%;
-    height:2px;
-    border-radius:5px;
-    background:${colors.mSlateBlue};
-    transform-origin:left;
-    transform: scaleX(0);
-    transition: transform var(--transition);
-    content:'';
+    transform: scaleX(1);
   }
-  &:hover, &:focus{ 
-    &::after{
-      transform: scaleX(1);
-    }
-  }
+}
 `;

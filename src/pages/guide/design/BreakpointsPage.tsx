@@ -84,131 +84,131 @@ export const BreakpointsPage = () => {
 }
 
 const StyleWrap = styled.div`
-  .breakpoint-lists {
-    display: flex;
-    flex-wrap:wrap;
-    gap:20px;
-    margin-top:30px;
-    & > li {
-      position:relative;
-      width:150px;
-    }
-  }
-  .breakpoint-item{
-    overflow:hidden;
+.breakpoint-lists {
+  display: flex;
+  flex-wrap:wrap;
+  gap:20px;
+  margin-top:30px;
+  & > li {
     position:relative;
-    width:100%;
-    border-radius:5px;
-    box-shadow:${bgShadow.base};
-    .breakpoint-view{
-      position:relative;
-      height:70px;
-      border-bottom:1px solid ${colors.lineColor};
-      &::before {
-        position:absolute;
-        top:50%;
-        left:50%;
-        width:100%;
-        height:2px;
-        border-top:2px dotted ${colors.lineColor};
-        transform: translate(-50%, -50%);
-        content:'';
-      }
-    }
-    .btn-token{
+    width:150px;
+  }
+}
+.breakpoint-item{
+  overflow:hidden;
+  position:relative;
+  width:100%;
+  border-radius:5px;
+  box-shadow:${bgShadow.base};
+  .breakpoint-view{
+    position:relative;
+    height:70px;
+    border-bottom:1px solid ${colors.lineColor};
+    &::before {
+      position:absolute;
+      top:50%;
+      left:50%;
       width:100%;
-      padding:10px 10px;
-      border: 2px solid #fff;
-      border-bottom-left-radius:5px;
-      border-bottom-right-radius:5px;
-      background:#fff;
-      text-align:left;
-      transition: border-color var(--transition);
-      &:hover, &:focus {
-        border-color: ${colors.lineBlack};
-      }
+      height:2px;
+      border-top:2px dotted ${colors.lineColor};
+      transform: translate(-50%, -50%);
+      content:'';
     }
   }
-  ${media.mo}{
-    .breakpoint-lists {
-      gap:10px;
-      & > li {
-        width:calc((100% - 10px)/2);
-      }
+  .btn-token{
+    width:100%;
+    padding:10px 10px;
+    border: 2px solid #fff;
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    background:#fff;
+    text-align:left;
+    transition: border-color var(--transition);
+    &:hover, &:focus {
+      border-color: ${colors.lineBlack};
     }
   }
+}
+${media.mo}{
+  .breakpoint-lists {
+    gap:10px;
+    & > li {
+      width:calc((100% - 10px)/2);
+    }
+  }
+}
 `;
 
 type ArrowTextPropsType = {
   $arrowBg?: string;
 }
 const ArrowText = styled.span<ArrowTextPropsType>`
+display:inline-block;
+position:absolute;
+top:50%;
+z-index:1;
+transform: translateY(-50%);
+& > span {
   display:inline-block;
-  position:absolute;
-  top:50%;
-  z-index:1;
-  transform: translateY(-50%);
+  padding:2px;
+  background:${bgOpacity.white};
+  font-size:14px;
+}
+&.size {
+  left:50%;
+  width:100%;
+  transform: translate(-50%, -50%);
   & > span {
     display:inline-block;
-    padding:2px;
-    background:${bgOpacity.white};
-    font-size:14px;
-  }
-  &.size {
+    position:absolute;
+    top:50%;
     left:50%;
-    width:100%;
     transform: translate(-50%, -50%);
-    & > span {
-      display:inline-block;
-      position:absolute;
-      top:50%;
-      left:50%;
-      transform: translate(-50%, -50%);
-    }
-    &::before, &::after{
-      position:absolute;
-      top:50%;
-      left:-8px;
-      width:24px;
-      height:24px;
-      background: url(${({$arrowBg})=> $arrowBg});
-      background-size: contain;
-      transform: translateY(calc(-50% - 1px));
-      content:'';
-    }
-    &::after{
-      left:auto;
-      right:-8px;
-      transform: translateY(calc(-50% - 1px)) rotate(180deg);
-    }
   }
-  &.min, &.max {
-    &::before {
-      position:absolute;
-      top:-70%;
-      left:50%;
-      transform: translateX(-50%);
-      font-size:12px;
-      color:${textColor.subText};
-    }
+  &::before, &::after{
+    position:absolute;
+    top:50%;
+    left:-8px;
+    width:24px;
+    height:24px;
+    background: url(${({$arrowBg})=> $arrowBg});
+    background-size: contain;
+    transform: translateY(calc(-50% - 1px));
+    content:'';
   }
-  &.min {
-    left:0;
-    padding-left:5px;
-    border-left:2px solid ${colors.mSlateBlue};
-    border-radius:5px;
-    &::before {
-      content:'min'
-    }
+  &::after{
+    left:auto;
+    right:-8px;
+    transform: translateY(calc(-50% - 1px)) rotate(180deg);
   }
-  &.max {
-    right:0px;
-    padding-right:5px;
-    border-right:2px solid ${colors.mSlateBlue};
-    border-radius:5px;
-    &::before {
-      content:'max'
-    }
+}
+&.min, &.max {
+  &::before {
+    position:absolute;
+    top:-70%;
+    left:50%;
+    transform: translateX(-50%);
+    font-size:12px;
+    color:${textColor.subText};
   }
+}
+&.min {
+  left:0;
+  padding-left:5px;
+  border-left:2px solid ${colors.mSlateBlue};
+  border-radius:5px;
+  &::before {
+    content:'min'
+  }
+}
+&.max {
+  right:0px;
+  padding-right:5px;
+  border-right:2px solid ${colors.mSlateBlue};
+  border-radius:5px;
+  &::before {
+    content:'max'
+  }
+}
 
 `;
