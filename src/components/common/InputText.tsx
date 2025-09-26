@@ -2,6 +2,7 @@ import { colors, textColor } from "assets/style/variables";
 import { IconCloseCircle } from "assets/svg/icons";
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
 import styled from "styled-components"
+import { InputKeyboardValType } from "types/common";
 import { cn } from "utils/common";
 
 interface InputStylePropsType {
@@ -21,7 +22,7 @@ interface InputPropsType {
   disabled?: boolean;
   error?:boolean;
   styleOpt?:InputStylePropsType;
-  keyEnter?: () => void;
+  keyEnter?: ({e,val}:InputKeyboardValType) => void;
   changeEvent?: (e: string) => void;
   focusEvent?: () => void;
   removeEvent?: () => void;
@@ -40,7 +41,6 @@ export const InputText = forwardRef<InputTextRefType, InputPropsType>(function I
   name, id, type, className, title, placeholder, initVal, disabled, error, styleOpt={},
   keyEnter, changeEvent, focusEvent, blurEvent, removeEvent
 }: InputPropsType, ref ) {
-
   const [isFocus, setIsFocus] = useState<boolean>(initVal ? true : false);
   const [val, setVal] = useState<string>(initVal ?? "");
   const propsTimeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -51,7 +51,6 @@ export const InputText = forwardRef<InputTextRefType, InputPropsType>(function I
     $lineColor = colors.lineColor,
     $focusColor = colors.mSlateBlue 
   } = styleOpt;
-
   const handleFocusIn = useCallback(() => {
     setIsFocus(true);
     focusEvent && focusEvent();
@@ -63,7 +62,10 @@ export const InputText = forwardRef<InputTextRefType, InputPropsType>(function I
   }, [blurEvent]);
 
   const handleKeyUp = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
-    e.key === "Enter" && keyEnter && keyEnter();
+    if (e.key === "Enter" && keyEnter) {
+      const val = inputRef.current?.value;
+      keyEnter({e, val});
+    }
   }, [keyEnter] );
 
   const handleOnChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {

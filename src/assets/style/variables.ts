@@ -68,7 +68,7 @@ export const bgColor = {
 
 }
 export const bgOpacity = { 
-  white: `rgba(255,255,255,.8)`,
+  white: `rgba(255,255,255,0.8)`,
 }
 export const bgShadow = {
   base: 'rgba(17,19,32,0.2) 1px 1px 6px;',
@@ -76,23 +76,23 @@ export const bgShadow = {
 
 export const bgTranslucence = {
   baseLight:`
-    background: transparent;
-    box-shadow:inset 0px 0px 1px 0px rgba(255,255,255,.3), 0px 0px 3px 0px rgba(0,0,0,.1), 0px 0px 3px 0px rgba(0,0,0,.1);
+    background-color: rgba(255,255,255,0.5);
+    box-shadow:inset 0px 0px 1px 0px rgba(255,255,255,0.3), 0px 0px 3px 0px rgba(0,0,0,0.1), 0px 0px 3px 0px rgba(0,0,0,0.1);
     backdrop-filter: blur(3px);
   `,
   baseDark:`
     background: transparent;
-    box-shadow:inset 0px 0px 1px 0px rgba(127,127,127,.3), 0px 0px 3px 0px rgba(255,255,255,.1), 0px 0px 3px 0px rgba(255,255,255,.1);
+    box-shadow:inset 0px 0px 1px 0px rgba(127,127,127,0.3), 0px 0px 3px 0px rgba(255,255,255,0.1), 0px 0px 3px 0px rgba(255,255,255,0.1);
     backdrop-filter: blur(3px);
   `,
   leftLight:`
     background: transparent;
-    box-shadow:inset 1px 1px 1px 0px rgba(255,255,255,.5), 3px 3px 10px 0px rgba(0,0,0,.1), 2px 2px 3px 0px rgba(0,0,0,.1);
+    box-shadow:inset 1px 1px 1px 0px rgba(255,255,255,0.5), 3px 3px 10px 0px rgba(0,0,0,0.1), 2px 2px 3px 0px rgba(0,0,0,0.1);
     backdrop-filter: blur(3px);
   `,
   leftDark:`
     background: transparent;
-    box-shadow:inset 1px 1px 1px 0px rgba(127,127,127,.5), 3px 3px 5px 0px rgba(255,255,255,.1), 2px 2px 3px 0px rgba(255,255,255,.1);
+    box-shadow:inset 1px 1px 1px 0px rgba(127,127,127,0.5), 3px 3px 5px 0px rgba(255,255,255,0.1), 2px 2px 3px 0px rgba(255,255,255,0.1);
     backdrop-filter: blur(3px);
   `,
   blur:`

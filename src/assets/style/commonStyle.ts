@@ -107,6 +107,9 @@ h1, h2, h3, h4, h5, h6, .title {
 }
 .fade-up {
   animation: fadeUpAni .3s ease both;
+  &.duration-m{
+    animation-duration: 0.5s;
+  }
 }
 .fade-down{
   animation: fadeDownAni .3s ease both;

@@ -1,5 +1,5 @@
 
-import { colors } from "assets/style/variables";
+import { bgTranslucence, colors } from "assets/style/variables";
 import { SvgSearch } from "assets/svg/Common";
 import { InputText, InputTextRefType } from "components/common/InputText";
 import { PreviewText } from "components/common/PreviewText";
@@ -89,6 +89,7 @@ export const SearchModule = <T extends EssentialType>({
     handleClick();
   }
   const handleClick = () => {
+    console.log(resultVal)
     let keyword = resultVal.trim();
     if (keyword.length < 2) {
       setErrorMessage('검색어를 2자 이상 입력해주세요.');
@@ -117,7 +118,7 @@ export const SearchModule = <T extends EssentialType>({
     if (errorMessage) {
       const timer = setTimeout(() => {
         setErrorMessage('');
-      }, 3000); // 3초 후 메시지 제거
+      }, 1500); // 3초 후 메시지 제거
       return () => clearTimeout(timer); // 컴포넌트 언마운트 시 클리어
     }
   }, [errorMessage]);
@@ -139,7 +140,9 @@ export const SearchModule = <T extends EssentialType>({
         changeEvent={inputChange}
       />
       {
-        errorMessage && <p className="error">{errorMessage}</p>
+        errorMessage && <p className="error">
+          <span className="fade-up duration-m">{errorMessage}</span>
+        </p>
       }
       { isPreview && 
         <PreviewText 
@@ -197,10 +200,17 @@ max-width:${({$maxWidth})=> $maxWidth || '100%'};
   }
 }
 .error {
+  overflow:hidden;
   position:absolute;
   top:100%;
-  padding:10px;
+  width:100%;
+  padding:8px 10px;
   font-size:14px;
+  font-weight:600;
   color:${colors.red};
+  ${bgTranslucence.baseLight}
+  & > span {
+    display:block;
+  }
 }
 `;
