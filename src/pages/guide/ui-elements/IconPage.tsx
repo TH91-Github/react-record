@@ -109,6 +109,7 @@ const StyleWrap = styled.div`
     }
     .tit {
       width:100%;
+      text-align:center;
       ${ellipsisStyle(1,18)}
     }
   }
@@ -153,9 +154,6 @@ ${media.mo}{
     gap:10px;
     & > li {
       width:60px;
-      .tit{
-        text-align:center;
-      }
     }
   }
 }
