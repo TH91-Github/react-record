@@ -1,16 +1,17 @@
 import { colors } from "assets/style/variables";
+import { IconOutLink } from "assets/svg/icons";
 import styled from "styled-components";
 
-type ExternalLinkPropsType = {
+interface OutLinkPropsType{
   href: string;
   alt?:string;
   titleText: string;
   customClass?: string;
 };
 
-export const ExternalLink = ({
+export const OutLink = ({
    href, alt, titleText, customClass 
-}: ExternalLinkPropsType) => {
+}: OutLinkPropsType) => {
   return (
     <StlyeWrap
       href={href}
@@ -20,12 +21,15 @@ export const ExternalLink = ({
       className={customClass}
     >
       <span>{titleText}</span>
+      <span className="icon"><IconOutLink /></span>
     </StlyeWrap>
   )
 };
 
 const StlyeWrap = styled.a`
-display:inline-block;
+display:inline-flex;
+align-items: center;
+gap:5px;
 position:relative;
 padding-bottom:1px;
 &::after{
@@ -45,5 +49,9 @@ padding-bottom:1px;
   &::after{
     transform: scaleX(1);
   }
+}
+.icon{
+  width:20px;
+  height:20px;
 }
 `;

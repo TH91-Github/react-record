@@ -1,20 +1,26 @@
 import { Modal } from "components/common/Modal";
 import { utilsData } from "components/pages/guide/data/utilsData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
+import { MoreLinkModal } from "components/pages/guide/MoreLinkModal";
 import { TabSearchLists } from "components/pages/guide/TabSearchLists";
+import { InnerHTML } from "components/ui/InnerHTML";
+import { OutLink } from "components/ui/OutLink";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { useState } from "react";
 import styled from "styled-components";
-import { GuideFilterDataType } from "types/guide";
+import { GuidePopupDataType } from "types/guide";
 
 export const UtilsPage = () => {
-  const [selectData, setSelectData] = useState<GuideFilterDataType | null>(null); 
+  const [selectData, setSelectData] = useState<GuidePopupDataType | null>(null); 
   const handleItemClick = (ID: string) =>{
     const findItem = utilsData.find(item => item.id === ID)
-    setSelectData(findItem || null)
+
+    if(findItem){
+      setSelectData(findItem)
+    }
   }
 
-  const handleModalClose = () => {
+  const onModalClose = () => {
     setSelectData(null);
   }
   return (
@@ -39,9 +45,10 @@ export const UtilsPage = () => {
           </div>
         </div>
         {selectData && (
-          <Modal onClose={() => handleModalClose()}>
-            <p className="tit">Utils TEST</p>
-          </Modal>
+          <MoreLinkModal 
+            data={selectData}
+            onClose={onModalClose}
+          />
         )}
       </div>
     </StyleWrap>

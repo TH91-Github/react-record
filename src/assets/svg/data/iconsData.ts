@@ -1,4 +1,4 @@
-import { IconFolderAdd, IconBookmark, IconCheck, IconError, IconLogout, IconUser, IconPlus, IconChat, IconMapPoint, IconHome, IconArrowRight } from "../icons";
+import { IconFolderAdd, IconBookmark, IconCheck, IconError, IconLogout, IconUser, IconPlus, IconChat, IconMapPoint, IconHome, IconArrowRight, IconOutLink } from "../icons";
 
 // 🔹 React icon 라이브러리 icons.ts
 export const reactIconsData = [
@@ -90,4 +90,14 @@ export const reactIconsData = [
     code: 'IconArrowRight',
     iconElement: IconArrowRight,
   },
+  {
+    id:'icon-out-link',
+    title:'Outline Link',
+    category: 'icon',
+    desc:['link','outlink','새 창','아웃링크','링크','url'],
+    code: 'IconOutLink',
+    iconElement: IconOutLink,
+  },
 ]
+
+

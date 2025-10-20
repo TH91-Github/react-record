@@ -3,10 +3,10 @@ import { Logo } from "components/ui/Logo";
 import styled from "styled-components";
 import { UtilNav } from "./UtilNav";
 import { HeaderNav } from "./HeaderNav";
-import usePageTitle from "hooks/useDocTitle";
 import useToggle from "hooks/useToggle";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { usePageTitle } from "hooks/usePageTitle";
 
 export const HeaderLayout = () => {
   usePageTitle(); // title 변경

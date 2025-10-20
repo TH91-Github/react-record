@@ -23,7 +23,7 @@ const pathFindTitle = (pathNameArr:string[]) => {
   return routerPath?.title ?? null;
 };
 
-const usePageTitle = () => {
+export const usePageTitle = () => {
   const location = useLocation();
 
   useEffect(() => {
@@ -37,5 +37,3 @@ const usePageTitle = () => {
     }
   }, [location.pathname]);
 }
-
-export default usePageTitle;

@@ -78,6 +78,11 @@ export interface GuideFilterDataType { // 공통 데이터 타입
   keyword: string[];
   link: string;
 }
+// modal & link 연결 - hook, utils
+export interface GuidePopupDataType extends GuideFilterDataType {
+  modalTitle:string;
+  modalDesc:string;
+}
 
 export interface ComponentsInfoType {
   info:{

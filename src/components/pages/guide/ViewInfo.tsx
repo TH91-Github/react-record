@@ -1,6 +1,6 @@
 import { media, textColor } from "assets/style/variables";
-import { ExternalLink } from "components/ui/ExternalLink";
 import { InnerHTML } from "components/ui/InnerHTML";
+import { OutLink } from "components/ui/OutLink";
 import styled from "styled-components";
 import { ComponentsInfoType } from "types/guide";
 
@@ -20,7 +20,7 @@ export const ViewInfo = ({data}:ViewInfoPropsType) => {
           { link.map((linkItem, linkIdx) => (
             <li key={linkIdx} className="circle">
               { linkItem.link 
-                ? <ExternalLink 
+                ? <OutLink 
                     href={linkItem.link}
                     alt={linkItem.title}
                     titleText={linkItem.code}

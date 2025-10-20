@@ -26,7 +26,7 @@ export async function copyClipboard (copyText: string):Promise<boolean> {
     return false;
   }
 }
-// 🔹 HTML 특수문자 이스케이프와 안전하게 sanitize
+// 🔹 HTML 특수문자 이스케이프와 안전하게 sanitize - code 작성 시 사용
 export function escapeSanitizedHtml(str: string) {
   const escapeCOde = str
     .replace(/&/g, '&amp;')
