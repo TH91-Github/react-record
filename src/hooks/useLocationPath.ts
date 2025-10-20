@@ -13,19 +13,22 @@ interface UseLocationPathReturnType<T> {
 export const useLocationPath = <T,>(
   data: T[], // 비교 데이터
   idKey: keyof T, // id, title 찾을 키 값 설정
-  index: number // 몇 번째 인덱스를 사용할지
+  index?: number // 몇 번째 인덱스를 사용할지
 ): UseLocationPathReturnType<T> => {
   const location = useLocation();
   return useMemo(() => {
     const pathArr = location.pathname.split("/").filter(Boolean);
-    const targetId = pathArr[index];
+    const targetId = pathArr[index || 1];
     const currentIdx = data.findIndex((item) => item[idKey] === targetId);
     const currentItem = currentIdx !== -1 ? data[currentIdx] : undefined;
     return {
       locationIdx:currentIdx, 
       locationItem:currentItem, 
       locationPath:pathArr,
-      currentPath:pathArr[pathArr.length - 1]
+      currentPath:pathArr[pathArr.length - 1] // 마지막(현재) path name
     }; // idx, obj, path
   }, [location.pathname, data, idKey, index]);
 };
+
+
+// ✅ EX) const { locationItem, locationPath } = useLocationPath(GUIDE_LIST, 'id');

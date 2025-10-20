@@ -5,11 +5,11 @@ import { useMatchItem } from "hooks/useMatchItem";
 import { GUIDE_LIST } from "routes/pages/guide/GuideRouter";
 
 export const useGuideLocation = () => {
-  const { locationItem, locationPath } = useLocationPath(GUIDE_LIST, 'id', 1);
+  const { locationItem, currentPath } = useLocationPath(GUIDE_LIST, 'id');
   const { matchItem } = useMatchItem({
     data: locationItem?.children ?? [],
     idKey: 'id',
-    findVal: locationPath[locationPath.length - 1]
+    findVal: currentPath
   });
   // 🔽 data : {...} or undefined 
   return { locationData: locationItem, guideData : matchItem};

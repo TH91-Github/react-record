@@ -16,7 +16,7 @@ interface NavItemType extends TreeItemType {
 }
 
 export const GuideNav = () => {
-  const { locationIdx } = useLocationPath(GUIDE_LIST, "id", 1);
+  const { locationIdx } = useLocationPath(GUIDE_LIST, "id");
   const guidePath = useCallback((itemPath: string, childrenPath: string) => {
     const routesCheck = childrenPath.indexOf("/:id");
     return `${itemPath}${routesCheck === -1 ? `/${childrenPath}` : ""}`;
