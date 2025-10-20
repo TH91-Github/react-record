@@ -12,6 +12,8 @@ export const GuideAbout = () => {
     if(depthPath){
       let checkDepth = depthPath.indexOf(':id') > 0 ? '': depthPath;
       navigate(`/guide/${path}/${checkDepth}`);
+    }else{
+      navigate(`/guide/${path}`);
     }
   }
   return (
@@ -42,12 +44,12 @@ export const GuideAbout = () => {
                     <button 
                       className={`link-btn`}
                       onClick={() => handleLinkClick(item.path, item?.children?.[0]?.path)}
-                      disabled={!(item?.children)}
+                      disabled={!(item.id !== 'settings')}
                     >
                       <GuideMenuIcon id={item.id} />
                       <span className="tit">{item.title}</span>
                       {
-                        !(item?.children) && <div className="disabled">
+                        !(item.id !== 'settings') && <div className="disabled">
                           <span>준비 중...</span>
                         </div>
                       }

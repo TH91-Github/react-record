@@ -27,7 +27,7 @@ export const HooksPage = () => {
           titleText={'Hook System'} 
           pointer="underline"
           $fontSize={28}
-          desc={['준비 중']}
+          desc={['재활용 가능한 Hook 모음']}
         />
         <div className="section-wrap">
           <div className="section-item">

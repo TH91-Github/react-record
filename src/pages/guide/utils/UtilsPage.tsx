@@ -33,7 +33,7 @@ export const UtilsPage = () => {
           titleText={'Utils System'} 
           pointer="underline"
           $fontSize={28}
-          desc={['준비 중']}
+          desc={['공통 및 재활용 가능한 function 모음']}
         />
         <div className="section-wrap">
           <div className="section-item">
