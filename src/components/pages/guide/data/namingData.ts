@@ -439,7 +439,7 @@ export const namingData = [
             tit: "커스텀 훅 화살표 함수와 use 접두어를 사용",
             desc: "리액트의 규칙(Rules of Hooks)을 준수하며, 훅임을 명확하게 식별할 수 있도록 use 접두어를 사용합니다.",
             codeLists: [
-              "const useFetchData(url) = () => {...}", "const useLocationCurrent = () => {...}"
+              "const useFetchData(url) = () => {...}", "const useLocationPath = () => {...}"
             ]
           }
         ]

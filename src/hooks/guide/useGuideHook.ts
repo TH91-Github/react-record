@@ -1,11 +1,11 @@
 // 📍 guide에서만 사용하는 hook
 
-import { useLocationCurrent } from "hooks/useLocationCustom";
+import { useLocationPath } from "hooks/useLocationPath";
 import { useMatchItem } from "hooks/useMatchItem";
 import { GUIDE_LIST } from "routes/pages/guide/GuideRouter";
 
 export const useGuideLocation = () => {
-  const { locationItem, locationPath } = useLocationCurrent(GUIDE_LIST, 'id', 1);
+  const { locationItem, locationPath } = useLocationPath(GUIDE_LIST, 'id', 1);
   const { matchItem } = useMatchItem({
     data: locationItem?.children ?? [],
     idKey: 'id',

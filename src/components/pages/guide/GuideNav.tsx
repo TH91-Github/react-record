@@ -1,7 +1,7 @@
 import { colors } from "assets/style/variables";
 import { Accordion } from "components/common/Accordion";
 import { MemoTreeLists, TreeItemType } from "components/ui/TreeLists";
-import { useLocationCurrent } from "hooks/useLocationCustom";
+import { useLocationPath } from "hooks/useLocationPath";
 import { useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import { GUIDE_LIST } from "routes/pages/guide/GuideRouter";
@@ -16,7 +16,7 @@ interface NavItemType extends TreeItemType {
 }
 
 export const GuideNav = () => {
-  const { locationIdx } = useLocationCurrent(GUIDE_LIST, "id", 1);
+  const { locationIdx } = useLocationPath(GUIDE_LIST, "id", 1);
   const guidePath = useCallback((itemPath: string, childrenPath: string) => {
     const routesCheck = childrenPath.indexOf("/:id");
     return `${itemPath}${routesCheck === -1 ? `/${childrenPath}` : ""}`;

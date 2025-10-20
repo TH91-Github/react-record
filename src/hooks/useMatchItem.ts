@@ -7,7 +7,7 @@ interface MatchItmePropsType<T> {
   findVal: string; // 찾을 값
 }
 
-// 🔹 일치하는 값(item) - 하나
+// 🔹 일치하는 값(item) - 하나만 반환 단일 대상
 export const useMatchItem = <T,>({ 
   data, idKey, findVal,  
 }:MatchItmePropsType<T>):{ matchIdx: number, matchItem: T | undefined } => {
@@ -18,7 +18,7 @@ export const useMatchItem = <T,>({
   }, [data, idKey, findVal]);
 };
 
-// 🔹 일치하는 값(item) - 여러 개 []
+// 🔹 일치하는 값(item) - 조건과 일치 하는 값 여러 개 반환[] 다중 대상
 export const useMatchItems = <T,>({
   data, idKey, findVal,  
 }:MatchItmePropsType<T>): {matchIdx:number[], matchItem: T | T[] } => {
@@ -31,3 +31,10 @@ export const useMatchItems = <T,>({
     return { matchIdx: matchedIndexes, matchItem: matchedItems };
   }, [data, idKey, findVal]);
 };
+
+/*
+  일관화
+  불필요한 리렌더링 방지 - 성능 최적화
+  반환값 - 일치 항목과 index
+  고유 ID 검색 및 카테고리 / 상태 필터링
+*/
