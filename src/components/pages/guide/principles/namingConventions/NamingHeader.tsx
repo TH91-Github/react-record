@@ -1,6 +1,6 @@
 import { colors, ellipsisStyle, media } from "assets/style/variables";
 import Carousel from "components/common/Carousel";
-import { useFixedData } from "hooks/useDataProcessing";
+import { useFixedData } from "hooks/useFixedData";
 import styled from "styled-components";
 import { namingData } from "../../data/namingData";
 

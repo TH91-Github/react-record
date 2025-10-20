@@ -1,6 +1,7 @@
 import { Modal } from "components/common/Modal";
 import { InnerHTML } from "components/ui/InnerHTML";
 import { OutLink } from "components/ui/OutLink";
+import { TitlePoint } from "components/ui/TitlePoint";
 import styled from "styled-components";
 import { GuidePopupDataType } from "types/guide";
 
@@ -18,7 +19,13 @@ export const MoreLinkModal = ({data, onClose}:MoreLinkModalPropsType) => {
   return (
     <Modal $width={500} onClose={() => handleModalClose()}>
       <StyleModal>
-        <h4 className="tit">{data.modalTitle}</h4>
+        <TitlePoint 
+          $display="block"
+          titleTag="h4"
+          titleText={data.modalTitle}
+          pointer="circle"
+          $fontSize={18}
+        />
         <InnerHTML tag="p" data={data.modalDesc} customClass="desc" />
         <p className="link">
           <OutLink
