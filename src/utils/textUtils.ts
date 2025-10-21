@@ -1,7 +1,7 @@
 // 📍 문자 관련 공통 함수
 
 // 🔹 띄어쓰기 기준 앞글자 대문자 or 소문자
-export function formatText (text:string, capital:boolean = true) {
+export function capitalizeWords (text:string, capital:boolean = true) {
   return text.split(' ').map(textItem => (
     capital 
       ? textItem.charAt(0).toLocaleUpperCase() + textItem.slice(1)

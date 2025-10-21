@@ -6,7 +6,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { stateIsMobile } from "recoilStore/atoms";
 import styled from "styled-components";
-import { formatText } from "utils/textUtils";
+import { capitalizeWords } from "utils/textUtils";
 
 interface ContextPropsType { 
   id: string
@@ -42,7 +42,7 @@ export const ComponentsViewPage = () => {
         <TitleHeading
           $display="block"
           titleTag="h4"
-          titleText={formatText(id)} 
+          titleText={capitalizeWords(id)} 
           pointer="circle"
           $fontSize={isMobile ? 24 : 28}
         />
