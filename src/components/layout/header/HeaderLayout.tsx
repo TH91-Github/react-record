@@ -10,12 +10,12 @@ import { usePageTitle } from "hooks/usePageTitle";
 
 export const HeaderLayout = () => {
   usePageTitle(); // title 변경
-  const [isMenuOpen, toggleMenu, setIsMenuOpen] = useToggle(false);
+  const [isMenuOpen, toggleMenu] = useToggle(false);
   const location = useLocation();
 
   // 라우터 이동 시 메뉴 닫기
   useEffect(() => {
-    setIsMenuOpen(false); // 강제로 닫음
+    toggleMenu(false); // 강제로 닫음
   }, [location.pathname]);
 
   const menuOpen = () => {

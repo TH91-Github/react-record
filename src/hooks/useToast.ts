@@ -1,6 +1,6 @@
 import { useRecoilCallback, useRecoilValue } from 'recoil';
 import { toastState } from 'recoilStore/componentsAtoms';
-import { ToastItem } from 'types/recoil';
+import { ToastItemType } from 'types/recoil/recoil';
 
 export const useToast = () => {
   const addToast = useRecoilCallback(
@@ -11,7 +11,7 @@ export const useToast = () => {
         timer: number = 2000
       ) => {
         set(toastState, (prev) => {
-          const newToast: ToastItem = {
+          const newToast: ToastItemType = {
             id: prev.nextId,
             visible: true,
             message,

@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { actionUserCreate, RootState } from "reduxStore/store";
 import styled from "styled-components";
-import { UserDataType } from "types/auth";
+import { UserDataType } from "types/auth/auth";
 import { isInvalidEmail, validIDPW } from "utils/auth";
 import { cn, randomNum } from "utils/common";
 import { auth, provider } from "../../../firebase";

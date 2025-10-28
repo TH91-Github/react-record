@@ -1,5 +1,6 @@
 import { HubCategoryType } from "types/hub/hub";
 
+
 export const hubBaseData : HubCategoryType[] = [
   {
     hubTit:'전체',

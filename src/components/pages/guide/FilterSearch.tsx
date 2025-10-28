@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { stateIsMobile } from "recoilStore/atoms";
 import styled from "styled-components"
-import { GuideFilterDataType } from "types/guide";
+import { GuideFilterDataType } from "types/guide/guide";
 
 interface FilterSearchPropsType{
   data: GuideFilterDataType[];

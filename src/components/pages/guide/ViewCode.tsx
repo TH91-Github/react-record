@@ -3,7 +3,7 @@ import { Hljs } from "components/common/Hljs";
 import { TabBtns } from "components/common/TabBtns";
 import { useState } from "react";
 import styled from "styled-components";
-import { ComponentsInfoType } from "types/guide";
+import { ComponentsInfoType } from "types/guide/guide";
 
 interface ViewCodePropsType {
   data: ComponentsInfoType

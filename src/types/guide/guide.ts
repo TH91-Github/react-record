@@ -1,8 +1,8 @@
 import { SvgPropsType } from "assets/svg/Common";
-import { ColorChipListsType } from "./ui";
+import { ColorChipListsType } from "../ui";
 import { IconType } from "react-icons";
 
-interface headDataType {
+interface HeadDataType {
   title:string,
   desc: string | string[]
 }
@@ -13,12 +13,12 @@ interface GuideBaseDataType  {
 }
 
 export interface ColorChipDataType {  // Color Data Type
-  headData: headDataType,
+  headData: HeadDataType,
   bodyData: (GuideBaseDataType & { lists: ColorChipListsType[] })[]
 }
 
 export interface BreakpointsDataType {  // Breakpoints Data Type
-  headData: headDataType,
+  headData: HeadDataType,
   bodyData: (GuideBaseDataType & { 
     lists: {
       id: string;
@@ -34,12 +34,12 @@ export interface BreakpointsDataType {  // Breakpoints Data Type
 }
 
 export interface FontDataType {  // Color Data Type
-  headData: headDataType,
+  headData: HeadDataType,
   bodyData: number[]
 }
 
 export interface IconDataType {  // Icon Data Type
-  headData: headDataType,
+  headData: HeadDataType,
   bodyData: (GuideBaseDataType & { 
     lists: {
       id: string;
@@ -62,7 +62,7 @@ export interface ButtonCaseType {
   desc?: string[];
 }
 export interface ButtonDataType {  // Color Data Type
-  headData: headDataType,
+  headData: HeadDataType,
   bodyData: (GuideBaseDataType & { 
     category:string,
     lists: ButtonCaseType[]

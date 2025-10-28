@@ -3,7 +3,7 @@ import { InnerHTML } from "components/ui/InnerHTML";
 import { OutLink } from "components/ui/OutLink";
 import { TitlePoint } from "components/ui/TitlePoint";
 import styled from "styled-components";
-import { GuidePopupDataType } from "types/guide";
+import { GuidePopupDataType } from "types/guide/guide";
 
 // 🔹 detail modal
 interface MoreLinkModalPropsType {

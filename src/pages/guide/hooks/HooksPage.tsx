@@ -5,7 +5,7 @@ import { TabSearchLists } from "components/pages/guide/TabSearchLists";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { useState } from "react";
 import styled from "styled-components";
-import { GuidePopupDataType } from "types/guide";
+import { GuidePopupDataType } from "types/guide/guide";
 
 export const HooksPage = () => {
   const [selectData, setSelectData] = useState<GuidePopupDataType | null>(null); 

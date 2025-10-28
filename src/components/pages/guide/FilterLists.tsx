@@ -1,7 +1,7 @@
 import { bgShadow, media } from "assets/style/variables";
 import { BadgeItemUI } from "components/ui/BadgeItemUI";
 import styled from "styled-components"
-import { GuideFilterDataType } from "types/guide";
+import { GuideFilterDataType } from "types/guide/guide";
 
 interface FilterListsPropsType {
   data: GuideFilterDataType[];

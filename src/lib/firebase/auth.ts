@@ -1,6 +1,6 @@
 // 🔹user 회원가입, 로그인, 조회 계정 관련
 import { arrayUnion, collection, doc, getDoc, serverTimestamp, updateDoc, writeBatch } from 'firebase/firestore';
-import { UserDataType, UserDeleteType } from 'types/auth';
+import { UserDataType, UserDeleteType } from 'types/auth/auth';
 import { fireDB } from '../../firebase';
 
 const users ='users';

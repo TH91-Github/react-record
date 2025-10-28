@@ -1,4 +1,4 @@
-import { GuideFilterDataType } from "types/guide";
+import { GuideFilterDataType } from "types/guide/guide";
 export const componentsData: GuideFilterDataType[] =[
   {
     id:'modal',

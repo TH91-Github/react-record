@@ -1,18 +1,18 @@
-export interface AlertState {
+export interface AlertStateType {
   isActive: boolean;
   title?: string;
   desc?: string;
   autoCloseSecond?: number;
   onClose?: () => void;
 };
-export interface ToastItem {
+export interface ToastItemType {
   id: number;
   visible: boolean;
   message: string;
   type: 'base' | 'success' | 'error';
 }
 
-export interface ToastState {
-  toasts: ToastItem[];
+export interface ToastStateType {
+  toasts: ToastItemType[];
   nextId: number;
 }

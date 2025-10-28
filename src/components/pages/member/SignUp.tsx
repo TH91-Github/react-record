@@ -4,7 +4,7 @@ import { useToast } from "hooks/useToast";
 import { userPushDataDoc } from "lib/firebase/auth";
 import { useCallback, useRef, useState } from "react";
 import styled from "styled-components";
-import { UserDataType } from "types/auth";
+import { UserDataType } from "types/auth/auth";
 import { randomNum } from "utils/common";
 import { auth } from "../../../firebase";
 import { EmailForm } from "./EmailForm";
@@ -13,6 +13,7 @@ import { PasswordForm } from "./PasswordForm";
 import { SimpleIDForm } from "./SimpleIDForm";
 import { Loading } from "components/common/Loading";
 import { Modal } from "components/common/Modal";
+import { useNavigate } from "react-router-dom";
 
 interface SignUpPropsType {
   authChange: () => void
@@ -28,6 +29,7 @@ export interface RefInputType {
 }
 
 export const SignUp = ({authChange}:SignUpPropsType) =>{
+  const navigate = useNavigate();
   const { addToast } = useToast();
   const refList = useRef<HTMLInputElement[]>([]);
   const [alertMessage, setAlertMessage] = useState({
@@ -117,6 +119,7 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
         success:true,
         message:'회원가입 완료 😁'
       })
+      navigate('/member'); 
     } catch (error) {
       setAlertMessage({
         isAlert:true,

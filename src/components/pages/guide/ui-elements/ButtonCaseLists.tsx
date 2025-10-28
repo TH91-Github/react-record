@@ -1,6 +1,6 @@
 import { useToast } from "hooks/useToast";
 import styled from "styled-components";
-import { ButtonCaseType } from "types/guide";
+import { ButtonCaseType } from "types/guide/guide";
 import { copyClipboard } from "utils/common";
 
 interface ButtonCaseListsPropsType {

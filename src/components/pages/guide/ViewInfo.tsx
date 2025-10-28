@@ -2,7 +2,7 @@ import { media, textColor } from "assets/style/variables";
 import { InnerHTML } from "components/ui/InnerHTML";
 import { OutLink } from "components/ui/OutLink";
 import styled from "styled-components";
-import { ComponentsInfoType } from "types/guide";
+import { ComponentsInfoType } from "types/guide/guide";
 
 interface ViewInfoPropsType {
   data: ComponentsInfoType

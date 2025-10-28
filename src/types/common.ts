@@ -1,4 +1,6 @@
-// 📍 #공통 타입
+/*
+  📍 #공통 타입 
+*/
 
 export interface KeywordBaseType {
   id: string;

@@ -1,7 +1,7 @@
 import ImgArrow from 'assets/images/svg/arrow.svg';
 import { reactIconsData } from "assets/svg/data/iconsData";
 import { svgCodeData } from "assets/svg/data/svgCodeData";
-import { ButtonDataType, IconDataType } from "types/guide";
+import { ButtonDataType, IconDataType } from "types/guide/guide";
 
 export const iconData : IconDataType = {
   headData:{

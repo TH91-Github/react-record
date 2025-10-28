@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import styled from "styled-components";
-import { GuideFilterDataType } from "types/guide";
+import { GuideFilterDataType } from "types/guide/guide";
 import { FilterSearch } from "./FilterSearch";
 import { FilterLists } from "./FilterLists";
 

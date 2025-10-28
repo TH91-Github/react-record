@@ -1,4 +1,4 @@
-import { ComponentsInfoType } from "types/guide"
+import { ComponentsInfoType } from "types/guide/guide"
 
 // 모달 code 
 export const modalData : ComponentsInfoType = {

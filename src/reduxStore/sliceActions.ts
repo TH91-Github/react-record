@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserDataType, UserStoreType } from "types/auth";
+import { UserDataType, UserStoreType } from "types/auth/auth";
 
 // 📍테스트용 
 const testState = {

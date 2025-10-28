@@ -1,4 +1,4 @@
-import { GuidePopupDataType } from "types/guide";
+import { GuidePopupDataType } from "types/guide/guide";
 
 export const hooksData: GuidePopupDataType[] =[
   // ⬇️ toggle on/off 관련 hook

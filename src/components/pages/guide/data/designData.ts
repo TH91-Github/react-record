@@ -1,7 +1,7 @@
 // ✅ variables 동기화, 추후 DB 관리
 
 import { bgColor, bgOpacity, colors, textColor } from "assets/style/variables"
-import { BreakpointsDataType, ColorChipDataType, FontDataType } from "types/guide"
+import { BreakpointsDataType, ColorChipDataType, FontDataType } from "types/guide/guide"
 
 export const colorsData : ColorChipDataType = {
   headData:{

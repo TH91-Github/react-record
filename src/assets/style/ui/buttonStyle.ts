@@ -15,6 +15,7 @@ button {
   border-radius:5px;
   border:1px solid ${colors.lineColor};
   background: #fff;
+  vertical-align: middle;
   transition: border-color var(--transition), background-color var(--transition), color var(--transition);
   & > span {
     text-shadow:0px 1px 1px rgba(0,0,0,0.2);

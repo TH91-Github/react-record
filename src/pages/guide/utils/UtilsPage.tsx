@@ -8,7 +8,7 @@ import { OutLink } from "components/ui/OutLink";
 import { TitleHeading } from "components/ui/TitleHeading";
 import { useState } from "react";
 import styled from "styled-components";
-import { GuidePopupDataType } from "types/guide";
+import { GuidePopupDataType } from "types/guide/guide";
 
 export const UtilsPage = () => {
   const [selectData, setSelectData] = useState<GuidePopupDataType | null>(null); 
