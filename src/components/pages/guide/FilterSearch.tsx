@@ -10,7 +10,7 @@ import { GuideFilterDataType } from "types/guide/guide";
 interface FilterSearchPropsType{
   data: GuideFilterDataType[];
   searchPlaceholder?: string;
-  changeEvent?: (ID:string) => void;
+  changeEvent?: (data:GuideFilterDataType[]) => void;
 }
 export const FilterSearch = ({
   data, searchPlaceholder,
@@ -21,26 +21,26 @@ export const FilterSearch = ({
   const tabFilter = [...new Set(data.map((item:any) => item.category))]
 
   // 검색 결과
-    const onComfirm = useCallback((val: string) => {
-      const loweredVal = val.toLowerCase();
-      const result = data.find((item) =>
-        item.keyword.some((keyVal) => keyVal.toLowerCase() === loweredVal)
-      );
-      if (result && changeEvent) {
-        setActiveTab(result.category)
-        changeEvent(result.category)
-      }else{
-        setActiveTab('');
-        //  일치하는 값이 없습니다.
-      }
-    }, [data, changeEvent]);
+  const onComfirm = useCallback((resultID: string[]) => {
+    // ⭐ 개선 필요 기존 기존- string로 검색 개선 후 {id,keyword 값 넘어옴} 
+    // 그리고 검색 모듈에서 input 시 동일하게 나오는데 옆에 - id값으로 구별 가능하도록 hover시라던가
+    const returnData = data.filter((d) => resultID.includes(d.id))
+      console.log(returnData)
+    if (resultID && changeEvent) {
+      const returnData = data.filter((d) => resultID.includes(d.id))
+      console.log(returnData)
+      // changeEvent(result)
+    }else{
+      setActiveTab('');
+      //  일치하는 값이 없습니다.
+    }
+  }, [data, changeEvent]);
 
   return (
     <StyleWrap className="md-filter-search">
       <TabBtns 
         data={tabFilter} 
         activeTab={activeTab || undefined}
-        changeEvent={changeEvent} 
       />
       <SearchModule 
         data={data}

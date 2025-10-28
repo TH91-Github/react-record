@@ -1,7 +1,35 @@
-import { HubCategoryType } from "types/hub/hub";
+import { HubCategoryCodeInfoType, HubRoomType } from "types/hub/hub";
 
+// 🔹 카테고리 ko, en 정보
+export const hubCategoryCode: HubCategoryCodeInfoType[] = [
+  {
+    id:'code-1',
+    title:'일반',
+    code:'normal'
+  },
+  {
+    id:'code-2',
+    title:'여행',
+    code:'travel'
+  },
+  {
+    id:'code-2',
+    title:'달력',
+    code:'calendar'
+  },
+  {
+    id:'code-2',
+    title:'메모',
+    code:'memo'
+  },
+  {
+    id:'code-2',
+    title:'가계부',
+    code:'cashledger'
+  },
+] 
 
-export const hubBaseData : HubCategoryType[] = [
+export const hubBaseData : HubRoomType[] = [
   {
     hubTit:'전체',
     hubCategory:'default',

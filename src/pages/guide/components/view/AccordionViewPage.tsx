@@ -6,13 +6,13 @@ import { ViewCode } from "components/pages/guide/ViewCode";
 import { ViewInfo } from "components/pages/guide/ViewInfo";
 import styled from "styled-components";
 
-type AccordionMode = 'single' | 'multiple';
+type AccordionModeDemoType = 'single' | 'multiple';
 interface DemoItemType {
   tit: string;
   txt: string;
   lists: { title: string; desc?: string }[];
   option?: {
-    mode?: AccordionMode;
+    mode?: AccordionModeDemoType;
     initActive?: number[];
     smoothAni?:boolean;
   };

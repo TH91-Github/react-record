@@ -1,6 +1,4 @@
-import { media } from "assets/style/variables";
 import { Hljs } from "components/common/Hljs";
-import { TabBtns } from "components/common/TabBtns";
 import { useState } from "react";
 import styled from "styled-components";
 import { ComponentsInfoType } from "types/guide/guide";
@@ -11,21 +9,11 @@ interface ViewCodePropsType {
 export const ViewCode = ({data}:ViewCodePropsType) => {
   const {codeData} = data;
   const [tabVal, setTabVal] = useState(0);
-  const tabData = codeData.map(item => item.title);
 
-  const changeEvent = (val:string) => {
-    const valIndex = tabData.indexOf(val);
-    setTabVal(valIndex >= 0 ? valIndex : 0);
-  }
   return(
     <StyleWrap>
-      <p className="tit">코드 미리보기</p>
+      <p className="tit">사용 예시</p>
       <div className="code-wrap">
-        <TabBtns
-          isAll={false}
-          data={tabData} 
-          changeEvent={changeEvent} 
-        />
         <Hljs 
           code={codeData[tabVal].code}
           language={codeData[tabVal].lang}
@@ -37,8 +25,5 @@ export const ViewCode = ({data}:ViewCodePropsType) => {
 const StyleWrap = styled.div`
 .code-wrap {
   margin-top:20px;
-}
-.hljs-wrap{
-  margin-top:10px;
 }
 `;

@@ -9,7 +9,7 @@ import styled from "styled-components";
 import { SwiperProps } from "swiper/react";
 import { cn } from "utils/common";
 
-interface CarouselDemoType {
+interface DemoItemType {
   tit: string;
   desc: string;
   lists: string[];
@@ -18,7 +18,7 @@ interface CarouselDemoType {
 };
 
 export const CarouselViewPage = () => {
-  const demoData: CarouselDemoType[] = [
+  const demoData: DemoItemType[] = [
     {
       tit:'case-1',
       desc:'리스트 3개, 옵션 - x : 기본으로 view - 1 ',
