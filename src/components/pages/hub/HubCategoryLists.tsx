@@ -31,7 +31,6 @@ export const HubCategoryLists = ({data}:HubCategoryListsType) =>{
     const result = Array.from({ length: repeatCount })
       .flatMap(() => arr)
       .slice(0, minLength);
-      console.log(result)
     return result
   };
 

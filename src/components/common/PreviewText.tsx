@@ -1,7 +1,7 @@
-import styled from "styled-components"
-import { TextHighlight } from "./TextHighlight";
-import { bgColor, colors, ellipsisStyle } from "assets/style/variables";
+import { bgColor, colors } from "assets/style/variables";
+import styled from "styled-components";
 import { KeywordBaseType } from "types/common";
+import { TextHighlight } from "./TextHighlight";
 
 // 🔹 검색 자동 완성 목록
 interface PreviewTextPropsType {
@@ -70,5 +70,4 @@ transform: translateX(-50%);
   padding: 10px;
   font-size:14px;
 }
-
 `;

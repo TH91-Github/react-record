@@ -3,15 +3,36 @@ import { IconPlus } from "assets/svg/icons";
 import styled from "styled-components";
 import { HubCategoryLists } from "./HubCategoryLists";
 import { hubBaseData } from "./data/hubData";
+import { useSelector } from "react-redux";
+import { RootState } from "reduxStore/store";
+import useToggle from "hooks/useToggle";
+import { Modal } from "components/common/Modal";
+import { LoginAlertModal } from "components/features/auth/LoginAlertModal";
 
 // 🔹 방만들기 + 리스트  
 export const HubBoxCategory = () => {
+  const {isLogin, user} = useSelector((state : RootState) => state.storeUserLogin);
+  const [isLoginModal, setChangeToggle] = useToggle(false);
+  console.log(isLogin)
+  console.log(user)
+
+  const handleCreateClick = () => {
+    if(isLogin){
+      console.log('방만들기 시작')
+    }else{
+      setChangeToggle()
+    }
+  }
+  const onModalClose = () => {
+    setChangeToggle()
+  }
   return (
     <StyleWrap>
       <div className="cearte-box">
         <button
           type="button"
           className="btn-cearte"
+          onClick={handleCreateClick}
         >
           <span className="icon"><IconPlus /></span>
         </button>
@@ -28,6 +49,12 @@ export const HubBoxCategory = () => {
           ))}
         </ul>
       </div>
+      {
+        isLoginModal && ( 
+          <LoginAlertModal onClose={onModalClose} />
+        )
+        
+      }
     </StyleWrap>
   )
 }
@@ -89,4 +116,8 @@ width:100%;
   position:relative;
   width:300px;
 }
+`;
+
+const StyleModal = styled.div`
+
 `;

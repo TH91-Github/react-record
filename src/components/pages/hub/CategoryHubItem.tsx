@@ -3,6 +3,7 @@ import { IconChat, IconHome, IconMapPoint } from "assets/svg/icons";
 import styled from "styled-components";
 import { HubItemType } from "types/hub/hub";
 
+// 🔹상단 hub list 
 export const CategoryHubItem = ({ data }:{data:HubItemType}) => {
 
   const categoryIcon = (): JSX.Element => {

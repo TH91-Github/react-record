@@ -1,9 +1,7 @@
 import { colors } from "assets/style/variables";
-import { SideLayout } from "components/layout/SideLayout";
 import { HubBoxCategory } from "components/pages/hub/HubBoxCategory";
-import { HubCreate } from "components/pages/hub/HubCreate";
 import { HubSideMenu } from "components/pages/hub/HubSideMenu";
-import styled from "styled-components"
+import styled from "styled-components";
 
 const SIDESIZE = 200;
 export const HubPage = () => {

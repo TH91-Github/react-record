@@ -13,7 +13,7 @@ interface ModalPropsType {
   $width?: number;
   $align?: 'center' | 'left' | 'right';
   children?:React.ReactNode;
-  onClose: () => void;
+  onClose: () => void; // ⭐ 필수
 }
 export const Modal = ({
   isDimmed = true,

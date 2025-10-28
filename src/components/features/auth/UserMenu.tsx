@@ -1,13 +1,13 @@
+import { media } from "assets/style/variables";
 import { IconLogout, IconUser } from "assets/svg/icons";
-import { auth } from "../../../firebase";
+import { Modal } from "components/common/Modal";
+import { signOut } from "firebase/auth";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { RootState } from "reduxStore/store";
-import styled from "styled-components"
-import { signOut } from "firebase/auth";
-import { Modal } from "components/common/Modal";
-import { media } from "assets/style/variables";
+import styled from "styled-components";
+import { auth } from "../../../firebase";
 
 // 로그인 on/off
 export const UserMenu = () => {
