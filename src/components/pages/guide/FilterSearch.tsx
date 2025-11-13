@@ -10,7 +10,7 @@ import { GuideFilterDataType } from "types/guide/guide";
 interface FilterSearchPropsType{
   data: GuideFilterDataType[];
   searchPlaceholder?: string;
-  changeEvent?: (data:GuideFilterDataType[]) => void;
+  changeEvent?: (category:string) => void;
 }
 export const FilterSearch = ({
   data, searchPlaceholder,
@@ -21,15 +21,11 @@ export const FilterSearch = ({
   const tabFilter = [...new Set(data.map((item:any) => item.category))]
 
   // 검색 결과
-  const onComfirm = useCallback((resultID: string[]) => {
+  const onComfirm = useCallback((matchData: GuideFilterDataType[] = []) => {
     // ⭐ 개선 필요 기존 기존- string로 검색 개선 후 {id,keyword 값 넘어옴} 
     // 그리고 검색 모듈에서 input 시 동일하게 나오는데 옆에 - id값으로 구별 가능하도록 hover시라던가
-    const returnData = data.filter((d) => resultID.includes(d.id))
-      console.log(returnData)
-    if (resultID && changeEvent) {
-      const returnData = data.filter((d) => resultID.includes(d.id))
-      console.log(returnData)
-      // changeEvent(result)
+    if (matchData.length > 0 && changeEvent) {
+      changeEvent(matchData[0].category)
     }else{
       setActiveTab('');
       //  일치하는 값이 없습니다.

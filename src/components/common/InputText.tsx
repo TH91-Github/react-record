@@ -81,7 +81,8 @@ export const InputText = forwardRef<InputTextRefType, InputPropsType>(function I
 
   const handleValRemove = () => { // 입력 초기화
     setVal('');
-    removeEvent && removeEvent();
+    changeEvent?.('');
+    removeEvent?.();
     if (inputRef.current) {
       inputRef.current.focus();
     }

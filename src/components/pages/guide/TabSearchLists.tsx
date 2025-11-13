@@ -16,10 +16,9 @@ export const TabSearchLists = ({
 }: TabSearchListsPropsType) => {
   const [filter, setFilter] = useState('');
 
-  const handleFilterChange = (searchData:any) => { // -1 : All , 그 외 value
-    // const isAll = selected === '전체' || selected === 'All';
-    // setFilter(isAll ? '' : selected);
-
+  const handleFilterChange = (searchCategory:any) => { // -1 : All , 그 외 value
+    const isAll = searchCategory === '전체' || searchCategory === 'All';
+    setFilter(isAll ? '' : searchCategory);
   }
 
   const filterLists = useMemo(() => {
@@ -36,7 +35,7 @@ export const TabSearchLists = ({
       <FilterSearch 
         data={data}
         searchPlaceholder={searchPlaceholder || undefined}
-        // changeEvent={handleFilterChange}
+        changeEvent={handleFilterChange}
       />
       <FilterLists 
         data={filterLists}

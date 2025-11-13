@@ -24,7 +24,7 @@ interface SearchModulePropsType<T extends EssentialSearchType> {
   placeholder?: string;
   styleOpt?: StyleOptPropsType;
   onPreview?: boolean; // 일치하는 검색어 미리보기
-  onComfirm?: (valData: string[]) => void;
+  onComfirm?: (matchData: T[]) => void;
 }
 export const SearchModule = <T extends EssentialSearchType>({
   data = [],
@@ -47,6 +47,7 @@ export const SearchModule = <T extends EssentialSearchType>({
     setIsPreview((prev) => !prev);
   };
   const inputChange = useCallback((val: string) => {
+    console.log(val)
     setResultVal(val);
     if (val.length >= 2) {
       setIsPreview(true);
@@ -101,21 +102,12 @@ export const SearchModule = <T extends EssentialSearchType>({
     }
     setIsPreview(false);
     // 반환값 keyword 또는 id 값
-    const returnID = matchKey(keyword);
-    // onComfirm?.(returnID);
+    const matchData = matchKey(keyword);
+    onComfirm?.(matchData);
   };
   // 검색어와 일치하는 값들(객체) 반환 []
   const matchKey = (key: string) => {
-    console.log(data)
-    const foundItems = data
-      .filter((item) => {
-        if(item.keyword.includes('Input')){
-          console.log(item.id)
-        }
-        return item
-
-      })
-      console.log(foundItems)
+    const foundItems = data.filter((item) => item.keyword.includes(key));
     return foundItems;
   };
 
@@ -221,6 +213,7 @@ const StyleWrap = styled.div<StyleWrapType>`
   .error {
     overflow: hidden;
     position: absolute;
+    z-index:10;
     top: 100%;
     width: 100%;
     padding: 8px 10px;
