@@ -37,7 +37,6 @@ export const LoginStatusCheck = () => {
 
   // ✅ 로그아웃
   const handleLogOut = useCallback(async()=>{
-    if(!auth) return
     await signOut(auth);
     userLoginInit(); // 상태 초기화
     clearAllTimeouts();
@@ -47,7 +46,6 @@ export const LoginStatusCheck = () => {
   const handleConfirmation = async() => {
     clearAllTimeouts();
     setExtensionPop(false);
-    if(!auth) return
     const user = auth.currentUser;
     if (user) {
       const newToken = await user.getIdToken(true);  // 토큰 갱신
@@ -98,7 +96,6 @@ export const LoginStatusCheck = () => {
     }catch(error){
       // firebase store에 등록된 정보가 없다면 초기화
       console.log('해당 로그인 정보가 없습니다.');
-      if(!auth) return 
       await signOut(auth);
     }
   },[dispatch, handleLogOut]);
@@ -160,13 +157,12 @@ export const LoginStatusCheck = () => {
 
   // ✅ 로그인 / 로그아웃 onAuthStateChanged
   useEffect(()=>{
-    if(!auth) return
     const cleanupAuth = onAuthStateChanged(auth, loginStatus);
     return () => {  // clean up
       cleanupAuth();
       clearAllTimeouts();
     }
-  },[auth, loginStatus, clearAllTimeouts])
+  },[loginStatus, clearAllTimeouts])
 
   return <>
      {

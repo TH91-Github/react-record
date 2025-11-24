@@ -1,70 +1,80 @@
 // firebase
-import { FirebaseApp, initializeApp } from 'firebase/app';
-import { Auth, getAuth, GoogleAuthProvider } from "firebase/auth";
-import { Firestore, getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getStorage} from 'firebase/storage';
 
-interface FirebaseConfig {
-  apiKey: string;
-  authDomain: string;
-  projectId: string;
-  storageBucket: string;
-  messagingSenderId: string;
-  appId: string;
-  measurementId?: string;
-}
+const myFirebaseConfig = {
+  // firebase 설정과 관련된 개인 정보
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGIN_ID,
+  appId: process.env.REACT_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+};
 
-function initFirebase(config: FirebaseConfig, name?: string): FirebaseApp | null {
-  const requiredKeys: (keyof FirebaseConfig)[] = [
-    'apiKey', 'authDomain', 'projectId', 'storageBucket', 'messagingSenderId', 'appId'
-  ];
+const mapFirebaseConfig = {
+  // firebase 설정과 관련된 개인 정보
+  apiKey: process.env.REACT_APP_MAP_API_KEY,
+  authDomain: process.env.REACT_APP_MAP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_MAP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_MAP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MAP_MESSAGIN_ID,
+  appId: process.env.REACT_APP_MAP_ID,
+  measurementId: process.env.REACT_APP_MAP_MEASUREMENT_ID,
+};
 
-  const missingKeys = requiredKeys.filter(key => !config[key]);
-  if (missingKeys.length > 0) {
-    console.warn(`Firebase 초기화 실패: 환경변수 누락 [${missingKeys.join(', ')}]`);
-    return null;
-  }
-  return initializeApp(config, name);
-}
+const firebaseConfigWeather = {
+  // firebase 설정과 관련된 개인 정보
+  apiKey: process.env.REACT_APP_WEATHER_API_KEY,
+  authDomain: process.env.REACT_APP_WEATHER_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_WEATHER_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_WEATHER_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_WEATHER_MESSAGIN_ID,
+  appId: process.env.REACT_APP_WEATHER_ID,
+  measurementId: process.env.REACT_APP_WEATHER_MEASUREMENT_ID,
+};
 
-const createConfigFromEnv = (prefix: string): FirebaseConfig => ({
-  apiKey: process.env[`${prefix}_API_KEY`] || '',
-  authDomain: process.env[`${prefix}_AUTH_DOMAIN`] || '',
-  projectId: process.env[`${prefix}_PROJECT_ID`] || '',
-  storageBucket: process.env[`${prefix}_STORAGE_BUCKET`] || '',
-  messagingSenderId: process.env[`${prefix}_MESSAGING_ID`] || '',
-  appId: process.env[`${prefix}_ID`] || '',
-  measurementId: process.env[`${prefix}_MEASUREMENT_ID`] || undefined,
-});
+// th 기본 
+const app = initializeApp(myFirebaseConfig);
+const auth = getAuth(app);
+const fireDB = getFirestore(app);
+const provider = new GoogleAuthProvider();
+const firebaseStorage = getStorage(app);
 
-const myFirebaseConfig = createConfigFromEnv('REACT_APP');
-export const myApp = initFirebase(myFirebaseConfig);
-export const auth = myApp ? getAuth(myApp) : null;
-export const fireDB = myApp ? getFirestore(myApp) : null;
-export const provider = new GoogleAuthProvider();
-export const firebaseStorage = myApp ? getStorage(myApp) : null;
+// firebase map
+const fbMapApp = initializeApp(mapFirebaseConfig, "firebase-map");
+const fbMapAuth = getAuth(fbMapApp);
+const fbMapDB = getFirestore(fbMapApp);
+const fbMapStorage = getStorage(fbMapApp);
 
-// --------------------
-// Map
-// --------------------
-const mapFirebaseConfig = createConfigFromEnv('REACT_APP_MAP');
-export const fbMapApp = initFirebase(mapFirebaseConfig, 'firebase-map');
-export const fbMapAuth: Auth | null = fbMapApp ? getAuth(fbMapApp) : null;
-export const fbMapDB: Firestore | null = fbMapApp ? getFirestore(fbMapApp) : null;
-export const fbMapStorage = fbMapApp ? getStorage(fbMapApp) : null;
+// weather
+const fbWeatherApp = initializeApp(firebaseConfigWeather, "th-weather");
+const fbWeatherDB = getFirestore(fbWeatherApp);
+// const sotreWeatherFile = getFirestore(appWeather);
+export { 
+  auth, fireDB, provider, firebaseStorage, 
+  fbMapAuth, fbMapDB, fbMapStorage,
+  fbWeatherApp,fbWeatherDB,
+};
 
-// --------------------
-// Weather
-// --------------------
-const weatherFirebaseConfig = createConfigFromEnv('REACT_APP_WEATHER');
-export const fbWeatherApp = initFirebase(weatherFirebaseConfig, 'th-weather');
-export const fbWeatherDB = fbWeatherApp ? getFirestore(fbWeatherApp) : null;
 
-// --------------------
-// Tistory
-// --------------------
-const tistoryFirebaseConfig = createConfigFromEnv('REACT_APP_FIREBASE');
-export const firebaseApp = initFirebase(tistoryFirebaseConfig, 'Tistory');
-export const firebaseDB = firebaseApp ? getFirestore(firebaseApp) : null;
-export const firebaseAuth = firebaseApp ? getAuth(firebaseApp) : null;
-export const fireProvider = new GoogleAuthProvider();
+// ✅ Tistory 
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+};
+
+// 앱 초기화
+const firebaseApp = initializeApp(firebaseConfig, 'Tistory');
+// 데이터베이스
+const firebaseDB = getFirestore(firebaseApp);
+const firebaseAuth = getAuth(firebaseApp); 
+const fireProvider = new GoogleAuthProvider(); // 👈 추가
+export { firebaseApp, firebaseDB, firebaseAuth, fireProvider};

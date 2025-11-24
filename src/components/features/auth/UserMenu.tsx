@@ -26,7 +26,6 @@ export const UserMenu = () => {
   }
 
   const handleLogOut = async() => {
-    if(auth)
     await signOut(auth);
     setLogOutPop(false);
   }
