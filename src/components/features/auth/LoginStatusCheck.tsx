@@ -178,7 +178,7 @@ export const LoginStatusCheck = () => {
               로그인 유지 시간이 얼마 남지 않았습니다.<br />
               연장하시겠습니까?
             </p>
-            <div className="btn-article">
+            <div className="btn-wrap">
               <button 
                 type="button" 
                 className="btn btn-primary"
@@ -203,7 +203,7 @@ export const LoginStatusCheck = () => {
 
 const StyleWrap = styled.div`
 padding-top:10px;
-.btn-article{
+.btn-wrap{
   display:flex;
   justify-content: center;
   align-items:center;

@@ -74,7 +74,7 @@ export const UserMenu = () => {
               <p className="tit">
                 로그아웃 할까요?
               </p>
-              <div className="btn-article">
+              <div className="btn-wrap">
                 <button 
                   type="button" 
                   className="btn btn-primary"
@@ -135,7 +135,7 @@ ${media.mo}{
 `;
 
 const ModelInner = styled.div`
-.btn-article{
+.btn-wrap{
   display:flex;
   justify-content: center;
   align-items:center;

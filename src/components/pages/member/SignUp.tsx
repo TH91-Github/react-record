@@ -189,7 +189,7 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
               validationUpdate={inputValidationUpdate}
             />
           </div>
-          <div className="btn-article">
+          <div className="btn-wrap">
             <button type="submit" className="btn btn-submit full">
               <span>확인</span>
             </button>
@@ -257,7 +257,7 @@ const StyleWrap = styled.div`
     to { transform: translateX(-50%) scaleX(1); }
   }
 }
-.btn-article{
+.btn-wrap{
   margin-top:30px;
 }
 .btn-submit{

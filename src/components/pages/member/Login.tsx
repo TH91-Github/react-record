@@ -173,7 +173,7 @@ export const Login = ({ authChange }:LoginPropsType) => {
               { errorMessages[INPUTPW] &&  <p className="txt">{errorMessages[INPUTPW]}</p> }
             </div>
           </div>
-          <div className="btn-article">
+          <div className="btn-wrap">
             <button type="submit" className="btn btn-submit full">
               <span>확인</span>
             </button>
@@ -258,7 +258,7 @@ position:relative;
     }
   }
 }
-.btn-article{
+.btn-wrap{
   margin-top:30px;
 }
 .btn-submit{

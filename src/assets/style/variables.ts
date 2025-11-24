@@ -117,14 +117,14 @@ export const scrollBar = (direction: 'x' | 'y' = 'y', activeColor = colors.lineC
     position: absolute;
     ${direction === 'x'
       ? `
-        height: 5px;
+        height: 3px;
         bottom: 0;
         left: 0; right: 0;
         transform-origin: bottom;
         transform: translateY(100%);
       `
       : `
-        width: 5px;
+        width: 3px;
         right: 0;
         top: 0; bottom: 0;
         transform-origin: right;

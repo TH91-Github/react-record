@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { InputKeyboardValType } from "types/common";
 import { cn } from "utils/common";
 
-interface InputStylePropsType {
+interface InputStylePropsType extends React.InputHTMLAttributes<HTMLInputElement>{
   $maxWidth?: number | string;
   $defaultLine?: 'line' | 'line-bottom' | 'line-left' | 'none'; // default line 유무
   $lineColor?:string;
@@ -163,7 +163,9 @@ const StyleWrap = styled.div<InputStylePropsType>`
 display:block;
 position:relative;
 width:100%;
-${props => props.$maxWidth && `max-width: ${props.$maxWidth}px;`}
+${props => props.$maxWidth && 
+  (typeof props.$maxWidth === 'number' ? `max-width: ${props.$maxWidth}px;` : `max-width: ${props.$maxWidth};`)
+}
 font-size:16px;
 line-height:1;
 .input {
