@@ -74,6 +74,7 @@ export const Login = ({ authChange }:LoginPropsType) => {
   const handleLogin = useCallback(async (loginID: string, loginPW: string) => {
     dispatch(actionUserCreate({ isLoading: true }));
     try {
+      if(!auth) return
       await signInWithEmailAndPassword(auth, loginID, loginPW);
       // 로그인 정보 입력은 LoginStatusCheck.tsx 진행
       navigate('/');
@@ -107,8 +108,8 @@ export const Login = ({ authChange }:LoginPropsType) => {
   // 🔹 구글 아이디 로그인 및 계정 등록
   const handleGoogleLogin = useCallback(async() => { 
     try {
+      if(!auth) return 
       dispatch(actionUserCreate({ isLoading: true }));
-
       const googleData = await signInWithPopup(auth, provider);
       const fireDBGoogle = await getUserColDoc('userLists', googleData.user.uid)
 

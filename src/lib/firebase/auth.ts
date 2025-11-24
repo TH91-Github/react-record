@@ -7,6 +7,7 @@ const users ='users';
 
 // 🔹 user 신규가입
 export const userPushDataDoc = async(userData:UserDataType) => {
+  if(!fireDB) return 
   try {
     const batch = writeBatch(fireDB);
 
@@ -46,6 +47,7 @@ export const userPushDataDoc = async(userData:UserDataType) => {
 
 // 🔹 user 삭제
 export const userDeleteDataBatch = async (userData: UserDeleteType) => {
+  if(!fireDB) return
   const batch = writeBatch(fireDB);
 
   // 유저 리스트 문서 삭제 (userLists)
@@ -83,8 +85,10 @@ export const userDeleteDataBatch = async (userData: UserDeleteType) => {
 
 // 🔹 User > 하위 컬렉션 > 필드 내 일치하는 값 조회 : 체크 문서 네임 / 하위 컬렉션
 export const getUserColDoc = async(colName:string, checkDoc:string) :Promise<null | UserDataType>=> {
+  if(!fireDB) return null
   // 빈 값 처리
   if (!checkDoc?.trim() || !colName?.trim()) return null;
+ 
   const docRef = doc(fireDB, users, 'userData', colName, checkDoc);
   const snap = await getDoc(docRef);
   if(snap.exists()){

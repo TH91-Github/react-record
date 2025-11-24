@@ -108,6 +108,7 @@ export const SignUp = ({authChange}:SignUpPropsType) =>{
     }
     try {
       // 계정 관리 Authentication 등록
+      if(!auth) return
       const userCredential = await createUserWithEmailAndPassword(auth, resultData.email, resultData.password);
       resultData.id = userCredential.user.uid;
       resultData.uid = userCredential.user.uid;
