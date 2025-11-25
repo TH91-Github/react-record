@@ -5,7 +5,6 @@
 
 ### 🔗 vercel & storybook
 - <a href="https://react-record.vercel.app/" target="_blank" rel="noopener noreferrer">vercel</a>
-- <a href="https://67b575143e293979dd6fe1aa-pwutklgrsm.chromatic.com/" target="_blank" rel="noopener noreferrer">⚠️(작성 전 샘플 상태)storybook</a>
 
 ### Tech Stacks
 - <span><img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white" alt="React"></span>
