@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react';
 import { Swiper, SwiperSlide, SwiperClass, SwiperProps, SwiperRef } from 'swiper/react';
 import { A11y, Autoplay, Mousewheel, Navigation, Pagination, Scrollbar, EffectCreative, Virtual, EffectCards, FreeMode } from 'swiper/modules';
 import "swiper/css";
@@ -68,28 +68,39 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
     onChangeEvent && onChangeEvent();
   }
 
+  useEffect(() => {
+    if (!swiperRef.current) return;
+    const swiper = swiperRef.current.swiper;
 
-  // 초기화되기 전에 호출 : Swiper의 params을 수정하여 초기화 전에 변경 가능
-  const handleInit = (swiper:SwiperClass) => {
-
-    // pagination
-    if (swiper.params.pagination && typeof swiper.params.pagination === 'object') {
-      swiper.params.pagination.el = paginationRef.current;
-
-      if(option.pagination && typeof option.pagination !== 'boolean'){
-        swiper.params.pagination.clickable = option.pagination.clickable;
-        swiper.params.pagination.type = option.pagination.type;
-      }else if(option.pagination && typeof option.pagination === 'boolean'){
-        swiper.params.pagination.clickable = true
-      }
-    }
-    
-    // NavigationOptions 타입인 경우에만 
-    if (swiper.params.navigation && typeof swiper.params.navigation === "object") {
+    // Navigation 초기화
+    if (option.navigation && swiper.params.navigation && typeof swiper.params.navigation === "object") {
       swiper.params.navigation.prevEl = prevBtnRef.current || undefined;
       swiper.params.navigation.nextEl = nextBtnRef.current || undefined;
+      swiper.navigation.init();
+      swiper.navigation.update();
     }
-  }
+
+    // Pagination 초기화
+    if (option.pagination && paginationRef.current && swiper.params.pagination && typeof swiper.params.pagination === 'object') {
+      swiper.params.pagination.el = paginationRef.current;
+      
+      if (typeof option.pagination !== 'boolean') {
+        swiper.params.pagination.clickable = option.pagination.clickable ?? true;
+        if (option.pagination.type) swiper.params.pagination.type = option.pagination.type;
+        if (option.pagination.dynamicBullets !== undefined) {
+          swiper.params.pagination.dynamicBullets = option.pagination.dynamicBullets;
+        }
+      } else {
+        swiper.params.pagination.clickable = true;
+      }
+      
+      swiper.pagination.destroy();
+      swiper.pagination.init();
+      swiper.pagination.render();
+      swiper.pagination.update();
+    }
+  }, [option.navigation, option.pagination]);
+
   const handleOnSwiper = (e:SwiperClass) => {
     onCarousel && onCarousel();
   }
@@ -117,7 +128,6 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
           modules={modules}
           virtual={option.virtual ? { slides: React.Children.toArray(children) } : undefined}
           onSwiper={handleOnSwiper}
-          onBeforeInit={handleInit}
           onSlideChange={handleChange}
           {...option}
           pagination={false} // pagination 예외 onBeforeInit 재할당
@@ -163,6 +173,7 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
           </div>
         )}
       </div>
+      
       {option.pagination && (
         <div ref={paginationRef} className="carousel-pagination">
         </div>
