@@ -1,4 +1,4 @@
-import { guideComponentsData } from "components/pages/guide/data/componentsData";
+import { componentsData } from "components/pages/guide/data/componentsData";
 import { GuidePageHeading } from "components/pages/guide/GuidePageHeading";
 import { TabSearchLists } from "components/pages/guide/TabSearchLists";
 import { TitleHeading } from "components/ui/TitleHeading";
@@ -61,7 +61,7 @@ export const ComponentsPage = () => {
         <div className="section-wrap">
           <div className="section-item">
             <TabSearchLists 
-              data={guideComponentsData}
+              data={componentsData}
               searchPlaceholder={'컴포넌트를 검색해주세요.'}
               clickEvent={handleItemClick}
             />

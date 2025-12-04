@@ -1,10 +1,5 @@
 import { GuideFilterDataType } from "types/guide/guide";
-/*
- 🔹 컴포넌트, 모듈 컴포넌트 guide 리스트 정보
-  LoadView.tsx id 값 등록 후 상세 페이지 생성
- */
-// 일반 컴포넌트 정보
-const components =[
+export const componentsData: GuideFilterDataType[] =[
   {
     id:'modal',
     title:'Modal',
@@ -61,17 +56,3 @@ const components =[
   },
 ]
 
-// 모듈 컴포넌트 정보
-const modules=[
-  {
-    id:'search',
-    title:'Search',
-    desc:'공통 검색 모듈',
-    category:'Module', 
-    update:'2025-10-28',
-    keyword:['search','module','검색','하이라이트','input'],
-    link:''
-  },
-]
-
-export const guideComponentsData: GuideFilterDataType[] = [...components, ...modules];

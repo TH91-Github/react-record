@@ -1,3 +1,4 @@
+
 import { bgTranslucence, colors } from "assets/style/variables";
 import { SvgSearch } from "assets/svg/Common";
 import { InputText, InputTextRefType } from "components/common/InputText";
@@ -7,54 +8,54 @@ import styled from "styled-components";
 import { KeywordBaseType } from "types/common";
 
 // ✅ 검색 : InputText(input) + PreviewText(미리보기)
-interface EssentialSearchType {
-  // 필수 타입
-  id: string;
-  keyword: string[];
+interface EssentialType { // 필수 타입
+  id:string;
+  keyword:string[];
 }
 interface StyleOptPropsType {
-  $line?: "line" | "line-bottom" | "line-left" | "none";
+  $line?: 'line' | 'line-bottom' | 'line-left' | 'none';
   $maxWidth?: string | number;
 }
 
-interface SearchModulePropsType<T extends EssentialSearchType> {
-  data?: T[]; // 검색 목록 - EssentialType 필수 속성
+interface SearchModulePropsType<T extends EssentialType> {
+  data?: T[] // 검색 목록 - EssentialType 필수 속성
   id: string;
   isBtn?: boolean; // 버튼 유무 버튼 false 시  icon on
-  placeholder?: string;
-  styleOpt?: StyleOptPropsType;
-  onPreview?: boolean; // 일치하는 검색어 미리보기
-  onComfirm?: (matchData: T[]) => void;
+  placeholder?:string;
+  styleOpt?:StyleOptPropsType;
+  onPreview? : boolean; // 일치하는 검색어 미리보기
+  onComfirm?: (val:string) => void;
 }
-export const SearchModule = <T extends EssentialSearchType>({
+export const SearchModule = <T extends EssentialType>({
   data = [],
   id,
   isBtn = true,
-  placeholder = "",
-  styleOpt = {},
+  placeholder = '',
+  styleOpt={},
   onPreview = true,
   onComfirm,
-}: SearchModulePropsType<T>) => {
+}:SearchModulePropsType<T>) => {
   const SearchModuleRef = useRef<HTMLDivElement | null>(null);
   const isMouseDownInside = useRef(false);
-  const [resultVal, setResultVal] = useState("");
-  const [isPreview, setIsPreview] = useState(onPreview ?? false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [resultVal, setResultVal] = useState('');
+  const [isPreview , setIsPreview] = useState(onPreview ?? false);
+  const [errorMessage, setErrorMessage] = useState('')
   const inputRef = useRef<InputTextRefType>(null);
-  const { $line = "line", $maxWidth } = styleOpt;
+  const {
+    $line = 'line',
+    $maxWidth,
+  } = styleOpt;
 
-  const inputFocus = () => {
-    setIsPreview((prev) => !prev);
-  };
+  const inputFocus = () => { 
+    setIsPreview(prev => !prev);
+  }
   const inputChange = useCallback((val: string) => {
-    console.log(val)
     setResultVal(val);
     if (val.length >= 2) {
       setIsPreview(true);
     }
   }, []);
-  const handleMouseDown = (e: PointerEvent) => {
-    // 다른 영역 클릭 시
+  const handleMouseDown = (e: PointerEvent) => { // 다른 영역 클릭 시
     if (SearchModuleRef.current?.contains(e.target as Node)) {
       isMouseDownInside.current = true;
     } else {
@@ -69,8 +70,8 @@ export const SearchModule = <T extends EssentialSearchType>({
     data.forEach((item) => {
       item.keyword.forEach((keyVal) => {
         if (keyVal.toLowerCase().includes(loweredVal)) {
-          matches.push({
-            id: item.id,
+          matches.push({ 
+            id:item.id, 
             keyword: keyVal,
           });
         }
@@ -78,20 +79,20 @@ export const SearchModule = <T extends EssentialSearchType>({
     });
     return matches;
   }, [data, resultVal]);
-  const onKeyword = (keyVal: string) => {
-    // 자동완성 클릭
+  const onKeyword = (keyVal:string) => { // 자동완성 클릭
     setResultVal(keyVal);
     setIsPreview(false);
-    if (!inputRef.current) return;
+    if(!inputRef.current) return 
     inputRef.current.refInitVal(keyVal);
-  };
+  }
   const handleEnter = () => {
     handleClick();
-  };
+  }
   const handleClick = () => {
+    console.log(resultVal)
     let keyword = resultVal.trim();
     if (keyword.length < 2) {
-      setErrorMessage("검색어를 2자 이상 입력해주세요.");
+      setErrorMessage('검색어를 2자 이상 입력해주세요.');
       return;
     }
     // 자동완성 목록이 있는 경우 첫 번째 키워드로 대체
@@ -101,18 +102,9 @@ export const SearchModule = <T extends EssentialSearchType>({
       inputRef.current?.refInitVal(keyword);
     }
     setIsPreview(false);
-    // 반환값 keyword 또는 id 값
-    const matchData = matchKey(keyword);
-    onComfirm?.(matchData);
+    onComfirm?.(keyword);
   };
-  // 검색어와 일치하는 값들(객체) 반환 []
-  const matchKey = (key: string) => {
-    const foundItems = data.filter((item) => item.keyword.includes(key));
-    return foundItems;
-  };
-
-  useEffect(() => {
-    // 컴포넌트 벗어나서 클릭 시 자동완성 닫기
+  useEffect(() => { // 컴포넌트 벗어나서 클릭 시 자동완성 닫기
     if (isPreview) {
       document.addEventListener("pointerdown", handleMouseDown);
     } else {
@@ -125,104 +117,100 @@ export const SearchModule = <T extends EssentialSearchType>({
   useEffect(() => {
     if (errorMessage) {
       const timer = setTimeout(() => {
-        setErrorMessage("");
+        setErrorMessage('');
       }, 1500); // 3초 후 메시지 제거
       return () => clearTimeout(timer); // 컴포넌트 언마운트 시 클리어
     }
   }, [errorMessage]);
 
   return (
-    <StyleWrap
+    <StyleWrap 
       ref={SearchModuleRef}
-      className={`md-search ${isBtn ? "search-btn" : ""}`}
-      $maxWidth={typeof $maxWidth === "number" ? `${$maxWidth}px` : $maxWidth}
+      className={`md-search ${isBtn ? 'search-btn': ''}`}
+      $maxWidth={typeof $maxWidth === 'number' ? `${$maxWidth}px`: $maxWidth}
     >
-      {!isBtn && (
-        <i className="icon">
-          <SvgSearch />
-        </i>
-      )}
-      <InputText
+      {!isBtn && <i className="icon"><SvgSearch /></i>}
+      <InputText 
         ref={inputRef}
         id={`${id}-search`}
         placeholder={placeholder}
-        styleOpt={{ $defaultLine: $line, $focusColor: colors.darkNavy }}
+        styleOpt={ { $defaultLine:$line, $focusColor:colors.darkNavy} }
         focusEvent={inputFocus}
         keyEnter={handleEnter}
         changeEvent={inputChange}
       />
-      {errorMessage && (
-        <p className="error">
+      {
+        errorMessage && <p className="error">
           <span className="fade-up duration-m">{errorMessage}</span>
         </p>
-      )}
-      {isPreview && (
-        <PreviewText
-          data={filteredData}
-          matcheVal={resultVal}
+      }
+      { isPreview && 
+        <PreviewText 
+          data={filteredData}  
+          matcheVal={resultVal} 
           onKeyword={onKeyword}
         />
-      )}
+      }
       {isBtn && (
-        <button className="btn btn-primary" onClick={handleClick}>
-          <i className="icon">
-            <SvgSearch />
-          </i>
+        <button 
+          className="btn btn-primary"
+          onClick={handleClick}
+        >
+          <i className="icon"><SvgSearch /></i>
         </button>
       )}
     </StyleWrap>
-  );
-};
+  )
+}
 
 interface StyleWrapType {
-  $iconSize?: number;
-  $maxWidth: string | undefined;
+  $iconSize?: number,
+  $maxWidth:string | undefined
 }
 
 const StyleWrap = styled.div<StyleWrapType>`
-  display: flex;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  max-width: ${({ $maxWidth }) => $maxWidth || "100%"};
-  .icon {
-    flex-shrink: 0;
-    display: inline-block;
-    position: relative;
+display: flex;
+align-items: center;
+position:relative;
+width:100%;
+max-width:${({$maxWidth})=> $maxWidth || '100%'};
+.icon{
+  flex-shrink: 0;
+  display:inline-block;
+  position:relative;
+}
+.input-item {
+  flex-grow:1;
+}
+.search-btn {
+  flex-shrink: 0;
+}
+.btn {
+  width:40px;
+  height:40px;
+}
+&.search-btn {
+  .input {
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
   }
-  .input-item {
-    flex-grow: 1;
+  .btn  {
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
   }
-  .search-btn {
-    flex-shrink: 0;
+}
+.error {
+  overflow:hidden;
+  position:absolute;
+  top:100%;
+  width:100%;
+  padding:8px 10px;
+  font-size:14px;
+  font-weight:600;
+  color:${colors.red};
+  ${bgTranslucence.baseLight}
+  & > span {
+    display:block;
   }
-  .btn {
-    width: 40px;
-    height: 40px;
-  }
-  &.search-btn {
-    .input {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-    .btn {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-  }
-  .error {
-    overflow: hidden;
-    position: absolute;
-    z-index:10;
-    top: 100%;
-    width: 100%;
-    padding: 8px 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: ${colors.red};
-    ${bgTranslucence.baseLight}
-    & > span {
-      display: block;
-    }
-  }
+}
 `;

@@ -1,7 +1,5 @@
 import { ComponentsInfoType } from "types/guide/guide"
 
-// 🔹guide 컴포넌트 상세 정보 - componentsData.ts 등록 시 리스트 노출
-
 // 모달 code 
 export const modalData : ComponentsInfoType = {
   info:{
@@ -34,6 +32,12 @@ export const modalData : ComponentsInfoType = {
       </Modal>
       `,
     },
+    {
+      id:'code-url',
+      title:'TSX & CSS',
+      lang:'txt',
+      code:`https://github.com/TH91-Github/react-record/blob/main/src/components/common/Modal.tsx`
+    },
   ]
 }
 
@@ -64,6 +68,12 @@ export const carouselData : ComponentsInfoType = {
         )}
       </Carousel>
       `
+    },
+    {
+      id:'code-url',
+      title:'TSX & CSS',
+      lang:'txt',
+      code:`https://github.com/TH91-Github/react-record/blob/main/src/components/common/Carousel.tsx`
     },
   ]
 }
@@ -105,6 +115,12 @@ export const toastData : ComponentsInfoType = {
         // base, sucess, error
       `,
     },
+    {
+      id:'code-url',
+      title:'TSX & CSS',
+      lang:'txt',
+      code:`https://github.com/TH91-Github/react-record/blob/main/src/components/common/Toast.tsx`
+    },
   ]
 }
 
@@ -134,6 +150,12 @@ export const tabBtnsData : ComponentsInfoType = {
           changeEvent={(e) => handleTabOnChange(e, 1)}
         />
       `
+    },
+    {
+      id:'code-url',
+      title:'TSX & CSS',
+      lang:'txt',
+      code:`https://github.com/TH91-Github/react-record/blob/main/src/components/common/TabBtns.tsx`
     },
   ]
 }
@@ -177,6 +199,12 @@ export const accordionData : ComponentsInfoType = {
         </Accordion>
       `
     },
+    {
+      id:'code-url',
+      title:'TSX & CSS',
+      lang:'txt',
+      code:`https://github.com/TH91-Github/react-record/blob/main/src/components/common/Accordion.tsx`
+    },
   ]
 }
 
@@ -218,6 +246,11 @@ export const inputTextData : ComponentsInfoType = {
         />
       `
     },
+    {
+      id:'code-url',
+      title:'TSX & CSS',
+      lang:'txt',
+      code:`https://github.com/TH91-Github/react-record/blob/main/src/components/common/InputText.tsx`
+    },
   ]
 }
-
