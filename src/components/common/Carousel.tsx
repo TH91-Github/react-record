@@ -68,7 +68,10 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
     onChangeEvent && onChangeEvent();
   }
 
+
+  // 초기화되기 전에 호출 : Swiper의 params을 수정하여 초기화 전에 변경 가능
   const handleInit = (swiper:SwiperClass) => {
+
     // pagination
     if (swiper.params.pagination && typeof swiper.params.pagination === 'object') {
       swiper.params.pagination.el = paginationRef.current;
@@ -80,26 +83,14 @@ export default forwardRef<CarouselRefType, CarouselPropsType>(({
         swiper.params.pagination.clickable = true
       }
     }
-
+    
     // NavigationOptions 타입인 경우에만 
     if (swiper.params.navigation && typeof swiper.params.navigation === "object") {
       swiper.params.navigation.prevEl = prevBtnRef.current || undefined;
       swiper.params.navigation.nextEl = nextBtnRef.current || undefined;
     }
   }
-  
-  const updateSwiperLockClass = useCallback((swiper: SwiperClass) => {
-  const wrapperEl = swiper.el; // swiper root elemen
-  if (swiper.isLocked) {
-    wrapperEl.classList.add('is-locked');
-    wrapperEl.classList.remove('is-unlocked');
-  } else {
-    wrapperEl.classList.remove('is-locked');
-    wrapperEl.classList.add('is-unlocked');
-  }
-}, []);
   const handleOnSwiper = (e:SwiperClass) => {
-     updateSwiperLockClass(e);
     onCarousel && onCarousel();
   }
 
